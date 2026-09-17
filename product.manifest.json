@@ -4,7 +4,7 @@
   "role": "industry",
   "displayName": "WorkLoom 酒店行业版",
   "packageName": "workloom-hotel",
-  "repository": "geniusdapeng-collab/workloom-hotel",
+  "repository": "workloom-ai/workloom-hotel",
   "defaultBundle": "hotel",
   "demoWorkspaceSlug": "yunqi-hotel",
   "demoMemberNo": "MEM-001",

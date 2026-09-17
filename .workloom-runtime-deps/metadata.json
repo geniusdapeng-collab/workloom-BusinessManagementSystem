@@ -3,7 +3,7 @@
   "product": {
     "productId": "workloom-hotel",
     "role": "industry",
-    "repository": "geniusdapeng-collab/workloom-hotel",
+    "repository": "workloom-ai/workloom-hotel",
     "includePlatformOps": false
   },
   "npmVersion": "11.17.0",

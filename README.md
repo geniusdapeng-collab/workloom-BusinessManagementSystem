@@ -4,7 +4,7 @@
 
 **让每一家小酒店，都拥有一支 24 小时不休息的经营团队**
 
-[![Bundle](https://img.shields.io/badge/hotel%20bundle-v2.3.1-1B2A4E)](https://github.com/geniusdapeng-collab/workloom/releases)
+[![Bundle](https://img.shields.io/badge/hotel%20bundle-v2.3.1-1B2A4E)](https://github.com/workloom-ai/workloom/releases)
 [![Fence](https://img.shields.io/badge/围栏基线-R1--R20%20v3-9A7B2D)](bundles/hotel/fences/hotel-baseline.yml)
 [![Skills](https://img.shields.io/badge/官方技能-25%20个套件-4C6FFF)](bundles/hotel/skills)
 [![Tests](https://img.shields.io/badge/门禁-suite%20443%2F443%20%C2%B7%20demo%2044%2F44-green)](docs/DEMO-TWIN.md)
@@ -174,7 +174,7 @@ WorkLoom 的 AI 不是「一个助手」，是**一支有分工、有纪律、�
 
 ## 三、通用模型路由系统（酒店版接入）
 
-酒店版全面接入底座 v3.0 通用模型路由（详见 [workloom-im](https://github.com/geniusdapeng-collab/workloom-im)）：**每一个 AI 调用点都按场景路由到最合适的模型——高频轻量用小模型又快又省，深度决策用旗舰模型质量拉满，每一次消耗逐事件计量可审计。**
+酒店版全面接入底座 v3.0 通用模型路由（详见 [workloom-im](https://github.com/workloom-ai/workloom-im)）：**每一个 AI 调用点都按场景路由到最合适的模型——高频轻量用小模型又快又省，深度决策用旗舰模型质量拉满，每一次消耗逐事件计量可审计。**
 
 - **酒店场景路由表**（`bundles/hotel/model-policy.yml`）：C 端客服 / AI 语音前台走 L1 轻量档（2.8s 体感红线，KB 命中低置信自动升档）；Quest 规划 / 差评回复 / 晨报合成走 L2 中坚档；CEO 六步深度分析 / 汰换诊断 / 断点根因走 L3 旗舰档（noDowngrade 质量红线）；夜班批量任务谷时 ×0.2
 - **体检报告 = 平台成本**：售前 fast-scan 强制 L3 效果拉满，`bill_to: platform` 不扣客户积分——获客补贴，不是运营成本
