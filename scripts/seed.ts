@@ -736,9 +736,12 @@ async function main(): Promise<void> {
              false)
      ON CONFLICT (id) DO NOTHING`,
   );
+  // 团队技能安装行同样补快照/版本（与运行时 installSkill 同口径；HP-31 既有债务）
   await q(
-    `INSERT INTO skill_installs (skill_id, workspace_id, installed_by)
-     VALUES ('skill-t-ws-yunqi-weekly-ops-review',$1,'MEM-002') ON CONFLICT (skill_id, workspace_id) DO NOTHING`,
+    `INSERT INTO skill_installs (skill_id, workspace_id, installed_by, fence_bindings_snapshot, installed_version)
+     SELECT s.id, $1, 'MEM-002', s.fence_bindings, s.version FROM skills s
+     WHERE s.id = 'skill-t-ws-yunqi-weekly-ops-review'
+     ON CONFLICT (skill_id, workspace_id) DO NOTHING`,
     [WS_ID],
   );
   await q(
