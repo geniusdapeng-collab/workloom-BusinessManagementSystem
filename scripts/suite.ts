@@ -2335,7 +2335,7 @@ function defineE2E(): void {
   h2("captain.grant 条款不全被拒（§12.2 逐项确认强制）", async () => {
     const { data } = await api<{ error?: { data?: { httpStatus?: number } } }>("/trpc/captain.grant", {
       method: "POST", token: tokenOwner,
-      body: { clauses: ["自主调价"], autonomy: { price_band: [0.85, 1.15], procurement_cap: 5000, campaign_cap: 2000 }, shadowDays: 3, trialDays: 7, identityConfirmed: true },
+      body: { clauses: ["自治执行"], autonomy: { ranges: {}, caps: {} }, shadowDays: 3, trialDays: 7, identityConfirmed: true },
     });
     eq(data.error?.data?.httpStatus, 400, "缺条款 400");
   });
