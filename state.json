@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 21,
+  "revision": 23,
   "tasks": {
     "2": {
       "number": 2,
-      "status": "waiting_ci",
+      "status": "integrated",
       "firstSeen": 1791483699312,
       "attempts": {},
       "admission": {
@@ -25,7 +25,7 @@
           "protocol": 3
         }
       },
-      "updatedAt": 1791497609194,
+      "updatedAt": 1791497634500,
       "headSha": "8b3ac3349c040507b9fbcba7f7a5c2ccda6aae20",
       "mainSha": "5a04120a225dc3734415c8cc23e9c5f9474170c0",
       "branch": "chore/protocol-onboarding-BusinessManagementSystem",
@@ -1431,7 +1431,27 @@
             "digest": "ffba7257d2a8183aa09a49bfb3fd4e2ecd00af00a87f1d0474fa63d06c550a5e"
           }
         ]
-      }
+      },
+      "merge": {
+        "sha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+        "sourceSha": "8b3ac3349c040507b9fbcba7f7a5c2ccda6aae20",
+        "mainSha": "5a04120a225dc3734415c8cc23e9c5f9474170c0",
+        "checkSha": "1d9f1122d6a98aaffe24e2567bc0b6feac1bcfce",
+        "mergedBy": "cnb.dYiF05kxAGA",
+        "verifiedAt": "2026-10-08T22:13:53.746Z"
+      },
+      "mergePhase": null,
+      "error": null,
+      "integrationHistory": [
+        {
+          "sha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+          "sourceSha": "8b3ac3349c040507b9fbcba7f7a5c2ccda6aae20",
+          "mainSha": "5a04120a225dc3734415c8cc23e9c5f9474170c0",
+          "checkSha": "1d9f1122d6a98aaffe24e2567bc0b6feac1bcfce",
+          "mergedBy": "cnb.dYiF05kxAGA",
+          "verifiedAt": "2026-10-08T22:13:53.746Z"
+        }
+      ]
     }
   },
   "leases": {
@@ -3242,6 +3262,49 @@
       },
       "previous": "b4aadcd6f69d18f9df3710436b9a28ef281dd5e388d18c0a7fdb7c0d19a8f4d0",
       "digest": "3a782374325bc1b0ba76f1a5709143a1eef0136f3daae37c0205e41aff143003"
+    },
+    {
+      "sequence": 22,
+      "at": "2026-10-08T22:13:54.500Z",
+      "kind": "task",
+      "data": {
+        "number": 2,
+        "patch": {
+          "status": "integrated",
+          "merge": {
+            "sha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+            "sourceSha": "8b3ac3349c040507b9fbcba7f7a5c2ccda6aae20",
+            "mainSha": "5a04120a225dc3734415c8cc23e9c5f9474170c0",
+            "checkSha": "1d9f1122d6a98aaffe24e2567bc0b6feac1bcfce",
+            "mergedBy": "cnb.dYiF05kxAGA",
+            "verifiedAt": "2026-10-08T22:13:53.746Z"
+          },
+          "mergePhase": null,
+          "error": null,
+          "integrationHistory": [
+            {
+              "sha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "sourceSha": "8b3ac3349c040507b9fbcba7f7a5c2ccda6aae20",
+              "mainSha": "5a04120a225dc3734415c8cc23e9c5f9474170c0",
+              "checkSha": "1d9f1122d6a98aaffe24e2567bc0b6feac1bcfce",
+              "mergedBy": "cnb.dYiF05kxAGA",
+              "verifiedAt": "2026-10-08T22:13:53.746Z"
+            }
+          ]
+        }
+      },
+      "previous": "3a782374325bc1b0ba76f1a5709143a1eef0136f3daae37c0205e41aff143003",
+      "digest": "9195c315163463f5c22abf72eb8fedaac061f455e4d8ceec75bf1795d641913f"
+    },
+    {
+      "sequence": 23,
+      "at": "2026-10-08T22:13:53.807Z",
+      "kind": "transaction",
+      "data": {
+        "id": "installer-integrated:2:be5535ceaa1237377dedb2a1941b0be78c478ec6"
+      },
+      "previous": "9195c315163463f5c22abf72eb8fedaac061f455e4d8ceec75bf1795d641913f",
+      "digest": "0f9218c129086c349a7f333cc0902b7bcb18cb1a1ad31b7996709e7515bff352"
     }
   ]
 }
