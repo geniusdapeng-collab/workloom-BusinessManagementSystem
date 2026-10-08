@@ -1,6 +1,6 @@
 {
-  "name": "workloom-hotel",
-  "version": "0.1.0",
+  "name": "business-management-system",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.14.0",
@@ -17,9 +17,9 @@
     "yaml": "2.9.0"
   },
   "scripts": {
-    "dev": "node scripts/dev-note.js && concurrently -k -n server,web \"pnpm -C apps/server dev\" \"pnpm -C apps/web dev\"",
+    "dev": "node scripts/business-management.mjs serve",
     "db:migrate": "tsx --env-file=.env scripts/migrate.ts",
-    "db:seed": "tsx --env-file=.env scripts/seed.ts",
+    "db:seed": "tsx --env-file=.env scripts/seed-smart-home.ts",
     "demo": "TOOL_UNVERIFIED_RATE=0 tsx --env-file=.env scripts/demo.ts",
     "doctor": "bash scripts/doctor.sh",
     "typecheck": "pnpm -r --if-present typecheck",
@@ -48,7 +48,7 @@
     "computer:serve": "tsx packages/base/computer-use/serve.ts",
     "computer:mcp": "tsx packages/base/computer-use/mcp.ts",
     "computer:smoke": "tsx packages/base/computer-use/smoke.ts",
-    "setup": "bash scripts/bootstrap.sh",
+    "setup": "node scripts/business-management-setup.mjs",
     "setup:full": "bash scripts/bootstrap.sh --with-computer",
     "skill:forge": "tsx scripts/skill-forge.mts",
     "app": "tsx scripts/desktop-app.mts",
@@ -69,15 +69,14 @@
     "oss:check": "bash scripts/oss-watch.sh --check",
     "test:oss": "node --test scripts/oss-inventory.test.mjs",
     "test:governance": "node --test --test-concurrency=1 scripts/delivery/*.test.mjs scripts/acceptance/fleet-run.test.mjs scripts/acceptance/lib/environment-safety.test.mjs scripts/acceptance/lib/outcome-contract.test.mjs scripts/acceptance/lib/live/budget.test.mjs scripts/acceptance/lib/live/live-truth.test.mjs scripts/acceptance/lib/live/providers.test.mjs scripts/acceptance/lib/live/usage.test.mjs scripts/acceptance/lib/live/audit.test.mjs scripts/acceptance/lib/live/providers-http.test.mjs scripts/capability-status.test.mjs scripts/oss-inventory.test.mjs scripts/oss-watch.test.mjs scripts/tools/provision-safety.test.mjs sync/direct-push.test.mjs scripts/acceptance/lib/live/product.test.mjs scripts/acceptance/lib/live/media-negative.test.mjs scripts/acceptance/lib/live/live-cli.test.mjs scripts/acceptance/outcome.test.mjs scripts/acceptance/lib/profile-contract.test.mjs scripts/acceptance/profile-check.test.mjs scripts/ui-release-registration.test.mjs scripts/acceptance/lib/live/dsh-process.test.mjs scripts/acceptance/lib/live/live-cli-wire.test.mjs sync/fanout-safety.test.mjs",
-    "test:media": "node --test --test-concurrency=1 scripts/acceptance/lib/live/media-decoder.test.mjs scripts/acceptance/lib/live/live-cli-browser.test.mjs"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "node-pty"
-    ],
-    "overrides": {
-      "@workloom/ui@0.1.19": "https://cnb.cool/workloom-ai/workloom-im/-/releases/download/ui-v0.1.19/workloom-ui-0.1.19.tgz"
-    }
+    "test:media": "node --test --test-concurrency=1 scripts/acceptance/lib/live/media-decoder.test.mjs scripts/acceptance/lib/live/live-cli-browser.test.mjs",
+    "dev:foundation": "node scripts/dev-note.js && concurrently -k -n server,web \"pnpm -C apps/server dev\" \"pnpm -C apps/web dev\"",
+    "setup:foundation": "bash scripts/bootstrap.sh",
+    "bm": "node scripts/business-management.mjs",
+    "bm:mcp": "node scripts/business-management-mcp.mjs",
+    "bm:doctor": "node scripts/business-management.mjs doctor",
+    "test:business": "node --test bundles/smart-home/runtime/tests/*.test.mjs scripts/business-management*.test.mjs",
+    "db:seed:hotel-compat": "tsx --env-file=.env scripts/seed.ts"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
@@ -92,5 +91,5 @@
     "typescript-governance": "npm:typescript@5.9.3",
     "yaml-governance": "npm:yaml@2.9.0"
   },
-  "description": "WorkLoom 酒店智能经营系统 · AI 前厅/客房/收益一体化（酒店垂直版）"
+  "description": "经营管理系统（BusinessManagementSystem）· 全屋智能门店获客、方案报价、项目交付与售后 · 宿主AI模型驱动"
 }

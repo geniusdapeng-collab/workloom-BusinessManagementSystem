@@ -1,0 +1,152 @@
+{
+  "$id": "workloom://bundles/smart-home/ui/workbench-cases",
+  "description": "原生经营台与客户前台验收用例；用例声明不是测试通过证据。",
+  "pages": [
+    "smart-home/workbench",
+    "c/chat",
+    "c/service",
+    "c/tickets"
+  ],
+  "cases": [
+    {
+      "page": "smart-home/workbench",
+      "name": "默认",
+      "expect": "展示全屋智能业务名称和当前数据模式，零记录不冒称经营成功"
+    },
+    {
+      "page": "smart-home/workbench",
+      "name": "加载",
+      "expect": "等待时显示加载状态并限制重复提交"
+    },
+    {
+      "page": "smart-home/workbench",
+      "name": "空数据",
+      "expect": "说明数据不足和当前可执行下一步"
+    },
+    {
+      "page": "smart-home/workbench",
+      "name": "错误",
+      "expect": "显示可观察错误与重试入口，不丢输入"
+    },
+    {
+      "page": "smart-home/workbench",
+      "name": "权限",
+      "expect": "受限动作给准确原因；客户前台不开放私有项目"
+    },
+    {
+      "page": "smart-home/workbench",
+      "name": "移动",
+      "expect": "窄屏不横向溢出，关键操作可触达"
+    },
+    {
+      "page": "c/chat",
+      "name": "默认",
+      "expect": "展示全屋智能业务名称和当前数据模式，零记录不冒称经营成功"
+    },
+    {
+      "page": "c/chat",
+      "name": "加载",
+      "expect": "等待时显示加载状态并限制重复提交"
+    },
+    {
+      "page": "c/chat",
+      "name": "空数据",
+      "expect": "说明数据不足和当前可执行下一步"
+    },
+    {
+      "page": "c/chat",
+      "name": "错误",
+      "expect": "显示可观察错误与重试入口，不丢输入"
+    },
+    {
+      "page": "c/chat",
+      "name": "权限",
+      "expect": "受限动作给准确原因；客户前台不开放私有项目"
+    },
+    {
+      "page": "c/chat",
+      "name": "移动",
+      "expect": "窄屏不横向溢出，关键操作可触达"
+    },
+    {
+      "page": "c/service",
+      "name": "默认",
+      "expect": "展示全屋智能业务名称和当前数据模式，零记录不冒称经营成功"
+    },
+    {
+      "page": "c/service",
+      "name": "加载",
+      "expect": "等待时显示加载状态并限制重复提交"
+    },
+    {
+      "page": "c/service",
+      "name": "空数据",
+      "expect": "说明数据不足和当前可执行下一步"
+    },
+    {
+      "page": "c/service",
+      "name": "错误",
+      "expect": "显示可观察错误与重试入口，不丢输入"
+    },
+    {
+      "page": "c/service",
+      "name": "权限",
+      "expect": "受限动作给准确原因；客户前台不开放私有项目"
+    },
+    {
+      "page": "c/service",
+      "name": "移动",
+      "expect": "窄屏不横向溢出，关键操作可触达"
+    },
+    {
+      "page": "c/tickets",
+      "name": "默认",
+      "expect": "展示全屋智能业务名称和当前数据模式，零记录不冒称经营成功"
+    },
+    {
+      "page": "c/tickets",
+      "name": "加载",
+      "expect": "等待时显示加载状态并限制重复提交"
+    },
+    {
+      "page": "c/tickets",
+      "name": "空数据",
+      "expect": "说明数据不足和当前可执行下一步"
+    },
+    {
+      "page": "c/tickets",
+      "name": "错误",
+      "expect": "显示可观察错误与重试入口，不丢输入"
+    },
+    {
+      "page": "c/tickets",
+      "name": "权限",
+      "expect": "受限动作给准确原因；客户前台不开放私有项目"
+    },
+    {
+      "page": "c/tickets",
+      "name": "移动",
+      "expect": "窄屏不横向溢出，关键操作可触达"
+    },
+    {
+      "page": "smart-home/workbench",
+      "name": "审批重放",
+      "expect": "审批内容与当前版本不符时拒绝，不静默复用批准"
+    },
+    {
+      "page": "smart-home/workbench",
+      "name": "无模型密钥",
+      "expect": "模型任务由宿主AI工作台领取，不要求另配模型供应商密钥"
+    },
+    {
+      "page": "c/service",
+      "name": "预约语义",
+      "expect": "体验与勘测只登记服务意向，客户确认前不显示预约成功"
+    },
+    {
+      "page": "c/chat",
+      "name": "安全与隐私",
+      "expect": "不远程开门、操作强电，不泄露家庭影像和秘密"
+    }
+  ]
+}

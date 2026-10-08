@@ -1,0 +1,9 @@
+schemaVersion: "business-management.pipeline/v1"
+id: "project-delivery"
+name: "方案到客户验收闭环"
+executor: "runtime/workflows.mjs"
+modelProvider: "host-workbench"
+steps: [{"id": "solution", "agent": "solution-designer", "skill": "solution-design", "output": "已核验勘测的方案BOM与场景", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}, {"id": "quote", "agent": "quote-controller", "skill": "quote-margin-control", "output": "金额与毛利核验通过的报价", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}, {"id": "delivery-plan", "agent": "project-manager", "skill": "project-scheduling", "output": "批准报价后交付计划", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}, {"id": "owner-report", "agent": "store-ceo", "skill": "owner-briefing", "output": "采购、安装、调试、签收证据汇报", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}]
+gates: ["字段与引用校验", "用途授权", "准确内容的人类审批", "真实现场与客户证据", "只增事件与回执"]
+restart: "幂等键与任务租约，失败有界重试，过期租约回收，不重复经营计数"
+externalConnectors: "发布、投放、支付、设备控制未启用；计划与真实动作分离"

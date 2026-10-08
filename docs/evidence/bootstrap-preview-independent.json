@@ -1,0 +1,221 @@
+{
+  "scope": "Independent bootstrap/preview control-flow and process lifecycle; command boundaries mocked in disposable fixture",
+  "testedAt": "2026-10-08T17:37:58.250163+00:00",
+  "evidenceLevel": "B",
+  "sourceHashes": {
+    "bootstrap.sh": "b94dc385f9fb4ef9ae3e483b898397e5787058b0dbdc416634faa37f9240e90d",
+    "preview-all.sh": "a601329c384f7cbe7213202e6b87557dd32c0397c111b4bae685efa24414383b"
+  },
+  "cases": [
+    {
+      "name": "bootstrap-current-product-success",
+      "precondition": "Isolated temporary project; subprocess commands mocked, no live database/network/customer data",
+      "steps": [
+        "Execute actual repository shell script in fixture"
+      ],
+      "expected": "Correct current-product command routing and clean process lifecycle",
+      "actual": "pass",
+      "exitCode": 0,
+      "commands": [
+        [
+          "-v"
+        ],
+        [
+          "db:migrate"
+        ],
+        [
+          "db:seed"
+        ]
+      ],
+      "startedServices": 0,
+      "processesRemaining": 0
+    },
+    {
+      "name": "bootstrap-seed-error-exit",
+      "precondition": "Isolated temporary project; subprocess commands mocked, no live database/network/customer data",
+      "steps": [
+        "Execute actual repository shell script in fixture"
+      ],
+      "expected": "Explicit failure and no leaked process",
+      "actual": "pass",
+      "exitCode": 1,
+      "commands": [
+        [
+          "-v"
+        ],
+        [
+          "db:migrate"
+        ],
+        [
+          "db:seed"
+        ]
+      ],
+      "startedServices": 0,
+      "processesRemaining": 0
+    },
+    {
+      "name": "preview-occupied-port-preserved",
+      "precondition": "Isolated temporary project; subprocess commands mocked, no live database/network/customer data",
+      "steps": [
+        "Execute actual repository shell script in fixture"
+      ],
+      "expected": "Explicit failure and no leaked process",
+      "actual": "pass",
+      "exitCode": 1,
+      "commands": [],
+      "startedServices": 0,
+      "processesRemaining": 0
+    },
+    {
+      "name": "preview-migration-error-short-circuit",
+      "precondition": "Isolated temporary project; subprocess commands mocked, no live database/network/customer data",
+      "steps": [
+        "Execute actual repository shell script in fixture"
+      ],
+      "expected": "Explicit failure and no leaked process",
+      "actual": "pass",
+      "exitCode": 1,
+      "commands": [
+        [
+          "db:migrate"
+        ]
+      ],
+      "startedServices": 0,
+      "processesRemaining": 0
+    },
+    {
+      "name": "preview-seed-error-short-circuit",
+      "precondition": "Isolated temporary project; subprocess commands mocked, no live database/network/customer data",
+      "steps": [
+        "Execute actual repository shell script in fixture"
+      ],
+      "expected": "Explicit failure and no leaked process",
+      "actual": "pass",
+      "exitCode": 1,
+      "commands": [
+        [
+          "db:migrate"
+        ],
+        [
+          "db:seed"
+        ]
+      ],
+      "startedServices": 0,
+      "processesRemaining": 0
+    },
+    {
+      "name": "preview-readiness-timeout-cleanup",
+      "precondition": "Isolated temporary project; subprocess commands mocked, no live database/network/customer data",
+      "steps": [
+        "Execute actual repository shell script in fixture"
+      ],
+      "expected": "Explicit failure and no leaked process",
+      "actual": "pass",
+      "exitCode": 1,
+      "commands": [
+        [
+          "db:migrate"
+        ],
+        [
+          "db:seed"
+        ],
+        [
+          "-C",
+          "apps/web",
+          "exec",
+          "vite",
+          "--port",
+          "3000",
+          "--strictPort"
+        ],
+        [
+          "-C",
+          "apps/webb",
+          "exec",
+          "vite",
+          "--port",
+          "3001",
+          "--strictPort"
+        ],
+        [
+          "-C",
+          "apps/webc",
+          "exec",
+          "vite",
+          "--port",
+          "3002",
+          "--strictPort"
+        ],
+        [
+          "-C",
+          "apps/server",
+          "start"
+        ]
+      ],
+      "startedServices": 4,
+      "processesRemaining": 0
+    },
+    {
+      "name": "preview-ready-SIGTERM-cleanup",
+      "precondition": "Isolated temporary project; subprocess commands mocked, no live database/network/customer data",
+      "steps": [
+        "Execute actual repository shell script in fixture",
+        "Signal shell after four services start"
+      ],
+      "expected": "Correct current-product command routing and clean process lifecycle",
+      "actual": "pass",
+      "exitCode": 143,
+      "commands": [
+        [
+          "db:migrate"
+        ],
+        [
+          "db:seed"
+        ],
+        [
+          "-C",
+          "apps/server",
+          "start"
+        ],
+        [
+          "-C",
+          "apps/web",
+          "exec",
+          "vite",
+          "--port",
+          "3000",
+          "--strictPort"
+        ],
+        [
+          "-C",
+          "apps/webc",
+          "exec",
+          "vite",
+          "--port",
+          "3002",
+          "--strictPort"
+        ],
+        [
+          "-C",
+          "apps/webb",
+          "exec",
+          "vite",
+          "--port",
+          "3001",
+          "--strictPort"
+        ]
+      ],
+      "startedServices": 4,
+      "processesRemaining": 0
+    }
+  ],
+  "pass": 7,
+  "fail": 0,
+  "notProven": [
+    "Full dependency installation",
+    "Docker installation",
+    "Real three-client preview rendering",
+    "Production availability"
+  ],
+  "temporaryFixtureRemoved": true
+}

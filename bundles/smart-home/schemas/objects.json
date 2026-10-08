@@ -1,0 +1,81 @@
+{
+  "$id": "workloom://bundles/smart-home/schemas/objects",
+  "objects": [
+    {
+      "type": "store",
+      "label": "门店"
+    },
+    {
+      "type": "sku",
+      "label": "设备型号"
+    },
+    {
+      "type": "compatibility",
+      "label": "兼容证据"
+    },
+    {
+      "type": "lead",
+      "label": "客户线索"
+    },
+    {
+      "type": "experience",
+      "label": "体验预约"
+    },
+    {
+      "type": "survey",
+      "label": "现场勘测"
+    },
+    {
+      "type": "solution",
+      "label": "空间方案"
+    },
+    {
+      "type": "quote",
+      "label": "项目报价"
+    },
+    {
+      "type": "approval",
+      "label": "审批"
+    },
+    {
+      "type": "project",
+      "label": "交付项目"
+    },
+    {
+      "type": "procurement",
+      "label": "采购到货"
+    },
+    {
+      "type": "commissioning",
+      "label": "场景测试"
+    },
+    {
+      "type": "acceptance",
+      "label": "客户验收"
+    },
+    {
+      "type": "aftercare",
+      "label": "售后工单"
+    },
+    {
+      "type": "content",
+      "label": "内容素材"
+    },
+    {
+      "type": "goal",
+      "label": "经营目标"
+    },
+    {
+      "type": "workflow",
+      "label": "业务工作流"
+    },
+    {
+      "type": "task",
+      "label": "模型任务"
+    },
+    {
+      "type": "report",
+      "label": "经营报告"
+    }
+  ]
+}

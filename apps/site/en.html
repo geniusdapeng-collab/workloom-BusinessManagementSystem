@@ -3,15 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WorkLoom · Enterprise Agent IM powered by DeepSeek Harness — Your Space Cockpit | 企业级 Agent IM</title>
-<meta name="description" content="WorkLoom: Enterprise Agent IM powered by DeepSeek Harness — humans and AI agents collaborate in one workspace. WorkData data brain, skill marketplace, local-first data sovereignty. Apache-2.0 open source. 企业级 Agent IM，重构服务业。">
-<meta name="keywords" content="Enterprise Agent IM,DeepSeek Harness,企业级Agent,AI Agent协作,多智能体,人机共存,数码员工,事件溯源,组织记忆,pgvector,本地优先,数据主权,技能市场,skill marketplace,WorkData,multi-agent,human-in-the-loop,local-first,event sourcing,Hono,tRPC,React,PostgreSQL,开源,open source">
-<meta property="og:title" content="WorkLoom 织元 · DeepSeek Harness 企业级 Agent IM">
-<meta property="og:description" content="Enterprise Agent IM powered by DeepSeek Harness — humans and AI agents in one workspace. WorkData data brain, skill marketplace, local-first data sovereignty. Apache-2.0.">
+<title>BusinessManagementSystem · Smart Home Store Operations</title>
+<meta name="description" content="WorkLoom BusinessManagementSystem uses your current AI workbench model for smart home store acquisition, design, quoting, delivery and aftercare, with a local ledger, human approvals, CLI and MCP. Apache-2.0 public source.">
+<meta property="og:title" content="BusinessManagementSystem · Smart Home Store Operations">
+<meta property="og:description" content="WorkLoom BusinessManagementSystem uses your current AI workbench model for smart home store acquisition, design, quoting, delivery and aftercare, with a local ledger, human approvals, CLI and MCP. Apache-2.0 public source.">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 
 /* 实机截图带（对账补入：概念图之外的真实产品界面） */
@@ -359,409 +355,66 @@ footer a:hover{color:var(--gold-hi)}
   .rise{opacity:1;transform:none;transition:none}
   .btn-gold .sheen,.dot{animation:none}
 }
+
+/* BusinessManagementSystem: preserve the inherited deep-space palette. */
+:root{--t3:#9AADD2}
+.rise{opacity:1;transform:none}
+.brand{color:var(--t1)}
+.brand small{letter-spacing:.12em;font-size:9px;margin-top:4px}
+nav.top{gap:18px;flex-wrap:wrap;justify-content:flex-end}
+nav.top a{padding:6px 0}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--gold-hi);outline-offset:5px;border-radius:5px}
+.btn-ghost:active,.doc-card:active{transform:translateY(1px)}
+.hero{min-height:88vh}
+.hero h1{font-size:clamp(34px,4.8vw,58px)}
+.hero-frame{padding:clamp(32px,5.5vw,68px)}
+.repo-name{overflow-wrap:anywhere}
+.disclosure{border-left:3px solid var(--gold-a);padding:14px 18px;background:rgba(255,181,69,.06);color:var(--t2);font-size:13px;margin-top:26px}
+.concept-label{font-size:12px;color:var(--t3);margin-top:12px}
+.flow-note{margin-top:22px;color:var(--t2);font-size:13px}
+.layer-num{font-family:monospace;color:var(--gold-hi);font-size:12px;letter-spacing:.15em;margin-bottom:10px}
+.status-line{color:var(--go);font-size:12px;margin-top:15px}
+.section-rule{border-top:1px solid var(--line-holo)}
+.term-shot pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12.5px;line-height:1.85}
+.doc-card{height:100%}
+.faq{margin-top:32px;display:grid;gap:14px}
+.faq details{border:1px solid var(--line-holo);border-radius:12px;background:rgba(10,18,40,.7);padding:18px 22px}
+.faq summary{cursor:pointer;font-weight:700;color:var(--t1)}
+.faq p{color:var(--t2);font-size:13.5px;padding-top:12px}
+.source-line{color:var(--t3);font-size:12px;margin-top:22px}
+.sources{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:20px;font-size:12.5px}
+.sources a{text-decoration:underline;text-underline-offset:4px}
+.logo-mark{width:34px;height:34px;border:2px solid var(--gold-a);border-radius:50%;display:grid;place-items:center;box-shadow:0 0 18px rgba(255,181,69,.2);font:900 15px monospace;color:var(--gold-hi);flex:none}
+.pill-status{white-space:nowrap;max-width:100%}
+section[id]{scroll-margin-top:95px}
+@media(max-width:860px){header.site{align-items:flex-start;gap:14px;padding:12px 20px}.brand b{font-size:13px}.brand small{font-size:8px}nav.top{font-size:12px;gap:7px 14px}.wrap{padding:0 20px}.hero{padding-top:44px}.btn-gold{font-size:15px;padding:17px 24px}.btn-ghost{font-size:13px;padding:16px 20px}.cta-row{gap:12px}section{padding:66px 0}}
+@media(max-width:560px){.pill-status{white-space:normal;font-size:10px;line-height:1.5}header.site{flex-direction:column;gap:7px}nav.top{width:100%;justify-content:flex-start;gap:6px 20px}.hero-frame{padding:30px 22px}.hero h1{font-size:34px}.hero p.sub{font-size:14px;margin-bottom:24px}.readouts{margin-top:30px}.readout{flex:1 1 45%;padding:15px}.readout:nth-child(2){border-right:none}.readout .lbl{font-size:11px}.readout .num{font-size:23px}.eyebrow{letter-spacing:.20em;font-size:10px}.safe-band{padding:24px 20px}.card,.step{padding:24px 22px}.hero .cta-row a{width:100%;justify-content:center}.brand small{font-size:9px}.disclosure{font-size:12px}.final{padding:75px 0 60px}section[id]{scroll-margin-top:118px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+.skip{position:absolute;left:12px;top:-100px;z-index:100;background:var(--gold-hi);color:var(--on-gold);padding:10px 18px;border-radius:8px}.skip:focus{top:12px}
 </style>
 </head>
 <body>
 
-<canvas id="starfield"></canvas>
-<div class="nebula nebula-1"></div>
-<div class="nebula nebula-2"></div>
-<div class="nebula nebula-3"></div>
-<div class="horizon"></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="nebula nebula-1" aria-hidden="true"></div><div class="nebula nebula-2" aria-hidden="true"></div><div class="horizon" aria-hidden="true"></div>
+<header class="site"><a class="brand" href="#top" aria-label="BusinessManagementSystem home"><span class="logo-mark" aria-hidden="true">B</span><span><b>BusinessManagementSystem</b><small>WORKLOOM · SMART HOME OPERATIONS</small></span></a><nav class="top" aria-label="Main navigation"><a href="#journeys">Workflows</a><a href="#start">Get started</a><a href="#docs">Docs</a><a href="index.html" lang="zh-CN" hreflang="zh-CN">中文</a><a href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem" target="_blank" rel="noopener">CNB source ↗</a></nav></header>
+<main id="main">
+<section class="hero" id="top"><div class="wrap"><div class="hero-frame"><span class="hud tl" aria-hidden="true"></span><span class="hud tr" aria-hidden="true"></span><span class="hud bl" aria-hidden="true"></span><span class="hud br" aria-hidden="true"></span><div class="hero-grid-lines" aria-hidden="true"></div><div class="eyebrow">WORKLOOM · SMART HOME OPERATIONS</div><span class="pill-status"><span class="dot" aria-hidden="true"></span>Public source · Local business workbench</span><h1>A smart home store.<br>A team with <span class="gold">evidence behind its work.</span></h1><p class="sub">Manage leads, surveys, designs, quotes, installation, acceptance and aftercare. <b>The owner sets goals, digital staff prepare the work, and people approve commitments and record field delivery.</b> Your current AI workbench model claims tasks through CLI or MCP and submits artifacts to the local business ledger.</p><div class="cta-row"><a class="btn-gold" id="btn-download" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem" target="_blank" rel="noopener">Open public source <span aria-hidden="true">↗</span></a><a class="btn-ghost" href="#start">Run the sandbox <span aria-hidden="true">↓</span></a></div><div class="dl-meta"><span>Apache-2.0</span><span class="sep" aria-hidden="true"></span><span>Host model execution</span><span class="sep" aria-hidden="true"></span><span>Synthetic demo by default</span></div><div class="readouts"><div class="readout"><div class="num gold">20</div><div class="lbl">Accountable employee roles</div></div><div class="readout"><div class="num">35</div><div class="lbl">Skills with written procedures</div></div><div class="readout"><div class="num">39</div><div class="lbl">Shared business operations</div></div><div class="readout"><div class="num">5</div><div class="lbl">Host driven workflows</div></div></div></div><p class="concept-label">The background is concept artwork. This page provides source and startup instructions; signed desktop installers have not been published.</p></div></section>
+<section id="journeys" class="section-rule"><div class="wrap"><div class="eyebrow">01 / CUSTOMER JOURNEYS</div><h2 class="sect">One business chain.<br><em>Every commitment has prerequisites.</em></h2><p class="lede">Turn verbal handovers into records, stages and evidence. Missing customer information needs clarification. Missing device evidence pauses the design. An unapproved quote remains a draft.</p><div class="cards"><article class="card"><span class="ico" aria-hidden="true">◎</span><h3>From inquiry to qualified lead</h3><span class="tag">ACQUISITION</span><p>Record channel attribution, renovation stage, budget and purpose consent. The host model checks qualification and prepares sourced content drafts and proposed experience plans. Publication, invitation delivery and customer confirmation remain separate states.</p></article><article class="card"><span class="ico" aria-hidden="true">◇</span><h3>From design to accepted project</h3><span class="tag">DELIVERY</span><p>People record circuits, neutral wire, load and network evidence. Designs bind exact devices and firmware. The runtime computes integer cents, cost, margin and discount, then advances through procurement, installation, commissioning and acceptance after approval.</p></article><article class="card"><span class="ico" aria-hidden="true">↺</span><h3>From fault to traceable resolution</h3><span class="tag">AFTERCARE</span><p>Route offline, scene, network, device, safety and privacy faults. Models prepare response plans; people record service evidence and customer confirmation. Reports retain unresolved risks and follow-up plans.</p></article></div><div class="loop"><div class="node"><b>Owner sets a goal</b><span>Metric, deadline, constraints</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>CEO allocates work</b><span>Role, skill, record version</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>Host claims and submits</b><span>Structured artifacts, bounded retry</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>People approve and attest</b><span>Contract, installation, acceptance</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>Evidence updates the goal</b><span>Measured records and decisions</span></div></div><p class="flow-note">A completed workflow has reached its local terminal state. Read measured metrics to assess goal achievement. Synthetic data and supplied evidence URIs do not prove externally verified facts.</p></div></section>
+<section id="architecture"><div class="wrap"><div class="eyebrow">02 / FOUR CONNECTED LAYERS</div><h2 class="sect">Understand the business.<br><em>Inspect the mechanism.</em></h2><p class="lede">Four layers share business names, permissions and evidence rules. Procedures, claimed tasks, browser forms and ledger receipts can be checked against one another.</p><div class="cards"><article class="card"><span class="ico" aria-hidden="true">01</span><h3>Journeys and store operations</h3><span class="tag">JOURNEY</span><p>Owners see goals and decisions. Consultants see leads and experiences. Engineers see surveys, designs and milestones. Aftercare staff see faults, field evidence and follow-up work.</p></article><article class="card"><span class="ico" aria-hidden="true">02</span><h3>Capabilities and records</h3><span class="tag">CAPABILITY</span><p>19 record types share 39 operations. CLI, MCP and local HTTP use one gateway that checks ownership, consent, compatibility evidence, approval digests and stage dependencies.</p></article><article class="card"><span class="ico" aria-hidden="true">03</span><h3>Employees and skills</h3><span class="tag">WORKFORCE</span><p>20 roles have explicit accountability. 35 skills include complete procedures. Five workflow kinds cover acquisition, delivery, aftercare, diagnosis and preparation work for any installed employee skill.</p></article><article class="card"><span class="ico" aria-hidden="true">04</span><h3>Host model and ledger</h3><span class="tag">EXECUTION</span><p>Codex, Qwen Work and WorkBuddy connect through stdio MCP using the current host model. The runtime schedules and validates; SQLite commits records, idempotency receipts and hash chained events.</p></article><article class="card"><span class="ico" aria-hidden="true">◇</span><h3>People and commitments</h3><span class="tag">HUMAN DECISION</span><p>Quote approval binds a content digest and expiry. Browser owner access requires confirmation in a real terminal. MCP always acts as an agent and cannot approve quotes or attest field acceptance.</p></article><article class="card"><span class="ico" aria-hidden="true">↯</span><h3>Visible failure handling</h3><span class="tag">RECOVERY</span><p>Expired leases can be reclaimed. Failures retain history with bounded retries. Changed record versions, corrupted data or missing prerequisites block submission instead of manufacturing progress.</p></article></div><div class="showcase"><figure><div class="shot"><img src="assets/scene-squad.jpg" width="1536" height="1024" loading="lazy" alt="Concept artwork of a digital employee formation in deep space"></div><figcaption class="concept-label">Concept artwork · A visual metaphor for accountable staff</figcaption></figure><div class="txt"><div class="eyebrow">ACCOUNTABLE WORKFORCE</div><h3>Every role has<br><em>a skill, a boundary and an output contract.</em></h3><p>Employee tasks bind existing records and their versions. Claiming a task returns the sealed skill procedure. Content, video, finance and research roles prepare analysis, drafts and decision packages, marking external actions and field evidence as pending.</p><ul class="spec-list"><li><span class="k" aria-hidden="true">✓</span><span><b>All 35 skills can enter the queue:</b> employee-work binds a role to its accountable skill.</span></li><li><span class="k" aria-hidden="true">✓</span><span><b>Preparation has its own result:</b> a report cannot pass as a published video, payment or installation.</span></li><li><span class="k" aria-hidden="true">✓</span><span><b>CEO allocation creates real tasks:</b> management-loop actions become claimable employee workflows.</span></li></ul></div></div></div></section>
+<section id="start" class="section-rule"><div class="wrap"><div class="eyebrow">03 / RUN LOCALLY</div><h2 class="sect">Start in the sandbox.<br><em>Continue with your workbench model.</em></h2><p class="lede">The independent business entry requires Node.js 24 or later. Run doctor, then explicitly seed synthetic data. CLI and MCP business execution require no additional model API key.</p><div class="steps"><article class="step"><span class="idx">01</span><h3>Get the source</h3><p>Clone the public CNB repository and check the environment from its root. Read the <a href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/blob/main/docs/AI-WORKBENCH.md" target="_blank" rel="noopener">AI workbench guide</a> and repository README.</p><div class="tip">Source is licensed under Apache-2.0. Check formal repository releases for signed desktop availability.</div></article><article class="step"><span class="idx">02</span><h3>Run the local workbench</h3><p>Choose sandbox and synthetic samples explicitly. The browser shows goals, approvals, tasks and ledger records. The service listens on loopback only.</p><div class="tip">Demo stores, devices, customers and evidence are marked synthetic and cannot be used as real case studies.</div></article><article class="step"><span class="idx">03</span><h3>Connect your host</h3><p>Setup generates project configuration. The host claims tasks, submits the required schema and reads goal reports. Approvals and field evidence produce visible pending work.</p><div class="tip">Model execution needs an active host session. Background tick schedules work; it does not continue inference after the host closes.</div></article></div><div class="term-shot" aria-label="Local startup commands"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><pre><span class="c"># Use a Node.js 24+ environment</span>
+git clone https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem.git
+cd workloom-BusinessManagementSystem
+node scripts/business-management.mjs doctor
+node scripts/business-management.mjs init --demo
+node scripts/business-management.mjs setup --client all
+node scripts/business-management.mjs serve
+<span class="g"># Open http://127.0.0.1:9393 in your browser</span></pre></div><div class="disclosure">Real Codex host execution evidence accompanies the repository acceptance records. Qwen Work and WorkBuddy configuration follows official documentation; each client still requires its own device validation. The inherited PostgreSQL platform and three client builds use their documented runtime chain.</div></div></section>
+<section id="boundaries"><div class="wrap"><div class="eyebrow">04 / EVIDENCE & AUTHORITY</div><h2 class="sect">Inspect local results.<br><em>Keep external actions explicit.</em></h2><p class="lede">People retain responsibility for quote commitments, customer consent and field delivery. Compatibility depends on the exact model, firmware, gateway and ecosystem conditions. A protocol label cannot prove it.</p><div class="safe-band"><h3><span class="brake">●</span> Current connector state and receipt meaning</h3><p>Publishing, messaging, payment and real device control connectors are disabled. A local receipt proves a SQLite commit; externalVerified=false. Live identifies a real data workspace, whose sources and field facts still require human verification.</p><div class="safe-grid"><div class="safe-item"><b>Separate purpose consent</b>Consultation, appointments, marketing and aftercare retain independent scope; withdrawal pauses affected work.</div><div class="safe-item"><b>Version bound compatibility</b>Missing or expired exact SKU, firmware and pair evidence blocks design advancement.</div><div class="safe-item"><b>Approval binds content</b>Margin and discount limits remain hard blocks even after human approval.</div><div class="safe-item"><b>Ordered field stages</b>Authorized people record contract, procurement, installation, commissioning and acceptance.</div></div></div><div class="faq"><details><summary>Will it publish videos, contact customers or control devices?</summary><p>It prepares local content drafts, production plans, appointment plans and response packages. Publishing, messaging, payments and device control are disabled; approval cannot unlock them. Real integrations need separate authorization, credential custody, platform permission and external receipt validation.</p></details><details><summary>Can all 35 skills execute?</summary><p>Every skill can be claimed through employee-work and submit a structured preparation artifact. Fixed business workflows also apply deterministic record changes and dependency transitions. Video staff deliver filming and editing instructions; finance staff deliver reconciliation plans. Video rendering, payments and real accounting execution are outside the enabled scope.</p></details><details><summary>How do I move from the sandbox to a real store?</summary><p>Create a separate live data directory and workspace. Register store limits, actual SKU versions and sourced customer or field evidence. Synthetic records cannot be promoted into real facts. The owner authorizes a session in a real terminal and checks approval digests, contracts and field material.</p></details></div><p class="source-line">Industry source check dates are kept in the repository. Official documentation supports general mechanisms, not claims that a store has real accounts, permissions, hardware or customer cases.</p><div class="sources"><a href="https://csa-iot.org/all-solutions/matter/" target="_blank" rel="noopener">CSA Matter</a><a href="https://docs.aqara.com/zh/docs/aqara-builder/builder-agent/overview/" target="_blank" rel="noopener">Aqara Builder design flow</a><a href="https://open.douyin.com/platform/resource/docs/openapi/video-management/douyin/create/create-video/" target="_blank" rel="noopener">Douyin video API requirements</a></div></div></section>
+<section id="docs" class="section-rule"><div class="wrap"><div class="eyebrow">05 / READ THE IMPLEMENTATION</div><h2 class="sect">Documentation, code and tests.<br><em>Evidence you can cross-check.</em></h2><p class="lede">Business boundaries and runtime instructions live in the repository. Acceptance evidence is versioned. Role and operation counts on this page come from the current industry assets and runtime catalogue.</p><div class="doc-grid"><a class="doc-card" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/blob/main/docs/SMART-HOME-BUSINESS-MATRIX.md" target="_blank" rel="noopener"><div class="doc-tag">BUSINESS MAP</div><h3>Business and implementation matrix</h3><p>Maps journeys, objects, employees, skills, workflows, interfaces and failure paths.</p><span class="doc-dl">Read business matrix ↗</span></a><a class="doc-card" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/blob/main/docs/AI-WORKBENCH.md" target="_blank" rel="noopener"><div class="doc-tag">HOST MODEL</div><h3>Connect your current workbench</h3><p>Codex, Qwen Work and WorkBuddy setup, plus claim, submit, approval and field evidence protocols.</p><span class="doc-dl">Read connection guide ↗</span></a><a class="doc-card" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/blob/main/docs/evidence/README.md" target="_blank" rel="noopener"><div class="doc-tag">ACCEPTANCE</div><h3>Acceptance evidence directory</h3><p>Inspect local tests and host execution records, separating measured, synthetic and unverified external outcomes.</p><span class="doc-dl">View acceptance evidence ↗</span></a></div></div></section>
+<section class="final"><div class="wrap"><div class="eyebrow">YOUR STORE · YOUR DECISIONS</div><h2>Give the team the work.<br>Keep the decisions that matter.</h2><p>Start with verifiable local results. Connect the real store step by step.</p><a class="btn-gold" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem" target="_blank" rel="noopener">Read source and README <span aria-hidden="true">↗</span></a></div></section>
+</main><footer><div class="wrap"><div class="mono">BUSINESS MANAGEMENT SYSTEM · WORKLOOM · APACHE-2.0</div><div><a href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem" target="_blank" rel="noopener">Public CNB repository ↗</a> <span aria-hidden="true"> · </span><a href="index.html" lang="zh-CN" hreflang="zh-CN">中文</a></div></div></footer>
 
-<!-- ============ 顶栏 ============ -->
-<header class="site">
-  <div class="brand">
-    <svg class="sigil" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <circle cx="20" cy="20" r="17" stroke="url(#g1)" stroke-width="2.5"/>
-      <circle cx="20" cy="20" r="6" fill="url(#g1)"/>
-      <path d="M20 3v7M20 30v7M3 20h7M30 20h7" stroke="#45E0FF" stroke-width="1.6" opacity=".8"/>
-      <defs><linearGradient id="g1" x1="0" y1="0" x2="40" y2="40">
-        <stop stop-color="#FFE0A3"/><stop offset=".5" stop-color="#FFB545"/><stop offset="1" stop-color="#FF8A3D"/>
-      </linearGradient></defs>
-    </svg>
-    <div><b>WorkLoom · 织元</b><small>STARLEAGUE</small></div>
-  </div>
-  <nav class="top">
-    <span class="pill-status hide-m"><span class="dot"></span>MAC · AVAILABLE NOW</span>
-    <a href="#download" class="hide-m">Download</a>
-    <a href="#showcase" class="hide-m">The Bridge</a>
-    <a href="#features" class="hide-m">Capabilities</a>
-    <a href="#loop" class="hide-m">Core Loop</a>
-    <a href="#newspecies" class="hide-m">New Species</a>
-    <a href="#skills" class="hide-m">Skill Market</a>
-    <a href="index.html" class="hide-m">中文</a>
-    <a href="https://github.com/workloom-ai/workloom-hotel" target="_blank" rel="noopener">GitHub ↗</a>
-  </nav>
-</header>
-<main>
-<!-- ============ HERO ============ -->
-<section class="hero" id="top">
-  <div class="wrap">
-    <div class="hero-frame rise">
-      <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-      <div class="hero-grid-lines"></div>
-      <div class="eyebrow">WorkLoom · Enterprise Agent IM · Space Cockpit · Powered by DeepSeek Harness</div>
-      <h1>Set the goal. <span class="gold">It gets done.</span><br>At critical moments, humans decide.</h1>
-      <p class="sub">
-        WorkLoom is an enterprise-grade messaging collaboration network built for <b>both humans and AI agents</b> — a space cockpit for business owners.
-        The night squad deploys at 18:00 by default (fully customizable); at 08:30 the overnight battle report arrives: wins ✓, pending decisions ◆, escalation calls ▲ — readable at a glance.
-        You spend 5 minutes a day: advance ✓ / calibrate ✎ / brake ✗.
-      </p>
-      <div class="cta-row">
-        <a class="btn-gold" id="btn-download" href="https://github.com/workloom-ai/workloom-hotel/releases/latest" target="_blank" rel="noopener">
-          <span class="sheen"></span>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m6 11 6 6 6-6"/><path d="M4 21h16"/></svg>
-          Download for Mac
-        </a>
-        <a class="btn-ghost" href="#download">See install flow ↓</a>
-      </div>
-      <div class="dl-meta">
-        <span>macOS 13 Ventura +</span><span class="sep"></span>
-        <span>Apple Silicon · Intel build coming</span><span class="sep"></span>
-        <span>Distributed via GitHub Release</span><span class="sep"></span>
-        <span id="dl-channel">CHANNEL: STABLE</span>
-      </div>
-      <div class="readouts">
-        <div class="readout"><div class="num">≤3s</div><div class="lbl">One sentence dispatch · thread created</div></div>
-        <div class="readout"><div class="num gold">18:00</div><div class="lbl">Night squad · default deploy · customizable</div></div>
-        <div class="readout"><div class="num gold">08:30</div><div class="lbl">Overnight battle report · on time</div></div>
-        <div class="readout"><div class="num">≤60s</div><div class="lbl">Emergency brake · fleet-wide</div></div>
-        <div class="readout"><div class="num">100%</div><div class="lbl">Fully logged · rollbackable · attributable</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DOWNLOAD ============ -->
-<section id="download">
-  <div class="wrap">
-    <div class="rise">
-      <div class="eyebrow">DOWNLOAD · FIRST-FLIGHT CHECKLIST</div>
-      <h2 class="sect">Three steps to launch — <em>as easy as installing any Mac app</em></h2>
-      <p class="lede">The Mac edition ships via GitHub Release: download the zip → unzip and drag into Applications → launch. No command line, no extra environment.</p>
-    </div>
-    <div class="steps">
-      <div class="step rise">
-        <span class="idx">01</span>
-        <h3>One-click download</h3>
-        <p>Click the gold button above to jump to GitHub Release and download the latest <code>WorkLoom-macOS.zip</code>. It lands in your Downloads folder.</p>
-      </div>
-      <div class="step rise">
-        <span class="idx">02</span>
-        <h3>Unzip · Drag to Applications</h3>
-        <p>Double-click the zip in Downloads to get <code>WorkLoom.app</code>, then drag it into Applications — the standard Mac way. No installer wizard, no bundling.</p>
-      </div>
-      <div class="step rise">
-        <span class="idx">03</span>
-        <h3>First flight</h3>
-        <p>Open WorkLoom from Applications, follow the <b style="color:var(--t1)">assembly checklist</b>, set your first lane fence — and tonight at 18:00, the night squad makes its first sortie.</p>
-        <div class="tip">⚠ If macOS says "developer cannot be verified" on first launch: <b>Control-click the icon → Open</b> — the standard flow for independently distributed apps.</div>
-      </div>
-    </div>
-    <div class="term-shot rise">
-      <div class="bar"><i></i><i></i><i></i></div>
-<pre><span class="c"># Standard Mac download flow (browser does it all, no commands needed)</span>
-<span class="y">①</span> Click "Download for Mac" <span class="c">→</span> GitHub Release <span class="c">→</span> WorkLoom-macOS.zip starts downloading
-<span class="y">②</span> Finder <span class="c">→</span> Downloads <span class="c">→</span> double-click to unzip <span class="c">→</span> drag <span class="h">WorkLoom.app</span> into Applications
-<span class="y">③</span> Launch WorkLoom <span class="c">→</span> assembly checklist <span class="c">→</span> first lane fence <span class="c">→</span> <span class="g">✓ Ready for first flight</span>
-
-<span class="c"># Open the permanent download page from Terminal:</span>
-$ open <span class="h">https://github.com/workloom-ai/workloom-hotel/releases/latest</span></pre>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SHOWCASE ============ -->
-<section id="showcase">
-  <div class="wrap">
-    <div class="rise">
-      <div class="eyebrow">ON THE BRIDGE · PRODUCT TOUR</div>
-      <h2 class="sect">Not a back-office system — <em>your bridge</em></h2>
-      <p class="lede">Every page is the universe outside the porthole: deep space as the curtain, golden light as the command, business as the game.</p>
-    </div>
-
-    <div class="showcase rise">
-      <div class="shot">
-        <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-        <img src="assets/scene-squad.jpg" alt="Night squad cruising on the bridge" loading="lazy">
-      </div>
-      <div class="txt">
-        <div class="eyebrow">NIGHT SHIFT</div>
-        <h3>🌙 Night Squad · <em>deploys at 18:00 by default</em></h3>
-        <p>At 18:00 the night agent squad takes over (schedule fully yours to set). Every action passes the lane fence 100%; anything uncertain becomes an "escalation" event — never guessed execution. Nights are off-peak energy hours: flagship-model rates ≤ 20% of standard — night patrol is the most cost-effective play.</p>
-        <ul class="spec-list">
-          <li><span class="k">🕕</span><span><b>Deploys 18:00 by default</b>, adjustable to your business rhythm</span></li>
-          <li><span class="k">🚦</span><span>Every action <b>passes the fence 100%</b>; out-of-bounds auto-suspends for review</span></li>
-          <li><span class="k">⚡</span><span>Off-peak supply: flagship model rates <b>≤ 20% of standard</b></span></li>
-          <li><span class="k">🛑</span><span>Emergency brake always at hand, <b>fleet-wide in ≤60s</b></span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="showcase flip rise">
-      <div class="txt">
-        <div class="eyebrow">BATTLE REPORT</div>
-        <h3>✦ Overnight Report · <em>arrives 08:30 sharp</em></h3>
-        <p>Open the cockpit in the morning and the overnight report is already there: wins ✓ green / pending ◆ amber / escalations ▲ red — three columns of big numbers, readable at a glance. Every item carries a #E serial and expands into a full decision-chain replay — nothing the squad did while you slept is undocumented.</p>
-        <ul class="spec-list">
-          <li><span class="k">✓</span><span><b>Wins</b>: completed inside the fence, logged line by line</span></li>
-          <li><span class="k">◆</span><span><b>Pending</b>: hit an amber lane, awaiting your ≤2-step call</span></li>
-          <li><span class="k">▲</span><span><b>Escalations</b>: uncertain items logged as events, calling the captain in</span></li>
-          <li><span class="k">#E</span><span>Every record has a <b>monospace serial</b>; click to expand the full decision chain</span></li>
-        </ul>
-      </div>
-      <div class="shot">
-        <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-        <img src="assets/scene-fleet.jpg" alt="Overnight battle report dashboard" loading="lazy">
-      </div>
-    </div>
-
-    <div class="real-band rise">
-      <div class="eyebrow">REAL SHOTS · ACTUAL PRODUCT SCREENSHOTS</div>
-      <div class="real-grid">
-        <figure>
-          <div class="shot">
-            <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-            <img src="shots/p1.jpg" alt="WorkLoom main deck: 08:30 report columns and KPI gauges" loading="lazy">
-          </div>
-          <figcaption class="cap">P1 Main Deck · 08:30 Report (actual capture)</figcaption>
-        </figure>
-        <figure>
-          <div class="shot">
-            <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-            <img src="shots/p9.jpg" alt="WorkLoom night squad: message flow and state machine" loading="lazy">
-          </div>
-          <figcaption class="cap">P9 Night Squad · Overnight Autonomy (actual capture)</figcaption>
-        </figure>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CAPABILITIES ============ -->
-<section id="features">
-  <div class="wrap">
-    <div class="rise">
-      <div class="eyebrow">CAPABILITIES · INSIDE THE COCKPIT</div>
-      <h2 class="sect">One person piloting <em>all the complexity</em> of a company</h2>
-      <p class="lede">Traditional software hands people a pile of wrenches; WorkLoom hands business owners a space cockpit. Humans do only three things — supply, decide, sediment. Everything else goes to the agent squad.</p>
-    </div>
-    <div class="cards">
-      <div class="card rise"><span class="ico">🛰️</span><h3>Set Course · One-tap Dispatch</h3><span class="tag">QUEST / MAIN QUEST</span><p>Speak a business goal in one sentence; a task thread is created in ≤3 seconds. Quests self-deliver: fully automatic inside the fence, auto-suspended for review beyond it, delivered with a change report and decision chain.</p></div>
-      <div class="card rise"><span class="ico">🌙</span><h3>Night Squad · Overnight Autonomy</h3><span class="tag">NIGHT SHIFT · DEPLOYS 18:00</span><p>The night agent squad deploys on schedule (customizable). Every action passes the fence 100%; uncertainty only writes an escalation, never a guess. Off-peak hours: flagship-model rates ≤ 20% of standard.</p></div>
-      <div class="card rise"><span class="ico">✦</span><h3>Overnight Report · 08:30</h3><span class="tag">BATTLE REPORT</span><p>A morning ritual: wins ✓ / pending ◆ / escalations ▲, three columns of big numbers. Everything the squad did overnight carries a serial and expands into a replay.</p></div>
-      <div class="card rise"><span class="ico">🎮</span><h3>Captain's Call · Three Sticks</h3><span class="tag">CAPTAIN'S CALL</span><p>Advance ✓ / Calibrate ✎ / Brake ✗ — ≤2 steps per call. Every calibration writes back to the event store and trains the fleet: the same rejection pattern never recurs within three strikes.</p></div>
-      <div class="card rise"><span class="ico">🚦</span><h3>Lane Fences · Three-level Signals</h3><span class="tag">AUTO / REVIEW / BLOCK</span><p>Routine auto-runs, sensitive always reviews, high-risk circuit-breaks. The factory baseline can only be tightened; new rules dry-run against historical actions before taking effect — automation opens up notch by notch with trust.</p></div>
-      <div class="card rise"><span class="ico">📼</span><h3>Black Box · Fully Logged</h3><span class="tag">APPEND-ONLY EVENT LOG</span><p>The five-element event store is append-only; 100% logging coverage is a runtime invariant. Every operation is replayable, attributable, and reversible via compensating events — no fake victory broadcasts.</p></div>
-    </div>
-
-    <div class="safe-band rise">
-      <h3>🛑 <span class="brake">The emergency brake hangs in the most visible spot on the bridge, always</span></h3>
-      <p>Running a business is not a game save — there is no reload. So this system's safety design outweighs any game's. One tap on any end pauses every agent, fleet-wide in ≤60 seconds (including safe abortion of browser actions). A product-level safety commitment, not decoration.</p>
-      <div class="safe-grid">
-        <div class="safe-item"><b>Never execute when uncertain</b>Uncertain items at night only write "escalation" events — guessing is forbidden. An escalation ▲ is not failure; it is the squad calling the captain.</div>
-        <div class="safe-item"><b>No receipt, no claim</b>Key numbers must come from tool receipts; anything unreceipted is explicitly marked "unverified" — never glossed over.</div>
-        <div class="safe-item"><b>Errors are reversible</b>Rollback = a compensating event sequence in reverse. The original flight log is never modified, but the course can always be corrected.</div>
-        <div class="safe-item"><b>Failure goes to humans, no buck-passing</b>A failed probe stops all clicking and hands over to a human — a paused task ≠ a failed task.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ NEW SPECIES ============ -->
-<section id="newspecies">
-  <div class="wrap rise">
-    <div class="eyebrow">NEW SPECIES · AI-NATIVE AGENT IM</div>
-    <h2 class="sect">The first-class citizen is not the message — <em>it's the accountable action</em></h2>
-    <p class="lede">Traditional IM digitized communication, but never digitized action — a message goes out, and a human still has to go do the thing. Agent IM is an AI-native collaboration foundation: every action has an actor, an authorization, a result, and a tamper-proof trace.</p>
-    <div class="era">The clearest dividing line is the approval card: <b>in Feishu (Lark), an approval card is a bolted-on OA plugin</b> — one tap kicks you out of IM into another system. <b>In WorkLoom, the approval card is a native message type</b>; the approval gesture writes straight back into the event store as a calibration sample. <b>That difference is the difference between two eras.</b> The served subject has changed too: traditional IM serves humans; Agent IM serves AI — the subject has switched. Humans and AI collaborate in one workspace.</div>
-    <div class="eq-grid">
-      <div class="eq"><div class="eq-k">Message</div><div class="eq-v">= Event<br>five-element · auditable</div></div>
-      <div class="eq"><div class="eq-k">Contact list</div><div class="eq-v">= Mixed human-agent squad<br>one directory</div></div>
-      <div class="eq"><div class="eq-k">Group</div><div class="eq-v">= Task thread<br>three states</div></div>
-      <div class="eq"><div class="eq-k">Approval</div><div class="eq-v">= Native message type<br>not a bolt-on</div></div>
-      <div class="eq"><div class="eq-k">Online hours</div><div class="eq-v">= Unattended business hours<br>7×24, never closes</div></div>
-    </div>
-    <h3 style="margin-top:56px;font-size:20px;color:var(--t1)">The essential difference from general-purpose AI office tools</h3>
-    <p class="lede" style="margin-top:10px">General AI office assistants (WorkBuddy / QwenWork / QoderWork, etc.) digitize <i>personal office tasks</i>; WorkLoom digitizes <i>organizational business actions</i>. Not a feature-count difference — a category difference.</p>
-    <table class="cmp">
-      <tr><th>Dimension</th><th>General AI office assistants</th><th>WorkLoom</th></tr>
-      <tr><td>Served subject</td><td>Serves humans: a desktop productivity assistant for employees</td><td>Serves AI and the organization: AI joins as a member; humans become captains</td></tr>
-      <tr><td>What is digitized</td><td>Personal office tasks: docs, sheets, minutes</td><td>Organizational business actions: accountable, auditable, replayable</td></tr>
-      <tr><td>Form factor</td><td>Desktop client / personal workbench — one human, one assistant</td><td>Enterprise IM foundation — mixed human-agent squads collaborate on one field</td></tr>
-      <tr><td>Relation to IM</td><td>IM is a remote-control entry (phone commands the PC)</td><td>IM is the ontology: message = event, approval = native message type</td></tr>
-      <tr><td>Collaboration granularity</td><td>Single-person task decomposition</td><td>Goal → steps → skill assembly as an org-level pipeline, night watch 7×24</td></tr>
-      <tr><td>Data ownership</td><td>Personal accounts / cloud-first</td><td>On the company's own machine: data sovereignty + multi-tenant isolation</td></tr>
-      <tr><td>Output language</td><td>Personal artifacts: documents and spreadsheets</td><td>Business language: revenue, complaint response time, recovered orders</td></tr>
-    </table>
-    <div class="era">In one sentence: <b>general AI office tools make an employee's 8 hours more efficient; WorkLoom makes a company's 24 hours run themselves.</b> No conflict — employees can keep writing docs in WorkBuddy while WorkLoom weaves AI into a governable, measurable, accountable digital workforce at the org layer.</div>
-  </div>
-</section>
-
-<!-- ============ CORE LOOP ============ -->
-<section id="loop">
-  <div class="wrap">
-    <div class="rise">
-      <div class="eyebrow">CORE LOOP · THE REASON TO COME BACK DAILY</div>
-      <h2 class="sect">5 minutes of decisions a day, <em>autopilot around the clock</em></h2>
-      <p class="lede">Running a business is a lot like a game: set course → collect the report → make the call → level up. Tomorrow's course always goes further than today's.</p>
-    </div>
-    <div class="loop rise">
-      <div class="node"><span class="lamp" style="background:var(--gold-a);box-shadow:0 0 10px var(--gold-a)"></span><b>① Set Course</b><span>One-sentence dispatch, thread in ≤3s</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--go);box-shadow:0 0 10px var(--go)"></span><b>② Squad Cruise</b><span>Auto inside the fence / suspend beyond</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--gold-a);box-shadow:0 0 10px var(--gold-a)"></span><b>③ Overnight Report</b><span>08:30: wins / pending / escalations</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--standby);box-shadow:0 0 10px var(--standby)"></span><b>④ Captain's Call</b><span>Advance ✓ / Calibrate ✎ / Brake ✗</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--holo);box-shadow:0 0 10px var(--holo)"></span><b>⑤ Sediment</b><span>Gestures write back; the fleet gets smarter</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--gold-hi);box-shadow:0 0 10px var(--gold-hi)"></span><b>⑥ Level Up</b><span>+XP floats, captain rank advances</span></div>
-    </div>
-    <div class="badges rise">
-      <span class="badge"><span class="hex">🏅</span><span>Diligent Captain<small>7-day report streak</small></span></span>
-      <span class="badge"><span class="hex">🛡️</span><span>Zero-incident Cruise<small>30 days, no block breaker</small></span></span>
-      <span class="badge"><span class="hex">📡</span><span>Full Radar<small>first inspection dispatch loop</small></span></span>
-      <span class="badge"><span class="hex">🧭</span><span>Lawmaker<small>5 fences passed simulation</small></span></span>
-      <span class="badge"><span class="hex">🎓</span><span>Gold Coach<small>10 calibration rejections</small></span></span>
-      <span class="badge"><span class="hex">🌌</span><span>Deep-space Expedition<small>second ship commissioned</small></span></span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SKILL MARKETPLACE ============ -->
-<section id="skills">
-  <div class="wrap rise">
-    <div class="eyebrow">SKILL MARKETPLACE · THE ARMORY</div>
-    <h2 class="sect">One goal auto-decomposes into steps; <em>each step assembles a different skill</em></h2>
-    <p class="lede">Three skill tiers: official (ships with industry bundles) · team (built in your workspace) · industry (shared across organizations after mandatory desensitization). Installing binds fences; uninstalling revokes them; self-built skills go draft → replay preview → live.</p>
-    <div class="case-flow">
-      <div class="cf-goal">A real case (service store) — the store manager says: "answer every bad review within 2 hours"</div>
-      <div class="case-step"><span class="n">STEP 1</span><div><b>Review monitoring · skill: review-crisis (industry pack)</b><span>The night squad watches online review channels 7×24; new bad reviews detected within 5 minutes.</span></div></div>
-      <div class="case-step"><span class="n">STEP 2</span><div><b>Response draft · organizational memory</b><span>The agent drafts a reply from the guest's stay history; WorkData recalls how similar reviews were handled before.</span></div></div>
-      <div class="case-step"><span class="n">STEP 3</span><div><b>Captain approval · fence verdict: needs approval</b><span>Outbound messages require your nod by default — one tap on the approval card, and the gesture writes back as a calibration sample.</span></div></div>
-      <div class="case-step"><span class="n">STEP 4</span><div><b>Publish · fully logged</b><span>Executes after approval; every step enters the five-element event chain — replayable, auditable.</span></div></div>
-      <div class="case-step"><span class="n">STEP 5</span><div><b>Review & sediment · the awareness system spots patterns</b><span>"Same review type ≥3×/week" → suggests sedimenting a new skill → one-tap confirm → dry-run preview → goes live.</span></div></div>
-    </div>
-    <div class="skill-tiers">
-      <div class="tier"><div class="tt">OFFICIAL</div><b>Official skills · ship with bundles</b><p>Revenue manager, channel reconciler, review crisis — ready out of the box.</p></div>
-      <div class="tier"><div class="tt">TEAM</div><b>Team-built · zero code</b><p>State trigger / steps / boundary in plain language; a versioned skill draft is generated automatically.</p></div>
-      <div class="tier"><div class="tt">INDUSTRY</div><b>Industry sharing · mandatory desensitization</b><p>Cross-organization sharing requires desensitization review; un-desensitized listings are blocked outright.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MANUALS ============ -->
-<section id="docs">
-  <div class="wrap rise">
-    <div class="eyebrow">MANUALS · OPEN-SOURCED WITH THE CODE</div>
-    <h2 class="sect">Three user manuals, <em>downloaded with the project</em></h2>
-    <p class="lede">They live in the <code>docs/</code> directory of the open-source repo — clone or download the source and they come along. (Chinese editions; English editions on the way.)</p>
-    <div class="doc-grid">
-      <a class="doc-card" href="https://github.com/workloom-ai/workloom-hotel/blob/main/docs/01-门店店长使用指南.md" target="_blank" rel="noopener">
-        <div class="doc-tag">FOR GM / STORE OWNERS</div>
-        <h3>Store Manager Guide</h3>
-        <p>Install → first-time setup → daily use. Zero jargon; up and running in ~30 minutes.</p>
-        <span class="doc-dl">Read on GitHub ↗</span>
-      </a>
-      <a class="doc-card" href="https://github.com/workloom-ai/workloom-hotel/blob/main/docs/02-新客户首次接入完整流程.md" target="_blank" rel="noopener">
-        <div class="doc-tag">FOR NEW CUSTOMERS, ANY INDUSTRY</div>
-        <h3>New-customer Onboarding Flow</h3>
-        <p>The generic path from download to production, with a six-step checklist.</p>
-        <span class="doc-dl">Read on GitHub ↗</span>
-      </a>
-      <a class="doc-card" href="https://github.com/workloom-ai/workloom-hotel/blob/main/docs/03-功能清单-用户版.md" target="_blank" rel="noopener">
-        <div class="doc-tag">FOR EVERYONE</div>
-        <h3>Feature List (User Edition)</h3>
-        <p>Every feature grouped by scenario: command / dispatch / approval / night shift / audit / sediment.</p>
-        <span class="doc-dl">Read on GitHub ↗</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FINAL CTA ============ -->
-<section class="final">
-  <div class="wrap rise">
-    <div class="eyebrow" style="text-align:center">READY FOR DEPARTURE</div>
-    <h2>All quiet beyond the porthole.<br>Time to <span style="background:linear-gradient(120deg,var(--gold-hi),var(--gold-a) 45%,var(--gold-b));-webkit-background-clip:text;background-clip:text;color:transparent">set sail</span>.</h2>
-    <p>The destination is not the stars — it is space itself.</p>
-    <a class="btn-gold" href="https://github.com/workloom-ai/workloom-hotel/releases/latest" target="_blank" rel="noopener">
-      <span class="sheen"></span>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m6 11 6 6 6-6"/><path d="M4 21h16"/></svg>
-      Download for Mac · Start Free
-    </a>
-    <div class="dl-meta" style="justify-content:center">
-      <span>Distributed via GitHub Release</span><span class="sep"></span><span>Unzip and run</span><span class="sep"></span><span>No CLI · No bundling</span>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="mono">WORKLOOM — ENTERPRISE AGENT IM ｜ APACHE-2.0 OPEN SOURCE ｜ RUNTIME FOUNDATION: DEEPSEEK HARNESS</div>
-    <div>
-      <a href="https://github.com/workloom-ai/workloom-hotel" target="_blank" rel="noopener">GitHub Repo ↗</a>
-      &nbsp;·&nbsp;
-      <a href="https://github.com/workloom-ai/workloom-hotel/releases" target="_blank" rel="noopener">All Releases ↗</a>
-    </div>
-    <div class="mono">© 2026 WORKLOOM TEAM ｜ Deep space as the curtain, golden light as the command.</div>
-  </div>
-</footer>
-
-<script>
-/* ============ 星野缓漂（规范 §7：90s 循环，位移 ≤60px，可降级） ============ */
-(function(){
-  const cv=document.getElementById('starfield'),cx=cv.getContext('2d');
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W,H,stars=[];
-  function resize(){
-    W=cv.width=innerWidth;H=cv.height=innerHeight;
-    stars=[];
-    const n=Math.min(240,Math.floor(W*H/9000));
-    for(let i=0;i<n;i++){
-      stars.push({x:Math.random()*W,y:Math.random()*H,
-        r:Math.random()*1.3+.3,tw:Math.random()*Math.PI*2,
-        sp:.008+Math.random()*.02,dx:(Math.random()-.5)*.12,dy:(Math.random()-.5)*.06,
-        warm:Math.random()<.14});
-    }
-  }
-  function draw(t){
-    cx.clearRect(0,0,W,H);
-    for(const s of stars){
-      if(!reduced){
-        s.x+=s.dx;s.y+=s.dy;
-        if(s.x<-4)s.x=W+4;if(s.x>W+4)s.x=-4;
-        if(s.y<-4)s.y=H+4;if(s.y>H+4)s.y=-4;
-      }
-      const a=.35+.55*Math.abs(Math.sin(t*s.sp+s.tw));
-      cx.beginPath();cx.arc(s.x,s.y,s.r,0,7);
-      cx.fillStyle=s.warm?`rgba(255,224,163,${a})`:`rgba(234,241,255,${a})`;
-      cx.fill();
-    }
-    if(!reduced)requestAnimationFrame(draw);
-  }
-  addEventListener('resize',resize);resize();
-  if(reduced){draw(0);}else{requestAnimationFrame(draw);}
-})();
-
-/* ============ 入场动效 ============ */
-(function(){
-  const io=new IntersectionObserver(es=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.12});
-  document.querySelectorAll('.rise').forEach(el=>io.observe(el));
-})();
-
-/* ============ 下载渠道徽标：按访问者平台提示 ============ */
-(function(){
-  const el=document.getElementById('dl-channel');
-  const mac=/Mac OS X|Macintosh/.test(navigator.userAgent);
-  el.textContent=mac?'CHANNEL: STABLE · macOS detected ✓':'CHANNEL: STABLE · non-macOS environment';
-})();
-</script>
 </body>
 </html>

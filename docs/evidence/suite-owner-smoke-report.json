@@ -1,0 +1,24 @@
+{
+  "evidenceLevel": "A",
+  "cases": [
+    {
+      "name": "Missing administrative URL fails before suite setup",
+      "expected": "Explicit owner URL error and prompt process exit",
+      "actual": "pass",
+      "durationMs": 474,
+      "exitCode": 1
+    },
+    {
+      "name": "Explicit DATABASE_OWNER_URL works without DATABASE_URL; incompatible hotel fixture closes all three pools",
+      "expected": "Hotel compatibility fixture error, app/gateway/owner end invoked, prompt process exit",
+      "actual": "pass",
+      "durationMs": 412,
+      "exitCode": 1,
+      "closedRoles": [
+        "postgres",
+        "workloom_app",
+        "workloom_gateway"
+      ]
+    }
+  ]
+}

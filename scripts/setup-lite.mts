@@ -3,9 +3,9 @@
  *
  * 覆盖 bootstrap.sh 的核心链路（幂等，可重复执行）：
  *   环境检查 → .env 补全 → pnpm install → PG17+pgvector（docker compose）
- *   → 迁移（migrate.ts）→ 种子（seed.ts）→ 汇总指引
+ *   → 当前产品 db:migrate / db:seed → 汇总指引
  *
- * 用法：pnpm setup:lite（Windows 原生 / macOS / Linux 均可；bash 用户仍可用 pnpm setup）
+ * 用法：pnpm setup:lite（Windows 原生 / macOS / Linux 均可；bash 用户可用 pnpm setup:foundation）
  */
 import { existsSync, copyFileSync } from "node:fs";
 import { join, dirname } from "node:path";
@@ -39,8 +39,8 @@ console.log("== WorkLoom · 一键安装（setup-lite，跨平台）==");
 // 0/5 环境检查
 sec("0/5 环境检查");
 const nodeMajor = Number(process.versions.node.split(".")[0]);
-if (nodeMajor >= 20) ok(`node ${process.version}`);
-else bad(`node 版本过低（${process.version}）→ 请安装 Node ≥ 20（推荐 24）`);
+if (nodeMajor >= 24) ok(`node ${process.version}`);
+else bad(`node 版本过低（${process.version}）→ 请安装 Node ≥ 24`);
 if (has("pnpm")) ok("pnpm 已安装");
 else bad("pnpm 未安装 → npm i -g pnpm@10");
 
@@ -57,7 +57,7 @@ sec("2/5 依赖安装（pnpm install）");
 if (existsSync(join(ROOT, "node_modules"))) ok("node_modules 已存在（跳过）");
 else {
   const reg = process.env.NPM_REGISTRY ?? "https://registry.npmmirror.com";
-  if (run("pnpm", ["install", "--registry", reg])) ok(`pnpm install 完成（registry=${reg}）`);
+  if (run("pnpm", ["install", "--frozen-lockfile", "--registry", reg])) ok(`pnpm install 完成（registry=${reg}）`);
   else bad("pnpm install 失败（可设 NPM_REGISTRY 换源重试）");
 }
 
@@ -83,15 +83,17 @@ sec("4/5 迁移与演示数据");
 if (!dbReady) {
   skipIt("数据库未就绪 → 跳过迁移与种子（数据库可用后执行 pnpm db:migrate && pnpm db:seed）");
 } else {
-  const tsx = join(ROOT, "node_modules", ".bin", WIN ? "tsx.cmd" : "tsx");
-  const env = { ...process.env };
-  if (existsSync(tsx)) {
-    if (run(tsx, ["--env-file=.env", "scripts/migrate.ts"])) ok("数据库迁移完成（幂等）");
-    else bad("迁移失败 → 检查 PG 与 .env 的 DATABASE_URL");
-    if (run(tsx, ["--env-file=.env", "scripts/seed.ts"])) ok("演示数据种子完成（幂等）");
-    else bad("种子失败 → 检查迁移是否成功");
+  if (has("pnpm")) {
+    if (run("pnpm", ["db:migrate"])) {
+      ok("数据库迁移完成（幂等）");
+      if (run("pnpm", ["db:seed"])) ok("当前产品演示种子完成（幂等；兼容种子须显式调用）");
+      else bad("当前产品 db:seed 失败 → 检查上方错误与产品资产");
+    } else {
+      bad("迁移失败 → 检查 PG 与 .env 的 DATABASE_URL");
+      skipIt("迁移未完成 → 不运行产品种子，避免部分初始化");
+    }
   } else {
-    bad("tsx 未安装（node_modules/.bin/tsx 缺失）→ 先执行 pnpm install");
+    bad("pnpm 未安装 → 无法运行 db:migrate / db:seed");
   }
 }
 

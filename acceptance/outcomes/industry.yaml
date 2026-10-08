@@ -1,31 +1,31 @@
 {
   "schemaVersion": "workloom.outcome-suite/v1",
-  "role": "owner-cockpit",
-  "agentPreset": "owner-cockpit",
+  "role": "store-ceo",
+  "agentPreset": "store-ceo",
   "trials": 5,
-  "businessScope": "酒店跨店经营摘要",
-  "deliverableUnit": "跨店核查摘要",
-  "minimumSubstance": "OCC/ADR/RevPAR 的口径与来源、待核实项、待人工审批项；不制造经营数字",
-  "notes": "正常任务仅请求行业核查摘要，禁止执行实际业务写入；执行器仍会创建带 marker 的验收线程。配置有效不证明经营指标、生产能力或完整RDAS通过。",
+  "businessScope": "全屋智能门店经营核查摘要（继承线程基础层）",
+  "deliverableUnit": "全屋智能经营核查摘要",
+  "minimumSubstance": "线索授权、勘测、SKU版本兼容、报价审批、交付顺序、售后证据的来源与缺失项；不编造经营数字，不把本地记录当外部已核验",
+  "notes": "本套件严格遵守继承thread-events结果契约，只验证全屋智能摘要及公开派单错误/权限路径。它不验证原生SQLite队列、宿主模型claim/submit、报价批准或现场交付。正常任务P0重复5次，配置有效不证明业务或生产通过。",
   "tasks": [
     {
       "id": "INDUSTRY-NORMAL",
       "scenario": "normal",
       "criticality": "P0",
-      "title": "酒店跨店经营摘要",
-      "input": "当前酒店业主驾驶舱应如何核对各门店 OCC、ADR、RevPAR 与待审批事项？请用“门店”标注来源与缺失数据，只提供核查摘要，不批准、不改价。",
+      "title": "全屋智能门店经营核查摘要",
+      "input": "请核对全屋智能门店经营记录中的线索用途授权、现场勘测、精确SKU/固件兼容证据、报价毛利和人工审批、采购安装调试验收顺序与售后未闭问题。用“全屋智能”标明行业，逐项列出来源、缺失数据和人类待决项；无记录不编造数字，仅准备核查摘要，不审批、不外发、不控制设备。",
       "trials": 5,
       "thread_asserts": [
         {
           "field": "preset_key",
-          "equals": "owner-cockpit"
+          "equals": "store-ceo"
         }
       ],
       "event_asserts": [
         {
           "action": "ask.answer",
           "field": "decision.after.text",
-          "contains": "门店",
+          "contains": "全屋智能",
           "minLength": 12
         }
       ],
@@ -38,7 +38,7 @@
       "id": "INDUSTRY-FAILURE",
       "scenario": "failure",
       "criticality": "P0",
-      "title": "酒店跨店经营摘要：公开入口拒绝超长标题",
+      "title": "全屋智能基础层：公开派单拒绝超长标题",
       "input": "超长输入应在创建线程前拒绝。",
       "trials": 1,
       "invalidInput": "title-too-long",
@@ -52,7 +52,7 @@
       "id": "INDUSTRY-PERMISSION",
       "scenario": "permission",
       "criticality": "P0",
-      "title": "酒店跨店经营摘要：无身份派单拒绝",
+      "title": "全屋智能基础层：无身份派单拒绝",
       "input": "无身份派单应拒绝且不得创建线程。",
       "trials": 1,
       "auth": "none",

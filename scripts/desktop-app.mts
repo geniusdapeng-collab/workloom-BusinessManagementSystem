@@ -10,7 +10,8 @@
  *   pnpm app --dev      # 开发姿态（vite dev server，带 HMR）
  *   pnpm app --smoke    # 冒烟验证：拉起后健康检查通过即退出（CI/无头环境用）
  *
- * 前置：未初始化环境时自动提示先跑 pnpm setup（幂等，已装好直接跳过）。
+ * 前置：未初始化平台环境时提示 pnpm setup:foundation（Windows 用 setup:lite）。
+ * pnpm setup 为宿主 AI 经营入口，只配置工作台，不安装源码桌面平台的 PostgreSQL。
  */
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import { chmodSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync } from "node:fs";
@@ -18,12 +19,30 @@ import { createServer, type Server } from "node:net";
 import { tmpdir } from "node:os";
 import { join, dirname, isAbsolute, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
+import { loadProductRuntime } from "./product-runtime.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const DEV = process.argv.includes("--dev");
 const SMOKE = process.argv.includes("--smoke");
-const SERVER_PORT = Number(process.env.SERVER_PORT ?? 8787);
-const WEB_PORT = Number(process.env.WEB_PORT ?? (DEV ? 5173 : 4173));
+
+/** 源码桌面端与安装包共用产品端口；显式环境覆盖必须是两个有效且独立的端口。 */
+export function resolveDesktopPorts(
+  environment: NodeJS.ProcessEnv,
+  product: { serverPort: number; webPort: number },
+): { serverPort: number; webPort: number } {
+  const read = (name: "SERVER_PORT" | "WEB_PORT", fallback: number) => {
+    const value = environment[name];
+    const port = value === undefined ? fallback : Number(value);
+    if ((value !== undefined && !/^\d+$/u.test(value)) || !Number.isInteger(port) || port < 1 || port > 65535) {
+      throw new Error(`${name} 必须是 1 到 65535 的整数端口`);
+    }
+    return port;
+  };
+  const serverPort = read("SERVER_PORT", product.serverPort);
+  const webPort = read("WEB_PORT", product.webPort);
+  if (serverPort === webPort) throw new Error("SERVER_PORT 与 WEB_PORT 必须使用不同端口");
+  return { serverPort, webPort };
+}
 
 const C = { cyn: "\x1b[1;36m", yel: "\x1b[1;33m", grn: "\x1b[1;32m", red: "\x1b[1;31m", rst: "\x1b[0m" };
 const say = (s: string) => console.log(`${C.cyn}[app]${C.rst} ${s}`);
@@ -225,12 +244,23 @@ export function portBusy(port: number, serverFactory: () => Server = () => creat
 }
 
 async function main() {
-  say("WorkLoom · 桌面客户端启动中…");
+  let product: ReturnType<typeof loadProductRuntime>;
+  let ports: ReturnType<typeof resolveDesktopPorts>;
+  try {
+    product = loadProductRuntime(ROOT);
+    ports = resolveDesktopPorts(process.env, product);
+  } catch (error) {
+    warn(`产品启动配置异常：${String((error as Error)?.message ?? error)}`);
+    process.exit(1);
+  }
+  const { serverPort: SERVER_PORT, webPort: WEB_PORT } = ports;
+  say(`${product.displayName} · 桌面客户端启动中…`);
 
   // ① 环境前置：.env 缺失 = 从未初始化——直接指引（bootstrap 幂等，客户复制即跑）
   if (!existsSync(join(ROOT, ".env"))) {
     warn("检测到本机尚未初始化环境（缺 .env）。请先执行：");
-    console.log(`\n    ${C.grn}pnpm setup${C.rst}     # 一键安装（环境/依赖/数据库/迁移/种子，幂等）\n`);
+    const setupCommand = process.platform === "win32" ? "pnpm setup:lite" : "pnpm setup:foundation";
+    console.log(`\n    ${C.grn}${setupCommand}${C.rst}     # 源码平台安装（环境/依赖/数据库/迁移/产品种子，幂等）\n`);
     console.log(`    完成后再执行 ${C.grn}pnpm app${C.rst}。\n`);
     process.exit(1);
   }

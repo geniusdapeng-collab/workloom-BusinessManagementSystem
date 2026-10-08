@@ -7,7 +7,7 @@
  * 全部写路径：app 池单事务 + 事务级双 GUC（D16 同构）；事件均带 basis（治理 §九.3 依据链强制）。
  */
 import type pg from "pg";
-import { gatewayAppendOnClient } from "@workloom/base/workdata";
+import { gatewayAppendOnClient, type ActorInfo } from "@workloom/base/workdata";
 import {
   parseCharter, transition, canExecute, isShadow, isExpired,
   evalCircuitBreaker, tightenAutonomy, effectiveAutonomy, type Charter,
@@ -21,6 +21,18 @@ import { generateBriefing, buildMemo, type BriefingKind } from "./briefing.js";
 export interface Scope { tenantId: string; workspaceId: string }
 
 const CEO_ACTOR = { id: "company-ceo", type: "agent" as const };
+
+/** Use the enrolled role's current permissions; missing or ambiguous enrollment fails closed. */
+export async function ceoActor(client: pg.PoolClient, scope: Scope): Promise<ActorInfo> {
+  const result = await client.query<{ readonly: boolean; fence_bindings: unknown }>(
+    "SELECT readonly,fence_bindings FROM agents WHERE workspace_id=$1 AND preset_key=$2 AND status='ready' ORDER BY id LIMIT 2 FOR SHARE",
+    [scope.workspaceId, CEO_ACTOR.id],
+  );
+  const row = result.rows.length === 1 ? result.rows[0] : undefined;
+  const bindings = Array.isArray(row?.fence_bindings) && row.fence_bindings.every(binding => typeof binding === "string" && binding.length > 0)
+    ? row.fence_bindings as string[] : [];
+  return { ...CEO_ACTOR, readonly: row?.readonly ?? false, fenceBindings: bindings };
+}
 
 /* ================= 宪章读写 ================= */
 
@@ -71,8 +83,9 @@ async function emitCeoEvent(
   decision: { params?: Record<string, unknown>; after?: Record<string, unknown>; basis: string[] },
   opts?: { dryRun?: boolean },
 ): Promise<string> {
+  const actor = await ceoActor(client, scope);
   const res = await gatewayAppendOnClient(client, {
-    ...scope, actor: CEO_ACTOR, sessionId: `ceo-${scope.workspaceId}`,
+    ...scope, actor, sessionId: `ceo-${scope.workspaceId}`,
   }, {
     who: { type: "agent", id: CEO_ACTOR.id },
     context: { tenant_id: scope.tenantId, workspace_id: scope.workspaceId, time: new Date().toISOString() },

@@ -3,15 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WorkLoom 织元 · DeepSeek Harness 企业级 Agent IM —— 你的太空驾驶舱 | Enterprise Agent IM</title>
-<meta name="description" content="WorkLoom 织元：DeepSeek Harness 企业级 Agent IM，同时面向人类与 Agent 的企业级消息协作网络。WorkData 数据大脑、技能市场、本地数据主权。Enterprise Agent IM powered by DeepSeek Harness — humans and AI agents in one workspace, local-first, Apache-2.0 open source.">
-<meta name="keywords" content="Enterprise Agent IM,DeepSeek Harness,企业级Agent,AI Agent协作,多智能体,人机共存,数码员工,事件溯源,组织记忆,pgvector,本地优先,数据主权,技能市场,skill marketplace,WorkData,multi-agent,human-in-the-loop,local-first,event sourcing,Hono,tRPC,React,PostgreSQL,开源,open source">
-<meta property="og:title" content="WorkLoom 织元 · DeepSeek Harness 企业级 Agent IM">
-<meta property="og:description" content="Enterprise Agent IM powered by DeepSeek Harness — humans and AI agents in one workspace. WorkData data brain, skill marketplace, local-first data sovereignty. Apache-2.0.">
+<title>经营管理系统 · 全屋智能门店 · BusinessManagementSystem</title>
+<meta name="description" content="WorkLoom 经营管理系统：以当前 AI 工作台模型驱动全屋智能门店的获客、方案、报价、交付与售后；本地业务账本、人工审批、CLI 和 MCP，Apache-2.0 公开源码。">
+<meta property="og:title" content="经营管理系统 · 全屋智能门店 · BusinessManagementSystem">
+<meta property="og:description" content="WorkLoom 经营管理系统：以当前 AI 工作台模型驱动全屋智能门店的获客、方案、报价、交付与售后；本地业务账本、人工审批、CLI 和 MCP，Apache-2.0 公开源码。">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 
 /* 实机截图带（对账补入：概念图之外的真实产品界面） */
@@ -359,410 +355,66 @@ footer a:hover{color:var(--gold-hi)}
   .rise{opacity:1;transform:none;transition:none}
   .btn-gold .sheen,.dot{animation:none}
 }
+
+/* BusinessManagementSystem: preserve the inherited deep-space palette. */
+:root{--t3:#9AADD2}
+.rise{opacity:1;transform:none}
+.brand{color:var(--t1)}
+.brand small{letter-spacing:.12em;font-size:9px;margin-top:4px}
+nav.top{gap:18px;flex-wrap:wrap;justify-content:flex-end}
+nav.top a{padding:6px 0}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--gold-hi);outline-offset:5px;border-radius:5px}
+.btn-ghost:active,.doc-card:active{transform:translateY(1px)}
+.hero{min-height:88vh}
+.hero h1{font-size:clamp(34px,4.8vw,58px)}
+.hero-frame{padding:clamp(32px,5.5vw,68px)}
+.repo-name{overflow-wrap:anywhere}
+.disclosure{border-left:3px solid var(--gold-a);padding:14px 18px;background:rgba(255,181,69,.06);color:var(--t2);font-size:13px;margin-top:26px}
+.concept-label{font-size:12px;color:var(--t3);margin-top:12px}
+.flow-note{margin-top:22px;color:var(--t2);font-size:13px}
+.layer-num{font-family:monospace;color:var(--gold-hi);font-size:12px;letter-spacing:.15em;margin-bottom:10px}
+.status-line{color:var(--go);font-size:12px;margin-top:15px}
+.section-rule{border-top:1px solid var(--line-holo)}
+.term-shot pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12.5px;line-height:1.85}
+.doc-card{height:100%}
+.faq{margin-top:32px;display:grid;gap:14px}
+.faq details{border:1px solid var(--line-holo);border-radius:12px;background:rgba(10,18,40,.7);padding:18px 22px}
+.faq summary{cursor:pointer;font-weight:700;color:var(--t1)}
+.faq p{color:var(--t2);font-size:13.5px;padding-top:12px}
+.source-line{color:var(--t3);font-size:12px;margin-top:22px}
+.sources{display:flex;flex-wrap:wrap;gap:12px 22px;margin-top:20px;font-size:12.5px}
+.sources a{text-decoration:underline;text-underline-offset:4px}
+.logo-mark{width:34px;height:34px;border:2px solid var(--gold-a);border-radius:50%;display:grid;place-items:center;box-shadow:0 0 18px rgba(255,181,69,.2);font:900 15px monospace;color:var(--gold-hi);flex:none}
+.pill-status{white-space:nowrap;max-width:100%}
+section[id]{scroll-margin-top:95px}
+@media(max-width:860px){header.site{align-items:flex-start;gap:14px;padding:12px 20px}.brand b{font-size:13px}.brand small{font-size:8px}nav.top{font-size:12px;gap:7px 14px}.wrap{padding:0 20px}.hero{padding-top:44px}.btn-gold{font-size:15px;padding:17px 24px}.btn-ghost{font-size:13px;padding:16px 20px}.cta-row{gap:12px}section{padding:66px 0}}
+@media(max-width:560px){.pill-status{white-space:normal;font-size:10px;line-height:1.5}header.site{flex-direction:column;gap:7px}nav.top{width:100%;justify-content:flex-start;gap:6px 20px}.hero-frame{padding:30px 22px}.hero h1{font-size:34px}.hero p.sub{font-size:14px;margin-bottom:24px}.readouts{margin-top:30px}.readout{flex:1 1 45%;padding:15px}.readout:nth-child(2){border-right:none}.readout .lbl{font-size:11px}.readout .num{font-size:23px}.eyebrow{letter-spacing:.20em;font-size:10px}.safe-band{padding:24px 20px}.card,.step{padding:24px 22px}.hero .cta-row a{width:100%;justify-content:center}.brand small{font-size:9px}.disclosure{font-size:12px}.final{padding:75px 0 60px}section[id]{scroll-margin-top:118px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+.skip{position:absolute;left:12px;top:-100px;z-index:100;background:var(--gold-hi);color:var(--on-gold);padding:10px 18px;border-radius:8px}.skip:focus{top:12px}
 </style>
 </head>
 <body>
 
-<canvas id="starfield"></canvas>
-<div class="nebula nebula-1"></div>
-<div class="nebula nebula-2"></div>
-<div class="nebula nebula-3"></div>
-<div class="horizon"></div>
+<a class="skip" href="#main">跳到内容</a>
+<div class="nebula nebula-1" aria-hidden="true"></div><div class="nebula nebula-2" aria-hidden="true"></div><div class="horizon" aria-hidden="true"></div>
+<header class="site"><a class="brand" href="#top" aria-label="经营管理系统首页"><span class="logo-mark" aria-hidden="true">B</span><span><b>经营管理系统</b><small>BUSINESS MANAGEMENT SYSTEM</small></span></a><nav class="top" aria-label="主导航"><a href="#journeys">业务流程</a><a href="#start">开始使用</a><a href="#docs">文档</a><a href="en.html" lang="en" hreflang="en">EN</a><a href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem" target="_blank" rel="noopener">CNB 源码 ↗</a></nav></header>
+<main id="main">
+<section class="hero" id="top"><div class="wrap"><div class="hero-frame"><span class="hud tl" aria-hidden="true"></span><span class="hud tr" aria-hidden="true"></span><span class="hud bl" aria-hidden="true"></span><span class="hud br" aria-hidden="true"></span><div class="hero-grid-lines" aria-hidden="true"></div><div class="eyebrow">WORKLOOM · SMART HOME OPERATIONS</div><span class="pill-status"><span class="dot" aria-hidden="true"></span>公开源码 · 本地经营工作台</span><h1>让全屋智能门店，<br>拥有一支<span class="gold">有据可查的经营团队。</span></h1><p class="sub">从客户线索到勘测、方案、报价、安装、验收与售后。<b>董事长定目标，数字员工准备方案，人类批准承诺与现场交付。</b>当前 AI 工作台的内置模型通过 CLI 或 MCP 领取任务，产物进入本地业务账本。</p><div class="cta-row"><a class="btn-gold" id="btn-download" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem" target="_blank" rel="noopener">打开公开源码 <span aria-hidden="true">↗</span></a><a class="btn-ghost" href="#start">启动沙箱工作台 <span aria-hidden="true">↓</span></a></div><div class="dl-meta"><span>Apache-2.0</span><span class="sep" aria-hidden="true"></span><span>宿主模型执行</span><span class="sep" aria-hidden="true"></span><span>默认合成测试数据</span></div><div class="readouts"><div class="readout"><div class="num gold">20</div><div class="lbl">岗位与责任归属</div></div><div class="readout"><div class="num">35</div><div class="lbl">带边界的技能规程</div></div><div class="readout"><div class="num">39</div><div class="lbl">共用业务操作</div></div><div class="readout"><div class="num">5</div><div class="lbl">宿主驱动工作流</div></div></div></div><p class="concept-label">背景为视觉概念图。此页面提供源码与启动指引；已签名桌面安装包尚未发布。</p></div></section>
+<section id="journeys" class="section-rule"><div class="wrap"><div class="eyebrow">01 / CUSTOMER JOURNEYS</div><h2 class="sect">一条业务链，<em>每个承诺都有前置条件。</em></h2><p class="lede">把口头交接变成对象、阶段与证据。客户需求缺信息时先补问，设备组合缺依据时暂停，报价未批准时留在草稿。</p><div class="cards"><article class="card"><span class="ico" aria-hidden="true">◎</span><h3>把咨询变成可跟进线索</h3><span class="tag">ACQUISITION</span><p>登记渠道归因、装修阶段、预算和用途授权；宿主模型核对资格，形成有依据的内容草稿与拟议体验计划。外发、邀约送达和客户确认分别保留状态。</p></article><article class="card"><span class="ico" aria-hidden="true">◇</span><h3>把方案变成可验收项目</h3><span class="tag">DELIVERY</span><p>现场人员登记回路、零线、负载和网络证据；方案绑定精确设备与固件，报价复算整数分、成本、毛利和折扣。审批后按采购、安装、调试、验收顺序推进。</p></article><article class="card"><span class="ico" aria-hidden="true">↺</span><h3>把故障变成可追踪闭环</h3><span class="tag">AFTERCARE</span><p>按离线、场景、网络、设备、安全和隐私分流；模型输出处置计划，人类记录服务证据与客户确认，汇报同时显示未闭风险和回访安排。</p></article></div><div class="loop"><div class="node"><b>董事长设目标</b><span>指标、期限、约束</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>总经理拆任务</b><span>岗位、技能、对象版本</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>宿主领取与提交</b><span>结构化产物、有限重试</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>人类审批与现场记录</b><span>契约、施工、验收</span></div><span class="arrow" aria-hidden="true">→</span><div class="node"><b>证据回到目标</b><span>实测记录、差距、待决</span></div></div><p class="flow-note">工作流 completed 表示本地步骤到达终态。经营目标是否达成须读取实测指标；合成数据与人类提供的 URI 不代表外部事实已核验。</p></div></section>
+<section id="architecture"><div class="wrap"><div class="eyebrow">02 / FOUR CONNECTED LAYERS</div><h2 class="sect">看得懂业务，<em>也看得见机制。</em></h2><p class="lede">四层使用同一套业务名称、权限与证据口径。岗位规程、领取任务、浏览器表单和账本回执可以相互对照。</p><div class="cards"><article class="card"><span class="ico" aria-hidden="true">01</span><h3>经营场景与客户旅程</h3><span class="tag">JOURNEY</span><p>店主看目标和待决事项；顾问看客户与体验；工程团队看勘测、方案和里程碑；售后团队看故障、现场证据与回访。</p></article><article class="card"><span class="ico" aria-hidden="true">02</span><h3>能力与业务对象</h3><span class="tag">CAPABILITY</span><p>19 类业务对象共享 39 项操作。CLI、MCP 与本地 HTTP 都经过同一业务网关，校验归属、授权、兼容证据、审批摘要与阶段依赖。</p></article><article class="card"><span class="ico" aria-hidden="true">03</span><h3>数字员工与技能</h3><span class="tag">WORKFORCE</span><p>20 个岗位各有责任归属，35 个技能带完整规程。五类工作流覆盖获客、交付、售后、经营诊断与任意岗位准备任务。</p></article><article class="card"><span class="ico" aria-hidden="true">04</span><h3>宿主模型与账本</h3><span class="tag">EXECUTION</span><p>Codex、千问办公、WorkBuddy 通过 stdio MCP 使用当前宿主模型。运行时只调度和校验，SQLite 同步保存对象、幂等回执与哈希事件链。</p></article><article class="card"><span class="ico" aria-hidden="true">◇</span><h3>人工权限与承诺</h3><span class="tag">HUMAN DECISION</span><p>报价审批绑定内容摘要和有效期。浏览器店主授权需要真实终端确认；MCP 固定 Agent 身份，模型不能自行批准报价或登记现场验收。</p></article><article class="card"><span class="ico" aria-hidden="true">↯</span><h3>可见的失败路径</h3><span class="tag">RECOVERY</span><p>过期租约可以恢复领取，失败保留历史并有限重试；对象版本变化、数据损坏或前置证据缺失会阻断提交，不以编造数据推进。</p></article></div><div class="showcase"><figure><div class="shot"><img src="assets/scene-squad.jpg" width="1536" height="1024" loading="lazy" alt="视觉概念图：深空背景中的数字员工编队"></div><figcaption class="concept-label">视觉概念图 · 岗位协作意象</figcaption></figure><div class="txt"><div class="eyebrow">ACCOUNTABLE WORKFORCE</div><h3>每一个岗位，<br>都有<em>技能、边界和交付格式。</em></h3><p>员工任务绑定既有业务对象及版本，领取时带上封印后的完整技能规程。内容、视频、财务和市场岗位可以准备分析、草稿与决策包；需要外部操作或现场证据时明确标识待办。</p><ul class="spec-list"><li><span class="k" aria-hidden="true">✓</span><span><b>全部 35 个技能可进入队列：</b>employee-work 动态绑定岗位与技能。</span></li><li><span class="k" aria-hidden="true">✓</span><span><b>准备产物单独计量：</b>写入报告，不伪装成已发布、已收款或已施工。</span></li><li><span class="k" aria-hidden="true">✓</span><span><b>总经理拆解可实际排队：</b>management-loop 的岗位任务进入可领取队列。</span></li></ul></div></div></div></section>
+<section id="start" class="section-rule"><div class="wrap"><div class="eyebrow">03 / RUN LOCALLY</div><h2 class="sect">从沙箱开始，<em>用当前工作台模型推进。</em></h2><p class="lede">独立经营入口需要 Node.js 24 或更高版本。先运行 doctor，再显式初始化合成数据；CLI 和 MCP 的业务运行时无需新增模型 API 密钥。</p><div class="steps"><article class="step"><span class="idx">01</span><h3>取回源码</h3><p>克隆公开 CNB 仓库，在仓库根目录检查运行环境。先读 <a href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/blob/main/docs/AI-WORKBENCH.md" target="_blank" rel="noopener">AI 工作台接入文档</a> 与仓库 README。</p><div class="tip">源码交付采用 Apache-2.0。桌面签名发行状态以仓库正式发布为准。</div></article><article class="step"><span class="idx">02</span><h3>启动本地工作台</h3><p>明确选择沙箱与合成样本，浏览器工作台显示目标、审批、任务和账本。默认服务仅监听本机回环地址。</p><div class="tip">模拟门店、设备、客户和证据均有 synthetic 标记，不可作为商业案例使用。</div></article><article class="step"><span class="idx">03</span><h3>连接宿主并派活</h3><p>setup 为支持的宿主生成项目配置。宿主模型领取任务、按 schema 提交，再读取目标报告；遇到审批与现场证据时交付待办。</p><div class="tip">模型执行需要运行中的宿主会话。后台 tick 负责调度，关闭宿主后不会继续推理。</div></article></div><div class="term-shot" aria-label="本机启动命令"><div class="bar" aria-hidden="true"><i></i><i></i><i></i></div><pre><span class="c"># 在 Node.js 24+ 环境执行</span>
+git clone https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem.git
+cd workloom-BusinessManagementSystem
+node scripts/business-management.mjs doctor
+node scripts/business-management.mjs init --demo
+node scripts/business-management.mjs setup --client all
+node scripts/business-management.mjs serve
+<span class="g"># 浏览器打开 http://127.0.0.1:9393</span></pre></div><div class="disclosure">Codex 的真实宿主执行证据随仓库验收资料提供；千问办公和 WorkBuddy 的配置按官方文档接入，具体客户端真机结果须独立验收。完整继承平台的 PostgreSQL 与三端构建使用仓库对应运行链。</div></div></section>
+<section id="boundaries"><div class="wrap"><div class="eyebrow">04 / EVIDENCE & AUTHORITY</div><h2 class="sect">本地结果能复查，<em>外部动作有明确边界。</em></h2><p class="lede">人类拥有报价承诺、客户授权和现场责任。设备兼容性由具体型号、固件、网关和生态条件决定，不能由协议标签或模型印象代替。</p><div class="safe-band"><h3><span class="brake">●</span> 当前连接器状态与记录含义</h3><p>发布、消息、付款和真实设备控制连接器均未启用（disabled）。本地回执证明 SQLite 提交成功；externalVerified=false。live 表示真实数据目录，仍需人类核实来源和现场事实。</p><div class="safe-grid"><div class="safe-item"><b>授权独立留痕</b>咨询、预约、营销与售后分别记录用途，撤回后对应工作暂停。</div><div class="safe-item"><b>兼容证据绑定版本</b>具体 SKU、固件与组合证据缺失或过期时，方案不能推进。</div><div class="safe-item"><b>审批固定内容</b>毛利和折扣红线硬阻断；批准不能绕过经营阈值。</div><div class="safe-item"><b>现场步骤顺序</b>合同、采购、安装、调试、验收由有权限的人类登记。</div></div></div><div class="faq"><details><summary>系统会自动替门店发视频、联系客户或控制设备吗？</summary><p>当前会生成本地内容草稿、拍摄计划、预约计划和处置方案。外部发布、消息、支付和设备控制未启用；审批通过也不能解锁。接入真实平台需单独实现授权、凭据托管、平台权限和外部回执验证。</p></details><details><summary>35 个技能都已经能执行吗？</summary><p>全部技能都能通过 employee-work 被领取并提交结构化准备产物；固定业务工作流还有确定性对象写入与依赖推进。视频岗位交付拍摄与剪辑说明，财务岗位交付核对计划；视频渲染、付款与真实账务处理不在当前已启用执行范围。</p></details><details><summary>如何从沙箱迁移到真实门店？</summary><p>创建独立 live 数据目录与工作区，登记门店规则、实际 SKU 版本和有来源的客户/现场证据。合成记录不能变成真实口径。店主在真实交互终端授权人工会话，核实审批摘要、合同和现场材料。</p></details></div><p class="source-line">行业依据读取日期记录在仓库来源清单。官方资料证明通用机制，不证明某家门店已具备真实账号、权限、设备或案例。</p><div class="sources"><a href="https://csa-iot.org/all-solutions/matter/" target="_blank" rel="noopener">CSA Matter</a><a href="https://docs.aqara.com/zh/docs/aqara-builder/builder-agent/overview/" target="_blank" rel="noopener">Aqara Builder 设计流程</a><a href="https://open.douyin.com/platform/resource/docs/openapi/video-management/douyin/create/create-video/" target="_blank" rel="noopener">抖音视频接口要求</a></div></div></section>
+<section id="docs" class="section-rule"><div class="wrap"><div class="eyebrow">05 / READ THE IMPLEMENTATION</div><h2 class="sect">让资料、代码与验收，<em>互相作证。</em></h2><p class="lede">业务边界和运行指令写在仓库中，测试证据随版本保存。介绍页上的岗位与操作数量来自当前行业资产和运行时目录。</p><div class="doc-grid"><a class="doc-card" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/blob/main/docs/SMART-HOME-BUSINESS-MATRIX.md" target="_blank" rel="noopener"><div class="doc-tag">BUSINESS MAP</div><h3>业务与四层实现矩阵</h3><p>客户场景、对象、岗位、技能、工作流、接口和故障路径逐项对应。</p><span class="doc-dl">阅读业务矩阵 ↗</span></a><a class="doc-card" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/blob/main/docs/AI-WORKBENCH.md" target="_blank" rel="noopener"><div class="doc-tag">HOST MODEL</div><h3>接入当前 AI 工作台</h3><p>Codex、千问办公、WorkBuddy 配置，以及领取、提交、审批与现场证据协议。</p><span class="doc-dl">阅读接入文档 ↗</span></a><a class="doc-card" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/blob/main/docs/evidence/README.md" target="_blank" rel="noopener"><div class="doc-tag">ACCEPTANCE</div><h3>验收与证据目录</h3><p>查看本地测试与宿主执行记录，区分实测、合成测试、待验证的外部结果。</p><span class="doc-dl">查看验收证据 ↗</span></a></div></div></section>
+<section class="final"><div class="wrap"><div class="eyebrow">YOUR STORE · YOUR DECISIONS</div><h2>把任务交给团队，<br><span class="gold">把关键决定留在自己手里。</span></h2><p>从可核查的本地结果开始，逐步连接真实门店。</p><a class="btn-gold" href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem" target="_blank" rel="noopener">查看源码与 README <span aria-hidden="true">↗</span></a></div></section>
+</main><footer><div class="wrap"><div class="mono">BUSINESS MANAGEMENT SYSTEM · WORKLOOM · APACHE-2.0</div><div><a href="https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem" target="_blank" rel="noopener">CNB 公开仓库 ↗</a> <span aria-hidden="true"> · </span><a href="en.html" lang="en" hreflang="en">English</a></div></div></footer>
 
-<!-- ============ 顶栏 ============ -->
-<header class="site">
-  <div class="brand">
-    <svg class="sigil" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <circle cx="20" cy="20" r="17" stroke="url(#g1)" stroke-width="2.5"/>
-      <circle cx="20" cy="20" r="6" fill="url(#g1)"/>
-      <path d="M20 3v7M20 30v7M3 20h7M30 20h7" stroke="#45E0FF" stroke-width="1.6" opacity=".8"/>
-      <defs><linearGradient id="g1" x1="0" y1="0" x2="40" y2="40">
-        <stop stop-color="#FFE0A3"/><stop offset=".5" stop-color="#FFB545"/><stop offset="1" stop-color="#FF8A3D"/>
-      </linearGradient></defs>
-    </svg>
-    <div><b>WorkLoom · 织元</b><small>STARLEAGUE</small></div>
-  </div>
-  <nav class="top">
-    <span class="pill-status hide-m"><span class="dot"></span>MAC 版 · 开放下载</span>
-    <a href="#download" class="hide-m">下载安装</a>
-    <a href="#showcase" class="hide-m">驾驶舱实景</a>
-    <a href="#features" class="hide-m">驾驶舱能力</a>
-    <a href="#loop" class="hide-m">日循环</a>
-    <a href="#newspecies" class="hide-m">新物种</a>
-    <a href="#skills" class="hide-m">技能市场</a>
-    <a href="en.html" class="hide-m">EN</a>
-    <a href="https://github.com/workloom-ai/workloom-hotel" target="_blank" rel="noopener">GitHub ↗</a>
-  </nav>
-</header>
-
-<main>
-<!-- ============ HERO ============ -->
-<section class="hero" id="top">
-  <div class="wrap">
-    <div class="hero-frame rise">
-      <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-      <div class="hero-grid-lines"></div>
-      <div class="eyebrow">WorkLoom · 织元 —— 企业 Agent IM · 太空驾驶舱</div>
-      <h1>设定目标，<span class="gold">自动达成</span>。<br>关键时刻，人来拍板。</h1>
-      <p class="sub">
-        WorkLoom 是一套同时面向<b>人类与 Agent</b> 的企业级消息协作网络——给业务负责人的一座太空驾驶舱。
-        夜班战队默认 18:00 准时出征（时段随你自定义），清晨 08:30 昨夜战报送达：战果 ✓、待决断 ◆、求援 ▲ 一屏可读。
-        你每天只需 5 分钟，推进 ✓ / 校准 ✎ / 制动 ✗。
-      </p>
-      <div class="cta-row">
-        <a class="btn-gold" id="btn-download" href="https://github.com/workloom-ai/workloom-hotel/releases/latest" target="_blank" rel="noopener">
-          <span class="sheen"></span>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m6 11 6 6 6-6"/><path d="M4 21h16"/></svg>
-          下载 Mac 版
-        </a>
-        <a class="btn-ghost" href="#download">查看安装流程 ↓</a>
-      </div>
-      <div class="dl-meta">
-        <span>macOS 13 Ventura +</span><span class="sep"></span>
-        <span>Apple Silicon（M 系列）· Intel 版后续推出</span><span class="sep"></span>
-        <span>GitHub Release 官方分发</span><span class="sep"></span>
-        <span id="dl-channel">CHANNEL: STABLE</span>
-      </div>
-      <div class="readouts">
-        <div class="readout"><div class="num">≤3s</div><div class="lbl">一句话派遣 · 建立任务线程</div></div>
-        <div class="readout"><div class="num gold">18:00</div><div class="lbl">夜班班组 · 默认出征 · 可自定义</div></div>
-        <div class="readout"><div class="num gold">08:30</div><div class="lbl">昨夜战报 · 准时送达</div></div>
-        <div class="readout"><div class="num">≤60s</div><div class="lbl">紧急制动 · 全端生效</div></div>
-        <div class="readout"><div class="num">100%</div><div class="lbl">全程留痕 · 可回滚可归因</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 下载安装链路 ============ -->
-<section id="download">
-  <div class="wrap">
-    <div class="rise">
-      <div class="eyebrow">DOWNLOAD · 首航检查单</div>
-      <h2 class="sect">三步启航，<em>和装一个 Mac 软件一样简单</em></h2>
-      <p class="lede">WorkLoom Mac 版通过 GitHub Release 官方分发：下载压缩包 → 解压拖入「应用程序」→ 启动首航。全程无需命令行，无需额外环境。</p>
-    </div>
-    <div class="steps">
-      <div class="step rise">
-        <span class="idx">01</span>
-        <h3>一键下载</h3>
-        <p>点击页面上方金色按钮，跳转到 GitHub Release 页面，下载最新版 <code>WorkLoom-macOS.zip</code>。下载完成后它会出现在你的「下载」文件夹里。</p>
-      </div>
-      <div class="step rise">
-        <span class="idx">02</span>
-        <h3>解压 · 拖入应用程序</h3>
-        <p>在「下载」文件夹中双击 zip 解压，得到 <code>WorkLoom.app</code>，把它拖进「应用程序」（Applications）文件夹——这就是标准 Mac 安装方式，无安装向导、无捆绑。</p>
-      </div>
-      <div class="step rise">
-        <span class="idx">03</span>
-        <h3>启动首航</h3>
-        <p>从「应用程序」打开 WorkLoom，跟随<b style="color:var(--t1)">装配检查单</b>完成起飞前检查，设置你的第一条航道护栏——今晚 18:00，夜班班组即可首次出征。</p>
-        <div class="tip">⚠ 首次打开如提示“无法验证开发者”：<b>按住 Control 点按图标 → 打开</b>，即可正常启动（macOS 对独立分发应用的标准流程）。</div>
-      </div>
-    </div>
-    <div class="term-shot rise">
-      <div class="bar"><i></i><i></i><i></i></div>
-<pre><span class="c"># 标准 Mac 下载链路（浏览器自动完成，无需手输命令）</span>
-<span class="y">①</span> 点击「下载 Mac 版」 <span class="c">→</span> GitHub Release <span class="c">→</span> WorkLoom-macOS.zip 开始下载
-<span class="y">②</span> 访达 <span class="c">→</span> 下载 <span class="c">→</span> 双击解压 <span class="c">→</span> 将 <span class="h">WorkLoom.app</span> 拖入「应用程序」
-<span class="y">③</span> 启动台打开 WorkLoom <span class="c">→</span> 装配检查单 <span class="c">→</span> 首条航道护栏 <span class="c">→</span> <span class="g">✓ 首航就绪</span>
-
-<span class="c"># 偏好命令行的主理人，也可以一行打开固定下载页：</span>
-$ open <span class="h">https://github.com/workloom-ai/workloom-hotel/releases/latest</span></pre>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 驾驶舱实景（大图） ============ -->
-<section id="showcase">
-  <div class="wrap">
-    <div class="rise">
-      <div class="eyebrow">ON THE BRIDGE · 驾驶舱实景</div>
-      <h2 class="sect">这不是后台系统，<em>是你的工作台</em></h2>
-      <p class="lede">每一个页面都是舷窗外的宇宙：深空为幕，金光为令，经营即游戏。</p>
-    </div>
-
-    <div class="showcase rise">
-      <div class="shot">
-        <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-        <img src="assets/scene-squad.jpg" alt="夜班班组 · 夜班 Agent 班组在工作台上巡航" loading="lazy">
-      </div>
-      <div class="txt">
-        <div class="eyebrow">NIGHT SHIFT</div>
-        <h3>🌙 夜班班组 · <em>默认 18:00 准时出征</em></h3>
-        <p>傍晚 18:00，夜班 Agent 班组接棒开工（出征时段完全由你自定义）。每个动作 100% 过航道护栏，不确定的事只写「求援」，绝不猜测执行；夜间是谷时能量补给时段，旗舰模型费率 ≤ 标准 20%——夜巡是性价比最高的玩法。</p>
-        <ul class="spec-list">
-          <li><span class="k">🕕</span><span><b>默认 18:00 出征</b>，时段可按你的经营节奏自定义</span></li>
-          <li><span class="k">🚦</span><span>每个动作 <b>100% 过围栏</b>，越线自动挂起待审</span></li>
-          <li><span class="k">⚡</span><span>谷时补给：旗舰模型费率 <b>≤ 标准 20%</b></span></li>
-          <li><span class="k">🛑</span><span>紧急制动随时可用，<b>≤60s 全端生效</b></span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="showcase flip rise">
-      <div class="txt">
-        <div class="eyebrow">BATTLE REPORT</div>
-        <h3>✦ 昨夜战报 · <em>每天 08:30 准时送达</em></h3>
-        <p>清晨打开驾驶舱，昨夜战报已经躺在那里：战果 ✓ 绿 / 待决断 ◆ 琥珀 / 求援 ▲ 红，三栏大数一屏可读。每一件事都带 #E 编号、可展开决策链路回放——昨夜你睡着时战队干的所有事，没有一件无据可查。</p>
-        <ul class="spec-list">
-          <li><span class="k">✓</span><span><b>战果</b>：围栏内自动完成的事，逐条留痕</span></li>
-          <li><span class="k">◆</span><span><b>待决断</b>：命中黄灯航道，等你 ≤2 步拍板</span></li>
-          <li><span class="k">▲</span><span><b>求援</b>：不确定事项只写事件，呼叫主理人接管</span></li>
-          <li><span class="k">#E</span><span>每条记录带<b>等宽编号</b>，点击展开完整决策链路</span></li>
-        </ul>
-      </div>
-      <div class="shot">
-        <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-        <img src="assets/scene-fleet.jpg" alt="昨夜战报 · 战果 / 待决断 / 求援三栏全息仪表" loading="lazy">
-      </div>
-    </div>
-
-    <div class="real-band rise">
-      <div class="eyebrow">REAL SHOTS · 产品实机截图</div>
-      <div class="real-grid">
-        <figure>
-          <div class="shot">
-            <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-            <img src="shots/p1.jpg" alt="WorkLoom 经营主页实机截图：08:30 昨夜战报三栏与 KPI 仪表" loading="lazy">
-          </div>
-          <figcaption class="cap">P1 经营主页 · 08:30 战报（实机截取）</figcaption>
-        </figure>
-        <figure>
-          <div class="shot">
-            <span class="hud tl"></span><span class="hud tr"></span><span class="hud bl"></span><span class="hud br"></span>
-            <img src="shots/p9.jpg" alt="WorkLoom 夜班班组实机截图：班组消息流与状态机" loading="lazy">
-          </div>
-          <figcaption class="cap">P9 夜班班组 · 夜班自治（实机截取）</figcaption>
-        </figure>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 驾驶舱能力 ============ -->
-<section id="features">
-  <div class="wrap">
-    <div class="rise">
-      <div class="eyebrow">CAPABILITIES · 驾驶舱里有什么</div>
-      <h2 class="sect">一个人，驾驶一家公司的<em>全部复杂</em></h2>
-      <p class="lede">传统软件给人一堆扳手，WorkLoom 给业务负责人一座太空驾驶舱。人只做三件事：供给、裁决、沉淀——其余全部交给 Agent 班组。</p>
-    </div>
-    <div class="cards">
-      <div class="card rise"><span class="ico">🛰️</span><h3>设定航线 · 一键派遣</h3><span class="tag">QUEST / MAIN QUEST</span><p>一句话说出经营目标，≤3 秒建立任务线程。Quest 自主交付：围栏内全自动执行，越围栏自动挂起待审，交付附变更报告与决策链路。</p></div>
-      <div class="card rise"><span class="ico">🌙</span><h3>夜班班组 · 夜班自治</h3><span class="tag">NIGHT SHIFT · 默认 18:00 出征</span><p>夜班 Agent 班组准时出征，时段支持自定义。每个动作 100% 过围栏，不确定只写求援、绝不猜测执行。谷时能量补给时段，旗舰模型费率 ≤ 标准 20%。</p></div>
-      <div class="card rise"><span class="ico">✦</span><h3>昨夜战报 · 08:30 送达</h3><span class="tag">BATTLE REPORT</span><p>每天清晨的仪式感：战果 ✓ / 待决断 ◆ / 求援 ▲ 三栏大数，一屏可读。昨夜你睡着时战队干的每件事，都带编号、可展开回放。</p></div>
-      <div class="card rise"><span class="ico">🎮</span><h3>主理人决断 · 三操纵杆</h3><span class="tag">CAPTAIN'S CALL</span><p>推进 ✓ / 校准 ✎ / 制动 ✗，单条 ≤2 步拍板。每次校准都会写回事件库、训练舰队——同一驳回模式三次内不再重犯，船员越带越顺手。</p></div>
-      <div class="card rise"><span class="ico">🚦</span><h3>航道护栏 · 三级灯语</h3><span class="tag">AUTO / REVIEW / BLOCK</span><p>常规自动、敏感必审、高危熔断。出厂基线只可加严，新规生效前用历史动作「模拟航行」dry-run 回放——自动化程度随信任逐格放开。</p></div>
-      <div class="card rise"><span class="ico">📼</span><h3>黑匣子 · 全程留痕</h3><span class="tag">APPEND-ONLY EVENT LOG</span><p>五元事件库 append-only，留痕覆盖率 100% 为运行时不变量。每一次操作可回放、可归因、可逆向补偿回滚——没有“虚假的胜利播报”。</p></div>
-    </div>
-
-    <div class="safe-band rise">
-      <h3>🛑 <span class="brake">紧急制动杆，永远挂在工作台最显眼处</span></h3>
-      <p>经营不是游戏存档，不能读档重来——所以这套系统的安全设计比任何游戏都重。任意端一键暂停全部 Agent，≤60 秒全端生效（含浏览器动作安全中止）。这是产品级安全承诺，不是装饰。</p>
-      <div class="safe-grid">
-        <div class="safe-item"><b>不确定不执行</b>夜间不确定事项只写「求援」事件，禁止猜测执行——求援 ▲ 不是失败，是战队在呼叫主理人。</div>
-        <div class="safe-item"><b>无回执不宣称完成</b>关键数字必须来自工具回执；无回执显式标注「未核实」，绝不粉饰。</div>
-        <div class="safe-item"><b>错误可逆</b>回滚 = 逆向补偿事件序列，原始航行日志永不修改，但航线可以修正。</div>
-        <div class="safe-item"><b>失败转人工，不甩锅</b>探针失效即停止一切点击转人工接管——任务暂停 ≠ 任务失败。</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 新物种：AI 原生 Agent IM ============ -->
-<section id="newspecies">
-  <div class="wrap rise">
-    <div class="eyebrow">NEW SPECIES · AI-NATIVE AGENT IM</div>
-    <h2 class="sect">第一公民不是消息，<em>是「可追责的动作」</em></h2>
-    <p class="lede">传统 IM 把「沟通」数字化了，但没有把「行动」数字化——消息发出去，事还得人去办。Agent IM 是 AI 原生的协作底座：每一个动作都有主体、有授权、有结果、有留痕。</p>
-    <div class="era">最直观的分水岭是审批卡片：<b>飞书里的审批卡片是外挂的 OA 插件</b>，点一下就跳出 IM、跳进另一个系统；<b>WorkLoom 里的审批卡片是原生消息类型</b>，批准手势直接写回事件库成为校准样本。<b>这个差别，就是两个时代的差别。</b>服务对象也换了：传统 IM 服务人，Agent IM 服务 AI——主体换了。人和 AI，在同一个 workspace 协作。</div>
-    <div class="eq-grid">
-      <div class="eq"><div class="eq-k">消息</div><div class="eq-v">= 事件<br>五元结构 · 可审计</div></div>
-      <div class="eq"><div class="eq-k">通讯录</div><div class="eq-v">= 人机混编班组<br>数码员工同册</div></div>
-      <div class="eq"><div class="eq-k">群</div><div class="eq-v">= 任务线程<br>三态流转</div></div>
-      <div class="eq"><div class="eq-k">审批</div><div class="eq-v">= 原生消息类型<br>不是外挂插件</div></div>
-      <div class="eq"><div class="eq-k">在线时长</div><div class="eq-v">= 无人值守经营时长<br>7×24 不打烊</div></div>
-    </div>
-    <h3 style="margin-top:56px;font-size:20px;color:var(--t1)">与通用 AI 办公的本质区别</h3>
-    <p class="lede" style="margin-top:10px">通用 AI 办公助手（WorkBuddy / 千问办公 / QoderWork 等）数字化的是「个人办公任务」；WorkLoom 数字化的是「组织经营动作」。这不是功能多寡的差别，是品类差别。</p>
-    <table class="cmp">
-      <tr><th>维度</th><th>通用 AI 办公助手</th><th>WorkLoom 织元</th></tr>
-      <tr><td>服务对象</td><td>服务「人」：个人/员工的桌面提效助手</td><td>服务「AI 与组织」：AI 是组织成员，人升格为主理人</td></tr>
-      <tr><td>数字化对象</td><td>个人办公任务：文档、表格、纪要</td><td>组织经营动作：可追责、可审计、可回放</td></tr>
-      <tr><td>产品形态</td><td>桌面客户端 / 个人工作台，一人一助手</td><td>企业级 IM 底座：人机混编班组同场协作</td></tr>
-      <tr><td>与 IM 的关系</td><td>IM 是远程遥控入口（手机指挥电脑）</td><td>IM 是本体：消息=事件、审批=原生消息类型</td></tr>
-      <tr><td>协作粒度</td><td>单人任务拆解执行</td><td>目标→步骤→技能装配的组织级流水线，夜班值守 7×24</td></tr>
-      <tr><td>数据归属</td><td>个人账号 / 云端为主</td><td>企业本机：数据主权 + 多租户隔离</td></tr>
-      <tr><td>产出口径</td><td>交付文档、表格等个人产物</td><td>经营口径：营收、差评响应时长、挽回订单</td></tr>
-    </table>
-    <div class="era">一句话：<b>通用 AI 办公让员工的 8 小时更高效；WorkLoom 让企业的 24 小时自动运转。</b>二者不冲突——员工可以继续用 WorkBuddy 写文档，WorkLoom 在组织层把 AI 编成一支可治理、可度量、可归责的数码班组。</div>
-  </div>
-</section>
-
-<!-- ============ 日循环 ============ -->
-<section id="loop">
-  <div class="wrap">
-    <div class="rise">
-      <div class="eyebrow">CORE LOOP · 每天必玩的理由</div>
-      <h2 class="sect">每天 5 分钟决断，<em>全天候自动巡航</em></h2>
-      <p class="lede">商业经营本身就很像打游戏：设定航线 → 收战报 → 拍板 → 升级。明天的航线，永远比今天更远。</p>
-    </div>
-    <div class="loop rise">
-      <div class="node"><span class="lamp" style="background:var(--gold-a);box-shadow:0 0 10px var(--gold-a)"></span><b>① 设定航线</b><span>一句话派遣，≤3s 建线程</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--go);box-shadow:0 0 10px var(--go)"></span><b>② 战队巡航</b><span>围栏内自动执行 / 越线挂起</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--gold-a);box-shadow:0 0 10px var(--gold-a)"></span><b>③ 昨夜战报</b><span>08:30 送达：战果 / 待决断 / 求援</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--standby);box-shadow:0 0 10px var(--standby)"></span><b>④ 主理人决断</b><span>推进 ✓ / 校准 ✎ / 制动 ✗</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--holo);box-shadow:0 0 10px var(--holo)"></span><b>⑤ 经验沉淀</b><span>手势写回事件库，舰队变聪明</span></div>
-      <span class="arrow">▶</span>
-      <div class="node"><span class="lamp" style="background:var(--gold-hi);box-shadow:0 0 10px var(--gold-hi)"></span><b>⑥ 升级反馈</b><span>+XP 飘字，主理人等级推进</span></div>
-    </div>
-    <div class="badges rise">
-      <span class="badge"><span class="hex">🏅</span><span>勤勉主理人<small>连续 7 天批完战报</small></span></span>
-      <span class="badge"><span class="hex">🛡️</span><span>零事故巡航<small>30 天无 block 熔断</small></span></span>
-      <span class="badge"><span class="hex">📡</span><span>雷达全开<small>首次巡检派单闭环</small></span></span>
-      <span class="badge"><span class="hex">🧭</span><span>立法者<small>5 条护栏过模拟航行</small></span></span>
-      <span class="badge"><span class="hex">🎓</span><span>金牌教头<small>驳回校准 10 次</small></span></span>
-      <span class="badge"><span class="hex">🌌</span><span>深空远征<small>第二艘舰入列</small></span></span>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 技能市场案例 ============ -->
-<section id="skills">
-  <div class="wrap rise">
-    <div class="eyebrow">SKILL MARKETPLACE · 装备库</div>
-    <h2 class="sect">一个目标，自动拆解成步骤；<em>每个步骤，装配不同技能</em></h2>
-    <p class="lede">技能三级体系：official 官方随行业包分发 · team 工作区自建 · industry 脱敏后跨组织共享。安装即绑定围栏、卸载即撤销；自建技能先生成草稿、回放预览、再上线。</p>
-    <div class="case-flow">
-      <div class="cf-goal">真实案例（服务业门店）—— 店长说：「差评响应要做到 2 小时内」</div>
-      <div class="case-step"><span class="n">STEP 1</span><div><b>差评监测 · 装配技能 review-crisis（行业包自带）</b><span>夜班班组 7×24 巡检线上评价渠道，新差评 5 分钟内检出。</span></div></div>
-      <div class="case-step"><span class="n">STEP 2</span><div><b>安抚草稿 · 调用组织记忆</b><span>Agent 基于该客人历史入住记录起草回复，WorkData 检索相似差评的处置经验。</span></div></div>
-      <div class="case-step"><span class="n">STEP 3</span><div><b>主理人审批 · 围栏判定为「需批准」</b><span>对外消息默认要你点头——审批卡片一键同意，手势写回成为校准样本。</span></div></div>
-      <div class="case-step"><span class="n">STEP 4</span><div><b>回复发布 · 全程留痕</b><span>批准后自动执行，每一步进入五元事件链，可回放可审计。</span></div></div>
-      <div class="case-step"><span class="n">STEP 5</span><div><b>复盘沉淀 · 意识系统发现高频模式</b><span>「同类差评每周 ≥3 次」→ 自动建议固化为新技能 → 一键确认 → dry-run 预览 → 正式上线。</span></div></div>
-    </div>
-    <div class="skill-tiers">
-      <div class="tier"><div class="tt">OFFICIAL</div><b>官方技能 · 随行业包</b><p>收益经理、渠道对账、差评危机处置——开箱即用。</p></div>
-      <div class="tier"><div class="tt">TEAM</div><b>团队自建 · 零代码</b><p>说清触发 / 步骤 / 边界三要素，自动生成技能草稿，版本管理。</p></div>
-      <div class="tier"><div class="tt">INDUSTRY</div><b>行业共享 · 强制脱敏</b><p>跨组织共享前必须脱敏审核，未脱敏一律拦截。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 文档下载 ============ -->
-<section id="docs">
-  <div class="wrap rise">
-    <div class="eyebrow">MANUALS · 随代码开源</div>
-    <h2 class="sect">三份用户手册，<em>随项目一起下载</em></h2>
-    <p class="lede">已内置在开源仓库 <code>docs/</code> 目录，克隆或下载源码即可一并获取。</p>
-    <div class="doc-grid">
-      <a class="doc-card" href="https://github.com/workloom-ai/workloom-hotel/blob/main/docs/01-门店店长使用指南.md" target="_blank" rel="noopener">
-        <div class="doc-tag">FOR 店长 / 门店负责人</div>
-        <h3>门店店长使用指南</h3>
-        <p>下载安装 → 首次配置 → 日常使用，全程无技术术语，约 30 分钟上手。</p>
-        <span class="doc-dl">在 GitHub 阅读 ↗</span>
-      </a>
-      <a class="doc-card" href="https://github.com/workloom-ai/workloom-hotel/blob/main/docs/02-新客户首次接入完整流程.md" target="_blank" rel="noopener">
-        <div class="doc-tag">FOR 任意行业新客户</div>
-        <h3>新客户首次接入完整流程</h3>
-        <p>从下载到正式使用的通用接入流程，六步检查单，接入即上岗。</p>
-        <span class="doc-dl">在 GitHub 阅读 ↗</span>
-      </a>
-      <a class="doc-card" href="https://github.com/workloom-ai/workloom-hotel/blob/main/docs/03-功能清单-用户版.md" target="_blank" rel="noopener">
-        <div class="doc-tag">FOR 所有人</div>
-        <h3>功能清单（用户版）</h3>
-        <p>全部功能按使用场景分类：经营掌握 / 派遣 / 审批 / 夜班 / 追溯 / 沉淀。</p>
-        <span class="doc-dl">在 GitHub 阅读 ↗</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 页脚 CTA ============ -->
-<section class="final">
-  <div class="wrap rise">
-    <div class="eyebrow" style="text-align:center">READY FOR DEPARTURE</div>
-    <h2>舷窗外一片平静。<br>是时候<span style="background:linear-gradient(120deg,var(--gold-hi),var(--gold-a) 45%,var(--gold-b));-webkit-background-clip:text;background-clip:text;color:transparent">启航</span>了。</h2>
-    <p>目的地，不是星辰大海——是太空宇宙本身。</p>
-    <a class="btn-gold" href="https://github.com/workloom-ai/workloom-hotel/releases/latest" target="_blank" rel="noopener">
-      <span class="sheen"></span>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m6 11 6 6 6-6"/><path d="M4 21h16"/></svg>
-      下载 Mac 版 · 免费开始
-    </a>
-    <div class="dl-meta" style="justify-content:center">
-      <span>GitHub Release 官方分发</span><span class="sep"></span><span>zip 解压即用</span><span class="sep"></span><span>无命令行 · 无捆绑</span>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="mono">WORKLOOM · 织元 —— 企业 AGENT IM ｜ APACHE-2.0 开源 ｜ DEEPSEEK HARNESS 运行时地基</div>
-    <div>
-      <a href="https://github.com/workloom-ai/workloom-hotel" target="_blank" rel="noopener">GitHub 仓库 ↗</a>
-      &nbsp;·&nbsp;
-      <a href="https://github.com/workloom-ai/workloom-hotel/releases" target="_blank" rel="noopener">全部版本 ↗</a>
-    </div>
-    <div class="mono">© 2026 WORKLOOM TEAM ｜ 深空为幕，金光为令，经营即游戏。</div>
-  </div>
-</footer>
-
-<script>
-/* ============ 星野缓漂（规范 §7：90s 循环，位移 ≤60px，可降级） ============ */
-(function(){
-  const cv=document.getElementById('starfield'),cx=cv.getContext('2d');
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W,H,stars=[];
-  function resize(){
-    W=cv.width=innerWidth;H=cv.height=innerHeight;
-    stars=[];
-    const n=Math.min(240,Math.floor(W*H/9000));
-    for(let i=0;i<n;i++){
-      stars.push({x:Math.random()*W,y:Math.random()*H,
-        r:Math.random()*1.3+.3,tw:Math.random()*Math.PI*2,
-        sp:.008+Math.random()*.02,dx:(Math.random()-.5)*.12,dy:(Math.random()-.5)*.06,
-        warm:Math.random()<.14});
-    }
-  }
-  function draw(t){
-    cx.clearRect(0,0,W,H);
-    for(const s of stars){
-      if(!reduced){
-        s.x+=s.dx;s.y+=s.dy;
-        if(s.x<-4)s.x=W+4;if(s.x>W+4)s.x=-4;
-        if(s.y<-4)s.y=H+4;if(s.y>H+4)s.y=-4;
-      }
-      const a=.35+.55*Math.abs(Math.sin(t*s.sp+s.tw));
-      cx.beginPath();cx.arc(s.x,s.y,s.r,0,7);
-      cx.fillStyle=s.warm?`rgba(255,224,163,${a})`:`rgba(234,241,255,${a})`;
-      cx.fill();
-    }
-    if(!reduced)requestAnimationFrame(draw);
-  }
-  addEventListener('resize',resize);resize();
-  if(reduced){draw(0);}else{requestAnimationFrame(draw);}
-})();
-
-/* ============ 入场动效 ============ */
-(function(){
-  const io=new IntersectionObserver(es=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.12});
-  document.querySelectorAll('.rise').forEach(el=>io.observe(el));
-})();
-
-/* ============ 下载渠道徽标：按访问者平台提示 ============ */
-(function(){
-  const el=document.getElementById('dl-channel');
-  const mac=/Mac OS X|Macintosh/.test(navigator.userAgent);
-  el.textContent=mac?'CHANNEL: STABLE · 检测到 macOS ✓':'CHANNEL: STABLE · 当前非 macOS 环境';
-})();
-</script>
 </body>
 </html>

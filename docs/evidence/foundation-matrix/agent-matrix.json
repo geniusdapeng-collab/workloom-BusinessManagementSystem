@@ -1,0 +1,1956 @@
+{
+ "summary": {
+  "generatedAt": "2026-10-08T17:58:48.851Z",
+  "spec": "docs/REAL-DEVICE-ACCEPTANCE-SPEC.md@rdas/v1",
+  "primaryBundle": "smart-home",
+  "bundles": [
+   "smart-home"
+  ],
+  "compositionSource": "local-fallback（该仓无组合 API，按依赖顺序本地组合；证据等级 B）",
+  "compositionWarnings": [],
+  "workspaceId": "ws-smart-home",
+  "profileWarnings": [],
+  "runtimeConnected": true,
+  "runtimeError": null,
+  "counts": {
+   "agents": 20,
+   "agentsPass": 20,
+   "skills": 35,
+   "skillsPass": 35,
+   "warnings": 0,
+   "fenceRulesMerged": 16,
+   "fenceRulesActiveInWorkspace": 16,
+   "shadowedPresets": 0,
+   "perBundle": {
+    "smart-home": 20
+   }
+  },
+  "capabilityLayer": {
+   "status": "not-run",
+   "reason": "L8 能力层需要真实模型 + 专业场景评分卡；本脚本只覆盖 L0 契约层与 L1 运行层。"
+  },
+  "failures": {
+   "agents": [],
+   "skills": []
+  },
+  "warnings": {
+   "agents": [],
+   "skills": []
+  }
+ },
+ "rows": [
+  {
+   "preset_key": "acceptance-auditor",
+   "name": "客户验收审核员",
+   "bundle": "smart-home",
+   "kind": "acceptance",
+   "readonly": false,
+   "night_shift": false,
+   "high_risk": false,
+   "fences": [
+    "R-SH11",
+    "R-SH12"
+   ],
+   "fences_effective": [
+    "R-SH11",
+    "R-SH12"
+   ],
+   "skills": [
+    "acceptance-handover"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.acceptance-auditor."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.acceptance-auditor. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "2 条绑定全部存在于组合围栏并集（R-SH11:review R-SH12:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "1 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=false high_risk=false 围栏=2"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-acceptance-auditor）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "客户验收审核员 v1.0.0 acceptance 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 2 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 1 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH11:review R-SH12:block）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=false）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "aftercare-specialist",
+   "name": "售后服务专员",
+   "bundle": "smart-home",
+   "kind": "aftercare",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH2",
+    "R-SH8",
+    "R-SH9",
+    "R-SH12",
+    "R-SH13"
+   ],
+   "fences_effective": [
+    "R-SH12",
+    "R-SH13",
+    "R-SH2",
+    "R-SH8",
+    "R-SH9"
+   ],
+   "skills": [
+    "aftercare-triage",
+    "aftercare-resolution",
+    "customer-followup"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.aftercare-specialist."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.aftercare-specialist. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "5 条绑定全部存在于组合围栏并集（R-SH12:block R-SH13:review R-SH2:block R-SH8:block R-SH9:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "3 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 5 / write_back 4（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=5"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-aftercare-specialist）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "售后服务专员 v1.0.0 aftercare 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 5 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 3 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH2:block R-SH8:block R-SH9:block R-SH12:block R-SH13:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "commissioning-engineer",
+   "name": "场景调试工程师",
+   "bundle": "smart-home",
+   "kind": "commissioning",
+   "readonly": false,
+   "night_shift": false,
+   "high_risk": true,
+   "fences": [
+    "R-SH6",
+    "R-SH8",
+    "R-SH9",
+    "R-SH11"
+   ],
+   "fences_effective": [
+    "R-SH11",
+    "R-SH6",
+    "R-SH8",
+    "R-SH9"
+   ],
+   "skills": [
+    "scene-commissioning"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.commissioning-engineer."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.commissioning-engineer. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "4 条绑定全部存在于组合围栏并集（R-SH11:review R-SH6:block R-SH8:block R-SH9:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "1 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=false high_risk=true 围栏=4"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-commissioning-engineer）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "场景调试工程师 v1.0.0 commissioning 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 4 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 1 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH6:block R-SH8:block R-SH9:block R-SH11:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=false）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "compatibility-engineer",
+   "name": "兼容性验证工程师",
+   "bundle": "smart-home",
+   "kind": "compatibility",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH6",
+    "R-SH8"
+   ],
+   "fences_effective": [
+    "R-SH6",
+    "R-SH8"
+   ],
+   "skills": [
+    "compatibility-verification",
+    "store-demo-health"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.compatibility-engineer."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.compatibility-engineer. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "2 条绑定全部存在于组合围栏并集（R-SH6:block R-SH8:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "2 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=2"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-compatibility-engineer）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "兼容性验证工程师 v1.0.0 compatibility 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 2 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 2 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH6:block R-SH8:block）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "content-strategist",
+   "name": "内容选题主理人",
+   "bundle": "smart-home",
+   "kind": "content",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH5"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH5"
+   ],
+   "skills": [
+    "content-planning"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.content-strategist."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.content-strategist. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH3:review R-SH5:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "1 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-content-strategist）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "内容选题主理人 v1.0.0 content 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 1 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH3:review R-SH5:block）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "finance-controller",
+   "name": "经营财务控制员",
+   "bundle": "smart-home",
+   "kind": "finance",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH7",
+    "R-SH10"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH10",
+    "R-SH7"
+   ],
+   "skills": [
+    "finance-reconcile"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.finance-controller."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.finance-controller. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH10:block R-SH7:review）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "1 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 3 / write_back 2（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-finance-controller）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "经营财务控制员 v1.0.0 finance 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 1 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH7:review R-SH10:block）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "growth-director",
+   "name": "增长经营主管",
+   "bundle": "smart-home",
+   "kind": "growth",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH4"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH4"
+   ],
+   "skills": [
+    "campaign-review",
+    "partner-channel"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.growth-director."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.growth-director. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH3:review R-SH4:review）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "2 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 3 / write_back 2（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-growth-director）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "增长经营主管 v1.0.0 growth 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 2 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH3:review R-SH4:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "installation-supervisor",
+   "name": "安装质量主管",
+   "bundle": "smart-home",
+   "kind": "installation",
+   "readonly": false,
+   "night_shift": false,
+   "high_risk": true,
+   "fences": [
+    "R-SH8",
+    "R-SH9",
+    "R-SH11"
+   ],
+   "fences_effective": [
+    "R-SH11",
+    "R-SH8",
+    "R-SH9"
+   ],
+   "skills": [
+    "installation-quality"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.installation-supervisor."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.installation-supervisor. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH11:review R-SH8:block R-SH9:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "1 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=false high_risk=true 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-installation-supervisor）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "安装质量主管 v1.0.0 installation 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 1 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH8:block R-SH9:block R-SH11:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=false）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "knowledge-steward",
+   "name": "知识与复盘管理员",
+   "bundle": "smart-home",
+   "kind": "knowledge",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH2",
+    "R-SH5",
+    "R-SH14"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH14",
+    "R-SH2",
+    "R-SH5"
+   ],
+   "skills": [
+    "knowledge-maintenance",
+    "incident-learning",
+    "data-import-qa"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.knowledge-steward."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.knowledge-steward. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "4 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH14:review R-SH2:block R-SH5:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "3 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 3 / write_back 2（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=4"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-knowledge-steward）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "知识与复盘管理员 v1.0.0 knowledge 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 4 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 3 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH2:block R-SH5:block R-SH14:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "lead-concierge",
+   "name": "客户线索接待员",
+   "bundle": "smart-home",
+   "kind": "reception",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH2",
+    "R-SH4"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH2",
+    "R-SH4"
+   ],
+   "skills": [
+    "lead-qualification",
+    "customer-consent"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.lead-concierge."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.lead-concierge. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH2:block R-SH4:review）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "2 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 5 / write_back 4（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-lead-concierge）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "客户线索接待员 v1.0.0 reception 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 2 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH2:block R-SH4:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "market-researcher",
+   "name": "本地市场研究员",
+   "bundle": "smart-home",
+   "kind": "research",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH3"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH3"
+   ],
+   "skills": [
+    "market-intelligence",
+    "local-search-presence"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.market-researcher."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.market-researcher. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "2 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH3:review）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "2 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 3 / write_back 2（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=2"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-market-researcher）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "本地市场研究员 v1.0.0 research 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 2 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 2 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH3:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "procurement-controller",
+   "name": "采购与库存管理员",
+   "bundle": "smart-home",
+   "kind": "procurement",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH10",
+    "R-SH11"
+   ],
+   "fences_effective": [
+    "R-SH10",
+    "R-SH11"
+   ],
+   "skills": [
+    "procurement-inventory"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.procurement-controller."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.procurement-controller. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "2 条绑定全部存在于组合围栏并集（R-SH10:block R-SH11:review）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "1 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=2"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-procurement-controller）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "采购与库存管理员 v1.0.0 procurement 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 2 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 1 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH10:block R-SH11:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "project-manager",
+   "name": "项目交付经理",
+   "bundle": "smart-home",
+   "kind": "delivery",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH7",
+    "R-SH8",
+    "R-SH11"
+   ],
+   "fences_effective": [
+    "R-SH11",
+    "R-SH7",
+    "R-SH8"
+   ],
+   "skills": [
+    "project-scheduling"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.project-manager."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.project-manager. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH11:review R-SH7:review R-SH8:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "1 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-project-manager）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "项目交付经理 v1.0.0 delivery 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 1 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH7:review R-SH8:block R-SH11:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "quote-controller",
+   "name": "报价与合同审核员",
+   "bundle": "smart-home",
+   "kind": "quote",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": true,
+   "fences": [
+    "R-SH7",
+    "R-SH10"
+   ],
+   "fences_effective": [
+    "R-SH10",
+    "R-SH7"
+   ],
+   "skills": [
+    "quote-margin-control",
+    "contract-handoff"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.quote-controller."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.quote-controller. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "2 条绑定全部存在于组合围栏并集（R-SH10:block R-SH7:review）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "2 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 5 / write_back 4（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=true 围栏=2"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-quote-controller）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "报价与合同审核员 v1.0.0 quote 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 2 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 2 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH7:review R-SH10:block）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "sales-consultant",
+   "name": "门店方案顾问",
+   "bundle": "smart-home",
+   "kind": "sales",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH2",
+    "R-SH4",
+    "R-SH7"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH2",
+    "R-SH4",
+    "R-SH7"
+   ],
+   "skills": [
+    "consultative-sales",
+    "experience-appointment",
+    "referral-retention"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.sales-consultant."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.sales-consultant. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "4 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH2:block R-SH4:review R-SH7:review）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "3 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=4"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-sales-consultant）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "门店方案顾问 v1.0.0 sales 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 4 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 3 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH2:block R-SH4:review R-SH7:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "social-publisher",
+   "name": "社媒发布管理员",
+   "bundle": "smart-home",
+   "kind": "publish",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": true,
+   "fences": [
+    "R-SH3",
+    "R-SH4",
+    "R-SH5"
+   ],
+   "fences_effective": [
+    "R-SH3",
+    "R-SH4",
+    "R-SH5"
+   ],
+   "skills": [
+    "social-publishing"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.social-publisher."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.social-publisher. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH3:review R-SH4:review R-SH5:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "1 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=true 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-social-publisher）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "社媒发布管理员 v1.0.0 publish 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 1 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH3:review R-SH4:review R-SH5:block）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "solution-designer",
+   "name": "全屋智能方案设计师",
+   "bundle": "smart-home",
+   "kind": "design",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH6",
+    "R-SH8"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH6",
+    "R-SH8"
+   ],
+   "skills": [
+    "solution-design",
+    "bom-check"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.solution-designer."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.solution-designer. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH6:block R-SH8:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "2 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-solution-designer）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "全屋智能方案设计师 v1.0.0 design 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 2 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH6:block R-SH8:block）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "store-ceo",
+   "name": "门店数字总经理",
+   "bundle": "smart-home",
+   "kind": "commander",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH14"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH14"
+   ],
+   "skills": [
+    "store-diagnosis",
+    "goal-decomposition",
+    "owner-briefing"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.store-ceo."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.store-ceo. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "2 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH14:review）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "3 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 5 / write_back 4（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=2"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-store-ceo）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "门店数字总经理 v1.0.0 commander 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 2 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 3 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH14:review）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "survey-engineer",
+   "name": "现场勘测工程师",
+   "bundle": "smart-home",
+   "kind": "survey",
+   "readonly": false,
+   "night_shift": false,
+   "high_risk": true,
+   "fences": [
+    "R-SH6",
+    "R-SH8",
+    "R-SH9"
+   ],
+   "fences_effective": [
+    "R-SH6",
+    "R-SH8",
+    "R-SH9"
+   ],
+   "skills": [
+    "site-survey",
+    "network-planning"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.survey-engineer."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.survey-engineer. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH6:block R-SH8:block R-SH9:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "2 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 4 / write_back 3（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=false high_risk=true 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-survey-engineer）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "现场勘测工程师 v1.0.0 survey 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 2 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH6:block R-SH8:block R-SH9:block）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=false）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "preset_key": "video-producer",
+   "name": "短视频制作员",
+   "bundle": "smart-home",
+   "kind": "video",
+   "readonly": false,
+   "night_shift": true,
+   "high_risk": false,
+   "fences": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH5"
+   ],
+   "fences_effective": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH5"
+   ],
+   "skills": [
+    "short-video-production"
+   ],
+   "shadowed_from": [],
+   "event_prefixes": [
+    "smart-home.video-producer."
+   ],
+   "checks": {
+    "A1_contract": {
+     "ok": true,
+     "detail": "字段完整（industry-contract schema 通过）"
+    },
+    "A2_unique": {
+     "ok": true,
+     "detail": "组合内唯一权威定义"
+    },
+    "A3_event_prefix": {
+     "ok": true,
+     "detail": "事件前缀 smart-home.video-producer. 组合层唯一"
+    },
+    "A4_fences_exist": {
+     "ok": true,
+     "detail": "3 条绑定全部存在于组合围栏并集（R-SH1:auto R-SH3:review R-SH5:block）"
+    },
+    "A5_skills_exist": {
+     "ok": true,
+     "detail": "1 个技能资产可解析（包外官方：无）"
+    },
+    "A6_write_read": {
+     "ok": true,
+     "detail": "写工具 3 / write_back 2（未声明动作 无）"
+    },
+    "A7_governance": {
+     "ok": true,
+     "detail": "night_shift=true high_risk=false 围栏=3"
+    },
+    "A8_union_monotonic": {
+     "ok": true,
+     "detail": "无遮蔽定义，单包围栏即组合围栏"
+    },
+    "B1_roster": {
+     "ok": true,
+     "detail": "status=ready（agent-ws-smart-home-video-producer）"
+    },
+    "B2_identity": {
+     "ok": true,
+     "detail": "短视频制作员 v1.0.0 video 与 preset 一致"
+    },
+    "B3_fences": {
+     "ok": true,
+     "detail": "组合有效围栏 3 条与 DB 一致"
+    },
+    "B4_skills": {
+     "ok": true,
+     "detail": "技能 1 项与 DB 一致"
+    },
+    "B5_source": {
+     "ok": true,
+     "detail": "单包装配仓无来源包留痕字段（非缺陷）：bundle=smart-home"
+    },
+    "B6_fence_live": {
+     "ok": true,
+     "detail": "DB 围栏绑定全部有 active 规则（R-SH1:auto R-SH3:review R-SH5:block）"
+    },
+    "B7_skill_installed": {
+     "ok": true,
+     "detail": "声明技能均在本工作区安装"
+    },
+    "B8_night": {
+     "ok": true,
+     "detail": "夜班声明一致（night_shift=true）"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  }
+ ]
+}

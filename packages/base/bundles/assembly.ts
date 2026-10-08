@@ -369,8 +369,11 @@ export function readVerifiedBundleJsonAsset(
   root = bundlesRoot(),
 ): unknown {
   // 先验证清单；即使调用方已拿到投影，也不允许资产读取绕过生产签名门禁。
-  loadVerifiedBundleManifest(slug, root);
+  const manifest = loadVerifiedBundleManifest(slug, root);
   const path = verifiedAssetPath(slug, assetPath, root);
+  if (!declaredAssetPaths(manifest).includes(assetPath)) {
+    throw new BundleError("INTEGRITY_FAILED", `行业包「${slug}」未声明资产「${assetPath}」，已拒绝读取`);
+  }
   const asset = readJson<unknown>(path);
   if (asset === null) {
     throw new BundleError("NOT_FOUND", `行业包「${slug}」声明的资产不可读取`);
@@ -853,6 +856,7 @@ export async function computeAssembly(
 
   // 每连接重设租户/工作区上下文（编码铁律：RLS 依赖 set_config）
   const client = await app.connect();
+  let releaseError: Error | undefined;
   try {
     // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
     await client.query("BEGIN");
@@ -860,13 +864,19 @@ export async function computeAssembly(
     await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
     // 租户覆盖层（L2）：L0 基座→L1 行业包→L2 租户覆盖层逐层合并（无覆盖层=零行为变化）
     await maybeApplyOverlay(client, scope, slug, assets);
-    return await computeAssemblyScoped(client, scope, slug, assets);
+    const profile = await computeAssemblyScoped(client, scope, slug, assets);
+    await client.query("COMMIT");
+    return profile;
   } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      releaseError = rollbackError instanceof Error ? rollbackError : new Error(String(rollbackError));
+      throw new AggregateError([err, rollbackError], "行业装配校验事务失败且回滚失败", { cause: err });
+    }
     throw err;
   } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
+    client.release(releaseError);
   }
 }
 
@@ -1114,6 +1124,7 @@ export async function activateBundle(
     );
   }
   const client = await app.connect();
+  let releaseError: Error | undefined;
   let actEventId = "";
   let prevIndustry: string | null = null;
   try {
@@ -1141,12 +1152,17 @@ export async function activateBundle(
       },
       rule_impact: [],
     })).eventId;
+    await client.query("COMMIT");
   } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      releaseError = rollbackError instanceof Error ? rollbackError : new Error(String(rollbackError));
+      throw new AggregateError([err, rollbackError], "行业激活事务失败且回滚失败", { cause: err });
+    }
     throw err;
   } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
+    client.release(releaseError);
   }
   // 草稿激活即转正（§2.3：草稿不进分发；通过检查单激活后脱离草稿态，bundle.json 实物同步）
   //
@@ -1159,16 +1175,16 @@ export async function activateBundle(
     const bjPath = join(root, slug, "bundle.json");
     try {
       const bj = readJson<BundleJson>(bjPath);
-      if (bj?.workloom) {
-        // “已激活”属于工作区安装台账；行业包从草稿晋级候选，仍需考试、
-        // 灰度与发布签名后才能成为稳定制品。
-        bj.workloom.status = "candidate";
-        bj.integrity = sealBundleWithoutSignature(slug, bj, root);
-        writeFileSync(bjPath, `${JSON.stringify(bj, null, 2)}\n`, "utf-8");
-      }
+      if (!bj?.workloom) throw new BundleError("NOT_FOUND", `行业 Bundle「${slug}」草稿清单不可读取`);
+      // “已激活”属于工作区安装台账；行业包从草稿晋级候选，仍需考试、
+      // 灰度与发布签名后才能成为稳定制品。
+      bj.workloom.status = "candidate";
+      bj.integrity = sealBundleWithoutSignature(slug, bj, root);
+      writeFileSync(bjPath, `${JSON.stringify(bj, null, 2)}\n`, "utf-8");
     } catch (diskErr) {
       try {
         const c2 = await app.connect();
+        let compensationReleaseError: Error | undefined;
         try {
           await c2.query("BEGIN");
           await c2.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
@@ -1191,13 +1207,22 @@ export async function activateBundle(
           });
           await c2.query("COMMIT");
         } catch (compErr) {
-          await c2.query("ROLLBACK").catch(() => undefined);
-          console.error(`❌ 激活补偿回滚失败（需人工介入）：${compErr instanceof Error ? compErr.message : compErr}`);
+          try {
+            await c2.query("ROLLBACK");
+          } catch (rollbackError) {
+            compensationReleaseError = rollbackError instanceof Error ? rollbackError : new Error(String(rollbackError));
+            throw new AggregateError([compErr, rollbackError], "行业激活补偿事务失败且回滚失败", { cause: compErr });
+          }
+          throw compErr;
         } finally {
-          c2.release();
+          c2.release(compensationReleaseError);
         }
-      } finally {
-        // 无论补偿成败，激活整体按失败抛出（调用方视为未激活）
+      } catch (compensationError) {
+        throw new AggregateError(
+          [diskErr, compensationError],
+          `行业 Bundle「${slug}」磁盘写入与 DB 补偿均失败，激活状态需要复核`,
+          { cause: diskErr },
+        );
       }
       throw new BundleError(
         "ASSEMBLY_CHECK_FAILED",

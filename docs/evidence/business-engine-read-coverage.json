@@ -1,0 +1,2316 @@
+{
+  "schemaVersion": "workloom.scoped-coverage/v1",
+  "agent": "business_engine",
+  "scope": "Native smart-home runtime and consumed skills; foundation migrations and assembly; suite owner plumbing; independent seed, generator/install/preview/documentation, selected registration and CEO permission review; MCD evidence executor",
+  "scopeBoundary": "This inventory is the business_engine agent scope; it is not a claim that the entire inherited repository was fully read. Untouched transitive implementations listed as B are only export-resolved and hashed. Parent owns independent UI, seed repair, hosting, transport and global release validation.",
+  "asOf": "2026-10-08T18:14:58.970735+00:00",
+  "counts": {
+    "total": 234,
+    "fullRead": 161,
+    "machineOnly": 73,
+    "sampled": 0,
+    "unread": 0
+  },
+  "scopeCuts": [
+    {
+      "scope": "Untouched transitive service and overlay implementations plus selected existing regression files",
+      "reason": "Administrative owner-pool correction and assembly transaction repair require their actual entrypoints and selected direct dependencies. Unchanged wider service/overlay implementations and two existing regression files are inventoried and hashed; their behavior is not claimed as deeply audited. Existing regression files were executed.",
+      "evidenceLevel": "B",
+      "paths": [
+        "apps/server/src/service/dialog.ts",
+        "apps/server/src/service/gateway.ts",
+        "apps/server/src/service/store.ts",
+        "apps/server/src/service/ticket.ts",
+        "docs/capabilities.auto.json",
+        "docs/capabilities.auto.md",
+        "packages/base/bundles/eval-questions.ts",
+        "packages/base/bundles/projection-composition.test.ts",
+        "packages/base/bundles/segment.test.ts",
+        "packages/base/bundles/segment.ts",
+        "packages/base/captain/board.ts",
+        "packages/base/captain/briefing.ts",
+        "packages/base/captain/charter.ts",
+        "packages/base/captain/decision.ts",
+        "packages/base/captain/floor.ts",
+        "packages/base/captain/hr.ts",
+        "packages/base/captain/router.ts",
+        "packages/base/captain/scorecard.ts",
+        "packages/base/fence-engine/expr.ts",
+        "packages/base/fence-engine/judge.ts",
+        "packages/base/fence-engine/lifecycle.ts",
+        "packages/base/im-channels/callback.ts",
+        "packages/base/im-channels/cards.ts",
+        "packages/base/im-channels/inbound.ts",
+        "packages/base/im-channels/registry.ts",
+        "packages/base/inspection/checks.ts",
+        "packages/base/inspection/dispatch.ts",
+        "packages/base/inspection/scan.ts",
+        "packages/base/inspection/status.ts",
+        "packages/base/model-router/credits-service.ts",
+        "packages/base/model-router/credits.ts",
+        "packages/base/model-router/feedback.ts",
+        "packages/base/model-router/gen-pool.ts",
+        "packages/base/model-router/pool.ts",
+        "packages/base/model-router/providers.ts",
+        "packages/base/model-router/router-review.ts",
+        "packages/base/model-router/router.ts",
+        "packages/base/model-router/sink.ts",
+        "packages/base/night-shift/candidates.ts",
+        "packages/base/night-shift/package.ts",
+        "packages/base/night-shift/scheduler.ts",
+        "packages/base/night-shift/triggers.ts",
+        "packages/base/overlay/merge.ts",
+        "packages/base/overlay/model.ts",
+        "packages/base/overlay/store.ts",
+        "packages/base/review-console/approvals.ts",
+        "packages/base/skill-ops/autosync.ts",
+        "packages/base/skill-ops/console.ts",
+        "packages/base/skill-ops/policy.ts",
+        "packages/base/skill-ops/receiver.ts",
+        "packages/base/skill-ops/reflux.ts",
+        "packages/base/skill-ops/signature.ts",
+        "packages/base/skill-ops/staging.ts",
+        "packages/base/skill-ops/targeting.ts",
+        "packages/base/skill-ops/tier.ts",
+        "packages/base/skill-ops/types.ts",
+        "packages/base/skills/awareness.ts",
+        "packages/base/skills/forge.ts",
+        "packages/base/skills/official.ts",
+        "packages/base/skills/registry.ts",
+        "packages/base/tenancy/auth.ts",
+        "packages/base/tenancy/capabilities.ts",
+        "packages/base/tenancy/members.ts",
+        "packages/base/workdata/event-sequence.ts",
+        "packages/base/workdata/memory.ts",
+        "packages/base/workdata/readable-id.ts",
+        "packages/base/workdata/recall.ts",
+        "packages/db/src/schema.ts",
+        "packages/runtime/src/ask.ts",
+        "packages/runtime/src/assembly.ts",
+        "packages/runtime/src/intent.ts",
+        "packages/runtime/src/loop.ts",
+        "packages/runtime/src/tools.ts"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": ".env.example",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "a5baa0a2537cad8532d9c2ebfdaea9b32524e40428c6d69c19e8e7ed541b1f6c",
+      "lines": 41
+    },
+    {
+      "path": "README.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "d1d7cce5677911829cef6f15895dc0647ba1ab540f88342674622291ff19cd91",
+      "lines": 108
+    },
+    {
+      "path": "apps/server/package.json",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "6f7289183cc25d24a80e39befcd3f5afe0698e5eb52ccd8914959d130ad8b468",
+      "lines": 37
+    },
+    {
+      "path": "apps/server/src/industry/business-adapter-catalog.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "dbac9cf3f84eed1157f097bda6e69a2097404e33511b5b3fcc09653d680a8981",
+      "lines": 21
+    },
+    {
+      "path": "apps/server/src/industry/hotel/inspection-adapter.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 173,
+      "sha256": "3e0c5e7a3fcbcdfda4322dcbe90e67f8467d6476924d7ef03df258d870d410b6",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "apps/server/src/industry/hotel/service-front-adapter.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "32a538a4d5e0b62d16176eb9de745cfa0b55cb7960ffcde1b74f3d241422adf6",
+      "lines": 202
+    },
+    {
+      "path": "apps/server/src/industry/smart-home/service-front-adapter.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "05bb753104101dc160f6659a79dc45b98b5f9ebabab2afed20fb7e00a6c9381c",
+      "lines": 57
+    },
+    {
+      "path": "apps/server/src/service/active-bundle.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "448849e14ed4e02dded987af0d82617d937ea27145b56381b7e0bb2866310be8",
+      "lines": 229
+    },
+    {
+      "path": "apps/server/src/service/adapters/business-registry.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "fb82dc0fb37f4ef9bf9cc5597226ed34ccf503d71bd558d8ee31b259294bffef",
+      "lines": 125
+    },
+    {
+      "path": "apps/server/src/service/adapters/business-registry.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "c591be92b67f6a1a00c98429c374904296a3c1e2e0f30a3ff5b772fab98b53ef",
+      "lines": 135
+    },
+    {
+      "path": "apps/server/src/service/adapters/business.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "024839252b6301dbe563afaa9c5a85a8c2739de8196db798dd4ebd02aa1a90ff",
+      "lines": 311
+    },
+    {
+      "path": "apps/server/src/service/dialog.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, metadata and/or generator/test execution; implementation not fully read",
+      "reason": "Generated data or unchanged wider service/type implementation outside selected root repair review",
+      "referencedBy": [
+        "apps/server/src/service/adapters/business-registry.test.ts"
+      ],
+      "sha256": "b7bcbc2e7c159a9966093fd219b21370f89be319877d6f3d4554905b149ace51",
+      "lines": 271
+    },
+    {
+      "path": "apps/server/src/service/events.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "37f2a8f1841182626286a02168f810717b2b62cee9aa535e825566497de76c85",
+      "lines": 65
+    },
+    {
+      "path": "apps/server/src/service/gateway.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, metadata and/or generator/test execution; implementation not fully read",
+      "reason": "Generated data or unchanged wider service/type implementation outside selected root repair review",
+      "referencedBy": [
+        "apps/server/src/service/adapters/business-registry.test.ts"
+      ],
+      "sha256": "454a8d82bd4fc3cb36e326dfe3a26f5068f7f4b82793cdce25f21496f6488751",
+      "lines": 693
+    },
+    {
+      "path": "apps/server/src/service/store.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, metadata and/or generator/test execution; implementation not fully read",
+      "reason": "Generated data or unchanged wider service/type implementation outside selected root repair review",
+      "referencedBy": [
+        "apps/server/src/industry/hotel/service-front-adapter.ts"
+      ],
+      "sha256": "807b700743a473c5564d2bba60f94d4239cfb017ad024ad366a16c228f6ee19c",
+      "lines": 89
+    },
+    {
+      "path": "apps/server/src/service/ticket.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, metadata and/or generator/test execution; implementation not fully read",
+      "reason": "Generated data or unchanged wider service/type implementation outside selected root repair review",
+      "referencedBy": [
+        "apps/server/src/service/adapters/business-registry.test.ts"
+      ],
+      "sha256": "64abebc690ef0da1b8cfd69e789601ddff5495442c107536746b64ea18753e19",
+      "lines": 371
+    },
+    {
+      "path": "apps/web/package.json",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "17273b001dea29afe53c13a4f3cdd17685cea4081bde2521ab5157ec45a1081b",
+      "lines": 45
+    },
+    {
+      "path": "apps/webb/package.json",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "0b93e3e80c3fc77b3ee5efab9db6d559b90362a1060a206611caf86afda555af",
+      "lines": 28
+    },
+    {
+      "path": "apps/webc/package.json",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "cc10ed6637745098f9caf0ad72d8db4be83c6832f5bded3bf363571dfffb78ea",
+      "lines": 28
+    },
+    {
+      "path": "bundles/smart-home/assets.test.mts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "3faf7ad13c5e7dbd2272a69a806c54715446424bf97b606200137fa2adefc35d",
+      "lines": 179
+    },
+    {
+      "path": "bundles/smart-home/bundle.json",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 392,
+      "sha256": "a6e010cc51204a4cb5d5e3874dd5cc79d5c1b6ff0b62827590b39711c5eb3db8",
+      "reason": "Complete final sealed manifest re-read; current native runtime assets, sealed skill membership and integrity digest reviewed",
+      "priorReadSnapshot": {
+        "sha256": "baeb344ec77daffe0aff84c7ab19f8f7aa2f31700b24b7817d9638fe9f151fe7",
+        "lines": 392
+      },
+      "currentVersionReview": "Current final sealed 392-line manifest reread in full after concurrent seal update",
+      "previousReadSha256": "3017a643657bff33b0d26efba28dce2d3e18d6c1777c97f325cdc403d114b9f2"
+    },
+    {
+      "path": "bundles/smart-home/library/workforce.json",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 200,
+      "sha256": "ad31a50229c0fe53d8865c228fe3ed0318efc0485a7a56eed50b995d9d0e8196",
+      "reason": "Read complete workforce identity and declared asset trust contract"
+    },
+    {
+      "path": "bundles/smart-home/runtime/README.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source/document re-read before lease-cache boundary correction; storage/read/claim/submit chain verified and isolated probe executed",
+      "lines": 100,
+      "sha256": "4055c94f3992eb39a8483f21073c952e09e0afbc091bee0d8b6f88fe4c925daf",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests",
+      "previousReadSha256": "95d5c08f030e93915c4fc60a4d2aef8d80abe515fe283119827ffc6b8322f051"
+    },
+    {
+      "path": "bundles/smart-home/runtime/catalogue.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 90,
+      "sha256": "e09a78c667941fc11baf050e797de91720b266f16ffc158cd5d754d30b2b60ef",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/runtime/domain.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 361,
+      "sha256": "12309ecfb30a2a4bc62af093a267ab0385c5c4b74bfdfcebc5f405f356e2bf75",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/runtime/errors.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 71,
+      "sha256": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/runtime/index.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 119,
+      "sha256": "3600e38bd4d78edfa4719631cac968a892842896f9e6d77d67eb94183e1fc01b",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/runtime/storage.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 191,
+      "sha256": "ffd7bb973669b1e424db8019341f3e03547d6839c57cb1864f3b1f27036392b3",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 570,
+      "sha256": "4d9122476298987fd1ccbd6f8afb275220aa69c1e600f8d1586fe66203d7676b",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/runtime/tests/concurrency-worker.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 11,
+      "sha256": "63547913d57204157a4654f31b09de8a659084108db5e67ccec8aa69af0930de",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/runtime/tests/employee-work.test.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 203,
+      "sha256": "571604e9e3c1d9f386f98a53f77a4be569d92eb8e7fadc872575c98af346686f",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/runtime/workflows.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 350,
+      "sha256": "c54accf7096665d597e672e6c03c36fcd2d67e356556f49f36f9fc658c22e0d0",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/runtime/workforce.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 69,
+      "sha256": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c",
+      "reason": "Owned native business engine implementation, schemas, workforce dispatcher and tests"
+    },
+    {
+      "path": "bundles/smart-home/skills/acceptance-handover/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "8809e9b6a542296b9cc74a5940dcf7df1d19a083275857650a3f5ac8094c0901",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/aftercare-resolution/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "5cf579dd1f3a5bba5c8d496fa3bcd7334846be66081e61ca04dc4eacd37faa46",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/aftercare-triage/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 60,
+      "sha256": "4b9160fddf208abc53823bcf192948aef3a8d7518605dd4f452cd0fc6fe2d56b",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/bom-check/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "4827f979bf4eb90aa5e047dae69d37a57687cb4d396a9c439078ccab1c8bd1f2",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/campaign-review/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "9dd755ad816f7e62d86608b84edb5f8d395112c1edcee6e8f1d4c1396ac0bd95",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/compatibility-verification/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "ff1d3f6dc2bd47fc5b0b0d1d964c3eff62592fedd1ef1a265e4aa46a5be4ff9b",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/consultative-sales/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 60,
+      "sha256": "af876e44746d3338c4cefac6e5e43967b616ed03c3518e78fc6c896e166eb4b8",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/content-planning/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "677cd6ef0450579942bccaaf6a8c022d111d99647dc29b4b3f95728008fb490c",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/contract-handoff/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 60,
+      "sha256": "f816945d497a887305d550016b5f07d5a502fa68d109700e30a0c56332fbee46",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/customer-consent/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "778058d18a2d39a2d223754452ac4133dffc83cbe38bf1c9b1a6872d61df7b1c",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/customer-followup/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "96f03520721aec5a4ee5520eec3f154708943f8345877b613f92ec4046793dfa",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/data-import-qa/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 60,
+      "sha256": "05246cfa08a91e14e05aa16016de53199bdb316ccc520505a150c02174234193",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/experience-appointment/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "d091e805b18da7d3165b1b384d78c4c6e3712a88652f505c953429e2ef00b590",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/finance-reconcile/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 60,
+      "sha256": "88163ec8005486ed4d462fd798073593f2d2f6b3bec8739cc7cce550ddd3ceb5",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/goal-decomposition/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "2576fb45a991dbb7318d344a4fadc00b8c76ac3fd4c2e5bf82c593e036725998",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/incident-learning/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "04850381d261d711b520d6d8ccd7b2e2259ea40e39a78c8a823fde7902e1eaf8",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/installation-quality/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 60,
+      "sha256": "daad5dea9e4bc1fcbddb2ccf9af3acaeb8977f72a4ba99c7acdbb5fe735b2ee2",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/knowledge-maintenance/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "268fcce808598da09911e824acabcc26bd800d6feb2ad96d2a7ff238c4c0215e",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/lead-qualification/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "53a76c2c8fc3c73bf037cb810dec8b01a285783c37d5143fc66b0425cad1398a",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/local-search-presence/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 60,
+      "sha256": "0ac7acf54f3ea5cb9e6224a2938264fee371a69cced998ecb10b1c0a7b7d8b7d",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/market-intelligence/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 60,
+      "sha256": "40a779e0913a6a939c881074b267879fe24c375e6337d3e4493b9023146a81db",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/network-planning/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "391f73c66e5ecec062de70c96df1d5541dac7907e61ec523606ba1129c3f6608",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/owner-briefing/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 60,
+      "sha256": "78fb0d64838aa6bd3691c8917018723e477b252cc0924bde7a1a42511916d037",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/partner-channel/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "b4fe34e360bbd5b23b23524ff5eaf1a65c1dd0c89bb51ae8e5eb4fd0880b9a72",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/procurement-inventory/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "232fb5acf91801a03d1e110ed060f0765ed6dc498d749633c994a0e0c9dbdead",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/project-scheduling/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "112180a94478592f22465dfc89d847583d8d32188bfdad88a71fc6fac2cd5436",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/quote-margin-control/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "e4bfb932278eec8ef53be9f0de4ff02c10c8cf3cea9ed66433623837e43e2331",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/referral-retention/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "e85da7ea5467762626193c1871a15bf897b1c529c556a72fae0651f1583f4a68",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/scene-commissioning/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "680f9cac9de8b48f18a4eb8b5b9b2a2319bfa6c425ff7cf1eef89b000cb597c4",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/short-video-production/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "92abd4fddbf251e9a3dd9b1d92627be919475c67c834e8e8f683d496188075d7",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/site-survey/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "3df0b98f5102fc71571def53978cc354068f74fdd6acfb9081ec9190a7b2bd59",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/social-publishing/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "4aa4cb36f709791627129c8e2afa5fcfba5cc39fe3b3f5ccd518b09d25268443",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/solution-design/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 61,
+      "sha256": "1b030c895500484fe90282f0c11e2bec98fd2e6a114de51f516876957e739611",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/store-demo-health/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 59,
+      "sha256": "fa63797036ff20e329c8ff6af195521723255cecf4592b8817175f9e26741b34",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "bundles/smart-home/skills/store-diagnosis/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 62,
+      "sha256": "6a547d6ea37196ea12133fe1ca7d74155f9811436598f71788ee6752d3bc3c79",
+      "reason": "All 35 employee procedures read before sealed skill-task implementation"
+    },
+    {
+      "path": "docker-compose.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "a72f5e8d6b3820394a076b11e1ad0a18e050ae35a5b7501f884eff8fce13cd3b",
+      "lines": 23
+    },
+    {
+      "path": "docs/AGENT-CLIENTS.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "c4fa7ba8ebf018d3dfd5a7d8f773e9a37b61a7e2bef6d74df142c0498890b598",
+      "lines": 122
+    },
+    {
+      "path": "docs/AI-WORKBENCH.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source/document re-read before lease-cache boundary correction; storage/read/claim/submit chain verified and isolated probe executed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "389587e2b931df83b34e4e219d150158ba0fd7259d2b116e4cbf1c714466389b",
+      "lines": 149,
+      "previousReadSha256": "273a0890e42784522683597c12066358135ee221527c1c979963c2238e19c607"
+    },
+    {
+      "path": "docs/SMART-HOME-BUSINESS-MATRIX.md",
+      "evidenceLevel": "A",
+      "reading": "Complete source/document read before lease-cache correction; final changed coverage header re-read after owning agent confirmed no other content changed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "6dadb86d98a0c9da85f8e1387d198fc194dc0c6eb08979754a1f11aa98b8bff5",
+      "lines": 314,
+      "previousReadSha256": "8182b9d6dd11f7cf8924e7868c98d384a3b91ee62f0d6752562785cbf4f91477"
+    },
+    {
+      "path": "docs/capabilities.auto.json",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, metadata and/or generator/test execution; implementation not fully read",
+      "reason": "Generated data or unchanged wider service/type implementation outside selected root repair review",
+      "referencedBy": [
+        "scripts/generate-capabilities.mjs"
+      ],
+      "sha256": "77b4ecfaa2099da2ee0b70c4a5cc08f5ea411013a37ba083237cfd784a1bdb63",
+      "lines": 665
+    },
+    {
+      "path": "docs/capabilities.auto.md",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, metadata and/or generator/test execution; implementation not fully read",
+      "reason": "Generated data or unchanged wider service/type implementation outside selected root repair review",
+      "referencedBy": [
+        "scripts/generate-capabilities.mjs"
+      ],
+      "sha256": "80ea27be14c1a12145d6241ad33a6162dc78ed7d1586b1dd714aea98655356a6",
+      "lines": 113
+    },
+    {
+      "path": "packages/base/bundles/assembly-safety.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review",
+      "sha256": "7fff7ee84d006c2db2030133f00fb493dc0408c11b06f4710a3dde045dd7e80c",
+      "lines": 220
+    },
+    {
+      "path": "packages/base/bundles/assembly.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 1385,
+      "sha256": "adf16a7948477efd47a956604b5c1a690220951bebcb51b21c7338eb98447e46",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read",
+      "priorReadSnapshot": {
+        "sha256": "ac09917eba0d36c17e83d5bb6f9b9693bfcd0a5f3d508f3065000848eaccedd8",
+        "lines": 1360
+      },
+      "currentVersionReview": "Current changed source reviewed: authored assembly patch in full; seed repair current 144-line file in full"
+    },
+    {
+      "path": "packages/base/bundles/bundles.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review",
+      "sha256": "de11416c6934620ab2fffb9f9ef2cba23d301a3c89d6a5ca26c154484ac74731",
+      "lines": 413
+    },
+    {
+      "path": "packages/base/bundles/eval-questions.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, current file metadata and test execution where applicable; no claim of complete source understanding",
+      "reason": "Untouched transitive assembly implementation or regression test outside selected full-read scope",
+      "referencedBy": [
+        "packages/base/bundles/index.ts"
+      ],
+      "sha256": "6128ca6ba281648fe3b63dc00f96edbbdddccb9e196af6f96f3bf0d890393cb5",
+      "lines": 167
+    },
+    {
+      "path": "packages/base/bundles/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review",
+      "sha256": "5bae6b929e8921ea1e9c4fcabd0bc31ea44b0a5bdbfca78965b6b8a1704e060d",
+      "lines": 7
+    },
+    {
+      "path": "packages/base/bundles/projection-composition.test.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, current file metadata and test execution where applicable; no claim of complete source understanding",
+      "reason": "Untouched transitive assembly implementation or regression test outside selected full-read scope",
+      "referencedBy": [
+        "packages/base/bundles/assembly.ts"
+      ],
+      "sha256": "9d6981f6d5185cf0d6b23d108ac7f0232761545c964edb5dec0490178bef8596",
+      "lines": 175
+    },
+    {
+      "path": "packages/base/bundles/segment.test.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, current file metadata and test execution where applicable; no claim of complete source understanding",
+      "reason": "Untouched transitive assembly implementation or regression test outside selected full-read scope",
+      "referencedBy": [
+        "packages/base/bundles/index.ts"
+      ],
+      "sha256": "024a9bae4ab6ef96b8c3cb50b902899326d6792d446041a3a65df3b024779538",
+      "lines": 73
+    },
+    {
+      "path": "packages/base/bundles/segment.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, current file metadata and test execution where applicable; no claim of complete source understanding",
+      "reason": "Untouched transitive assembly implementation or regression test outside selected full-read scope",
+      "referencedBy": [
+        "packages/base/bundles/index.ts"
+      ],
+      "sha256": "2673473b0ce5684724f832fc5e8250b3b386b4f4b22b61662d4c595a72c91e93",
+      "lines": 106
+    },
+    {
+      "path": "packages/base/captain/board.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 195,
+      "sha256": "7837aa2be89407976a58e4632defd16fb3016f98548e81103322219afe7fa6d5",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/captain/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/captain/briefing.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 179,
+      "sha256": "8c749cace679ab17e993fbf90719a970f0ba6278e08544729fd3f8a513e4a0ae",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/captain/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/captain/ceo-actor.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "6b250bf775b751860ec08ad02a5b11995c2ddb69599458383874d78417ad63a8",
+      "lines": 71
+    },
+    {
+      "path": "packages/base/captain/charter.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 232,
+      "sha256": "455bd99d3e69fe3ab8cf4ea45ab9b48275079e8bccb049e5e7c3f02e835fc6c1",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/captain/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/captain/decision.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 216,
+      "sha256": "aeb07f43b1e8e2c98b1ac7a46d550f2bfb020615813860e7d6c6caea910f95cb",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/captain/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/captain/floor.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 326,
+      "sha256": "41f17afe34f9e550d36f499db8ac264931f93efe930d05202994412adbf94707",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/captain/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/captain/hr.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 154,
+      "sha256": "987a56662a1ba2cdda766e6ac4d855cf48e242e26c2efbbffb151dbe292d9976",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/captain/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/captain/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 9,
+      "sha256": "64004660dbb9353fccbb61d9a1c88fec99b5bf3ab733ce99b9741078140deea8",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/captain/loop.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "lines": 570,
+      "sha256": "5a38387bfab97941969f87fef5a783d128069184cfd8df232a36131eb93cc4c5",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance"
+    },
+    {
+      "path": "packages/base/captain/router.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 97,
+      "sha256": "a4264d19f34042bcb6d364ffbfd885110b873d719a7bcfa7c945e3e8f40b3e7e",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/captain/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/captain/scorecard.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 85,
+      "sha256": "6d1de29b336e436a13da7b8fd703fd9768947c485dfe0829c5a1fc5c62e6623f",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/captain/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/evolve/feedback-enums.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review",
+      "sha256": "657dcdde14bd268502be2d3a6b9fba9119e2ddc95e2a547949a42eb9e3256113",
+      "lines": 153
+    },
+    {
+      "path": "packages/base/fence-engine/dsl.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 232,
+      "sha256": "8b3b1dae17907076574835757298674336109cb1312669b82dde522ce89badb7",
+      "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review"
+    },
+    {
+      "path": "packages/base/fence-engine/expr.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 286,
+      "sha256": "cc0c0a42e61dc2906bb3ee1c6f4042c62530886a5eac7442076b40ff0b376c22",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/fence-engine/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/fence-engine/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 10,
+      "sha256": "b87bec63850cfb4bac4768c3d8449b57e14e7d82f2d8b4c02ab8498063c6c764",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/fence-engine/judge.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 203,
+      "sha256": "ed241d39f9d8b6ae3de769e51ec2bd742a13a600d7c81fb28f69d26e2dee8670",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/fence-engine/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/fence-engine/lifecycle.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 476,
+      "sha256": "e9b4b68dad895af7ec0df0d2e9035e22aff5e7161762893c2fe723a8117dceec",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/fence-engine/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/im-channels/callback.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 164,
+      "sha256": "e40feaa0a02c265b0cff74d1ba5624b65c8ec2d5fb94b999d9adfeaf12327f6b",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/im-channels/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/im-channels/cards.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 171,
+      "sha256": "19a9c7e9c31aab9b96b5829ed1507d1061c698358c50868c4d01a4c77f8177da",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/im-channels/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/im-channels/inbound.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 206,
+      "sha256": "f753f87ac4c1b8bef71b1ed62a2c20b3cdc4d3a974397d48a6587015ab892d6b",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/im-channels/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/im-channels/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 9,
+      "sha256": "f13c3916cd05c020fbf4dd1cc4c6f5370c06ada87d2e58a7a6b86104928deff4",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/im-channels/registry.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 70,
+      "sha256": "4f49199e4f6fbe747a0f953ff36d804e5e1760b5deb2ae922a01fd0e17597b75",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/im-channels/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/inspection/checks.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 110,
+      "sha256": "e78c7f925a3ea6393ccef75ad614421e78715966a31c06d90471f3c7c59a1ffa",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/inspection/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/inspection/dispatch.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 250,
+      "sha256": "9d4cfd496d7b818c82b3f3fd6b4a2e68ab561ef623bd6e2cfe2830c780401e74",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/inspection/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/inspection/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 10,
+      "sha256": "826e67b2edd15b5155d838921bfb38300098edd67b91e29c82755dc5e8fba73f",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/inspection/scan.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 294,
+      "sha256": "5b8be0332da974c2c3ebf6d1f5e41953ddc69cec8282f14c4e153959405b82b2",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/inspection/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/inspection/status.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 95,
+      "sha256": "ab72e7cb5d5c7e6b402bee1d80578e5e48a7303bfc79dfa77297625f03ee816b",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/inspection/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/model-router/credits-service.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 163,
+      "sha256": "ead717e4ca52edee401e4fa625e43c493e9fbddce5c35d927808a5fc3a643bce",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/model-router/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/model-router/credits.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 116,
+      "sha256": "c9eb886162e83742078be63b0e77185ca77210f8485b94f1ea5726ec489b18d2",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/model-router/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/model-router/feedback.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 134,
+      "sha256": "b1c3a1b9704528bda851395c4c37ff77665239cbfa3831681e218ce4f301e703",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/model-router/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/model-router/gen-pool.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 362,
+      "sha256": "4ff90cccc7a1d7239b81ee684dd5a2d0f347f9e35ac4ace90501c0383c458056",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/model-router/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/model-router/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 16,
+      "sha256": "aa4b3363e009cf81dd736b368db9630a5308f0f0d23696aee0547448267a8519",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/model-router/policy.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 202,
+      "sha256": "3478eb6fa525a25149f1e0012f45828dc292033001cc9cf9007ed2ccba634a65",
+      "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review"
+    },
+    {
+      "path": "packages/base/model-router/pool.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 75,
+      "sha256": "b174dc06387fffdd3612a927ff5075bd822a9ef997dce20e0bd057f722a14d1f",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/model-router/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/model-router/providers.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 127,
+      "sha256": "8bbd358b29e2d4f6ba174be3530d0cd0b42a9547ec730ec44033d98c619a64a9",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/model-router/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/model-router/router-review.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 111,
+      "sha256": "e23635ac4a8be82095be45df491c1a46bb080ecb80969500ce6501ed0080868d",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/model-router/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/model-router/router.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 457,
+      "sha256": "553ff71c547c7bf467f5f8c9a32c66dcff12849d9cc0148030305c3f286d2d87",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/model-router/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/model-router/sink.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 64,
+      "sha256": "4077f45966c48147d03ebab1456c65743e658d5453044bced896f2a71f38f6a5",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/model-router/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/night-shift/candidates.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 89,
+      "sha256": "23cacc541353dfef8cf3f8c17c05f378e8913870082656d949b3240e249878f0",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/night-shift/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/night-shift/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 10,
+      "sha256": "4e083eec0345ac063249ceadc5b7f773fd81fe7c1e5aa2839bcb09d88bcf195a",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/night-shift/package.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 158,
+      "sha256": "0fb4adbc6333105271d7a836792d71ca9a5f77403231ae0751b7fa3d2a83e900",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/night-shift/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/night-shift/scheduler.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 267,
+      "sha256": "cc17d7a880b0227ef84eba699dad9bce90359cffe255358e30819e9d8af88576",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/night-shift/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/night-shift/triggers.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 198,
+      "sha256": "bdd3c6526e3df46abb2cb42aaa6be7972db77a1903f6dd2a06eca09091ea67a0",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/night-shift/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/overlay/assembly-hook.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review",
+      "sha256": "02859f489f0a1e73fc1908bf75d1932423364b8959ab4eec50cbb16d0dce0858",
+      "lines": 72
+    },
+    {
+      "path": "packages/base/overlay/merge.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, current file metadata and test execution where applicable; no claim of complete source understanding",
+      "reason": "Untouched transitive assembly implementation or regression test outside selected full-read scope",
+      "referencedBy": [
+        "packages/base/overlay/assembly-hook.ts"
+      ],
+      "sha256": "cc40471e08799d5d2db8bb793e65d5c6f560de88d2ada008a5d6d0b9df700ed7",
+      "lines": 283
+    },
+    {
+      "path": "packages/base/overlay/model.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, current file metadata and test execution where applicable; no claim of complete source understanding",
+      "reason": "Untouched transitive assembly implementation or regression test outside selected full-read scope",
+      "referencedBy": [
+        "packages/base/overlay/assembly-hook.ts"
+      ],
+      "sha256": "239509c8f4352ac0a9b6f9e6349dae8f8fb454b8d8c4f9157354f0c293d95641",
+      "lines": 219
+    },
+    {
+      "path": "packages/base/overlay/store.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, current file metadata and test execution where applicable; no claim of complete source understanding",
+      "reason": "Untouched transitive assembly implementation or regression test outside selected full-read scope",
+      "referencedBy": [
+        "packages/base/overlay/assembly-hook.ts"
+      ],
+      "sha256": "08049d26fbd7f505cfdbc5c6faf1e1aad0239f9ec1d7632ff0020208a30215e6",
+      "lines": 275
+    },
+    {
+      "path": "packages/base/package.json",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 54,
+      "sha256": "14f84384bddf2e6833b329f441aa887ff638498fee610f30ce7537a0d547c167",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/review-console/approvals.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 474,
+      "sha256": "33abd74062b6fcf9fdb927741b757cbcb15dbae8acbb8526562389b4615ec53b",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/review-console/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/review-console/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 8,
+      "sha256": "2028f872476e33ef5b457712206a7144de049f98beb3e271cb09a79c6fe1cd8e",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/skill-ops/autosync.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 146,
+      "sha256": "22d2a48bade6fbbd9284cf3383e9848e17efda673d75013817a676da05081ef9",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skill-ops/console.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 279,
+      "sha256": "07ad79e9804b33bb456a6663d1977ce291516fcd4c5d18aee3477b441efeadc1",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skill-ops/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 18,
+      "sha256": "4af107e0403719391b1acd62cdc967d9cef63638ab4c5d0fd2c3036a1491dece",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/skill-ops/policy.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 87,
+      "sha256": "7d2f802ef44b48632d93355aa182e5556f4617e5623292fc6a3d505d8155754d",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skill-ops/receiver.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 483,
+      "sha256": "c31bf6d6a1f73d58706f568ea7214c8334beaaf363e0b90bfd5e6518b1c2fe07",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skill-ops/reflux.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 327,
+      "sha256": "19e51f3aee81e1514848e7e2ea01b101f161827ff2ffe8a2a49a48ef6fe9cdb3",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skill-ops/signature.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 41,
+      "sha256": "ecedc0f6b42eaf043807a10033ca91a7c949de90917c0c7b77492dcb2bc81874",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skill-ops/staging.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 91,
+      "sha256": "48de1272a2ec5cc368540cd24d822a559bd7edb5d26dfb1ff94146a7b3f9cd41",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skill-ops/targeting.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 29,
+      "sha256": "67f9c60c948867e2f7b58c47c0c8de95e9e3789c90329ee26f385df56929826a",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skill-ops/tier.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 54,
+      "sha256": "c9e2a68b8f303c0a274c86939ee65ad53186ee01a8cc4d233413a8d1a28da5c9",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skill-ops/types.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 84,
+      "sha256": "b866a904835196e2f83755c584a870e7250163a17833640d6afee0caf730609a",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skill-ops/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skills/awareness.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 221,
+      "sha256": "bd923da2205066d4fc466602a76d081bc58eb008a7f29b88cbcc4d205d988af2",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skills/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skills/forge.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 195,
+      "sha256": "068e546ca4b9ead0b621722c61e76ad4e0bccbe9ca171c8c2b2900de54d40b7c",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skills/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skills/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 11,
+      "sha256": "c942ab1fa6f25d52c34ae3cf64566c23e7b642c542a367f00a7be81c2eca51e8",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/skills/official.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 45,
+      "sha256": "ff2733e1f48c4587bcfd5fe91a9f2641bfe45dc7f1199a83667f91173fd58233",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skills/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/skills/publish.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 301,
+      "sha256": "2c184c078dde16b6b7d8494c20ecf5e4de7d14ced2850dfd657429a4bcc77852",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/skills/registry.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 423,
+      "sha256": "e899b40e9e95f60d9a5df84d54f12aaa1f3bfb29fdc4c0b4db64ef88955c3a0b",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/skills/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/tenancy/auth.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 166,
+      "sha256": "cc00e351fb4729821c70d3a74ddb45af12345a783fd9253da6dfa344a822e07a",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/tenancy/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/tenancy/capabilities.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 113,
+      "sha256": "fe9929e0ae27e3e427defe55d2440ea3de6bb443132df566098bf3b16063cab2",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/tenancy/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/tenancy/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 8,
+      "sha256": "c4556b55302043be53dac2947903e5cb39786ba58d60b05303358b68bf470d82",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/tenancy/members.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 61,
+      "sha256": "39a4ac33b310ade064311b2fdb9d03dbc2c4679cbc5aaa49386a2a696b33a5e7",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/tenancy/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/workdata/event-sequence.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 58,
+      "sha256": "43829c5bf069451baf4fc02c80c483b01f6f109315194d316b566083d4ea8469",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/workdata/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/workdata/events.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 262,
+      "sha256": "c2cea423e934037fa4e2802a83ebe69daca1facb1e6876434783d2b13a530ed5",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/workdata/gateway.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 421,
+      "sha256": "4491aa31dcf881b65a46a8e43a2d6e9e39928044e108c0dccf7e92bec7b6d708",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/workdata/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 13,
+      "sha256": "0d3c5b0483b528fcf57c137363aa5328ce78bf999bc44404b938bca476062a09",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/workdata/memory.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 311,
+      "sha256": "b1f7448901034a450ef397df9ca95f4a193196497ad96f15ab8de68477836414",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/workdata/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/workdata/pii.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 121,
+      "sha256": "2c9f18d1a220ecaab52e904486b6c2b9872336d6080303f86c928786d7fbadec",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/workdata/readable-id.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 120,
+      "sha256": "69f3bca24693732f5c8ba6d1f2e3124401618c945bd17b34d85aef240ce63029",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/workdata/index.ts"
+      ]
+    },
+    {
+      "path": "packages/base/workdata/recall.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 241,
+      "sha256": "c301e09a8fc09b098b3c500a572d088060f73e2788a303431a454aed4be34e35",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/base/workdata/index.ts"
+      ]
+    },
+    {
+      "path": "packages/db/migrations/0001_init.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 337,
+      "sha256": "fd8b5f636a2d77d7e6adbe73d1fefa5521df06c526ebd2cf9d70f69f5e763be0",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0002_bugfix.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 21,
+      "sha256": "f47fe537abbb522084f8cd0eecb7f5faf2dbb4dbc19a15d09c8f5a728816346b",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0003_im_inbound_dedupe.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 25,
+      "sha256": "07b61f807f4ca448aa5b950d321197127e59dec2ed237b3103b8a7c4f6adbe3d",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0004_biz_events_no_truncate.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 19,
+      "sha256": "e4ba2708a356c38690d826d9c46920ab044d900307333d00014c42f73753ebb7",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0005_fence_baseline_guard.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 24,
+      "sha256": "50ad6d177f7a0c9d0698356b8e91090a17754c08970680fa0a730b722b20dd5b",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0006_industry_publish_gate.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 39,
+      "sha256": "2f205cee7ec4d7f8f61c1e7cad251a686695366ca230fa1d76622597602ab663",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0007_append_event_function.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 51,
+      "sha256": "67647470851008a2c0e70c00e5940bf34f86bec7c00a02483539e9d124d3f2ba",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0008_publish_reviews_rls.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 11,
+      "sha256": "5040d4bb6e22340cfe8a6fb68b45cc6bb4ea327812e90c187a1b4c48fe9441ae",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0009_captain.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 12,
+      "sha256": "8fda6d113d9e1e1a9ea0d348334a6809924fb15d7250c25a08e33efc74b37156",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0010_service_c.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 188,
+      "sha256": "fc9bf14fb3f910f623159390164f8a0b6ee7162559c53b14ac3e8003f86dfb27",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0011_service_c_hardening.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 54,
+      "sha256": "d66940ec3d257c980631a6c2cc44c95c5bba83b43edbaa02f27515369a9a3825",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0012_service_c_demo_pk.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 41,
+      "sha256": "2677ceb411f23c6e6ef65d65f60e5cfce4c9bd61c5bcaa4eeaac40d8c9ceee53",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0013_memory_usage_workspace_rls.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 28,
+      "sha256": "34f667813d0a12aa94c0128b5e00a86bedd88b0c7ac597d7aaa9cc96f4bfe33f",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0013_pipeline_hardening.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 197,
+      "sha256": "f3445c4ca722d284daad3e73c9b829981e4c85671e27d0c6e9314332a1dc2a7a",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0015_event_id_tail.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 26,
+      "sha256": "a7063bd23b63a014e44deda24bdbaaf3735769396338b76027afef0b5a1a37dd",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0016_readable_id_tail.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 45,
+      "sha256": "11e4137ea25764dd0b609dd4464d965e583864c3bcc9eadd3bad5f334c1f4a45",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0017_skill_revoke_channel.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 20,
+      "sha256": "f9c6bf6a7b5f088ce44cb67344851b5915333e3c9e4d41a7c162b6ee1f5667d9",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0018_skill_ops_distribution.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 74,
+      "sha256": "8bc710bfb7c3f4de0a92fb4cd6a54cc950dca007dfcc60c4f3d34313d4479f38",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0019_skill_ops_autosync.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 4,
+      "sha256": "bd0d1db9fb3621b4e05eec34a19b65077cf37ed51b5793266d25be2762fbeb6d",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0020_skill_reflux.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 53,
+      "sha256": "4fcb2caf1d98f1ce2160d787e8ac6720bec0ce1a2a596518771654e833230dc0",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0021_eval_core.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 176,
+      "sha256": "c3dfc5419b81ad08a0856896bb218d3c8828ed7a29857610a6c0dead48ab516c",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0022_bundle_mechanism.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 65,
+      "sha256": "0bd0fef17aba902350b55f9ee161124504b8a6eab53265ce3ccf83e110c736ad",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0023_dev_fabric.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 180,
+      "sha256": "2f22ab1f351ec6e0da77422e22031012cda2202987eb703f63e7a487eea4c126",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0024_secretary.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 96,
+      "sha256": "5dd2d14a6f83aa5aaf072fc229c95556e60fb7dc29c5b82c08fbcd34b32afb47",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0025_loommate_modes.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 6,
+      "sha256": "29a3d936c5379afe6dcfed066bcaaf3e3241ff13abcbf2c6fc8cff8752919d74",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0026_tenant_overlay.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 49,
+      "sha256": "7880ca754aaaeddfaf72f38802276dbf75d462ac06d609c34bedff37ba645ebf",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0027_accounts.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 171,
+      "sha256": "fea7a12844dd42f747ab2870911364ec273d28f85e11df99ff22c732c3a399fa",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0028_onboarding_truth_gate.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 101,
+      "sha256": "64b889ef1f495bde45865d40cb9cc84caaaf5ff4ff9867b3b1e510b81d400e09",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0029_onboarding_continuity.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 57,
+      "sha256": "77b7e628acf279d6a6a07ef8d40a3e39d411a787d753afc5ed735a2a12daaf44",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0030_single_active_bundle_install.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 19,
+      "sha256": "58855a30e4c2fbc375f581b6992284a56fc3af57fc12ebb03d10ec1cd219a2bf",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0031_accounts_overlay_least_privilege.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 87,
+      "sha256": "164c83e3960c322e4581c9555a622b16470eba31914a320ee82109d416aef0ad",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0032_remove_cross_industry_hotel_bootstrap.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 93,
+      "sha256": "ef5459cd9b5aeccc3ef2aff989ed3f12e4192b6735aef6c03ca52019237a890c",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0033_neutral_workspace_industry_default.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 8,
+      "sha256": "4b2e930998468568c33a93c44717aebfc5e0296ac0682a69315f1dae74a0fdf0",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0034_api_key_rotation.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 22,
+      "sha256": "cc9d0f87d34a878918ba74d42f93073efe61cbb347477bc255b1108e829d3973",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0035_tenant_overlay_single_active.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 25,
+      "sha256": "26f71250672e523e4703e449de6be63451d87d352ba246ca3b794f103f2032d7",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0047_thread_plan_persist.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 21,
+      "sha256": "1e4a217bd98204c2dd9ce52ae9341dab9a0fd26378e9a800ff90fdfb8dd6d9fe",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0048_readable_id_sequences.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 55,
+      "sha256": "a17cbf641438fa5d1086bd78e2385a0d8606ccb3b9f155af78381c22a9f15cb0",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0049_thread_cancelled_status.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 8,
+      "sha256": "2446b6c2a406a2b0b291a7646f50ccf549bbc8dd3f9b108b41eb8882500e9351",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0050_thread_no_sequence_floor.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 45,
+      "sha256": "bff17a0f16e7564f7185a615ead2dad885a13bc30d81027f575c7514b22d9106",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0051_append_event_tenant_guard.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 83,
+      "sha256": "4030f3dd3d8d1be51ffa09e46d79020742995c8ad37b8c7f872252a15c78ce76",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0052_thread_no_sequence_pure.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 64,
+      "sha256": "e39aebe0a55c457d9136691d57ca1502b617a2fcee924590fe72d61ef52464a3",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0053_approval_one_time_consumption.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 17,
+      "sha256": "58f465ba61267dd81a20d8a1b056c9f23dbe61fda0cf41ee284e219a59d95c86",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/migrations/0054_privileged_governance_channels.sql",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 29,
+      "sha256": "7e7acea9cbe1355d9911a67b58953a3890ce74ecd6aa300cd77d7cb97791f949",
+      "reason": "Read all inherited migration SQL and new governance hardening migration"
+    },
+    {
+      "path": "packages/db/src/client.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "c145ad3ff70ff2dbd0b9e540b861ce2b7b38c603257be9c377d21870549b8ee8",
+      "lines": 97
+    },
+    {
+      "path": "packages/db/src/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "6161108ee4997a4202d8ee2612b89f931fc910376cb8185a6fb7444318ad9782",
+      "lines": 6
+    },
+    {
+      "path": "packages/db/src/schema.ts",
+      "evidenceLevel": "B",
+      "reading": "Machine dependency inventory, metadata and/or generator/test execution; implementation not fully read",
+      "reason": "Generated data or unchanged wider service/type implementation outside selected root repair review",
+      "referencedBy": [
+        "packages/db/src/client.ts",
+        "packages/db/src/index.ts"
+      ],
+      "sha256": "7d27b195d4f383f80e98c3029859802dcea89525cdb01a8d31df1e8ddaeafda5",
+      "lines": 368
+    },
+    {
+      "path": "packages/industry-contract/src/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review",
+      "sha256": "e9c588e7b11be2d6bec9d85767a1bf8a781798a1647a78f421d9cba9d969791b",
+      "lines": 467
+    },
+    {
+      "path": "packages/runtime/package.json",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 25,
+      "sha256": "9baceab0f88d9fd75de5690e2474dcbe1c9a6b56af74e80794a8ac2daebd349a",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/runtime/src/ask.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 635,
+      "sha256": "ec0626430c4a641c2b0757ac25e30d8863372cf534e0522ef33f0eda453d4386",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/runtime/src/index.ts"
+      ]
+    },
+    {
+      "path": "packages/runtime/src/assembly.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 108,
+      "sha256": "a599a70beb32c3a97b3e5db09577e3d48931ee57bcd454afed2611f916a3fc17",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/runtime/src/index.ts"
+      ]
+    },
+    {
+      "path": "packages/runtime/src/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 11,
+      "sha256": "285e948d009fbefcdcd36c8528e2c4dc29bb04083d6f8d8b9b4f50de43e8afbb",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/runtime/src/intent.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 157,
+      "sha256": "ff1dbd3c0afd84209b55c2010c24ae2dbdf0f997d1953604e9581d4dba62364b",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/runtime/src/index.ts"
+      ]
+    },
+    {
+      "path": "packages/runtime/src/loop.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 1182,
+      "sha256": "10aaac0dd70f02d1f1e717d8a54e5ac85545b3cf1b8783915eae2b120d3a1dc4",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/runtime/src/index.ts"
+      ]
+    },
+    {
+      "path": "packages/runtime/src/tools.ts",
+      "evidenceLevel": "B",
+      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "lines": 65,
+      "sha256": "78d110dfcf5281024d10e3dfac06c9cf719624a68b5adddf51ecb5605c03902e",
+      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "referencedBy": [
+        "packages/runtime/src/index.ts"
+      ]
+    },
+    {
+      "path": "scripts/bootstrap.sh",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "b94dc385f9fb4ef9ae3e483b898397e5787058b0dbdc416634faa37f9240e90d",
+      "lines": 162
+    },
+    {
+      "path": "scripts/business-management-postgres.test.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 54,
+      "sha256": "d018b919dab52e6c92dce62ef3ff2c4ac0170bc726137adf81589b37b56c8b40",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "scripts/capability-status.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "b307bbb581d018e7bf96150c272512ce625e00e1431a8aa5d42a5d58e4373a94",
+      "lines": 41
+    },
+    {
+      "path": "scripts/delivery/evidence.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "bb408f4b0257f2dbbf05a8bc072b6feda455fe39d371fa82c01166cf6772891a",
+      "lines": 336
+    },
+    {
+      "path": "scripts/delivery/mine-clear.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "f2c0e0d200b32ffc7822c0f802afc8460c8c0f48afe261b656559bf1eb1596f5",
+      "lines": 910
+    },
+    {
+      "path": "scripts/delivery/node-test-reporter.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "286448a4dee571759fc1703564477d27bf5319bcb05ff66db2186deda60bc78f",
+      "lines": 17
+    },
+    {
+      "path": "scripts/desktop-workflow-path.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "79a1933494e308bbcca16ee9c257f7c15a7753862cfdb3cb3e6e90a0d82f134f",
+      "lines": 17
+    },
+    {
+      "path": "scripts/generate-capabilities.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "5edbc92e3498a88a89fcdefaa6f91b4c78e17aeb0364f6e37b9812f3065b02b3",
+      "lines": 250
+    },
+    {
+      "path": "scripts/generate-client-projections.mts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "d5f179edbe7c1b73924c3139d421d7d36a26f00670a994f98d0360b0e1b57bcd",
+      "lines": 152
+    },
+    {
+      "path": "scripts/migrate.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 134,
+      "sha256": "3776b4efc5f2622bd0c55353652780290f3267dbd1d4d35b7f919328a473dacc",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "scripts/path-containment.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "6716d82c286d29bc15c4797bec2446d38d8bce87bee8cc61c5c0b7f092915cb5",
+      "lines": 15
+    },
+    {
+      "path": "scripts/preview-all.sh",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "a601329c384f7cbe7213202e6b87557dd32c0397c111b4bae685efa24414383b",
+      "lines": 94
+    },
+    {
+      "path": "scripts/product-release-config.test.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "d44eff1849a48844a8c4f0404daee79076535594b42deb6f4199441c31e27dea",
+      "lines": 30
+    },
+    {
+      "path": "scripts/seed-smart-home.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "878697ecd4a06f3c7420a4fdf75dfc2c7c7d1655d7b518ffa19446991dea2790",
+      "lines": 132
+    },
+    {
+      "path": "scripts/seed-smart-home.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 144,
+      "sha256": "74c3b09de9da71a81e6b6c0d683c664497b393526e075b12879c054047753508",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read",
+      "priorReadSnapshot": {
+        "sha256": "e63ef80dea373e0446195b02b6e15bb4bde4b254d16f04b9a735d23e9cf5928d",
+        "lines": 114
+      },
+      "currentVersionReview": "Current changed source reviewed: authored assembly patch in full; seed repair current 144-line file in full"
+    },
+    {
+      "path": "scripts/suite-fixture-preflight.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 51,
+      "sha256": "6407c665eb2c98ecadecec80ce9594927a3e2f935511871c42e9cfa7364e7f9a",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "scripts/suite.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 3996,
+      "sha256": "a8af686f09bcc0a52937ad634d57dcd0652ba64364c7e0ba62a2fa6131e77b75",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "scripts/verify-product-content.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
+      "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
+      "sha256": "ea4b3968835a9c6c398c0c3ef9617414bfbd21998a5c46036b6b5b9a4a9d833c",
+      "lines": 199
+    },
+    {
+      "path": "tsconfig.base.json",
+      "evidenceLevel": "A",
+      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "lines": 19,
+      "sha256": "8ed090d95c0a7767fe10b5d9d511dc84cb2356e1d82f787149d1c003d82abb6a",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    }
+  ],
+  "verification": {
+    "nativeRuntime": {
+      "tests": 93,
+      "pass": 93,
+      "fail": 0,
+      "skip": 0
+    },
+    "postgresSqlChannels": {
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skip": 0
+    },
+    "ownerWrapperDisposablePostgres": {
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "disposableDatabaseRemoved": true,
+      "report": "docs/evidence/revocation-owner-pool-report.json"
+    },
+    "suiteOwnerSmoke": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "assertions": [
+        "Missing owner URL fails before setup",
+        "Explicit DATABASE_OWNER_URL with incompatible hotel fixture closes app, gateway and owner pools"
+      ],
+      "report": "docs/evidence/suite-owner-smoke-report.json"
+    },
+    "legacyFullSuite": {
+      "status": "not-run",
+      "reason": "This task corrected owner plumbing; targeted tests use a disposable PostgreSQL database. Default smart-home database was not seeded with hotel compatibility fixtures."
+    },
+    "baseTypecheck": {
+      "status": "pass",
+      "exitCode": 0,
+      "command": "pnpm -C packages/base typecheck",
+      "runtime": "Bundled Node on PATH"
+    },
+    "assemblySafety": {
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "skip": 0,
+      "actualDisposablePostgresCases": 3,
+      "databaseRemoved": true,
+      "report": "docs/evidence/assembly-safety.json"
+    },
+    "relatedBundleRegression": {
+      "tests": 46,
+      "pass": 41,
+      "fail": 0,
+      "skip": 5,
+      "skipReason": "Existing hotel PG fixture suite gated behind RUN_DB_TESTS=1; fixture-specific tests not enabled. Three new disposable PostgreSQL safety cases did execute.",
+      "report": "docs/evidence/business-engine-bundle-tests.json"
+    },
+    "diffCheck": {
+      "status": "pass",
+      "exitCode": 0,
+      "command": "git diff --check"
+    },
+    "independentSeedPostgres": {
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "skip": 0,
+      "disposableDatabaseRemoved": true,
+      "report": "docs/evidence/seed-independent-safety.json"
+    },
+    "assetRunnerCorrection": {
+      "before": {
+        "command": "vitest run bundles/smart-home/assets.test.mts",
+        "exitCode": 1,
+        "error": "No test suite found"
+      },
+      "after": {
+        "command": "tsx --test bundles/smart-home/assets.test.mts",
+        "exitCode": 0,
+        "tests": 7,
+        "pass": 7,
+        "fail": 0,
+        "skip": 0
+      },
+      "officialCommandSource": "https://raw.githubusercontent.com/privatenumber/tsx/HEAD/docs/node-enhancement.md",
+      "officialSourceReading": "Official raw documentation read in full after webpage redirect/fetch failures"
+    },
+    "generatorAndSyntax": {
+      "capabilitiesCheckExitCode": 0,
+      "bootstrapBashSyntaxExitCode": 0,
+      "previewBashSyntaxExitCode": 0,
+      "generatorNodeSyntaxExitCode": 0
+    },
+    "bootstrapPreviewIndependent": {
+      "cases": 7,
+      "pass": 7,
+      "fail": 0,
+      "evidenceLevel": "B",
+      "scope": "Actual shell control flow in an isolated fixture with external command boundaries mocked; does not prove full install or real three-client preview",
+      "report": "docs/evidence/bootstrap-preview-independent.json"
+    },
+    "actualPnpmChildSignal": {
+      "pass": true,
+      "scope": "Actual bundled pnpm start with a disposable persistent Node leaf; SIGTERM to pnpm stopped leaf",
+      "notClaimed": "Full three-client preview runtime"
+    }
+  }
+}

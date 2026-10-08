@@ -1,0 +1,229 @@
+{
+  "schemaVersion": "workloom.lease-storage-boundary/v1",
+  "actor": "/root/business_engine",
+  "observedAt": "2026-10-08T18:08:17.381Z",
+  "dataMode": "sandbox",
+  "externalActions": 0,
+  "result": "pass",
+  "count": 23,
+  "checks": [
+    {
+      "id": "task-entity-stores-hash",
+      "expected": true,
+      "actual": true,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute task-entity-stores-hash in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "task-entity-does-not-store-plaintext-token",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute task-entity-does-not-store-plaintext-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "idempotency-response-retains-plaintext-token",
+      "expected": true,
+      "actual": true,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute idempotency-response-retains-plaintext-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "same-actor-replay-returns-original-token",
+      "expected": true,
+      "actual": true,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute same-actor-replay-returns-original-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "different-actor-cannot-replay-claim",
+      "expected": "IDEMPOTENCY_CONFLICT",
+      "actual": "IDEMPOTENCY_CONFLICT",
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute different-actor-cannot-replay-claim in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "ledger.list-does-not-return-plaintext-token",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute ledger.list-does-not-return-plaintext-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "ledger.list-does-not-return-lease-hash",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute ledger.list-does-not-return-lease-hash in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "entity.get-does-not-return-plaintext-token",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute entity.get-does-not-return-plaintext-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "entity.get-does-not-return-lease-hash",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute entity.get-does-not-return-lease-hash in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "entity.list-does-not-return-plaintext-token",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute entity.list-does-not-return-plaintext-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "entity.list-does-not-return-lease-hash",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute entity.list-does-not-return-lease-hash in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "state.snapshot-does-not-return-plaintext-token",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute state.snapshot-does-not-return-plaintext-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "state.snapshot-does-not-return-lease-hash",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute state.snapshot-does-not-return-lease-hash in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "task.list-does-not-return-plaintext-token",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute task.list-does-not-return-plaintext-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "task.list-does-not-return-lease-hash",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute task.list-does-not-return-lease-hash in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "workflow.get-does-not-return-plaintext-token",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute workflow.get-does-not-return-plaintext-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "workflow.get-does-not-return-lease-hash",
+      "expected": false,
+      "actual": false,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute workflow.get-does-not-return-lease-hash in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "different-actor-cannot-submit-known-token",
+      "expected": "INVALID_TASK_LEASE",
+      "actual": "INVALID_TASK_LEASE",
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute different-actor-cannot-submit-known-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "expired-claim-replay-preserves-original-expiry",
+      "expected": "2026-10-08T18:08:47.338Z",
+      "actual": "2026-10-08T18:08:47.338Z",
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute expired-claim-replay-preserves-original-expiry in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "expired-token-cannot-submit",
+      "expected": "TASK_LEASE_EXPIRED",
+      "actual": "TASK_LEASE_EXPIRED",
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute expired-token-cannot-submit in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "fresh-claim-rotates-token",
+      "expected": true,
+      "actual": true,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute fresh-claim-rotates-token in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "old-token-cannot-submit-after-reclaim",
+      "expected": "INVALID_TASK_LEASE",
+      "actual": "INVALID_TASK_LEASE",
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute old-token-cannot-submit-after-reclaim in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    },
+    {
+      "id": "ledger-remains-valid",
+      "expected": true,
+      "actual": true,
+      "result": "pass",
+      "preconditions": "Isolated synthetic lease scenario described in report.preconditions; phase is named by this assertion id",
+      "steps": "Execute ledger-remains-valid in report.steps sequence; compare the returned boolean/error/expiry with expected without persisting token values"
+    }
+  ],
+  "tokenValuesRecorded": false,
+  "conclusion": "The task entity stores a hash; immutable idempotency claim responses retain the original plaintext token. Generic reads and events do not expose either lease token or its hash. Exact actor/request replay can return an expired original response, but expiry and actor checks still reject submissions.",
+  "limitations": [
+    "Local OS or SQLite file access can read the immutable response cache",
+    "This proof uses synthetic local test actors and does not attest real human identity"
+  ],
+  "source": [
+    "bundles/smart-home/runtime/storage.mjs:transaction/events",
+    "bundles/smart-home/runtime/domain.mjs:safe/read",
+    "bundles/smart-home/runtime/workflows.mjs:claim/lease/presentTask"
+  ],
+  "evidenceKind": "actual-isolated-ad-hoc-assertions",
+  "sourceTreeDirty": true,
+  "sourceHashes": {
+    "bundles/smart-home/runtime/storage.mjs": "ffd7bb973669b1e424db8019341f3e03547d6839c57cb1864f3b1f27036392b3",
+    "bundles/smart-home/runtime/index.mjs": "3600e38bd4d78edfa4719631cac968a892842896f9e6d77d67eb94183e1fc01b",
+    "bundles/smart-home/runtime/domain.mjs": "12309ecfb30a2a4bc62af093a267ab0385c5c4b74bfdfcebc5f405f356e2bf75",
+    "bundles/smart-home/runtime/workflows.mjs": "c54accf7096665d597e672e6c03c36fcd2d67e356556f49f36f9fc658c22e0d0"
+  },
+  "probeSha256": "2ed4ee2ce216132433610adb3bf102af1496ebae460b9232977845ab47bc96c3",
+  "preconditions": [
+    "Fresh temporary SQLite with explicit synthetic seed",
+    "Distinct test actors worker-a/worker-b/viewer-a",
+    "Worker-a owns the first 30-second growth task lease",
+    "No token values are written into evidence or stdout"
+  ],
+  "steps": [
+    "Compare task entity and exact immutable idempotency response after claim",
+    "Replay the same claim as worker-a and attempt replay as worker-b",
+    "Read six generic/list/event endpoints as viewer-a and search only in memory for the original token and hash",
+    "Attempt cross-actor submit, advance test clock 31 seconds and attempt expired submit",
+    "Tick, reclaim with a new key, check old token rejection and final ledger integrity",
+    "Close both SQLite handles and delete temporary directory"
+  ]
+}

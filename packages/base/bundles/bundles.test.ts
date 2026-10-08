@@ -4,7 +4,7 @@
  * PG 集成：hotel profile 六槽全装配 + 五项校验全绿（F2.10）/ 校验留痕（P7E3）/
  *          激活幂等（bundle.activate 事件）/ 草稿校验失败拒绝激活（不静默 L9.2）
  */
-import { cpSync, mkdtempSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import { cpSync, mkdtempSync, readFileSync, writeFileSync, existsSync, rmSync } from "node:fs";
 import { createHash, generateKeyPairSync, sign as signValue } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -193,15 +193,47 @@ describe("草稿骨架与校验（P7E5/§2.3，文件级）", () => {
   });
 
   it("开发通道公开通过校验且明确开放的候选包，生产通道只公开稳定包", () => {
-    const registry = listSelfServiceBundles();
-    expect(registry.version).toMatch(/^[a-f0-9]{16}$/);
-    expect(registry.entries.map((entry) => entry.slug)).toEqual(["ai-pm", "hotel"]);
-    expect(registry.entries.every((entry) => entry.provisioningMode === "guided-assembly")).toBe(true);
-    expect(registry.rejected).toContainEqual(expect.objectContaining({ slug: "platform", reason: "未开放自助开通" }));
+    const root = mkdtempSync(join(tmpdir(), "wl-self-service-policy-"));
+    const source = new URL("../../../bundles/", import.meta.url).pathname;
     const previousNodeEnv = process.env.NODE_ENV;
     try {
+      for (const slug of ["ai-pm", "hotel"]) {
+        cpSync(join(source, slug), join(root, slug), { recursive: true });
+      }
+      scaffoldDraft({
+        slug: "platform", displayName: "平台内部包", version: "0.1.0",
+        changelog: "自助开通策略夹具", fenceRef: "platform-baseline/v1", ownerMemberNo: "MEM-001",
+      }, root);
+      const privatePath = join(root, "platform", "bundle.json");
+      const privateManifest = parseBundleManifest(JSON.parse(readFileSync(privatePath, "utf8")));
+      privateManifest.workloom.status = "candidate";
+      const paths = Object.values(privateManifest.workloom.provides)
+        .flatMap(value => typeof value === "string" ? [value] : value ?? []);
+      const assets = Object.fromEntries(paths.map(asset => [asset, createHash("sha256")
+        .update(readFileSync(join(root, "platform", asset))).digest("hex")]));
+      privateManifest.integrity = {
+        algorithm: "sha256", assets,
+        digest: createHash("sha256").update(canonicalBundleArtifactPayload(privateManifest, assets)).digest("hex"),
+      };
+      writeFileSync(privatePath, `${JSON.stringify(privateManifest, null, 2)}\n`);
+      // 可见性由夹具显式声明，不依赖当前产品是否开放酒店自助开通。
+      const path = join(root, "hotel", "bundle.json");
+      const manifest = parseBundleManifest(JSON.parse(readFileSync(path, "utf8")));
+      manifest.workloom.example = true;
+      manifest.workloom.status = "candidate";
+      delete manifest.integrity?.signature;
+      manifest.integrity!.digest = createHash("sha256")
+        .update(canonicalBundleArtifactPayload(manifest))
+        .digest("hex");
+      writeFileSync(path, `${JSON.stringify(manifest, null, 2)}\n`);
+      process.env.NODE_ENV = "test";
+      const registry = listSelfServiceBundles(root);
+      expect(registry.version).toMatch(/^[a-f0-9]{16}$/);
+      expect(registry.entries.map((entry) => entry.slug)).toEqual(["ai-pm", "hotel"]);
+      expect(registry.entries.every((entry) => entry.provisioningMode === "guided-assembly")).toBe(true);
+      expect(registry.rejected).toContainEqual(expect.objectContaining({ slug: "platform", reason: "未开放自助开通" }));
       process.env.NODE_ENV = "production";
-      const productionRegistry = listSelfServiceBundles();
+      const productionRegistry = listSelfServiceBundles(root);
       expect(productionRegistry.entries).toEqual([]);
       expect(productionRegistry.rejected).toContainEqual(expect.objectContaining({
         slug: "hotel",
@@ -210,6 +242,7 @@ describe("草稿骨架与校验（P7E5/§2.3，文件级）", () => {
     } finally {
       if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
       else process.env.NODE_ENV = previousNodeEnv;
+      rmSync(root, { recursive: true, force: true });
     }
   });
 });

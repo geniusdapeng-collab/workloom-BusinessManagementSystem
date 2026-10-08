@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "workloom.agent-capabilities/v1",
+  "bundleId": "smart-home",
+  "capabilities": [
+    {
+      "id": "smart_home.repo.status",
+      "version": "1.0.0",
+      "title": "仓库运行入口",
+      "description": "仓库运行入口；仅读取固定仓库资产，不执行经营写入。",
+      "operation": "read",
+      "transport": {
+        "kind": "local",
+        "module": "bundles/smart-home/capabilities/repo.mjs",
+        "export": "repoStatus"
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "risk": "low",
+      "dataMode": "unverified",
+      "enabled": true
+    },
+    {
+      "id": "smart_home.bundle.summary",
+      "version": "1.0.0",
+      "title": "行业包与本地操作目录",
+      "description": "行业包与本地操作目录；仅读取固定仓库资产，不执行经营写入。",
+      "operation": "read",
+      "transport": {
+        "kind": "local",
+        "module": "bundles/smart-home/capabilities/repo.mjs",
+        "export": "bundleSummary"
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "risk": "low",
+      "dataMode": "unverified",
+      "enabled": true
+    },
+    {
+      "id": "smart_home.knowledge.index",
+      "version": "1.0.0",
+      "title": "官方知识来源和问答索引",
+      "description": "官方知识来源和问答索引；仅读取固定仓库资产，不执行经营写入。",
+      "operation": "read",
+      "transport": {
+        "kind": "local",
+        "module": "bundles/smart-home/capabilities/repo.mjs",
+        "export": "knowledgeIndex"
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "risk": "low",
+      "dataMode": "unverified",
+      "enabled": true
+    }
+  ]
+}

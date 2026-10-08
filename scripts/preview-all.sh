@@ -8,47 +8,40 @@
 #
 # Mock 模式强制启用：种子演示数据 + 离线确定性模型 + C 端演示直登，无需任何真实后端/密钥。
 # 用法：pnpm preview:all（Ctrl+C 一键全部停止）
-set -u
+set -eu
 cd "$(dirname "$0")/.."
 
 PC_PORT=3000; MB_PORT=3001; MC_PORT=3002; SERVER_PORT=8787
-export SERVICE_C_DEMO_AUTH=true SERVICE_C_WORKSPACE_ID=ws-aipm-demo TOOL_UNVERIFIED_RATE=0
+export SERVICE_C_DEMO_AUTH=true SERVICE_C_WORKSPACE_ID="${SERVICE_C_WORKSPACE_ID:-ws-smart-home}" TOOL_UNVERIFIED_RATE=0 LLM_PROVIDER=mock IM_DRIVER=mock
 export WEB_PORT=$PC_PORT WEBB_PORT=$MB_PORT WEBC_PORT=$MC_PORT SERVER_PORT=$SERVER_PORT
 
 say() { printf "\033[1;36m[preview:all]\033[0m %s\n" "$1"; }
 PIDS=""
 # 端口清理兼容 macOS（lsof）与 Linux（ss）：macOS 自带 bash 3.2 且无 ss。
-stop_port() {
+check_port() {
   local P=$1 PID=""
   if command -v lsof >/dev/null 2>&1; then
     PID=$(lsof -nP -iTCP:"$P" -sTCP:LISTEN -t 2>/dev/null | head -1 || true)
   elif command -v ss >/dev/null 2>&1; then
     PID=$(ss -tlnp 2>/dev/null | grep ":$P " | grep -oP 'pid=\K[0-9]+' | head -1 || true)
   fi
-  [ -n "$PID" ] && kill "$PID" 2>/dev/null && say "已停掉 :${P} 残留进程（PID=${PID}）"
+  if [ -n "$PID" ]; then
+    say ":${P} 已被 PID=${PID} 使用；请配置独立预览端口后重试。"
+    return 1
+  fi
   return 0
 }
 cleanup() { say "停止三端预览…"; for P in $PIDS; do kill "$P" 2>/dev/null; done; }
 trap cleanup EXIT INT TERM
 
 # ---------- 0. 清端口 ----------
-for P in $PC_PORT $MB_PORT $MC_PORT $SERVER_PORT 5173 5176; do stop_port "$P"; done
+for P in $PC_PORT $MB_PORT $MC_PORT $SERVER_PORT; do check_port "$P"; done
 
 # ---------- 1. 数据库 + 模拟数据固化（幂等） ----------
-if command -v docker >/dev/null 2>&1; then
-  docker start workloom-im-pg >/dev/null 2>&1 || true
-  for i in $(seq 1 15); do
-    [ "$(docker inspect -f '{{.State.Health.Status}}' workloom-im-pg 2>/dev/null)" = "healthy" ] && break
-    sleep 2
-  done
-  say "PostgreSQL：$(docker inspect -f '{{.State.Health.Status}}' workloom-im-pg 2>/dev/null || echo '未就绪') "
-fi
 say "应用数据库迁移…"
 pnpm db:migrate >/tmp/preview-all-migrate.log 2>&1 || { echo "迁移失败 → /tmp/preview-all-migrate.log"; exit 1; }
-for SEED in $(node -e "console.log(Object.keys(require('./package.json').scripts||{}).filter(s=>/^db:seed/.test(s)).join(' '))" 2>/dev/null); do
-  say "注入模拟数据：pnpm $SEED"
-  pnpm "$SEED" >>/tmp/preview-all-seed.log 2>&1 || { echo "种子失败 → /tmp/preview-all-seed.log"; exit 1; }
-done
+say "注入当前产品沙箱：pnpm db:seed"
+pnpm db:seed >/tmp/preview-all-seed.log 2>&1 || { echo "种子失败 → /tmp/preview-all-seed.log"; exit 1; }
 
 # ---------- 2. 起 server（Mock 模式） ----------
 say "启动 server :${SERVER_PORT}（Mock：离线确定性模型 + 演示直登）"
@@ -70,18 +63,15 @@ PIDS="$PIDS $!"
 
 # ---------- 4. 等待就绪 ----------
 for P in $SERVER_PORT $PC_PORT $MB_PORT $MC_PORT; do
+  READY=0
   for i in $(seq 1 30); do
-    curl -sf -o /dev/null "http://localhost:$P" 2>/dev/null && break
-    # server 根路径返回 404 属正常：以端口监听为准（macOS 用 lsof，Linux 用 ss）
     if [ "$P" = "$SERVER_PORT" ]; then
-      if command -v lsof >/dev/null 2>&1; then
-        lsof -nP -iTCP:"$P" -sTCP:LISTEN >/dev/null 2>&1 && break
-      elif command -v ss >/dev/null 2>&1; then
-        ss -tln 2>/dev/null | grep -q ":$P " && break
-      fi
+      if curl -sf -o /dev/null "http://127.0.0.1:$P/health" 2>/dev/null; then READY=1; break; fi
+    elif curl -sf -o /dev/null "http://127.0.0.1:$P" 2>/dev/null; then READY=1; break
     fi
     sleep 1
   done
+  if [ "$READY" != 1 ]; then say ":${P} 在限时内未就绪；检查预览日志。"; exit 1; fi
 done
 
 # ---------- 5. 横幅 ----------

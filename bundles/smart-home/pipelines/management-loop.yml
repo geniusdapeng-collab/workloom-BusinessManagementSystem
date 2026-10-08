@@ -1,0 +1,9 @@
+schemaVersion: "business-management.pipeline/v1"
+id: "management-loop"
+name: "董事长经营闭环"
+executor: "runtime/workflows.mjs"
+modelProvider: "host-workbench"
+steps: [{"id": "diagnose", "agent": "store-ceo", "skill": "store-diagnosis", "output": "四线数据完整率与问题诊断", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}, {"id": "plan", "agent": "store-ceo", "skill": "goal-decomposition", "output": "容量约束任务与待决清单", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}, {"id": "owner-report", "agent": "store-ceo", "skill": "owner-briefing", "output": "目标差距与证据交付", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}]
+gates: ["字段与引用校验", "用途授权", "准确内容的人类审批", "真实现场与客户证据", "只增事件与回执"]
+restart: "幂等键与任务租约，失败有界重试，过期租约回收，不重复经营计数"
+externalConnectors: "发布、投放、支付、设备控制未启用；计划与真实动作分离"

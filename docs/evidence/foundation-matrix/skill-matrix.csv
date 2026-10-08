@@ -1,0 +1,36 @@
+skill,bundle,version,fences,referenced_by,body_chars,status,SA1_doc,SA2_bundle,SA3_fences,SA4_registry,SA5_install,SA6_referenced
+acceptance-handover,smart-home,1.0.0,R-SH11 R-SH12,1,1671,pass,pass,pass,pass,pass,pass,pass
+aftercare-resolution,smart-home,1.0.0,R-SH8 R-SH9 R-SH12 R-SH13,1,1675,pass,pass,pass,pass,pass,pass,pass
+aftercare-triage,smart-home,1.0.0,R-SH2 R-SH8 R-SH9 R-SH13,1,1703,pass,pass,pass,pass,pass,pass,pass
+bom-check,smart-home,1.0.0,R-SH1 R-SH6,1,1638,pass,pass,pass,pass,pass,pass,pass
+campaign-review,smart-home,1.0.0,R-SH1 R-SH3 R-SH4 R-SH7,1,1653,pass,pass,pass,pass,pass,pass,pass
+compatibility-verification,smart-home,1.0.0,R-SH6 R-SH8,1,1731,pass,pass,pass,pass,pass,pass,pass
+consultative-sales,smart-home,1.0.0,R-SH2 R-SH7 R-SH8,1,1706,pass,pass,pass,pass,pass,pass,pass
+content-planning,smart-home,1.0.0,R-SH1 R-SH3 R-SH5,1,1736,pass,pass,pass,pass,pass,pass,pass
+contract-handoff,smart-home,1.0.0,R-SH7 R-SH11,1,1646,pass,pass,pass,pass,pass,pass,pass
+customer-consent,smart-home,1.0.0,R-SH2 R-SH4 R-SH5,1,1673,pass,pass,pass,pass,pass,pass,pass
+customer-followup,smart-home,1.0.0,R-SH2 R-SH4 R-SH13,1,1650,pass,pass,pass,pass,pass,pass,pass
+data-import-qa,smart-home,1.0.0,R-SH1 R-SH2 R-SH5,1,1681,pass,pass,pass,pass,pass,pass,pass
+experience-appointment,smart-home,1.0.0,R-SH1 R-SH2 R-SH4,1,1698,pass,pass,pass,pass,pass,pass,pass
+finance-reconcile,smart-home,1.0.0,R-SH1 R-SH7 R-SH10,1,1663,pass,pass,pass,pass,pass,pass,pass
+goal-decomposition,smart-home,1.0.0,R-SH1 R-SH14,1,1728,pass,pass,pass,pass,pass,pass,pass
+incident-learning,smart-home,1.0.0,R-SH1 R-SH2 R-SH14,1,1651,pass,pass,pass,pass,pass,pass,pass
+installation-quality,smart-home,1.0.0,R-SH8 R-SH9 R-SH11,1,1716,pass,pass,pass,pass,pass,pass,pass
+knowledge-maintenance,smart-home,1.0.0,R-SH1 R-SH5 R-SH14,1,1671,pass,pass,pass,pass,pass,pass,pass
+lead-qualification,smart-home,1.0.0,R-SH1 R-SH2 R-SH4,1,1702,pass,pass,pass,pass,pass,pass,pass
+local-search-presence,smart-home,1.0.0,R-SH1 R-SH3 R-SH5,1,1714,pass,pass,pass,pass,pass,pass,pass
+market-intelligence,smart-home,1.0.0,R-SH1 R-SH3,1,1695,pass,pass,pass,pass,pass,pass,pass
+network-planning,smart-home,1.0.0,R-SH6 R-SH8,1,1663,pass,pass,pass,pass,pass,pass,pass
+owner-briefing,smart-home,1.0.0,R-SH1 R-SH14,1,1658,pass,pass,pass,pass,pass,pass,pass
+partner-channel,smart-home,1.0.0,R-SH2 R-SH4 R-SH7 R-SH10,1,1652,pass,pass,pass,pass,pass,pass,pass
+procurement-inventory,smart-home,1.0.0,R-SH10 R-SH11,1,1664,pass,pass,pass,pass,pass,pass,pass
+project-scheduling,smart-home,1.0.0,R-SH8 R-SH11,1,1673,pass,pass,pass,pass,pass,pass,pass
+quote-margin-control,smart-home,1.0.0,R-SH7 R-SH10,1,1706,pass,pass,pass,pass,pass,pass,pass
+referral-retention,smart-home,1.0.0,R-SH2 R-SH4 R-SH7,1,1654,pass,pass,pass,pass,pass,pass,pass
+scene-commissioning,smart-home,1.0.0,R-SH6 R-SH8 R-SH9 R-SH11,1,1710,pass,pass,pass,pass,pass,pass,pass
+short-video-production,smart-home,1.0.0,R-SH1 R-SH3 R-SH5,1,1711,pass,pass,pass,pass,pass,pass,pass
+site-survey,smart-home,1.0.0,R-SH6 R-SH8 R-SH9,1,1691,pass,pass,pass,pass,pass,pass,pass
+social-publishing,smart-home,1.0.0,R-SH3 R-SH4 R-SH5,1,1727,pass,pass,pass,pass,pass,pass,pass
+solution-design,smart-home,1.0.0,R-SH1 R-SH6 R-SH8,1,1734,pass,pass,pass,pass,pass,pass,pass
+store-demo-health,smart-home,1.0.0,R-SH6 R-SH8,1,1633,pass,pass,pass,pass,pass,pass,pass
+store-diagnosis,smart-home,1.0.0,R-SH1 R-SH14,1,1742,pass,pass,pass,pass,pass,pass,pass

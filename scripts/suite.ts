@@ -4,7 +4,7 @@
  * 设计：~290 条场景用例逐条执行，覆盖三模式意图路由 / 安全网关 / 围栏判定 /
  *      事件库与检索 / 审批流 / IM 多通道 / 夜班 / 技能 / 记忆 / 巡检 /
  *      模型路由 / desktop 高危与多模态 / 注入边界 / 并发压测 / HTTP E2E 权限矩阵。
- * 用法：pnpm suite（要求 .env 就位、PG 已迁移+种子；套件自带 spawn server 跑 E2E 段）
+ * 用法：pnpm suite（要求显式 owner URL、PG 已迁移并播种酒店兼容夹具；套件自带 HTTP E2E）
  * 口径：用例数据统一带套件前缀（SFX），配置类基线（agents/fence_rules/profiles）
  *      复用种子，业务数据不依赖种子行、不跨用例污染；失败不中断，末尾汇总报告。
  */
@@ -49,8 +49,13 @@ import { assertGovernanceFixtureContract } from "./suite-fixture-preflight.js";
 const SFX = `st${Date.now().toString(36)}`;
 const APP_URL = process.env.DATABASE_APP_URL ?? "postgres://workloom_app:workloom_dev_app@localhost:5432/workloom";
 const GW_URL = process.env.DATABASE_GATEWAY_URL ?? "postgres://workloom_gateway:workloom_dev_gateway@localhost:5432/workloom";
+const OWNER_URL = process.env.DATABASE_OWNER_URL ?? process.env.DATABASE_URL;
+if (!OWNER_URL) {
+  throw new Error("pnpm suite 需要显式 DATABASE_OWNER_URL 或 DATABASE_URL；全局技能吊销禁止使用应用连接");
+}
 const app = new pg.Pool({ connectionString: APP_URL, max: 40 });
 const gw = new pg.Pool({ connectionString: GW_URL, max: 25 });
+const ownerPool = new pg.Pool({ connectionString: OWNER_URL, max: 2 });
 const scope = { tenantId: "tenant-demo", workspaceId: "ws-yunqi" };
 const hotelRecallLexicon: NlTranslatorLexicon = {
   objects: [
@@ -126,7 +131,7 @@ async function assertGovernanceFixtureReady(): Promise<void> {
     [scope.workspaceId],
   );
   const raw = row.rows[0]?.archive?.charter;
-  const repair = "请先对当前 DATABASE_URL 执行 pnpm db:migrate && pnpm db:seed";
+  const repair = "请先对隔离的酒店兼容测试数据库执行 pnpm db:migrate && pnpm db:seed:hotel-compat";
   assertGovernanceFixtureContract(raw, {
     mode: "trial",
     ranges: { "price-change-ratio": { lower: 0.85, anchor: 1, upper: 1.15 } },
@@ -1340,7 +1345,7 @@ h("D15-④ 吊销：吊销技能禁止新安装（kill switch）", async () => {
   const { revokeSkill, installSkill } = await import("@workloom/base/skills");
   const skillId = `skill-t-ws-yunqi-rev-${SFX}`;
   await qApp(`INSERT INTO skills (id, level, bundle, name, version, description, fence_bindings, body, desensitized) VALUES ($1,'official','workloom-hotel','吊销测试','1.0.0','d','[]','b',true)`, [skillId]);
-  await revokeSkill(app, gw, scope, { skillId, reason: "发现恶意行为", by: "MEM-001" });
+  await revokeSkill(ownerPool, gw, scope, { skillId, reason: "发现恶意行为", by: "MEM-001" });
   let threw = false;
   try { await installSkill(app, gw, scope, { skillId, by: "MEM-001" }); } catch (err) { threw = String((err as Error).message).includes("吊销"); }
   assert(threw, "吊销后安装必拒");
@@ -1369,7 +1374,7 @@ h("D15-④ 吊销：装配围栏并集排除吊销技能", async () => {
     const ag = await qApp<{ id: string }>(`SELECT id FROM agents WHERE workspace_id=$1 AND preset_key='pricing-agent'`, [scope.workspaceId]);
     const before = await resolveAgentFenceBindings(app, scope, ag.rows[0]!.id);
     assert(before.includes(SENTINEL_RULE), "吊销前并入");
-    await revokeSkill(app, gw, scope, { skillId, reason: "测试吊销", by: "MEM-001" });
+    await revokeSkill(ownerPool, gw, scope, { skillId, reason: "测试吊销", by: "MEM-001" });
     const after = await resolveAgentFenceBindings(app, scope, ag.rows[0]!.id);
     assert(!after.includes(SENTINEL_RULE), "吊销后并集收缩");
   } finally {
@@ -1383,8 +1388,8 @@ h("D15-④ 吊销：重复吊销幂等", async () => {
   const { revokeSkill } = await import("@workloom/base/skills");
   const skillId = `skill-t-ws-yunqi-rev2-${SFX}`;
   await qApp(`INSERT INTO skills (id, level, bundle, name, version, description, fence_bindings, body, desensitized) VALUES ($1,'official','workloom-hotel','重复吊销','1.0.0','d','[]','b',true)`, [skillId]);
-  const r1 = await revokeSkill(app, gw, scope, { skillId, reason: "第一次", by: "MEM-001" });
-  const r2 = await revokeSkill(app, gw, scope, { skillId, reason: "第二次", by: "MEM-001" });
+  const r1 = await revokeSkill(ownerPool, gw, scope, { skillId, reason: "第一次", by: "MEM-001" });
+  const r2 = await revokeSkill(ownerPool, gw, scope, { skillId, reason: "第二次", by: "MEM-001" });
   eq(r1.deduped, false, "首次生效");
   eq(r2.deduped, true, "重复幂等");
 });
@@ -3609,10 +3614,9 @@ h2("融合·LLM 降级链：死端配置被拒 → mock 兜底应答不断链", 
 
 /* ================= 主流程 ================= */
 
-await assertGovernanceFixtureReady().catch(async (err) => {
-  await Promise.allSettled([app.end(), gw.end()]);
-  throw err;
-});
+let suiteExitCode = 0;
+try {
+await assertGovernanceFixtureReady();
 
 /* ================= Z 域 · 二次修复不变量（号源 / 知识库优先级 / 高危判据） =================
  *
@@ -3629,9 +3633,7 @@ const z = C("Z");
  * 否则换仓即因外键失败，用例就成了"只在基座成立"的假绿（panda 实测：threads_workspace_id_fkey）。
  */
 const zScope = await (async () => {
-  const ownerUrl = process.env.DATABASE_URL;
-  if (!ownerUrl) return scope;
-  const client = new pg.Client({ connectionString: ownerUrl });
+  const client = new pg.Client({ connectionString: OWNER_URL });
   await client.connect();
   try {
     // 必须用 owner 连接：RLS 下 suite 自己的 scope（多为 ws-yunqi）在本仓可能根本不存在
@@ -3832,9 +3834,7 @@ z("缺参写步骤：围栏求值异常必须降级人工裁决，不得假熔�
   const probeRuleId = `Z-PROBE-ARITH-${SFX}`;
   const probeObject = "z_probe_room_price";
   const probeAction = "z_probe_write";
-  const ownerUrl = process.env.DATABASE_URL;
-  assert(ownerUrl, "Z 域需要 DATABASE_URL（owner 连接）注入探针规则");
-  const owner = new pg.Client({ connectionString: ownerUrl });
+  const owner = new pg.Client({ connectionString: OWNER_URL });
   await owner.connect();
   let tid = "";
   try {
@@ -3985,6 +3985,12 @@ if (failures.length > 0) {
   console.log("失败清单：");
   for (const f of failures) console.log(`  ✗ ${f.id} ${f.name}\n    ${f.error}`);
 }
-await app.end();
-await gw.end();
-process.exit(failures.length > 0 ? 1 : 0);
+suiteExitCode = failures.length > 0 ? 1 : 0;
+} finally {
+  const closed = await Promise.allSettled([app.end(), gw.end(), ownerPool.end()]);
+  const closeErrors = closed.flatMap((result) => result.status === "rejected" ? [result.reason] : []);
+  if (closeErrors.length > 0) {
+    throw new AggregateError(closeErrors, "测试套件连接池关闭失败");
+  }
+}
+process.exit(suiteExitCode);

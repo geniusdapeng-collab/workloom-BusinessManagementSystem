@@ -1,0 +1,1610 @@
+{
+ "summary": {
+  "generatedAt": "2026-10-08T17:58:48.851Z",
+  "spec": "docs/REAL-DEVICE-ACCEPTANCE-SPEC.md@rdas/v1",
+  "primaryBundle": "smart-home",
+  "bundles": [
+   "smart-home"
+  ],
+  "compositionSource": "local-fallback（该仓无组合 API，按依赖顺序本地组合；证据等级 B）",
+  "compositionWarnings": [],
+  "workspaceId": "ws-smart-home",
+  "profileWarnings": [],
+  "runtimeConnected": true,
+  "runtimeError": null,
+  "counts": {
+   "agents": 20,
+   "agentsPass": 20,
+   "skills": 35,
+   "skillsPass": 35,
+   "warnings": 0,
+   "fenceRulesMerged": 16,
+   "fenceRulesActiveInWorkspace": 16,
+   "shadowedPresets": 0,
+   "perBundle": {
+    "smart-home": 20
+   }
+  },
+  "capabilityLayer": {
+   "status": "not-run",
+   "reason": "L8 能力层需要真实模型 + 专业场景评分卡；本脚本只覆盖 L0 契约层与 L1 运行层。"
+  },
+  "failures": {
+   "agents": [],
+   "skills": []
+  },
+  "warnings": {
+   "agents": [],
+   "skills": []
+  }
+ },
+ "rows": [
+  {
+   "skill": "acceptance-handover",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH11",
+    "R-SH12"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "acceptance-auditor"
+   ],
+   "body_chars": 1671,
+   "description_chars": 38,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 38 字 / 正文 1671 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH11,R-SH12；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-acceptance-handover level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH11,R-SH12 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：acceptance-auditor"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "aftercare-resolution",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH8",
+    "R-SH9",
+    "R-SH12",
+    "R-SH13"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "aftercare-specialist"
+   ],
+   "body_chars": 1675,
+   "description_chars": 37,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 37 字 / 正文 1675 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH8,R-SH9,R-SH12,R-SH13；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-aftercare-resolution level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH8,R-SH9,R-SH12,R-SH13 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：aftercare-specialist"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "aftercare-triage",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH2",
+    "R-SH8",
+    "R-SH9",
+    "R-SH13"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "aftercare-specialist"
+   ],
+   "body_chars": 1703,
+   "description_chars": 39,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 39 字 / 正文 1703 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH2,R-SH8,R-SH9,R-SH13；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-aftercare-triage level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH2,R-SH8,R-SH9,R-SH13 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：aftercare-specialist"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "bom-check",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH6"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "solution-designer"
+   ],
+   "body_chars": 1638,
+   "description_chars": 41,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 41 字 / 正文 1638 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH6；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-bom-check level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH6 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：solution-designer"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "campaign-review",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH4",
+    "R-SH7"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "growth-director"
+   ],
+   "body_chars": 1653,
+   "description_chars": 39,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 39 字 / 正文 1653 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH3,R-SH4,R-SH7；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-campaign-review level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH3,R-SH4,R-SH7 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：growth-director"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "compatibility-verification",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH6",
+    "R-SH8"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "compatibility-engineer"
+   ],
+   "body_chars": 1731,
+   "description_chars": 36,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 36 字 / 正文 1731 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH6,R-SH8；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-compatibility-verification level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH6,R-SH8 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：compatibility-engineer"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "consultative-sales",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH2",
+    "R-SH7",
+    "R-SH8"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "sales-consultant"
+   ],
+   "body_chars": 1706,
+   "description_chars": 40,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 40 字 / 正文 1706 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH2,R-SH7,R-SH8；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-consultative-sales level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH2,R-SH7,R-SH8 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：sales-consultant"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "content-planning",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH5"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "content-strategist"
+   ],
+   "body_chars": 1736,
+   "description_chars": 35,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 35 字 / 正文 1736 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH3,R-SH5；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-content-planning level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH3,R-SH5 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：content-strategist"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "contract-handoff",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH7",
+    "R-SH11"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "quote-controller"
+   ],
+   "body_chars": 1646,
+   "description_chars": 32,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 32 字 / 正文 1646 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH7,R-SH11；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-contract-handoff level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH7,R-SH11 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：quote-controller"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "customer-consent",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH2",
+    "R-SH4",
+    "R-SH5"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "lead-concierge"
+   ],
+   "body_chars": 1673,
+   "description_chars": 40,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 40 字 / 正文 1673 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH2,R-SH4,R-SH5；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-customer-consent level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH2,R-SH4,R-SH5 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：lead-concierge"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "customer-followup",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH2",
+    "R-SH4",
+    "R-SH13"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "aftercare-specialist"
+   ],
+   "body_chars": 1650,
+   "description_chars": 30,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 30 字 / 正文 1650 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH2,R-SH4,R-SH13；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-customer-followup level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH2,R-SH4,R-SH13 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：aftercare-specialist"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "data-import-qa",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH2",
+    "R-SH5"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "knowledge-steward"
+   ],
+   "body_chars": 1681,
+   "description_chars": 42,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 42 字 / 正文 1681 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH2,R-SH5；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-data-import-qa level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH2,R-SH5 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：knowledge-steward"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "experience-appointment",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH2",
+    "R-SH4"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "sales-consultant"
+   ],
+   "body_chars": 1698,
+   "description_chars": 37,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 37 字 / 正文 1698 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH2,R-SH4；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-experience-appointment level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH2,R-SH4 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：sales-consultant"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "finance-reconcile",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH7",
+    "R-SH10"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "finance-controller"
+   ],
+   "body_chars": 1663,
+   "description_chars": 35,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 35 字 / 正文 1663 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH7,R-SH10；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-finance-reconcile level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH7,R-SH10 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：finance-controller"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "goal-decomposition",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH14"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "store-ceo"
+   ],
+   "body_chars": 1728,
+   "description_chars": 35,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 35 字 / 正文 1728 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH14；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-goal-decomposition level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH14 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：store-ceo"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "incident-learning",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH2",
+    "R-SH14"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "knowledge-steward"
+   ],
+   "body_chars": 1651,
+   "description_chars": 36,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 36 字 / 正文 1651 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH2,R-SH14；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-incident-learning level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH2,R-SH14 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：knowledge-steward"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "installation-quality",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH8",
+    "R-SH9",
+    "R-SH11"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "installation-supervisor"
+   ],
+   "body_chars": 1716,
+   "description_chars": 33,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 33 字 / 正文 1716 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH8,R-SH9,R-SH11；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-installation-quality level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH8,R-SH9,R-SH11 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：installation-supervisor"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "knowledge-maintenance",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH5",
+    "R-SH14"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "knowledge-steward"
+   ],
+   "body_chars": 1671,
+   "description_chars": 40,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 40 字 / 正文 1671 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH5,R-SH14；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-knowledge-maintenance level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH5,R-SH14 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：knowledge-steward"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "lead-qualification",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH2",
+    "R-SH4"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "lead-concierge"
+   ],
+   "body_chars": 1702,
+   "description_chars": 41,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 41 字 / 正文 1702 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH2,R-SH4；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-lead-qualification level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH2,R-SH4 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：lead-concierge"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "local-search-presence",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH5"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "market-researcher"
+   ],
+   "body_chars": 1714,
+   "description_chars": 43,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 43 字 / 正文 1714 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH3,R-SH5；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-local-search-presence level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH3,R-SH5 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：market-researcher"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "market-intelligence",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH3"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "market-researcher"
+   ],
+   "body_chars": 1695,
+   "description_chars": 34,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 34 字 / 正文 1695 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH3；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-market-intelligence level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH3 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：market-researcher"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "network-planning",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH6",
+    "R-SH8"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "survey-engineer"
+   ],
+   "body_chars": 1663,
+   "description_chars": 36,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 36 字 / 正文 1663 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH6,R-SH8；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-network-planning level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH6,R-SH8 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：survey-engineer"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "owner-briefing",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH14"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "store-ceo"
+   ],
+   "body_chars": 1658,
+   "description_chars": 29,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 29 字 / 正文 1658 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH14；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-owner-briefing level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH14 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：store-ceo"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "partner-channel",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH2",
+    "R-SH4",
+    "R-SH7",
+    "R-SH10"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "growth-director"
+   ],
+   "body_chars": 1652,
+   "description_chars": 35,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 35 字 / 正文 1652 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH2,R-SH4,R-SH7,R-SH10；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-partner-channel level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH2,R-SH4,R-SH7,R-SH10 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：growth-director"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "procurement-inventory",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH10",
+    "R-SH11"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "procurement-controller"
+   ],
+   "body_chars": 1664,
+   "description_chars": 35,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 35 字 / 正文 1664 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH10,R-SH11；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-procurement-inventory level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH10,R-SH11 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：procurement-controller"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "project-scheduling",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH8",
+    "R-SH11"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "project-manager"
+   ],
+   "body_chars": 1673,
+   "description_chars": 36,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 36 字 / 正文 1673 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH8,R-SH11；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-project-scheduling level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH8,R-SH11 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：project-manager"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "quote-margin-control",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH7",
+    "R-SH10"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "quote-controller"
+   ],
+   "body_chars": 1706,
+   "description_chars": 36,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 36 字 / 正文 1706 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH7,R-SH10；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-quote-margin-control level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH7,R-SH10 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：quote-controller"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "referral-retention",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH2",
+    "R-SH4",
+    "R-SH7"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "sales-consultant"
+   ],
+   "body_chars": 1654,
+   "description_chars": 37,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 37 字 / 正文 1654 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH2,R-SH4,R-SH7；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-referral-retention level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH2,R-SH4,R-SH7 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：sales-consultant"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "scene-commissioning",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH6",
+    "R-SH8",
+    "R-SH9",
+    "R-SH11"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "commissioning-engineer"
+   ],
+   "body_chars": 1710,
+   "description_chars": 38,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 38 字 / 正文 1710 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH6,R-SH8,R-SH9,R-SH11；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-scene-commissioning level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH6,R-SH8,R-SH9,R-SH11 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：commissioning-engineer"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "short-video-production",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH3",
+    "R-SH5"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "video-producer"
+   ],
+   "body_chars": 1711,
+   "description_chars": 36,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 36 字 / 正文 1711 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH3,R-SH5；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-short-video-production level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH3,R-SH5 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：video-producer"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "site-survey",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH6",
+    "R-SH8",
+    "R-SH9"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "survey-engineer"
+   ],
+   "body_chars": 1691,
+   "description_chars": 36,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 36 字 / 正文 1691 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH6,R-SH8,R-SH9；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-site-survey level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH6,R-SH8,R-SH9 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：survey-engineer"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "social-publishing",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH3",
+    "R-SH4",
+    "R-SH5"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "social-publisher"
+   ],
+   "body_chars": 1727,
+   "description_chars": 34,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 34 字 / 正文 1727 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH3,R-SH4,R-SH5；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-social-publishing level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH3,R-SH4,R-SH5 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：social-publisher"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "solution-design",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH6",
+    "R-SH8"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "solution-designer"
+   ],
+   "body_chars": 1734,
+   "description_chars": 43,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 43 字 / 正文 1734 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH6,R-SH8；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-solution-design level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH6,R-SH8 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：solution-designer"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "store-demo-health",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH6",
+    "R-SH8"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "compatibility-engineer"
+   ],
+   "body_chars": 1633,
+   "description_chars": 32,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 32 字 / 正文 1633 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH6,R-SH8；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-store-demo-health level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH6,R-SH8 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：compatibility-engineer"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  },
+  {
+   "skill": "store-diagnosis",
+   "bundle": "smart-home",
+   "version": "1.0.0",
+   "fences": [
+    "R-SH1",
+    "R-SH14"
+   ],
+   "doc_declared_fences": [],
+   "referenced_by": [
+    "store-ceo"
+   ],
+   "body_chars": 1742,
+   "description_chars": 32,
+   "checks": {
+    "SA1_doc": {
+     "ok": true,
+     "detail": "description 32 字 / 正文 1742 字"
+    },
+    "SA2_bundle": {
+     "ok": true,
+     "detail": "目录包=smart-home / 注册表包=smart-home"
+    },
+    "SA3_fences": {
+     "ok": true,
+     "detail": "绑定=R-SH1,R-SH14；显式声明=无；正文提及=无"
+    },
+    "SA4_registry": {
+     "ok": true,
+     "detail": "注册表 id=skill-smart-home-store-diagnosis level=industry version=1.0.0"
+    },
+    "SA5_install": {
+     "ok": true,
+     "detail": "安装快照=R-SH1,R-SH14 / 版本 1.0.0（与注册表一致）"
+    },
+    "SA6_referenced": {
+     "ok": true,
+     "detail": "被 1 个岗位引用：store-ceo"
+    }
+   },
+   "failures": [],
+   "warnings": [],
+   "status": "pass"
+  }
+ ]
+}

@@ -17,6 +17,12 @@
         pnpm config set store-dir /cnb-cache/pnpm-store
         pnpm install --frozen-lockfile
 
+    - name: 全屋智能经营引擎与工作台边界
+      script: |
+        set -eu
+        pnpm test:business
+        pnpm exec tsx --test bundles/smart-home/assets.test.mts
+
     - name: 协议门禁（提交规范 + 并发冲突）
       script: |
         set -eu
@@ -139,6 +145,9 @@
         done < .env
         set +a
         pnpm db:migrate
+        BMS_PG_TEST_URL="$DATABASE_URL" node --test scripts/business-management-postgres.test.mjs
+        BMS_PG_TEST_URL="$DATABASE_URL" node --test scripts/acceptance/matrix.pg.test.mjs
+        BMS_PG_TEST_URL="$DATABASE_URL" pnpm exec vitest run scripts/seed-smart-home.pg.test.ts apps/server/src/trpc/fence-proposal.pg.test.ts packages/base/bundles/assembly-safety.test.ts packages/base/captain/ceo-actor.test.ts
         pnpm db:seed
         pnpm db:seed
         pnpm db:verify-chain

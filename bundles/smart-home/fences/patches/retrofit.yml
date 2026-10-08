@@ -1,0 +1,4 @@
+version: "smart-home-patch-retrofit/v1"
+applies_to: "retrofit"
+base: "smart-home-baseline/v1"
+patches: [{"rule_id": "R-SH9", "tighten": {"when": "true"}, "note": "已入住改造禁止模型设备控制与施工，所有现场行为由授权专业人员执行。"}]

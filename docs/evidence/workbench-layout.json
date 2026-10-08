@@ -1,0 +1,91 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "page": "overview",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "page": "growth",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "page": "delivery",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "page": "aftercare",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "page": "approvals",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "page": "team",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "page": "records",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "page": "overview",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "page": "growth",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "page": "delivery",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "page": "aftercare",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "page": "approvals",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "page": "team",
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "page": "records",
+      "overflow": false,
+      "errors": []
+    }
+  ],
+  "result": "passed",
+  "browser": "Google Chrome",
+  "testedAt": "2026-10-08T17:46:48.272Z"
+}

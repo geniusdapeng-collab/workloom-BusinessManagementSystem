@@ -1,0 +1,85 @@
+{
+  "scope": "Disposable loopback PostgreSQL; wrapper-level administrative revocation regressions",
+  "testedAt": "2026-10-08T17:05:44.813Z",
+  "evidenceLevel": "A",
+  "cases": [
+    {
+      "name": "Empty revocation reason is rejected before state change",
+      "precondition": "Fresh migrated disposable database with one tenant and workspace",
+      "steps": [
+        "Call revokeSkill with an empty reason"
+      ],
+      "expected": "EMPTY_REASON; zero revocation rows and events",
+      "actual": "pass",
+      "durationMs": 1
+    },
+    {
+      "name": "workloom_app cannot pass as administrative owner",
+      "precondition": "Fresh migrated disposable database with one tenant and workspace",
+      "steps": [
+        "Call revokeSkill with workloom_app pool and forged owner attribution"
+      ],
+      "expected": "OWNER_CHANNEL_REQUIRED; no revocation or audit event",
+      "actual": "pass",
+      "durationMs": 2
+    },
+    {
+      "name": "workloom_gateway cannot pass as administrative owner",
+      "precondition": "Fresh migrated disposable database with one tenant and workspace",
+      "steps": [
+        "Call revokeSkill with workloom_gateway pool and forged owner attribution"
+      ],
+      "expected": "OWNER_CHANNEL_REQUIRED; no revocation or audit event",
+      "actual": "pass",
+      "durationMs": 2
+    },
+    {
+      "name": "Explicit owner pool atomically commits revocation and audit event",
+      "precondition": "Fresh migrated disposable database with one tenant and workspace",
+      "steps": [
+        "Call revokeSkill with administrative pool",
+        "Read committed revocation and event",
+        "Recompute event hash"
+      ],
+      "expected": "First result deduped=false; exactly one row and one consistent event",
+      "actual": "pass",
+      "durationMs": 5
+    },
+    {
+      "name": "Repeat owner revocation preserves first attribution and emits no duplicate",
+      "precondition": "Fresh migrated disposable database with one tenant and workspace",
+      "steps": [
+        "Revoke the same skill with another reason and actor",
+        "Read original row and event count"
+      ],
+      "expected": "deduped=true; first reason and actor retained; one event",
+      "actual": "pass",
+      "durationMs": 1
+    },
+    {
+      "name": "Twenty owner calls racing for one skill commit once",
+      "precondition": "Fresh migrated disposable database with one tenant and workspace",
+      "steps": [
+        "Run 20 concurrent revokeSkill calls",
+        "Count first-write results and committed events"
+      ],
+      "expected": "Exactly one deduped=false; one revocation; one event",
+      "actual": "pass",
+      "durationMs": 6
+    },
+    {
+      "name": "Audit-event validation failure rolls back the revocation",
+      "precondition": "Fresh migrated disposable database with one tenant and workspace",
+      "steps": [
+        "Call revokeSkill with empty actor attribution to fail business-event schema",
+        "Read revocation and event tables"
+      ],
+      "expected": "Call rejects; zero revocation rows and events",
+      "actual": "pass",
+      "durationMs": 1
+    }
+  ],
+  "pass": 7,
+  "fail": 0,
+  "databaseRemoved": true
+}

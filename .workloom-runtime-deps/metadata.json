@@ -1,9 +1,9 @@
 {
   "schemaVersion": "workloom.runtime-deps/v1",
   "product": {
-    "productId": "workloom-hotel",
+    "productId": "business-management-system",
     "role": "industry",
-    "repository": "workloom-ai/workloom-hotel",
+    "repository": "workloom-ai/workloom-BusinessManagementSystem",
     "includePlatformOps": false
   },
   "npmVersion": "11.17.0",
@@ -32,7 +32,7 @@
     },
     {
       "path": "package.json",
-      "sha256": "e9f3dd577cfd9cd84f7434b5047fefdd9336e5ebf5c48bbe489a53447cebffcf"
+      "sha256": "3dd07dda5da76a79b1622a47d135536508929024bfb71b0899b7feb3cb128822"
     },
     {
       "path": "packages/audit-engine/package.json",
@@ -64,7 +64,7 @@
     },
     {
       "path": "product.manifest.json",
-      "sha256": "4535f5d12028067a9f37c69d8480a85ee7b1cf47e84a7028e136b474e3eb7c7a"
+      "sha256": "54af6a767b35020a55de2b47b3d63ee369307ceaff2f7f886828d3082e59dcf5"
     },
     {
       "path": "scripts/pack-nm-merge.mjs",
@@ -84,5 +84,5 @@
     }
   ],
   "manifestSha256": "e0340ff5a9ac4cb175dfe90c7af0507a3ff10bd9e77e0bd5e7ebc72443180502",
-  "packageLockSha256": "fa0a7197b91460144d85ebe291b3af094aaf0e449b88d152bce2ab5bf4031b5c"
+  "packageLockSha256": "f29564c9f05d806e83938de53759578adc0afb3bc00ae0f9afcbe1dda8f40198"
 }

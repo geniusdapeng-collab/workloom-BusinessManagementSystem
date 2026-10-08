@@ -1,0 +1,9 @@
+schemaVersion: "business-management.pipeline/v1"
+id: "aftercare-loop"
+name: "售后响应到回访闭环"
+executor: "runtime/workflows.mjs"
+modelProvider: "host-workbench"
+steps: [{"id": "triage", "agent": "aftercare-specialist", "skill": "aftercare-triage", "output": "安全隐私分级与工单", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}, {"id": "resolution-plan", "agent": "aftercare-specialist", "skill": "aftercare-resolution", "output": "有前置条件的排查与恢复方案", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}, {"id": "owner-report", "agent": "store-ceo", "skill": "owner-briefing", "output": "真实服务证据、客户确认与回访计划汇报", "required": ["tenantId", "workspaceId", "goalId"], "onFailure": "visible-bounded-retry"}]
+gates: ["字段与引用校验", "用途授权", "准确内容的人类审批", "真实现场与客户证据", "只增事件与回执"]
+restart: "幂等键与任务租约，失败有界重试，过期租约回收，不重复经营计数"
+externalConnectors: "发布、投放、支付、设备控制未启用；计划与真实动作分离"

@@ -77,7 +77,21 @@ describe("服务前台行业适配器契约", () => {
   });
 
   it("受控注册表不包含通用默认适配器", () => {
-    expect(registeredBusinessAdapterIds()).toEqual(["hotel.service-front-v1"]);
+    expect(registeredBusinessAdapterIds()).toEqual(["hotel.service-front-v1", "smart-home.service-front-v1"]);
+  });
+
+  it("全屋智能仅由自身活动装配启用，其他行业不能伪造选择", () => {
+    expect(bindBusinessAdapter({
+      workspaceBundleId: "smart-home",
+      activeInstalls: [{ id: "bi-smart-home", bundleId: "smart-home" }],
+    })).toMatchObject({ state: "ready", adapter: { id: "smart-home.service-front-v1" } });
+    expect(bindBusinessAdapter({
+      workspaceBundleId: "hotel",
+      activeInstalls: [{ id: "bi-hotel", bundleId: "hotel" }],
+    }, () => projectionAs("hotel", {
+      ...hotelProjection.ui.serviceFront,
+      adapterId: "smart-home.service-front-v1",
+    }))).toMatchObject({ state: "adapter-untrusted", adapter: null });
   });
 
   it("其他 Bundle 即使伪造酒店 adapterId，也无权选择酒店实现", () => {

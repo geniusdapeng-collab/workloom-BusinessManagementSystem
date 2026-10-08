@@ -1,75 +1,75 @@
 {
-  "workspaceKey": "hotel-demo",
-  "brandName": "云栖酒店",
-  "agentName": "小栖",
-  "logoText": "栖",
+  "workspaceKey": "smart-home-demo",
+  "brandName": "全屋智能经营演练门店",
+  "agentName": "智能方案顾问",
+  "logoText": "智",
   "theme": {
-    "primary": "#8A5A00",
-    "secondary": "#00647A"
+    "primary": "#126F64",
+    "secondary": "#18537B"
   },
-  "welcomeText": "您好，欢迎来到{brand}。我是智能服务前台{agent}，可以帮您查订单、叫送物、报维修，也可以解答酒店服务问题。",
+  "welcomeText": "您好，欢迎来到{brand}。我是{agent}，可以解释全屋智能方案、登记体验与勘测意向、接收售后问题。具体价格、服务地域与时间以门店人工确认的方案为准。",
   "quickReplies": [
     {
-      "label": "查订单",
-      "sendText": "帮我查一下我的订单"
-    },
-    {
-      "label": "送物服务",
+      "label": "体验预约",
       "serviceKind": "delivery"
     },
     {
-      "label": "维修报修",
+      "label": "方案咨询",
+      "sendText": "我想了解全屋智能方案，准备咨询装修阶段和设备兼容。"
+    },
+    {
+      "label": "售后报修",
       "serviceKind": "repair"
     },
     {
       "label": "常见问题",
-      "sendText": "早餐几点开始？停车和退房怎么安排？"
+      "sendText": "精装改造需要先看哪些现场条件，跨品牌设备怎样核验功能兼容？"
     }
   ],
   "serviceEntries": [
     {
       "kind": "delivery",
-      "title": "送物服务",
-      "desc": "毛巾、水、牙具等送到房间",
-      "icon": "送",
-      "sla": "约 15 分钟内送达",
-      "titlePlaceholder": "例如：补充两瓶矿泉水"
+      "title": "体验与勘测意向",
+      "desc": "登记需求、装修阶段与可选时间，门店再确认安排",
+      "icon": "约",
+      "sla": "响应时间由门店确认",
+      "titlePlaceholder": "填写希望体验的场景与可选时间"
     },
     {
       "kind": "repair",
-      "title": "维修报修",
-      "desc": "设施故障一键报修",
+      "title": "设备与场景报修",
+      "desc": "说明故障现象，安全问题转专业人员",
       "icon": "修",
-      "sla": "约 30 分钟内上门",
-      "titlePlaceholder": "例如：空调制冷效果差"
+      "sla": "以门店服务协议和人工确认时限为准",
+      "titlePlaceholder": "填写设备、出现时间与故障现象"
     },
     {
       "kind": "complaint",
-      "title": "投诉建议",
-      "desc": "您的意见让我们更好",
+      "title": "服务意见",
+      "desc": "反馈报价、施工、培训与服务问题",
       "icon": "诉",
-      "sla": "值班经理 2 小时内回复",
-      "titlePlaceholder": "请描述您的意见"
+      "sla": "负责人核对后确认处理计划",
+      "titlePlaceholder": "填写问题、期望处理方式与可用证据"
     },
     {
       "kind": "other",
-      "title": "其他需求",
-      "desc": "更多个性化服务",
-      "icon": "他",
-      "sla": "服务专员 30 分钟内响应",
-      "titlePlaceholder": "请描述您的需求"
+      "title": "方案咨询",
+      "desc": "咨询预算、设备适配与分期实施",
+      "icon": "问",
+      "sla": "方案顾问核对需求后答复",
+      "titlePlaceholder": "填写服务区域、装修阶段与核心需求"
     }
   ],
   "profile": {
-    "identityBinding": true,
-    "membership": true,
-    "orders": true,
+    "identityBinding": false,
+    "membership": false,
+    "orders": false,
     "labels": {
-      "identity": "住客身份",
-      "membership": "住客权益",
-      "points": "会员积分",
-      "orders": "近期订单",
-      "emptyOrders": "暂无酒店订单"
+      "identity": "会话来源",
+      "membership": "服务范围",
+      "points": "使用资料",
+      "orders": "项目资料",
+      "emptyOrders": "本前台尚未开放私有项目查询"
     }
   },
   "enableTabs": [
@@ -79,39 +79,29 @@
     "messages",
     "me"
   ],
-  "supportPhone": "400-800-1234",
-  "demoHistory": [
-    {
-      "role": "user",
-      "text": "我订的房含早餐吗？航班比较晚，想延迟退房到下午两点。"
-    },
-    {
-      "role": "ai",
-      "text": "您预订的高级大床房含双早。延迟退房申请已进入确认流程，确认后会在这里显示结果。"
-    }
-  ],
+  "demoHistory": [],
+  "supportPhone": "",
   "safeTerms": [
-    "OCC",
-    "ADR",
-    "RevPAR",
+    "AI",
+    "Matter",
+    "Thread",
+    "Zigbee",
     "WiFi",
-    "PMS",
-    "OTA",
-    "SOP",
+    "SKU",
+    "BOM",
     "SLA",
-    "SPA",
-    "FAQ",
-    "Yunqi-Hotel",
-    "MQL",
-    "CPL",
     "ROI",
-    "OKR"
+    "GEO",
+    "MCP",
+    "Codex",
+    "WorkBuddy",
+    "Aqara"
   ],
   "projection": {
-    "bundleId": "hotel",
-    "bundleVersion": "3.3.0",
+    "bundleId": "smart-home",
+    "bundleVersion": "1.0.0",
     "contractVersion": "2.0.0",
-    "uiVersion": "0.1.14",
-    "manifestDigest": "c63bb5fbe8836c500af929406c6ef3ffd48d6536e8b676ff0b73c60e62204992"
+    "uiVersion": "0.1.19",
+    "manifestDigest": "c3f535ab88712096205c3335fa1e8bf06da9854b28cb7c22b54134e5dcfa5a37"
   }
 }

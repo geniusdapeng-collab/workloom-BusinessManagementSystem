@@ -438,7 +438,11 @@ function checkAgentRuntime(
       ? `DB 围栏绑定全部有 active 规则（${(row.fence_bindings ?? []).map((f) => `${f}:${runtime.activeFences.get(f)}`).join(" ") || "无"}）`
       : `悬空围栏：${dangling.join(",")}`,
   };
-  const notInstalled = (preset.skills ?? []).filter((skill) => !runtime.installs.has(`skill-${skill}`) && !runtime.installs.has(skill));
+  // 注册表 ID 可以带行业命名空间，安装归属须按实际 skill_id 对账。
+  const notInstalled = (preset.skills ?? []).filter((skill) => {
+    const registered = runtime.skills.get(skill);
+    return !registered || !runtime.installs.has(registered.id);
+  });
   checks.B7_skill_installed = {
     ok: notInstalled.length === 0,
     detail: notInstalled.length === 0 ? "声明技能均在本工作区安装" : `未安装：${notInstalled.join(",")}`,

@@ -16,9 +16,10 @@ let gatewayPool: Pool | null = null;
 let ownerPool: Pool | null = null;
 
 /**
- * owner 池（postgres/迁移账号，绕过 RLS）——唯一合法用途：登录引导。
+ * owner 池（postgres/迁移账号，绕过 RLS）——登录引导、显式平台运维通道。
  * 身份建立前无法 set_config 工作区上下文（鸡生蛋问题），登录时的 workspace 解析
- * 只能走 owner；除此处外任何业务代码禁用本池（F7.1 例外点，代码走查项）。
+ * 只能走 owner；全局技能吊销须由平台运维显式提供此池。普通业务请求
+ * 不得取得本池，成员编号与模型身份不能授予平台运维权限。
  */
 export function getOwnerPool(url = process.env.DATABASE_URL): Pool {
   if (!url) throw new Error("缺少 DATABASE_URL（见 .env.example）");
