@@ -1453,7 +1453,10 @@ const approvalsRouter = router({
       } catch (err) {
         if (err instanceof ApprovalError) {
           throw new TRPCError({
-            code: err.code === "FORBIDDEN_ROLE" ? "FORBIDDEN" : "BAD_REQUEST",
+            code: err.code === "FORBIDDEN_ROLE" ? "FORBIDDEN"
+              : err.code === "NOT_FOUND" ? "NOT_FOUND"
+                : err.statusCode === 409 ? "CONFLICT"
+                  : err.statusCode === 412 ? "PRECONDITION_FAILED" : "BAD_REQUEST",
             message: err.message,
           });
         }
@@ -1479,7 +1482,8 @@ const approvalsRouter = router({
         return res;
       } catch (err) {
         if (err instanceof ApprovalError) {
-          throw new TRPCError({ code: "FORBIDDEN", message: err.message });
+          throw new TRPCError({ code: err.statusCode === 403 ? "FORBIDDEN"
+            : err.statusCode === 409 ? "CONFLICT" : err.statusCode === 412 ? "PRECONDITION_FAILED" : "BAD_REQUEST", message: err.message });
         }
         throw err;
       }
@@ -2624,7 +2628,9 @@ function imRethrow(err: unknown): never {
     });
   }
   if (err instanceof ApprovalError) {
-    throw new TRPCError({ code: "BAD_REQUEST", message: err.message });
+    throw new TRPCError({ code: err.statusCode === 403 ? "FORBIDDEN"
+      : err.statusCode === 409 ? "CONFLICT" : err.statusCode === 412 ? "PRECONDITION_FAILED"
+        : err.code === "NOT_FOUND" ? "NOT_FOUND" : "BAD_REQUEST", message: err.message });
   }
   throw err;
 }

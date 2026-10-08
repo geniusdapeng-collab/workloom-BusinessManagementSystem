@@ -1,0 +1,70 @@
+{
+  "actor": "/root/industry_map",
+  "startedAt": "2026-10-08T19:58:14.379Z",
+  "dataMode": "disposable-synthetic-real-postgresql-with-transport-fault-injection",
+  "externalCalls": 0,
+  "cases": [
+    {
+      "entryPoint": "upsertMemory",
+      "precondition": "Real application-role connection and transaction-local tenant/workspace context; actual primary query completes before injected acknowledgement failure; subsequent ROLLBACK transport failure.",
+      "expected": "Reject with both causes, discard unresolved connection, and do not leave reusable transaction state.",
+      "returnedSuccess": false,
+      "error": {
+        "name": "Error",
+        "message": "Synthetic upsertMemory query acknowledgement failure",
+        "primaryPreserved": true,
+        "causePreserved": false,
+        "rollbackPreserved": false
+      },
+      "releaseCalls": 1,
+      "connectionDiscardRequested": false,
+      "stateBeforeReborrow": {
+        "state": "idle in transaction",
+        "transaction_open": true
+      },
+      "reborrowed": {
+        "pid": 75137,
+        "workspace": "workspace-memtx-f83a8a88-204b-43b8-9025-750d6e1b1e6e",
+        "tenant": "tenant-memtx-f83a8a88-204b-43b8-9025-750d6e1b1e6e"
+      },
+      "reusedSameConnection": true,
+      "oldScopeLeaked": true,
+      "physicalProbeRollbackCompleted": true,
+      "productionBugReproduced": true
+    },
+    {
+      "entryPoint": "runMemoryMinerBeat",
+      "precondition": "Real application-role connection and transaction-local tenant/workspace context; actual primary query completes before injected acknowledgement failure; subsequent ROLLBACK transport failure.",
+      "expected": "Reject with both causes, discard unresolved connection, and do not leave reusable transaction state.",
+      "returnedSuccess": false,
+      "error": {
+        "name": "Error",
+        "message": "Synthetic runMemoryMinerBeat query acknowledgement failure",
+        "primaryPreserved": true,
+        "causePreserved": false,
+        "rollbackPreserved": false
+      },
+      "releaseCalls": 1,
+      "connectionDiscardRequested": false,
+      "stateBeforeReborrow": {
+        "state": "idle in transaction",
+        "transaction_open": true
+      },
+      "reborrowed": {
+        "pid": 75138,
+        "workspace": "workspace-memtx-e4f04ea4-14e7-4cc6-b092-b21dfeb2995d",
+        "tenant": "tenant-memtx-e4f04ea4-14e7-4cc6-b092-b21dfeb2995d"
+      },
+      "reusedSameConnection": true,
+      "oldScopeLeaked": true,
+      "physicalProbeRollbackCompleted": true,
+      "productionBugReproduced": true
+    }
+  ],
+  "migrations": 43,
+  "productionBugReproduced": true,
+  "packages/base/workdata/memory.ts": "6e4e83457da15e1dc2cf52c0c955a9f1490768cf24e38964912137a5dcecd41e",
+  "packages/base/evolve/memory-miner.ts": "95e87334145ca0a2ce12c6acc0a91c82fd5ff342bed17ad93ab07e93b66829ab",
+  "databaseRemoved": true,
+  "finishedAt": "2026-10-08T19:58:14.618Z"
+}

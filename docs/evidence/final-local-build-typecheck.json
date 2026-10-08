@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "workloom.local-regression/v1",
+  "observedAt": "2026-10-08T20:24:51.143303+00:00",
+  "sourceState": "Authorized dirty candidate; native CNB execution and clean-HEAD MCD remain separate requirements",
+  "evidenceLevel": "B",
+  "checks": [
+    {
+      "name": "final-global-typecheck.log",
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0
+      },
+      "pass": true,
+      "logSha256": "51f251e9fb9b6b7647d3bbbfdf18225c7e328b90efeea85cd0107fa2cc8a36e1"
+    },
+    {
+      "name": "final-web-build.log",
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0
+      },
+      "pass": true,
+      "logSha256": "1bbd5a694f192d1d21fd01dcfee63afc4efb263bd3aea8b675cea9ada8ba6145"
+    },
+    {
+      "name": "final-webb-build.log",
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0
+      },
+      "pass": true,
+      "logSha256": "e8d131f7117095a6ad9c7b1089a716c812c964ddf4d91419a4ec6b433d3daa42"
+    },
+    {
+      "name": "final-webc-build.log",
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0
+      },
+      "pass": true,
+      "logSha256": "79612ef04e318b3631b3c5cb66dd52394c61ed2fa018df28c47aa91a883f7813"
+    }
+  ],
+  "preconditions": [
+    "Actual locked pnpm10.14.0 wrapper and Node24.19.0 on PATH",
+    "Dependencies already installed from frozen repository lockfile",
+    "No source change during typecheck or three independent production builds"
+  ],
+  "commands": [
+    "pnpm typecheck",
+    "pnpm -C apps/web build",
+    "pnpm -C apps/webb build",
+    "pnpm -C apps/webc build"
+  ],
+  "actual": "All 10 workspace typechecks and all three actual production builds exit 0",
+  "limits": [
+    "Static build/typechecking is B-level evidence and does not establish visual usability. Independent existing desktop/mobile UI evidence remains separate.",
+    "No native CNB runner proof is claimed."
+  ],
+  "sourceFingerprints": {
+    "package.json": "fc4b0854bd39e69b4aaf6598651d9ca5a54f62113b53e0abe2f5ad81e102e615",
+    "pnpm-workspace.yaml": "eea51ae8374a0c419c5f391d6bb1c2a3e0c1cbceab36aaf8fd6fa49a0656d877",
+    "pnpm-lock.yaml": "b22e6699132bef03fe9e7083331450933dcb28575e77c5273a50742ca673643b",
+    "apps/web/src/extensions/smart-home/routes.tsx": "325d514edbb6a66b379cdac90b545f7c2852b320ac46466c9ea2f76aecfebc41",
+    "apps/server/src/service/events.ts": "654a2fdec6514043e6bd12f59a1f3cec0ddeb89638bedc977b1b486d5826072f",
+    "packages/base/workdata/gateway.ts": "9772ef519f139d2ac52ab4fe5d6ffdacf06e36c08c54f1aaa63b855be73442c6",
+    "packages/base/workdata/memory.ts": "92bca2c3da6e9de62ff2a9b0180a9c70ac229d3f04617ffe120bf52877828a18",
+    "packages/runtime/src/loop.ts": "208e039f5acfe9fe0e4a6424030ed989763464062b9b93bc1e50d98a8115b8c0"
+  }
+}

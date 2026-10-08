@@ -1,0 +1,38 @@
+{
+  "actor": "/root/industry_map",
+  "dataMode": "isolated-synthetic",
+  "externalCalls": 0,
+  "startedAt": "2026-10-08T19:31:13.132Z",
+  "results": [
+    {
+      "status": "rejected",
+      "error": {
+        "name": "error",
+        "code": "40P01",
+        "message": "deadlock detected"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "approvalId": "apr-e-9163-dingtalk",
+        "status": "approved",
+        "deduped": false,
+        "gestureEventId": "E-9164"
+      }
+    }
+  ],
+  "databaseRows": [
+    {
+      "channel": "dingtalk",
+      "status": "approved"
+    },
+    {
+      "channel": "inapp",
+      "status": "pending"
+    }
+  ],
+  "productionBugReproduced": true,
+  "sourceSha256": "0accd46f9843e9117146ac2f9d4d2d2ddb6fb3dc134586f13ecbc0b5a18d0791",
+  "finishedAt": "2026-10-08T19:31:14.232Z"
+}

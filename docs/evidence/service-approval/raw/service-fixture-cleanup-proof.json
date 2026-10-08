@@ -1,0 +1,19 @@
+{
+  "actor": "/root/industry_map",
+  "startedAt": "2026-10-08T20:09:58.646Z",
+  "dataMode": "disposable-unmigrated-real-postgresql-fixture-initialization-failure",
+  "externalCalls": 0,
+  "expected": "The missing-table initialization error is preserved, all acquired pools close, and environment overrides restore.",
+  "returnedSuccess": false,
+  "error": {
+    "name": "error",
+    "code": "42P01",
+    "message": "relation \"tenants\" does not exist"
+  },
+  "environmentRestored": true,
+  "remainingDatabaseConnections": 0,
+  "databaseRemoved": true,
+  "passed": true,
+  "sourceSha256": "5d6b588fe0b6ae9c86078deddf392090c3b567b6bdfc82ef9710886df175081b",
+  "finishedAt": "2026-10-08T20:09:59.348Z"
+}

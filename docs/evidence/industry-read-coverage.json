@@ -3,7 +3,7 @@
   "agent": "industry_map",
   "scope": "Complete source hotel industry comparison, current smart-home assets and native implementation, source-site rewrite, direct asset consumers and RDAS normative/reporting contracts",
   "scopeBoundary": "This explicit industry-agent inventory is not full inherited repository audit. Unchanged unlisted recursive platform implementations are outside this scope. Root and independent engine/workbench agents retain separate inventories.",
-  "asOf": "2026-10-08T18:15:53.254218+00:00",
+  "asOf": "2026-10-08T20:37:13.383969+00:00",
   "upstreamSourceHead": "5a04120a225dc3734415c8cc23e9c5f9474170c0",
   "sourceRoots": {
     "current": "repository root",
@@ -64,9 +64,9 @@
       "evidenceLevel": "A",
       "reading": "complete source reading",
       "reason": "Complete direct dependency, normative source, current authored page or document reading",
-      "sha256": "bd3ef79c3291f076a07f3667ed327f150560521681fc15628d91b2a7c0905432",
-      "bytes": 10287,
-      "lines": 267
+      "sha256": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+      "bytes": 12229,
+      "lines": 298
     },
     {
       "path": "AGENTS.md",
@@ -1234,9 +1234,9 @@
       "evidenceLevel": "A",
       "reading": "complete source reading",
       "reason": "Complete direct dependency, normative source, current authored page or document reading",
-      "sha256": "198b3df184fd5a468ddaaae0285a96d53f989a133e3d61a1457f784d911c3300",
-      "bytes": 83318,
-      "lines": 544
+      "sha256": "012664338bf040d1c422ac21ee1a4f9f30026ff25f1e097c5de34f4b582a7ba3",
+      "bytes": 95909,
+      "lines": 571
     },
     {
       "path": "docs/REAL-DEVICE-ACCEPTANCE-SPEC.md",
@@ -1254,9 +1254,9 @@
       "evidenceLevel": "A",
       "reading": "complete source reading",
       "reason": "Complete direct dependency, normative source, current authored page or document reading",
-      "sha256": "6dadb86d98a0c9da85f8e1387d198fc194dc0c6eb08979754a1f11aa98b8bff5",
-      "bytes": 42229,
-      "lines": 314
+      "sha256": "617c30c68ad2ca90527d029f4746cd5d6221ba3598b8a2772a1900745cec1975",
+      "bytes": 42653,
+      "lines": 315
     },
     {
       "path": "docs/acceptance/checklist.v3.json",
@@ -1284,9 +1284,9 @@
       "evidenceLevel": "A",
       "reading": "complete source reading",
       "reason": "Complete direct dependency, normative source, current authored page or document reading",
-      "sha256": "324f0afaecf4df893092991870058a56ad61fc308199bbc764ba44a2a6b67e3b",
-      "bytes": 3188,
-      "lines": 23
+      "sha256": "070cee2ed756f95122629c7652758affc58f003223eb224b9dfd0f0b66528c60",
+      "bytes": 5288,
+      "lines": 31
     },
     {
       "path": "docs/evidence/assembly-safety.json",
@@ -1324,9 +1324,9 @@
       "evidenceLevel": "B",
       "reading": "machine indexing, hashing and scoped parsing; not full semantic reading",
       "reason": "Complete JSON machine parsing and scoped result summary; no claim that independent host trajectories or reports were fully semantically read",
-      "sha256": "5138325bae15a5617bee9f78539c29487915e522be5ff2e8658135279616919f",
-      "bytes": 115541,
-      "lines": 2316
+      "sha256": "62bde9cd5b7716b4fb6c27f2d0e551a7a84f90547ee36831fc68bce8edb9ccd0",
+      "bytes": 157665,
+      "lines": 2959
     },
     {
       "path": "docs/evidence/fence-proposal-pg-proof.json",
@@ -1484,7 +1484,7 @@
       "evidenceLevel": "B",
       "reading": "machine indexing, hashing and scoped parsing; not full semantic reading",
       "reason": "Complete JSON machine parsing and scoped result summary; no claim that independent host trajectories or reports were fully semantically read",
-      "sha256": "4663220c3fc4325f89792572b67bde14f27c176faee34c878e81f797512470a5",
+      "sha256": "249d2d9f16f52f93b98e86ebffc5339abd280a9e317317829886fdc5596ca4b2",
       "bytes": 504457,
       "lines": 11162
     },
@@ -1554,9 +1554,9 @@
       "evidenceLevel": "B",
       "reading": "machine indexing, hashing and scoped parsing; not full semantic reading",
       "reason": "Complete JSON machine parsing and scoped result summary; no claim that independent host trajectories or reports were fully semantically read",
-      "sha256": "2f0eef484a2dc703c4c0e8dd5afb901fb2dde3d150a2ea84c8dc335d56f186b5",
-      "bytes": 27931,
-      "lines": 770
+      "sha256": "b16c962b008573bb3b97cb6b3323825f79ba0f2559340a56c1cb03cc7d8920e3",
+      "bytes": 49606,
+      "lines": 1183
     },
     {
       "path": "packages/base/bundles/assembly.ts",

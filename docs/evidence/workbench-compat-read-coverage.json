@@ -1,0 +1,53 @@
+{
+  "agent": "workbench_audit",
+  "asOf": "2026-10-08T20:32:20.528717+00:00",
+  "scope": "additional fully read dependencies for postcommit compatible CI patch; merge by path with main inventory, never double count",
+  "counts": {
+    "total": 5,
+    "fullRead": 5,
+    "machineOnly": 0,
+    "sampled": 0,
+    "unread": 0
+  },
+  "files": [
+    {
+      "path": ".cnb.yml",
+      "evidence": "A",
+      "method": "complete current source reading for mandatory database and isolated legacy CI review",
+      "lines": 298,
+      "sha256": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "evidence": "A",
+      "method": "complete source reading in postcommit compatible CI review",
+      "lines": 9,
+      "sha256": "eea51ae8374a0c419c5f391d6bb1c2a3e0c1cbceab36aaf8fd6fa49a0656d877"
+    },
+    {
+      "path": "scripts/seed.ts",
+      "evidence": "A",
+      "method": "complete source reading in postcommit compatible CI review",
+      "lines": 1391,
+      "sha256": "c5467704fe885d9f4df4130bfab4d5b116cb68d82cef281fae71358d6ad68d04"
+    },
+    {
+      "path": "scripts/verify-ui-consumer.mjs",
+      "evidence": "A",
+      "method": "complete source reading in postcommit compatible CI review",
+      "lines": 951,
+      "sha256": "36ee95f17dd02be258e24be46c99e945551531f6908de2bd7d99d637b2dc3dd4"
+    },
+    {
+      "path": "scripts/verify-product-content.mjs",
+      "evidence": "A",
+      "method": "complete source reading in postcommit compatible CI review",
+      "lines": 199,
+      "sha256": "ea4b3968835a9c6c398c0c3ef9617414bfbd21998a5c46036b6b5b9a4a9d833c"
+    }
+  ],
+  "limitations": [
+    "Recursive UI AST rule implementation and inherited workdata helpers are outside this focused patch review; gate successes are B evidence.",
+    "Official Swagger is B metadata, not source implementation understanding."
+  ]
+}

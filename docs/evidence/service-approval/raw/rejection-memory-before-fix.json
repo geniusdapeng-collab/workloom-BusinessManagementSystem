@@ -1,0 +1,46 @@
+{
+  "actor": "/root/industry_map",
+  "dataMode": "disposable-synthetic-real-postgresql",
+  "externalCalls": 0,
+  "startedAt": "2026-10-08T19:45:34.619Z",
+  "scopeCases": [
+    {
+      "scopeNumber": 1,
+      "tenantDistinct": true,
+      "workspaceDistinct": true,
+      "decision": {
+        "approvalId": "approval-repro-8c775777-4d42-4abc-8d7a-6e7718d3d914",
+        "status": "rejected",
+        "deduped": false,
+        "gestureEventId": "E-9101"
+      },
+      "database": {
+        "approval_status": "rejected",
+        "gesture_events": 1,
+        "memories": 1
+      }
+    },
+    {
+      "scopeNumber": 2,
+      "tenantDistinct": true,
+      "workspaceDistinct": true,
+      "error": {
+        "name": "error",
+        "message": "new row violates row-level security policy (USING expression) for table \"org_memory\"",
+        "code": "42501"
+      },
+      "database": {
+        "approval_status": "pending",
+        "gesture_events": 0,
+        "memories": 0
+      }
+    }
+  ],
+  "productionBugReproduced": true,
+  "originalSourceHasGlobalKey": true,
+  "packages/base/review-console/approvals.ts": "efcddcd08ba4ac92e5336f2b732fe37036c325200c6d9fa70003634c41ae2955",
+  "packages/base/workdata/memory.ts": "b1f7448901034a450ef397df9ca95f4a193196497ad96f15ab8de68477836414",
+  "packages/db/migrations/0001_init.sql": "fd8b5f636a2d77d7e6adbe73d1fefa5521df06c526ebd2cf9d70f69f5e763be0",
+  "databaseRemoved": true,
+  "finishedAt": "2026-10-08T19:45:34.951Z"
+}

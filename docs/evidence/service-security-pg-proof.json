@@ -1,0 +1,1719 @@
+{
+  "schemaVersion": "bms.service-transport-proof/v1",
+  "actor": "/root/workbench_audit",
+  "asOf": "2026-10-08T20:02:01.771114+00:00",
+  "sourceState": "dirty candidate; owned source frozen when these tests ran; not a clean final commit receipt or independent MCD acceptance",
+  "dataMode": "isolated local PostgreSQL and synthetic fixtures",
+  "externalModelCalls": 0,
+  "customerProductionCalls": 0,
+  "runs": [
+    {
+      "reportSha256": "ce85c32b968d96f7a2b18e35e298e759479a8784ada45da32d82bf65f0f79b42",
+      "startedAt": "2026-10-08T19:31:09.826000+00:00",
+      "passed": 35,
+      "failed": 0,
+      "skipped": 0,
+      "suites": [
+        {
+          "file": "apps/server/src/service/hotel-contract-fixture.pg.test.ts",
+          "method": "mixed-preconnection-and-postgresql",
+          "methodCounts": {
+            "postgresql": 4,
+            "preconnectionGuard": 2
+          },
+          "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+          "steps": "Set explicit isolated fixture environment; install or reject synthetic hotel members/orders; inspect current data and rollback/collision behavior.",
+          "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+          "actual": {
+            "passed": 6,
+            "failed": 0,
+            "skipped": 0
+          },
+          "finishedAt": "2026-10-08T19:31:10.037941+00:00",
+          "cases": [
+            {
+              "name": "酒店合成契约夹具启用边界 未显式启用或指定工作区时在连接数据库前拒绝",
+              "status": "passed",
+              "durationMs": 1.1955000000000098,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "酒店合成契约夹具启用边界 未显式启用或指定工作区时在连接数据库前拒绝",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "酒店合成契约夹具启用边界 非回环数据库在连接前拒绝",
+              "status": "passed",
+              "durationMs": 0.1509580000000028,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "酒店合成契约夹具启用边界 非回环数据库在连接前拒绝",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "酒店合成契约夹具真实 PG 未标示示例的酒店工作区拒绝且没有数据写入",
+              "status": "passed",
+              "durationMs": 6.500207999999986,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "酒店合成契约夹具真实 PG 未标示示例的酒店工作区拒绝且没有数据写入",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "酒店合成契约夹具真实 PG 其他行业或未活动装配不能获得酒店数据",
+              "status": "passed",
+              "durationMs": 11.589332999999982,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "酒店合成契约夹具真实 PG 其他行业或未活动装配不能获得酒店数据",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "酒店合成契约夹具真实 PG 固定标识被不同内容占用时不覆盖并回滚全部新增行",
+              "status": "passed",
+              "durationMs": 4.802333000000004,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "酒店合成契约夹具真实 PG 固定标识被不同内容占用时不覆盖并回滚全部新增行",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "酒店合成契约夹具真实 PG 同一显式合成工作区并行与重复安装幂等，另一个工作区保持为空",
+              "status": "passed",
+              "durationMs": 26.941457999999983,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "酒店合成契约夹具真实 PG 同一显式合成工作区并行与重复安装幂等，另一个工作区保持为空",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            }
+          ]
+        },
+        {
+          "file": "apps/server/src/service/production-demo-auth.pg.test.ts",
+          "method": "mixed-policy-and-production-configured-local-gateway",
+          "methodCounts": {
+            "postgresql": 7,
+            "purePolicy": 1
+          },
+          "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+          "steps": "Spawn clean gateway subprocesses with NODE_ENV production/test and synthetic signing inputs; inspect HTTP status, tokenIssued flag and user counts; never persist tokens.",
+          "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+          "actual": {
+            "passed": 8,
+            "failed": 0,
+            "skipped": 0
+          },
+          "finishedAt": "2026-10-08T19:31:13.216895+00:00",
+          "cases": [
+            {
+              "name": "MC-013 演示认证统一策略 生产 true/false/缺省均关闭；开发保留缺省及显式配置行为",
+              "status": "passed",
+              "durationMs": 0.7036249999999882,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-013 演示认证统一策略 生产 true/false/缺省均关闭；开发保留缺省及显式配置行为",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） production + 显式 true + 无 H5 密钥返回 503，零用户、零 token",
+              "status": "passed",
+              "durationMs": 454.636417,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） production + 显式 true + 无 H5 密钥返回 503，零用户、零 token",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） production + 密钥已配置仍拒绝缺少签名的客户端自报 openid",
+              "status": "passed",
+              "durationMs": 341.08112499999993,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） production + 密钥已配置仍拒绝缺少签名的客户端自报 openid",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 伪造与过期签名都返回 401，不写用户",
+              "status": "passed",
+              "durationMs": 327.53729099999987,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 伪造与过期签名都返回 401，不写用户",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 签名站点与客户端站点不一致返回 403，不写用户",
+              "status": "passed",
+              "durationMs": 325.67395799999986,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 签名站点与客户端站点不一致返回 403，不写用户",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 有效签名入口正常建立 channel 会话，客户端不能改写签名身份",
+              "status": "passed",
+              "durationMs": 343.36525000000006,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 有效签名入口正常建立 channel 会话，客户端不能改写签名身份",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 开发显式 true 保留 demo 标注，显式 false 要求正式签名",
+              "status": "passed",
+              "durationMs": 757.1304169999999,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 开发显式 true 保留 demo 标注，显式 false 要求正式签名",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 生产显式 true 也不能用小程序 openid 绕过 code 交换",
+              "status": "passed",
+              "durationMs": 377.894667,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-013 生产网关入口（隔离子进程与真实 PostgreSQL） 生产显式 true 也不能用小程序 openid 绕过 code 交换",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            }
+          ]
+        },
+        {
+          "file": "apps/server/src/service/service-transactions.test.ts",
+          "method": "controlled-client-faults",
+          "methodCounts": {
+            "controlledClient": 12
+          },
+          "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+          "steps": "Inject callback/BEGIN/COMMIT/RLS/ROLLBACK/connect failures and inspect returned errors, statement order and release arguments.",
+          "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+          "actual": {
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0
+          },
+          "finishedAt": "2026-10-08T19:31:10.061216+00:00",
+          "cases": [
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) success sets both RLS scopes, commits exactly once and returns only after COMMIT",
+              "status": "passed",
+              "durationMs": 1.5334999999999752,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) success sets both RLS scopes, commits exactly once and returns only after COMMIT",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) callback failure rolls back without COMMIT and preserves the original error",
+              "status": "passed",
+              "durationMs": 0.39004099999999653,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) callback failure rolls back without COMMIT and preserves the original error",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) query failure in callback rolls back and preserves DB error identity",
+              "status": "passed",
+              "durationMs": 0.13091700000001083,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) query failure in callback rolls back and preserves DB error identity",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) COMMIT failure rejects, attempts ROLLBACK and never commits twice",
+              "status": "passed",
+              "durationMs": 0.12741700000000833,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) COMMIT failure rejects, attempts ROLLBACK and never commits twice",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) COMMIT and ROLLBACK failures retain both causes and discard the failed connection",
+              "status": "passed",
+              "durationMs": 0.22641699999999787,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) COMMIT and ROLLBACK failures retain both causes and discard the failed connection",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) callback and ROLLBACK failures also retain both causes and discard",
+              "status": "passed",
+              "durationMs": 0.14479100000002632,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) callback and ROLLBACK failures also retain both causes and discard",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) a non-Error cleanup failure stays in AggregateError and release receives an Error",
+              "status": "passed",
+              "durationMs": 0.24445800000000872,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) a non-Error cleanup failure stays in AggregateError and release receives an Error",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) missing workspace fails before callback or COMMIT and rolls back",
+              "status": "passed",
+              "durationMs": 0.6937499999999943,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) missing workspace fails before callback or COMMIT and rolls back",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) workspace RLS setup failure fails before callback and rolls back",
+              "status": "passed",
+              "durationMs": 0.2824579999999912,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) workspace RLS setup failure fails before callback and rolls back",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) BEGIN failure still attempts ROLLBACK and preserves the primary failure",
+              "status": "passed",
+              "durationMs": 0.16187499999998067,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) BEGIN failure still attempts ROLLBACK and preserves the primary failure",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) connection failure rejects before any query or release",
+              "status": "passed",
+              "durationMs": 0.10012499999999136,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) connection failure rejects before any query or release",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-017 serviceTx transaction failure semantics (controlled client) svcQuery uses the same scoped transaction and propagates selected rows",
+              "status": "passed",
+              "durationMs": 0.2156659999999988,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-017 serviceTx transaction failure semantics (controlled client) svcQuery uses the same scoped transaction and propagates selected rows",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            }
+          ]
+        },
+        {
+          "file": "apps/server/src/service/ticket-idempotency.pg.test.ts",
+          "method": "actual-postgresql-app-role-transactions",
+          "methodCounts": {
+            "postgresql": 9
+          },
+          "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+          "steps": "Create scoped synthetic users; run independent app-role transactions, same-key replays/concurrent competitors, mutable ratings and historical digest edge cases; inspect tickets/events.",
+          "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+          "actual": {
+            "passed": 9,
+            "failed": 0,
+            "skipped": 0
+          },
+          "finishedAt": "2026-10-08T19:31:10.303211+00:00",
+          "cases": [
+            {
+              "name": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 同一客户、对象键顺序不同、新会话仍重放原单且只保留一次创建事件",
+              "status": "passed",
+              "durationMs": 9.217874999999992,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 同一客户、对象键顺序不同、新会话仍重放原单且只保留一次创建事件",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 同键修改标题、类型、负载或数组顺序都返回 409",
+              "status": "passed",
+              "durationMs": 4.344208999999978,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 同键修改标题、类型、负载或数组顺序都返回 409",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 另一客户占用同键仅得到通用 409，不泄露原单内容",
+              "status": "passed",
+              "durationMs": 1.683166999999969,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 另一客户占用同键仅得到通用 409，不泄露原单内容",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 两个并行事务的相同请求只创建一单，另一个重放已提交原单",
+              "status": "passed",
+              "durationMs": 3.3066670000000045,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 两个并行事务的相同请求只创建一单，另一个重放已提交原单",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 两个并行客户竞争同键只允许一个成功，另一个通用 409",
+              "status": "passed",
+              "durationMs": 1.75729199999995,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 两个并行客户竞争同键只允许一个成功，另一个通用 409",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 满意度修改落库 payload 后原始请求仍可安全重放",
+              "status": "passed",
+              "durationMs": 4.491207999999972,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 满意度修改落库 payload 后原始请求仍可安全重放",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 旧单缺少不可变摘要时拒绝重放，不能回退到可变 payload 比较",
+              "status": "passed",
+              "durationMs": 1.640041999999994,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 旧单缺少不可变摘要时拒绝重放，不能回退到可变 payload 比较",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 创建事件主体不一致或出现多条创建事件时拒绝重放",
+              "status": "passed",
+              "durationMs": 2.7009590000000117,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 创建事件主体不一致或出现多条创建事件时拒绝重放",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 未提交幂等键的独立请求各自创建，不产生错误重放",
+              "status": "passed",
+              "durationMs": 1.2106249999999932,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "MC-012 工单幂等主体与原始请求隔离（真实 PostgreSQL） 未提交幂等键的独立请求各自创建，不产生错误重放",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reportSha256": "8ad28312b4f41f3c0ee47226191141567f0695fae01eec6ac7909f0c7b4048fe",
+      "startedAt": "2026-10-08T19:31:49.848000+00:00",
+      "passed": 118,
+      "failed": 0,
+      "skipped": 0,
+      "suites": [
+        {
+          "file": "apps/server/src/service/contract.test.ts",
+          "method": "actual-postgresql-in-process-http",
+          "methodCounts": {
+            "postgresql": 17
+          },
+          "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+          "steps": "Use real migrated PostgreSQL and explicit synthetic hotel fixture; call service HTTP handlers and assert route contracts, ownership, replay and public timeline redaction.",
+          "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+          "actual": {
+            "passed": 17,
+            "failed": 0,
+            "skipped": 0
+          },
+          "finishedAt": "2026-10-08T19:31:50.845913+00:00",
+          "cases": [
+            {
+              "name": "契约 · session（S2） h5 演示直登返回 {token, user} 并明确标注演示认证",
+              "status": "passed",
+              "durationMs": 24.550250000000005,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · session（S2） h5 演示直登返回 {token, user} 并明确标注演示认证",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · session（S2） wechat-mini 无 code → 400；有 code 无凭据 → 503 渠道未配置",
+              "status": "passed",
+              "durationMs": 0.6506249999999909,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · session（S2） wechat-mini 无 code → 400；有 code 无凭据 → 503 渠道未配置",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · session（S2） session IP+channel 限流 60 次/分",
+              "status": "passed",
+              "durationMs": 37.80395899999996,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · session（S2） session IP+channel 限流 60 次/分",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · member / orders / notifications（H6） 未绑定身份：/member 返回中文展示摘要，/orders 返回空集与绑定引导",
+              "status": "passed",
+              "durationMs": 43.5391249999999,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · member / orders / notifications（H6） 未绑定身份：/member 返回中文展示摘要，/orders 返回空集与绑定引导",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · member / orders / notifications（H6） /notifications 每项含 read:false 占位",
+              "status": "passed",
+              "durationMs": 20.34908299999995,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · member / orders / notifications（H6） /notifications 每项含 read:false 占位",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · 工单（H1/H2/H6/L9/M9） 公开工单时间线不暴露服务端幂等请求摘要",
+              "status": "passed",
+              "durationMs": 12.9208339999999,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · 工单（H1/H2/H6/L9/M9） 公开工单时间线不暴露服务端幂等请求摘要",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · 工单（H1/H2/H6/L9/M9） 建单 → {ticket:{id,kind,title,status,statusText}}；同键重放 idempotentReplay 且同 id",
+              "status": "passed",
+              "durationMs": 21.84866700000009,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · 工单（H1/H2/H6/L9/M9） 建单 → {ticket:{id,kind,title,status,statusText}}；同键重放 idempotentReplay 且同 id",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · 工单（H1/H2/H6/L9/M9） 同工作区跨用户复用幂等键返回 409 且不泄露原单；原用户异内容也返回 409",
+              "status": "passed",
+              "durationMs": 46.345916999999986,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · 工单（H1/H2/H6/L9/M9） 同工作区跨用户复用幂等键返回 409 且不泄露原单；原用户异内容也返回 409",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · 工单（H1/H2/H6/L9/M9） 并发同键同请求只建一单，重试响应不重复发回执",
+              "status": "passed",
+              "durationMs": 15.185375000000022,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · 工单（H1/H2/H6/L9/M9） 并发同键同请求只建一单，重试响应不重复发回执",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · 工单（H1/H2/H6/L9/M9） 非 done 工单评价 → 409；不存在工单详情 → 404 带 requestId",
+              "status": "passed",
+              "durationMs": 12.191459000000009,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · 工单（H1/H2/H6/L9/M9） 非 done 工单评价 → 409；不存在工单详情 → 404 带 requestId",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · 工单（H1/H2/H6/L9/M9） M9：非法 kind / 超长 title → 400",
+              "status": "passed",
+              "durationMs": 1.0369590000000244,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · 工单（H1/H2/H6/L9/M9） M9：非法 kind / 超长 title → 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · 身份绑定信任链 演示验证码明确标 demo，绑定后返回真实会员与请求回执",
+              "status": "passed",
+              "durationMs": 14.754125000000045,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · 身份绑定信任链 演示验证码明确标 demo，绑定后返回真实会员与请求回执",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · 身份绑定信任链 验证码错误必须失败且保留请求编号",
+              "status": "passed",
+              "durationMs": 6.268000000000029,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · 身份绑定信任链 验证码错误必须失败且保留请求编号",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · chat（H5/H6/M9） 确认工单同键跨用户 409；同用户重试即使新建会话仍返回原单",
+              "status": "passed",
+              "durationMs": 49.78866699999992,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · chat（H5/H6/M9） 确认工单同键跨用户 409；同用户重试即使新建会话仍返回原单",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · chat（H5/H6/M9） KB 高置信问答：citations 非空、cards 为 {kind,data} 契约",
+              "status": "passed",
+              "durationMs": 12.685624999999959,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · chat（H5/H6/M9） KB 高置信问答：citations 非空、cards 为 {kind,data} 契约",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · chat（H5/H6/M9） 低置信问题诚实拒答 + ticketDraft（无 citations）",
+              "status": "passed",
+              "durationMs": 11.993375000000015,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · chat（H5/H6/M9） 低置信问题诚实拒答 + ticketDraft（无 citations）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "契约 · chat（H5/H6/M9） text 超 2000 字符 → 400",
+              "status": "passed",
+              "durationMs": 0.9128329999999778,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "契约 · chat（H5/H6/M9） text 超 2000 字符 → 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            }
+          ]
+        },
+        {
+          "file": "apps/server/src/service/e2e.test.ts",
+          "method": "actual-local-http-and-postgresql",
+          "methodCounts": {
+            "postgresqlHttp": 101
+          },
+          "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+          "steps": "Start a local HTTP server with mock external providers and a real isolated PostgreSQL fixture; perform complete original 101 channel/customer/business endpoint scenarios.",
+          "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+          "actual": {
+            "passed": 101,
+            "failed": 0,
+            "skipped": 0
+          },
+          "finishedAt": "2026-10-08T19:31:52.774195+00:00",
+          "cases": [
+            {
+              "name": "E 渠道 · session 签发 h5 演示直登 → {token, user}",
+              "status": "passed",
+              "durationMs": 5.6157919999998285,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 渠道 · session 签发 h5 演示直登 → {token, user}",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 渠道 · session 签发 wechat-mini / alipay 开发态 openid 直登放行",
+              "status": "passed",
+              "durationMs": 6.820791999999983,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 渠道 · session 签发 wechat-mini / alipay 开发态 openid 直登放行",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 渠道 · session 签发 非法渠道 → 400",
+              "status": "passed",
+              "durationMs": 2.3070410000000265,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 渠道 · session 签发 非法渠道 → 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 渠道 · session 签发 h5 缺 openid → 400",
+              "status": "passed",
+              "durationMs": 2.232291999999916,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 渠道 · session 签发 h5 缺 openid → 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 渠道 · session 签发 wechat-mini 无 openid 且缺 code → 400；有 code 无凭据 → 503 渠道未配置",
+              "status": "passed",
+              "durationMs": 4.498541999999816,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 渠道 · session 签发 wechat-mini 无 openid 且缺 code → 400；有 code 无凭据 → 503 渠道未配置",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 渠道 · session 签发 alipay code 换登未装配 → 503",
+              "status": "passed",
+              "durationMs": 2.136167000000114,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 渠道 · session 签发 alipay code 换登未装配 → 503",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 限流 session 同 IP+channel 第 61 次 → 429",
+              "status": "passed",
+              "durationMs": 146.2303750000001,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 限流 session 同 IP+channel 第 61 次 → 429",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 限流 限流按 IP+channel 维度隔离（同 IP 换 channel 仍放行）",
+              "status": "passed",
+              "durationMs": 2.6696249999999964,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 限流 限流按 IP+channel 维度隔离（同 IP 换 channel 仍放行）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 限流 限流按 IP 隔离（换 IP 仍放行）",
+              "status": "passed",
+              "durationMs": 2.50262500000008,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 限流 限流按 IP 隔离（换 IP 仍放行）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 限流 chat 同用户第 61 次 → 429",
+              "status": "passed",
+              "durationMs": 756.7414589999998,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 限流 chat 同用户第 61 次 → 429",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · token 校验 缺 Authorization 头 → 401",
+              "status": "passed",
+              "durationMs": 1.8155000000001564,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · token 校验 缺 Authorization 头 → 401",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · token 校验 伪造签名（错误密钥）→ 401",
+              "status": "passed",
+              "durationMs": 4.11608299999989,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · token 校验 伪造签名（错误密钥）→ 401",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · token 校验 过期 token → 401",
+              "status": "passed",
+              "durationMs": 2.0054999999997563,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · token 校验 过期 token → 401",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · token 校验 scope 非 c-user（B 端令牌混用）→ 401",
+              "status": "passed",
+              "durationMs": 1.7606249999998909,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · token 校验 scope 非 c-user（B 端令牌混用）→ 401",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · token 校验 畸形 token 串 → 401",
+              "status": "passed",
+              "durationMs": 1.6381249999999454,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · token 校验 畸形 token 串 → 401",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 越权读他人工单详情 → 404",
+              "status": "passed",
+              "durationMs": 20.216375000000426,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 越权读他人工单详情 → 404",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 越权读他人通知：通知箱仅含本人条目",
+              "status": "passed",
+              "durationMs": 17.469958000000133,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 越权读他人通知：通知箱仅含本人条目",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 越权续聊他人会话 → 不复用（归属校验后新建会话）",
+              "status": "passed",
+              "durationMs": 25.261999999999716,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 越权续聊他人会话 → 不复用（归属校验后新建会话）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 text 超 2000 字符 → 400",
+              "status": "passed",
+              "durationMs": 4.1255840000003445,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 text 超 2000 字符 → 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 空 text / 缺 text → 400",
+              "status": "passed",
+              "durationMs": 5.3842500000000655,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 空 text / 缺 text → 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 非法 kind → 400",
+              "status": "passed",
+              "durationMs": 3.8149160000002666,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 非法 kind → 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 title 超 120 字符 → 400",
+              "status": "passed",
+              "durationMs": 3.7657500000000255,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 title 超 120 字符 → 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 payload 超 10KB → 400",
+              "status": "passed",
+              "durationMs": 3.8297499999998763,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 payload 超 10KB → 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 XSS 文本原样存储不执行（标题含 script 标签原样返回）",
+              "status": "passed",
+              "durationMs": 13.746375000000171,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 XSS 文本原样存储不执行（标题含 script 标签原样返回）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 评价 score 越界（0 / 6）→ 400",
+              "status": "passed",
+              "durationMs": 5.733291999999892,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 评价 score 越界（0 / 6）→ 400",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 非法 JSON body → 按缺参 400（不 500）",
+              "status": "passed",
+              "durationMs": 3.9854999999997744,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 非法 JSON body → 按缺参 400（不 500）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "E 安全 · 越权与输入约束 不存在工单详情 → 404 带 requestId",
+              "status": "passed",
+              "durationMs": 4.03283300000021,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "E 安全 · 越权与输入约束 不存在工单详情 → 404 带 requestId",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 未绑定查订单：/orders 空集 + bindRequired + 引导文案",
+              "status": "passed",
+              "durationMs": 8.997915999999805,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 未绑定查订单：/orders 空集 + bindRequired + 引导文案",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 未绑定查权益：/member 只返回中文展示摘要 + bindRequired",
+              "status": "passed",
+              "durationMs": 9.642041999999947,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 未绑定查权益：/member 只返回中文展示摘要 + bindRequired",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 绑定身份后 /orders 返回本人记录的通用中文展示投影",
+              "status": "passed",
+              "durationMs": 31.16249999999991,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 绑定身份后 /orders 返回本人记录的通用中文展示投影",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 订单金额由行业适配器转换为展示文本（117600 分 → ¥1,176.00）",
+              "status": "passed",
+              "durationMs": 11.24133299999994,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 订单金额由行业适配器转换为展示文本（117600 分 → ¥1,176.00）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 绑定身份后 /member 返回中文标题/展示指标/权益（demo 标注）",
+              "status": "passed",
+              "durationMs": 10.889541000000008,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 绑定身份后 /member 返回中文标题/展示指标/权益（demo 标注）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 会员隔离：M-1002 只见本人订单",
+              "status": "passed",
+              "durationMs": 9.504625000000033,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 会员隔离：M-1002 只见本人订单",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 chat 查订单（已绑定）→ biz_query + order 卡片",
+              "status": "passed",
+              "durationMs": 10.410084000000097,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 chat 查订单（已绑定）→ biz_query + order 卡片",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 chat 查会员（已绑定）→ member 卡片（中文展示摘要/权益）",
+              "status": "passed",
+              "durationMs": 10.264290999999957,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 chat 查会员（已绑定）→ member 卡片（中文展示摘要/权益）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 chat 查房价 → catalog 卡片只含通用展示字段",
+              "status": "passed",
+              "durationMs": 9.507125000000087,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 chat 查房价 → catalog 卡片只含通用展示字段",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 chat 未绑定查订单 → 答案替换为绑定引导且不出卡",
+              "status": "passed",
+              "durationMs": 9.482458000000406,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 chat 未绑定查订单 → 答案替换为绑定引导且不出卡",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 chat 查账单（已绑定）→ query_order 订单卡片",
+              "status": "passed",
+              "durationMs": 10.244666000000052,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 chat 查账单（已绑定）→ query_order 订单卡片",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 chat 问工单进度 → query_ticket 应答",
+              "status": "passed",
+              "durationMs": 10.428707999999915,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 chat 问工单进度 → query_ticket 应答",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 /orders 与 /member 均带 demo 标注",
+              "status": "passed",
+              "durationMs": 15.618666999999732,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 /orders 与 /member 均带 demo 标注",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "D 业务查询 · 绑定引导与卡片契约 /tickets 列表仅本人单（工单查询隔离）",
+              "status": "passed",
+              "durationMs": 16.81120800000008,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "D 业务查询 · 绑定引导与卡片契约 /tickets 列表仅本人单（工单查询隔离）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F1 新用户首问「退房时间几点」→ 命中 KB 带引用",
+              "status": "passed",
+              "durationMs": 13.200208000000202,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F1 新用户首问「退房时间几点」→ 命中 KB 带引用",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F2 同会话追问「早餐时间是几点」→ conversationId 续聊且中置信命中引用",
+              "status": "passed",
+              "durationMs": 9.436541999999918,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F2 同会话追问「早餐时间是几点」→ conversationId 续聊且中置信命中引用",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F3 查订单未绑定 → 绑定引导",
+              "status": "passed",
+              "durationMs": 7.813959000000068,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F3 查订单未绑定 → 绑定引导",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F4 对话中建单「帮我送两瓶水」→ ticketDraft delivery（未确认不建单）",
+              "status": "passed",
+              "durationMs": 8.243833999999879,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F4 对话中建单「帮我送两瓶水」→ ticketDraft delivery（未确认不建单）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F5 confirmTicket:true → 建单 assigned + 客房部 + statusText 已受理",
+              "status": "passed",
+              "durationMs": 9.296166999999969,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F5 confirmTicket:true → 建单 assigned + 客房部 + statusText 已受理",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F6 受理通知：通知箱含 ticket.accepted",
+              "status": "passed",
+              "durationMs": 2.181999999999789,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F6 受理通知：通知箱含 ticket.accepted",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F7 同幂等键重放 → deduped:true 同单号",
+              "status": "passed",
+              "durationMs": 8.099959000000126,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F7 同幂等键重放 → deduped:true 同单号",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F8 进度查询：详情时间线含 create/assign",
+              "status": "passed",
+              "durationMs": 2.8642500000000837,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F8 进度查询：详情时间线含 create/assign",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F9 B 端受理推进（start → processing）",
+              "status": "passed",
+              "durationMs": 5.17129100000011,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F9 B 端受理推进（start → processing）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F10 B 端办结（complete → done + 结果回填）",
+              "status": "passed",
+              "durationMs": 4.280709000000115,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F10 B 端办结（complete → done + 结果回填）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F11 完成通知：通知箱含 ticket.completed",
+              "status": "passed",
+              "durationMs": 2.190708000000086,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F11 完成通知：通知箱含 ticket.completed",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F12 进度再查：statusText=已完成",
+              "status": "passed",
+              "durationMs": 2.331833000000188,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F12 进度再查：statusText=已完成",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F13 五星评价 → ratingScore 5",
+              "status": "passed",
+              "durationMs": 3.2221660000000156,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F13 五星评价 → ratingScore 5",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F14 重复评价 → 409",
+              "status": "passed",
+              "durationMs": 2.1288329999997586,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F14 重复评价 → 409",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F14a 原请求在评价改写 payload 后重放，仍只返回同一张工单",
+              "status": "passed",
+              "durationMs": 8.32995899999969,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F14a 原请求在评价改写 payload 后重放，仍只返回同一张工单",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F15 全旅程时间线完整：create→assign→start→complete→rate",
+              "status": "passed",
+              "durationMs": 2.40099999999984,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F15 全旅程时间线完整：create→assign→start→complete→rate",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 首问到五星评价全链路 F16 会话消息全量落库（c_messages ≥ 8 条）",
+              "status": "passed",
+              "durationMs": 0.6000840000001517,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 首问到五星评价全链路 F16 会话消息全量落库（c_messages ≥ 8 条）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 投诉一句话直达 → intent complaint + complaint 草稿（confirm 后客服部）",
+              "status": "passed",
+              "durationMs": 16.96775000000025,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 投诉一句话直达 → intent complaint + complaint 草稿（confirm 后客服部）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 低置信拒答转单：answer 拒答 + ticketDraft，confirm 后建 other 单（前厅部）",
+              "status": "passed",
+              "durationMs": 28.287417000000005,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 低置信拒答转单：answer 拒答 + ticketDraft，confirm 后建 other 单（前厅部）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 报修一句话「空调坏了」→ service_request repair 草稿，confirm 后工程部",
+              "status": "passed",
+              "durationMs": 19.06945799999994,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 报修一句话「空调坏了」→ service_request repair 草稿，confirm 后工程部",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 疑问句含服务词不建服务单：「送站巴士几点发」走 kb_qa（未覆盖仅给拒答草稿，不落单）",
+              "status": "passed",
+              "durationMs": 17.3952919999997,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 疑问句含服务词不建服务单：「送站巴士几点发」走 kb_qa（未覆盖仅给拒答草稿，不落单）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 confirmTicket 带 body.ticketDraft 兜底（上轮草稿本轮确认，显式草稿优先）【bug 已修复】",
+              "status": "passed",
+              "durationMs": 22.213374999999814,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 confirmTicket 带 body.ticketDraft 兜底（上轮草稿本轮确认，显式草稿优先）【bug 已修复】",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 mock 标注：LLM 未装配时响应 mock:true",
+              "status": "passed",
+              "durationMs": 13.077249999999822,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 mock 标注：LLM 未装配时响应 mock:true",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 latencyMs 为非负数字",
+              "status": "passed",
+              "durationMs": 16.685333000000355,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 latencyMs 为非负数字",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 WiFi 问句命中种子 KB（密码为房间号后四位）【bug 已修复：连字符归一】",
+              "status": "passed",
+              "durationMs": 14.168667000000369,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 WiFi 问句命中种子 KB（密码为房间号后四位）【bug 已修复：连字符归一】",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 连字符原样问句「Wi-Fi 密码」可命中（对照组）",
+              "status": "passed",
+              "durationMs": 13.889542000000347,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 连字符原样问句「Wi-Fi 密码」可命中（对照组）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "F C 端旅程 · 场景分支 未 confirmTicket 时 ticket 为 null（草稿不落库）",
+              "status": "passed",
+              "durationMs": 11.829749999999876,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "F C 端旅程 · 场景分支 未 confirmTicket 时 ticket 为 null（草稿不落库）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 登录与守卫 loginAs 返回 token + identity（owner / plan pro）",
+              "status": "passed",
+              "durationMs": 2.71554100000003,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 登录与守卫 loginAs 返回 token + identity（owner / plan pro）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 登录与守卫 loginAs 不存在工作区 → NOT_FOUND",
+              "status": "passed",
+              "durationMs": 7.787125000000287,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 登录与守卫 loginAs 不存在工作区 → NOT_FOUND",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 登录与守卫 loginAs 不存在成员 → NOT_FOUND",
+              "status": "passed",
+              "durationMs": 2.826000000000022,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 登录与守卫 loginAs 不存在成员 → NOT_FOUND",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 登录与守卫 无 JWT 调受保护过程 → UNAUTHORIZED(401)",
+              "status": "passed",
+              "durationMs": 2.0281669999999394,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 登录与守卫 无 JWT 调受保护过程 → UNAUTHORIZED(401)",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 登录与守卫 readonly 成员写操作 → FORBIDDEN(403)；查询放行",
+              "status": "passed",
+              "durationMs": 5.847707999999784,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 登录与守卫 readonly 成员写操作 → FORBIDDEN(403)；查询放行",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 kb.listCollections 含活动 Bundle 提供的可用知识集合",
+              "status": "passed",
+              "durationMs": 2.889708000000155,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 kb.listCollections 含活动 Bundle 提供的可用知识集合",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 kb.createCollection 创建后列表可见",
+              "status": "passed",
+              "durationMs": 6.368832999999995,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 kb.createCollection 创建后列表可见",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 kb.upsertDocument 新建 → version 1 + 切块数 > 0（pending_review）",
+              "status": "passed",
+              "durationMs": 4.5856659999999465,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 kb.upsertDocument 新建 → version 1 + 切块数 > 0（pending_review）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 kb.upsertDocument 同内容再传 → hash 幂等（chunks 0 同文档）",
+              "status": "passed",
+              "durationMs": 3.3715839999999844,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 kb.upsertDocument 同内容再传 → hash 幂等（chunks 0 同文档）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 kb.upsertDocument 同标题新内容 → version 2",
+              "status": "passed",
+              "durationMs": 3.8474590000000717,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 kb.upsertDocument 同标题新内容 → version 2",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 kb.listDocuments 按集合过滤",
+              "status": "passed",
+              "durationMs": 2.8554579999999987,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 kb.listDocuments 按集合过滤",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 kb.pendingReviews 列出待审文档",
+              "status": "passed",
+              "durationMs": 2.6239160000000084,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 kb.pendingReviews 列出待审文档",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 approveDocument 批准生效 → ok + eventId（pendingReviews 移除）",
+              "status": "passed",
+              "durationMs": 6.831625000000258,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 approveDocument 批准生效 → ok + eventId（pendingReviews 移除）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 approveDocument 联动审批台（五元事件 + approvals 行落库，event_id 关联；MC-110：记录为 approved 且带决策人）",
+              "status": "passed",
+              "durationMs": 1.0974169999999503,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 approveDocument 联动审批台（五元事件 + approvals 行落库，event_id 关联；MC-110：记录为 approved 且带决策人）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 approveDocument 重复调用幂等（deduped，不重复落事件/审批行）",
+              "status": "passed",
+              "durationMs": 3.4720829999996567,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 approveDocument 重复调用幂等（deduped，不重复落事件/审批行）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 MC-110：kb.publish 审批被驳回 → 文档退回待审且退出检索；再批准 → 恢复生效",
+              "status": "passed",
+              "durationMs": 29.487290999999914,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 MC-110：kb.publish 审批被驳回 → 文档退回待审且退出检索；再批准 → 恢复生效",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 MC-110：待审文档走 setStatus(active) 同样落 approved 审批留痕（无静默发布路径）",
+              "status": "passed",
+              "durationMs": 8.329541999999947,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 MC-110：待审文档走 setStatus(active) 同样落 approved 审批留痕（无静默发布路径）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 approveDocument 后检索可见（kb.search 命中）",
+              "status": "passed",
+              "durationMs": 7.310333000000355,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 approveDocument 后检索可见（kb.search 命中）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 approveDocument 不存在文档 → NOT_FOUND",
+              "status": "passed",
+              "durationMs": 3.8431249999998727,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 approveDocument 不存在文档 → NOT_FOUND",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · KB 管理 kb.setStatus disabled → 检索不可见；恢复 active 可检索",
+              "status": "passed",
+              "durationMs": 23.580124999999953,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · KB 管理 kb.setStatus disabled → 检索不可见；恢复 active 可检索",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 工单消费 tickets.list 按状态过滤（assigned）",
+              "status": "passed",
+              "durationMs": 13.836416999999983,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 工单消费 tickets.list 按状态过滤（assigned）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 工单消费 tickets.assign 指定 dept/assignee（created 单）",
+              "status": "passed",
+              "durationMs": 4.519540999999663,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 工单消费 tickets.assign 指定 dept/assignee（created 单）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 工单消费 MC-112：tickets.assign 对 assigned 单重复分派 → 200 原地改派（同值幂等 / 跨部门留痕）",
+              "status": "passed",
+              "durationMs": 6.584707999999864,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 工单消费 MC-112：tickets.assign 对 assigned 单重复分派 → 200 原地改派（同值幂等 / 跨部门留痕）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 工单消费 MC-112：tickets.assign 已办结单再派 → CONFLICT（409 语义，不是 5xx）",
+              "status": "passed",
+              "durationMs": 2.9642079999998714,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 工单消费 MC-112：tickets.assign 已办结单再派 → CONFLICT（409 语义，不是 5xx）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 工单消费 tickets.advance start → processing（留痕）",
+              "status": "passed",
+              "durationMs": 3.2150830000000497,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 工单消费 tickets.advance start → processing（留痕）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 工单消费 tickets.advance 非 start 动作 → 留痕不变状态",
+              "status": "passed",
+              "durationMs": 3.1904999999997017,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 工单消费 tickets.advance 非 start 动作 → 留痕不变状态",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 工单消费 tickets.complete → done + C 端收到完成通知",
+              "status": "passed",
+              "durationMs": 6.093834000000243,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 工单消费 tickets.complete → done + C 端收到完成通知",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 工单消费 tickets.timeline 完整回放（create/assign/start/备注/complete）",
+              "status": "passed",
+              "durationMs": 2.7899999999999636,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 工单消费 tickets.timeline 完整回放（create/assign/start/备注/complete）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · 工单消费 tickets.slaScan 返回 {escalated:number}",
+              "status": "passed",
+              "durationMs": 2.6025829999998678,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · 工单消费 tickets.slaScan 返回 {escalated:number}",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · stats.overview 指标 字段齐全：date/sessions/qaCount/avgConfidence/groundedRate/avgLatencyMs/ticketsToday/completionRate/slaBreached/avgRating",
+              "status": "passed",
+              "durationMs": 5.665583999999853,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · stats.overview 指标 字段齐全：date/sessions/qaCount/avgConfidence/groundedRate/avgLatencyMs/ticketsToday/completionRate/slaBreached/avgRating",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · stats.overview 指标 指标合理性：比率 ∈ [0,1]、计数非负、今日有问答与工单",
+              "status": "passed",
+              "durationMs": 3.2582910000000993,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · stats.overview 指标 指标合理性：比率 ∈ [0,1]、计数非负、今日有问答与工单",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · stats.overview 指标 有据率口径：有引用助手消息 / 全部助手消息（抽查一致性）",
+              "status": "passed",
+              "durationMs": 3.8096660000001066,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · stats.overview 指标 有据率口径：有引用助手消息 / 全部助手消息（抽查一致性）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            },
+            {
+              "name": "G B 端 · stats.overview 指标 完结率随办结单提升（F 旅程 done 单计入）",
+              "status": "passed",
+              "durationMs": 3.19524999999976,
+              "evidence": "B",
+              "preconditions": "Explicit synthetic local database/controlled client as classified; no customer accounts or production secrets.",
+              "steps": "G B 端 · stats.overview 指标 完结率随办结单提升（F 旅程 done 单计入）",
+              "expected": "Every original and added named assertion passes with no skipped case; source-level authority/transaction guards remain enforced.",
+              "actual": "passed"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sourceFingerprints": {
+    "apps/server/src/service/ticket.ts": "543926a64f4cc8aff588722529916feeab32e76906483489655eadf436759b61",
+    "apps/server/src/service/gateway.ts": "df9751e45da21b4f062d1ba7648ef99343a454e5953364a4cbef882696b98aac",
+    "apps/server/src/service/events.ts": "654a2fdec6514043e6bd12f59a1f3cec0ddeb89638bedc977b1b486d5826072f",
+    "apps/server/src/service/hotel-contract-fixture.ts": "58cdb78d22bd64347a134d782fb47b4338dea1c2b5f1a7a5b2ad4a3e4c343917",
+    "apps/server/src/service/hotel-contract-fixture.pg.test.ts": "bdd3c9a3b2e33b7ebf091f64b70abc0d8af46df7daf00398d8b10afc8f08736d",
+    "apps/server/src/service/production-demo-auth.pg.test.ts": "56878ae8ffd0a5ecaa2b9942f66db2274ca5dbb9b3f623af95a26b5761858fcb",
+    "apps/server/src/service/ticket-idempotency.pg.test.ts": "2ce39d5a8e39024a622a1b40e2595222b49a58cf2709a2b9b754d89994e9b217",
+    "apps/server/src/service/service-transactions.test.ts": "a54fc8d3e030113000af1e3279171a8fe9b6d39e281254955e725d329200e532",
+    "apps/server/src/service/contract.test.ts": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c",
+    "apps/server/src/service/e2e.test.ts": "06b4412782f8ce5848c2b90fc0ee1b91fcbf5fb7c7a027e5affeb7c79aa96271"
+  },
+  "limitations": [
+    "12 service transaction cases use a controlled client and do not represent real PostgreSQL failures.",
+    "20 security/fixture cases use actual PostgreSQL; three policy/fixture guards reject before database access.",
+    "17 contract cases use actual PostgreSQL with in-process HTTP request handling; 101 E2E cases use a real local HTTP server and actual PostgreSQL.",
+    "Explicit synthetic hotel fixtures are restricted to a loopback example workspace with one active hotel bundle; default smart-home bootstrap is unchanged.",
+    "The models/channels used by legacy HTTP fixtures are mock providers; no live customer, model API, payment or installation is exercised.",
+    "The later gateway MC020/023/024 and review-console MC018/019/021/022 repairs require their separate reports and global regression."
+  ],
+  "totals": {
+    "passed": 153,
+    "failed": 0,
+    "skipped": 0,
+    "actualPostgresqlSecurityAndFixture": 20,
+    "purePolicyAndPreconnectionGuard": 3,
+    "controlledClientFaults": 12,
+    "postgresqlInProcessHttpContract": 17,
+    "postgresqlRealLocalHttpE2E": 101
+  },
+  "repairDetails": [
+    {
+      "card": "MC012",
+      "level": "A",
+      "problem": "An occupied workspace idempotency key returned another customer ticket or a different request.",
+      "behavior": "Conflict lookup is owner scoped and compares the immutable creation fingerprint; generic 409 on actor/content/legacy evidence mismatch; public timelines omit the internal fingerprint."
+    },
+    {
+      "card": "MC013",
+      "level": "A",
+      "problem": "Explicit demo auth could override production configuration.",
+      "behavior": "Production reuses resolveDemoAuth and ignores the demo override; signed H5 identity remains available."
+    },
+    {
+      "card": "MC017",
+      "level": "A",
+      "problem": "Rollback failure was swallowed and a failed client returned without a discard error.",
+      "behavior": "Retain primary and cleanup errors in AggregateError and discard the failed connection."
+    }
+  ]
+}

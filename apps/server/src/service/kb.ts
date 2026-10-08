@@ -12,6 +12,7 @@
  */
 import { createHash } from "node:crypto";
 import type pg from "pg";
+import { ApprovalError } from "@workloom/base/review-console";
 import {
   guardedFetchText,
   scoreChunkFallback,
@@ -80,6 +81,10 @@ export async function upsertDocumentOn(
 ): Promise<{ documentId: string; version: number; chunks: number }> {
   await ensureServiceSchema();
   const hash = createHash("sha256").update(input.contentMd).digest("hex");
+  // 同工作区建版串行化，避免同标题并发形成两条独立版本链。
+  await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1, 0))", [`kb-document:${input.workspaceId}`]);
+  const collection = await client.query(`SELECT id FROM kb_collections WHERE workspace_id=$1 AND id=$2`, [input.workspaceId, input.collectionId]);
+  if (!collection.rows[0]) throw new ApprovalError("NOT_FOUND", "知识集合不存在或不属于当前工作区");
   // 同内容指纹幂等（H8：UNIQUE(workspace_id,hash)）：已存在则直接复用，不建版不重切
   const sameHash = await client.query(
     `SELECT id, version FROM kb_documents WHERE workspace_id=$1 AND hash=$2 LIMIT 1`,
@@ -91,7 +96,7 @@ export async function upsertDocumentOn(
   }
   const exist = await client.query(
     `SELECT id, version FROM kb_documents
-     WHERE workspace_id=$1 AND (title=$2 OR ($3::text IS NOT NULL AND source_url=$3)) LIMIT 1`,
+     WHERE workspace_id=$1 AND (title=$2 OR ($3::text IS NOT NULL AND source_url=$3)) LIMIT 1 FOR UPDATE`,
     [input.workspaceId, input.title, input.sourceUrl ?? null],
   );
   let documentId: string;
@@ -100,7 +105,7 @@ export async function upsertDocumentOn(
     documentId = String(exist.rows[0].id);
     version = Number(exist.rows[0].version) + 1;
     await client.query(
-      `UPDATE kb_documents SET collection_id=$3, source_kind=$4, source_url=$5, content_md=$6, version=$7, hash=$8
+      `UPDATE kb_documents SET collection_id=$3, source_kind=$4, source_url=$5, content_md=$6, version=$7, hash=$8, status='pending_review'
        WHERE workspace_id=$1 AND id=$2`,
       [input.workspaceId, documentId, input.collectionId, input.sourceKind, input.sourceUrl ?? null, input.contentMd, version, hash],
     );
@@ -156,19 +161,19 @@ export async function setDocumentStatusOn(
   input: { workspaceId: string; documentId: string; status: string },
 ): Promise<void> {
   await ensureServiceSchema();
-  await client.query(
-    `UPDATE kb_documents SET status=$3 WHERE workspace_id=$1 AND id=$2`,
+  if (input.status !== "pending_review" && input.status !== "disabled") {
+    throw new ApprovalError("INVALID_PROJECTION", "知识生效必须通过逐条人工发布通道");
+  }
+  const changed = await client.query(
+    `UPDATE kb_documents SET status=$3 WHERE workspace_id=$1 AND id=$2 RETURNING id`,
     [input.workspaceId, input.documentId, input.status],
   );
+  if (!changed.rows[0]) throw new ApprovalError("NOT_FOUND", "知识文档不存在或不属于当前工作区");
 }
 
 export async function setDocumentStatus(input: { workspaceId: string; documentId: string; status: string }): Promise<void> {
   await ensureServiceSchema();
-  await svcQuery(
-    input.workspaceId,
-    `UPDATE kb_documents SET status=$3 WHERE workspace_id=$1 AND id=$2 RETURNING id`,
-    [input.workspaceId, input.documentId, input.status],
-  );
+  await serviceTx(input.workspaceId, (client) => setDocumentStatusOn(client, input));
 }
 
 /** 事务内注册官网抓取源（D16：供 router serviceTx 回调复用同一 client） */

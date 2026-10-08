@@ -1,0 +1,69 @@
+{
+  "actor": "/root/workbench_audit",
+  "startedAt": "2026-10-08T19:44:34.238Z",
+  "dataMode": "isolated-synthetic-disposable-postgresql",
+  "externalCalls": 0,
+  "method": "Real app-role transactions and gateway event writes, controlled pause after real pending SELECT; no database or clock stubs.",
+  "source": "packages/base/review-console/approvals.ts",
+  "precondition": "Pending low-risk snapshot read before deadline; a legitimate owner approval commits before deadline; the stale sweeper resumes after deadline.",
+  "expected": "The committed approved decision remains terminal; sweeper does not overwrite it or emit approval.expired.",
+  "migrations": 43,
+  "applicationRole": "workloom_app",
+  "deadline": "2026-10-08T19:44:37.461Z",
+  "pendingReadAt": "2026-10-08T19:44:34.462Z",
+  "pendingReadStatuses": [
+    "pending"
+  ],
+  "ownerDecision": {
+    "approvalId": "approval-expire-6dcfaa7f-82c8-4f43-bd80-161382464088",
+    "status": "approved",
+    "deduped": false,
+    "gestureEventId": "E-9101"
+  },
+  "ownerCommittedAt": "2026-10-08T19:44:34.468Z",
+  "afterOwnerCommit": {
+    "status": "approved",
+    "gesture": {
+      "type": "approve",
+      "weight": 1
+    },
+    "decided_by": "MEM-SYNTHETIC-OWNER",
+    "decided_at": "2026-10-08T19:44:34.464Z"
+  },
+  "sweepResumedAt": "2026-10-08T19:44:37.504Z",
+  "sweepResult": {
+    "expired": [
+      "approval-expire-6dcfaa7f-82c8-4f43-bd80-161382464088"
+    ],
+    "keptHighRisk": []
+  },
+  "finalApproval": {
+    "status": "expired",
+    "gesture": {
+      "type": "approve",
+      "weight": 1
+    },
+    "decided_by": "MEM-SYNTHETIC-OWNER",
+    "decided_at": "2026-10-08T19:44:34.464Z"
+  },
+  "actions": [
+    {
+      "action": "approval.expired",
+      "count": 1
+    },
+    {
+      "action": "approval.gesture",
+      "count": 1
+    },
+    {
+      "action": "test.synthetic.approval-race",
+      "count": 1
+    }
+  ],
+  "productionBugReproduced": true,
+  "limitations": "This proves the actual implementation race on isolated synthetic PostgreSQL with a deliberately controlled interleaving; it is not an external customer production run or frequency estimate.",
+  "poolCleanupFailures": [],
+  "databaseRemoved": true,
+  "sourceSha256": "efcddcd08ba4ac92e5336f2b732fe37036c325200c6d9fa70003634c41ae2955",
+  "finishedAt": "2026-10-08T19:44:37.576Z"
+}

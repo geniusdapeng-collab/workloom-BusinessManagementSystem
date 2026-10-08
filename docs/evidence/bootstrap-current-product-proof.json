@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "evidenceClass": "B",
+  "scope": "Current-product foundation bootstrap command sequencing and environment-file preservation",
+  "environment": {
+    "node": "v24.19.0",
+    "fixtures": "Disposable temporary projects; node/pnpm/docker commands stubbed; no database, model or external action invoked"
+  },
+  "source": {
+    "script": "scripts/bootstrap.sh",
+    "scriptSha256": "5b1a7ae6a3946c1b0018232127e22c79e604622811a2a60ec75618123f756207",
+    "test": "scripts/bootstrap-current-product.test.mjs",
+    "testSha256": "de2964e761d9ae280b0621a7e2174571e0ef3f8f23f379d361216d873c85eef9"
+  },
+  "cases": [
+    {
+      "id": "BOOTSTRAP-01",
+      "precondition": "Migration and current-product seed stubs succeed; environment file absent",
+      "steps": "Run bash scripts/bootstrap.sh --skip-computer in an isolated project",
+      "expected": "db:migrate precedes exactly one db:seed; no compatibility seed; environment copied; exit 0",
+      "actual": "Passed; command log equals -v, db:migrate, db:seed; environment equals fixture example",
+      "status": "passed"
+    },
+    {
+      "id": "BOOTSTRAP-02",
+      "precondition": "Migration stub exits 12",
+      "steps": "Run the same bootstrap with injected migration failure",
+      "expected": "No seed command; explicit skip message; overall exit 1",
+      "actual": "Passed after guard; original committed script invokes db:seed and fails the regression",
+      "status": "passed"
+    },
+    {
+      "id": "BOOTSTRAP-03",
+      "precondition": "Migration succeeds; current-product seed exits 13",
+      "steps": "Run bootstrap with injected seed failure",
+      "expected": "Seed failure recorded as blocking; no successful-seed message; exit 1",
+      "actual": "Passed; command log keeps migration before seed and summary has FAIL=1",
+      "status": "passed"
+    },
+    {
+      "id": "BOOTSTRAP-04",
+      "precondition": "Existing environment file has different contents from example",
+      "steps": "Run bootstrap with successful command stubs",
+      "expected": "Existing environment content remains byte-for-byte intact",
+      "actual": "Passed; existing live/store text retained and skip message present",
+      "status": "passed"
+    }
+  ],
+  "runs": {
+    "fixed": {
+      "command": [
+        "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "scripts/bootstrap-current-product.test.mjs"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-10-08T18:56:48.553137+00:00",
+      "finishedAt": "2026-10-08T18:56:55.287026+00:00",
+      "stdout": "✔ foundation bootstrap migrates before invoking only the current product seed (2396.547958ms)\n✔ foundation bootstrap never invokes any seed after migration failure (1672.479959ms)\n✔ foundation bootstrap reports a current product seed failure as blocking (1258.154333ms)\n✔ foundation bootstrap preserves an existing environment file (1333.98725ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 6700.568209\n",
+      "stderr": ""
+    },
+    "shellSyntax": {
+      "command": [
+        "/bin/bash",
+        "-n",
+        "scripts/bootstrap.sh"
+      ],
+      "exitCode": 0,
+      "startedAt": "2026-10-08T18:56:55.287058+00:00",
+      "finishedAt": "2026-10-08T18:56:55.290623+00:00",
+      "stdout": "",
+      "stderr": ""
+    },
+    "originalFailure": {
+      "command": [
+        "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "--test-name-pattern",
+        "never invokes any seed after migration failure",
+        "scripts/bootstrap-current-product.test.mjs"
+      ],
+      "exitCode": 1,
+      "startedAt": "2026-10-08T18:56:55.330813+00:00",
+      "finishedAt": "2026-10-08T18:56:56.833045+00:00",
+      "stdout": "✖ foundation bootstrap never invokes any seed after migration failure (1435.283708ms)\nℹ tests 1\nℹ suites 0\nℹ pass 0\nℹ fail 1\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1470.862666\n\n✖ failing tests:\n\ntest at scripts/bootstrap-current-product.test.mjs:74:1\n✖ foundation bootstrap never invokes any seed after migration failure (1435.283708ms)\n  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n  + actual - expected\n  \n    [\n      '-v',\n      'db:migrate',\n  +   'db:seed'\n    ]\n  \n      at TestContext.<anonymous> (file:///private/var/folders/dj/mkh6fwbd4mb6ycp933xfty4h0000gn/T/bms-bootstrap-original-902ae7bo/scripts/bootstrap-current-product.test.mjs:77:10)\n      at async Test.run (node:internal/test_runner/test:1389:7)\n      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {\n    generatedMessage: true,\n    code: 'ERR_ASSERTION',\n    actual: [ '-v', 'db:migrate', 'db:seed' ],\n    expected: [ '-v', 'db:migrate' ],\n    operator: 'deepStrictEqual',\n    diff: 'simple'\n  }\n",
+      "stderr": "",
+      "sourceCommit": "8b057a5e995d899af0dd2ae659c4453d5833ad1f",
+      "sourceScriptSha256": "b94dc385f9fb4ef9ae3e483b898397e5787058b0dbdc416634faa37f9240e90d"
+    }
+  },
+  "passed": true,
+  "limitations": [
+    "Command sequencing evidence uses stubs; it does not verify PostgreSQL, installation networks, Docker availability or computer-use tooling.",
+    "The original-failure run compares the current committed parent source with the uncommitted guarded script."
+  ]
+}

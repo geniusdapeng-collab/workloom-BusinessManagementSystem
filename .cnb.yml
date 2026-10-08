@@ -147,7 +147,16 @@
         pnpm db:migrate
         BMS_PG_TEST_URL="$DATABASE_URL" node --test scripts/business-management-postgres.test.mjs
         BMS_PG_TEST_URL="$DATABASE_URL" node --test scripts/acceptance/matrix.pg.test.mjs
-        BMS_PG_TEST_URL="$DATABASE_URL" pnpm exec vitest run scripts/seed-smart-home.pg.test.ts apps/server/src/trpc/fence-proposal.pg.test.ts packages/base/bundles/assembly-safety.test.ts packages/base/captain/ceo-actor.test.ts
+        BMS_PG_TEST_URL="$DATABASE_URL" pnpm exec vitest run \
+          scripts/seed-smart-home.pg.test.ts apps/server/src/trpc/fence-proposal.pg.test.ts \
+          packages/base/bundles/assembly-safety.test.ts packages/base/captain/ceo-actor.test.ts \
+          packages/runtime/src/assembly-revocation.test.ts packages/runtime/src/transaction-family.test.ts \
+          apps/server/src/service/service-transactions.test.ts apps/server/src/service/ticket-idempotency.pg.test.ts \
+          apps/server/src/service/production-demo-auth.pg.test.ts apps/server/src/service/hotel-contract-fixture.pg.test.ts \
+          apps/server/src/service/ticket-assignment.pg.test.ts apps/server/src/service/kb-publication.pg.test.ts \
+          packages/base/review-console/approval-transaction.pg.test.ts \
+          packages/base/review-console/rejection-memory.pg.test.ts packages/base/workdata/gateway-transaction.pg.test.ts \
+          packages/base/workdata/memory-transaction.pg.test.ts
         pnpm db:seed
         pnpm db:seed
         pnpm db:verify-chain
@@ -166,6 +175,7 @@
     LLM_PROVIDER: mock
     IM_DRIVER: mock
     RUN_DB_TESTS: "1"
+    SERVICE_C_TEST_WORKSPACE_ID: ws-yunqi
     TOOL_UNVERIFIED_RATE: "0"
   stages:
     - name: 准备 Node 24 与 pnpm
@@ -206,7 +216,28 @@
         done < .env
         set +a
         pnpm db:migrate
-        pnpm db:seed
+        # 继承平台套件明确依赖 ws-yunqi 酒店夹具；仅在此隔离 CI 数据库安装。
+        # 默认门店与必需 db-gate 仍使用 smart-home 种子及其独立安全回归。
+        pnpm db:seed:hotel-compat
+        # 只在隔离测试流水线显式标记旧合成工作区，生产默认种子不安装酒店数据。
+        test "$RUN_DB_TESTS" = "1"
+        test "$SERVICE_C_TEST_WORKSPACE_ID" = "ws-yunqi"
+        psql "$DATABASE_URL" -v ON_ERROR_STOP=1 <<'SQL'
+        BEGIN;
+        DO $fixture$
+        BEGIN
+          IF NOT EXISTS (
+            SELECT 1 FROM workspaces w WHERE w.id='ws-yunqi' AND w.industry='hotel' AND w.bundle_id='hotel'
+              AND (SELECT count(*) FROM bundle_installs WHERE workspace_id=w.id AND status='active')=1
+              AND EXISTS (SELECT 1 FROM bundle_installs WHERE workspace_id=w.id AND status='active' AND bundle_id='hotel')
+          ) THEN
+            RAISE EXCEPTION 'hotel compatibility fixture workspace or active bundle does not match';
+          END IF;
+          UPDATE workspaces SET is_example=true WHERE id='ws-yunqi';
+        END
+        $fixture$;
+        COMMIT;
+        SQL
 
     - name: typecheck 全包（非阻断）
       script: |

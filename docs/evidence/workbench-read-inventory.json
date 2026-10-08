@@ -1,20 +1,24 @@
 {
   "schemaVersion": "bms.workbench-read-inventory/v1",
   "agent": "workbench_audit",
-  "scope": "CLI/MCP/HTTP/setup, complete direct smart-home runtime, browser UI and repeatable checks, fence proposal transaction repair and selected setup/desktop/delivery installation code; selected inherited Agent/DevFabric comparison chain",
-  "asOf": "2026-10-08T18:12:12.686750+00:00",
+  "scope": "CLI/MCP/HTTP/setup, complete direct smart-home runtime, browser UI/repeatable checks, fence proposal and foundation setup/desktop/delivery-installation chain; selected inherited Agent/DevFabric comparison; service identity/idempotency/demo-auth/fixture chain and the precisely repaired event-gateway transaction/authorization/replay-scope wrappers",
+  "asOf": "2026-10-08T20:16:54.241696+00:00",
   "counts": {
-    "total": 107,
-    "fullRead": 94,
-    "machineParsed": 13,
+    "total": 162,
+    "fullRead": 147,
+    "machineParsed": 15,
     "sampled": 0,
     "unreadWithinDeclaredScope": 0
   },
   "scopeLimitations": [
-    "The inventory is the workbench agent scope, not the whole inherited repository. Selected transitive judge/expression, gateway, callback, access-authority and lock-conflict implementations are only inventoried/hashed (B) and not fully source-audited. The router was fully read, while unrelated recursive services and routers are outside this declared scope.",
-    "QwenWork and WorkBuddy clients were not run; configurations follow the official documents. Only Codex was actually used as a host model.",
-    "Actual isolated PostgreSQL regression ran 13 fence proposal cases. This does not cover the entire inherited PostgreSQL application, a live production deployment, commercial customers or device installation. External publication, customer messaging, payments, video rendering and real field work were not performed.",
-    "HTTP/CLI owner authority is a local operating-system/terminal trust boundary, not an independent identity provider or cryptographic proof of human presence. Arbitrary same-account shell/PTY/database control is outside this boundary."
+    "This inventory is the workbench agent's explicitly selected scope, not the whole inherited repository or every recursive service. The source files listed as A were fully read or have a complete original read plus every current modification/function read, as specified per file.",
+    "Four remaining transitive implementations (fence-engine/judge.ts, fence-engine/expr.ts, im-channels/callback.ts and scripts/ci/verify-lock-conflict.mjs) are only inventoried and hashed (B). Recursive model-router, service/bundle, service/aipm, service/secretary and unselected service-kb/memory/miner/projection implementations are outside this agent's source-audit scope; delegated agents provide their own inventories rather than this agent claiming their reading.",
+    "The entire service router file was read, but its recursive bundle/aipm/secretary implementations were not audited. Conclusions stop at the actually read functions, SQL and interface calls.",
+    "Inherited workdata/recall.ts searchEvents still suppresses a ROLLBACK failure and releases normally. It was source-read (A), but not transport-fault tested or modified. Other inherited helpers, including separately read preference-inject.ts in the engine agent's scope, cannot be covered by claims about the patched wrappers. No assertion is made that every platform transaction is free of the same pattern.",
+    "QwenWork and WorkBuddy clients were not run; generated configurations follow official documents. Only Codex was actually used as a host model. Host tests and all business/database fixtures are synthetic and do not prove real customer outcomes.",
+    "Actual scoped PostgreSQL, controlled-client and controlled transport-fault tests are individually distinguished in the proof JSONs. These runs do not prove full-platform production deployment, independent human approval, commercial field work, physical installation or spontaneous production network failure.",
+    "Typed replay APIs now require payload.context to match the trusted scope; low-level privileged SQL payload semantics remain unchanged and outside this precise typed-API repair.",
+    "External publication, customer messaging, payments, video rendering and real field actions were not performed. HTTP/CLI owner authority remains a local operating-system/terminal trust boundary; arbitrary same-account shell/PTY/database control is outside that boundary."
   ],
   "files": [
     {
@@ -46,6 +50,13 @@
       "sha256": "dbb8e8cbf4d81e15cc8cf2f03123d17037b81b50b246d92bd160526e87311c55"
     },
     {
+      "path": "README.md",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading",
+      "sha256": "6181a85c68301f68d2ace7985d8b1d4c37b4731fd31a91e91be2ab13832ac0e2",
+      "lines": 108
+    },
+    {
       "path": "apps/desktop/electron/main.cjs",
       "evidenceClass": "A",
       "readMethod": "complete source reading",
@@ -67,11 +78,67 @@
       "sha256": "5265bdf6b6debfb71665c2ce67c49323a63c1da5eb9ebf5e34291dae86b8bbcd"
     },
     {
+      "path": "apps/server/src/industry/business-adapter-catalog.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 21,
+      "sha256": "dbac9cf3f84eed1157f097bda6e69a2097404e33511b5b3fcc09653d680a8981"
+    },
+    {
+      "path": "apps/server/src/industry/hotel/service-front-adapter.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 202,
+      "sha256": "32a538a4d5e0b62d16176eb9de745cfa0b55cb7960ffcde1b74f3d241422adf6"
+    },
+    {
       "path": "apps/server/src/service/access-authority.ts",
-      "evidenceClass": "B",
-      "readMethod": "transitive dependency inventoried and hashed; implementation not fully source-read",
+      "evidenceClass": "A",
+      "readMethod": "promoted from B after complete 477-line source reading",
       "lines": 477,
       "sha256": "a4fe5d31fbb1b6108ea5571bef5a22bd5f775b63005190f30d62985fda2f2378"
+    },
+    {
+      "path": "apps/server/src/service/active-bundle.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 229,
+      "sha256": "448849e14ed4e02dded987af0d82617d937ea27145b56381b7e0bb2866310be8"
+    },
+    {
+      "path": "apps/server/src/service/adapters/business-registry.pg.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 55,
+      "sha256": "d8d66b9414ef7c29de5eea4d6a34f31eadd5a0bbf2a2d35f9ca731be0a5f7889"
+    },
+    {
+      "path": "apps/server/src/service/adapters/business-registry.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 135,
+      "sha256": "c591be92b67f6a1a00c98429c374904296a3c1e2e0f30a3ff5b772fab98b53ef"
+    },
+    {
+      "path": "apps/server/src/service/adapters/business.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 311,
+      "sha256": "024839252b6301dbe563afaa9c5a85a8c2739de8196db798dd4ebd02aa1a90ff"
+    },
+    {
+      "path": "apps/server/src/service/channels.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 314,
+      "sha256": "e497aa512f9d2e3ccfd80b805be524de92a689430e22c2e3fb005026812819db"
+    },
+    {
+      "path": "apps/server/src/service/contract.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 343,
+      "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c"
     },
     {
       "path": "apps/server/src/service/devtools.ts",
@@ -79,6 +146,20 @@
       "readMethod": "complete source reading",
       "lines": 630,
       "sha256": "be80011bb797c58a1a05fc62745cbeeb044fc146069b3bbc2be23f681b78730f"
+    },
+    {
+      "path": "apps/server/src/service/dialog.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 271,
+      "sha256": "b7bcbc2e7c159a9966093fd219b21370f89be319877d6f3d4554905b149ace51"
+    },
+    {
+      "path": "apps/server/src/service/e2e.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 1176,
+      "sha256": "06b4412782f8ce5848c2b90fc0ee1b91fcbf5fb7c7a027e5affeb7c79aa96271"
     },
     {
       "path": "apps/server/src/service/eval.ts",
@@ -90,9 +171,59 @@
     {
       "path": "apps/server/src/service/events.ts",
       "evidenceClass": "A",
-      "readMethod": "complete source reading",
-      "lines": 65,
-      "sha256": "37f2a8f1841182626286a02168f810717b2b62cee9aa535e825566497de76c85"
+      "readMethod": "complete source reading of final frozen 71-line implementation",
+      "lines": 71,
+      "sha256": "654a2fdec6514043e6bd12f59a1f3cec0ddeb89638bedc977b1b486d5826072f",
+      "priorReadSnapshots": [
+        {
+          "sha256": "37f2a8f1841182626286a02168f810717b2b62cee9aa535e825566497de76c85",
+          "evidenceClass": "A",
+          "readMethod": "complete source reading",
+          "lines": 65
+        }
+      ]
+    },
+    {
+      "path": "apps/server/src/service/gateway.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 696,
+      "sha256": "df9751e45da21b4f062d1ba7648ef99343a454e5953364a4cbef882696b98aac"
+    },
+    {
+      "path": "apps/server/src/service/h5-session-auth.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 43,
+      "sha256": "de726630d410434cd02bab6094a3dd35d356c4b2cc4537d386f26c88e597256a"
+    },
+    {
+      "path": "apps/server/src/service/hotel-contract-fixture.pg.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 106,
+      "sha256": "bdd3c9a3b2e33b7ebf091f64b70abc0d8af46df7daf00398d8b10afc8f08736d"
+    },
+    {
+      "path": "apps/server/src/service/hotel-contract-fixture.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 82,
+      "sha256": "58cdb78d22bd64347a134d782fb47b4338dea1c2b5f1a7a5b2ad4a3e4c343917"
+    },
+    {
+      "path": "apps/server/src/service/kb-publication.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 136,
+      "sha256": "dd01258a0d4ea9a3ca01ceb32d2bc2c15225c5a71d9af9813f0da21aa1540a9c"
+    },
+    {
+      "path": "apps/server/src/service/kb.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 344,
+      "sha256": "1d4c7569804392b562f9458dffca7bb720793bc46b26ee24e94da49a9b059d86"
     },
     {
       "path": "apps/server/src/service/llm.ts",
@@ -100,6 +231,69 @@
       "readMethod": "complete source reading",
       "lines": 121,
       "sha256": "ab4794f52733bdf57806cd033070f1d07b38a3994d30d397a5bfc16f380e9eb4"
+    },
+    {
+      "path": "apps/server/src/service/neutral-industry-default.pg.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 46,
+      "sha256": "2b978c8a93d1650cba21f1723aa3ab6fded1f281abdb535e862937cd3bc32634"
+    },
+    {
+      "path": "apps/server/src/service/production-demo-auth.pg.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 148,
+      "sha256": "56878ae8ffd0a5ecaa2b9942f66db2274ca5dbb9b3f623af95a26b5761858fcb"
+    },
+    {
+      "path": "apps/server/src/service/router.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 727,
+      "sha256": "e495a66f737834f1f7f048da0bb8268541ec2cbeb0a76587bc26258876ccc8df"
+    },
+    {
+      "path": "apps/server/src/service/service-contract-pg-fixture.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 90,
+      "sha256": "5d6b588fe0b6ae9c86078deddf392090c3b567b6bdfc82ef9710886df175081b"
+    },
+    {
+      "path": "apps/server/src/service/service-transactions.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 119,
+      "sha256": "a54fc8d3e030113000af1e3279171a8fe9b6d39e281254955e725d329200e532"
+    },
+    {
+      "path": "apps/server/src/service/store.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 89,
+      "sha256": "807b700743a473c5564d2bba60f94d4239cfb017ad024ad366a16c228f6ee19c"
+    },
+    {
+      "path": "apps/server/src/service/ticket-idempotency.pg.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 151,
+      "sha256": "2ce39d5a8e39024a622a1b40e2595222b49a58cf2709a2b9b754d89994e9b217"
+    },
+    {
+      "path": "apps/server/src/service/ticket.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 391,
+      "sha256": "543926a64f4cc8aff588722529916feeab32e76906483489655eadf436759b61"
+    },
+    {
+      "path": "apps/server/src/service/workspace-routing.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 60,
+      "sha256": "af45f103fed5fc6a116de54d5e70b2e05eed72c9ffe700e7420e53957b050dc9"
     },
     {
       "path": "apps/server/src/trpc/context.ts",
@@ -118,9 +312,17 @@
     {
       "path": "apps/server/src/trpc/router.ts",
       "evidenceClass": "A",
-      "readMethod": "complete source reading",
-      "lines": 3560,
-      "sha256": "40b9908f40d29fb431b814ce268e5cbe9a5b08912b363cfec57c2a744f888f89"
+      "readMethod": "complete original 3560-line source reading plus complete final diff and full modified approvalsRouter/imRethrow functions; unchanged remainder not re-read",
+      "lines": 3566,
+      "sha256": "1203b0c1cada52307af1b1429575558bab754fc3f3f1f330ddadc5ae55c13265",
+      "priorReadSnapshots": [
+        {
+          "sha256": "40b9908f40d29fb431b814ce268e5cbe9a5b08912b363cfec57c2a744f888f89",
+          "evidenceClass": "A",
+          "readMethod": "complete source reading",
+          "lines": 3560
+        }
+      ]
     },
     {
       "path": "apps/web/package.json",
@@ -134,7 +336,7 @@
       "evidenceClass": "A",
       "readMethod": "complete source reading",
       "lines": 24,
-      "sha256": "83ad8d05dcc01acf555311ff92d9e510baae7847d4592ef9decb507eff46a1ca"
+      "sha256": "325d514edbb6a66b379cdac90b545f7c2852b320ac46466c9ea2f76aecfebc41"
     },
     {
       "path": "apps/web/vite.config.ts",
@@ -263,11 +465,25 @@
       "sha256": "9733f2c5b9697d4db158cd36b027e7321646708da729118ee2413437906578e6"
     },
     {
+      "path": "docs/evidence/bootstrap-current-product-proof.json",
+      "evidenceClass": "B",
+      "readMethod": "complete JSON result/metadata parsing",
+      "sha256": "d330099de35c2b5daa2c3df35d1fb604847e3afd96ae9573f3d152357214d6c3",
+      "lines": 96
+    },
+    {
       "path": "docs/evidence/fence-proposal-pg-proof.json",
       "evidenceClass": "B",
       "readMethod": "complete JSON result/metadata parsing",
       "lines": 135,
       "sha256": "03e716e3aee5f7c64df6026c67baa0e9a3bc8f949456ab8513620d47a6c3b329"
+    },
+    {
+      "path": "docs/evidence/gateway-transaction-pg-proof.json",
+      "evidenceClass": "B",
+      "readMethod": "complete structured test-result parsing and source-fingerprint verification; mixed actual PostgreSQL, guard, controlled-client and transport-fault methods individually classified",
+      "lines": 996,
+      "sha256": "edf135d7c1083700c0b4439131eec33606742f5e941dfa639177cc21a765a868"
     },
     {
       "path": "docs/evidence/host-model-delivery-proof.json",
@@ -298,6 +514,20 @@
       "sha256": "967466247e66815f82f19ee28d8c7646f295603bc7c6ea89fffd64e390a4c769"
     },
     {
+      "path": "docs/evidence/pure-node-consumer-proof.json",
+      "evidenceClass": "B",
+      "readMethod": "complete JSON result/metadata parsing",
+      "sha256": "d1ef94b5e29eecbefa9fe234a724b7602bca595a54000bc81453675968510f44",
+      "lines": 833
+    },
+    {
+      "path": "docs/evidence/service-security-pg-proof.json",
+      "evidenceClass": "B",
+      "readMethod": "complete structured test-result parsing and source-fingerprint verification; mixed actual PostgreSQL, guard, controlled-client and transport-fault methods individually classified",
+      "lines": 1719,
+      "sha256": "fb0409c286c158c79650546214d8a797d6edf703bf2ac8b55ab9c63e0de170ba"
+    },
+    {
       "path": "docs/evidence/ui-workbench-proof.json",
       "evidenceClass": "B",
       "readMethod": "complete JSON result/metadata parsing",
@@ -308,8 +538,8 @@
       "path": "package.json",
       "evidenceClass": "A",
       "readMethod": "complete source reading",
-      "lines": 95,
-      "sha256": "3dd07dda5da76a79b1622a47d135536508929024bfb71b0899b7feb3cb128822"
+      "lines": 100,
+      "sha256": "fc4b0854bd39e69b4aaf6598651d9ca5a54f62113b53e0abe2f5ad81e102e615"
     },
     {
       "path": "packages/base/dev-bridge/adapters/aider.ts",
@@ -452,11 +682,145 @@
       "sha256": "e40feaa0a02c265b0cff74d1ba5624b65c8ec2d5fb94b999d9adfeaf12327f6b"
     },
     {
+      "path": "packages/base/review-console/approvals.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete final 603-line source reading after delegated MC018/019/021/022 freeze; source understanding does not claim every recursive memory/projection implementation was audited",
+      "lines": 603,
+      "sha256": "c2a1477172b13cf8fd586a96c8918d45c015a84ce4bb36132f1fa695321fbfbc"
+    },
+    {
+      "path": "packages/base/service-ticket/constants.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 33,
+      "sha256": "dfb576de2f741954ddc67ebec080f3f910fb0f33ac9deadfc010f5b36aa5aba7"
+    },
+    {
+      "path": "packages/base/service-ticket/index.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 8,
+      "sha256": "1c90adc51ac4674454e2e7c33e24db8263c37fa7ab7bf58d0f7cace484589b24"
+    },
+    {
+      "path": "packages/base/service-ticket/request-fingerprint.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 36,
+      "sha256": "e47f58ad59d7e97fd1b40c0a27335732b18d9f4b8f2c0ec9e24adc0342885d63"
+    },
+    {
+      "path": "packages/base/service-ticket/state.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 37,
+      "sha256": "a5d8f5c1a4f1066540536970ddbef9cfac7d3befede2989ba432064f620e987e"
+    },
+    {
+      "path": "packages/base/service-ticket/tickets.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 378,
+      "sha256": "523d741f07d4c26b33205bdd82ac797d17bd03a793341a2de07f568c168bb2cd"
+    },
+    {
+      "path": "packages/base/workdata/atomicity.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 142,
+      "sha256": "8a7967390bdfc6c19850e6bf3674a57c69bb3da58bb9769b8253eca95c474d0c"
+    },
+    {
+      "path": "packages/base/workdata/events.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 303,
+      "sha256": "b5dc8a1333562f34fbbc9659032eb2560cee7861a3409b6a1ffd015e3f993358"
+    },
+    {
+      "path": "packages/base/workdata/gateway-transaction.pg.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 308,
+      "sha256": "39852ce623668264c4c0a3f4b33b1fb77553b0779ed2783003a487bc53ce134f"
+    },
+    {
       "path": "packages/base/workdata/gateway.ts",
-      "evidenceClass": "B",
-      "readMethod": "transitive dependency inventoried and hashed; implementation not fully source-read",
-      "lines": 421,
-      "sha256": "4491aa31dcf881b65a46a8e43a2d6e9e39928044e108c0dccf7e92bec7b6d708"
+      "evidenceClass": "A",
+      "readMethod": "promoted from B after complete before-fix implementation reading, authored patch, and complete final 413-line source re-reading",
+      "lines": 413,
+      "sha256": "9772ef519f139d2ac52ab4fe5d6ffdacf06e36c08c54f1aaa63b855be73442c6",
+      "priorReadSnapshots": [
+        {
+          "sha256": "4491aa31dcf881b65a46a8e43a2d6e9e39928044e108c0dccf7e92bec7b6d708",
+          "evidenceClass": "B",
+          "readMethod": "transitive dependency inventoried and hashed; implementation not fully source-read",
+          "lines": 421
+        }
+      ]
+    },
+    {
+      "path": "packages/base/workdata/pii.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 121,
+      "sha256": "2c9f18d1a220ecaab52e904486b6c2b9872336d6080303f86c928786d7fbadec"
+    },
+    {
+      "path": "packages/base/workdata/recall.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 241,
+      "sha256": "c301e09a8fc09b098b3c500a572d088060f73e2788a303431a454aed4be34e35"
+    },
+    {
+      "path": "packages/base/workdata/workdata.test.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 446,
+      "sha256": "924ad3e16024eb84a9a8b736dd2ac71c8ed410a41a2b9689976f93861ae7803f"
+    },
+    {
+      "path": "packages/db/migrations/0001_init.sql",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 337,
+      "sha256": "fd8b5f636a2d77d7e6adbe73d1fefa5521df06c526ebd2cf9d70f69f5e763be0"
+    },
+    {
+      "path": "packages/db/migrations/0010_service_c.sql",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 188,
+      "sha256": "fc9bf14fb3f910f623159390164f8a0b6ee7162559c53b14ac3e8003f86dfb27"
+    },
+    {
+      "path": "packages/db/migrations/0011_service_c_hardening.sql",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 54,
+      "sha256": "d66940ec3d257c980631a6c2cc44c95c5bba83b43edbaa02f27515369a9a3825"
+    },
+    {
+      "path": "packages/db/migrations/0012_service_c_demo_pk.sql",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 41,
+      "sha256": "2677ceb411f23c6e6ef65d65f60e5cfce4c9bd61c5bcaa4eeaac40d8c9ceee53"
+    },
+    {
+      "path": "packages/db/migrations/0032_remove_cross_industry_hotel_bootstrap.sql",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 93,
+      "sha256": "ef5459cd9b5aeccc3ef2aff989ed3f12e4192b6735aef6c03ca52019237a890c"
+    },
+    {
+      "path": "packages/db/migrations/0051_append_event_tenant_guard.sql",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 83,
+      "sha256": "4030f3dd3d8d1be51ffa09e46d79020742995c8ad37b8c7f872252a15c78ce76"
     },
     {
       "path": "packages/db/package.json",
@@ -471,6 +835,48 @@
       "readMethod": "complete source reading",
       "lines": 97,
       "sha256": "c145ad3ff70ff2dbd0b9e540b861ce2b7b38c603257be9c377d21870549b8ee8"
+    },
+    {
+      "path": "packages/shared/src/client-access.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 26,
+      "sha256": "f22ffc44e94f5deca6d174037ebe727d84f96a55d930640632286b97c5ef693c"
+    },
+    {
+      "path": "packages/shared/src/constants.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 85,
+      "sha256": "3ac28084f91bd78bc646f249357e85e35b51e5f901d97feb468c7d0ae591b05f"
+    },
+    {
+      "path": "packages/shared/src/enums.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 105,
+      "sha256": "e4093059cd46131057442b00167c0a591c47729b4b6c2b48c4203ba18bc43fc5"
+    },
+    {
+      "path": "packages/shared/src/event-schema.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 106,
+      "sha256": "29820b39e97ef57fe5a6f0963a27c57e575d923a59009773147d3fc8aecc896b"
+    },
+    {
+      "path": "packages/shared/src/ids.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 27,
+      "sha256": "7de6df0ac51b837aba0f292c8e080612b78dd49300e8ea76b75bb23a2ac339d2"
+    },
+    {
+      "path": "packages/shared/src/index.ts",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+      "lines": 9,
+      "sha256": "eee90f31785aa9fd46d1c6c4873eb28df8d0e344735eda5bf43dafac9216c48f"
     },
     {
       "path": "product.manifest.json",
@@ -508,11 +914,18 @@
       "sha256": "fc912be3abb7283e8cb818fca79c045b0e06639296252baff455017a170d55fa"
     },
     {
+      "path": "scripts/bootstrap-current-product.test.mjs",
+      "evidenceClass": "A",
+      "readMethod": "complete source reading",
+      "sha256": "de2964e761d9ae280b0621a7e2174571e0ef3f8f23f379d361216d873c85eef9",
+      "lines": 99
+    },
+    {
       "path": "scripts/bootstrap.sh",
       "evidenceClass": "A",
       "readMethod": "complete source reading",
-      "lines": 162,
-      "sha256": "b94dc385f9fb4ef9ae3e483b898397e5787058b0dbdc416634faa37f9240e90d"
+      "lines": 163,
+      "sha256": "5b1a7ae6a3946c1b0018232127e22c79e604622811a2a60ec75618123f756207"
     },
     {
       "path": "scripts/business-management-common.mjs",

@@ -75,7 +75,7 @@
     "bm": "node scripts/business-management.mjs",
     "bm:mcp": "node scripts/business-management-mcp.mjs",
     "bm:doctor": "node scripts/business-management.mjs doctor",
-    "test:business": "node --test bundles/smart-home/runtime/tests/*.test.mjs scripts/business-management*.test.mjs",
+    "test:business": "node --test bundles/smart-home/runtime/tests/*.test.mjs scripts/business-management*.test.mjs scripts/bootstrap-current-product.test.mjs",
     "db:seed:hotel-compat": "tsx --env-file=.env scripts/seed.ts"
   },
   "devDependencies": {
@@ -90,6 +90,11 @@
     "electron-builder": "^26.15.3",
     "typescript-governance": "npm:typescript@5.9.3",
     "yaml-governance": "npm:yaml@2.9.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@workloom/ui@0.1.19": "https://cnb.cool/workloom-ai/workloom-im/-/releases/download/ui-v0.1.19/workloom-ui-0.1.19.tgz"
+    }
   },
   "description": "经营管理系统（BusinessManagementSystem）· 全屋智能门店获客、方案报价、项目交付与售后 · 宿主AI模型驱动"
 }

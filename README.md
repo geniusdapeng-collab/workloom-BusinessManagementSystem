@@ -67,7 +67,7 @@ node scripts/business-management.mjs setup --client codex --mode live --data-dir
 
 酒店源仓的公共平台、三端应用、电脑操作工具和历史演示保留在源码中，作为兼容和进一步集成资产。默认产品身份为 `smart-home`；PostgreSQL 平台与本机 SQLite 工作台使用独立数据存储，当前没有双向同步。
 
-平台开发使用 `pnpm install --frozen-lockfile`、`pnpm setup:foundation` 和 `pnpm dev:foundation`。数据库迁移后 `pnpm db:seed` 安装全屋智能沙箱员工、围栏、技能和 FAQ；它拒绝生产环境、真实工作区和不同安装摘要，且不制造经营事件。PC 平台入口 `/smart-home/workbench` 指向本机经营工作台；B/C 客户端按行业投影装配。旧酒店种子仅通过显式 `pnpm db:seed:hotel-compat` 调用。
+平台开发使用 `pnpm install --frozen-lockfile`、`pnpm setup:foundation` 和 `pnpm dev:foundation`。初始化脚本仅在数据库迁移成功后运行当前产品种子；迁移失败时停止播种并返回非零退出码。数据库迁移后 `pnpm db:seed` 安装全屋智能沙箱员工、围栏、技能和 FAQ；它拒绝生产环境、真实工作区和不同安装摘要，且不制造经营事件。PC 平台入口 `/smart-home/workbench` 指向本机经营工作台；B/C 客户端按行业投影装配。旧酒店种子仅通过显式 `pnpm db:seed:hotel-compat` 调用。
 
 历史 `preview:all`、酒店演示截图、酒店专项套件和旧能力目录不构成本产品经营效果证明。正式签名桌面安装包要经过现有签名与发布门禁；当前入口交付源码与本机工作台，未发布已签名安装器。
 

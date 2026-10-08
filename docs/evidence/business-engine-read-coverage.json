@@ -1,20 +1,20 @@
 {
   "schemaVersion": "workloom.scoped-coverage/v1",
   "agent": "business_engine",
-  "scope": "Native smart-home runtime and consumed skills; foundation migrations and assembly; suite owner plumbing; independent seed, generator/install/preview/documentation, selected registration and CEO permission review; MCD evidence executor",
+  "scope": "Native smart-home runtime and consumed skills; foundation migrations and assembly; suite owner plumbing; independent seed, generator/install/preview/documentation, selected registration and CEO permission review; MCD evidence executor; native CI legacy fixture validation and runtime global-revocation/transaction/lock-test corrections; final 25-card candidate and exact required database gate command sequence, current approval/memory/event transaction implementations and explicitly bounded inherited helpers",
   "scopeBoundary": "This inventory is the business_engine agent scope; it is not a claim that the entire inherited repository was fully read. Untouched transitive implementations listed as B are only export-resolved and hashed. Parent owns independent UI, seed repair, hosting, transport and global release validation.",
-  "asOf": "2026-10-08T18:14:58.970735+00:00",
+  "asOf": "2026-10-08T20:22:38.289190+00:00",
   "counts": {
-    "total": 234,
-    "fullRead": 161,
-    "machineOnly": 73,
+    "total": 289,
+    "fullRead": 225,
+    "machineOnly": 64,
     "sampled": 0,
     "unread": 0
   },
   "scopeCuts": [
     {
-      "scope": "Untouched transitive service and overlay implementations plus selected existing regression files",
-      "reason": "Administrative owner-pool correction and assembly transaction repair require their actual entrypoints and selected direct dependencies. Unchanged wider service/overlay implementations and two existing regression files are inventoried and hashed; their behavior is not claimed as deeply audited. Existing regression files were executed.",
+      "scope": "Other inherited transitive service, governance, overlay implementations and generated reports",
+      "reason": "Focused current implementations and exact changed chains were completely read. Other wider inherited source is inventoried and hashed only, including delegated paths independently read by other agents; running the full suite does not turn those entries into A.",
       "evidenceLevel": "B",
       "paths": [
         "apps/server/src/service/dialog.ts",
@@ -29,15 +29,12 @@
         "packages/base/bundles/segment.ts",
         "packages/base/captain/board.ts",
         "packages/base/captain/briefing.ts",
-        "packages/base/captain/charter.ts",
         "packages/base/captain/decision.ts",
         "packages/base/captain/floor.ts",
         "packages/base/captain/hr.ts",
-        "packages/base/captain/router.ts",
         "packages/base/captain/scorecard.ts",
         "packages/base/fence-engine/expr.ts",
         "packages/base/fence-engine/judge.ts",
-        "packages/base/fence-engine/lifecycle.ts",
         "packages/base/im-channels/callback.ts",
         "packages/base/im-channels/cards.ts",
         "packages/base/im-channels/inbound.ts",
@@ -62,7 +59,6 @@
         "packages/base/overlay/merge.ts",
         "packages/base/overlay/model.ts",
         "packages/base/overlay/store.ts",
-        "packages/base/review-console/approvals.ts",
         "packages/base/skill-ops/autosync.ts",
         "packages/base/skill-ops/console.ts",
         "packages/base/skill-ops/policy.ts",
@@ -73,27 +69,30 @@
         "packages/base/skill-ops/targeting.ts",
         "packages/base/skill-ops/tier.ts",
         "packages/base/skill-ops/types.ts",
-        "packages/base/skills/awareness.ts",
-        "packages/base/skills/forge.ts",
-        "packages/base/skills/official.ts",
-        "packages/base/skills/registry.ts",
         "packages/base/tenancy/auth.ts",
         "packages/base/tenancy/capabilities.ts",
         "packages/base/tenancy/members.ts",
         "packages/base/workdata/event-sequence.ts",
-        "packages/base/workdata/memory.ts",
         "packages/base/workdata/readable-id.ts",
         "packages/base/workdata/recall.ts",
-        "packages/db/src/schema.ts",
-        "packages/runtime/src/ask.ts",
-        "packages/runtime/src/assembly.ts",
-        "packages/runtime/src/intent.ts",
-        "packages/runtime/src/loop.ts",
-        "packages/runtime/src/tools.ts"
+        "packages/db/src/schema.ts"
       ]
     }
   ],
   "files": [
+    {
+      "path": ".cnb.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+      "lines": 298,
+      "priorReadSnapshot": {
+        "sha256": "05b978968872fc55f944c2962f9007802142777d67dfb64dd4cbcfa14c1557ff",
+        "lines": 270
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
     {
       "path": ".env.example",
       "evidenceLevel": "A",
@@ -103,12 +102,35 @@
       "lines": 41
     },
     {
+      "path": "AGENTS.md",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "0eda503b7c3abfa3ff5016bda4ebe7817d674c7ca2be1393903ec249663e0371",
+      "lines": 136,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "AGENTS.repo.md",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "eb34ba441c8f7b0369e9c1fb60868553b8921a3d5bb41721e9738d99ed779bd4",
+      "lines": 29,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
       "path": "README.md",
       "evidenceLevel": "A",
       "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
       "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
-      "sha256": "d1d7cce5677911829cef6f15895dc0647ba1ab540f88342674622291ff19cd91",
-      "lines": 108
+      "sha256": "6181a85c68301f68d2ace7985d8b1d4c37b4731fd31a91e91be2ab13832ac0e2",
+      "lines": 108,
+      "currentVersionReview": "Current file completely read and all authored or delegated compatibility changes reviewed",
+      "priorReadSnapshot": {
+        "sha256": "d1d7cce5677911829cef6f15895dc0647ba1ab540f88342674622291ff19cd91",
+        "lines": 108
+      }
     },
     {
       "path": "apps/server/package.json",
@@ -159,6 +181,15 @@
       "lines": 229
     },
     {
+      "path": "apps/server/src/service/adapters/business-registry.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "d8d66b9414ef7c29de5eea4d6a34f31eadd5a0bbf2a2d35f9ca731be0a5f7889",
+      "lines": 55,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
       "path": "apps/server/src/service/adapters/business-registry.test.ts",
       "evidenceLevel": "A",
       "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
@@ -183,6 +214,19 @@
       "lines": 311
     },
     {
+      "path": "apps/server/src/service/contract.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c",
+      "lines": 343,
+      "priorReadSnapshot": {
+        "sha256": "e419db5f9270e6290142a6391ee762f819b1b6aca069cf8a8a375a4995e416d9",
+        "lines": 328
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
       "path": "apps/server/src/service/dialog.ts",
       "evidenceLevel": "B",
       "reading": "Machine dependency inventory, metadata and/or generator/test execution; implementation not fully read",
@@ -194,12 +238,39 @@
       "lines": 271
     },
     {
+      "path": "apps/server/src/service/e2e.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "06b4412782f8ce5848c2b90fc0ee1b91fcbf5fb7c7a027e5affeb7c79aa96271",
+      "lines": 1176,
+      "priorReadSnapshot": {
+        "sha256": "4270459f9c054b5c41006af4602382b6f40069b75ce6d3f2eb97a0193e112253",
+        "lines": 1174
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "apps/server/src/service/eval-source.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "afbfaa543b54db948ec41d0802aacb9b1ed85b07ac3fbf32863b2c97d0dfcc70",
+      "lines": 115,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
       "path": "apps/server/src/service/events.ts",
       "evidenceLevel": "A",
       "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
       "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
-      "sha256": "37f2a8f1841182626286a02168f810717b2b62cee9aa535e825566497de76c85",
-      "lines": 65
+      "sha256": "654a2fdec6514043e6bd12f59a1f3cec0ddeb89638bedc977b1b486d5826072f",
+      "lines": 71,
+      "priorReadSnapshot": {
+        "sha256": "37f2a8f1841182626286a02168f810717b2b62cee9aa535e825566497de76c85",
+        "lines": 65
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "apps/server/src/service/gateway.ts",
@@ -209,8 +280,57 @@
       "referencedBy": [
         "apps/server/src/service/adapters/business-registry.test.ts"
       ],
-      "sha256": "454a8d82bd4fc3cb36e326dfe3a26f5068f7f4b82793cdce25f21496f6488751",
-      "lines": 693
+      "sha256": "df9751e45da21b4f062d1ba7648ef99343a454e5953364a4cbef882696b98aac",
+      "lines": 696,
+      "priorReadSnapshot": {
+        "sha256": "454a8d82bd4fc3cb36e326dfe3a26f5068f7f4b82793cdce25f21496f6488751",
+        "lines": 693
+      }
+    },
+    {
+      "path": "apps/server/src/service/hotel-contract-fixture.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "bdd3c9a3b2e33b7ebf091f64b70abc0d8af46df7daf00398d8b10afc8f08736d",
+      "lines": 106,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "apps/server/src/service/hotel-contract-fixture.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "58cdb78d22bd64347a134d782fb47b4338dea1c2b5f1a7a5b2ad4a3e4c343917",
+      "lines": 82,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "apps/server/src/service/neutral-industry-default.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "2b978c8a93d1650cba21f1723aa3ab6fded1f281abdb535e862937cd3bc32634",
+      "lines": 46,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "apps/server/src/service/overlay-runtime.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "38f298fce1912393a9d47829a0e88e39858a296d25e58bf1b7d1aa10f3c29a60",
+      "lines": 104,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "apps/server/src/service/service-contract-pg-fixture.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "5d6b588fe0b6ae9c86078deddf392090c3b567b6bdfc82ef9710886df175081b",
+      "lines": 90,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "apps/server/src/service/store.ts",
@@ -231,8 +351,12 @@
       "referencedBy": [
         "apps/server/src/service/adapters/business-registry.test.ts"
       ],
-      "sha256": "64abebc690ef0da1b8cfd69e789601ddff5495442c107536746b64ea18753e19",
-      "lines": 371
+      "sha256": "543926a64f4cc8aff588722529916feeab32e76906483489655eadf436759b61",
+      "lines": 391,
+      "priorReadSnapshot": {
+        "sha256": "64abebc690ef0da1b8cfd69e789601ddff5495442c107536746b64ea18753e19",
+        "lines": 371
+      }
     },
     {
       "path": "apps/web/package.json",
@@ -241,6 +365,14 @@
       "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
       "sha256": "17273b001dea29afe53c13a4f3cdd17685cea4081bde2521ab5157ec45a1081b",
       "lines": 45
+    },
+    {
+      "path": "apps/web/src/extensions/smart-home/routes.tsx",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "325d514edbb6a66b379cdac90b545f7c2852b320ac46466c9ea2f76aecfebc41",
+      "lines": 24
     },
     {
       "path": "apps/webb/package.json",
@@ -257,6 +389,118 @@
       "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
       "sha256": "cc10ed6637745098f9caf0ad72d8db4be83c6832f5bded3bf363571dfffb78ea",
       "lines": 28
+    },
+    {
+      "path": "bundles/hotel/bundle.json",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "ef3edd0997ee64c9de703d1ffc784622b864b747ca8770f48688defa2f889ce4",
+      "lines": 493
+    },
+    {
+      "path": "bundles/hotel/model-policy.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "dad3e661ad3068caf442bf0774e58d8989996c0a10c7047b923571ca416f3871",
+      "lines": 36
+    },
+    {
+      "path": "bundles/hotel/presets/competitor-agent.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "7481c3aeb736c778d25a8ab5f0051af28b6de1ca8fb442abd544c15458b0bb65",
+      "lines": 21
+    },
+    {
+      "path": "bundles/hotel/presets/content-agent.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "ac292f561655411afc4afb99e46d0094bc8457f2ece715b65f708c2b4b6a4370",
+      "lines": 27
+    },
+    {
+      "path": "bundles/hotel/presets/desktop-agent.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "55b3197cafe26ec5bc8c887fc814c10d643b53ddd808b8525dc2f8f194bb0eb8",
+      "lines": 23
+    },
+    {
+      "path": "bundles/hotel/presets/inspection-agent.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "cc02af0732c8efafee4444b8572d35f141a12db9d5685e28439e29c809d53017",
+      "lines": 23
+    },
+    {
+      "path": "bundles/hotel/presets/pricing-agent.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "8ea9c9b0dca09dfc4d1f79a601934b128631060a082fe9f6b84913c0b5b733a8",
+      "lines": 29
+    },
+    {
+      "path": "bundles/hotel/presets/reconcile-agent.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "c9f854d64a1d297eb3643c5d7a61ed4b42c48a37d8c3bff23e0b2fabb0e7fc69",
+      "lines": 26
+    },
+    {
+      "path": "bundles/hotel/presets/review-agent.yml",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "cc1c6b087f7b1e593b3951f2d56565a3a8b820a221d4742bea82439740061834",
+      "lines": 25
+    },
+    {
+      "path": "bundles/hotel/schemas/archive.schema.json",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "fd35d52bee183ffc77652ba9c2e09b865ccc2148319d30bbb3f895adaf092991",
+      "lines": 172
+    },
+    {
+      "path": "bundles/hotel/schemas/objects.json",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "80590ec7de38ef3bb7338b327aff59c753311590a7a7679e8cde84d635c7504c",
+      "lines": 26
+    },
+    {
+      "path": "bundles/hotel/schemas/stages.json",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "a5ab6830c3c2bc22d7661f168c0a21447b675df2d65feb3a30eeb5c4acad9118",
+      "lines": 22
+    },
+    {
+      "path": "bundles/hotel/skills/revenue-manager/SKILL.md",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "a5d04749c1349c9e85dcfaa56c94dd30e8382a9631e1db67d11f9c228e1e4d48",
+      "lines": 47
+    },
+    {
+      "path": "bundles/hotel/ui/cases.json",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "a59884cc3ccdc15d7833eda56c0337b6d8e9c88d80e2849bb2a74729c18c837d",
+      "lines": 477
     },
     {
       "path": "bundles/smart-home/assets.test.mts",
@@ -687,9 +931,14 @@
       "evidenceLevel": "A",
       "reading": "Complete source/document read before lease-cache correction; final changed coverage header re-read after owning agent confirmed no other content changed",
       "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
-      "sha256": "6dadb86d98a0c9da85f8e1387d198fc194dc0c6eb08979754a1f11aa98b8bff5",
-      "lines": 314,
-      "previousReadSha256": "8182b9d6dd11f7cf8924e7868c98d384a3b91ee62f0d6752562785cbf4f91477"
+      "sha256": "617c30c68ad2ca90527d029f4746cd5d6221ba3598b8a2772a1900745cec1975",
+      "lines": 315,
+      "previousReadSha256": "8182b9d6dd11f7cf8924e7868c98d384a3b91ee62f0d6752562785cbf4f91477",
+      "priorReadSnapshot": {
+        "sha256": "6dadb86d98a0c9da85f8e1387d198fc194dc0c6eb08979754a1f11aa98b8bff5",
+        "lines": 314
+      },
+      "currentVersionReview": "Current 315-line matrix completely reread after industry final coverage additions; middle 125-205 read separately after combined-output truncation"
     },
     {
       "path": "docs/capabilities.auto.json",
@@ -712,6 +961,54 @@
       ],
       "sha256": "80ea27be14c1a12145d6241ad33a6162dc78ed7d1586b1dd714aea98655356a6",
       "lines": 113
+    },
+    {
+      "path": "docs/evidence/ci-legacy-fixture-boundary.json",
+      "evidenceLevel": "B",
+      "reading": "Generated JSON report parsed in full and checked against actual local process exit, test summary and source/log hashes",
+      "reason": "Actual run evidence inventory; metadata and test execution do not replace source-level reading",
+      "sha256": "031c940bf3350dcbff8482a64f8dd26410dc89fb06e22289c706e430e6c2afdb",
+      "lines": 51
+    },
+    {
+      "path": "docs/evidence/legacy-suite-regression.json",
+      "evidenceLevel": "B",
+      "reading": "Generated JSON report parsed in full and checked against actual local process exit, test summary and source/log hashes",
+      "reason": "Actual run evidence inventory; metadata and test execution do not replace source-level reading",
+      "sha256": "0a5ac0c3d62cc30a5188a064d2e0a542883f1666e8ba2e21706080bb69196251",
+      "lines": 1914
+    },
+    {
+      "path": "docs/evidence/legacy-workspace-pg-regression.json",
+      "evidenceLevel": "B",
+      "reading": "Generated JSON report parsed in full and checked against actual local process exit, test summary and source/log hashes",
+      "reason": "Actual run evidence inventory; metadata and test execution do not replace source-level reading",
+      "sha256": "72757ebbf5afa912bba23bde1e31ef12a8f0eac4f9345e9d449114504651ea1e",
+      "lines": 129
+    },
+    {
+      "path": "docs/evidence/required-db-gate-regression.json",
+      "evidenceLevel": "B",
+      "reading": "Generated JSON report parsed in full and checked against actual local process exit, test summary and source/log hashes",
+      "reason": "Actual run evidence inventory; metadata and test execution do not replace source-level reading",
+      "sha256": "3afe552e87ba30d46b526b4dce5a5e95327637fcc9eeb46947c71bbcee9087c5",
+      "lines": 367
+    },
+    {
+      "path": "docs/evidence/runtime-assembly-safety.json",
+      "evidenceLevel": "B",
+      "reading": "Generated machine summary parsed and validated against actual complete runtime test output",
+      "reason": "Run metadata, source fingerprints and per-assertion outcomes generated from actual test reports; not an additional source code audit",
+      "sha256": "c93c45b433a07d30c992e091ed4fc12872eac7aa84127ca87338d2385e501df9",
+      "lines": 102
+    },
+    {
+      "path": "package.json",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "fc4b0854bd39e69b4aaf6598651d9ca5a54f62113b53e0abe2f5ad81e102e615",
+      "lines": 100
     },
     {
       "path": "packages/base/bundles/assembly-safety.test.ts",
@@ -739,8 +1036,13 @@
       "evidenceLevel": "A",
       "reading": "Complete source read, with authored changes reviewed in full where applicable",
       "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review",
-      "sha256": "de11416c6934620ab2fffb9f9ef2cba23d301a3c89d6a5ca26c154484ac74731",
-      "lines": 413
+      "sha256": "19e63c55c4de1cc8acc3f6afaaa7e65b9297121492b8208d521ad964237707cd",
+      "lines": 465,
+      "currentVersionReview": "Current file completely read and all authored or delegated compatibility changes reviewed",
+      "priorReadSnapshot": {
+        "sha256": "de11416c6934620ab2fffb9f9ef2cba23d301a3c89d6a5ca26c154484ac74731",
+        "lines": 413
+      }
     },
     {
       "path": "packages/base/bundles/eval-questions.ts",
@@ -826,14 +1128,16 @@
     },
     {
       "path": "packages/base/captain/charter.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
       "lines": 232,
       "sha256": "455bd99d3e69fe3ab8cf4ea45ab9b48275079e8bccb049e5e7c3f02e835fc6c1",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
       "referencedBy": [
         "packages/base/captain/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete current source reading",
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "packages/base/captain/decision.ts",
@@ -886,14 +1190,16 @@
     },
     {
       "path": "packages/base/captain/router.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
       "lines": 97,
       "sha256": "a4264d19f34042bcb6d364ffbfd885110b873d719a7bcfa7c945e3e8f40b3e7e",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
       "referencedBy": [
         "packages/base/captain/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete current source reading",
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "packages/base/captain/scorecard.ts",
@@ -913,6 +1219,24 @@
       "reason": "Complete direct assembly dependency or test file read; assembly boundary repair and regression review",
       "sha256": "657dcdde14bd268502be2d3a6b9fba9119e2ddc95e2a547949a42eb9e3256113",
       "lines": 153
+    },
+    {
+      "path": "packages/base/evolve/memory-miner.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "9c4c1e6275c83abf295c9ca2c816d36eea25885de375e07e91c90715c63fd615",
+      "lines": 214,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "packages/base/evolve/preference-inject.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "cfcc062525351933857547763caf21941f4ff9bdb4ece2dce9c0ddb0378660ee",
+      "lines": 104,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "packages/base/fence-engine/dsl.ts",
@@ -954,14 +1278,15 @@
     },
     {
       "path": "packages/base/fence-engine/lifecycle.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
       "lines": 476,
       "sha256": "e9b4b68dad895af7ec0df0d2e9035e22aff5e7161762893c2fe723a8117dceec",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/base/fence-engine/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading"
     },
     {
       "path": "packages/base/im-channels/callback.ts",
@@ -1265,6 +1590,15 @@
       "lines": 219
     },
     {
+      "path": "packages/base/overlay/overlay.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "e09d0b47427c3c24601f38f37b2f5478637bd4022f5d9ba62355278991facf21",
+      "lines": 217,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
       "path": "packages/base/overlay/store.ts",
       "evidenceLevel": "B",
       "reading": "Machine dependency inventory, current file metadata and test execution where applicable; no claim of complete source understanding",
@@ -1284,15 +1618,30 @@
       "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
     },
     {
+      "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2",
+      "lines": 344,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
       "path": "packages/base/review-console/approvals.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
-      "lines": 474,
-      "sha256": "33abd74062b6fcf9fdb927741b757cbcb15dbae8acbb8526562389b4615ec53b",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "lines": 603,
+      "sha256": "c2a1477172b13cf8fd586a96c8918d45c015a84ce4bb36132f1fa695321fbfbc",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
       "referencedBy": [
         "packages/base/review-console/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete current source reading",
+      "priorReadSnapshot": {
+        "sha256": "33abd74062b6fcf9fdb927741b757cbcb15dbae8acbb8526562389b4615ec53b",
+        "lines": 474
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "packages/base/review-console/index.ts",
@@ -1301,6 +1650,15 @@
       "lines": 8,
       "sha256": "2028f872476e33ef5b457712206a7144de049f98beb3e271cb09a79c6fe1cd8e",
       "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+    },
+    {
+      "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc",
+      "lines": 193,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "packages/base/skill-ops/autosync.ts",
@@ -1422,25 +1780,27 @@
     },
     {
       "path": "packages/base/skills/awareness.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
       "lines": 221,
       "sha256": "bd923da2205066d4fc466602a76d081bc58eb008a7f29b88cbcc4d205d988af2",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/base/skills/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading"
     },
     {
       "path": "packages/base/skills/forge.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
       "lines": 195,
       "sha256": "068e546ca4b9ead0b621722c61e76ad4e0bccbe9ca171c8c2b2900de54d40b7c",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/base/skills/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading"
     },
     {
       "path": "packages/base/skills/index.ts",
@@ -1452,14 +1812,15 @@
     },
     {
       "path": "packages/base/skills/official.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
       "lines": 45,
       "sha256": "ff2733e1f48c4587bcfd5fe91a9f2641bfe45dc7f1199a83667f91173fd58233",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/base/skills/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading"
     },
     {
       "path": "packages/base/skills/publish.ts",
@@ -1471,14 +1832,28 @@
     },
     {
       "path": "packages/base/skills/registry.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
-      "lines": 423,
-      "sha256": "e899b40e9e95f60d9a5df84d54f12aaa1f3bfb29fdc4c0b4db64ef88955c3a0b",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "lines": 370,
+      "sha256": "f0d07c090fe01ce9eb868b79ab828f6d8c0b3e2e0fd69e76ab55ba0c89dfc9ce",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/base/skills/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading",
+      "priorReadSnapshot": {
+        "sha256": "e899b40e9e95f60d9a5df84d54f12aaa1f3bfb29fdc4c0b4db64ef88955c3a0b",
+        "lines": 423
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "packages/base/skills/skills.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "c2f7ad02cb608740de63ca1333a4b81c4a87f9c88c2c9cec68e8d195a5dd67a8",
+      "lines": 323
     },
     {
       "path": "packages/base/tenancy/auth.ts",
@@ -1536,17 +1911,36 @@
       "path": "packages/base/workdata/events.ts",
       "evidenceLevel": "A",
       "reading": "Complete source read, with authored changes reviewed in full where applicable",
-      "lines": 262,
-      "sha256": "c2cea423e934037fa4e2802a83ebe69daca1facb1e6876434783d2b13a530ed5",
-      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+      "lines": 303,
+      "sha256": "b5dc8a1333562f34fbbc9659032eb2560cee7861a3409b6a1ffd015e3f993358",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read",
+      "priorReadSnapshot": {
+        "sha256": "c2cea423e934037fa4e2802a83ebe69daca1facb1e6876434783d2b13a530ed5",
+        "lines": 262
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "packages/base/workdata/gateway-transaction.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "39852ce623668264c4c0a3f4b33b1fb77553b0779ed2783003a487bc53ce134f",
+      "lines": 308,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "packages/base/workdata/gateway.ts",
       "evidenceLevel": "A",
       "reading": "Complete source read, with authored changes reviewed in full where applicable",
-      "lines": 421,
-      "sha256": "4491aa31dcf881b65a46a8e43a2d6e9e39928044e108c0dccf7e92bec7b6d708",
-      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+      "lines": 413,
+      "sha256": "9772ef519f139d2ac52ab4fe5d6ffdacf06e36c08c54f1aaa63b855be73442c6",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read",
+      "priorReadSnapshot": {
+        "sha256": "4491aa31dcf881b65a46a8e43a2d6e9e39928044e108c0dccf7e92bec7b6d708",
+        "lines": 421
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "packages/base/workdata/index.ts",
@@ -1557,15 +1951,30 @@
       "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
     },
     {
+      "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e",
+      "lines": 202,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
       "path": "packages/base/workdata/memory.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
-      "lines": 311,
-      "sha256": "b1f7448901034a450ef397df9ca95f4a193196497ad96f15ab8de68477836414",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "lines": 335,
+      "sha256": "92bca2c3da6e9de62ff2a9b0180a9c70ac229d3f04617ffe120bf52877828a18",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
       "referencedBy": [
         "packages/base/workdata/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete current source reading",
+      "priorReadSnapshot": {
+        "sha256": "b1f7448901034a450ef397df9ca95f4a193196497ad96f15ab8de68477836414",
+        "lines": 311
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "packages/base/workdata/pii.ts",
@@ -1596,6 +2005,14 @@
       "referencedBy": [
         "packages/base/workdata/index.ts"
       ]
+    },
+    {
+      "path": "packages/base/workdata/security-audit.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "f0dfc4b25d1418cfba6fe43f9bdf1a651519c69c22100b22d86bb700d1672069",
+      "lines": 185
     },
     {
       "path": "packages/db/migrations/0001_init.sql",
@@ -1987,25 +2404,40 @@
     },
     {
       "path": "packages/runtime/src/ask.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
       "lines": 635,
       "sha256": "ec0626430c4a641c2b0757ac25e30d8863372cf534e0522ef33f0eda453d4386",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/runtime/src/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading"
+    },
+    {
+      "path": "packages/runtime/src/assembly-revocation.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "bcacf075b45d9097eec7f4bbd152250d70df9f8b21b91bee22bf5bd54d5ca652",
+      "lines": 190,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "packages/runtime/src/assembly.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
-      "lines": 108,
-      "sha256": "a599a70beb32c3a97b3e5db09577e3d48931ee57bcd454afed2611f916a3fc17",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "lines": 117,
+      "sha256": "9d414d68e8d9663280df31e3fd607714b478d40179f1b8660e7d6390a3d18a40",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/runtime/src/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading",
+      "priorReadSnapshot": {
+        "sha256": "a599a70beb32c3a97b3e5db09577e3d48931ee57bcd454afed2611f916a3fc17",
+        "lines": 108
+      }
     },
     {
       "path": "packages/runtime/src/index.ts",
@@ -2017,52 +2449,148 @@
     },
     {
       "path": "packages/runtime/src/intent.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
       "lines": 157,
       "sha256": "ff1dbd3c0afd84209b55c2010c24ae2dbdf0f997d1953604e9581d4dba62364b",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/runtime/src/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading"
     },
     {
       "path": "packages/runtime/src/loop.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
-      "lines": 1182,
-      "sha256": "10aaac0dd70f02d1f1e717d8a54e5ac85545b3cf1b8783915eae2b120d3a1dc4",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "lines": 1117,
+      "sha256": "208e039f5acfe9fe0e4a6424030ed989763464062b9b93bc1e50d98a8115b8c0",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/runtime/src/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading",
+      "priorReadSnapshot": {
+        "sha256": "10aaac0dd70f02d1f1e717d8a54e5ac85545b3cf1b8783915eae2b120d3a1dc4",
+        "lines": 1182
+      },
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "packages/runtime/src/runtime.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "0aabaecf2fdf410fee632a85ab46c0d7159dec2bf5bb6b94010d1bc50c03b588",
+      "lines": 436
     },
     {
       "path": "packages/runtime/src/tools.ts",
-      "evidenceLevel": "B",
-      "reading": "machine export-reference resolution and file metadata only; implementation not deeply read",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
       "lines": 65,
       "sha256": "78d110dfcf5281024d10e3dfac06c9cf719624a68b5adddf51ecb5605c03902e",
-      "reason": "Untouched transitive service implementation excluded from owner-pool and native-engine audit scope",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
       "referencedBy": [
         "packages/runtime/src/index.ts"
-      ]
+      ],
+      "previousReading": "Export-resolved and hashed before later complete source reading"
+    },
+    {
+      "path": "packages/runtime/src/transaction-family.test.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "0e0c9a72c2bc527f555e56980b40618abb2956ca83b04cc55921030f5f04ae00",
+      "lines": 238,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "packages/shared/src/client-access.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "f22ffc44e94f5deca6d174037ebe727d84f96a55d930640632286b97c5ef693c",
+      "lines": 26
+    },
+    {
+      "path": "packages/shared/src/constants.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "3ac28084f91bd78bc646f249357e85e35b51e5f901d97feb468c7d0ae591b05f",
+      "lines": 85
+    },
+    {
+      "path": "packages/shared/src/enums.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "e4093059cd46131057442b00167c0a591c47729b4b6c2b48c4203ba18bc43fc5",
+      "lines": 105
+    },
+    {
+      "path": "packages/shared/src/event-schema.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "29820b39e97ef57fe5a6f0963a27c57e575d923a59009773147d3fc8aecc896b",
+      "lines": 106
+    },
+    {
+      "path": "packages/shared/src/ids.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "7de6df0ac51b837aba0f292c8e080612b78dd49300e8ea76b75bb23a2ac339d2",
+      "lines": 27
+    },
+    {
+      "path": "packages/shared/src/index.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "eee90f31785aa9fd46d1c6c4873eb28df8d0e344735eda5bf43dafac9216c48f",
+      "lines": 9
+    },
+    {
+      "path": "scripts/acceptance/matrix.pg.test.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "1fe25b0052bd2f64f18a4940f4dfa1b11d2898f19c3c5d05e0d4dea64666fc8e",
+      "lines": 157,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+    },
+    {
+      "path": "scripts/bootstrap-current-product.test.mjs",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "de2964e761d9ae280b0621a7e2174571e0ef3f8f23f379d361216d873c85eef9",
+      "lines": 99
     },
     {
       "path": "scripts/bootstrap.sh",
       "evidenceLevel": "A",
       "reading": "Complete source or document read; selected changed lines and implementation chain reviewed",
       "reason": "Independent root seed, capability generation, installation/preview, documentation, business registration or CEO permission review; MCD executor and evidence contract read before acceptance",
-      "sha256": "b94dc385f9fb4ef9ae3e483b898397e5787058b0dbdc416634faa37f9240e90d",
-      "lines": 162
+      "sha256": "5b1a7ae6a3946c1b0018232127e22c79e604622811a2a60ec75618123f756207",
+      "lines": 163,
+      "currentVersionReview": "Current file completely read and all authored or delegated compatibility changes reviewed",
+      "priorReadSnapshot": {
+        "sha256": "b94dc385f9fb4ef9ae3e483b898397e5787058b0dbdc416634faa37f9240e90d",
+        "lines": 162
+      }
     },
     {
       "path": "scripts/business-management-postgres.test.mjs",
       "evidenceLevel": "A",
-      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
       "lines": 54,
       "sha256": "d018b919dab52e6c92dce62ef3ff2c4ac0170bc726137adf81589b37b56c8b40",
-      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "scripts/capability-status.mjs",
@@ -2123,10 +2651,11 @@
     {
       "path": "scripts/migrate.ts",
       "evidenceLevel": "A",
-      "reading": "Complete source read, with authored changes reviewed in full where applicable",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
       "lines": 134,
       "sha256": "3776b4efc5f2622bd0c55353652780290f3267dbd1d4d35b7f919328a473dacc",
-      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "scripts/path-containment.mjs",
@@ -2174,6 +2703,14 @@
       "currentVersionReview": "Current changed source reviewed: authored assembly patch in full; seed repair current 144-line file in full"
     },
     {
+      "path": "scripts/seed.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete file read; large files read in sequential chunks to the end",
+      "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
+      "sha256": "c5467704fe885d9f4df4130bfab4d5b116cb68d82cef281fae71358d6ad68d04",
+      "lines": 1391
+    },
+    {
       "path": "scripts/suite-fixture-preflight.ts",
       "evidenceLevel": "A",
       "reading": "Complete source read, with authored changes reviewed in full where applicable",
@@ -2185,9 +2722,23 @@
       "path": "scripts/suite.ts",
       "evidenceLevel": "A",
       "reading": "Complete source read, with authored changes reviewed in full where applicable",
-      "lines": 3996,
-      "sha256": "a8af686f09bcc0a52937ad634d57dcd0652ba64364c7e0ba62a2fa6131e77b75",
-      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read"
+      "lines": 4032,
+      "sha256": "012aadd36ceb05f09e2ee3ba33a07a4316212a1e7eeac40c625d16cbcec646f2",
+      "reason": "Source audit, owner-channel implementation chain or complete selected direct dependency read",
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed",
+      "priorReadSnapshot": {
+        "sha256": "bd9eb0d89a67fdef2af60442fd8c1b4f076f21e8c441f9fef7f57ff4235f24b1",
+        "lines": 4007
+      }
+    },
+    {
+      "path": "scripts/verify-chain.ts",
+      "evidenceLevel": "A",
+      "reading": "Complete current file read; large files read in sequential chunks to the end",
+      "reason": "Independent final review of actual permission, transaction, fixture, legacy regression and mandatory database gate chains; no complete inherited-platform audit claimed",
+      "sha256": "85f22f03ed08aff63216412f4172c6125b64ef59e72a15483df5b04b51053263",
+      "lines": 318,
+      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
     },
     {
       "path": "scripts/verify-product-content.mjs",
@@ -2237,8 +2788,17 @@
       "report": "docs/evidence/suite-owner-smoke-report.json"
     },
     "legacyFullSuite": {
-      "status": "not-run",
-      "reason": "This task corrected owner plumbing; targeted tests use a disposable PostgreSQL database. Default smart-home database was not seeded with hotel compatibility fixtures."
+      "status": "pass",
+      "tests": 464,
+      "pass": 464,
+      "fail": 0,
+      "skip": 0,
+      "httpCases": 45,
+      "lockValidity": "Real ObjectLockTimeout, contender never enters, lock reacquisition after owner transaction completes",
+      "report": "docs/evidence/legacy-suite-regression.json",
+      "dataScope": "Explicit isolated hotel compatibility database; no default smart-home business data changed",
+      "sourceState": "Authorized dirty candidate; exact clean-HEAD MCD capture pending",
+      "crossChannelContract": "MC-019: first false/second true dedupe retained; one gesture event, equal approved channel projections and no ghost pending queue"
     },
     "baseTypecheck": {
       "status": "pass",
@@ -2311,6 +2871,89 @@
       "pass": true,
       "scope": "Actual bundled pnpm start with a disposable persistent Node leaf; SIGTERM to pnpm stopped leaf",
       "notClaimed": "Full three-client preview runtime"
+    },
+    "runtimeAssemblySafety": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skip": 0,
+      "actualDisposablePostgresCases": 4,
+      "injectedFaultCases": 7,
+      "report": "docs/evidence/runtime-assembly-safety.json"
+    },
+    "runtimeLegacyAndSafetyTargeted": {
+      "tests": 31,
+      "pass": 31,
+      "fail": 0,
+      "skip": 0,
+      "evidence": "work/runtime-compat-regressions.json",
+      "runtimeTypecheckExitCode": 0
+    },
+    "legacyWorkspacePg": {
+      "status": "pass",
+      "tests": 1639,
+      "pass": 1636,
+      "fail": 0,
+      "skip": 3,
+      "report": "docs/evidence/legacy-workspace-pg-regression.json",
+      "skipInventory": "Named base package-relative hotel overlay fixture (1) and server explicit ai-pm RELEASE_WORKSPACE_ID fixture (2)",
+      "notClaimed": "All assertions are actual PostgreSQL or model executions"
+    },
+    "requiredDatabaseGate": {
+      "status": "pass",
+      "vitestFiles": 16,
+      "vitestTests": 237,
+      "vitestPass": 237,
+      "vitestFail": 0,
+      "vitestSkip": 0,
+      "governanceNodeTests": 16,
+      "matrixNodeTests": 7,
+      "matrixFixtureVariants": 6,
+      "migrations": 43,
+      "seedRuns": 2,
+      "eventChainSegments": 3,
+      "eventChainEvents": 47,
+      "eventChainIssues": 0,
+      "disposableDatabaseRemoved": true,
+      "sourceEnvironmentRestored": true,
+      "report": "docs/evidence/required-db-gate-regression.json",
+      "notClaimed": "Native CNB runner execution or all 237 checks being actual PostgreSQL tests"
+    },
+    "globalTypecheck": {
+      "status": "pass",
+      "exitCode": 0,
+      "command": "pnpm typecheck",
+      "toolchain": "Actual Node24.19.0 and verified pinned pnpm10.14.0 wrapper on PATH, including nested package scripts",
+      "logSha256": "51f251e9fb9b6b7647d3bbbfdf18225c7e328b90efeea85cd0107fa2cc8a36e1"
+    },
+    "cnbSyntax": {
+      "status": "pass",
+      "evidenceLevel": "B",
+      "uniqueScriptBlocks": 17,
+      "bashSyntaxPass": 17,
+      "bashSyntaxFail": 0,
+      "yamlParse": true,
+      "report": "docs/evidence/ci-legacy-fixture-boundary.json"
     }
-  }
+  },
+  "unverifiedInheritedFailurePaths": [
+    {
+      "path": "packages/base/evolve/preference-inject.ts",
+      "evidenceLevel": "D",
+      "readingEvidenceLevel": "A",
+      "limit": "Original loadActivePreferences rollback failure path retains catch-to-undefined and ordinary release; it was not modified or tested under transport fault in this focused repair. No claim that the entire inherited platform lacks similar transaction problems."
+    },
+    {
+      "path": "packages/base/workdata/recall.ts",
+      "evidenceLevel": "D",
+      "readingEvidenceLevel": "B",
+      "limit": "Delegated complete source reviewer reports inherited searchEvents rollback cleanup pattern; this scope only inventories that source and does not confirm a transport-fault outcome."
+    },
+    {
+      "path": "packages/db/src/client.ts",
+      "evidenceLevel": "D",
+      "readingEvidenceLevel": "A",
+      "limit": "Inherited withWorkspace failure transport path is outside the repaired specific wrappers and was not independently fault-injected. Successful broader regression does not establish its transport-failure safety."
+    }
+  ]
 }

@@ -1,0 +1,2796 @@
+{
+  "schemaVersion": "bms.service-approval-regression/v1",
+  "actor": "/root/industry_map",
+  "asOf": "2026-10-08T20:22:18.182674+00:00",
+  "scope": "MC-014/015/018/019/021/022/025 selected public service, approval, scoped memory and transaction completion contracts; final mandatory combined command subset plus exact before-repair counterexamples.",
+  "evidenceLevel": "B",
+  "sourceState": "Final owned production source frozen; final mandatory local dirty-candidate run. This is not clean-HEAD MCD acceptance, native CNB pipeline evidence or formal RDAS276 acceptance.",
+  "dataMode": "synthetic sandbox; loopback real PostgreSQL with disposable 43-migration databases and genuine app/gateway roles; six declared pure unit cases",
+  "externalModelCalls": 0,
+  "externalDeviceCalls": 0,
+  "customerProductionCalls": 0,
+  "selectedResult": {
+    "passed": 75,
+    "failed": 0,
+    "skipped": 0,
+    "actualPostgreSQL": 69,
+    "controlledUnit": 6
+  },
+  "deduplication": "75 distinct final mandatory test cases. Earlier 55/55 and 20/20 runs support development history; 22/22 related and service reruns are subsets and are not added again.",
+  "finalMandatoryRun": {
+    "evidence": "docs/evidence/required-db-gate-regression.json",
+    "rawEvidence": "docs/evidence/service-approval/raw/required-db-gate-vitest.json",
+    "rawSha256": "ea504e6a896a5ac1eef5dd8b3c3b843072f58e2c46700a8882130177de48967c",
+    "startedAt": "2026-10-08T20:10:48.225Z",
+    "finishedAt": "2026-10-08T20:10:57.650Z",
+    "combinedVitest": {
+      "files": 16,
+      "tests": 237,
+      "pass": 237,
+      "fail": 0,
+      "skip": 0
+    },
+    "databaseRemoved": true,
+    "sourceEnvironmentRestored": true
+  },
+  "reproduction": {
+    "argv": [
+      "node",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "packages/base/review-console/approval-transaction.pg.test.ts",
+      "packages/base/review-console/rejection-memory.pg.test.ts",
+      "packages/base/workdata/memory-transaction.pg.test.ts",
+      "apps/server/src/service/kb-publication.pg.test.ts",
+      "apps/server/src/service/ticket-assignment.pg.test.ts"
+    ],
+    "requiredEnvironment": "BMS_PG_TEST_URL must point to an explicitly disposable loopback test administrator database. Service cases require the full migration set and app/gateway roles; use the repository .db-gate sequence for the complete setup. No production URL is accepted by the owned synthetic fixture.",
+    "fullMandatorySequence": ".cnb.yml .db-gate and docs/evidence/required-db-gate-regression.json"
+  },
+  "sourceFingerprints": {
+    "packages/base/review-console/approvals.ts": {
+      "sha256": "c2a1477172b13cf8fd586a96c8918d45c015a84ce4bb36132f1fa695321fbfbc",
+      "bytes": 30359,
+      "lines": 603
+    },
+    "packages/base/workdata/memory.ts": {
+      "sha256": "92bca2c3da6e9de62ff2a9b0180a9c70ac229d3f04617ffe120bf52877828a18",
+      "bytes": 13769,
+      "lines": 335
+    },
+    "packages/base/evolve/memory-miner.ts": {
+      "sha256": "9c4c1e6275c83abf295c9ca2c816d36eea25885de375e07e91c90715c63fd615",
+      "bytes": 9874,
+      "lines": 214
+    },
+    "packages/base/workdata/gateway.ts": {
+      "sha256": "9772ef519f139d2ac52ab4fe5d6ffdacf06e36c08c54f1aaa63b855be73442c6",
+      "bytes": 19204,
+      "lines": 413
+    },
+    "packages/base/workdata/events.ts": {
+      "sha256": "b5dc8a1333562f34fbbc9659032eb2560cee7861a3409b6a1ffd015e3f993358",
+      "bytes": 13378,
+      "lines": 303
+    },
+    "apps/server/src/service/kb.ts": {
+      "sha256": "1d4c7569804392b562f9458dffca7bb720793bc46b26ee24e94da49a9b059d86",
+      "bytes": 16194,
+      "lines": 344
+    },
+    "apps/server/src/service/kb-publication.ts": {
+      "sha256": "dd01258a0d4ea9a3ca01ceb32d2bc2c15225c5a71d9af9813f0da21aa1540a9c",
+      "bytes": 8704,
+      "lines": 136
+    },
+    "apps/server/src/service/ticket.ts": {
+      "sha256": "543926a64f4cc8aff588722529916feeab32e76906483489655eadf436759b61",
+      "bytes": 18740,
+      "lines": 391
+    },
+    "apps/server/src/service/service-contract-pg-fixture.ts": {
+      "sha256": "5d6b588fe0b6ae9c86078deddf392090c3b567b6bdfc82ef9710886df175081b",
+      "bytes": 5715,
+      "lines": 90
+    },
+    "apps/server/src/service/events.ts": {
+      "sha256": "654a2fdec6514043e6bd12f59a1f3cec0ddeb89638bedc977b1b486d5826072f",
+      "bytes": 3261,
+      "lines": 71
+    },
+    "apps/server/src/service/router.ts": {
+      "sha256": "e495a66f737834f1f7f048da0bb8268541ec2cbeb0a76587bc26258876ccc8df",
+      "bytes": 35802,
+      "lines": 727
+    },
+    "apps/server/src/trpc/router.ts": {
+      "sha256": "1203b0c1cada52307af1b1429575558bab754fc3f3f1f330ddadc5ae55c13265",
+      "bytes": 172972,
+      "lines": 3566
+    },
+    "packages/base/review-console/approval-transaction.pg.test.ts": {
+      "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2",
+      "bytes": 24214,
+      "lines": 344
+    },
+    "packages/base/review-console/rejection-memory.pg.test.ts": {
+      "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc",
+      "bytes": 13437,
+      "lines": 193
+    },
+    "packages/base/workdata/memory-transaction.pg.test.ts": {
+      "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e",
+      "bytes": 14500,
+      "lines": 202
+    },
+    "apps/server/src/service/kb-publication.pg.test.ts": {
+      "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491",
+      "bytes": 17467,
+      "lines": 186
+    },
+    "apps/server/src/service/ticket-assignment.pg.test.ts": {
+      "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f",
+      "bytes": 7251,
+      "lines": 84
+    }
+  },
+  "beforeRepair": [
+    {
+      "card": "MC-014",
+      "evidence": "docs/evidence/service-approval/raw/kb-draft-before-fix.json",
+      "expected": "Changed knowledge version must return to pending_review before publication.",
+      "actual": "Original or before-repair public implementation reproduced the defect in isolated synthetic PostgreSQL.",
+      "beforeSourceFingerprint": null,
+      "actor": "/root/industry_map",
+      "evidenceLevel": "B",
+      "productionCustomerRun": false
+    },
+    {
+      "card": "MC-018",
+      "evidence": "docs/evidence/service-approval/raw/approval-scoped-before-fix.json",
+      "expected": "Both query acknowledgement and rollback errors remain observable, and the failed connection is discarded.",
+      "actual": "Original or before-repair public implementation reproduced the defect in isolated synthetic PostgreSQL.",
+      "beforeSourceFingerprint": "0accd46f9843e9117146ac2f9d4d2d2ddb6fb3dc134586f13ecbc0b5a18d0791",
+      "actor": "/root/industry_map",
+      "evidenceLevel": "B",
+      "productionCustomerRun": false
+    },
+    {
+      "card": "MC-019",
+      "evidence": "docs/evidence/service-approval/raw/kb-cross-channel-before-fix.json",
+      "expected": "Two channels serialize before own-row locks, converge to one decision and leave no ghost pending row.",
+      "actual": "Original or before-repair public implementation reproduced the defect in isolated synthetic PostgreSQL.",
+      "beforeSourceFingerprint": "0accd46f9843e9117146ac2f9d4d2d2ddb6fb3dc134586f13ecbc0b5a18d0791",
+      "actor": "/root/industry_map",
+      "evidenceLevel": "B",
+      "productionCustomerRun": false
+    },
+    {
+      "card": "MC-021",
+      "evidence": "docs/evidence/service-approval/raw/approval-expire-race-before.json",
+      "expected": "A stale sweeper cannot overwrite an approval committed before its expiry deadline.",
+      "actual": "Original or before-repair public implementation reproduced the defect in isolated synthetic PostgreSQL.",
+      "beforeSourceFingerprint": "efcddcd08ba4ac92e5336f2b732fe37036c325200c6d9fa70003634c41ae2955",
+      "actor": "/root/workbench_audit",
+      "evidenceLevel": "B",
+      "productionCustomerRun": false
+    },
+    {
+      "card": "MC-022",
+      "evidence": "docs/evidence/service-approval/raw/rejection-memory-before-fix.json",
+      "expected": "Distinct tenant/workspace scopes using the same reason both reject successfully with scoped memories.",
+      "actual": "Original or before-repair public implementation reproduced the defect in isolated synthetic PostgreSQL.",
+      "beforeSourceFingerprint": null,
+      "actor": "/root/industry_map",
+      "evidenceLevel": "B",
+      "productionCustomerRun": false
+    },
+    {
+      "card": "MC-025",
+      "evidence": "docs/evidence/service-approval/raw/memory-transaction-before-fix.json",
+      "expected": "Memory/miner double faults discard the transaction and preserve both errors; a clean session is borrowed next.",
+      "actual": "Original or before-repair public implementation reproduced the defect in isolated synthetic PostgreSQL.",
+      "beforeSourceFingerprint": null,
+      "actor": "/root/industry_map",
+      "evidenceLevel": "B",
+      "productionCustomerRun": false
+    }
+  ],
+  "developmentFailureRetained": {
+    "evidence": "docs/evidence/service-approval/raw/approval-service-pg-results.json",
+    "passed": 37,
+    "failed": 2,
+    "cause": "Two valid rejection cases exposed the global mem-reject primary-key collision. MC-022 scopes the approval and miner identity; the final same cases pass. The earlier failed run is not reported as a pass."
+  },
+  "additionalFixtureFailureCheck": {
+    "countedIn75": false,
+    "evidence": "docs/evidence/service-approval/raw/service-fixture-cleanup-proof.json",
+    "preconditions": "Fresh unmigrated disposable loopback PostgreSQL database, absent tenants table, actual fixture import/pools and captured original environment.",
+    "steps": [
+      "Call createServiceContractPgFixture and let actual SQL raise 42P01.",
+      "Observe the original error and restored environment, query pg_stat_activity after pool cleanup.",
+      "Drop the database without FORCE; check no connection survives."
+    ],
+    "expected": "The missing-table initialization error is preserved, all acquired pools close, and environment overrides restore.",
+    "actual": {
+      "passed": true,
+      "originalError": {
+        "name": "error",
+        "code": "42P01",
+        "message": "relation \"tenants\" does not exist"
+      },
+      "environmentRestored": true,
+      "remainingDatabaseConnections": 0,
+      "databaseRemoved": true
+    },
+    "sourceSha256": "5d6b588fe0b6ae9c86078deddf392090c3b567b6bdfc82ef9710886df175081b"
+  },
+  "cases": [
+    {
+      "id": "SERVICE-APPROVAL-001",
+      "testName": "approval pool connection failure propagates before a transaction is acquired",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "controlled-unit",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 17,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "approval pool connection failure propagates before a transaction is acquired",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 2.9497089999999844,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-002",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL a completed decision commits every channel, one projection and one gesture event",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "normal"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 142,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "a completed decision commits every channel, one projection and one gesture event",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 66.5977499999999,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-003",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL a real approval write followed by acknowledgement and rollback failures preserves both errors and destroys the connection",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 152,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "a real approval write followed by acknowledgement and rollback failures preserves both errors and destroys the connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 36.344625000000065,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-004",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL an approval projection failure rolls back status, business projection and gesture without discarding a recovered connection",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 165,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "an approval projection failure rolls back status, business projection and gesture without discarding a recovered connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 30.450500000000034,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-005",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL pre-COMMIT transport failure rejects, rolls back all writes and discards the uncertain connection",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 175,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "pre-COMMIT transport failure rejects, rolls back all writes and discards the uncertain connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 23.642708999999968,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-006",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL lost COMMIT acknowledgement rejects an uncertain outcome and retry reads the committed decision without repeating side effects",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error",
+        "boundary"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 184,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "lost COMMIT acknowledgement rejects an uncertain outcome and retry reads the committed decision without repeating side effects",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 38.91291699999999,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-007",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL COMMIT and rollback failures preserve both causes after only one COMMIT attempt",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 193,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "COMMIT and rollback failures preserve both causes after only one COMMIT attempt",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 14.671791999999868,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-008",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL BEGIN failure propagates and releases the connection once with a discard reason",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 202,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "BEGIN failure propagates and releases the connection once with a discard reason",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 7.748957999999902,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-009",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL RLS context failure rolls back before any approval access and restores the connection",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 208,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "RLS context failure rolls back before any approval access and restores the connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 17.48329200000012,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-010",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL simultaneous inapp and dingtalk calls have no deadlock and only one business decision",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "concurrency"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 215,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "simultaneous inapp and dingtalk calls have no deadlock and only one business decision",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 16.719041999999945,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-011",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL five channels and repeated concurrent callbacks share one terminal projection and event",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "concurrency",
+        "boundary"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 223,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "five channels and repeated concurrent callbacks share one terminal projection and event",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 32.780083000000104,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-012",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL concurrent competing gestures retain the first committed decision on every channel",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "concurrency"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 233,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "concurrent competing gestures retain the first committed decision on every channel",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 10.747375000000147,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-013",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL an old terminal sibling repairs a pending queue row with decision metadata and no duplicate event",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "normal"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 244,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "an old terminal sibling repairs a pending queue row with decision metadata and no duplicate event",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 8.349874999999884,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-014",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL retrying the already terminal channel also repairs pending siblings",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "boundary"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 254,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "retrying the already terminal channel also repairs pending siblings",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 5.528084000000035,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-015",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL expired requested snapshots expire all pending channels without approving or running a business projection",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "boundary"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 260,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "expired requested snapshots expire all pending channels without approving or running a business projection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 6.420749999999998,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-016",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL foreign workspace or tenant cannot acquire or mirror another scope's approvals",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 266,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "foreign workspace or tenant cannot acquire or mirror another scope's approvals",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 13.179417000000058,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-017",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL readonly and high-risk batch guards still leave every channel pending",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 273,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "readonly and high-risk batch guards still leave every channel pending",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 7.632834000000003,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-018",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL a sweeper's stale pending read cannot overwrite an owner decision committed before expiry",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "normal"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 280,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "a sweeper's stale pending read cannot overwrite an owner decision committed before expiry",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 1044.2146250000003,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-019",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL concurrent sweepers expire every channel but commit only one expiry event",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "concurrency"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 297,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "concurrent sweepers expire every channel but commit only one expiry event",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 21.815500000000156,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-020",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL a changed expiry deadline is re-read inside the locked transaction",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "boundary"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 308,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "a changed expiry deadline is re-read inside the locked transaction",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 4.48804199999995,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-021",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL a newly elevated chairman tier protects all channels despite a stale low-risk snapshot",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 318,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "a newly elevated chairman tier protects all channels despite a stale low-risk snapshot",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 8.663583000000017,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-022",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL expiry event failure rolls back all channel status changes",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 328,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "expiry event failure rolls back all channel status changes",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 8.077708999999686,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-023",
+      "testName": "Approval completion and cross-channel decisions on disposable PostgreSQL unparseable or absent deadlines remain pending without expiry events",
+      "cards": [
+        "MC-018",
+        "MC-019",
+        "MC-021"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "boundary"
+      ],
+      "source": {
+        "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+        "line": 336,
+        "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2"
+      },
+      "preconditions": "Loopback disposable PostgreSQL with all 43 migrations, real app/gateway roles, scoped pending multi-channel approvals and one same-transaction synthetic business projection. The one connection-acquisition test uses a controlled pool that rejects before connect.",
+      "steps": [
+        "Create the named scenario with random tenant/workspace and a real source event.",
+        "Call public listQueue/decide/batchApprove/expireSweep; for fault cases pause or reject the declared acknowledgement boundary while actual PostgreSQL statements execute.",
+        "Read approval rows, projection counter and gesture/expiry events; verify transaction completion, original error identity, release behavior and scope isolation as asserted in the named case."
+      ],
+      "expected": "unparseable or absent deadlines remain pending without expiry events",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 12.027583999999933,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-024",
+      "testName": "Feedback memory identity repeated same-scope feedback has a stable bounded identifier",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "controlled-unit",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation",
+        "boundary"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 22,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "repeated same-scope feedback has a stable bounded identifier",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 1.1165829999999914,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-025",
+      "testName": "Feedback memory identity tenant, workspace, namespace and logical key each change the identifier",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "controlled-unit",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 27,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "tenant, workspace, namespace and logical key each change the identifier",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 0.10212500000000091,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-026",
+      "testName": "Feedback memory identity ambiguous delimiter strings cannot collide across structured scope and keys",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "controlled-unit",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation",
+        "boundary"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 37,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "ambiguous delimiter strings cannot collide across structured scope and keys",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 0.3529169999999908,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-027",
+      "testName": "Scoped approval feedback and miner identity on disposable PostgreSQL two tenants can reject for the same reason while retaining isolated memories, gesture events and sources",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 125,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "two tenants can reject for the same reason while retaining isolated memories, gesture events and sources",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 46.981874999999945,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-028",
+      "testName": "Scoped approval feedback and miner identity on disposable PostgreSQL two workspaces of the same tenant retain distinct keys and app-role searches",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 140,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "two workspaces of the same tenant retain distinct keys and app-role searches",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 21.125374999999963,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-029",
+      "testName": "Scoped approval feedback and miner identity on disposable PostgreSQL repeated same-scope rejections reuse one memory and retain each usage trace",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation",
+        "error",
+        "boundary"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 147,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "repeated same-scope rejections reuse one memory and retain each usage trace",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 34.4135,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-030",
+      "testName": "Scoped approval feedback and miner identity on disposable PostgreSQL concurrent different approvals for one scoped reason do not conflict or create multiple memories",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "concurrency",
+        "permission-or-isolation",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 154,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "concurrent different approvals for one scoped reason do not conflict or create multiple memories",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 54.10854199999994,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-031",
+      "testName": "Scoped approval feedback and miner identity on disposable PostgreSQL miner reinforces the exact approval key and creates isolated edit keys in two tenants",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 161,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "miner reinforces the exact approval key and creates isolated edit keys in two tenants",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 47.98675000000003,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-032",
+      "testName": "Scoped approval feedback and miner identity on disposable PostgreSQL legacy global keys remain untouched while new scoped rejections cannot collide with them",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 176,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "legacy global keys remain untouched while new scoped rejections cannot collide with them",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 12.893957999999998,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-033",
+      "testName": "Scoped approval feedback and miner identity on disposable PostgreSQL embedding failure rolls back the rejected status, gesture event, memory and usage",
+      "cards": [
+        "MC-022"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+        "line": 185,
+        "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc"
+      },
+      "preconditions": "Three deterministic memory-identity unit cases; seven real PostgreSQL cases use disposable 43-migration databases, random tenants/workspaces, synthetic review/gesture events and MockEmbedder without external network calls.",
+      "steps": [
+        "Construct the named tenant/workspace/key or real approval/miner signal fixture.",
+        "Call scopedMemoryId or public decide/runMemoryMinerBeat and the app-role memory readers.",
+        "Check stable versus distinct keys, memory/source/usage attribution, legacy-row preservation and rollback of the named failure scenario."
+      ],
+      "expected": "embedding failure rolls back the rejected status, gesture event, memory and usage",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 4.545499999999947,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-034",
+      "testName": "upsertMemory connection acquisition failure propagates without attempting a transaction",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "controlled-unit",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 19,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "upsertMemory connection acquisition failure propagates without attempting a transaction",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 3.799416000000008,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-035",
+      "testName": "runMemoryMinerBeat connection acquisition failure propagates without attempting a transaction",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "controlled-unit",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 19,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "runMemoryMinerBeat connection acquisition failure propagates without attempting a transaction",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 0.2734580000000051,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-036",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL upsertMemory commits real data and releases a clean reusable connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "normal"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 124,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "commits real data and releases a clean reusable connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 21.81162500000005,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-037",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL upsertMemory actual SQL failure rolls back without COMMIT and cleans the recovered connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 131,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "actual SQL failure rolls back without COMMIT and cleans the recovered connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 14.56412499999999,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-038",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL upsertMemory query acknowledgement and rollback failures retain both causes and discard leaked transaction state",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 141,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "query acknowledgement and rollback failures retain both causes and discard leaked transaction state",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 11.499042000000031,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-039",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL upsertMemory pre-COMMIT failure rejects and rolls back real writes before discarding the uncertain connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 150,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "pre-COMMIT failure rejects and rolls back real writes before discarding the uncertain connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 13.332125000000019,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-040",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL upsertMemory lost acknowledgement after server COMMIT rejects the uncertain result while preserving already committed data",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 157,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "lost acknowledgement after server COMMIT rejects the uncertain result while preserving already committed data",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 10.992832999999905,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-041",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL upsertMemory COMMIT and rollback failures preserve both causes after one COMMIT and destroy the failed connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 165,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "COMMIT and rollback failures preserve both causes after one COMMIT and destroy the failed connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 11.613541999999939,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-042",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL upsertMemory BEGIN failure rejects and discards once without touching business data",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 173,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "BEGIN failure rejects and discards once without touching business data",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 5.558125000000018,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-043",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL upsertMemory RLS context acknowledgement failure rolls back local settings and releases a clean connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 180,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "RLS context acknowledgement failure rolls back local settings and releases a clean connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 3.911875000000009,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-044",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL runMemoryMinerBeat commits real data and releases a clean reusable connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "normal"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 124,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "commits real data and releases a clean reusable connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 59.46199999999999,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-045",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL runMemoryMinerBeat actual SQL failure rolls back without COMMIT and cleans the recovered connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 131,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "actual SQL failure rolls back without COMMIT and cleans the recovered connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 23.53687500000001,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-046",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL runMemoryMinerBeat query acknowledgement and rollback failures retain both causes and discard leaked transaction state",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 141,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "query acknowledgement and rollback failures retain both causes and discard leaked transaction state",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 23.494249999999965,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-047",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL runMemoryMinerBeat pre-COMMIT failure rejects and rolls back real writes before discarding the uncertain connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 150,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "pre-COMMIT failure rejects and rolls back real writes before discarding the uncertain connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 21.730083000000036,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-048",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL runMemoryMinerBeat lost acknowledgement after server COMMIT rejects the uncertain result while preserving already committed data",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 157,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "lost acknowledgement after server COMMIT rejects the uncertain result while preserving already committed data",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 21.994541000000027,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-049",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL runMemoryMinerBeat COMMIT and rollback failures preserve both causes after one COMMIT and destroy the failed connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 165,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "COMMIT and rollback failures preserve both causes after one COMMIT and destroy the failed connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 21.896333000000027,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-050",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL runMemoryMinerBeat BEGIN failure rejects and discards once without touching business data",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 173,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "BEGIN failure rejects and discards once without touching business data",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 14.678540999999996,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-051",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL runMemoryMinerBeat RLS context acknowledgement failure rolls back local settings and releases a clean connection",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 180,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "RLS context acknowledgement failure rolls back local settings and releases a clean connection",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 15.82066599999996,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-052",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL miner statistical gate still commits observations without inventing memories or calibrations",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "normal"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 188,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "miner statistical gate still commits observations without inventing memories or calibrations",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 1.8982090000000653,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-053",
+      "testName": "Memory and miner transaction completion on disposable PostgreSQL miner busy-lock gate retains its normal skip result and releases only its own transaction",
+      "cards": [
+        "MC-025"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "normal"
+      ],
+      "source": {
+        "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+        "line": 193,
+        "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+      },
+      "preconditions": "Two connection-acquisition unit cases; eighteen real PostgreSQL cases use a disposable fully migrated database, a real app-role max=1 pool, synthetic memory/miner signals and no external embedding calls.",
+      "steps": [
+        "Prepare the selected upsertMemory or runMemoryMinerBeat input and recorded baseline state.",
+        "Call the public entrypoint; inject only the named query/BEGIN/COMMIT/ROLLBACK transport acknowledgement boundary, or exercise its normal statistical/busy gate.",
+        "Read durable memory/calibration counts and reborrow the physical pool; verify PID reuse/discard, pg_stat_activity transaction state, cleared scope GUCs and available miner advisory lock."
+      ],
+      "expected": "miner busy-lock gate retains its normal skip result and releases only its own transaction",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 0.8984159999999974,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-054",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 逐条发布保存 approved 手势、决策人、内容版本与原子事件，重复点击不写第二份",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "boundary"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 32,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "逐条发布保存 approved 手势、决策人、内容版本与原子事件，重复点击不写第二份",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 27.979000000000042,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-055",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 setStatus(active) 复用有批准记录的发布通道，低层状态助手拒绝静默启用",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 45,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "setStatus(active) 复用有批准记录的发布通道，低层状态助手拒绝静默启用",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 21.962916000000178,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-056",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 真实 decide 驳回退出检索，重新人工发布创建新审批，旧记录不能反转最新发布",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "boundary"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 57,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "真实 decide 驳回退出检索，重新人工发布创建新审批，旧记录不能反转最新发布",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 56.3693330000001,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-057",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 新版本回到 pending_review，旧批准或驳回按 version/hash 拒绝且不能改动新切块",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error",
+        "boundary"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 73,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "新版本回到 pending_review，旧批准或驳回按 version/hash 拒绝且不能改动新切块",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 56.02074999999968,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-058",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 同版本 hash 被改、快照改绑另一文档与正文 edit 越过建版均被拒绝",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 89,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "同版本 hash 被改、快照改绑另一文档与正文 edit 越过建版均被拒绝",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 20.94004199999972,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-059",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 required projection 未注册时 direct decide 和批量失败关闭且无状态/账本副作用",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 102,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "required projection 未注册时 direct decide 和批量失败关闭且无状态/账本副作用",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 12.950958000000355,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-060",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 投影已写文档后故障，审批、文档与两份事件仍同事务回滚",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 115,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "投影已写文档后故障，审批、文档与两份事件仍同事务回滚",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 35.063290999999936,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-061",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 直接人工发布的事务失败回滚生效状态、批准记录与五元事件",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 128,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "直接人工发布的事务失败回滚生效状态、批准记录与五元事件",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 13.047041999999692,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-062",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 owner/staff/readonly 与细粒度 deny 在 approve、setStatus 和 IM/direct decide 一致强制",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 137,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "owner/staff/readonly 与细粒度 deny 在 approve、setStatus 和 IM/direct decide 一致强制",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 18.36937500000022,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-063",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 批量批准、IM 拒绝与旧快照兼容共用同一文档投影，回调重试只执行一次",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error",
+        "boundary"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 152,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "批量批准、IM 拒绝与旧快照兼容共用同一文档投影，回调重试只执行一次",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 33.11729200000036,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-064",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 并发人工发布只生成一份发布事件/批准，重复内容与并发同标题建版保持一条版本链",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "concurrency",
+        "boundary"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 167,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "并发人工发布只生成一份发布事件/批准，重复内容与并发同标题建版保持一条版本链",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 105.31641600000012,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-065",
+      "testName": "MC-014 知识发布真实 PostgreSQL 契约 空ID、不存在、跨工作区文档/集合均拒绝且不泄漏或写审计",
+      "cards": [
+        "MC-014"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation",
+        "error",
+        "boundary"
+      ],
+      "source": {
+        "path": "apps/server/src/service/kb-publication.pg.test.ts",
+        "line": 178,
+        "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database, real app/gateway roles, random tenant plus two workspaces, owner/staff/readonly members and a knowledge collection. LLM provider is mock and environment/pools are restored on close.",
+      "steps": [
+        "Create a synthetic document and the named version/status/permission/projection fixture.",
+        "Call public service.kb/approvals tRPC callers or the actual base decide/batchApprove/IM callback entrypoint; exercise the named concurrency or after-write failure.",
+        "Read document status/version/hash/chunks, approval gesture/decider and event counts; confirm expected search visibility, deduplication, rejection or transaction rollback."
+      ],
+      "expected": "空ID、不存在、跨工作区文档/集合均拒绝且不泄漏或写审计",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 57.874874999999975,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-066",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 created 首次分派状态与真实人类归因同事务落两本账",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "normal"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 19,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "created 首次分派状态与真实人类归因同事务落两本账",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 41.665457999999944,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-067",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 assigned 同值与省略输入保持原值、时间和两本账不变",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "boundary"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 27,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "assigned 同值与省略输入保持原值、时间和两本账不变",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 17.23354100000006,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-068",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 改部门或负责人各仅新增一次原地分派留痕，不跳过后续状态机",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "normal"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 36,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "改部门或负责人各仅新增一次原地分派留痕，不跳过后续状态机",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 25.82883300000003,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-069",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 processing 再分派为 CONFLICT 409，零工单/业务事件副作用",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 44,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "processing 再分派为 CONFLICT 409，零工单/业务事件副作用",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 6.282124999999951,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-070",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 done 再分派为 CONFLICT 409，零工单/业务事件副作用",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 44,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "done 再分派为 CONFLICT 409，零工单/业务事件副作用",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 7.880000000000109,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-071",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 closed 再分派为 CONFLICT 409，零工单/业务事件副作用",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 44,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "closed 再分派为 CONFLICT 409，零工单/业务事件副作用",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 8.147584000000279,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-072",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 缺失或跨工作区工单为 NOT_FOUND，不返回别区工单",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 50,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "缺失或跨工作区工单为 NOT_FOUND，不返回别区工单",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 9.022875000000113,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-073",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 readonly、细粒度 deny 与空/超长参数拒绝，不写两本账",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "permission-or-isolation",
+        "error",
+        "boundary"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 55,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "readonly、细粒度 deny 与空/超长参数拒绝，不写两本账",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 12.19229200000018,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-074",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 同值并发争用只写一次，Unicode/标点按数据保存",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql",
+      "dimensions": [
+        "regression",
+        "concurrency",
+        "boundary"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 66,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "同值并发争用只写一次，Unicode/标点按数据保存",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 22.39766699999973,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    },
+    {
+      "id": "SERVICE-APPROVAL-075",
+      "testName": "MC-015 工单分派真实 PostgreSQL 契约 分派及两账已写后抛错，状态和事件全部回滚，重试可恢复",
+      "cards": [
+        "MC-015"
+      ],
+      "method": "actual-postgresql-with-controlled-failure",
+      "dimensions": [
+        "regression",
+        "error"
+      ],
+      "source": {
+        "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "line": 73,
+        "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f"
+      },
+      "preconditions": "Explicit loopback migrated synthetic PostgreSQL test database with real app/gateway roles, random tenant/two workspaces and owner/staff/readonly members. Each named case starts with an isolated ticket in its declared status.",
+      "steps": [
+        "Create the declared current or foreign ticket and capture both event ledgers.",
+        "Call public service.tickets.assign or the actual serviceTx + assignTicketOn path with the named same-value/change/permission/concurrent/failure inputs.",
+        "Read status, department, assignee, timestamps and both ledgers; confirm the declared return or mapped error and absence of unauthorized or repeated side effects."
+      ],
+      "expected": "分派及两账已写后抛错，状态和事件全部回滚，重试可恢复",
+      "actual": {
+        "status": "passed",
+        "failureMessages": [],
+        "durationMs": 16.257458000000042,
+        "assertions": "The named contract assertions completed without failure in the final mandatory combined run."
+      },
+      "evidenceLevel": "B",
+      "sourceRun": "docs/evidence/service-approval/raw/required-db-gate-vitest.json"
+    }
+  ],
+  "rawEvidenceIndex": [
+    {
+      "path": "docs/evidence/service-approval/raw/required-db-gate-vitest.json",
+      "original": "work/required-db-gate-vitest.json",
+      "sha256": "ea504e6a896a5ac1eef5dd8b3c3b843072f58e2c46700a8882130177de48967c",
+      "bytes": 103199,
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/approval-service-pg-results.json",
+      "original": "work/approval-service-pg-results.json",
+      "sha256": "aeedcbeb386fcaefa1cdf828e30beb808d654b06fde945ab73bfe9d12b37c71f",
+      "bytes": 21218,
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/approval-service-pg-final.json",
+      "original": "work/approval-service-pg-final.json",
+      "sha256": "7a4707bff404c1dbe637f442d6dc1fa9ccaf5c8635bdbba6de894752c831812e",
+      "bytes": 24584,
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/memory-transaction-pg-final.json",
+      "original": "work/memory-transaction-pg-final.json",
+      "sha256": "07e6c0d5200edd5e8a2e141c99ccd23227f09dc006ff21e2b48b4ee32a7cf4f1",
+      "bytes": 9918,
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/memory-transaction-related-final.json",
+      "original": "work/memory-transaction-related-final.json",
+      "sha256": "4c95e1f8cc4d4c1b39daeee785bbc978cc3f620867233c192d4b65d36be0ef8e",
+      "bytes": 10082,
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/service-contract-pg-final.json",
+      "original": "work/service-contract-pg-final.json",
+      "sha256": "d2a6f728a0243dcef9a9c520bc06728f9cbf727ecfb36f8eb120d8d6b5ea59e6",
+      "bytes": 9614,
+      "lines": 1
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/service-fixture-cleanup-proof.json",
+      "original": "work/service-fixture-cleanup-proof.json",
+      "sha256": "771b65a03821759af5a3683df5f01af924a6f6c5d9dcef1ab450089a5aed7f22",
+      "bytes": 702,
+      "lines": 19
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/approval-scoped-before-fix.json",
+      "original": "work/approval-scoped-before-fix.json",
+      "sha256": "c53912fd21b8a83a1c43d8a63132310d06ed41289b49591f9e409be3bbe15119",
+      "bytes": 664,
+      "lines": 20
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/kb-cross-channel-before-fix.json",
+      "original": "work/kb-cross-channel-before-fix.json",
+      "sha256": "8abad41790773f170681ffaec82aca98cd80869bb851481ce724b973fcf3ea2a",
+      "bytes": 837,
+      "lines": 38
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/approval-expire-race-before.json",
+      "original": "work/approval-expire-race-before.json",
+      "sha256": "8ec3353d7b4fa556f3f7d3271015028cd81749378049227e7a7c48c33b086e19",
+      "bytes": 2319,
+      "lines": 69
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/rejection-memory-before-fix.json",
+      "original": "work/rejection-memory-before-fix.json",
+      "sha256": "21d27260edeee625e76824eadfc66642329d0facc1104b721f5dd3ff9ef17f1a",
+      "bytes": 1468,
+      "lines": 46
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/memory-transaction-before-fix.json",
+      "original": "work/memory-transaction-before-fix.json",
+      "sha256": "bb855353ad1ddff10ba47a7147bda170c3727542fe8f3f0ff26d373a9ac733b9",
+      "bytes": 2915,
+      "lines": 70
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/kb-draft-before-fix.json",
+      "original": "work/kb-draft-before-fix.json",
+      "sha256": "c3640bac9be50bd6e7dcce7a4e214fbbf3630a3e4b22f0f9c988dba3535283a6",
+      "bytes": 263,
+      "lines": 10
+    }
+  ],
+  "limits": [
+    "No external customer production data or provider calls were used.",
+    "Controlled acknowledgement faults model transport uncertainty around real PostgreSQL statements; they do not measure failure frequency in production.",
+    "A COMMIT acknowledgement loss rejects the call even if the server committed; retries read durable state and dedupe. The report does not promise every rejected COMMIT means no data persisted.",
+    "Legacy global memory keys remain unchanged; scoped new keys do not migrate or remove old rows.",
+    "Other inherited transaction helpers, including db.withWorkspace/readPrefs/recall, were not systematically fault-tested by this bounded repair scope. A matching code pattern is a D-level risk until independently reproduced.",
+    "Formal RDAS276 and production/user/business results remain unverified. Final clean source and independent MCD acceptance are separately bound by the release owner."
+  ]
+}

@@ -18,7 +18,7 @@ import {
   gatewayAppend, gatewayAppendIdempotent, checkPermission, isWriteAction,
   maskText, maskDeep, canonicalJson, eventHash, GENESIS_HASH,
   searchEvents, MockNlTranslator, nlSearchEvents, type NlTranslatorLexicon,
-  upsertMemory, searchMemories, getMemorySources, transitionMemory, recordMemoryUsage, MockEmbedder,
+  upsertMemory, searchMemories, getMemorySources, transitionMemory, recordMemoryUsage, MockEmbedder, scopedMemoryId,
   insertWithReadableId, THREAD_ID_SOURCE,
 } from "@workloom/base/workdata";
 import { judge, evalCondition, type RuntimeRule } from "@workloom/base/fence-engine";
@@ -171,14 +171,16 @@ async function mkEvent(action: string, opts: { sessionId?: string; basis?: strin
   });
   return r.eventId;
 }
-async function mkApproval(opts: { status?: string; highRisk?: boolean; expiresInMs?: number } = {}): Promise<{ approvalId: string; eventId: string }> {
+async function mkApproval(opts: { status?: string; highRisk?: boolean; expiresInMs?: number; action?: string } = {}): Promise<{ approvalId: string; eventId: string }> {
   const eventId = await mkEvent("suite.reviewable");
   const approvalId = `apr-suite-${SFX}-${Math.random().toString(36).slice(2, 8)}`;
   await qApp(
     `INSERT INTO approvals (approval_id, tenant_id, workspace_id, event_id, channel, status, snapshot)
      VALUES ($1,$2,$3,$4,'inapp',$5,$6)`,
     [approvalId, scope.tenantId, scope.workspaceId, eventId, opts.status ?? "pending",
-      JSON.stringify({ before: null, after: { v: 1 }, high_risk: opts.highRisk ?? false, expires_at: new Date(Date.now() + (opts.expiresInMs ?? 864e5)).toISOString() })],
+      JSON.stringify({ before: null, after: { v: 1 }, high_risk: opts.highRisk ?? false,
+        ...(opts.action ? { action: opts.action, object_type: "room_price", object_id: `obj-${SFX}` } : {}),
+        expires_at: new Date(Date.now() + (opts.expiresInMs ?? 864e5)).toISOString() })],
   );
   return { approvalId, eventId };
 }
@@ -281,8 +283,9 @@ b("高危 Agent 带 approvalRef 放行", async () => {
   // P1-8：approvalRef 必须指向真实审批行——先造行再引用
   await qApp(
     `INSERT INTO approvals (approval_id, tenant_id, workspace_id, event_id, channel, status, tier, snapshot)
-     VALUES ($1,$2,$3,$4,'inapp','approved','l4_chairman','{}') ON CONFLICT (event_id, channel) DO NOTHING`,
-    [`apr-${SFX}`, scope.tenantId, scope.workspaceId, `E-APR-${SFX}`],
+     VALUES ($1,$2,$3,$4,'inapp','approved','l4_chairman',$5) ON CONFLICT (event_id, channel) DO NOTHING`,
+    [`apr-${SFX}`, scope.tenantId, scope.workspaceId, `E-APR-${SFX}`,
+      JSON.stringify({ action: "desktop.gui", object_type: "room_price", object_id: `obj-${SFX}`, high_risk: true })],
   );
   const r = await gatewayAppend(gw, { ...scope, actor: { id: "desktop-agent", type: "agent", fenceBindings: ["R2"], highRisk: true }, approvalRef: `apr-${SFX}` }, draftOf("desktop.gui", "desktop-agent"));
   assert(r.eventId, "应落库");
@@ -659,7 +662,7 @@ e("驳回原因枚举回流偏好记忆（F1.7）", async () => {
   const { approvalId } = await mkApproval();
   await decide(app, gw, scope, boss, approvalId, { type: "reject", reasonEnum: `suite_cal_${SFX}` });
   const hits = await searchMemories(app, scope, { kind: "preference" });
-  assert(hits.some((h) => h.memory_id === `mem-reject-suite_cal_${SFX}`), "偏好记忆回流");
+  assert(hits.some((h) => h.memory_id === scopedMemoryId(scope, "mem-reject", `suite_cal_${SFX}`)), "偏好记忆回流");
 });
 e("批量采纳：普通项通过", async () => {
   const a1 = await mkApproval();
@@ -733,10 +736,35 @@ e("#43 同事件跨通道幂等：inapp 批后 dingtalk 行按重复回调处理
   );
   const d1 = await decide(app, gw, scope, boss, approvalId, { type: "approve" });
   eq(d1.deduped, false, "行内首批生效");
+  eq(d1.status, "approved", "首次回调返回获批终态");
+  const gestureCount = async () => (await qApp<{ n: number }>(
+    `SELECT count(*)::int AS n FROM biz_events
+       WHERE tenant_id=$1 AND workspace_id=$2
+         AND payload->'decision'->>'action'='approval.gesture'
+         AND payload->'object'->>'id'=$3`,
+    [scope.tenantId, scope.workspaceId, eventId],
+  )).rows[0]!.n;
+  const countAfterFirst = await gestureCount();
+  eq(countAfterFirst, 1, "首次裁决只落一条手势事件");
   const d2 = await decide(app, gw, scope, boss, dingId, { type: "approve" });
   eq(d2.deduped, true, "他通道行按重复回调（#43 同事件幂等）");
-  const row = await qApp<{ status: string }>(`SELECT status FROM approvals WHERE approval_id=$1`, [dingId]);
-  eq(row.rows[0]!.status, "pending", "他通道行不被误改");
+  eq(d2.status, "approved", "重复回调返回相同获批终态");
+  eq(await gestureCount(), countAfterFirst, "重复回调不再写手势事件");
+  // MC-019：一个业务事件只有一个裁决；全部通道投影同步终态，队列不能残留幽灵 pending。
+  const rows = await qApp<{ status: string; gesture: unknown; decided_by: string; decided_at: string }>(
+    `SELECT status,gesture,decided_by,decided_at::text AS decided_at
+       FROM approvals WHERE approval_id=ANY($1) ORDER BY approval_id`,
+    [[approvalId, dingId]],
+  );
+  eq(rows.rows.length, 2, "两通道审批记录均保留");
+  assert(rows.rows.every((row) => row.status === "approved"), "全部通道投影同一获批终态");
+  eq(JSON.stringify(rows.rows[0]!.gesture), JSON.stringify(rows.rows[1]!.gesture), "两通道手势一致");
+  eq(rows.rows[0]!.decided_by, boss.memberNo, "首次裁决保留真实审批人");
+  eq(rows.rows[1]!.decided_by, boss.memberNo, "镜像通道保留同一审批人");
+  assert(Boolean(rows.rows[0]!.decided_at), "首次裁决留有时间");
+  eq(rows.rows[0]!.decided_at, rows.rows[1]!.decided_at, "两通道保留同一裁决时间");
+  const pending = await listQueue(app, scope, { status: "pending", limit: 200 });
+  assert(!pending.some((row) => row.approval_id === approvalId || row.approval_id === dingId), "待审队列不残留已批事件的任一通道");
   await qApp(`DELETE FROM approvals WHERE approval_id=$1`, [dingId]); // 清理
 });
 
@@ -1633,8 +1661,9 @@ l("desktop-agent 高危无逐次授权拒绝", async () => {
 l("desktop-agent 高危带逐次授权放行", async () => {
   await qApp(
     `INSERT INTO approvals (approval_id, tenant_id, workspace_id, event_id, channel, status, tier, snapshot)
-     VALUES ($1,$2,$3,$4,'inapp','approved','l4_chairman','{}') ON CONFLICT (event_id, channel) DO NOTHING`,
-    [`apr-desktop-${SFX}`, scope.tenantId, scope.workspaceId, `E-APRD-${SFX}`],
+     VALUES ($1,$2,$3,$4,'inapp','approved','l4_chairman',$5) ON CONFLICT (event_id, channel) DO NOTHING`,
+    [`apr-desktop-${SFX}`, scope.tenantId, scope.workspaceId, `E-APRD-${SFX}`,
+      JSON.stringify({ action: "desktop.gui", object_type: "room_price", object_id: `obj-${SFX}`, high_risk: true })],
   );
   const r = await gatewayAppend(gw, { ...scope, actor: { id: "desktop-agent", type: "agent", fenceBindings: ["R2"], highRisk: true }, approvalRef: `apr-desktop-${SFX}` }, draftOf("desktop.gui", "desktop-agent"));
   assert(r.eventId, "授权放行");
@@ -1776,13 +1805,20 @@ n("并发 ensureReady 同日期幂等", async () => {
 });
 n("对象写锁持锁期间他人超时（E2.5）", async () => {
   const { withObjectLock, ObjectLockTimeout } = await import("@workloom/base/fence-engine");
-  let timeoutHit = false;
-  await withObjectLock(gw, `suite-lock-${SFX}`, async () => {
-    await expect(
-      withObjectLock(gw, `suite-lock-${SFX}`, async () => undefined, 300),
-    ).rejects.toBeInstanceOf(ObjectLockTimeout).catch(() => { timeoutHit = true; });
-  }).catch(() => undefined);
-  assert(timeoutHit || true, "锁超时路径可达");
+  const objectKey = `suite-lock-${SFX}`;
+  let contenderEntered = false;
+  await withObjectLock(gw, objectKey, async () => {
+    let rejected: unknown;
+    try {
+      await withObjectLock(gw, objectKey, async () => { contenderEntered = true; }, 300);
+    } catch (error) { rejected = error; }
+    assert(rejected instanceof ObjectLockTimeout,
+      `竞争者须收到 ObjectLockTimeout，实际为 ${rejected instanceof Error ? rejected.name + ": " + rejected.message : String(rejected)}`);
+    eq(rejected.objectKey, objectKey, "超时错误绑定本次对象锁");
+    eq(contenderEntered, false, "锁竞争超时不得进入业务回调");
+  });
+  const recovered = await withObjectLock(gw, objectKey, async () => "lock-recovered", 300);
+  eq(recovered, "lock-recovered", "持锁事务释放后新调用可重新取锁");
 });
 n("并发写读一致（写后立即读可见）", async () => {
   const r = await gatewayAppend(gw, agentCtx(), draftOf("order.list"));
@@ -1866,7 +1902,7 @@ o("高危桌面操作授权链：无授权拒 → 审批 → 带授权放行", a
     await gatewayAppend(gw, { ...scope, actor: { id: "desktop-agent", type: "agent", fenceBindings: ["R2"], highRisk: true } }, draftOf("desktop.gui", "desktop-agent"));
   } catch { threw = true; }
   assert(threw, "无授权高危必拒");
-  const { approvalId } = await mkApproval({ highRisk: true });
+  const { approvalId } = await mkApproval({ highRisk: true, action: "desktop.gui" });
   await decide(app, gw, scope, boss, approvalId, { type: "approve" });
   const r = await gatewayAppend(gw, { ...scope, actor: { id: "desktop-agent", type: "agent", fenceBindings: ["R2"], highRisk: true }, approvalRef: approvalId }, draftOf("desktop.gui", "desktop-agent"));
   assert(r.eventId, "授权后放行");
@@ -1913,7 +1949,7 @@ o("店长看组织记忆：驳回校准偏好可见", async () => {
   const { approvalId } = await mkApproval();
   await decide(app, gw, scope, boss, approvalId, { type: "reject", reasonEnum: `daily_cal_${SFX}` });
   const hits = await searchMemories(app, scope, { kind: "preference" });
-  assert(hits.some((h) => h.memory_id === `mem-reject-daily_cal_${SFX}`), "校准记忆可见");
+  assert(hits.some((h) => h.memory_id === scopedMemoryId(scope, "mem-reject", `daily_cal_${SFX}`)), "校准记忆可见");
 });
 o("店长看技能目录：官方可见 + team 仅本工作区", async () => {
   const official = await listSkills(app, scope, { level: "official" });

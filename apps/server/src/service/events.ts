@@ -17,6 +17,7 @@ export async function serviceTx<T>(
 ): Promise<T> {
   const pool = getAppPool();
   const client = await pool.connect();
+  let discard: Error | undefined;
   try {
     await client.query("BEGIN");
     await client.query("SELECT set_config('app.workspace_id', $1, true)", [workspaceId]);
@@ -28,10 +29,15 @@ export async function serviceTx<T>(
     await client.query("COMMIT");
     return result;
   } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollback) {
+      discard = rollback instanceof Error ? rollback : new Error(String(rollback));
+      throw new AggregateError([err, rollback], "服务事务与回滚均失败", { cause: err });
+    }
     throw err;
   } finally {
-    client.release();
+    client.release(discard);
   }
 }
 

@@ -1,0 +1,367 @@
+{
+  "schemaVersion": "workloom.local-regression/v1",
+  "startedAt": "2026-10-08T20:10:48.225Z",
+  "scope": "Required .db-gate source command sequence on a fresh disposable loopback PostgreSQL database",
+  "evidenceLevel": "A",
+  "sourceState": "Authorized dirty candidate; not native CNB pipeline proof",
+  "dataMode": "sandbox",
+  "externalProductionCalls": false,
+  "modelCalls": 0,
+  "preconditions": [
+    "Disposable local PostgreSQL 17 with pgvector",
+    "Explicit administrative, app and gateway channels",
+    "All mandatory Vitest inputs resolved from current .cnb.yml; no input removed"
+  ],
+  "cnbSourceSha256": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+  "sourceFingerprints": {
+    "scripts/seed-smart-home.pg.test.ts": "878697ecd4a06f3c7420a4fdf75dfc2c7c7d1655d7b518ffa19446991dea2790",
+    "apps/server/src/trpc/fence-proposal.pg.test.ts": "2c66282328a68e58e6f518b1f5f6a58e3d5b0f049e074498aece2c4673b368ab",
+    "packages/base/bundles/assembly-safety.test.ts": "7fff7ee84d006c2db2030133f00fb493dc0408c11b06f4710a3dde045dd7e80c",
+    "packages/base/captain/ceo-actor.test.ts": "6b250bf775b751860ec08ad02a5b11995c2ddb69599458383874d78417ad63a8",
+    "packages/runtime/src/assembly-revocation.test.ts": "bcacf075b45d9097eec7f4bbd152250d70df9f8b21b91bee22bf5bd54d5ca652",
+    "packages/runtime/src/transaction-family.test.ts": "0e0c9a72c2bc527f555e56980b40618abb2956ca83b04cc55921030f5f04ae00",
+    "apps/server/src/service/service-transactions.test.ts": "a54fc8d3e030113000af1e3279171a8fe9b6d39e281254955e725d329200e532",
+    "apps/server/src/service/ticket-idempotency.pg.test.ts": "2ce39d5a8e39024a622a1b40e2595222b49a58cf2709a2b9b754d89994e9b217",
+    "apps/server/src/service/production-demo-auth.pg.test.ts": "56878ae8ffd0a5ecaa2b9942f66db2274ca5dbb9b3f623af95a26b5761858fcb",
+    "apps/server/src/service/hotel-contract-fixture.pg.test.ts": "bdd3c9a3b2e33b7ebf091f64b70abc0d8af46df7daf00398d8b10afc8f08736d",
+    "apps/server/src/service/ticket-assignment.pg.test.ts": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f",
+    "apps/server/src/service/kb-publication.pg.test.ts": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491",
+    "packages/base/review-console/approval-transaction.pg.test.ts": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2",
+    "packages/base/review-console/rejection-memory.pg.test.ts": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc",
+    "packages/base/workdata/gateway-transaction.pg.test.ts": "39852ce623668264c4c0a3f4b33b1fb77553b0779ed2783003a487bc53ce134f",
+    "packages/base/workdata/memory-transaction.pg.test.ts": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e"
+  },
+  "vitestFiles": [
+    "scripts/seed-smart-home.pg.test.ts",
+    "apps/server/src/trpc/fence-proposal.pg.test.ts",
+    "packages/base/bundles/assembly-safety.test.ts",
+    "packages/base/captain/ceo-actor.test.ts",
+    "packages/runtime/src/assembly-revocation.test.ts",
+    "packages/runtime/src/transaction-family.test.ts",
+    "apps/server/src/service/service-transactions.test.ts",
+    "apps/server/src/service/ticket-idempotency.pg.test.ts",
+    "apps/server/src/service/production-demo-auth.pg.test.ts",
+    "apps/server/src/service/hotel-contract-fixture.pg.test.ts",
+    "apps/server/src/service/ticket-assignment.pg.test.ts",
+    "apps/server/src/service/kb-publication.pg.test.ts",
+    "packages/base/review-console/approval-transaction.pg.test.ts",
+    "packages/base/review-console/rejection-memory.pg.test.ts",
+    "packages/base/workdata/gateway-transaction.pg.test.ts",
+    "packages/base/workdata/memory-transaction.pg.test.ts"
+  ],
+  "checks": [
+    {
+      "name": "migrate",
+      "steps": [
+        "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/toolchain/package/dist/pnpm.cjs",
+        "db:migrate"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "signal": null
+      },
+      "startedAt": "2026-10-08T20:10:48.308Z",
+      "finishedAt": "2026-10-08T20:10:48.785Z",
+      "log": "work/required-db-gate-migrate.log",
+      "pass": true,
+      "rawLogSha256": "119a75550e5f6b64660dde9b1070efa660997b8a409f614d1dc78e9cefba5257"
+    },
+    {
+      "name": "governance",
+      "steps": [
+        "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "scripts/business-management-postgres.test.mjs"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "signal": null
+      },
+      "startedAt": "2026-10-08T20:10:48.786Z",
+      "finishedAt": "2026-10-08T20:10:48.871Z",
+      "log": "work/required-db-gate-governance.log",
+      "pass": true,
+      "rawLogSha256": "54ddbb810da9a5ca3c984adcb33e6215988af696d7503cc8568e1d2fb2e1ee12"
+    },
+    {
+      "name": "matrix",
+      "steps": [
+        "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "scripts/acceptance/matrix.pg.test.mjs"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "signal": null
+      },
+      "startedAt": "2026-10-08T20:10:48.871Z",
+      "finishedAt": "2026-10-08T20:10:50.219Z",
+      "log": "work/required-db-gate-matrix.log",
+      "pass": true,
+      "rawLogSha256": "c66a14d3b7b1467a71ceabc270387536ce4af855ed12666724b06f0c204c707a"
+    },
+    {
+      "name": "combined",
+      "steps": [
+        "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/toolchain/package/dist/pnpm.cjs",
+        "exec",
+        "vitest",
+        "run",
+        "scripts/seed-smart-home.pg.test.ts",
+        "apps/server/src/trpc/fence-proposal.pg.test.ts",
+        "packages/base/bundles/assembly-safety.test.ts",
+        "packages/base/captain/ceo-actor.test.ts",
+        "packages/runtime/src/assembly-revocation.test.ts",
+        "packages/runtime/src/transaction-family.test.ts",
+        "apps/server/src/service/service-transactions.test.ts",
+        "apps/server/src/service/ticket-idempotency.pg.test.ts",
+        "apps/server/src/service/production-demo-auth.pg.test.ts",
+        "apps/server/src/service/hotel-contract-fixture.pg.test.ts",
+        "apps/server/src/service/ticket-assignment.pg.test.ts",
+        "apps/server/src/service/kb-publication.pg.test.ts",
+        "packages/base/review-console/approval-transaction.pg.test.ts",
+        "packages/base/review-console/rejection-memory.pg.test.ts",
+        "packages/base/workdata/gateway-transaction.pg.test.ts",
+        "packages/base/workdata/memory-transaction.pg.test.ts",
+        "--reporter=json",
+        "--outputFile=/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/required-db-gate-vitest.json"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "signal": null
+      },
+      "startedAt": "2026-10-08T20:10:50.219Z",
+      "finishedAt": "2026-10-08T20:10:56.442Z",
+      "log": "work/required-db-gate-combined.log",
+      "pass": true,
+      "rawLogSha256": "a1fb7e18d4fce30ac05522c5353a68fbb307bae30cfad03865d9c9b29e138a46"
+    },
+    {
+      "name": "seed-first",
+      "steps": [
+        "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/toolchain/package/dist/pnpm.cjs",
+        "db:seed"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "signal": null
+      },
+      "startedAt": "2026-10-08T20:10:56.443Z",
+      "finishedAt": "2026-10-08T20:10:56.870Z",
+      "log": "work/required-db-gate-seed-first.log",
+      "pass": true,
+      "rawLogSha256": "2d5f8e274cf0e417479b45070d18077ac69b2ebfa88bd1e8b7a539ba303cb6f8"
+    },
+    {
+      "name": "seed-second",
+      "steps": [
+        "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/toolchain/package/dist/pnpm.cjs",
+        "db:seed"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "signal": null
+      },
+      "startedAt": "2026-10-08T20:10:56.871Z",
+      "finishedAt": "2026-10-08T20:10:57.275Z",
+      "log": "work/required-db-gate-seed-second.log",
+      "pass": true,
+      "rawLogSha256": "2d5f8e274cf0e417479b45070d18077ac69b2ebfa88bd1e8b7a539ba303cb6f8"
+    },
+    {
+      "name": "verify-chain",
+      "steps": [
+        "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/toolchain/package/dist/pnpm.cjs",
+        "db:verify-chain"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "signal": null
+      },
+      "startedAt": "2026-10-08T20:10:57.275Z",
+      "finishedAt": "2026-10-08T20:10:57.616Z",
+      "log": "work/required-db-gate-verify-chain.log",
+      "pass": true,
+      "rawLogSha256": "167bfafad7c01db8788174ba8c05e7efa139d50b3a4397f165c34a581b17de3d"
+    }
+  ],
+  "databaseRemoved": true,
+  "sourceEnvironmentRestored": true,
+  "limitation": "Local execution verifies the mandatory commands and database behavior; Linux image provisioning and CNB runner remain unverified until actual pipeline execution.",
+  "postgresVersion": "17.11 (Postgres.app)",
+  "finishedAt": "2026-10-08T20:10:57.650Z",
+  "pass": true,
+  "summary": {
+    "vitest": {
+      "files": 16,
+      "tests": 237,
+      "pass": 237,
+      "fail": 0,
+      "skip": 0
+    },
+    "governanceNode": {
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skip": 0
+    },
+    "matrixNode": {
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skip": 0,
+      "distinctFixtureVariants": 6
+    },
+    "migrations": 43,
+    "seedRuns": 2,
+    "eventChain": {
+      "workspaceSegments": 3,
+      "events": 47,
+      "issues": 0
+    },
+    "databaseRemoved": true,
+    "sourceEnvironmentRestored": true
+  },
+  "vitestChecks": [
+    {
+      "file": "scripts/seed-smart-home.pg.test.ts",
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "packages/runtime/src/assembly-revocation.test.ts",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "packages/runtime/src/transaction-family.test.ts",
+      "tests": 26,
+      "pass": 26,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "packages/base/bundles/assembly-safety.test.ts",
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "packages/base/review-console/approval-transaction.pg.test.ts",
+      "tests": 23,
+      "pass": 23,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "packages/base/review-console/rejection-memory.pg.test.ts",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "packages/base/captain/ceo-actor.test.ts",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "packages/base/workdata/gateway-transaction.pg.test.ts",
+      "tests": 37,
+      "pass": 37,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "packages/base/workdata/memory-transaction.pg.test.ts",
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "apps/server/src/trpc/fence-proposal.pg.test.ts",
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "apps/server/src/service/hotel-contract-fixture.pg.test.ts",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "apps/server/src/service/kb-publication.pg.test.ts",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "apps/server/src/service/production-demo-auth.pg.test.ts",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "apps/server/src/service/service-transactions.test.ts",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "apps/server/src/service/ticket-assignment.pg.test.ts",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skip": 0
+    },
+    {
+      "file": "apps/server/src/service/ticket-idempotency.pg.test.ts",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skip": 0
+    }
+  ],
+  "rawVitestReportSha256": "ea504e6a896a5ac1eef5dd8b3c3b843072f58e2c46700a8882130177de48967c",
+  "runnerSha256": "e1613a7e4e6d5ffb33f61326e7aa243901776deafd2e3f57dae9e526c9e6b31e"
+}

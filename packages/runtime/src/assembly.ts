@@ -43,6 +43,7 @@ export async function assemblePreset(
   input: AssembleInput,
 ): Promise<AssembledPreset> {
   const client = await app.connect();
+  let releaseError: Error | undefined;
   try {
     // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
     await client.query("BEGIN");
@@ -82,13 +83,15 @@ export async function assemblePreset(
     // 此前只读 agents.fence_bindings，resolveAgentFenceBindings 的并集从未接线——
     // 技能「安装即绑定」在网关段①复查位不生效（安装的技能绑定形同虚设）。
     const sk = await client.query<{ fence_bindings_snapshot: string[] }>(
-      `SELECT fence_bindings_snapshot FROM skill_installs WHERE workspace_id=$1`,
+      `SELECT i.fence_bindings_snapshot FROM skill_installs i
+       WHERE i.workspace_id=$1
+         AND NOT EXISTS (SELECT 1 FROM skill_revocations r WHERE r.skill_id=i.skill_id)`,
       [scope.workspaceId],
     );
     const bindingsUnion = new Set<string>(agent.fence_bindings ?? []);
     for (const row of sk.rows) for (const b of row.fence_bindings_snapshot ?? []) bindingsUnion.add(b);
 
-    return {
+    const preset: AssembledPreset = {
       agentId: agent.id,
       presetKey: agent.preset_key,
       version: agent.version,
@@ -98,11 +101,17 @@ export async function assemblePreset(
       prompt: agent.meta.prompt ?? null,
       essentials: { archive: prof.rows[0]!.archive, stage: ws.rows[0]!.stage!, goal: input.goal! },
     };
+    await client.query("COMMIT");
+    return preset;
   } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      releaseError = rollbackError instanceof Error ? rollbackError : new Error(String(rollbackError));
+      throw new AggregateError([err, rollbackError], "数字员工装配事务失败且回滚失败，需要复核连接与数据库状态", { cause: err });
+    }
     throw err;
   } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
+    client.release(releaseError);
   }
 }

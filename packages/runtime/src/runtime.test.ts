@@ -3,7 +3,8 @@
  * Quest 循环（围栏瀑布/回执）+ replay 断点续跑幂等（H-5）
  * PG 集成仅 RUN_DB_TESTS=1 启用。
  */
-import { describe, expect, it } from "vitest";
+import { randomUUID } from "node:crypto";
+import { afterAll, describe, expect, it } from "vitest";
 import { routeIntent, ruleBasedRoute, LlmIntentClassifier, type IntentClassifier } from "./intent.js";
 import type { QuestPlanner } from "./loop.js";
 // 注意：loop.js（经 tools.js 模块级常量读 TOOL_UNVERIFIED_RATE）禁止静态 import——
@@ -204,6 +205,11 @@ d("PG 集成 Quest 循环（种子库）", async () => {
   const app = new pg.Pool({ connectionString: process.env.DATABASE_APP_URL });
   const gw = new pg.Pool({ connectionString: process.env.DATABASE_GATEWAY_URL });
   const scope = { tenantId: "tenant-demo", workspaceId: "ws-yunqi" };
+  afterAll(async () => {
+    const closed = await Promise.allSettled([app.end(), gw.end()]);
+    const errors = closed.flatMap(result => result.status === "rejected" ? [result.reason] : []);
+    if (errors.length > 0) throw new AggregateError(errors, "运行时回归测试数据库连接关闭失败");
+  });
 
   const newThread = async (title: string) => {
     const id = `T-${Date.now().toString(36)}-${Math.floor(Math.random() * 999)}`;
@@ -367,21 +373,64 @@ d("PG 集成 Quest 循环（种子库）", async () => {
   });
 
   it("#24 装配围栏并集：安装技能绑定进装配声明（F8.2/L8.3），卸载即收缩", async () => {
-    const { installSkill, uninstallSkill, listSkills } = await import("@workloom/base/skills");
-    const revenue = (await listSkills(app, scope, { level: "official" })).find((s) => s.name === "revenue-manager")!;
-    // 从「未安装」态开始（重跑安全）
-    await uninstallSkill(app, gw, scope, { skillId: revenue.id, by: "MEM-001" }).catch(() => undefined);
+    const { installSkill, uninstallSkill, listInstalls, listSkills } = await import("@workloom/base/skills");
+    const revenue = (await listSkills(app, scope, { level: "official" })).find((s) => s.name === "revenue-manager");
+    expect(revenue).toBeTruthy();
+    expect(revenue!.fence_bindings).toEqual(expect.arrayContaining(["R1", "R2"]));
+    const fixture = randomUUID();
+    const fixtureSkillId = `skill-runtime-${fixture}`;
+    const fixtureRuleId = `R-RUNTIME-${fixture}`;
+    const fixtureFenceId = `fr-runtime-${fixture}`;
+    const skillBindings = [...revenue!.fence_bindings, fixtureRuleId];
+    const fixtureQuery = async (sql: string, params: unknown[] = []) => {
+      const client = await app.connect();
+      let releaseError: Error | undefined;
+      try {
+        await client.query("BEGIN");
+        await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+        await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+        const result = await client.query(sql, params);
+        await client.query("COMMIT");
+        return result;
+      } catch (error) {
+        try { await client.query("ROLLBACK"); }
+        catch (rollbackError) {
+          releaseError = rollbackError instanceof Error ? rollbackError : new Error(String(rollbackError));
+          throw new AggregateError([error, rollbackError], "运行时测试夹具写入及回滚均失败", { cause: error });
+        }
+        throw error;
+      } finally { client.release(releaseError); }
+    };
+    // 保留当前种子库完整并集；唯一规则确保安装后增大、卸载后精确恢复，不改动种子技能。
     const before = await assemblePreset(app, scope, { workspaceId: scope.workspaceId, presetKey: "content-agent", goal: "装配并集探针" });
-    // 0013 契约：seed 安装行落真实快照——review-crisis(R6)、channel-reconciler(R4/R5) 在装，
-    // 并集 = content-agent 自身声明 R3 ∪ 全部在装技能快照
-    expect(before.fenceBindings).toEqual(["R3", "R4", "R5", "R6"]);
-    // 安装即绑定：装配声明并入技能 fence_bindings 快照
-    await installSkill(app, gw, scope, { skillId: revenue.id, by: "MEM-001" });
-    const after = await assemblePreset(app, scope, { workspaceId: scope.workspaceId, presetKey: "content-agent", goal: "装配并集探针" });
-    expect(after.fenceBindings).toEqual(["R1", "R2", "R3", "R4", "R5", "R6"]); // preset 声明 ∪ 技能快照
-    // 卸载即撤销：并集收缩
-    await uninstallSkill(app, gw, scope, { skillId: revenue.id, by: "MEM-001" });
-    const revoked = await assemblePreset(app, scope, { workspaceId: scope.workspaceId, presetKey: "content-agent", goal: "装配并集探针" });
-    expect(revoked.fenceBindings).toEqual(["R3", "R4", "R5", "R6"]);
+    expect(before.fenceBindings).toContain("R3");
+    expect(before.fenceBindings).not.toContain(fixtureRuleId);
+    try {
+      await fixtureQuery(
+        `INSERT INTO fence_rules (id,rule_id,version,workspace_id,name,level,match_spec,action,status,created_by)
+         VALUES ($1,$2,'v1',$3,'运行时安装回归规则','auto','{}','{}','active','tester')`,
+        [fixtureFenceId, fixtureRuleId, scope.workspaceId],
+      );
+      await fixtureQuery(
+        `INSERT INTO skills (id,level,bundle,name,version,description,fence_bindings,body,desensitized)
+         SELECT $1,level,bundle,$2,version,description,$3,body,desensitized FROM skills WHERE id=$4`,
+        [fixtureSkillId, `runtime-fixture-${fixture}`, JSON.stringify(skillBindings), revenue!.id],
+      );
+      expect(await installSkill(app, gw, scope, { skillId: fixtureSkillId, by: "MEM-001" }))
+        .toEqual({ installed: true, deduped: false, bindings: skillBindings });
+      const after = await assemblePreset(app, scope, { workspaceId: scope.workspaceId, presetKey: "content-agent", goal: "装配并集探针" });
+      expect(after.fenceBindings).toEqual([...new Set([...before.fenceBindings, ...skillBindings])].sort());
+      expect(after.fenceBindings).toContain(fixtureRuleId);
+      expect(await uninstallSkill(app, gw, scope, { skillId: fixtureSkillId, by: "MEM-001" }))
+        .toEqual({ uninstalled: true, revokedBindings: skillBindings });
+      expect((await listInstalls(app, scope)).some(row => row.skill_id === fixtureSkillId)).toBe(false);
+      const uninstalled = await assemblePreset(app, scope, { workspaceId: scope.workspaceId, presetKey: "content-agent", goal: "装配并集探针" });
+      expect(uninstalled.fenceBindings).toEqual(before.fenceBindings);
+      expect(uninstalled.fenceBindings).not.toContain(fixtureRuleId);
+    } finally {
+      await fixtureQuery("DELETE FROM skill_installs WHERE workspace_id=$1 AND skill_id=$2", [scope.workspaceId, fixtureSkillId]);
+      await fixtureQuery("DELETE FROM skills WHERE id=$1", [fixtureSkillId]);
+      await fixtureQuery("DELETE FROM fence_rules WHERE id=$1 AND workspace_id=$2", [fixtureFenceId, scope.workspaceId]);
+    }
   });
 });

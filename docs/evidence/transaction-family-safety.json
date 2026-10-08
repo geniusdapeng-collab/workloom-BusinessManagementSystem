@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "workloom.local-regression/v1",
+  "evidenceLevel": "A",
+  "scope": "MC-016 public Quest and skill registry transaction completion",
+  "sourceState": "Authorized dirty source candidate after before-repair card; not a formal clean-HEAD MCD capture",
+  "dataScope": "Actual app-role queries on a disposable loopback PostgreSQL database with all repository migrations; asynchronous faults are injected before the selected SQL, COMMIT or ROLLBACK call is sent. Successful preceding queries still execute against real PostgreSQL.",
+  "externalProductionCalls": false,
+  "observedAt": "2026-10-08T19:31:46.438000+00:00",
+  "beforeRepair": {
+    "tests": 20,
+    "pass": 5,
+    "fail": 15,
+    "skip": 0,
+    "description": "Twenty front-loaded assertions exercised original production implementation before repair; six additional exact Quest transaction paths then added."
+  },
+  "summary": {
+    "tests": 26,
+    "pass": 26,
+    "fail": 0,
+    "skip": 0,
+    "actualPostgresCases": 26
+  },
+  "relatedRegression": {
+    "tests": 94,
+    "pass": 94,
+    "fail": 0,
+    "skip": 0,
+    "files": {
+      "assembly-revocation.test.ts": 11,
+      "loop.test.ts": 14,
+      "quest-hardening.test.ts": 9,
+      "runtime.test.ts": 20,
+      "transaction-family.test.ts": 26,
+      "skills.test.ts": 14
+    },
+    "includesTargetedCases": true
+  },
+  "preconditions": [
+    "Explicit BMS_PG_TEST_URL points to disposable loopback PostgreSQL sandbox",
+    "All database migrations run on a fresh disposable database",
+    "Public entrypoints run with actual workloom_app role",
+    "Test fixtures use unique workspaces and skills; original default smart-home business state is unchanged"
+  ],
+  "steps": [
+    "Exercise durable normal install/uninstall and Quest completion",
+    "Inject asynchronous COMMIT failure across all registry transaction paths and Quest plan/rules/receipt/approval/state/step transactions",
+    "Read rows, events, approvals and thread progress using independent owner connection",
+    "Inject SQL+ROLLBACK and COMMIT+ROLLBACK double failures and inspect AggregateError/cause/client discard",
+    "Verify explicit replan rollback preserves existing plan and pending approval",
+    "Close test pools and drop the disposable database"
+  ],
+  "expected": "No transaction failure returns success. Rollback failures preserve both errors and primary cause and discard the client. Related rows and gateway events commit or roll back together. All 26 assertions pass with zero skip.",
+  "actual": "26/26 pass, 0 fail, 0 skip; related skills and complete runtime tests 94/94 pass with zero skip; base/runtime typecheck exit 0.",
+  "checks": [
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL normal install/uninstall returns only with durable row and matching events",
+      "status": "passed",
+      "durationMs": 19.491667000000007,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL listInstalls rejects COMMIT failure and completes rollback before release",
+      "status": "passed",
+      "durationMs": 1.9292500000000246,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL binding resolution rejects COMMIT failure instead of returning uncommitted scope data",
+      "status": "passed",
+      "durationMs": 1.4223749999999882,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL install COMMIT failure cannot claim installed or persist either installation or its event",
+      "status": "passed",
+      "durationMs": 2.525624999999991,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL active-rule preflight COMMIT failure aborts installation before its row or event",
+      "status": "passed",
+      "durationMs": 2.225500000000011,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL team dry-run preflight COMMIT failure propagates despite a valid dry-run trace",
+      "status": "passed",
+      "durationMs": 3.258790999999974,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL conflict approval COMMIT failure rolls back both the conflict event and pending approval",
+      "status": "passed",
+      "durationMs": 3.18754100000001,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL uninstall COMMIT failure retains installed state and does not leave an uninstall event",
+      "status": "passed",
+      "durationMs": 3.319500000000062,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL install query failure rolls back without any COMMIT",
+      "status": "passed",
+      "durationMs": 2.0223330000000033,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL registry COMMIT and ROLLBACK failures retain both causes and discard the connection",
+      "status": "passed",
+      "durationMs": 2.329250000000002,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL registry SQL and ROLLBACK failures preserve the SQL cause and never attempt COMMIT",
+      "status": "passed",
+      "durationMs": 3.0137919999999667,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL failed scoped read cannot leak transaction state into the next workspace read",
+      "status": "passed",
+      "durationMs": 7.183915999999954,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL normal public Quest completes one verified local step with durable event and thread",
+      "status": "passed",
+      "durationMs": 8.478707999999983,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest rule-read COMMIT failure stops before planning, execution or completion",
+      "status": "passed",
+      "durationMs": 1.8863750000000437,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest receipt-read COMMIT failure stops before tool execution or completion",
+      "status": "passed",
+      "durationMs": 3.08141599999999,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest saved-plan COMMIT failure retains no new plan and never starts a tool",
+      "status": "passed",
+      "durationMs": 2.8492500000000973,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest saved-plan read COMMIT failure stops without a new plan or tool execution",
+      "status": "passed",
+      "durationMs": 3.0621249999999236,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest approved-step read COMMIT failure cannot progress into execution",
+      "status": "passed",
+      "durationMs": 4.662458000000015,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest pending-approval read COMMIT failure does not create a replacement approval",
+      "status": "passed",
+      "durationMs": 4.876250000000027,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest running-state COMMIT failure leaves the thread queued and starts no tool",
+      "status": "passed",
+      "durationMs": 3.7396669999999403,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest review transaction COMMIT failure rolls back its event, approval and pending state",
+      "status": "passed",
+      "durationMs": 8.37925000000007,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL failed explicit replan preserves its old plan and pending approval without a superseded event",
+      "status": "passed",
+      "durationMs": 8.865375000000085,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest execution transaction COMMIT failure rolls back its event and progress",
+      "status": "passed",
+      "durationMs": 4.931500000000028,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest rule COMMIT and ROLLBACK failures retain both causes and discard the connection",
+      "status": "passed",
+      "durationMs": 1.433832999999936,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL Quest SQL and ROLLBACK failures preserve the first cause and never commit the failed read",
+      "status": "passed",
+      "durationMs": 1.8765409999999747,
+      "failureMessages": []
+    },
+    {
+      "name": "Quest and skill registry transaction safety on disposable PostgreSQL public registry and Quest propagate connection acquisition failures",
+      "status": "passed",
+      "durationMs": 0.7884579999999914,
+      "failureMessages": []
+    }
+  ],
+  "sourceHashes": {
+    "packages/base/skills/registry.ts": "f0d07c090fe01ce9eb868b79ab828f6d8c0b3e2e0fd69e76ab55ba0c89dfc9ce",
+    "packages/runtime/src/loop.ts": "208e039f5acfe9fe0e4a6424030ed989763464062b9b93bc1e50d98a8115b8c0",
+    "packages/runtime/src/transaction-family.test.ts": "0e0c9a72c2bc527f555e56980b40618abb2956ca83b04cc55921030f5f04ae00"
+  },
+  "rawReportSha256": "1fd5c502c63c35900f2c9261eda08b4475be9338da465a339870732d04522921",
+  "beforeRepairReportSha256": "75ded60a39ff7074da3a8d75acf6fb8d41f500a55fdf53eedf0817733b1d502c",
+  "relatedReportSha256": "b16374da2756b4777320058e4ca95fa9aa0043437cf7baccebb3ec29f696ee41",
+  "limitations": [
+    "COMMIT fault cases fail before COMMIT is sent. They prove failed submissions are not returned as success and preceding writes roll back; they do not establish the durable outcome after a real acknowledgement loss following an already executed COMMIT.",
+    "Rollback double-failure cases verify both causes and physical-client discard; transaction cleanup completes when the discarded connection closes.",
+    "No external customer production workload or live connector was exercised by this regression."
+  ]
+}

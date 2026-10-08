@@ -6,6 +6,7 @@
  */
 import { beforeAll, describe, expect, it } from "vitest";
 import type { Hono } from "hono";
+import { installHotelContractFixture } from "./hotel-contract-fixture.js";
 
 process.env.DATABASE_URL ??= "postgres://postgres:workloom@localhost:5432/workloom";
 process.env.DATABASE_APP_URL ??= "postgres://workloom_app:workloom_dev_app@localhost:5432/workloom";
@@ -48,6 +49,7 @@ async function makeSession(openid: string): Promise<{ token: string; user: Recor
 
 beforeAll(async () => {
   if (!FIXTURE_WORKSPACE_ID) return;
+  await installHotelContractFixture(FIXTURE_WORKSPACE_ID, process.env.DATABASE_URL!);
   ({ serviceGateway: app } = await import("./gateway.js"));
 });
 
@@ -117,6 +119,19 @@ fixtureDescribe("契约 · member / orders / notifications（H6）", () => {
 });
 
 fixtureDescribe("契约 · 工单（H1/H2/H6/L9/M9）", () => {
+  it("公开工单时间线不暴露服务端幂等请求摘要", async () => {
+    const { token } = await makeSession(`${RUN}-fingerprint`);
+    const created = await req("/tickets", { method: "POST", body: JSON.stringify({
+      kind: "other", title: "合成时间线摘要隔离测试", payload: {}, idempotencyKey: `${RUN}-fingerprint`,
+    }) }, token);
+    expect(created.status).toBe(200);
+    const data = (await created.json()) as { ticket: { id: string } };
+    const response = await req(`/tickets/${data.ticket.id}`, {}, token);
+    expect(response.status).toBe(200);
+    const timeline = (await response.json()) as { timeline: Array<{ action: string; detail: string }> };
+    expect(timeline.timeline.some(event => event.action === "create")).toBe(true);
+    for (const event of timeline.timeline) expect(event.detail).not.toContain("requestFingerprint");
+  });
   it("建单 → {ticket:{id,kind,title,status,statusText}}；同键重放 idempotentReplay 且同 id", async () => {
     const { token } = await makeSession(`${RUN}-t`);
     const body = JSON.stringify({ kind: "repair", title: "契约测试-水龙头漏水", payload: { room: "9999" }, idempotencyKey: `${RUN}-t1` });

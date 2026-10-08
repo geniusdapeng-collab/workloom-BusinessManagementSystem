@@ -16,9 +16,13 @@
 import type pg from "pg";
 import { safeParseBusinessEvent, type BusinessEvent } from "@workloom/shared";
 import {
-  appendEventIdempotent,
+  appendEventIdempotentInTx,
   appendEventInTx,
+  assertReplayEventScope,
+  isReplayEventId,
+  REPLAY_EVENT_ID_PREFIXES,
   safeParseReplayAwareEvent,
+  withScopedEventTransaction,
   type AppendResult,
   type EventDraft,
 } from "./events.js";
@@ -342,28 +346,20 @@ export async function gatewayAppend(
   ctx: GatewayContext,
   draft: EventDraft,
 ): Promise<AppendResult> {
-  // 段① 权限
-  checkPermission(ctx.actor, draft);
-  // 段② 脱敏
-  const masked = maskDeep(draft);
   const scope = { tenantId: ctx.tenantId, workspaceId: ctx.workspaceId };
+  // 自动编号草稿沿原写入语义受控规范化，授权与最终留痕使用相同归属。
+  const scopedDraft = { ...draft, context: { ...draft.context, tenant_id: scope.tenantId, workspace_id: scope.workspaceId } };
+  // 段① 权限
+  checkPermission(ctx.actor, scopedDraft);
+  // 段② 脱敏
+  const masked = maskDeep(scopedDraft);
   // 段③ 高风险授权（P1-8 查 approvals 表）与事件落库并入同一事务：
   // 审批验真须在同一 RLS 上下文内完成，且与事件写同一 COMMIT 原子提交
-  const client = await gateway.connect();
-  try {
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+  return withScopedEventTransaction(gateway, scope, async (client) => {
     await checkHighRiskAuthorization(client, scope, ctx.actor, masked.value, ctx.approvalRef);
     const result = await appendEventInTx(client, scope, { event: masked.value, sessionId: ctx.sessionId });
-    await client.query("COMMIT");
     return { ...result, piiHits: masked.hits };
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    client.release();
-  }
+  });
 }
 
 /**
@@ -376,16 +372,18 @@ export async function gatewayAppendOnClient(
   ctx: GatewayContext,
   draft: EventDraft,
 ): Promise<AppendResult> {
+  const scope = { tenantId: ctx.tenantId, workspaceId: ctx.workspaceId };
+  const scopedDraft = { ...draft, context: { ...draft.context, tenant_id: scope.tenantId, workspace_id: scope.workspaceId } };
   // 段① 权限
-  checkPermission(ctx.actor, draft);
+  checkPermission(ctx.actor, scopedDraft);
   // 段② 脱敏
-  const masked = maskDeep(draft);
+  const masked = maskDeep(scopedDraft);
   // 段③ 高风险授权（P1-8：复用调用方事务的 RLS 上下文查 approvals 验真）
-  await checkHighRiskAuthorization(client, { tenantId: ctx.tenantId, workspaceId: ctx.workspaceId }, ctx.actor, masked.value, ctx.approvalRef);
+  await checkHighRiskAuthorization(client, scope, ctx.actor, masked.value, ctx.approvalRef);
   // 事务内落库（append_event_insert 特权函数；append-only + 哈希链 + 幂等）
   const result = await appendEventInTx(
     client,
-    { tenantId: ctx.tenantId, workspaceId: ctx.workspaceId },
+    scope,
     { event: masked.value, sessionId: ctx.sessionId },
   );
   return { ...result, piiHits: masked.hits };
@@ -400,22 +398,16 @@ export async function gatewayAppendIdempotent(
   const checked = safeParseReplayAwareEvent(event); // L6：先 zod 后权限（回放前缀 ID 走校验缝）
   if (!checked.success) throw new Error("事件未过附录 E 校验");
   checkPermission(ctx.actor, checked.data);
-  const scope = { tenantId: ctx.tenantId, workspaceId: ctx.workspaceId };
-  // 段③（P1-8）需要 RLS 上下文事务查 approvals；仅在确需验真时开启（agent + highRisk + 写动作）
-  if (ctx.actor.type === "agent" && ctx.actor.highRisk && isWriteAction(checked.data.decision.action)) {
-    const client = await gateway.connect();
-    try {
-      await client.query("BEGIN");
-      await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
-      await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-      await checkHighRiskAuthorization(client, scope, ctx.actor, checked.data, ctx.approvalRef);
-      await client.query("COMMIT");
-    } catch (err) {
-      await client.query("ROLLBACK").catch(() => undefined);
-      throw err;
-    } finally {
-      client.release();
-    }
+  if (!isReplayEventId(checked.data.event_id)) {
+    throw new Error(`回放通道 event_id 必须使用独立前缀空间（${REPLAY_EVENT_ID_PREFIXES.join("/")} 开头），拒绝：${checked.data.event_id}（P0-3）`);
   }
-  return appendEventIdempotent(gateway, scope, checked.data, ctx.sessionId);
+  const scope = { tenantId: ctx.tenantId, workspaceId: ctx.workspaceId };
+  assertReplayEventScope(scope, checked.data);
+  const masked = maskDeep(checked.data);
+  // 逐次授权与幂等事件写共用连接和 COMMIT；去重不绕过已消费引用的拒绝。
+  return withScopedEventTransaction(gateway, scope, async (client) => {
+    await checkHighRiskAuthorization(client, scope, ctx.actor, masked.value, ctx.approvalRef);
+    const result = await appendEventIdempotentInTx(client, scope, masked.value, ctx.sessionId);
+    return { ...result, piiHits: masked.hits };
+  });
 }

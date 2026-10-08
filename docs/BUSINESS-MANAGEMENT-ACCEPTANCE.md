@@ -6,6 +6,7 @@
 - 范围内文件总数：242；精读：173；机检/脚本解析：69；抽样：0；未读：0。
 - 范围是本行业代理的显式清单：上游只读对照62文件，当前输出仓180文件；没有把整个继承仓库纳入精读口径。
 - 未精读清单、选段范围与理由见 [industry-read-coverage.json](evidence/industry-read-coverage.json) 的 files/scopeCuts。源Hotel行业60文件中57精读、3机检与选段核对；当前20份preset、35份SOP和7份runtime核心实现完整阅读。机器覆盖不能表示理解度。
+- 后续 PostgreSQL 兼容修复另有109文件的明确范围：43精读、66机检/解析、抽样0、未读0，见 [industry-compat-read-coverage.json](evidence/industry-compat-read-coverage.json)。其中43份迁移执行与机器索引为B，广域路由/历史套件只读取关联范围也为B。两个清单与同伴清单存在重叠，交付总数必须按来源、路径和当前SHA去重，不能直接相加。
 <!-- INDUSTRY_COVERAGE_END -->
 
 **结论：候选源码的结构、原生业务运行时和局部浏览器链路已有可复跑证据；完整 RDAS、生产环境和真实经营结果均为未验证。** 本文没有发布“276 项通过”的徽章，也没有把合成沙箱数据换算为营业额、获客成本或自主经营成功率。正式验收必须另有最终 clean HEAD 与独立 MCD handoff 的统一绑定。[D]
@@ -65,6 +66,9 @@ stats=无真实业务有效样本；Wilson/bootstrap/标准化权重未计算
 | 双语站点 | JavaScript禁用；`node scripts/check-business-site.mjs --out docs/evidence --browser-executable <本机Chrome路径>` | 48/48；zh/en×1440/390；链接、锚点、图片、来源CTA、无水平溢出和概念图标签 | [记录](evidence/site-proof.json)，[截图](evidence/site/zh-1440-viewport.png)；浏览器改视口不是手机真机 [A/B] |
 | Profile结构 | `node scripts/acceptance/profile-check.mjs --out <报告目录> --evidence-root <证据目录>` | configurationStatus=valid；businessVerified=false | [校验](evidence/profile-validation.json)；原生extension只声明补充边界，不宣称通用线程执行器已验证原生SQLite [B] |
 | 真实宿主模型 | 4次独立 Codex 进程经MCP读取/领取/提交 | 4次exit0；合成获客4阶段、交付2阶段、employee-work1阶段、未合格线索2阶段共9份模型阶段产物 | [证据索引](evidence/README.md)；host默认模型未披露、无外部实际业务回执，不满足P域预算/生产条件 [B/D] |
+| 服务/审批/记忆兼容链 | 最终本地必要db-gate内选取5份public契约测试；真实PG与纯单元明确分方法 | 75个独立用例75通过、0fail/skip：69实际PG、6纯单元；含版本、权限、故障、并发、过期、跨作用域与连接重借；另真实未迁移夹具初始化失败检查不计入75 | [逐用例证据](evidence/service-approval-regression.json)；55/20开发组合与22项重复运行不重复累加；正式clean MCD未绑定 [A/B/D] |
+| 必要数据库门禁 | 从当前.cnb解析命令；全新可销毁loopback PG、实际迁移与种子两次 | 16份Vitest237/237；Node治理16/16；矩阵7/7含6不同变体；43迁移、3范围47事件链0问题；数据库已删、环境已恢复 | [记录](evidence/required-db-gate-regression.json)；本机运行不代替CNB Linux管线实际运行 [B/D] |
+| 全平台兼容回归 | 显式hotel测试夹具；workspace原有测试不改为全skip | 基础suite464/464（419服务+45HTTP）；全workspace1636通过、3skip、0fail；全包typecheck exit0 | [suite](evidence/legacy-suite-regression.json)、[workspace与3项skip名单](evidence/legacy-workspace-pg-regression.json)。overlay相对包路径缺hotel一项，business-registry缺ai-pm RELEASE_WORKSPACE_ID两项；未覆盖明确保留 [B] |
 
 [B] 这些结果来自各自固定时点的独立测试记录。全仓治理/构建/CI 的最终精确提交结果由发布 owner 在最终交付记录中给出；本文不把候选时间点的测试成绩外推为最终 CNB CI 全绿。
 
@@ -204,7 +208,29 @@ AVR五条要求业务结果↑、ADR↑、HIR-NI↓、HMPO↓、质量/风险不
 | 英文390px状态标签横向溢出 | 一般，长标签nowrap | 允许换行；双语48/48和截图复查 | Chrome改视口，真机未验证 [A/B] |
 | 来源hotel manifest摘要不匹配 | 一般，上游candidate记录的agent-capabilities摘要与文件字节不符 | 独立沙箱刷新摘要，业务字段不改；bundle:governance通过 | 没有给candidate补签名，也没改hotel业务 [A/B] |
 | 同工作站TTY审批容易被误读为身份认证 | 文档边界风险，本地PTY可模拟human交互 | 明确同OS/shell/DB管理员能越过交互；UI审批测试披露模拟TTY夹具 | 外部可信人类认证留待部署设计 [A/B/D] |
-| PG全局围栏/撤销函数/装配事务/审批confirm/CEO actor与矩阵误判 | 严重源问题，根因与证据见MCD独立台账 | 7张卡分别提供修复与独立反证回归，正式clean-source handoff另绑定；矩阵MC007已加入其中 | 本文不以候选日志替代MCD七卡验收 [B/D] |
+| MCD源缺陷总表 | 25张卡：9项P0、16项P1；上游基线、复现、修复与验收分开记录 | 当前冻结候选源码的必要db-gate已实际执行：16份Vitest输入237/237、治理16/16、矩阵7/7；完整基础suite464/464；全workspace1636通过、3项条件夹具skip | [必要门禁](evidence/required-db-gate-regression.json)、[基础suite](evidence/legacy-suite-regression.json)、[workspace](evidence/legacy-workspace-pg-regression.json)。均为本地dirty候选取证；最终clean HEAD与独立MCD重捕获另绑定，不把25卡写成正式闭环 [B/D] |
+| MC-008：岗位运行时并入已吊销技能快照 | 阻断/P0，装配查询未排除同工作区skill_revocations | 查询过滤已吊销安装，保留岗位声明和未吊销技能；实际PG与撤销回归纳入db-gate | [源文件](../packages/runtime/src/assembly.ts) `assemblePreset`、[门禁](evidence/required-db-gate-regression.json)；当前作者清单与候选程序证据，正式验收待clean提交 [B/D] |
+| MC-009：岗位装配吞提交与回滚错误 | 严重/P1，finally吞COMMIT失败；异常路径回滚错误丢失并再提交 | 成功读取后显式COMMIT；失败回滚，双错误保留，状态不确定连接丢弃；撤销与事务回归同跑 | [源文件](../packages/runtime/src/assembly.ts) `assemblePreset`、[门禁](evidence/required-db-gate-regression.json)；故障注入不是生产故障频率 [B/D] |
+| MC-010：首次安装迁移失败后继续种子 | 严重/P1，db:migrate失败后仍运行db:seed | 迁移失败立即非零退出且不调用种子；成功仅运行当前产品种子，种子失败非零；隔离命令边界回归通过 | [源文件](../scripts/bootstrap.sh)、[检查](evidence/bootstrap-preview-independent.json)；命令stub不代替完整Docker/用户电脑首次安装 [B/D] |
+| MC-011：对象锁测试恒真且吞异常 | 严重/P1，测试使用未导入expect，catch吞错且timeoutHit或true恒真 | 第二真实连接必须返回ObjectLockTimeout；意外成功/错误类型/释放失败会使测试失败；释放后真实重新取锁 | [源文件](../scripts/suite.ts) `N-07`、[464项完整suite](evidence/legacy-suite-regression.json)；旧误通过断言未保留 [B] |
+| MC-012：客户工单幂等回读泄漏 | 阻断/P0，冲突只按工作区与键查旧单，未核对客户和原始请求 | 回读绑定原客户与不可变建单摘要；不同客户/内容409且不返回旧单；同请求并发一单一创建事件 | [源文件](../apps/server/src/service/ticket.ts) `createTicketOn`、[测试](../apps/server/src/service/ticket-idempotency.pg.test.ts)、[门禁](evidence/required-db-gate-regression.json) [A/B] |
+| MC-013：生产入口可开演示认证 | 阻断/P0，服务入口单独解析环境，绕过统一生产demo禁用规则 | 生产强制关闭demo；缺正式签名配置503且不发token；非生产显式demo与有效签名正向保持 | [源文件](../apps/server/src/service/gateway.ts)、[测试](../apps/server/src/service/production-demo-auth.pg.test.ts)、[门禁](evidence/required-db-gate-regression.json)；没有生产用户数据写入 [B] |
+| MC-014：知识发布与审批/检索状态断链 | 阻断/P0，文档active却记录pending审批，重试重复事件；正文更新保留active，驳回不撤回检索 | 发布、approved手势/决策人、版本/hash与事件同事务且幂等；正文新版本pending_review；通用事务投影覆盖单笔/批量/IM，旧版本和未注册required投影拒绝 | [源码](../apps/server/src/service/kb-publication.ts) `publishDocumentOn/projectKbPublicationDecisionOn`、[12项实际PG](evidence/service-approval-regression.json)。现场文档事实仍由人类审核 [A/B] |
+| MC-015：assigned改派被拒且冲突变500 | 严重/P1，原实现把assigned→assigned按非法迁移处理 | created首次分派、assigned原地改派；同值/省略输入读回旧时间不写账；真实改派一条双账，processing/done/closed409 | [源码](../apps/server/src/service/ticket.ts) `assignTicketOn`、[10项实际PG](evidence/service-approval-regression.json)；责任文本不等于外部通知已发送 [A/B] |
+| MC-016：技能/Quest提交失败误报成功 | 严重/P1，技能registry与Quest读取在finally吞提交/回滚错误，后续事件仍记completed | 所有本次涉及的事务入口显式完成后返回；失败回滚、双错误保留、损坏连接丢弃；真实安装/事件/审批/进度的原子性复跑 | [源码](../packages/base/skills/registry.ts)、[Quest](../packages/runtime/src/loop.ts)、[测试](../packages/runtime/src/transaction-family.test.ts)、[门禁](evidence/required-db-gate-regression.json)；未外推到未测继承helpers [B] |
+| MC-017：服务事务回滚失败复用连接 | 严重/P1，serviceTx丢失清理错误，release(undefined)复用失败连接 | SQL/COMMIT错误触发回滚，双错误AggregateError保留主cause并丢弃连接；不再误报成功或重复COMMIT | [源码](../apps/server/src/service/events.ts) `serviceTx`、[测试](../apps/server/src/service/service-transactions.test.ts)、[门禁](evidence/required-db-gate-regression.json) [A/B] |
+| MC-018：审批事务丢失回滚故障 | 严重/P1，审批UPDATE后主故障与回滚故障只保留前者，连接返池 | scoped保留两错误与主cause；BEGIN/COMMIT结果不确定或回滚失败丢弃；普通成功回滚保留可复用连接 | [源码](../packages/base/review-console/approvals.ts) `scoped`、[23项审批组合](evidence/service-approval-regression.json)。COMMIT回执丢失时可已提交，接口仍拒绝并通过重试读终态去重 [A/B] |
+| MC-019：跨通道裁决死锁与幽灵pending | 严重/P1，两个通道先锁自己的行再锁兄弟行，真实PG40P01且一行残留pending | 先按tenant/workspace/event取事务advisory锁，再按approval_id锁兄弟行；终态/gesture/决策人/时间镜像所有通道，投影与手势各一次 | [源码](../packages/base/review-console/approvals.ts) `lockApprovalEvent/mirrorTerminalApproval/decide`、[真实并发](evidence/service-approval-regression.json)；suite E25改为严格验证全通道终态和重试无副作用 [A/B] |
+| MC-020：事件网关回滚失败连接污染 | 严重/P1，两个public网关入口主错误后回滚故障丢失，复用旧事务与GUC | 所有自带事务事件入口共用withScopedEventTransaction；双错误与cause保留、故障或不确定连接丢弃；重借连接不带旧状态 | [源码](../packages/base/workdata/events.ts)、[72项分方法回归](evidence/gateway-transaction-pg-proof.json)；72由21单元、18PG故障、7接连前guard、26实际SQL组成 [A/B] |
+| MC-021：过期扫描覆盖已批准终态 | 严重/P1，pending预读过时，恢复后无条件把已approved改expired | 与decide共用事件锁，锁内重读当前终态/期限/风险；只实际pending低危行过期，兄弟行同批且一条expiry事件 | [源码](../packages/base/review-console/approvals.ts) `expireSweep`、[真实时间与并发反证](evidence/service-approval-regression.json)；没有修改系统时钟或假DB [A/B] |
+| MC-022：跨工作区驳回记忆主键碰撞 | 严重/P1，mem-reject-reason和mem-pat-edit-action是全局ID，第二租户RLS42501使合法裁决回滚 | tenant/workspace/namespace/key结构四元组SHA主键，审批与miner共用scopedMemoryId；同区复用、跨区分离、usage可归因 | [源码](../packages/base/workdata/memory.ts) `scopedMemoryId`、[10项含3纯ID+7实际PG](evidence/service-approval-regression.json)；旧全局记忆不删除或自动迁移 [A/B] |
+| MC-023：幂等网关先消费授权后拒写 | 阻断/P0，审批消费单独COMMIT，再由事件入口拒绝非法回放命名空间或写入故障 | 回放namespace/schema/identity/scope先校验；审批消费与幂等事件共用同client/事务；拒绝与失败不会孤立消费授权 | [源码](../packages/base/workdata/gateway.ts) `gatewayAppendIdempotent`、[事件事务原语](../packages/base/workdata/events.ts)、[真实PG](evidence/gateway-transaction-pg-proof.json) [A/B] |
+| MC-024：事件payload归属与授权作用域分叉 | 阻断/P0，元数据是本区但不可变payload宣称另租户/工作区，调用仍成功 | typed回放入口拒绝scope不一致且先于消费；自动编号草稿按明确scope规范化，权限判定与落库使用同归属；底层SQL函数语义schema不在本typed修复范围 | [源码](../packages/base/workdata/events.ts) `assertReplayEventScope`、[跨区/同区测试](evidence/gateway-transaction-pg-proof.json) [A/B] |
+| MC-025：记忆/提炼事务残留返池 | 严重/P1，public记忆INSERT或miner实际SELECT后双故障，只报主错且返池时旧GUC/事务/锁仍在 | 两已涉及包装器显式COMMIT；双AggregateError/cause；BEGIN/COMMIT不确定或ROLLBACK失败discard；真实重借PID/pg_stat_activity/GUC/锁断言 | [源码](../packages/base/workdata/memory.ts) `withScope`、[提炼器](../packages/base/evolve/memory-miner.ts)、[20项含18实际PG](evidence/service-approval-regression.json)；统计闸与忙锁正常skip仍保留 [A/B] |
+
+本段MCD台账快照为25张问题卡，7张保留此前提交的verified历史、18张open等待最终clean-source重捕获；候选237项通过没有自动改卡状态。source修复、候选程序回归、独立验收、公开发布分别保留证据。新缺陷均先有原代码/公开入口反证再修；[service-approval-regression.json](evidence/service-approval-regression.json)保留最初37通过/2失败的组合运行，以及后来同用例通过，不把失败日志删除。[B/D]
+
+事务修复把“接口调用失败”和“服务器一定没提交”分别处理。COMMIT前失败可以回滚已写数据；服务器完成COMMIT但回执丢失时，调用拒绝并丢弃不确定连接，后续重试按真实终态去重。PG事务级advisory锁随事务结束释放；node-postgres传入release的错误会销毁该连接。依据：[PostgreSQL 17事务锁说明](https://www.postgresql.org/docs/17/functions-admin.html#FUNCTIONS-ADVISORY-LOCKS)、[node-postgres连接池API](https://node-postgres.com/apis/pool)，以及本仓真实连接重借断言。[A/B]
 
 ## 验收债、补做窗口与豁免
 
@@ -228,6 +254,7 @@ AVR五条要求业务结果↑、ADR↑、HIR-NI↓、HMPO↓、质量/风险不
 4. 35份SOP可以经employee-work领取并生成受契约约束的结构计划；nextActions只是报告建议，不自动追加无限子任务，外部/现场动作不会靠计划文本变成已执行。[A]
 5. candidate bundle无签名；没有发行Windows/macOS签名安装包，没有生产手机、付款、品牌网关或平台账号验证。[B/D]
 6. 公开源码落库、最终CNB PR/CI/合并状态在最终发布记录披露；本文候选SHA不冒充已合并版本。[D]
+7. 兼容修复限于25张有证据卡与其直接链。通用db.withWorkspace/readPrefs/recall、启动期instanceOf与im-channels/inbound的scoped没有本轮系统故障注入；匹配的继承清理模式只能列D级风险，没有凭模式宣称已复现或全部事务入口已治理。ingestInbound的占位与事件/回填仍分属两个事务，本文未对该路径做故障复现或修复。[A/D]
 
 ## 证据分类、可复跑索引与链路
 
@@ -242,7 +269,7 @@ AVR五条要求业务结果↑、ADR↑、HIR-NI↓、HMPO↓、质量/风险不
 | T测试 | assets、runtime、PG、UI、site和matrix回归 | 阈值局部覆盖，测试数不是业务成功分母 [B] |
 | S源码 | 3代理显式阅读清单、逐文件SHA | 代码阅读A与机器B区分；不是业务RDAS A [A/B] |
 
-[总证据索引](evidence/README.md) · [行业矩阵](SMART-HOME-BUSINESS-MATRIX.md) · [工作台边界](AI-WORKBENCH.md) · [全部276项](evidence/rdas-276-status.json) · [行业阅读清单](evidence/industry-read-coverage.json) · [引擎阅读清单](evidence/business-engine-read-coverage.json) · [工作台阅读清单](evidence/workbench-read-inventory.json)。每份运行记录保留命令、前置、步骤、预期与实际；没有可复跑材料的断言在本报告归D。[A/B/D]
+[总证据索引](evidence/README.md) · [行业矩阵](SMART-HOME-BUSINESS-MATRIX.md) · [工作台边界](AI-WORKBENCH.md) · [全部276项](evidence/rdas-276-status.json) · [行业阅读清单](evidence/industry-read-coverage.json) · [引擎阅读清单](evidence/business-engine-read-coverage.json) · [工作台阅读清单](evidence/workbench-read-inventory.json) · [兼容层完整阅读清单](evidence/industry-compat-read-coverage.json) · [75项public契约逐用例记录](evidence/service-approval-regression.json)。每份运行记录保留命令、前置、步骤、预期与实际；没有可复跑材料的断言在本报告归D。[A/B/D]
 
 ## 全部276项状态表
 
@@ -529,12 +556,12 @@ AVR五条要求业务结果↑、ADR↑、HIR-NI↓、HMPO↓、质量/风险不
 
 ## 收尾报告
 
-- 已完成：行业资产、20岗位/35SOP/5工作流契约与4层产品矩阵；双语站点48项浏览器检查；官方PG编制矩阵及7项ID/拒绝回归；保留276检查项与54陷阱项、四域/ADR/红线/统计/债务完整栏目。正式验收结论保持未验证。[A/B]
+- 已完成：行业资产、20岗位/35SOP/5工作流契约与4层产品矩阵；双语站点48项浏览器检查；官方PG编制矩阵及7项ID/拒绝回归；保留276检查项与54陷阱项、四域/ADR/红线/统计/债务完整栏目；25卡候选修复和必要237项/全平台回归分列，75项public兼容契约保留逐例实际与修复前反证。正式验收结论保持未验证。[A/B]
 - 未完成/未覆盖：生产模型/真手机/真实用户研究/外部业务回执/4周基线与24h/7d/28d长跑；当前源最终clean HEAD/MCD绑定由发布记录另补。缺必需环境或观察窗口，不能用本地fixture代替。[D]
-- 自主追加事项及理由：修正合法命名技能被矩阵错误拒绝，加入3合法与3拒绝变体的真PG回归并纳入db-gate；增加可携带的双语站点验证器，避免证据依赖一次性工作目录。[A/B]
+- 自主追加事项及理由：修正合法命名技能被矩阵错误拒绝，加入3合法与3拒绝变体的真PG回归并纳入db-gate；增加可携带的双语站点验证器，避免证据依赖一次性工作目录；补修已在真实公共链暴露的发布/改派/跨通道/过期/记忆作用域与事务清理，防止局部功能成功后留下一致性缺陷。[A/B]
 - 采用的假设：本轮目标是交付可复跑源码和候选证据；未授权生产付费模型、客户数据写入或外部平台发布。所有本地业务输入为synthetic sandbox，不用于真实经营效果承诺。[D]
 - 置信度：对资产/局部程序/页面结果为高，依据冻结文件与可复跑测试；对真实经营、完整RDAS与生产适用性为低，关键证据缺失且明确未验证。[B/D]
-- 建议复核：核对12项候选矩阵与其B7/SA5拒绝反证；核对本地TTY/URI/外部动作边界；核对全部276表的P域与ADR分母没有被试跑成绩覆盖。[A/B/D]
+- 建议复核：核对12项候选矩阵与其B7/SA5拒绝反证；核对本地TTY/URI/外部动作边界；核对全部276表的P域与ADR分母没有被试跑成绩覆盖；75项用例方法与COMMIT回执不确定边界可沿原始JSON复核。[A/B/D]
 
 ## 自检表
 

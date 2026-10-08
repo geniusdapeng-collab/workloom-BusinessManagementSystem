@@ -302,11 +302,12 @@ d("PG 集成（H-2/L1.4：幂等丢弃、哈希链序）", async () => {
     const iso = { tenantId: `tenant-t26-${Date.now().toString(36)}`, workspaceId: "ws-t26" };
     const isoCtx = { ...iso, actor: ctx.actor };
     const attackId = `E-RPL-p03-${Date.now().toString(36)}`;
-    const first = { ...draft("price.adjust"), event_id: attackId } as const;
+    const first = { ...draft("price.adjust"), event_id: attackId,
+      context: { ...draft("price.adjust").context, tenant_id: iso.tenantId, workspace_id: iso.workspaceId } } as const;
     const r1 = await gatewayAppendIdempotent(pool, isoCtx, first as never);
     expect(r1.deduped).toBe(false);
     // 同 id 不同 payload → 抢占攻击拒绝（不再静默 deduped）
-    const hijack = { ...draft("order.refund"), event_id: attackId } as const;
+    const hijack = { ...draft("order.refund"), event_id: attackId, context: first.context } as const;
     await expect(gatewayAppendIdempotent(pool, isoCtx, hijack as never)).rejects.toThrow(/抢占攻击/);
     // 对照：同 id 同 payload 仍是幂等丢弃——拒绝的是 payload 不一致，而非重复本身（L1.4）
     const r2 = await gatewayAppendIdempotent(pool, isoCtx, first as never);

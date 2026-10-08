@@ -1,0 +1,1151 @@
+{
+  "schemaVersion": "workloom.scoped-coverage/v1",
+  "agent": "industry_map",
+  "asOf": "2026-10-08T20:32:13.623531+00:00",
+  "scope": "Additional bounded PostgreSQL service, approval, memory and gateway compatibility source/evidence inventory after the original 242-file industry scope",
+  "scopeBoundary": "Merge by sourceType/path and current sha256 with the original industry inventory and peer inventories. Counts overlap and must never be summed without deduplication. This is not a whole inherited platform audit.",
+  "counts": {
+    "total": 109,
+    "fullRead": 43,
+    "machineOnly": 66,
+    "sampled": 0,
+    "unread": 0
+  },
+  "files": [
+    {
+      "path": ".cnb.yml",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+      "bytes": 12229,
+      "lines": 298
+    },
+    {
+      "path": "README.md",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "6181a85c68301f68d2ace7985d8b1d4c37b4731fd31a91e91be2ab13832ac0e2",
+      "bytes": 9852,
+      "lines": 108
+    },
+    {
+      "path": "apps/server/src/index.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "5265bdf6b6debfb71665c2ce67c49323a63c1da5eb9ebf5e34291dae86b8bbcd",
+      "bytes": 13728,
+      "lines": 266
+    },
+    {
+      "path": "apps/server/src/service/access-authority.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "a4fe5d31fbb1b6108ea5571bef5a22bd5f775b63005190f30d62985fda2f2378",
+      "bytes": 19524,
+      "lines": 477
+    },
+    {
+      "path": "apps/server/src/service/contract.test.ts",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Current bytes indexed and linked call/test ranges reviewed; complete final file interpretation belongs to separate engine/workbench scope",
+      "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c",
+      "bytes": 17669,
+      "lines": 343
+    },
+    {
+      "path": "apps/server/src/service/e2e.test.ts",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Current bytes indexed and linked call/test ranges reviewed; complete final file interpretation belongs to separate engine/workbench scope",
+      "sha256": "06b4412782f8ce5848c2b90fc0ee1b91fcbf5fb7c7a027e5affeb7c79aa96271",
+      "bytes": 63994,
+      "lines": 1176
+    },
+    {
+      "path": "apps/server/src/service/events.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "654a2fdec6514043e6bd12f59a1f3cec0ddeb89638bedc977b1b486d5826072f",
+      "bytes": 3261,
+      "lines": 71
+    },
+    {
+      "path": "apps/server/src/service/hotel-contract-fixture.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "58cdb78d22bd64347a134d782fb47b4338dea1c2b5f1a7a5b2ad4a3e4c343917",
+      "bytes": 4678,
+      "lines": 82
+    },
+    {
+      "path": "apps/server/src/service/kb-publication.pg.test.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "b1ee68ebaa7b21d37bdaf03cec9bc0c76ea36bce31c3e7a359c5b411650dd491",
+      "bytes": 17467,
+      "lines": 186
+    },
+    {
+      "path": "apps/server/src/service/kb-publication.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "dd01258a0d4ea9a3ca01ceb32d2bc2c15225c5a71d9af9813f0da21aa1540a9c",
+      "bytes": 8704,
+      "lines": 136
+    },
+    {
+      "path": "apps/server/src/service/kb.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "1d4c7569804392b562f9458dffca7bb720793bc46b26ee24e94da49a9b059d86",
+      "bytes": 16194,
+      "lines": 344
+    },
+    {
+      "path": "apps/server/src/service/router.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "e495a66f737834f1f7f048da0bb8268541ec2cbeb0a76587bc26258876ccc8df",
+      "bytes": 35802,
+      "lines": 727
+    },
+    {
+      "path": "apps/server/src/service/service-contract-pg-fixture.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "5d6b588fe0b6ae9c86078deddf392090c3b567b6bdfc82ef9710886df175081b",
+      "bytes": 5715,
+      "lines": 90
+    },
+    {
+      "path": "apps/server/src/service/store.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "807b700743a473c5564d2bba60f94d4239cfb017ad024ad366a16c228f6ee19c",
+      "bytes": 3566,
+      "lines": 89
+    },
+    {
+      "path": "apps/server/src/service/ticket-assignment.pg.test.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "23edc5b22a3fd45c23d1a5c6cb49d257613bc45969bf395945ee2e8633d5d19f",
+      "bytes": 7251,
+      "lines": 84
+    },
+    {
+      "path": "apps/server/src/service/ticket.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "543926a64f4cc8aff588722529916feeab32e76906483489655eadf436759b61",
+      "bytes": 18740,
+      "lines": 391
+    },
+    {
+      "path": "apps/server/src/trpc/context.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "e0ad9965497d1b6a9c8226f17dde044e1920fcfaa833938cdee499918fdc9cc6",
+      "bytes": 9187,
+      "lines": 234
+    },
+    {
+      "path": "apps/server/src/trpc/router.ts",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Current bytes indexed and linked call/test ranges reviewed; complete final file interpretation belongs to separate engine/workbench scope",
+      "sha256": "1203b0c1cada52307af1b1429575558bab754fc3f3f1f330ddadc5ae55c13265",
+      "bytes": 172972,
+      "lines": 3566
+    },
+    {
+      "path": "docs/evidence/gateway-transaction-pg-proof.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Actual structured test evidence parsed; current source binding and candidate/formal distinction retained",
+      "sha256": "edf135d7c1083700c0b4439131eec33606742f5e941dfa639177cc21a765a868",
+      "bytes": 80822,
+      "lines": 996
+    },
+    {
+      "path": "docs/evidence/legacy-suite-regression.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Actual structured test evidence parsed; current source binding and candidate/formal distinction retained",
+      "sha256": "0a5ac0c3d62cc30a5188a064d2e0a542883f1666e8ba2e21706080bb69196251",
+      "bytes": 53505,
+      "lines": 1914
+    },
+    {
+      "path": "docs/evidence/legacy-workspace-pg-regression.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Actual structured test evidence parsed; current source binding and candidate/formal distinction retained",
+      "sha256": "72757ebbf5afa912bba23bde1e31ef12a8f0eac4f9345e9d449114504651ea1e",
+      "bytes": 4883,
+      "lines": 129
+    },
+    {
+      "path": "docs/evidence/required-db-gate-regression.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Actual structured test evidence parsed; current source binding and candidate/formal distinction retained",
+      "sha256": "3afe552e87ba30d46b526b4dce5a5e95327637fcc9eeb46947c71bbcee9087c5",
+      "bytes": 13051,
+      "lines": 367
+    },
+    {
+      "path": "docs/evidence/service-approval-regression.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Actual structured test evidence parsed; current source binding and candidate/formal distinction retained",
+      "sha256": "84e42d5d2977ba43827d42ec27a2c9b846f484e6185925ecdfe1ea115c8720df",
+      "bytes": 149647,
+      "lines": 2796
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/approval-expire-race-before.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "8ec3353d7b4fa556f3f7d3271015028cd81749378049227e7a7c48c33b086e19",
+      "bytes": 2319,
+      "lines": 69
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/approval-scoped-before-fix.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "c53912fd21b8a83a1c43d8a63132310d06ed41289b49591f9e409be3bbe15119",
+      "bytes": 664,
+      "lines": 20
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/approval-service-pg-final.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "7a4707bff404c1dbe637f442d6dc1fa9ccaf5c8635bdbba6de894752c831812e",
+      "bytes": 24584,
+      "lines": 0
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/approval-service-pg-results.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "aeedcbeb386fcaefa1cdf828e30beb808d654b06fde945ab73bfe9d12b37c71f",
+      "bytes": 21218,
+      "lines": 0
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/kb-cross-channel-before-fix.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "8abad41790773f170681ffaec82aca98cd80869bb851481ce724b973fcf3ea2a",
+      "bytes": 837,
+      "lines": 38
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/kb-draft-before-fix.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "c3640bac9be50bd6e7dcce7a4e214fbbf3630a3e4b22f0f9c988dba3535283a6",
+      "bytes": 263,
+      "lines": 10
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/memory-transaction-before-fix.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "bb855353ad1ddff10ba47a7147bda170c3727542fe8f3f0ff26d373a9ac733b9",
+      "bytes": 2915,
+      "lines": 70
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/memory-transaction-pg-final.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "07e6c0d5200edd5e8a2e141c99ccd23227f09dc006ff21e2b48b4ee32a7cf4f1",
+      "bytes": 9918,
+      "lines": 0
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/memory-transaction-related-final.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "4c95e1f8cc4d4c1b39daeee785bbc978cc3f620867233c192d4b65d36be0ef8e",
+      "bytes": 10082,
+      "lines": 0
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/rejection-memory-before-fix.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "21d27260edeee625e76824eadfc66642329d0facc1104b721f5dd3ff9ef17f1a",
+      "bytes": 1468,
+      "lines": 46
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/required-db-gate-vitest.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "ea504e6a896a5ac1eef5dd8b3c3b843072f58e2c46700a8882130177de48967c",
+      "bytes": 103199,
+      "lines": 0
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/service-contract-pg-final.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "d2a6f728a0243dcef9a9c520bc06728f9cbf727ecfb36f8eb120d8d6b5ea59e6",
+      "bytes": 9614,
+      "lines": 0
+    },
+    {
+      "path": "docs/evidence/service-approval/raw/service-fixture-cleanup-proof.json",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Byte-exact raw actual test or before-fix probe output parsed and hashed; repeats are not additional unique cases",
+      "sha256": "771b65a03821759af5a3683df5f01af924a6f6c5d9dcef1ab450089a5aed7f22",
+      "bytes": 702,
+      "lines": 19
+    },
+    {
+      "path": "packages/base/evolve/evolve.test.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "27b370a64897c2519e9db38bf933806d992a7180692bb04005e3877295494815",
+      "bytes": 16723,
+      "lines": 323
+    },
+    {
+      "path": "packages/base/evolve/feedback-enums.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "657dcdde14bd268502be2d3a6b9fba9119e2ddc95e2a547949a42eb9e3256113",
+      "bytes": 6607,
+      "lines": 153
+    },
+    {
+      "path": "packages/base/evolve/memory-miner.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "9c4c1e6275c83abf295c9ca2c816d36eea25885de375e07e91c90715c63fd615",
+      "bytes": 9874,
+      "lines": 214
+    },
+    {
+      "path": "packages/base/im-channels/callback.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "e40feaa0a02c265b0cff74d1ba5624b65c8ec2d5fb94b999d9adfeaf12327f6b",
+      "bytes": 7456,
+      "lines": 164
+    },
+    {
+      "path": "packages/base/im-channels/inbound.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "f753f87ac4c1b8bef71b1ed62a2c20b3cdc4d3a974397d48a6587015ab892d6b",
+      "bytes": 9062,
+      "lines": 206
+    },
+    {
+      "path": "packages/base/review-console/approval-transaction.pg.test.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "5373ad2927ed2fae4ce317873849911143625db13c79d3653cfba342cd4ff7a2",
+      "bytes": 24214,
+      "lines": 344
+    },
+    {
+      "path": "packages/base/review-console/approvals.test.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "c587cd5a0cb578017f5a93188f33c9b55a3f56ffe7986c10576ec000dac3dbfe",
+      "bytes": 9179,
+      "lines": 199
+    },
+    {
+      "path": "packages/base/review-console/approvals.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "c2a1477172b13cf8fd586a96c8918d45c015a84ce4bb36132f1fa695321fbfbc",
+      "bytes": 30359,
+      "lines": 603
+    },
+    {
+      "path": "packages/base/review-console/index.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "2028f872476e33ef5b457712206a7144de049f98beb3e271cb09a79c6fe1cd8e",
+      "bytes": 525,
+      "lines": 8
+    },
+    {
+      "path": "packages/base/review-console/rejection-memory.pg.test.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "6a5f03b23238e536845b962ade96fbfac7d3251ba42e0c902e7a3b738948b7dc",
+      "bytes": 13437,
+      "lines": 193
+    },
+    {
+      "path": "packages/base/service-ticket/index.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "1c90adc51ac4674454e2e7c33e24db8263c37fa7ab7bf58d0f7cace484589b24",
+      "bytes": 317,
+      "lines": 8
+    },
+    {
+      "path": "packages/base/service-ticket/state.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "a5d8f5c1a4f1066540536970ddbef9cfac7d3befede2989ba432064f620e987e",
+      "bytes": 1291,
+      "lines": 37
+    },
+    {
+      "path": "packages/base/workdata/events.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "b5dc8a1333562f34fbbc9659032eb2560cee7861a3409b6a1ffd015e3f993358",
+      "bytes": 13378,
+      "lines": 303
+    },
+    {
+      "path": "packages/base/workdata/gateway.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "9772ef519f139d2ac52ab4fe5d6ffdacf06e36c08c54f1aaa63b855be73442c6",
+      "bytes": 19204,
+      "lines": 413
+    },
+    {
+      "path": "packages/base/workdata/index.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "0d3c5b0483b528fcf57c137363aa5328ce78bf999bc44404b938bca476062a09",
+      "bytes": 662,
+      "lines": 13
+    },
+    {
+      "path": "packages/base/workdata/memory-transaction.pg.test.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "0730283bdaecd4019d0d5ea852e207c4cbdcfd2555d88942c899b598a758390e",
+      "bytes": 14500,
+      "lines": 202
+    },
+    {
+      "path": "packages/base/workdata/memory.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "92bca2c3da6e9de62ff2a9b0180a9c70ac229d3f04617ffe120bf52877828a18",
+      "bytes": 13769,
+      "lines": 335
+    },
+    {
+      "path": "packages/base/workdata/pii.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "2c9f18d1a220ecaab52e904486b6c2b9872336d6080303f86c928786d7fbadec",
+      "bytes": 5109,
+      "lines": 121
+    },
+    {
+      "path": "packages/db/migrations/0001_init.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "fd8b5f636a2d77d7e6adbe73d1fefa5521df06c526ebd2cf9d70f69f5e763be0",
+      "bytes": 17527,
+      "lines": 337
+    },
+    {
+      "path": "packages/db/migrations/0002_bugfix.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "f47fe537abbb522084f8cd0eecb7f5faf2dbb4dbc19a15d09c8f5a728816346b",
+      "bytes": 1584,
+      "lines": 21
+    },
+    {
+      "path": "packages/db/migrations/0003_im_inbound_dedupe.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "07b61f807f4ca448aa5b950d321197127e59dec2ed237b3103b8a7c4f6adbe3d",
+      "bytes": 1398,
+      "lines": 25
+    },
+    {
+      "path": "packages/db/migrations/0004_biz_events_no_truncate.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "e4ba2708a356c38690d826d9c46920ab044d900307333d00014c42f73753ebb7",
+      "bytes": 1063,
+      "lines": 19
+    },
+    {
+      "path": "packages/db/migrations/0005_fence_baseline_guard.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "50ad6d177f7a0c9d0698356b8e91090a17754c08970680fa0a730b722b20dd5b",
+      "bytes": 1438,
+      "lines": 24
+    },
+    {
+      "path": "packages/db/migrations/0006_industry_publish_gate.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "2f205cee7ec4d7f8f61c1e7cad251a686695366ca230fa1d76622597602ab663",
+      "bytes": 2377,
+      "lines": 39
+    },
+    {
+      "path": "packages/db/migrations/0007_append_event_function.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "67647470851008a2c0e70c00e5940bf34f86bec7c00a02483539e9d124d3f2ba",
+      "bytes": 2486,
+      "lines": 51
+    },
+    {
+      "path": "packages/db/migrations/0008_publish_reviews_rls.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "5040d4bb6e22340cfe8a6fb68b45cc6bb4ea327812e90c187a1b4c48fe9441ae",
+      "bytes": 737,
+      "lines": 11
+    },
+    {
+      "path": "packages/db/migrations/0009_captain.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "8fda6d113d9e1e1a9ea0d348334a6809924fb15d7250c25a08e33efc74b37156",
+      "bytes": 783,
+      "lines": 12
+    },
+    {
+      "path": "packages/db/migrations/0010_service_c.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "fc9bf14fb3f910f623159390164f8a0b6ee7162559c53b14ac3e8003f86dfb27",
+      "bytes": 9881,
+      "lines": 188
+    },
+    {
+      "path": "packages/db/migrations/0011_service_c_hardening.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "d66940ec3d257c980631a6c2cc44c95c5bba83b43edbaa02f27515369a9a3825",
+      "bytes": 2864,
+      "lines": 54
+    },
+    {
+      "path": "packages/db/migrations/0012_service_c_demo_pk.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "2677ceb411f23c6e6ef65d65f60e5cfce4c9bd61c5bcaa4eeaac40d8c9ceee53",
+      "bytes": 1891,
+      "lines": 41
+    },
+    {
+      "path": "packages/db/migrations/0013_memory_usage_workspace_rls.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "34f667813d0a12aa94c0128b5e00a86bedd88b0c7ac597d7aaa9cc96f4bfe33f",
+      "bytes": 1346,
+      "lines": 28
+    },
+    {
+      "path": "packages/db/migrations/0013_pipeline_hardening.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "f3445c4ca722d284daad3e73c9b829981e4c85671e27d0c6e9314332a1dc2a7a",
+      "bytes": 9829,
+      "lines": 197
+    },
+    {
+      "path": "packages/db/migrations/0015_event_id_tail.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "a7063bd23b63a014e44deda24bdbaaf3735769396338b76027afef0b5a1a37dd",
+      "bytes": 1236,
+      "lines": 26
+    },
+    {
+      "path": "packages/db/migrations/0016_readable_id_tail.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "11e4137ea25764dd0b609dd4464d965e583864c3bcc9eadd3bad5f334c1f4a45",
+      "bytes": 1820,
+      "lines": 45
+    },
+    {
+      "path": "packages/db/migrations/0017_skill_revoke_channel.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "f9c6bf6a7b5f088ce44cb67344851b5915333e3c9e4d41a7c162b6ee1f5667d9",
+      "bytes": 1004,
+      "lines": 20
+    },
+    {
+      "path": "packages/db/migrations/0018_skill_ops_distribution.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "8bc710bfb7c3f4de0a92fb4cd6a54cc950dca007dfcc60c4f3d34313d4479f38",
+      "bytes": 4555,
+      "lines": 74
+    },
+    {
+      "path": "packages/db/migrations/0019_skill_ops_autosync.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "bd0d1db9fb3621b4e05eec34a19b65077cf37ed51b5793266d25be2762fbeb6d",
+      "bytes": 390,
+      "lines": 4
+    },
+    {
+      "path": "packages/db/migrations/0020_skill_reflux.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "4fcb2caf1d98f1ce2160d787e8ac6720bec0ce1a2a596518771654e833230dc0",
+      "bytes": 3216,
+      "lines": 53
+    },
+    {
+      "path": "packages/db/migrations/0021_eval_core.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "c3dfc5419b81ad08a0856896bb218d3c8828ed7a29857610a6c0dead48ab516c",
+      "bytes": 11101,
+      "lines": 176
+    },
+    {
+      "path": "packages/db/migrations/0022_bundle_mechanism.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "0bd0fef17aba902350b55f9ee161124504b8a6eab53265ce3ccf83e110c736ad",
+      "bytes": 4105,
+      "lines": 65
+    },
+    {
+      "path": "packages/db/migrations/0023_dev_fabric.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "2f22ab1f351ec6e0da77422e22031012cda2202987eb703f63e7a487eea4c126",
+      "bytes": 10706,
+      "lines": 180
+    },
+    {
+      "path": "packages/db/migrations/0024_secretary.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "5dd2d14a6f83aa5aaf072fc229c95556e60fb7dc29c5b82c08fbcd34b32afb47",
+      "bytes": 5904,
+      "lines": 96
+    },
+    {
+      "path": "packages/db/migrations/0025_loommate_modes.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "29a3d936c5379afe6dcfed066bcaaf3e3241ff13abcbf2c6fc8cff8752919d74",
+      "bytes": 488,
+      "lines": 6
+    },
+    {
+      "path": "packages/db/migrations/0026_tenant_overlay.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "7880ca754aaaeddfaf72f38802276dbf75d462ac06d609c34bedff37ba645ebf",
+      "bytes": 2860,
+      "lines": 49
+    },
+    {
+      "path": "packages/db/migrations/0027_accounts.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "fea7a12844dd42f747ab2870911364ec273d28f85e11df99ff22c732c3a399fa",
+      "bytes": 8903,
+      "lines": 171
+    },
+    {
+      "path": "packages/db/migrations/0028_onboarding_truth_gate.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "64b889ef1f495bde45865d40cb9cc84caaaf5ff4ff9867b3b1e510b81d400e09",
+      "bytes": 5057,
+      "lines": 101
+    },
+    {
+      "path": "packages/db/migrations/0029_onboarding_continuity.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "77b7e628acf279d6a6a07ef8d40a3e39d411a787d753afc5ed735a2a12daaf44",
+      "bytes": 3254,
+      "lines": 57
+    },
+    {
+      "path": "packages/db/migrations/0030_single_active_bundle_install.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "58855a30e4c2fbc375f581b6992284a56fc3af57fc12ebb03d10ec1cd219a2bf",
+      "bytes": 650,
+      "lines": 19
+    },
+    {
+      "path": "packages/db/migrations/0031_accounts_overlay_least_privilege.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "164c83e3960c322e4581c9555a622b16470eba31914a320ee82109d416aef0ad",
+      "bytes": 4089,
+      "lines": 87
+    },
+    {
+      "path": "packages/db/migrations/0032_remove_cross_industry_hotel_bootstrap.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "ef5459cd9b5aeccc3ef2aff989ed3f12e4192b6735aef6c03ca52019237a890c",
+      "bytes": 3698,
+      "lines": 93
+    },
+    {
+      "path": "packages/db/migrations/0033_neutral_workspace_industry_default.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "4b2e930998468568c33a93c44717aebfc5e0296ac0682a69315f1dae74a0fdf0",
+      "bytes": 500,
+      "lines": 8
+    },
+    {
+      "path": "packages/db/migrations/0034_api_key_rotation.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "cc9d0f87d34a878918ba74d42f93073efe61cbb347477bc255b1108e829d3973",
+      "bytes": 1106,
+      "lines": 22
+    },
+    {
+      "path": "packages/db/migrations/0035_tenant_overlay_single_active.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "26f71250672e523e4703e449de6be63451d87d352ba246ca3b794f103f2032d7",
+      "bytes": 1204,
+      "lines": 25
+    },
+    {
+      "path": "packages/db/migrations/0047_thread_plan_persist.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "1e4a217bd98204c2dd9ce52ae9341dab9a0fd26378e9a800ff90fdfb8dd6d9fe",
+      "bytes": 1443,
+      "lines": 21
+    },
+    {
+      "path": "packages/db/migrations/0048_readable_id_sequences.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "a17cbf641438fa5d1086bd78e2385a0d8606ccb3b9f155af78381c22a9f15cb0",
+      "bytes": 2338,
+      "lines": 55
+    },
+    {
+      "path": "packages/db/migrations/0049_thread_cancelled_status.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "2446b6c2a406a2b0b291a7646f50ccf549bbc8dd3f9b108b41eb8882500e9351",
+      "bytes": 515,
+      "lines": 8
+    },
+    {
+      "path": "packages/db/migrations/0050_thread_no_sequence_floor.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "bff17a0f16e7564f7185a615ead2dad885a13bc30d81027f575c7514b22d9106",
+      "bytes": 1682,
+      "lines": 45
+    },
+    {
+      "path": "packages/db/migrations/0051_append_event_tenant_guard.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "4030f3dd3d8d1be51ffa09e46d79020742995c8ad37b8c7f872252a15c78ce76",
+      "bytes": 4313,
+      "lines": 83
+    },
+    {
+      "path": "packages/db/migrations/0052_thread_no_sequence_pure.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "e39aebe0a55c457d9136691d57ca1502b617a2fcee924590fe72d61ef52464a3",
+      "bytes": 2795,
+      "lines": 64
+    },
+    {
+      "path": "packages/db/migrations/0053_approval_one_time_consumption.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "58f465ba61267dd81a20d8a1b056c9f23dbe61fda0cf41ee284e219a59d95c86",
+      "bytes": 1203,
+      "lines": 17
+    },
+    {
+      "path": "packages/db/migrations/0054_privileged_governance_channels.sql",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "All 43 migrations actually executed on disposable PostgreSQL test databases; SQL files machine indexed, not claimed as full semantic reading",
+      "sha256": "7e7acea9cbe1355d9911a67b58953a3890ce74ecd6aa300cd77d7cb97791f949",
+      "bytes": 1287,
+      "lines": 29
+    },
+    {
+      "path": "packages/db/src/client.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "c145ad3ff70ff2dbd0b9e540b861ce2b7b38c603257be9c377d21870549b8ee8",
+      "bytes": 3813,
+      "lines": 97
+    },
+    {
+      "path": "packages/db/src/index.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "6161108ee4997a4202d8ee2612b89f931fc910376cb8185a6fb7444318ad9782",
+      "bytes": 192,
+      "lines": 6
+    },
+    {
+      "path": "packages/db/src/schema.ts",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Current bytes indexed and linked call/test ranges reviewed; complete final file interpretation belongs to separate engine/workbench scope",
+      "sha256": "7d27b195d4f383f80e98c3029859802dcea89525cdb01a8d31df1e8ddaeafda5",
+      "bytes": 16147,
+      "lines": 368
+    },
+    {
+      "path": "packages/shared/src/client-access.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "f22ffc44e94f5deca6d174037ebe727d84f96a55d930640632286b97c5ef693c",
+      "bytes": 719,
+      "lines": 26
+    },
+    {
+      "path": "packages/shared/src/constants.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "3ac28084f91bd78bc646f249357e85e35b51e5f901d97feb468c7d0ae591b05f",
+      "bytes": 3896,
+      "lines": 85
+    },
+    {
+      "path": "packages/shared/src/enums.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "e4093059cd46131057442b00167c0a591c47729b4b6c2b48c4203ba18bc43fc5",
+      "bytes": 4004,
+      "lines": 105
+    },
+    {
+      "path": "packages/shared/src/event-schema.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "29820b39e97ef57fe5a6f0963a27c57e575d923a59009773147d3fc8aecc896b",
+      "bytes": 4518,
+      "lines": 106
+    },
+    {
+      "path": "packages/shared/src/ids.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "7de6df0ac51b837aba0f292c8e080612b78dd49300e8ea76b75bb23a2ac339d2",
+      "bytes": 978,
+      "lines": 27
+    },
+    {
+      "path": "packages/shared/src/index.ts",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "eee90f31785aa9fd46d1c6c4873eb28df8d0e344735eda5bf43dafac9216c48f",
+      "bytes": 286,
+      "lines": 9
+    },
+    {
+      "path": "scripts/bootstrap-current-product.test.mjs",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "de2964e761d9ae280b0621a7e2174571e0ef3f8f23f379d361216d873c85eef9",
+      "bytes": 4141,
+      "lines": 99
+    },
+    {
+      "path": "scripts/bootstrap.sh",
+      "sourceType": "current",
+      "evidenceLevel": "A",
+      "reading": "complete current source reading",
+      "reason": "Final source read in full; scoped compatibility fixes and direct transaction/permission/event dependencies",
+      "sha256": "5b1a7ae6a3946c1b0018232127e22c79e604622811a2a60ec75618123f756207",
+      "bytes": 6797,
+      "lines": 163
+    },
+    {
+      "path": "scripts/suite.ts",
+      "sourceType": "current",
+      "evidenceLevel": "B",
+      "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
+      "reason": "Current bytes indexed and linked call/test ranges reviewed; complete final file interpretation belongs to separate engine/workbench scope",
+      "sha256": "012aadd36ceb05f09e2ee3ba33a07a4316212a1e7eeac40c625d16cbcec646f2",
+      "bytes": 251331,
+      "lines": 4032
+    }
+  ],
+  "scopeCuts": [
+    {
+      "paths": [
+        "apps/server/src/trpc/router.ts",
+        "scripts/suite.ts",
+        "apps/server/src/service/e2e.test.ts",
+        "apps/server/src/service/contract.test.ts",
+        "packages/db/src/schema.ts"
+      ],
+      "evidenceLevel": "B",
+      "reason": "Final broad inherited files were machine indexed and selected changed/calling ranges read. Parent/peer full source inventories provide independent A evidence."
+    },
+    {
+      "paths": [
+        "packages/db/migrations/*.sql"
+      ],
+      "evidenceLevel": "B",
+      "reason": "All 43 executed and machine indexed; execution coverage does not claim complete SQL design understanding."
+    },
+    {
+      "paths": [
+        "Unlisted recursive inherited platform implementations and external integrations"
+      ],
+      "evidenceLevel": "D",
+      "reason": "Outside this explicit repair scope. No whole repository absence-of-defect conclusion is made."
+    }
+  ],
+  "verification": {
+    "serviceApprovalUniqueCases": 75,
+    "serviceApprovalMethods": {
+      "actualPostgreSQL": 69,
+      "pureGuardsOrIdCases": 6
+    },
+    "repeated22CaseRunIsSubset": true,
+    "all43MigrationsExecuted": true,
+    "externalActions": 0,
+    "productionAcceptanceClaimed": false,
+    "formalRdas276Acceptance": "unverified; 0 pass, 0 fail, 114 not-run, 162 manual-missing"
+  },
+  "limitations": [
+    "The five owned regression files and 75 cases cover the stated repair contracts, not every platform transaction helper.",
+    "db.withWorkspace, readPrefs, recall, startup instanceOf and im-channels/inbound scoped helpers were not independently fault-probed in this scope.",
+    "ingestInbound retains separate claim and event transactions; no before-fix fault reproduction or repair was authorized for this path.",
+    "Self inventory, peer inventories and aggregate coverage documents are excluded to prevent circular hashes."
+  ]
+}

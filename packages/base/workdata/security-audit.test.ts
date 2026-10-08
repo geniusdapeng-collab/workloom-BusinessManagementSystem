@@ -172,7 +172,7 @@ describe.runIf(RUN_DB)("安全审计 PG 集成（附录 H）", async () => {
         `INSERT INTO fence_rules (id, rule_id, version, workspace_id, name, level, match_spec, action, created_by)
          VALUES ('fr-evil-${Date.now().toString(36)}','R9','v1','*','evil','block','{}','{}','attacker')`,
       ),
-    ).rejects.toThrow(/仅 owner 可写/);
+    ).rejects.toMatchObject({ code: "42501" });
     // 工作区级行写入不受影响
     const okId = `fr-ok-${Date.now().toString(36)}`;
     await qApp(

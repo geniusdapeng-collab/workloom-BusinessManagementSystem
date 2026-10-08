@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "workloom.local-regression/v1",
+  "evidenceLevel": "A",
+  "scope": "Actual pnpm workspace regression with explicit inherited hotel PG compatibility database and separate native PG test administrator",
+  "sourceState": "Authorized dirty candidate; not native CNB or clean-HEAD MCD capture",
+  "observedAt": "2026-10-08T20:17:44.216779+00:00",
+  "dataMode": "sandbox",
+  "externalProductionCalls": false,
+  "preconditions": [
+    "Loopback PostgreSQL sandbox; hotel legacy data only in explicitly selected isolated bms_legacy_engine_20261009",
+    "Explicit RUN_DB_TESTS=1, owner/app/gateway role URLs, SERVICE_C_TEST_WORKSPACE_ID=ws-yunqi",
+    "Native new tests use disposable fully migrated databases or synthetic fixtures via BMS_PG_TEST_URL",
+    "Current production repair sources frozen; later fixture-only failure cleanup was separately regressed in mandatory gate"
+  ],
+  "steps": [
+    "Run pnpm test using the locally verified pinned pnpm wrapper on PATH",
+    "Run every workspace package script declaring test",
+    "Parse actual package summaries and preserve exact skips"
+  ],
+  "expected": "All enabled tests pass; conditionally unavailable inherited fixtures remain explicitly skipped",
+  "actual": {
+    "exitCode": 0,
+    "pass": 1636,
+    "fail": 0,
+    "skip": 3,
+    "tests": 1639,
+    "packages": [
+      {
+        "package": "packages/shared",
+        "pass": 4,
+        "fail": 0,
+        "skip": 0,
+        "tests": 4
+      },
+      {
+        "package": "packages/industry-contract",
+        "pass": 40,
+        "fail": 0,
+        "skip": 0,
+        "tests": 40
+      },
+      {
+        "package": "packages/audit-engine",
+        "pass": 54,
+        "fail": 0,
+        "skip": 0,
+        "tests": 54
+      },
+      {
+        "package": "apps/webc",
+        "pass": 21,
+        "fail": 0,
+        "skip": 0,
+        "tests": 21
+      },
+      {
+        "package": "packages/base",
+        "pass": 920,
+        "fail": 0,
+        "skip": 1,
+        "tests": 921
+      },
+      {
+        "package": "packages/runtime",
+        "pass": 86,
+        "fail": 0,
+        "skip": 0,
+        "tests": 86
+      },
+      {
+        "package": "apps/server",
+        "pass": 394,
+        "fail": 0,
+        "skip": 2,
+        "tests": 396
+      },
+      {
+        "package": "apps/web",
+        "pass": 111,
+        "fail": 0,
+        "skip": 0,
+        "tests": 111
+      },
+      {
+        "package": "apps/webb",
+        "pass": 6,
+        "fail": 0,
+        "skip": 0,
+        "tests": 6
+      }
+    ]
+  },
+  "skipped": [
+    {
+      "package": "packages/base",
+      "tests": 1,
+      "name": "云栖亲子店 vs 云栖商务店：同一酒店包两种脾气",
+      "source": "packages/base/overlay/overlay.test.ts:171",
+      "reason": "This inherited test resolves bundles/hotel relative to the packages/base package cwd, where that fixture path does not exist; no production source change made."
+    },
+    {
+      "package": "apps/server",
+      "tests": 2,
+      "source": "apps/server/src/service/adapters/business-registry.pg.test.ts:20",
+      "names": [
+        "同库活动装配经 RLS 分别选择 hotel，且 AI PM 不选择任何酒店适配器",
+        "AI PM 的公开订单与身份摘要端点失败关闭为空，不读取同库酒店夹具"
+      ],
+      "reason": "This two-industry inherited fixture requires RELEASE_WORKSPACE_ID selecting an installed ai-pm workspace; the explicit legacy run installs hotel only. New business-registry unit/PG boundary tests remain enabled elsewhere."
+    }
+  ],
+  "rawLogSha256": "e49801876e50e8c2fa077fecb927f811fc06b3a525747e00fe604fe1ed906276",
+  "runnerSha256": "14da7467908a1ac97efdd896d1245c63341b20894fbff2eb83de1cc145753abb",
+  "sourceFingerprints": {
+    "scripts/suite.ts": "012aadd36ceb05f09e2ee3ba33a07a4316212a1e7eeac40c625d16cbcec646f2",
+    "packages/base/fence-engine/lifecycle.ts": "e9b4b68dad895af7ec0df0d2e9035e22aff5e7161762893c2fe723a8117dceec",
+    "packages/base/review-console/approvals.ts": "c2a1477172b13cf8fd586a96c8918d45c015a84ce4bb36132f1fa695321fbfbc",
+    "packages/base/workdata/gateway.ts": "9772ef519f139d2ac52ab4fe5d6ffdacf06e36c08c54f1aaa63b855be73442c6",
+    "packages/base/workdata/events.ts": "b5dc8a1333562f34fbbc9659032eb2560cee7861a3409b6a1ffd015e3f993358",
+    "packages/base/workdata/memory.ts": "92bca2c3da6e9de62ff2a9b0180a9c70ac229d3f04617ffe120bf52877828a18",
+    "packages/base/skills/registry.ts": "f0d07c090fe01ce9eb868b79ab828f6d8c0b3e2e0fd69e76ab55ba0c89dfc9ce",
+    "packages/runtime/src/loop.ts": "208e039f5acfe9fe0e4a6424030ed989763464062b9b93bc1e50d98a8115b8c0"
+  },
+  "sourceEnvironmentRestored": true,
+  "limits": [
+    "1636 is the workspace assertion count, not a claim that each test uses PostgreSQL or exercises a model.",
+    "This local regression does not prove CNB execution or paid/live external connectors."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "actor": "/root/industry_map",
+  "dataMode": "isolated-synthetic",
+  "externalCalls": 0,
+  "documentVersion": 2,
+  "actualStatus": "active",
+  "expectedStatus": "pending_review",
+  "productionBugReproduced": true,
+  "finishedAt": "2026-10-08T19:17:05.324Z"
+}

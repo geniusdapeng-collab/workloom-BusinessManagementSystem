@@ -95,13 +95,14 @@ fi
 sec "4/6 数据库迁移与演示种子"
 if pnpm db:migrate >/tmp/bootstrap-migrate.log 2>&1; then
   ok "db:migrate 迁移完成"
+  if pnpm db:seed >/tmp/bootstrap-seed.log 2>&1; then
+    ok "当前产品 db:seed 种子就位；兼容种子保持显式调用"
+  else
+    bad "pnpm db:seed 失败 → tail /tmp/bootstrap-seed.log"
+  fi
 else
   bad "db:migrate 失败 → tail /tmp/bootstrap-migrate.log"
-fi
-if pnpm db:seed >/tmp/bootstrap-seed.log 2>&1; then
-  ok "当前产品 db:seed 种子就位；兼容种子保持显式调用"
-else
-  bad "pnpm db:seed 失败 → tail /tmp/bootstrap-seed.log"
+  skip "迁移未完成，已停止 db:seed；修复迁移后重跑本脚本"
 fi
 
 # ---------- 5. computer-use 桌面栈（操作电脑能力） ----------
