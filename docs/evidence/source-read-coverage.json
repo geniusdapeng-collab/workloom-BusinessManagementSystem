@@ -1,16 +1,21 @@
 {
   "schemaVersion": "bms.aggregate-read-coverage/v1",
-  "asOf": "2026-10-08T21:17:58.741645+00:00",
-  "scope": "All current modified/new deliverable files plus explicit direct dependencies reviewed by root and three delegated reviewers",
+  "asOf": "2026-10-08T21:24:47.258689+00:00",
+  "scope": "Every current modified/new deliverable relative to imported upstream 5a04120 plus explicit direct dependencies reviewed by root and three delegated reviewers; generated data, lock metadata and binary artifacts remain B evidence",
+  "changedDeliverables": {
+    "baselineCommit": "5a04120a225dc3734415c8cc23e9c5f9474170c0",
+    "total": 278,
+    "missingFromDeclaredScope": []
+  },
   "counts": {
-    "total": 529,
+    "total": 548,
     "fullRead": 395,
-    "machineOnly": 134,
+    "machineOnly": 153,
     "sampled": 0,
     "unreadWithinDeclaredScope": 0
   },
   "currentRepositoryFiles": 1531,
-  "outsideFocusedScope": 1002,
+  "outsideFocusedScope": 983,
   "upstreamComparison": {
     "files": 62,
     "fullRead": 59,
@@ -172,6 +177,16 @@
         "business_engine aggregate inventory"
       ],
       "method": "Current metadata/hash only; original root reading not reused without an exact current SHA match"
+    },
+    {
+      "path": ".workloom-runtime-deps/package-lock.json",
+      "evidenceLevel": "B",
+      "sha256": "f29564c9f05d806e83938de53759578adc0afb3bc00ae0f9afcbe1dda8f40198",
+      "bytes": 73998,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Generated data/evidence fully inventoried and parsed where applicable; source review belongs to separate file entries"
     },
     {
       "path": "AGENTS.md",
@@ -2178,6 +2193,16 @@
       "method": "Complete source reading by named delegated reviewer"
     },
     {
+      "path": "docs/OPEN_SOURCE_COMPONENTS.md",
+      "evidenceLevel": "B",
+      "sha256": "21a7e3b239d0d5f27bb055b1c707f7e3d13900c005c2386b6f476aacd8016603",
+      "bytes": 64622,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Generated data/evidence fully inventoried and parsed where applicable; source review belongs to separate file entries"
+    },
+    {
       "path": "docs/REAL-DEVICE-ACCEPTANCE-SPEC.md",
       "evidenceLevel": "A",
       "sha256": "b9818589875253b04455ffea5c102d982dfdb2ebaf663c1d2078dad62afe0a25",
@@ -2748,6 +2773,86 @@
       "method": "Complete parsing/indexing or hash verification; no deep behavioral claim"
     },
     {
+      "path": "docs/evidence/site/en-1440-full.png",
+      "evidenceLevel": "B",
+      "sha256": "8b471b137331d1f448aff90746ff0ceb5f09bd412383551b50364f1751cca580",
+      "bytes": 2651640,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/site/en-1440-viewport.png",
+      "evidenceLevel": "B",
+      "sha256": "470805ec1cc12395215ea192b0e37906ed04fbd016ece40bc6cb087beeb579c9",
+      "bytes": 1286749,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/site/en-390-full.png",
+      "evidenceLevel": "B",
+      "sha256": "322da6bc8600fc2ae73d3977ff9db3b971fa818bf3c965a17f499917068c85c4",
+      "bytes": 1511616,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/site/en-390-viewport.png",
+      "evidenceLevel": "B",
+      "sha256": "fd62c4a5ec36d9e9e12b67c316d8d08b1a721e605bb26202f93213cbdbb1f6ea",
+      "bytes": 332663,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/site/zh-1440-full.png",
+      "evidenceLevel": "B",
+      "sha256": "e79d81d5790bf0cda3f344415f4eec681a28ba7d0a9b298581715d7fa3849f59",
+      "bytes": 2535365,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/site/zh-1440-viewport.png",
+      "evidenceLevel": "B",
+      "sha256": "29ce4fb684abd11462ba88134f00fc43f8f963bf015596f2e56a4984c10ea411",
+      "bytes": 1237941,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/site/zh-390-full.png",
+      "evidenceLevel": "B",
+      "sha256": "f5e3c9d66cc871c5bea08294ddfc4490a2a2840168f4076660fcf7a58a4b600f",
+      "bytes": 1437908,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/site/zh-390-viewport.png",
+      "evidenceLevel": "B",
+      "sha256": "1274492ccdb143ac4e503b5f12311a312a0128411cf2769b47f41c1203f2006d",
+      "bytes": 337855,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
       "path": "docs/evidence/source-read-coverage.json",
       "evidenceLevel": "B",
       "sha256": null,
@@ -2787,6 +2892,96 @@
         "workbench-read-inventory.json"
       ],
       "method": "Complete parsing/indexing or hash verification; no deep behavioral claim"
+    },
+    {
+      "path": "docs/evidence/ui/UI-06-failure.png",
+      "evidenceLevel": "B",
+      "sha256": "1999dcc126ae0240d281a7d21ec47b42016db0fc5be96ad4fec4802b7eb382bc",
+      "bytes": 181261,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/ui/UI-09-failure.png",
+      "evidenceLevel": "B",
+      "sha256": "197971d1cb2d076895b1c82ea10cf77feb0c731bd7c2afc8073dac7a74090b43",
+      "bytes": 183176,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/ui/desktop-overview.png",
+      "evidenceLevel": "B",
+      "sha256": "8ba3d62de0e493f88faee4abe82e1dd99e23199008709c758877806e3b46b344",
+      "bytes": 199630,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/ui/mobile-overview.png",
+      "evidenceLevel": "B",
+      "sha256": "f96f001279a7bdd9e3f39619fe8e9fa125999d102ca6ccb3e1cfb5441482aea4",
+      "bytes": 162802,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/ui/mobile-records.png",
+      "evidenceLevel": "B",
+      "sha256": "8df6222bfdb29bfd26d6d1b9487ed29e7d6ca953607058123c9788f8b5f69e92",
+      "bytes": 178112,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/ui/mobile-team.png",
+      "evidenceLevel": "B",
+      "sha256": "d1c3a877a17dc0eb0cdc1f2f7228afe9a367d886cd16c7602b5aa0bb17328e7e",
+      "bytes": 285597,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/ui/narrow-mobile-records.png",
+      "evidenceLevel": "B",
+      "sha256": "92dd2d15668b93fcc92f3d14cb73960944c4f3cc0f0b7df88c09014f178c9000",
+      "bytes": 174684,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/workbench-1440.png",
+      "evidenceLevel": "B",
+      "sha256": "dd77f62956cceba82c0d28e60f3510d935a5e07b6acfe7fe196e66cef4c70f72",
+      "bytes": 200242,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
+    },
+    {
+      "path": "docs/evidence/workbench-390.png",
+      "evidenceLevel": "B",
+      "sha256": "5991234a772b4ec62893f1a9c5a92467865a7fdb895313c51cbb10f817e86a86",
+      "bytes": 134928,
+      "reviewers": [
+        "root inventory"
+      ],
+      "method": "Binary metadata/hash verification and visual QA where separately recorded"
     },
     {
       "path": "docs/evidence/workbench-compat-read-coverage.json",
@@ -5668,7 +5863,6 @@
     ".oss-watch-state.json",
     ".workloom-base-sync.json",
     ".workloom-client-foundation.json",
-    ".workloom-runtime-deps/package-lock.json",
     ".workloom-runtime-deps/package.json",
     ".workloom-ui-governance.json",
     ".workloom-ui.json",
@@ -6116,7 +6310,6 @@
     "docs/DEMO-TWIN.md",
     "docs/HARDCODE-AUDIT.md",
     "docs/MINE-CLEAR-DELIVERY-SPEC.md",
-    "docs/OPEN_SOURCE_COMPONENTS.md",
     "docs/SUITE.md",
     "docs/TWIN-COVERAGE.md",
     "docs/acceptance/checklist.v1.json",
@@ -6141,23 +6334,6 @@
     "docs/demo/workloom-hotel-demo-pc.html",
     "docs/design-system.md",
     "docs/desktop-product-rendering-contract.md",
-    "docs/evidence/site/en-1440-full.png",
-    "docs/evidence/site/en-1440-viewport.png",
-    "docs/evidence/site/en-390-full.png",
-    "docs/evidence/site/en-390-viewport.png",
-    "docs/evidence/site/zh-1440-full.png",
-    "docs/evidence/site/zh-1440-viewport.png",
-    "docs/evidence/site/zh-390-full.png",
-    "docs/evidence/site/zh-390-viewport.png",
-    "docs/evidence/ui/UI-06-failure.png",
-    "docs/evidence/ui/UI-09-failure.png",
-    "docs/evidence/ui/desktop-overview.png",
-    "docs/evidence/ui/mobile-overview.png",
-    "docs/evidence/ui/mobile-records.png",
-    "docs/evidence/ui/mobile-team.png",
-    "docs/evidence/ui/narrow-mobile-records.png",
-    "docs/evidence/workbench-1440.png",
-    "docs/evidence/workbench-390.png",
     "docs/hotel-exam-playbook.md",
     "docs/images/architecture.png",
     "docs/images/business-loop.png",
