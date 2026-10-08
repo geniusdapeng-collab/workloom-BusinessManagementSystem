@@ -1,6 +1,6 @@
 {
   "schemaVersion": "bms.aggregate-read-coverage/v1",
-  "asOf": "2026-10-08T20:37:31.337332+00:00",
+  "asOf": "2026-10-08T20:54:11.170891+00:00",
   "scope": "All current modified/new deliverable files plus explicit direct dependencies reviewed by root and three delegated reviewers",
   "counts": {
     "total": 529,
@@ -9,8 +9,8 @@
     "sampled": 0,
     "unreadWithinDeclaredScope": 0
   },
-  "currentRepositoryFiles": 1523,
-  "outsideFocusedScope": 994,
+  "currentRepositoryFiles": 1531,
+  "outsideFocusedScope": 1002,
   "upstreamComparison": {
     "files": 62,
     "fullRead": 59,
@@ -2325,9 +2325,9 @@
       "sha256": "57ae35ee8b5416b936cbd9e6af69b188c7b3f025cbe054c930d546a74f0422d9",
       "bytes": 2839,
       "reviewers": [
-        "root inventory"
+        "business_engine aggregate scope preservation"
       ],
-      "method": "Generated data/evidence fully inventoried and parsed where applicable; source review belongs to separate file entries"
+      "method": "Previously declared deliverable retained in coverage scope after clean commit; current metadata/hash only"
     },
     {
       "path": "docs/evidence/foundation-matrix/agent-matrix.csv",
@@ -2460,9 +2460,9 @@
       "sha256": "083fb1d1362cc82edd5f20a4b580d6636466b57d0f8b6850d43435b65de44615",
       "bytes": 55390,
       "reviewers": [
-        "root inventory"
+        "business_engine aggregate scope preservation"
       ],
-      "method": "Generated data/evidence fully inventoried and parsed where applicable; source review belongs to separate file entries"
+      "method": "Previously declared deliverable retained in coverage scope after clean commit; current metadata/hash only"
     },
     {
       "path": "docs/evidence/industry-read-coverage.json",
@@ -2470,9 +2470,9 @@
       "sha256": "7ad45a53db72b22506ceaa2a864cfe97e3031dbc5def9ff6c2e7437232c8cd94",
       "bytes": 104649,
       "reviewers": [
-        "root inventory"
+        "business_engine aggregate scope preservation"
       ],
-      "method": "Generated data/evidence fully inventoried and parsed where applicable; source review belongs to separate file entries"
+      "method": "Previously declared deliverable retained in coverage scope after clean commit; current metadata/hash only"
     },
     {
       "path": "docs/evidence/lease-storage-boundary.json",
@@ -2773,9 +2773,9 @@
       "sha256": "3505a79ae67360598aad22bfe4be7184d47067d07e59233dc70d4d773d599edd",
       "bytes": 10930,
       "reviewers": [
-        "root inventory"
+        "business_engine aggregate scope preservation"
       ],
-      "method": "Generated data/evidence fully inventoried and parsed where applicable; source review belongs to separate file entries"
+      "method": "Previously declared deliverable retained in coverage scope after clean commit; current metadata/hash only"
     },
     {
       "path": "docs/evidence/ui-workbench-proof.json",
@@ -2794,9 +2794,9 @@
       "sha256": "6576d9eef7ec81fe9834a6aa89e204054dcfed6be1b29a0ae38aeb0c81d11286",
       "bytes": 1899,
       "reviewers": [
-        "root inventory"
+        "business_engine aggregate scope preservation"
       ],
-      "method": "Generated data/evidence fully inventoried and parsed where applicable; source review belongs to separate file entries"
+      "method": "Previously declared deliverable retained in coverage scope after clean commit; current metadata/hash only"
     },
     {
       "path": "docs/evidence/workbench-layout.json",
@@ -6106,6 +6106,10 @@
     "design-system/design_spec.md",
     "design-system/tokens.web.css",
     "design-system/tokens.webc.css",
+    "docs/01-门店店长使用指南.md",
+    "docs/02-新客户首次接入完整流程.md",
+    "docs/03-功能清单-用户版.md",
+    "docs/04-行业落地向导-用户版.md",
     "docs/AUDIT.md",
     "docs/CEO-RISK-DISCLOSURE.md",
     "docs/DECISIONS.md",
@@ -6185,12 +6189,16 @@
     "docs/images/running-state/p9-night-shift.jpg",
     "docs/images/workdata.png",
     "docs/loommate-expressive-voice.md",
+    "docs/methodology/01-行业落地三技能体系.md",
     "docs/mine-clear/evidence.schema.json",
     "docs/mine-clear/ledger.schema.json",
     "docs/mine-clear/prompt-pack.md",
     "docs/mine-clear/report-template.md",
     "docs/oss-update-plan.md",
     "docs/release-checklist.md",
+    "docs/sales/一页纸-低星单体酒店.md",
+    "docs/sales/一页纸-无人酒店.md",
+    "docs/sales/一页纸-民宿.md",
     "docs/tech-design-m1.md",
     "docs/voice-and-avatar-delivery-contract.md",
     "mock/README.md",
