@@ -1,6 +1,6 @@
 {
   "schemaVersion": "bms.aggregate-read-coverage/v1",
-  "asOf": "2026-10-08T20:54:11.170891+00:00",
+  "asOf": "2026-10-08T21:17:58.741645+00:00",
   "scope": "All current modified/new deliverable files plus explicit direct dependencies reviewed by root and three delegated reviewers",
   "counts": {
     "total": 529,
@@ -416,8 +416,8 @@
     {
       "path": "apps/server/src/service/contract.test.ts",
       "evidenceLevel": "A",
-      "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c",
-      "bytes": 17669,
+      "sha256": "b781d554f309da254a4978d2c1a6aa72629203fd9246514ad62dab50f0a9eb0c",
+      "bytes": 19224,
       "reviewers": [
         "business-engine-read-coverage.json",
         "industry-compat-read-coverage.json",
@@ -2291,8 +2291,8 @@
     {
       "path": "docs/evidence/business-engine-read-coverage.json",
       "evidenceLevel": "B",
-      "sha256": "62bde9cd5b7716b4fb6c27f2d0e551a7a84f90547ee36831fc68bce8edb9ccd0",
-      "bytes": 157665,
+      "sha256": "8452f6ae7fd0177539cb6b5b10dff243b0fb86e325259b272ed048d2b0135255",
+      "bytes": 158448,
       "reviewers": [
         "industry-read-coverage.json"
       ],
@@ -2457,8 +2457,8 @@
     {
       "path": "docs/evidence/industry-compat-read-coverage.json",
       "evidenceLevel": "B",
-      "sha256": "083fb1d1362cc82edd5f20a4b580d6636466b57d0f8b6850d43435b65de44615",
-      "bytes": 55390,
+      "sha256": "58615dbba1315d0709e86dc49709a49a4e063367da0d9997080ad3c822fae401",
+      "bytes": 55738,
       "reviewers": [
         "business_engine aggregate scope preservation"
       ],
@@ -2467,8 +2467,8 @@
     {
       "path": "docs/evidence/industry-read-coverage.json",
       "evidenceLevel": "B",
-      "sha256": "7ad45a53db72b22506ceaa2a864cfe97e3031dbc5def9ff6c2e7437232c8cd94",
-      "bytes": 104649,
+      "sha256": "5472777a870c366748dad2e5ca7fc7aa64adcc045f4543495617cf6a04446619",
+      "bytes": 105286,
       "reviewers": [
         "business_engine aggregate scope preservation"
       ],
@@ -2811,8 +2811,8 @@
     {
       "path": "docs/evidence/workbench-read-inventory.json",
       "evidenceLevel": "B",
-      "sha256": "b16c962b008573bb3b97cb6b3323825f79ba0f2559340a56c1cb03cc7d8920e3",
-      "bytes": 49606,
+      "sha256": "31f463c20ae1cf386973caffce339f0dfc50228c90c89a53f1725eaf26f5d46c",
+      "bytes": 49944,
       "reviewers": [
         "industry-read-coverage.json"
       ],

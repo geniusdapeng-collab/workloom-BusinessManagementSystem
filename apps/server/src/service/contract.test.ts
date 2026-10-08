@@ -28,6 +28,16 @@ const fixtureDescribe = FIXTURE_WORKSPACE_ID ? describe : describe.skip;
 let app: Hono;
 const RUN = `contract-${Date.now().toString(36)}`;
 const IP = "198.51.100.77"; // TEST-NET-2，与其它用例隔离限流桶
+const TICKET_CONFLICT_ERROR = "工单幂等键已被占用，请使用新键重试";
+const UUID_V4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+/** 错误仅能含通用提示与 UUID：字段白名单阻止业务泄漏，随机关联编号可含相同数字片段。 */
+function expectGenericTicketConflict(body: unknown): void {
+  expect(body).toStrictEqual({
+    error: TICKET_CONFLICT_ERROR,
+    requestId: expect.stringMatching(UUID_V4),
+  });
+}
 
 async function req(path: string, init?: RequestInit, token?: string): Promise<Response> {
   return app.request(path, {
@@ -51,6 +61,36 @@ beforeAll(async () => {
   if (!FIXTURE_WORKSPACE_ID) return;
   await installHotelContractFixture(FIXTURE_WORKSPACE_ID, process.env.DATABASE_URL!);
   ({ serviceGateway: app } = await import("./gateway.js"));
+});
+
+describe("契约 · 工单冲突错误隐私断言（无需数据库）", () => {
+  it("实际云端 UUID 含私密房号片段仍接受通用错误响应", () => {
+    const requestId = "feb5abda-9295-49c6-8475-8808eed96899";
+    expect(requestId).toContain("8808");
+    expectGenericTicketConflict({ error: TICKET_CONFLICT_ERROR, requestId });
+  });
+
+  it("UUID 含数字型工单 ID 片段仍接受通用错误响应", () => {
+    const ticketId = "9909";
+    const requestId = "12345678-1234-4abc-8def-880899009909";
+    expect(requestId).toContain(ticketId);
+    expectGenericTicketConflict({ error: TICKET_CONFLICT_ERROR, requestId });
+  });
+
+  const safe = {
+    error: TICKET_CONFLICT_ERROR,
+    requestId: "feb5abda-9295-49c6-8475-8808eed96899",
+  };
+  it.each([
+    ["原工单字段", { ...safe, ticket: { id: "9909", title: "私密工单标题" } }],
+    ["受理回执字段", { ...safe, receipt: { resourceId: "9909" } }],
+    ["房号补充信息字段", { ...safe, payload: { room: "8808" } }],
+    ["提示文本含私密标题", { ...safe, error: `${TICKET_CONFLICT_ERROR}：私密工单标题` }],
+    ["提示文本含私密房号", { ...safe, error: `${TICKET_CONFLICT_ERROR}：8808` }],
+    ["关联编号夹带非 UUID 业务内容", { ...safe, requestId: `${safe.requestId}:私密工单标题` }],
+  ])("拒绝真正泄漏或无效响应：%s", (_name, body) => {
+    expect(() => expectGenericTicketConflict(body)).toThrow();
+  });
 });
 
 fixtureDescribe("契约 · session（S2）", () => {
@@ -179,12 +219,7 @@ fixtureDescribe("契约 · 工单（H1/H2/H6/L9/M9）", () => {
       const conflict = await req("/tickets", { method: "POST", body: JSON.stringify(changed) }, token);
       expect(conflict.status).toBe(409);
       const body = (await conflict.json()) as Record<string, unknown>;
-      expect(typeof body.requestId).toBe("string");
-      expect(body).not.toHaveProperty("ticket");
-      expect(body).not.toHaveProperty("receipt");
-      expect(JSON.stringify(body)).not.toContain(first.ticket.id);
-      expect(JSON.stringify(body)).not.toContain("8808");
-      expect(JSON.stringify(body)).not.toContain("私密工单标题");
+      expectGenericTicketConflict(body);
     }
 
     const replay = await req("/tickets", { method: "POST", body: JSON.stringify(request) }, owner.token);
@@ -290,15 +325,14 @@ fixtureDescribe("契约 · chat（H5/H6/M9）", () => {
     const crossUser = await req("/chat", { method: "POST", body: JSON.stringify(request) }, other.token);
     expect(crossUser.status).toBe(409);
     const denied = (await crossUser.json()) as Record<string, unknown>;
-    expect(denied).not.toHaveProperty("ticket");
-    expect(JSON.stringify(denied)).not.toContain(first.ticket.id);
+    expectGenericTicketConflict(denied);
 
     const changed = await req("/chat", {
       method: "POST",
       body: JSON.stringify({ ...request, ticketDraft: { ...request.ticketDraft, title: "另一项服务" } }),
     }, owner.token);
     expect(changed.status).toBe(409);
-    expect(await changed.json()).not.toHaveProperty("ticket");
+    expectGenericTicketConflict(await changed.json());
 
     const replay = await req("/chat", { method: "POST", body: JSON.stringify(request) }, owner.token);
     expect(replay.status).toBe(200);

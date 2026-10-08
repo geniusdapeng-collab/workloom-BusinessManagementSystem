@@ -1,7 +1,7 @@
 {
   "schemaVersion": "workloom.scoped-coverage/v1",
   "agent": "industry_map",
-  "asOf": "2026-10-08T20:32:13.623531+00:00",
+  "asOf": "2026-10-08T21:17:26.597070+00:00",
   "scope": "Additional bounded PostgreSQL service, approval, memory and gateway compatibility source/evidence inventory after the original 242-file industry scope",
   "scopeBoundary": "Merge by sourceType/path and current sha256 with the original industry inventory and peer inventories. Counts overlap and must never be summed without deduplication. This is not a whole inherited platform audit.",
   "counts": {
@@ -58,9 +58,14 @@
       "evidenceLevel": "B",
       "reading": "complete hashing, machine parsing or selected call ranges; not full semantic reading",
       "reason": "Current bytes indexed and linked call/test ranges reviewed; complete final file interpretation belongs to separate engine/workbench scope",
-      "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c",
-      "bytes": 17669,
-      "lines": 343
+      "sha256": "b781d554f309da254a4978d2c1a6aa72629203fd9246514ad62dab50f0a9eb0c",
+      "bytes": 19224,
+      "lines": 377,
+      "priorMetadataSnapshot": {
+        "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c",
+        "lines": 343
+      },
+      "currentMetadataReview": "Current bytes hashed after MC026 freeze; B classification retained. Current full reading is recorded independently by named business_engine and workbench reviewers."
     },
     {
       "path": "apps/server/src/service/e2e.test.ts",

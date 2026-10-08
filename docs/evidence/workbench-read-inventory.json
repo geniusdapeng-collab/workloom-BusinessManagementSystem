@@ -136,9 +136,17 @@
     {
       "path": "apps/server/src/service/contract.test.ts",
       "evidenceClass": "A",
-      "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
-      "lines": 343,
-      "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c"
+      "readMethod": "complete final 377-line source re-reading after MC026 deterministic UUID-collision privacy regression repair",
+      "lines": 377,
+      "sha256": "b781d554f309da254a4978d2c1a6aa72629203fd9246514ad62dab50f0a9eb0c",
+      "priorReadSnapshots": [
+        {
+          "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c",
+          "evidenceClass": "A",
+          "readMethod": "complete source reading; final frozen contents or the complete prior source plus every changed function and full diff reviewed",
+          "lines": 343
+        }
+      ]
     },
     {
       "path": "apps/server/src/service/devtools.ts",

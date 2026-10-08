@@ -1324,9 +1324,15 @@
       "evidenceLevel": "B",
       "reading": "machine indexing, hashing and scoped parsing; not full semantic reading",
       "reason": "Complete JSON machine parsing and scoped result summary; no claim that independent host trajectories or reports were fully semantically read",
-      "sha256": "62bde9cd5b7716b4fb6c27f2d0e551a7a84f90547ee36831fc68bce8edb9ccd0",
-      "bytes": 157665,
-      "lines": 2959
+      "sha256": "8452f6ae7fd0177539cb6b5b10dff243b0fb86e325259b272ed048d2b0135255",
+      "bytes": 158448,
+      "lines": 2976,
+      "priorMetadataSnapshot": {
+        "sha256": "62bde9cd5b7716b4fb6c27f2d0e551a7a84f90547ee36831fc68bce8edb9ccd0",
+        "bytes": 157665,
+        "lines": 2959
+      },
+      "currentMetadataReview": "Generated evidence metadata refreshed after exact MC026 reviewer-source hash updates; B remains machine-only."
     },
     {
       "path": "docs/evidence/fence-proposal-pg-proof.json",
@@ -1554,9 +1560,15 @@
       "evidenceLevel": "B",
       "reading": "machine indexing, hashing and scoped parsing; not full semantic reading",
       "reason": "Complete JSON machine parsing and scoped result summary; no claim that independent host trajectories or reports were fully semantically read",
-      "sha256": "b16c962b008573bb3b97cb6b3323825f79ba0f2559340a56c1cb03cc7d8920e3",
-      "bytes": 49606,
-      "lines": 1183
+      "sha256": "31f463c20ae1cf386973caffce339f0dfc50228c90c89a53f1725eaf26f5d46c",
+      "bytes": 49944,
+      "lines": 1191,
+      "priorMetadataSnapshot": {
+        "sha256": "b16c962b008573bb3b97cb6b3323825f79ba0f2559340a56c1cb03cc7d8920e3",
+        "bytes": 49606,
+        "lines": 1183
+      },
+      "currentMetadataReview": "Generated evidence metadata refreshed after exact MC026 reviewer-source hash updates; B remains machine-only."
     },
     {
       "path": "packages/base/bundles/assembly.ts",

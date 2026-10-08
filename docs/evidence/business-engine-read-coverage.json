@@ -3,7 +3,7 @@
   "agent": "business_engine",
   "scope": "Native smart-home runtime and consumed skills; foundation migrations and assembly; suite owner plumbing; independent seed, generator/install/preview/documentation, selected registration and CEO permission review; MCD evidence executor; native CI legacy fixture validation and runtime global-revocation/transaction/lock-test corrections; final 25-card candidate and exact required database gate command sequence, current approval/memory/event transaction implementations and explicitly bounded inherited helpers",
   "scopeBoundary": "This inventory is the business_engine agent scope; it is not a claim that the entire inherited repository was fully read. Untouched transitive implementations listed as B are only export-resolved and hashed. Parent owns independent UI, seed repair, hosting, transport and global release validation.",
-  "asOf": "2026-10-08T20:22:38.289190+00:00",
+  "asOf": "2026-10-08T21:17:14.200231+00:00",
   "counts": {
     "total": 289,
     "fullRead": 225,
@@ -218,13 +218,13 @@
       "evidenceLevel": "A",
       "reading": "Complete file read; large files read in sequential chunks to the end",
       "reason": "Actual native CI compatibility follow-up: strict legacy test fixtures, runtime revocation/transaction repair, suite approval and lock validity; direct dependency reading and precise fixture environment tracing",
-      "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c",
-      "lines": 343,
+      "sha256": "b781d554f309da254a4978d2c1a6aa72629203fd9246514ad62dab50f0a9eb0c",
+      "lines": 377,
       "priorReadSnapshot": {
-        "sha256": "e419db5f9270e6290142a6391ee762f819b1b6aca069cf8a8a375a4995e416d9",
-        "lines": 328
+        "sha256": "5d180a253b9be56a67b72ce5d34dd7d212e3db55348a44227aa382a5e532bd1c",
+        "lines": 343
       },
-      "currentVersionReview": "Current source completely reread after final repair-source freeze; own suite E25 authored assertion change also fully reviewed"
+      "currentVersionReview": "Current MC026 source completely read by /root/business_engine after actual repair session froze all 377 lines; exact envelope/UUID assertion preserves business privacy and rejects six leak variants."
     },
     {
       "path": "apps/server/src/service/dialog.ts",
@@ -2934,6 +2934,23 @@
       "bashSyntaxFail": 0,
       "yamlParse": true,
       "report": "docs/evidence/ci-legacy-fixture-boundary.json"
+    },
+    "cloudPrivacyFollowup": {
+      "status": "pass",
+      "card": "MC-026",
+      "sourceSha256": "b781d554f309da254a4978d2c1a6aa72629203fd9246514ad62dab50f0a9eb0c",
+      "contractTests": 25,
+      "contractPass": 25,
+      "contractFail": 0,
+      "contractSkip": 0,
+      "serverTests": 404,
+      "serverPass": 402,
+      "serverFail": 0,
+      "serverSkip": 2,
+      "skipInventory": "Existing business-registry PostgreSQL cases require explicit RELEASE_WORKSPACE_ID; no new test disabled",
+      "temporaryDatabaseRemoved": true,
+      "sourceEnvironmentRestored": true,
+      "evidence": "External BMS-acceptance/mc026-fresh-regression.json; exact clean commit native recapture remains pending"
     }
   },
   "unverifiedInheritedFailurePaths": [
