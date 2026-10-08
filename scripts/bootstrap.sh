@@ -2,7 +2,7 @@
 # WorkLoom · 一键安装（bootstrap）——克隆后一条命令装好系统全部能力
 #
 # 覆盖链路：环境检查 → .env 补全 → pnpm install → PG17+pgvector（docker compose，不存在则创建）
-#           → 迁移 + 全部种子 → computer-use 桌面栈（可选）→ 汇总与下一步指引
+#           → 迁移 + 当前产品种子 → computer-use 桌面栈（可选）→ 汇总与下一步指引
 #
 # 用法：
 #   bash scripts/bootstrap.sh                    # 标准安装（computer-use 按环境自动决策）
@@ -33,10 +33,10 @@ echo "   仓库：$(basename "$(pwd)") · 时间：$(date '+%F %T')"
 # ---------- 0. 环境检查 ----------
 sec "0/6 环境检查"
 NODE_MAJOR=$(node -e "console.log(process.versions.node.split('.')[0])" 2>/dev/null || echo 0)
-if [ "$NODE_MAJOR" -ge 20 ]; then
-  ok "node $(node -v)（≥20 可跑；仓库标称 ≥24，低于 24 仅警告）"
+if [ "$NODE_MAJOR" -ge 24 ]; then
+  ok "node $(node -v)（≥24）"
 else
-  bad "node 版本过低（$(node -v 2>/dev/null || echo 未安装)）→ 请安装 Node ≥ 20（推荐 24）"
+  bad "node 版本过低（$(node -v 2>/dev/null || echo 未安装)）→ 请安装 Node ≥ 24"
 fi
 if command -v pnpm >/dev/null 2>&1; then
   ok "pnpm $(pnpm -v)"
@@ -60,7 +60,7 @@ if [ -d node_modules ]; then
   ok "node_modules 已存在（跳过；如需重装请先 rm -rf node_modules）"
 else
   REGISTRY="${NPM_REGISTRY:-https://registry.npmmirror.com}"
-  if pnpm install --registry="$REGISTRY" >/tmp/bootstrap-install.log 2>&1; then
+  if pnpm install --frozen-lockfile --registry="$REGISTRY" >/tmp/bootstrap-install.log 2>&1; then
     ok "pnpm install 完成（registry=$REGISTRY）"
   else
     bad "pnpm install 失败 → tail /tmp/bootstrap-install.log"
@@ -95,16 +95,15 @@ fi
 sec "4/6 数据库迁移与演示种子"
 if pnpm db:migrate >/tmp/bootstrap-migrate.log 2>&1; then
   ok "db:migrate 迁移完成"
+  if pnpm db:seed >/tmp/bootstrap-seed.log 2>&1; then
+    ok "当前产品 db:seed 种子就位；兼容种子保持显式调用"
+  else
+    bad "pnpm db:seed 失败 → tail /tmp/bootstrap-seed.log"
+  fi
 else
   bad "db:migrate 失败 → tail /tmp/bootstrap-migrate.log"
+  skip "迁移未完成，已停止 db:seed；修复迁移后重跑本脚本"
 fi
-for SEED in $(node -e "console.log(Object.keys(require('./package.json').scripts||{}).filter(s=>/^db:seed/.test(s)).join(' '))" 2>/dev/null); do
-  if pnpm "$SEED" >>/tmp/bootstrap-seed.log 2>&1; then
-    ok "pnpm $SEED 种子就位"
-  else
-    bad "pnpm $SEED 失败 → tail /tmp/bootstrap-seed.log"
-  fi
-done
 
 # ---------- 5. computer-use 桌面栈（操作电脑能力） ----------
 sec "5/6 computer-use 桌面栈（操作电脑能力，可选但强烈建议）"

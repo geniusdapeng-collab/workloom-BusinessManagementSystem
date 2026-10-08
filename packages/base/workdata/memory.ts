@@ -9,6 +9,7 @@
  *    Mock 确定性伪向量（D4 无 Key 可跑）/ OpenAI 兼容 /embeddings（真实语义）
  *  - 生命周期：active → superseded（被新记忆取代）/ recalled（回收区 F1.11），禁物理删除
  */
+import { createHash } from "node:crypto";
 import type pg from "pg";
 import {
   EMBEDDING_DIM,
@@ -78,25 +79,48 @@ export interface MemoryInput {
   confidence?: number;
 }
 
+/** 工作区派生记忆的稳定主键；结构化四元组避免跨租户、跨工作区与字符串拼接碰撞。 */
+export function scopedMemoryId(
+  scope: { tenantId: string; workspaceId: string },
+  namespace: string,
+  key: string,
+): string {
+  return `${namespace}-${createHash("sha256").update(JSON.stringify([scope.tenantId, scope.workspaceId, namespace, key])).digest("hex")}`;
+}
+
 async function withScope<T>(
   pool: pg.Pool,
   scope: { tenantId: string; workspaceId: string },
   fn: (c: pg.PoolClient) => Promise<T>,
 ): Promise<T> {
   const client = await pool.connect();
+  let transactionStarted = false;
+  let commitAttempted = false;
+  let discardError: Error | undefined;
   try {
     // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
     await client.query("BEGIN");
+    transactionStarted = true;
     await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
     await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
     const result = await fn(client);
+    commitAttempted = true;
     await client.query("COMMIT");
     return result;
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
+  } catch (primaryError) {
+    if (!transactionStarted || commitAttempted) {
+      discardError = primaryError instanceof Error ? primaryError : new Error("记忆事务状态不确定", { cause: primaryError });
+    }
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      const failure = new AggregateError([primaryError, rollbackError], "记忆事务失败且回滚失败", { cause: primaryError });
+      discardError = failure;
+      throw failure;
+    }
+    throw primaryError;
   } finally {
-    client.release();
+    client.release(discardError);
   }
 }
 

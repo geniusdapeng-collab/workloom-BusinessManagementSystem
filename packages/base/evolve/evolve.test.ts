@@ -127,7 +127,7 @@ d("PG 集成 · 自我进化飞轮（种子库）", async () => {
     restoreMemories,
   } = await import("./memory-lifecycle.js");
   const { buildEvolutionScorecard } = await import("./scorecard.js");
-  const { upsertMemory, MockEmbedder, searchMemories, getMemorySources } = await import("../workdata/memory.js");
+  const { upsertMemory, MockEmbedder, scopedMemoryId, searchMemories, getMemorySources } = await import("../workdata/memory.js");
   const { gatewayAppendOnClient } = await import("../workdata/gateway.js");
   const { EVOLUTION_MIN_SIGNAL_SAMPLES } = await import("@workloom/shared");
 
@@ -255,11 +255,12 @@ d("PG 集成 · 自我进化飞轮（种子库）", async () => {
     // 记忆内容带统计口径；归因可反查
     // 固定 memory_id 会跨重复验收运行被幂等强化；按精确 ID 读取，避免工作区中
     // 历史记忆超过列表上限后让存在性断言受到分页顺序影响。
-    const { memory: mem } = await getMemorySources(app, scope, "mem-reject-price.too_high");
+    const memoryId = scopedMemoryId(scope, "mem-reject", "price.too_high");
+    const { memory: mem } = await getMemorySources(app, scope, memoryId);
     expect(mem).toBeDefined();
     expect(mem!.content).toContain("price.too_high");
     expect(Number(mem!.confidence)).toBeGreaterThan(0.5);
-    const sources = await getMemorySources(app, scope, "mem-reject-price.too_high");
+    const sources = await getMemorySources(app, scope, memoryId);
     expect(sources.sourceEvents.length).toBeGreaterThanOrEqual(3);
   });
 
@@ -267,7 +268,7 @@ d("PG 集成 · 自我进化飞轮（种子库）", async () => {
     await seedGestures(3, "edit", undefined, "preference");
     const r = await runMemoryMinerBeat(app, gateway, scope);
     expect(r.editPatterns).toBeGreaterThanOrEqual(1);
-    const { memory: mem } = await getMemorySources(app, scope, "mem-pat-edit-price.adjust");
+    const { memory: mem } = await getMemorySources(app, scope, scopedMemoryId(scope, "mem-pat-edit", "price.adjust"));
     expect(mem).toBeDefined();
     expect(mem!.content).toContain("口味");
   });
@@ -292,7 +293,7 @@ d("PG 集成 · 自我进化飞轮（种子库）", async () => {
     const reactivated = await reactivateMemory(app, gateway, scope, { memberNo: "MEM-001" }, `mem-inj-pref-${RUN}`);
     expect(reactivated.calibrateEventId).toMatch(/^E-\d+$/);
     expect((await searchMemories(app, scope, { limit: 50 })).some((h) => h.memory_id === `mem-inj-pref-${RUN}`)).toBe(true);
-    // 来源人清算：本用例 MEM-TEST-<RUN> 的手势沉淀（提炼器强化的 mem-reject-price.too_high 含其来源事件）
+    // 来源人清算：本用例 MEM-TEST-<RUN> 的手势沉淀（提炼器强化的本工作区偏好含其来源事件）
     const recall = await recallMemoriesByMember(app, gateway, scope, { memberNo: "MEM-001" }, `MEM-TEST-${RUN}`);
     expect(recall.recalled.length).toBeGreaterThanOrEqual(1);
     expect(recall.calibrateEventIds.length).toBe(recall.recalled.length);

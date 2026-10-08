@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "workloom.actual-preview-evidence/v1",
+  "observedAt": "2026-10-08T17:54:12.623Z",
+  "phase": "candidate-local-preview",
+  "sourceSnapshot": {
+    "createdAt": "2026-10-08T17:51:27.695846+00:00",
+    "sourceSnapshot": "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/actual-foundation-preview/source",
+    "sourceTreeDirty": true,
+    "nodeModulesShared": [
+      "node_modules",
+      "packages/runtime/node_modules",
+      "packages/shared/node_modules",
+      "packages/audit-engine/node_modules",
+      "packages/db/node_modules",
+      "packages/base/node_modules",
+      "packages/industry-contract/node_modules",
+      "apps/web/node_modules",
+      "apps/webc/node_modules",
+      "apps/server/node_modules",
+      "apps/webb/node_modules"
+    ],
+    "database": "loopback:5992/bms_final_20261009",
+    "model": "mock",
+    "manifestSha256": "a6e010cc51204a4cb5d5e3874dd5cc79d5c1b6ff0b62827590b39711c5eb3db8",
+    "manifestDigest": "c3f535ab88712096205c3335fa1e8bf06da9854b28cb7c22b54134e5dcfa5a37",
+    "sourceEnvCreated": false,
+    "ports": {
+      "pc": 3000,
+      "bMobile": 3001,
+      "cMobile": 3002,
+      "server": 8787
+    }
+  },
+  "actor": "/root/business_engine",
+  "command": "bash scripts/preview-all.sh",
+  "model": "mock",
+  "productionVerified": false,
+  "preconditions": [
+    "Isolated loopback PostgreSQL final sandbox already migrated and seeded",
+    "No listeners on preview ports before startup",
+    "Current source copied without modifying repository .env or tracked code"
+  ],
+  "steps": [
+    "Run actual preview:all with pinned bundled Node/pnpm",
+    "Migration and current-product seed return success",
+    "Start actual server and three Vite clients",
+    "HTTP health/readiness succeeds for all four services"
+  ],
+  "expected": "Four local services report HTTP 200; model remains mock; smart-home assets remain installed",
+  "actual": {
+    "checks": [
+      {
+        "id": "server",
+        "port": 8787,
+        "path": "/health",
+        "url": "http://127.0.0.1:8787/health",
+        "status": 200,
+        "contentType": "application/json",
+        "bodySha256": "3b65a0c4de2e0c9fe1ef71222a5eec8cf63c1de63fac0aa796e8335711ca29ea",
+        "health": {
+          "ok": true,
+          "service": "workloom-im-server"
+        }
+      },
+      {
+        "id": "pc",
+        "port": 3000,
+        "path": "/",
+        "url": "http://127.0.0.1:3000/",
+        "status": 200,
+        "contentType": "text/html",
+        "bodySha256": "97c2c728a96863d97becd0d619993363066993acea0c5334a73c4fe04cdce8c8",
+        "title": "经营管理系统（BusinessManagementSystem） · B 端工作台"
+      },
+      {
+        "id": "b-mobile",
+        "port": 3001,
+        "path": "/",
+        "url": "http://127.0.0.1:3001/",
+        "status": 200,
+        "contentType": "text/html",
+        "bodySha256": "34c02d3c2cf4d12d473967338317981a80dd04d558d72d6ec25272bb0c967dea",
+        "title": "经营管理系统（BusinessManagementSystem） · B 端移动工作台"
+      },
+      {
+        "id": "c-mobile",
+        "port": 3002,
+        "path": "/",
+        "url": "http://127.0.0.1:3002/",
+        "status": 200,
+        "contentType": "text/html",
+        "bodySha256": "b63727475d7de925ec23e078fdc1c820af17128d5cfdeb2cb62019d3756ae18a",
+        "title": "经营管理系统（BusinessManagementSystem） · C 端 AI 服务前台"
+      }
+    ],
+    "database": {
+      "agents": 20,
+      "skill_installs": 35,
+      "fences": 16,
+      "active_installs": 1,
+      "business_events": 0
+    }
+  },
+  "result": "pass",
+  "limitations": [
+    "Candidate source tree was dirty; this proof is not a clean-commit MCD acceptance artifact",
+    "Shared node_modules point to the current frozen source modules",
+    "No browser interaction, field operation, external connector or production model claim"
+  ]
+}

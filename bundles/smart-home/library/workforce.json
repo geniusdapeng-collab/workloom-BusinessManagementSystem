@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "business-management.workforce/v1",
+  "roles": [
+    {
+      "id": "store-ceo",
+      "name": "门店数字总经理",
+      "kind": "commander",
+      "skills": [
+        "store-diagnosis",
+        "goal-decomposition",
+        "owner-briefing"
+      ],
+      "responsibility": "将董事长目标拆成获客、交付、售后任务；按证据向董事长汇报差距和待决事项。"
+    },
+    {
+      "id": "growth-director",
+      "name": "增长经营主管",
+      "kind": "growth",
+      "skills": [
+        "campaign-review",
+        "partner-channel"
+      ],
+      "responsibility": "经营渠道预算、伙伴合作和线索归因；核对有效线索与签约成本，生成调整建议。"
+    },
+    {
+      "id": "market-researcher",
+      "name": "本地市场研究员",
+      "kind": "research",
+      "skills": [
+        "market-intelligence",
+        "local-search-presence"
+      ],
+      "responsibility": "读取有授权的本地需求、竞品公开信息和搜索证据；记录来源、时间与不确定性。"
+    },
+    {
+      "id": "content-strategist",
+      "name": "内容选题主理人",
+      "kind": "content",
+      "skills": [
+        "content-planning"
+      ],
+      "responsibility": "将客户痛点、场景证据和门店服务范围变成分平台选题、脚本与搜索问答草稿。"
+    },
+    {
+      "id": "video-producer",
+      "name": "短视频制作员",
+      "kind": "video",
+      "skills": [
+        "short-video-production"
+      ],
+      "responsibility": "编写可拍摄分镜、配音稿、字幕和剪辑说明；核对素材授权，标识模拟与真实实拍。"
+    },
+    {
+      "id": "social-publisher",
+      "name": "社媒发布管理员",
+      "kind": "publish",
+      "skills": [
+        "social-publishing"
+      ],
+      "responsibility": "整理发布审批和平台素材包；只有已配置连接器且真实回执成立才记录发布完成。"
+    },
+    {
+      "id": "lead-concierge",
+      "name": "客户线索接待员",
+      "kind": "reception",
+      "skills": [
+        "lead-qualification",
+        "customer-consent"
+      ],
+      "responsibility": "归集渠道意向、装修阶段、预算区间和服务地域；把用途授权与撤回独立留痕。"
+    },
+    {
+      "id": "sales-consultant",
+      "name": "门店方案顾问",
+      "kind": "sales",
+      "skills": [
+        "consultative-sales",
+        "experience-appointment",
+        "referral-retention"
+      ],
+      "responsibility": "按客户需求安排体验路线与勘测移交；不擅自给价格、兼容性和工期保证。"
+    },
+    {
+      "id": "solution-designer",
+      "name": "全屋智能方案设计师",
+      "kind": "design",
+      "skills": [
+        "solution-design",
+        "bom-check"
+      ],
+      "responsibility": "基于现场勘测设计分房间点位、设备清单、一键场景和条件自动化；标明排除项。"
+    },
+    {
+      "id": "survey-engineer",
+      "name": "现场勘测工程师",
+      "kind": "survey",
+      "skills": [
+        "site-survey",
+        "network-planning"
+      ],
+      "responsibility": "接收合格现场人员勘测记录，核对回路、零线、负载、网络和安装约束；不代替现场测量。"
+    },
+    {
+      "id": "compatibility-engineer",
+      "name": "兼容性验证工程师",
+      "kind": "compatibility",
+      "skills": [
+        "compatibility-verification",
+        "store-demo-health"
+      ],
+      "responsibility": "核对设备型号、固件、网关、生态和功能集的精确兼容证据；未知组合保持待核验。"
+    },
+    {
+      "id": "quote-controller",
+      "name": "报价与合同审核员",
+      "kind": "quote",
+      "skills": [
+        "quote-margin-control",
+        "contract-handoff"
+      ],
+      "responsibility": "复算设备、施工、服务、折扣与毛利；发起报价承诺审批并对接签约证据。"
+    },
+    {
+      "id": "project-manager",
+      "name": "项目交付经理",
+      "kind": "delivery",
+      "skills": [
+        "project-scheduling"
+      ],
+      "responsibility": "协调采购、进场、安装、调试、验收依赖和变更；缺前置证据不能推进工程里程碑。"
+    },
+    {
+      "id": "procurement-controller",
+      "name": "采购与库存管理员",
+      "kind": "procurement",
+      "skills": [
+        "procurement-inventory"
+      ],
+      "responsibility": "核对批准清单、到货数量、型号版本和序列号；采购记录不等同支付或供应商下单。"
+    },
+    {
+      "id": "installation-supervisor",
+      "name": "安装质量主管",
+      "kind": "installation",
+      "skills": [
+        "installation-quality"
+      ],
+      "responsibility": "核对持证人员、断电保护、厂家指导、点位照片和装配结果；只记录现场证据。"
+    },
+    {
+      "id": "commissioning-engineer",
+      "name": "场景调试工程师",
+      "kind": "commissioning",
+      "skills": [
+        "scene-commissioning"
+      ],
+      "responsibility": "逐场景验触发、行为、失败回退、断网与手动控制；没有测试记录不声明调试成功。"
+    },
+    {
+      "id": "acceptance-auditor",
+      "name": "客户验收审核员",
+      "kind": "acceptance",
+      "skills": [
+        "acceptance-handover"
+      ],
+      "responsibility": "核对合同范围、每个场景、客户培训、账号交接与未闭问题；签收必须有客户证据。"
+    },
+    {
+      "id": "aftercare-specialist",
+      "name": "售后服务专员",
+      "kind": "aftercare",
+      "skills": [
+        "aftercare-triage",
+        "aftercare-resolution",
+        "customer-followup"
+      ],
+      "responsibility": "把离线、误触发、网络、设备、安全和隐私问题分流；按真实服务与客户确认闭环。"
+    },
+    {
+      "id": "finance-controller",
+      "name": "经营财务控制员",
+      "kind": "finance",
+      "skills": [
+        "finance-reconcile"
+      ],
+      "responsibility": "复核报价、合同、采购凭据、收款与应收差异；不收款、不付款、不自动平账。"
+    },
+    {
+      "id": "knowledge-steward",
+      "name": "知识与复盘管理员",
+      "kind": "knowledge",
+      "skills": [
+        "knowledge-maintenance",
+        "incident-learning",
+        "data-import-qa"
+      ],
+      "responsibility": "维护设备证据、问答、失败案例与字段映射；版本变更先形成新证据再替换引用。"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "scope": "service-intent-only",
+  "categories": [
+    {
+      "key": "experience",
+      "name": "展厅体验"
+    },
+    {
+      "key": "survey",
+      "name": "现场勘测意向"
+    },
+    {
+      "key": "consultation",
+      "name": "方案咨询"
+    }
+  ],
+  "items": [
+    {
+      "name": "灯光窗帘与传感体验",
+      "category": "experience",
+      "unit": "次",
+      "note": "登记意向，待顾问确认可用场景和时间",
+      "robot": false
+    },
+    {
+      "name": "暖通与家庭场景体验",
+      "category": "experience",
+      "unit": "次",
+      "note": "先核对展厅实际设备，不作客户家庭兼容保证",
+      "robot": false
+    },
+    {
+      "name": "新房与精装现场勘测",
+      "category": "survey",
+      "unit": "次",
+      "note": "登记装修阶段与地域，待门店安排专业人员",
+      "robot": false
+    },
+    {
+      "name": "已入住无线改造勘测",
+      "category": "survey",
+      "unit": "次",
+      "note": "先核对隐私授权、回路、网络和施工影响",
+      "robot": false
+    },
+    {
+      "name": "预算与分期实施咨询",
+      "category": "consultation",
+      "unit": "次",
+      "note": "形成需求草稿，具体报价经勘测与批准后提供",
+      "robot": false
+    }
+  ]
+}

@@ -1,0 +1,996 @@
+{
+  "schemaVersion": "bms.gateway-transaction-proof/v1",
+  "actor": "/root/workbench_audit",
+  "asOf": "2026-10-08T20:13:21.791672+00:00",
+  "sourceState": "Dirty candidate with owned production source frozen; this is not a clean final-commit receipt or independent MCD acceptance.",
+  "cards": [
+    "MC020",
+    "MC023",
+    "MC024"
+  ],
+  "dataMode": "isolated local synthetic PostgreSQL; original workdata/atomicity cases use the separate explicit hotel compatibility sandbox",
+  "externalModelCalls": 0,
+  "externalDeviceCalls": 0,
+  "customerProductionCalls": 0,
+  "startedAt": "2026-10-08T20:03:43.806000+00:00",
+  "finishedAt": "2026-10-08T20:03:44.335076+00:00",
+  "result": {
+    "passed": 72,
+    "failed": 0,
+    "skipped": 0
+  },
+  "methodCounts": {
+    "actual-postgresql": 26,
+    "controlled-unit": 21,
+    "postgresql-with-controlled-transport-fault": 18,
+    "preconnection-guard-with-postgresql-fixture": 7
+  },
+  "rawReportSha256": "561e075ff3aec9446e4e736a646fc91b138a9111e6ff15701cb1d81f9d4b9919",
+  "reproduction": {
+    "argv": [
+      "pnpm",
+      "--filter",
+      "@workloom/base",
+      "exec",
+      "vitest",
+      "run",
+      "workdata/gateway-transaction.pg.test.ts",
+      "workdata/workdata.test.ts",
+      "workdata/atomicity.test.ts",
+      "--reporter=json"
+    ],
+    "requiredEnvironment": [
+      "RUN_DB_TESTS=1",
+      "BMS_PG_TEST_URL=<loopback administrative disposable database URL>",
+      "DATABASE_APP_URL=<explicit synthetic hotel compatibility app-role URL>",
+      "DATABASE_GATEWAY_URL=<same synthetic hotel compatibility gateway-role URL>"
+    ],
+    "note": "Reproduction arguments reflect the observed three test files; actual results are parsed from the recorded Vitest report. No credential value is embedded."
+  },
+  "beforeFix": [
+    {
+      "reportSha256": "9676f78dbbe8711476ce114b59ee4acba90063b8784513d48832123b8c21a4c1",
+      "evidence": {
+        "actor": "/root/workbench_audit",
+        "startedAt": "2026-10-08T19:49:35.701Z",
+        "externalCalls": 0,
+        "dataMode": "isolated-synthetic-disposable-postgresql",
+        "method": "Real gateway-role transactions; two controlled acknowledgement/rollback faults plus one unmodified invalid-namespace request.",
+        "faultCases": [
+          {
+            "kind": "append",
+            "expected": "AggregateError retains primary and cleanup; failed connection discarded and not reused in an open transaction.",
+            "originalErrorReturned": true,
+            "rollbackErrorRetained": false,
+            "releaseCount": 1,
+            "releaseHadDiscardError": false,
+            "samePhysicalConnectionReused": true,
+            "stillInsidePriorTransaction": true,
+            "previousWorkspaceContextReused": true
+          },
+          {
+            "kind": "idempotent-auth",
+            "expected": "AggregateError retains primary and cleanup; failed connection discarded and not reused in an open transaction.",
+            "originalErrorReturned": true,
+            "rollbackErrorRetained": false,
+            "releaseCount": 1,
+            "releaseHadDiscardError": false,
+            "samePhysicalConnectionReused": true,
+            "stillInsidePriorTransaction": true,
+            "previousWorkspaceContextReused": true
+          }
+        ],
+        "migrations": 43,
+        "databaseRole": "workloom_gateway",
+        "atomicAuthorizationCase": {
+          "expected": "Invalid event rejects before consuming approval; no event and consumed_at remains null.",
+          "returnedError": {
+            "name": "Error",
+            "message": "回放通道 event_id 必须使用独立前缀空间（E-SEED-/E-RPL- 开头），拒绝：E-889901（P0-3）"
+          },
+          "approvalConsumedBefore": false,
+          "approvalConsumedAfter": true,
+          "eventCount": 0,
+          "usedProductionCodeWithoutFaultInjection": true
+        },
+        "rollbackReuseBugReproduced": true,
+        "authorizationAtomicityBugReproduced": true,
+        "limitations": "Rollback cases intentionally inject transport acknowledgement failures around actual PostgreSQL operations; namespace case uses an unmodified production call. All inputs and approvals are isolated synthetic fixtures; no external device action runs.",
+        "poolCleanupFailures": [],
+        "databaseRemoved": true,
+        "sourceFingerprints": {
+          "packages/base/workdata/gateway.ts": "4491aa31dcf881b65a46a8e43a2d6e9e39928044e108c0dccf7e92bec7b6d708",
+          "packages/base/workdata/events.ts": "c2cea423e934037fa4e2802a83ebe69daca1facb1e6876434783d2b13a530ed5"
+        },
+        "finishedAt": "2026-10-08T19:49:35.905Z"
+      }
+    },
+    {
+      "reportSha256": "61236be89c2ac5ef7edfd0c293aae01c5b081ab331f182cf0ace5ab39ae03bb4",
+      "evidence": {
+        "actor": "/root/workbench_audit",
+        "startedAt": "2026-10-08T19:59:53.666Z",
+        "externalCalls": 0,
+        "dataMode": "isolated-synthetic-disposable-postgresql",
+        "sourceCommit": "8b057a5e995d899af0dd2ae659c4453d5833ad1f",
+        "method": "Exact unmodified committed gateway/events/pii source copied to work; real gateway-role PostgreSQL, no faults or database stubs.",
+        "expected": "A replay payload attributed to a different real tenant/workspace must reject without consuming the local approval or adding an event.",
+        "migrations": 43,
+        "databaseRole": "workloom_gateway",
+        "returnedSuccess": {
+          "eventId": "E-RPL-scope-943b4aab-fc25-4cac-8345-02336975d805",
+          "deduped": false
+        },
+        "actual": {
+          "metadataIsLocal": true,
+          "payloadClaimsForeignScope": true,
+          "approvalConsumed": true,
+          "foreignWorkspaceTableEventCount": 0
+        },
+        "productionBugReproduced": true,
+        "originalAuditLocations": [
+          "packages/base/workdata/gateway.ts:400-421",
+          "packages/base/workdata/events.ts:213-243",
+          "packages/db/migrations/0051_append_event_tenant_guard.sql:39-55"
+        ],
+        "limitations": "No external action is executed. The approved row represents an explicitly synthetic fixture. This verifies committed source on isolated PostgreSQL, not a live customer deployment.",
+        "poolCleanupFailures": [],
+        "databaseRemoved": true,
+        "sourceFingerprints": {
+          "packages/base/workdata/gateway.ts": "4491aa31dcf881b65a46a8e43a2d6e9e39928044e108c0dccf7e92bec7b6d708",
+          "packages/base/workdata/events.ts": "c2cea423e934037fa4e2802a83ebe69daca1facb1e6876434783d2b13a530ed5",
+          "packages/base/workdata/pii.ts": "2c9f18d1a220ecaab52e904486b6c2b9872336d6080303f86c928786d7fbadec"
+        },
+        "finishedAt": "2026-10-08T19:59:53.907Z"
+      }
+    }
+  ],
+  "sourceFingerprints": {
+    "packages/base/workdata/gateway.ts": "9772ef519f139d2ac52ab4fe5d6ffdacf06e36c08c54f1aaa63b855be73442c6",
+    "packages/base/workdata/events.ts": "b5dc8a1333562f34fbbc9659032eb2560cee7861a3409b6a1ffd015e3f993358",
+    "packages/base/workdata/pii.ts": "2c9f18d1a220ecaab52e904486b6c2b9872336d6080303f86c928786d7fbadec",
+    "packages/base/workdata/gateway-transaction.pg.test.ts": "39852ce623668264c4c0a3f4b33b1fb77553b0779ed2783003a487bc53ce134f",
+    "packages/base/workdata/workdata.test.ts": "924ad3e16024eb84a9a8b736dd2ac71c8ed410a41a2b9689976f93861ae7803f",
+    "packages/base/workdata/atomicity.test.ts": "8a7967390bdfc6c19850e6bf3674a57c69bb3da58bb9769b8253eca95c474d0c",
+    "packages/shared/src/event-schema.ts": "29820b39e97ef57fe5a6f0963a27c57e575d923a59009773147d3fc8aecc896b",
+    "packages/db/migrations/0051_append_event_tenant_guard.sql": "4030f3dd3d8d1be51ffa09e46d79020742995c8ad37b8c7f872252a15c78ce76"
+  },
+  "suites": [
+    {
+      "file": "packages/base/workdata/atomicity.test.ts",
+      "status": "passed",
+      "methodCounts": {
+        "actual-postgresql": 5
+      },
+      "startedAt": "2026-10-08T20:03:43.996000+00:00",
+      "finishedAt": "2026-10-08T20:03:44.073711+00:00",
+      "cases": [
+        {
+          "name": "D16 业务+事件原子性（app 池单事务） 同一事务：业务行与事件同生（提交后双双可见）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 35.49487499999998
+        },
+        {
+          "name": "D16 业务+事件原子性（app 池单事务） 崩溃注入：业务写后强制失败 → 状态与事件同滚回（无孤儿）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 4.374750000000006
+        },
+        {
+          "name": "D16 业务+事件原子性（app 池单事务） DB 层链校验：prev_hash 伪造经函数写入被拒（断链拒写）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 31.399833
+        },
+        {
+          "name": "D16 业务+事件原子性（app 池单事务） DB 层防伪造：GUC 上下文与事件归属不符被拒",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 0.6038339999999778
+        },
+        {
+          "name": "D16 业务+事件原子性（app 池单事务） A3 不变：app 角色绕过函数直接 INSERT biz_events 仍被拒",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 5.710791999999998
+        }
+      ]
+    },
+    {
+      "file": "packages/base/workdata/gateway-transaction.pg.test.ts",
+      "status": "passed",
+      "methodCounts": {
+        "controlled-unit": 1,
+        "postgresql-with-controlled-transport-fault": 18,
+        "preconnection-guard-with-postgresql-fixture": 7,
+        "actual-postgresql": 11
+      },
+      "startedAt": "2026-10-08T20:03:43.994000+00:00",
+      "finishedAt": "2026-10-08T20:03:44.335076+00:00",
+      "cases": [
+        {
+          "name": "event transaction connection failure propagates before any transaction or release",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 1.1252090000000123
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppend retains real-write and rollback errors, destroys the connection and rolls back event/approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 18.160708
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppendIdempotent retains real-write and rollback errors, destroys the connection and rolls back event/approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 7.379916999999978
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL appendEvent retains real-write and rollback errors, destroys the connection and rolls back event/approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 5.885083999999949
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL appendEventIdempotent retains real-write and rollback errors, destroys the connection and rolls back event/approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 5.65216700000002
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppend rejects a COMMIT failure, rolls back writes and discards the uncertain connection",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 3.922541000000024
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppendIdempotent rejects a COMMIT failure, rolls back writes and discards the uncertain connection",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 6.490000000000009
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL appendEvent rejects a COMMIT failure, rolls back writes and discards the uncertain connection",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 5.089958000000024
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL appendEventIdempotent rejects a COMMIT failure, rolls back writes and discards the uncertain connection",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 5.054250000000025
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppend reports lost COMMIT acknowledgement instead of false success while preserving actual committed state",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 5.120750000000044
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppendIdempotent reports lost COMMIT acknowledgement instead of false success while preserving actual committed state",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 5.582833999999991
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL appendEvent reports lost COMMIT acknowledgement instead of false success while preserving actual committed state",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 4.8877089999999725
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL appendEventIdempotent reports lost COMMIT acknowledgement instead of false success while preserving actual committed state",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 4.766999999999996
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppend rolls back RLS setup failure before touching an event or approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 3.9577920000000404
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppendIdempotent rolls back RLS setup failure before touching an event or approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 1.4524579999999787
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL appendEvent rolls back RLS setup failure before touching an event or approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 1.5026249999999663
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL appendEventIdempotent rolls back RLS setup failure before touching an event or approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 2.3840419999999654
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL BEGIN and rollback failures retain both causes before any scoped write",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 1.171625000000006
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL non-Error rollback failures remain visible and the client is discarded with an Error",
+          "status": "passed",
+          "evidence": "B",
+          "method": "postgresql-with-controlled-transport-fault",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a fresh local PostgreSQL database with all 43 migrations and the real gateway role; inject a named fault before SQL or after its real acknowledgement; inspect release, physical connection identity, transaction state, stored event and approval.",
+          "expected": "Reject with the primary cause and any rollback cause; discard uncertain or failed-cleanup connections. A fault before COMMIT leaves no write; a fault after actual COMMIT reports an error and retains the committed event/approval rather than claiming rollback.",
+          "actual": "passed",
+          "durationMs": 5.062457999999992
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL ordinary sequence namespace rejects before connection and never consumes a valid approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "preconnection-guard-with-postgresql-fixture",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a synthetic scope and approval on PostgreSQL; submit invalid schema, namespace, payload attribution or permission; assert no invocation connection and no event/approval side effect. The InTx attribution case additionally verifies rollback inside a real caller transaction.",
+          "expected": "Invalid input or scope rejects before authorization consumption and event insertion; the approval remains unconsumed and both scopes have no new event.",
+          "actual": "passed",
+          "durationMs": 4.546124999999961
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL invalid event schema fails before permission or connection and never consumes approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "preconnection-guard-with-postgresql-fixture",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a synthetic scope and approval on PostgreSQL; submit invalid schema, namespace, payload attribution or permission; assert no invocation connection and no event/approval side effect. The InTx attribution case additionally verifies rollback inside a real caller transaction.",
+          "expected": "Invalid input or scope rejects before authorization consumption and event insertion; the approval remains unconsumed and both scopes have no new event.",
+          "actual": "passed",
+          "durationMs": 1.7401249999999777
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL a real payload-conflict SQL error rolls back authorization; valid retry can still use the approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 4.824165999999991
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL authorization consumption and idempotent event insertion use one client and one COMMIT",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 2.8714580000000183
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL two concurrent requests sharing one approval commit one action and reject the other consumption",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 4.246167000000014
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL same-payload replay preserves the original sequence/hash; different payload is rejected without a new event",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 4.725083000000041
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL same-payload replay cannot bypass one-time authorization with an already consumed reference",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 2.5319169999999644
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL foreign workspace and tenant cannot consume another scope's approval",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 2.6854999999999905
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL mismatching replay tenant rejects before connection or local approval consumption",
+          "status": "passed",
+          "evidence": "B",
+          "method": "preconnection-guard-with-postgresql-fixture",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a synthetic scope and approval on PostgreSQL; submit invalid schema, namespace, payload attribution or permission; assert no invocation connection and no event/approval side effect. The InTx attribution case additionally verifies rollback inside a real caller transaction.",
+          "expected": "Invalid input or scope rejects before authorization consumption and event insertion; the approval remains unconsumed and both scopes have no new event.",
+          "actual": "passed",
+          "durationMs": 2.9150000000000205
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL mismatching replay workspace rejects before connection or local approval consumption",
+          "status": "passed",
+          "evidence": "B",
+          "method": "preconnection-guard-with-postgresql-fixture",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a synthetic scope and approval on PostgreSQL; submit invalid schema, namespace, payload attribution or permission; assert no invocation connection and no event/approval side effect. The InTx attribution case additionally verifies rollback inside a real caller transaction.",
+          "expected": "Invalid input or scope rejects before authorization consumption and event insertion; the approval remains unconsumed and both scopes have no new event.",
+          "actual": "passed",
+          "durationMs": 2.9209999999999923
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL mismatching replay both rejects before connection or local approval consumption",
+          "status": "passed",
+          "evidence": "B",
+          "method": "preconnection-guard-with-postgresql-fixture",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a synthetic scope and approval on PostgreSQL; submit invalid schema, namespace, payload attribution or permission; assert no invocation connection and no event/approval side effect. The InTx attribution case additionally verifies rollback inside a real caller transaction.",
+          "expected": "Invalid input or scope rejects before authorization consumption and event insertion; the approval remains unconsumed and both scopes have no new event.",
+          "actual": "passed",
+          "durationMs": 2.730583999999965
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL direct idempotent wrapper and InTx primitive both reject foreign payload attribution",
+          "status": "passed",
+          "evidence": "B",
+          "method": "preconnection-guard-with-postgresql-fixture",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a synthetic scope and approval on PostgreSQL; submit invalid schema, namespace, payload attribution or permission; assert no invocation connection and no event/approval side effect. The InTx attribution case additionally verifies rollback inside a real caller transaction.",
+          "expected": "Invalid input or scope rejects before authorization consumption and event insertion; the approval remains unconsumed and both scopes have no new event.",
+          "actual": "passed",
+          "durationMs": 2.660333000000037
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppend normalizes ordinary drafts to the trusted context before authorization and event storage",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 3.027749999999969
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL gatewayAppendOnClient normalizes ordinary drafts to the trusted context before authorization and event storage",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 2.985375000000033
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL readonly, missing fence bindings and mismatching attribution reject before database access",
+          "status": "passed",
+          "evidence": "B",
+          "method": "preconnection-guard-with-postgresql-fixture",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Create a synthetic scope and approval on PostgreSQL; submit invalid schema, namespace, payload attribution or permission; assert no invocation connection and no event/approval side effect. The InTx attribution case additionally verifies rollback inside a real caller transaction.",
+          "expected": "Invalid input or scope rejects before authorization consumption and event insertion; the approval remains unconsumed and both scopes have no new event.",
+          "actual": "passed",
+          "durationMs": 1.37175000000002
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL binding mismatch, expired, pending and forged approvals never authorize an event",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 2.9149170000000026
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL PII is masked before authorization/event insertion and the complete workspace hash chain recomputes",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 2.516249999999957
+        },
+        {
+          "name": "MC-020/MC-023 event transactions and one-time authorization on disposable PostgreSQL the idempotent InTx primitive joins caller business writes and rolls them back with the event",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 2.076166999999998
+        }
+      ]
+    },
+    {
+      "file": "packages/base/workdata/workdata.test.ts",
+      "status": "passed",
+      "methodCounts": {
+        "controlled-unit": 20,
+        "actual-postgresql": 10
+      },
+      "startedAt": "2026-10-08T20:03:43.999000+00:00",
+      "finishedAt": "2026-10-08T20:03:44.083166+00:00",
+      "cases": [
+        {
+          "name": "PII 脱敏（瀑布段②） 手机号/身份证/邮箱命中占位符协议，同值同占位",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 1.3740420000000029
+        },
+        {
+          "name": "PII 脱敏（瀑布段②） M2-PII：占位符为 HMAC-SHA256（≥12 hex，带盐不可彩虹表反推）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.4212500000000148
+        },
+        {
+          "name": "PII 脱敏（瀑布段②） M2-PII：分段手机号（138 0000 0000）与分隔符证件号命中",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.164874999999995
+        },
+        {
+          "name": "PII 脱敏（瀑布段②） 身份证号优先于银行卡，不误伤价格数字",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.11387499999997885
+        },
+        {
+          "name": "PII 脱敏（瀑布段②） maskDeep 递归到嵌套叶子",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.306541999999979
+        },
+        {
+          "name": "权限段①（F2.10/L9.1 复查位） 未声明 fence_bindings 的 Agent 写动作被拒",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.19429100000002109
+        },
+        {
+          "name": "权限段①（F2.10/L9.1 复查位） 只读 preset 写动作被拒（L9.1）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.2808330000000012
+        },
+        {
+          "name": "权限段①（F2.10/L9.1 复查位） 声明了围栏的 Agent 写动作放行；只读动作不受限",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.1298749999999984
+        },
+        {
+          "name": "权限段①（F2.10/L9.1 复查位） M5：白名单系统组件豁免段①；未知 system 身份按普通身份走全检查",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.28787499999998545
+        },
+        {
+          "name": "高风险授权段③（L3.5 + P1-8 验真） 缺授权引用被拒（L3.5）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.40108299999999986
+        },
+        {
+          "name": "高风险授权段③（L3.5 + P1-8 验真） 伪造引用查无此行被拒（P1-8）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.11012500000001069
+        },
+        {
+          "name": "高风险授权段③（L3.5 + P1-8 验真） 非 approved 状态被拒（pending/rejected 均不放行）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.08120800000000372
+        },
+        {
+          "name": "高风险授权段③（L3.5 + P1-8 验真） 已过期审批被拒（snapshot.expires_at 已过）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.09062499999998863
+        },
+        {
+          "name": "高风险授权段③（L3.5 + P1-8 验真） 绑定不符被拒；绑定齐备相符放行；缺绑定/已消费一律拒（MC-106）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.3481249999999818
+        },
+        {
+          "name": "高风险授权段③（L3.5 + P1-8 验真） 票据一次性消费：已被消费的审批再次验真必须被拒（B-02 / L3.5 逐次授权）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.07983400000000529
+        },
+        {
+          "name": "高风险授权段③（L3.5 + P1-8 验真） 非高危身份不查库直接放行",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.05166700000000901
+        },
+        {
+          "name": "回放通道命名空间（P0-3） E-SEED-/E-RPL- 前缀识别；普通 E-<digits> 与非 E 前缀一律不算回放 ID",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.06941699999998718
+        },
+        {
+          "name": "哈希链工具 canonicalJson 键序稳定",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.0796670000000006
+        },
+        {
+          "name": "哈希链工具 eventHash 确定性",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.0872500000000116
+        },
+        {
+          "name": "哈希链工具 写类动作判定",
+          "status": "passed",
+          "evidence": "B",
+          "method": "controlled-unit",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute pure validation/hash/PII/authorization-query stubs or a failing pool.connect; inspect named assertions without PostgreSQL execution for that case.",
+          "expected": "The named pure or controlled-client assertion passes; a connection failure propagates before any transaction callback.",
+          "actual": "passed",
+          "durationMs": 0.03895800000000804
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） 网关落库 → 事件编号续接 + 哈希链推进",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 25.604957999999982
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） #32 链可重算：网关写入与种子同口径（canonicalJson 生产口径逐条复验）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 1.3512499999999932
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） 重复 event_id 写入幂等丢弃不报错（L1.4；P0-3 回放前缀空间）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 35.86529200000001
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） P0-3：回放通道 event_id 无前缀（E-8801 等序列空间）一律拒绝",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 0.2690409999999872
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） P0-3：同 event_id 不同 payload 抢占攻击被拒（append_event_insert 比对 payload hash）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 3.116333999999995
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） L6：gatewayAppendIdempotent 段序统一先 zod 后权限（坏 payload 先报附录 E）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 0.16949999999999932
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） P1-8：伪造/状态不符/对象不符的 approvalRef 全拒；真实 approved 审批放行",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 9.21275
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） M5：白名单系统组件写动作放行（系统通道豁免段①）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 1.0178750000000036
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） #35 actor 与 who 身份分叉被拒（防伪造留痕），且不落库",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 0.6012079999999855
+        },
+        {
+          "name": "PG 集成（H-2/L1.4：幂等丢弃、哈希链序） 脱敏落库：事件库无明文手机号（F1.10 机制位）",
+          "status": "passed",
+          "evidence": "B",
+          "method": "actual-postgresql",
+          "preconditions": "Synthetic isolated local fixtures; required database flags explicitly enabled; no external device, customer or model call.",
+          "steps": "Execute the named original or added SQL/concurrency/authorization/hash-chain/atomicity scenario against the real local PostgreSQL role; query resulting event, approval or business rows and inspect every named assertion.",
+          "expected": "The named SQL assertions pass: one authorization permits one committed action, a failed event write rolls back consumption, valid replay retains the original hash/sequence, context matches trusted scope, and business/event writes commit or roll back together.",
+          "actual": "passed",
+          "durationMs": 2.16591600000001
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Transport faults are deliberate instrumentation around real PostgreSQL, not observations of spontaneous network loss in production.",
+    "A lost COMMIT acknowledgement does not prove rollback. Four tests execute COMMIT first, then raise a synthetic acknowledgement error; the committed state is retained and the client reports failure.",
+    "Typed replay APIs enforce payload.context against the trusted caller scope. The inherited low-level privileged SQL function was read and remains unchanged; direct privileged SQL payload semantics are a separate trust boundary.",
+    "Original atomicity coverage includes a first test whose direct app-pool read is blocked by RLS and checks the committed event separately; the new InTx test provides an explicit profile/event rollback pair.",
+    "All customers, approvals and actions are synthetic. No physical action or independent human decision is demonstrated by these tests."
+  ]
+}

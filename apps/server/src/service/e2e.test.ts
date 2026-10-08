@@ -9,6 +9,7 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { SignJWT } from "jose";
 import pg from "pg";
+import { installHotelContractFixture } from "./hotel-contract-fixture.js";
 
 /**
  * MC-204：E2E 端口必须可注入，且探活必须校验实例归属（不能只信 /health 200）：
@@ -135,6 +136,7 @@ async function signCToken(over: Record<string, unknown>, secret = DEV_C_SECRET, 
 beforeAll(async () => {
   if (!FIXTURE_WORKSPACE_ID) return;
   const workspaceId = FIXTURE_WORKSPACE_ID;
+  await installHotelContractFixture(workspaceId, DB_URL);
   process.env.SERVICE_C_WORKSPACE_ID = workspaceId;
   fixtureWorkspaceSlug = await resolveWorkspaceSlug();
   const instanceId = `e2e-${process.pid}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;

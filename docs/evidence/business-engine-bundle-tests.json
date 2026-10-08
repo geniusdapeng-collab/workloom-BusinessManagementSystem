@@ -1,0 +1,621 @@
+{
+  "numTotalTestSuites": 10,
+  "numPassedTestSuites": 10,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 46,
+  "numPassedTests": 41,
+  "numFailedTests": 0,
+  "numPendingTests": 5,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1791480490077,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries reads declared JSON after manifest and asset verification",
+          "status": "passed",
+          "title": "reads declared JSON after manifest and asset verification",
+          "duration": 33.591958000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries rejects an adjacent undeclared JSON file in candidate/draft mode false",
+          "status": "passed",
+          "title": "rejects an adjacent undeclared JSON file in candidate/draft mode false",
+          "duration": 19.099792000000008,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries rejects an adjacent undeclared JSON file in candidate/draft mode true",
+          "status": "passed",
+          "title": "rejects an adjacent undeclared JSON file in candidate/draft mode true",
+          "duration": 14.693415999999985,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries rejects invalid asset path ../outside.json",
+          "status": "passed",
+          "title": "rejects invalid asset path ../outside.json",
+          "duration": 16.686458000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries rejects invalid asset path /tmp/outside.json",
+          "status": "passed",
+          "title": "rejects invalid asset path /tmp/outside.json",
+          "duration": 17.31020799999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries rejects invalid asset path library/../workforce.json",
+          "status": "passed",
+          "title": "rejects invalid asset path library/../workforce.json",
+          "duration": 17.650333999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries computeAssembly propagates COMMIT failure and rolls back before release",
+          "status": "passed",
+          "title": "computeAssembly propagates COMMIT failure and rolls back before release",
+          "duration": 51.428291,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries query failure rolls back once without subsequently attempting COMMIT",
+          "status": "passed",
+          "title": "query failure rolls back once without subsequently attempting COMMIT",
+          "duration": 33.40295900000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries computeAssembly retains both failure causes and discards a connection whose rollback fails",
+          "status": "passed",
+          "title": "computeAssembly retains both failure causes and discards a connection whose rollback fails",
+          "duration": 32.19225,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries successful computeAssembly returns only after COMMIT",
+          "status": "passed",
+          "title": "successful computeAssembly returns only after COMMIT",
+          "duration": 30.64133300000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries activation COMMIT failure rejects and never registers post-commit feedback state",
+          "status": "passed",
+          "title": "activation COMMIT failure rejects and never registers post-commit feedback state",
+          "duration": 32.149125000000026,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries activation update failure rolls back without a second COMMIT",
+          "status": "passed",
+          "title": "activation update failure rolls back without a second COMMIT",
+          "duration": 30.793708000000038,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries activation retains COMMIT and rollback failures and discards the failed connection",
+          "status": "passed",
+          "title": "activation retains COMMIT and rollback failures and discards the failed connection",
+          "duration": 30.293750000000045,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries a lost draft manifest triggers compensating transaction and reports activation failure",
+          "status": "passed",
+          "title": "a lost draft manifest triggers compensating transaction and reports activation failure",
+          "duration": 26.873000000000047,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Verified assets and assembly transaction boundaries"
+          ],
+          "fullName": "Verified assets and assembly transaction boundaries failed compensation is exposed and never described as successful rollback",
+          "status": "passed",
+          "title": "failed compensation is exposed and never described as successful rollback",
+          "duration": 26.767166999999972,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Assembly transactions on disposable PostgreSQL"
+          ],
+          "fullName": "Assembly transactions on disposable PostgreSQL computeAssembly propagates an injected commit failure on a real app connection",
+          "status": "passed",
+          "title": "computeAssembly propagates an injected commit failure on a real app connection",
+          "duration": 35.80325000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Assembly transactions on disposable PostgreSQL"
+          ],
+          "fullName": "Assembly transactions on disposable PostgreSQL activation commit failure rolls back both actual workspace state and event insert",
+          "status": "passed",
+          "title": "activation commit failure rolls back both actual workspace state and event insert",
+          "duration": 31.766666999999984,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Assembly transactions on disposable PostgreSQL"
+          ],
+          "fullName": "Assembly transactions on disposable PostgreSQL successful activation commits actual workspace state and one recomputable audit event",
+          "status": "passed",
+          "title": "successful activation commits actual workspace state and one recomputable audit event",
+          "duration": 24.899791999999934,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1791480490306,
+      "endTime": 1791480491078.9,
+      "status": "passed",
+      "message": "",
+      "name": "packages/base/bundles/assembly-safety.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 五要素向导产出草稿骨架：五槽目录 + bundle.json status=draft（不进分发）",
+          "status": "passed",
+          "title": "五要素向导产出草稿骨架：五槽目录 + bundle.json status=draft（不进分发）",
+          "duration": 2.560750000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） slug 非法拒绝；重复 slug 拒绝（幂等键保护）",
+          "status": "passed",
+          "title": "slug 非法拒绝；重复 slug 拒绝（幂等键保护）",
+          "duration": 1.0058329999999955,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 已激活/已分发 profile 不可移除（§2.3 保护）",
+          "status": "passed",
+          "title": "已激活/已分发 profile 不可移除（§2.3 保护）",
+          "duration": 0.4231670000000065,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 页面注册表覆盖九大页（UI 用例同步校验基准）",
+          "status": "passed",
+          "title": "页面注册表覆盖九大页（UI 用例同步校验基准）",
+          "duration": 0.27029199999998355,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 候选行业包篡改后完整性校验失败关闭",
+          "status": "passed",
+          "title": "候选行业包篡改后完整性校验失败关闭",
+          "duration": 13.105165999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 候选行业包任一声明资产被篡改后运行时拒绝装载",
+          "status": "passed",
+          "title": "候选行业包任一声明资产被篡改后运行时拒绝装载",
+          "duration": 17.633541000000008,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 稳定包无条件使用独立 Ed25519 公钥环验签，并拒绝同目录换根、错钥与撤销密钥",
+          "status": "passed",
+          "title": "稳定包无条件使用独立 Ed25519 公钥环验签，并拒绝同目录换根、错钥与撤销密钥",
+          "duration": 18.973082999999974,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 三端 UI 只读取通过完整性校验的当前行业投影",
+          "status": "passed",
+          "title": "三端 UI 只读取通过完整性校验的当前行业投影",
+          "duration": 20.502916000000027,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 运行时装配在 '缺少 coverage' 时失败关闭",
+          "status": "passed",
+          "title": "运行时装配在 '缺少 coverage' 时失败关闭",
+          "duration": 18.155374999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 运行时装配在 '缺少 night_shift' 时失败关闭",
+          "status": "passed",
+          "title": "运行时装配在 '缺少 night_shift' 时失败关闭",
+          "duration": 15.308375000000012,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 运行时装配在 '重复事件前缀' 时失败关闭",
+          "status": "passed",
+          "title": "运行时装配在 '重复事件前缀' 时失败关闭",
+          "duration": 13.769665999999972,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "草稿骨架与校验（P7E5/§2.3，文件级）"
+          ],
+          "fullName": "草稿骨架与校验（P7E5/§2.3，文件级） 开发通道公开通过校验且明确开放的候选包，生产通道只公开稳定包",
+          "status": "passed",
+          "title": "开发通道公开通过校验且明确开放的候选包，生产通道只公开稳定包",
+          "duration": 37.61108300000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "行业装配 PG 集成（F2.10 铁律）"
+          ],
+          "fullName": "行业装配 PG 集成（F2.10 铁律） hotel profile：七槽 7/7 已装配 + 起飞前检查单六项全绿（F2.10 + v3.0 第⑦槽）",
+          "status": "skipped",
+          "title": "hotel profile：七槽 7/7 已装配 + 起飞前检查单六项全绿（F2.10 + v3.0 第⑦槽）",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "行业装配 PG 集成（F2.10 铁律）"
+          ],
+          "fullName": "行业装配 PG 集成（F2.10 铁律） 校验留痕：recheck 写 bundle.check_run 事件（P7E3 留痕可查）",
+          "status": "skipped",
+          "title": "校验留痕：recheck 写 bundle.check_run 事件（P7E3 留痕可查）",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "行业装配 PG 集成（F2.10 铁律）"
+          ],
+          "fullName": "行业装配 PG 集成（F2.10 铁律） 激活幂等：hotel 已激活仍可重激活并留痕 bundle.activate",
+          "status": "skipped",
+          "title": "激活幂等：hotel 已激活仍可重激活并留痕 bundle.activate",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "行业装配 PG 集成（F2.10 铁律）"
+          ],
+          "fullName": "行业装配 PG 集成（F2.10 铁律） H-15 第三行业五要素填充即可运行：填满五槽 → 6/6 全绿 → 激活切换 → 底座代码零改动（§2.3/§2.4）",
+          "status": "skipped",
+          "title": "H-15 第三行业五要素填充即可运行：填满五槽 → 6/6 全绿 → 激活切换 → 底座代码零改动（§2.3/§2.4）",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "行业装配 PG 集成（F2.10 铁律）"
+          ],
+          "fullName": "行业装配 PG 集成（F2.10 铁律） 草稿 Bundle：六槽待填充 + 校验五项全红（第⑦槽骨架自带不阻断）+ 拒绝激活（F2.10 不静默 L9.2）",
+          "status": "skipped",
+          "title": "草稿 Bundle：六槽待填充 + 校验五项全红（第⑦槽骨架自带不阻断）+ 拒绝激活（F2.10 不静默 L9.2）",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1791480490313,
+      "endTime": 1791480490472.611,
+      "status": "passed",
+      "message": "",
+      "name": "packages/base/bundles/bundles.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "多 Bundle 权威投影"
+          ],
+          "fullName": "多 Bundle 权威投影 递归验真三个 Bundle，并按明确规则合并且保留来源",
+          "status": "passed",
+          "title": "递归验真三个 Bundle，并按明确规则合并且保留来源",
+          "duration": 14.466291999999981,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "多 Bundle 权威投影"
+          ],
+          "fullName": "多 Bundle 权威投影 在'缺少依赖'时失败关闭",
+          "status": "passed",
+          "title": "在'缺少依赖'时失败关闭",
+          "duration": 1.1274159999999824,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "多 Bundle 权威投影"
+          ],
+          "fullName": "多 Bundle 权威投影 在'版本不符'时失败关闭",
+          "status": "passed",
+          "title": "在'版本不符'时失败关闭",
+          "duration": 0.7850419999999758,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "多 Bundle 权威投影"
+          ],
+          "fullName": "多 Bundle 权威投影 拒绝循环、重复引用、导航冲突与术语冲突",
+          "status": "passed",
+          "title": "拒绝循环、重复引用、导航冲突与术语冲突",
+          "duration": 2.512209000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "多 Bundle 权威投影"
+          ],
+          "fullName": "多 Bundle 权威投影 任一依赖内容被篡改时独立完整性校验失败关闭",
+          "status": "passed",
+          "title": "任一依赖内容被篡改时独立完整性校验失败关闭",
+          "duration": 0.7447500000000105,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "多 Bundle 权威投影"
+          ],
+          "fullName": "多 Bundle 权威投影 不能占用公共路由或借用其他包权限",
+          "status": "passed",
+          "title": "不能占用公共路由或借用其他包权限",
+          "duration": 0.5646669999999858,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1791480490305,
+      "endTime": 1791480490325.5647,
+      "status": "passed",
+      "message": "",
+      "name": "packages/base/bundles/projection-composition.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "segment loader"
+          ],
+          "fullName": "segment loader 解析客群声明（label/pitch/patch/presets/skills 五字段）",
+          "status": "passed",
+          "title": "解析客群声明（label/pitch/patch/presets/skills 五字段）",
+          "duration": 5.430542000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "segment loader"
+          ],
+          "fullName": "segment loader resolveSegment 校验通过并返回绝对路径装配清单",
+          "status": "passed",
+          "title": "resolveSegment 校验通过并返回绝对路径装配清单",
+          "duration": 1.3329579999999908,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "segment loader"
+          ],
+          "fullName": "segment loader 未知客群 → 抛错并列出可选项",
+          "status": "passed",
+          "title": "未知客群 → 抛错并列出可选项",
+          "duration": 1.675959000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "segment loader"
+          ],
+          "fullName": "segment loader 引用断链 → 抛错并列出全部缺失项（不装半个班子）",
+          "status": "passed",
+          "title": "引用断链 → 抛错并列出全部缺失项（不装半个班子）",
+          "duration": 1.0164159999999924,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "segment loader"
+          ],
+          "fullName": "segment loader segment-defaults.yml 缺失 → 抛错",
+          "status": "passed",
+          "title": "segment-defaults.yml 缺失 → 抛错",
+          "duration": 0.18337500000001228,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1791480490238,
+      "endTime": 1791480490247.1833,
+      "status": "passed",
+      "message": "",
+      "name": "packages/base/bundles/segment.test.ts"
+    }
+  ],
+  "executionEvidence": {
+    "command": "node node_modules/vitest/vitest.mjs run packages/base/bundles/assembly-safety.test.ts packages/base/bundles/bundles.test.ts packages/base/bundles/projection-composition.test.ts packages/base/bundles/segment.test.ts --reporter=json --outputFile=<report>",
+    "environment": "BMS_PG_TEST_URL configured to loopback PostgreSQL owner channel; bundled Node on PATH",
+    "scope": "Synthetic fixtures and fresh disposable PostgreSQL database",
+    "sourceCoverage": "docs/evidence/business-engine-read-coverage.json",
+    "sideEffects": "Temporary bundle copies removed; disposable PostgreSQL database removed; no customer data or external business action"
+  }
+}

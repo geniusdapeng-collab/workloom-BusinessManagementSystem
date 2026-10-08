@@ -1,0 +1,614 @@
+{
+  "schemaVersion": "bms.host-model-proof/v1",
+  "executionRef": "host-proof-3f865f6762604033",
+  "host": "codex",
+  "model": "host-default-unspecified",
+  "modelWasExplicitlyOverridden": false,
+  "additionalModelApiConfigured": false,
+  "startedAt": "2026-10-08T16:25:04.577594+00:00",
+  "finishedAt": "2026-10-08T16:29:41.619865+00:00",
+  "processExitCode": 0,
+  "dataMode": "sandbox",
+  "businessData": "synthetic",
+  "scope": {
+    "tenantId": "demo-store",
+    "workspaceId": "default"
+  },
+  "externalActions": 0,
+  "runtimeModelCalls": 0,
+  "hostLogEvidence": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a11c55-25e8-7c13-ab1f-82bbad9e86d1"
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 2/5 (request timed out)"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 3/5 (request timed out)"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 4/5 (request timed out)"
+    },
+    {
+      "type": "error",
+      "message": "Reconnecting... 5/5 (request timed out)"
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 361085,
+        "cached_input_tokens": 299264,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1981,
+        "reasoning_output_tokens": 53
+      }
+    }
+  ],
+  "mcpCalls": [
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_catalog",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_status",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_status",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_catalog",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_ledger_verify",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_ledger_verify",
+      "status": "completed"
+    }
+  ],
+  "records": {
+    "workflow": {
+      "operation": "workflow.get",
+      "data": {
+        "completedAt": "2026-10-08T16:29:13.361Z",
+        "completionBasis": "local-validated-artifacts-and-required-human-records",
+        "createdAt": "2026-10-08T16:25:04.550Z",
+        "dataMode": "sandbox",
+        "externalDeliveryVerified": false,
+        "externallyExecuted": false,
+        "goalId": "synthetic-growth-goal",
+        "id": "synthetic-growth-flow",
+        "kind": "growth-acquisition",
+        "localOnly": true,
+        "maxAttempts": 3,
+        "phaseIndex": 3,
+        "refs": {
+          "leadId": "synthetic-lead",
+          "reportId": "synthetic-growth-flow:report"
+        },
+        "skippedPhases": [
+          {
+            "phase": "content-draft",
+            "reason": "lead-not-qualified"
+          },
+          {
+            "phase": "experience-plan",
+            "reason": "lead-not-qualified"
+          }
+        ],
+        "status": "completed",
+        "storeId": "synthetic-store",
+        "taskIds": [
+          "synthetic-growth-flow:qualification",
+          "synthetic-growth-flow:owner-report"
+        ],
+        "tenantId": "demo-store",
+        "type": "workflow",
+        "updatedAt": "2026-10-08T16:29:13.361Z",
+        "version": 6,
+        "waitingFor": null,
+        "workspaceId": "default",
+        "tasks": [
+          {
+            "artifact": {
+              "budgetCents": 200000,
+              "fit": true,
+              "missingInformation": [
+                "客厅尺寸、现有灯具及电路条件",
+                "希望体验的具体触发方式与亮度偏好",
+                "体验时间是否接受；尚无客户确认"
+              ],
+              "needs": [
+                "已装修客厅的灯光场景咨询与本地体验规划"
+              ],
+              "reason": "依据lead结构化budgetCents=200000、renovationStage=finished及客厅灯光意向，适合继续咨询与拟议体验；合成授权覆盖consultation和appointment。此判断不是设备安装可行性、成交或真实客户授权证明。",
+              "renovationStage": "finished"
+            },
+            "artifactDigest": "082d0ab688bb3907efdc0d05e0b8fcca2aee7e7cbf11751867560362f09de5c8",
+            "attempts": 1,
+            "completedAt": "2026-10-08T16:28:34.209Z",
+            "createdAt": "2026-10-08T16:25:04.550Z",
+            "dataMode": "sandbox",
+            "employee": "lead-concierge",
+            "executionEvidence": "host-submitted-structured-artifact",
+            "executionProvider": "host-workbench-model",
+            "failureHistory": [],
+            "goalId": "synthetic-growth-goal",
+            "hostModelExternallyVerified": false,
+            "id": "synthetic-growth-flow:qualification",
+            "instructions": "Use the recorded lead intent and consent. State missing information. Never invent a customer budget or customer statements. fit=false is an admissible result; report the uncertainty.",
+            "leaseExpiresAt": null,
+            "leasedBy": "business-management-mcp-agent",
+            "maxAttempts": 3,
+            "modelInvocationPerformedByRuntime": false,
+            "modelTrace": {
+              "host": "codex",
+              "invocationRef": "host-proof-3f865f6762604033",
+              "model": "host-default-unspecified"
+            },
+            "outputSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "budgetCents": {
+                  "maximum": 1000000000,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "fit": {
+                  "type": "boolean"
+                },
+                "missingInformation": {
+                  "items": {
+                    "maxLength": 500,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 30,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "needs": {
+                  "items": {
+                    "maxLength": 1000,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 30,
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "reason": {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "renovationStage": {
+                  "enum": [
+                    "new-build",
+                    "design",
+                    "rough-in",
+                    "decorating",
+                    "finished",
+                    "occupied",
+                    "retrofit"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "fit",
+                "budgetCents",
+                "renovationStage",
+                "needs",
+                "reason",
+                "missingInformation"
+              ],
+              "type": "object"
+            },
+            "phase": "qualification",
+            "phaseIndex": 0,
+            "result": {
+              "lead": {
+                "alias": "合成客户A",
+                "attribution": {
+                  "campaignRef": null,
+                  "channel": "walk-in",
+                  "model": "first-recorded-touch"
+                },
+                "budgetCents": 200000,
+                "channel": "walk-in",
+                "consent": {
+                  "evidence": {
+                    "externallyVerified": false,
+                    "observedAt": "2026-10-08T16:24:04.534Z",
+                    "recordedBy": "synthetic-seeder",
+                    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "source": "synthetic",
+                    "summary": "Synthetic test evidence: consent. This is not a manufacturer certificate or a real customer record.",
+                    "uri": "evidence://synthetic/consent",
+                    "verification": "synthetic-unverified"
+                  },
+                  "purposes": [
+                    "consultation",
+                    "appointment",
+                    "aftercare"
+                  ],
+                  "status": "granted"
+                },
+                "contactRef": "synthetic-contact-A",
+                "createdAt": "2026-10-08T16:25:04.546Z",
+                "dataMode": "sandbox",
+                "id": "synthetic-lead",
+                "intent": "合成客户：已知预算200000分，完成装修，计划客厅灯光场景。仅用于测试。",
+                "qualification": {
+                  "assessmentSource": "host-model-artifact",
+                  "budgetCents": 200000,
+                  "customerAssertionsVerified": false,
+                  "fit": true,
+                  "missingInformation": [
+                    "客厅尺寸、现有灯具及电路条件",
+                    "希望体验的具体触发方式与亮度偏好",
+                    "体验时间是否接受；尚无客户确认"
+                  ],
+                  "needs": [
+                    "已装修客厅的灯光场景咨询与本地体验规划"
+                  ],
+                  "reason": "依据lead结构化budgetCents=200000、renovationStage=finished及客厅灯光意向，适合继续咨询与拟议体验；合成授权覆盖consultation和appointment。此判断不是设备安装可行性、成交或真实客户授权证明。",
+                  "renovationStage": "finished"
+                },
+                "renovationStage": "finished",
+                "status": "needs-information",
+                "storeId": "synthetic-store",
+                "tenantId": "demo-store",
+                "type": "lead",
+                "updatedAt": "2026-10-08T16:28:34.209Z",
+                "version": 2,
+                "workspaceId": "default"
+              },
+              "qualifiedLocally": false
+            },
+            "skill": "lead-qualification",
+            "status": "completed",
+            "tenantId": "demo-store",
+            "title": "核验咨询需求与购买条件",
+            "type": "task",
+            "updatedAt": "2026-10-08T16:28:34.210Z",
+            "version": 3,
+            "workflowId": "synthetic-growth-flow",
+            "workspaceId": "default"
+          },
+          {
+            "artifact": {
+              "nextActions": [
+                "保留此次资格评估与跳过原因作为真实执行证据；后续纠正应通过支持追加纠正与恢复阶段的受控能力执行。",
+                "重新推进前明确资格必需字段与现场调查、拟议预约确认的边界，禁止把未确认预约误当已确认。",
+                "在可恢复的后续运行中生成无未经证据支持的SKU声明的本地草稿，以及晚于status.systemTime的proposed体验计划；仍禁止外发。"
+              ],
+              "risks": [
+                "本次资格评估将后续现场/预约待确认项列为资格缺失信息，导致两阶段被跳过，未实现用户要求的四阶段完整交付。",
+                "已完成任务的纠正和原工作流回退不在已连接工具的公开操作内，不覆盖账本、不伪造缺失信息已补齐。",
+                "合成SKU和授权证据均非真实厂家或客户证据，不能用于真实业务承诺。"
+              ],
+              "summary": "本次由当前真实Codex宿主模型分析合成sandbox业务上下文并提交本地产物。qualification使用lead结构化预算200000分和装修阶段finished，fit=true，但提交的missingInformation包含现场条件和拟议体验确认，运行时将线索记为needs-information，qualifiedLocally=false，并以lead-not-qualified跳过content-draft与experience-plan。goal.report实测qualified-leads=0、experience-plans=0、accepted-projects=0、resolved-aftercare=0、management-reports=0；体验计划目标当前0/1，未达成。当前无待审批。只完成资格评估本地记录，本报告提交为本地经营汇报，不代表四个phase均交付。所有外部连接器disabled，无发布、消息、付款、设备控制或真实业绩；运行时未调用模型API，宿主声明尚无外部独立验证。"
+            },
+            "artifactDigest": "43b69885c78cd284edf0ab8d742a67bb73560581e47a72962767320d7a032680",
+            "attempts": 1,
+            "completedAt": "2026-10-08T16:29:13.361Z",
+            "createdAt": "2026-10-08T16:28:34.210Z",
+            "dataMode": "sandbox",
+            "employee": "store-ceo",
+            "executionEvidence": "host-submitted-structured-artifact",
+            "executionProvider": "host-workbench-model",
+            "failureHistory": [],
+            "goalId": "synthetic-growth-goal",
+            "hostModelExternallyVerified": false,
+            "id": "synthetic-growth-flow:owner-report",
+            "instructions": "Explain local completed records, pending approvals and disabled external actions. Metrics come from the runtime and must not be invented.",
+            "leaseExpiresAt": null,
+            "leasedBy": "business-management-mcp-agent",
+            "maxAttempts": 3,
+            "modelInvocationPerformedByRuntime": false,
+            "modelTrace": {
+              "host": "codex",
+              "invocationRef": "host-proof-3f865f6762604033",
+              "model": "host-default-unspecified"
+            },
+            "outputSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "nextActions": {
+                  "items": {
+                    "maxLength": 1000,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 30,
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "risks": {
+                  "items": {
+                    "maxLength": 1000,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 30,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "summary": {
+                  "maxLength": 4000,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "summary",
+                "risks",
+                "nextActions"
+              ],
+              "type": "object"
+            },
+            "phase": "owner-report",
+            "phaseIndex": 3,
+            "result": {
+              "delivery": "local-decision-package",
+              "externalNotificationSent": false,
+              "reportId": "synthetic-growth-flow:report"
+            },
+            "skill": "owner-briefing",
+            "status": "completed",
+            "tenantId": "demo-store",
+            "title": "向董事长交付获客证据汇报",
+            "type": "task",
+            "updatedAt": "2026-10-08T16:29:13.361Z",
+            "version": 3,
+            "workflowId": "synthetic-growth-flow",
+            "workspaceId": "default"
+          }
+        ]
+      }
+    },
+    "goal": {
+      "operation": "goal.report",
+      "data": {
+        "goal": {
+          "authority": "local-planning-only",
+          "constraints": [
+            "只用合成数据",
+            "禁止外发"
+          ],
+          "createdAt": "2026-10-08T16:25:04.548Z",
+          "dataMode": "sandbox",
+          "deadline": "2026-10-22T16:25:04.534Z",
+          "externalActionsEnabled": false,
+          "id": "synthetic-growth-goal",
+          "metric": "experience-plans",
+          "status": "active",
+          "storeId": "synthetic-store",
+          "target": 1,
+          "tenantId": "demo-store",
+          "title": "合成获客测试：生成一个本地体验计划",
+          "type": "goal",
+          "updatedAt": "2026-10-08T16:25:04.548Z",
+          "version": 1,
+          "workspaceId": "default"
+        },
+        "metrics": {
+          "qualified-leads": 0,
+          "experience-plans": 0,
+          "accepted-projects": 0,
+          "resolved-aftercare": 0,
+          "management-reports": 0
+        },
+        "current": 0,
+        "target": 1,
+        "achievedLocally": false,
+        "externallyVerified": false,
+        "dataMode": "sandbox",
+        "authority": "local-records-only",
+        "workflows": [
+          {
+            "id": "synthetic-growth-flow",
+            "kind": "growth-acquisition",
+            "status": "completed",
+            "waitingFor": null
+          }
+        ],
+        "pendingApprovals": [],
+        "externalConnectors": {
+          "publishing": "disabled",
+          "messaging": "disabled",
+          "payments": "disabled",
+          "deviceControl": "disabled"
+        },
+        "evidence": {
+          "events": 14,
+          "ledgerHead": "d6929bf09d31c5214a31d64ae6ecf4add3de641e7a42822668ee0f272f3c8659"
+        }
+      }
+    },
+    "ledger": {
+      "operation": "ledger.verify",
+      "data": {
+        "ok": true,
+        "checkedEvents": 14,
+        "checkedEntities": 14,
+        "checkedReceipts": 14,
+        "headHash": "d6929bf09d31c5214a31d64ae6ecf4add3de641e7a42822668ee0f272f3c8659",
+        "issues": []
+      }
+    },
+    "status": {
+      "operation": "status",
+      "data": {
+        "runtimeVersion": "1.0.0",
+        "industry": "smart-home",
+        "tenantId": "demo-store",
+        "workspaceId": "default",
+        "dataMode": "sandbox",
+        "database": "local-sqlite",
+        "modelProvider": "host-workbench",
+        "runtimeModelCalls": 0,
+        "connectors": {
+          "publishing": "disabled",
+          "messaging": "disabled",
+          "payments": "disabled",
+          "deviceControl": "disabled"
+        },
+        "counts": {
+          "store": 1,
+          "sku": 2,
+          "compatibility": 1,
+          "lead": 1,
+          "experience": 0,
+          "survey": 1,
+          "solution": 0,
+          "quote": 0,
+          "approval": 0,
+          "project": 0,
+          "procurement": 0,
+          "commissioning": 0,
+          "acceptance": 0,
+          "aftercare": 0,
+          "content": 0,
+          "goal": 2,
+          "workflow": 2,
+          "task": 3,
+          "report": 1
+        },
+        "ledger": {
+          "ok": true,
+          "checkedEvents": 14,
+          "checkedEntities": 14,
+          "checkedReceipts": 14,
+          "headHash": "d6929bf09d31c5214a31d64ae6ecf4add3de641e7a42822668ee0f272f3c8659",
+          "issues": []
+        },
+        "systemTime": "2026-10-08T16:29:41.616Z"
+      }
+    }
+  },
+  "interpretation": "Real Codex host-model execution on synthetic sandbox data. Model traces in business entities alone are self-reported; this separate process/tool record supplies host execution evidence. Local SQLite receipts do not prove external publication, messaging or commercial outcomes.",
+  "fullPhaseSetCompleted": false,
+  "observedOutcome": "qualification included later-stage requirements as missing; two phases skipped; no completed experience plan"
+}

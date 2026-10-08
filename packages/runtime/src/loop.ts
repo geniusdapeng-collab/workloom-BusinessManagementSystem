@@ -22,6 +22,7 @@ async function inTx<T>(
   fn: (c: pg.PoolClient) => Promise<T>,
 ): Promise<T> {
   const client = await app.connect();
+  let releaseError: Error | undefined;
   try {
     await client.query("BEGIN");
     await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
@@ -29,11 +30,15 @@ async function inTx<T>(
     const r = await fn(client);
     await client.query("COMMIT");
     return r;
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
+  } catch (error) {
+    try { await client.query("ROLLBACK"); }
+    catch (rollbackError) {
+      releaseError = rollbackError instanceof Error ? rollbackError : new Error(String(rollbackError));
+      throw new AggregateError([error, rollbackError], "任务事务失败且回滚失败，需要复核连接与数据库状态", { cause: error });
+    }
+    throw error;
   } finally {
-    client.release();
+    client.release(releaseError);
   }
 }
 import type { BusinessEvent } from "@workloom/shared";
@@ -261,11 +266,7 @@ export function planQuest(goal: string, preset: AssembledPreset): QuestStep[] {
 /* ================= 规则装载 ================= */
 
 async function loadActiveRules(app: pg.Pool, scope: { tenantId: string; workspaceId: string }): Promise<{ rules: RuntimeRule[]; defaultLevel: "auto" | "review" | "block" }> {
-  const client = await app.connect();
-  try {
-    // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+  const loaded = await inTx(app, scope, async (client) => {
     const r = await client.query<{
       rule_id: string; version: string; name: string; level: "auto" | "review" | "block";
       is_baseline: boolean; match_spec: { object_types: string[]; actions: string[]; when: string };
@@ -282,15 +283,10 @@ async function loadActiveRules(app: pg.Pool, scope: { tenantId: string; workspac
     // HP-02：本工作区围栏包声明的写类动作在判定与执行前完成登记——
     // 否则行业写类动作（如 inventory.adjust / order.reconcile）被网关段①当读类放行，
     // 且 judge 无命中时不走 default_level（E2.1），形成静默放宽。
-    registerWriteActions(rules.flatMap((rule) => rule.actions));
-    return { rules, defaultLevel: "review" }; // 活动围栏包未命中时的保守默认
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
-  }
+    return { rules, defaultLevel: "review" as const }; // 活动围栏包未命中时的保守默认
+  });
+  registerWriteActions(loaded.rules.flatMap((rule) => rule.actions));
+  return loaded;
 }
 
 /* ================= 循环 ================= */
@@ -324,12 +320,7 @@ async function existingStepReceipts(
   scope: { tenantId: string; workspaceId: string },
   threadId: string,
 ): Promise<{ done: Map<string, StepReceiptRecord>; unverified: string[] }> {
-  const client = await gateway.connect();
-  try {
-    // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+  return inTx(gateway, scope, async (client) => {
     const r = await client.query<{ payload: BusinessEvent }>(
       `SELECT payload FROM biz_events WHERE tenant_id=$1 AND workspace_id=$2 AND session_id=$3 ORDER BY seq`,
       [scope.tenantId, scope.workspaceId, threadId],
@@ -366,21 +357,11 @@ async function existingStepReceipts(
       done: new Map([...receipts].filter(([, record]) => record.verified)),
       unverified: [...receipts].filter(([, record]) => !record.verified).map(([sid]) => sid),
     };
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
-  }
+  });
 }
 
 async function updateThread(app: pg.Pool, scope: { tenantId: string; workspaceId: string }, threadId: string, patch: Record<string, unknown>): Promise<void> {
-  const client = await app.connect();
-  try {
-    // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+  return inTx(app, scope, async (client) => {
     const sets: string[] = ["updated_at = now()"];
     const params: unknown[] = [threadId, scope.workspaceId];
     for (const [k, v] of Object.entries(patch)) {
@@ -388,13 +369,7 @@ async function updateThread(app: pg.Pool, scope: { tenantId: string; workspaceId
       sets.push(`${k} = $${params.length}`);
     }
     await client.query(`UPDATE threads SET ${sets.join(", ")} WHERE id=$1 AND workspace_id=$2`, params);
-    await client.query("COMMIT"); // A-08：显式提交，失败即抛（不再 finally 吞错）
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    client.release();
-  }
+  });
 }
 
 /* ================= 计划持久化（GR-01） ================= */
@@ -407,25 +382,15 @@ async function loadThreadPlan(
   scope: { tenantId: string; workspaceId: string },
   threadId: string,
 ): Promise<PersistedPlan | undefined> {
-  const client = await app.connect();
-  try {
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+  return inTx(app, scope, async (client) => {
     const r = await client.query<{ plan: unknown; plan_version: number | null }>(
       `SELECT plan, plan_version FROM threads WHERE id=$1 AND workspace_id=$2`,
       [threadId, scope.workspaceId],
     );
-    await client.query("COMMIT");
     const row = r.rows[0];
     if (!row || !Array.isArray(row.plan) || row.plan.length === 0) return undefined;
     return { steps: row.plan as QuestStep[], version: row.plan_version ?? 0 };
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    client.release();
-  }
+  });
 }
 
 /**
@@ -440,11 +405,7 @@ async function saveThreadPlan(
   version: number,
   invalidateApprovals: boolean,
 ): Promise<number> {
-  const client = await app.connect();
-  try {
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+  return inTx(app, scope, async (client) => {
     await client.query(
       `UPDATE threads SET plan=$3::jsonb, plan_version=$4, updated_at=now() WHERE id=$1 AND workspace_id=$2`,
       [threadId, scope.workspaceId, JSON.stringify(steps), version],
@@ -483,14 +444,8 @@ async function saveThreadPlan(
         });
       }
     }
-    await client.query("COMMIT");
     return superseded;
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    client.release();
-  }
+  });
 }
 
 /**
@@ -516,11 +471,7 @@ async function approvedStepIds(
   scope: { tenantId: string; workspaceId: string },
   threadId: string,
 ): Promise<Map<string, ApprovedStep>> {
-  const client = await app.connect();
-  try {
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+  return inTx(app, scope, async (client) => {
     const r = await client.query<{ step_id: string; approval_id: string; snapshot: Record<string, unknown> | null }>(
       `SELECT e.payload->'decision'->>'step_id' AS step_id, a.approval_id, a.snapshot
        FROM approvals a JOIN biz_events e ON e.event_id = a.event_id
@@ -534,7 +485,6 @@ async function approvedStepIds(
          AND a.consumed_at IS NULL`,
       [scope.workspaceId, threadId],
     );
-    await client.query("COMMIT");
     return new Map(r.rows.map((x) => {
       const snap = (x.snapshot ?? {}) as Record<string, unknown>;
       const recorded = (typeof snap.step_fingerprint === "string" ? snap.step_fingerprint : undefined);
@@ -547,12 +497,7 @@ async function approvedStepIds(
         ...(params ? { params } : {}),
       }];
     }));
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    client.release();
-  }
+  });
 }
 
 /**
@@ -581,11 +526,7 @@ async function pendingApprovalForStep(
   threadId: string,
   stepId: string,
 ): Promise<string | undefined> {
-  const client = await app.connect();
-  try {
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+  return inTx(app, scope, async (client) => {
     const r = await client.query<{ approval_id: string }>(
       `SELECT a.approval_id
          FROM approvals a JOIN biz_events e ON e.event_id = a.event_id
@@ -594,14 +535,8 @@ async function pendingApprovalForStep(
         ORDER BY a.created_at DESC LIMIT 1`,
       [scope.workspaceId, threadId, stepId],
     );
-    await client.query("COMMIT");
     return r.rows[0]?.approval_id;
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    client.release();
-  }
+  });
 }
 
 /**

@@ -11,8 +11,25 @@ import {
   ElectronExecutableMissingError,
   portBusy,
   resolveElectronExecutable,
+  resolveDesktopPorts,
   resolveSourceWorkspace,
 } from "./desktop-app.mts";
+
+test("源码桌面端读取产品偏移后的默认端口，显式覆盖优先", () => {
+  const product = { serverPort: 9347, webPort: 5733 };
+  assert.deepEqual(resolveDesktopPorts({}, product), product);
+  assert.deepEqual(resolveDesktopPorts({ SERVER_PORT: "48787", WEB_PORT: "44173" }, product), { serverPort: 48787, webPort: 44173 });
+  assert.deepEqual(resolveDesktopPorts({ WEB_PORT: "65535" }, product), { serverPort: 9347, webPort: 65535 });
+});
+
+test("桌面端在无效或重叠端口启动任何服务前拒绝配置", () => {
+  const product = { serverPort: 9347, webPort: 5733 };
+  for (const value of ["", "0", "-1", "65536", "9.5", "abc", " 5733 ", "5e3"]) {
+    assert.throws(() => resolveDesktopPorts({ WEB_PORT: value }, product), /WEB_PORT 必须/u);
+  }
+  assert.throws(() => resolveDesktopPorts({ SERVER_PORT: "5733" }, product), /必须使用不同端口/u);
+  assert.throws(() => resolveDesktopPorts({}, { serverPort: Number.NaN, webPort: 5733 }), /SERVER_PORT 必须/u);
+});
 
 function write(path: string, content = "") {
   mkdirSync(dirname(path), { recursive: true });

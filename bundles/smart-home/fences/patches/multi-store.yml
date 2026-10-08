@@ -1,0 +1,4 @@
+version: "smart-home-patch-multi-store/v1"
+applies_to: "multi_store"
+base: "smart-home-baseline/v1"
+patches: [{"rule_id": "R-SH5", "tighten": {"when": "params.contains_secret == true || params.contains_private_home_data == true || params.cross_workspace_export == true"}, "note": "跨店汇总只收允许指标，不复制原始家庭资料。"}]

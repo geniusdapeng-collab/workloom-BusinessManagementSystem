@@ -9,6 +9,7 @@
  */
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
+import { ApprovalError } from "@workloom/base/review-console";
 import {
   actionProcedure,
   navigationPermissionProcedure,
@@ -22,7 +23,8 @@ import {
   createCollectionOn, listCollections, listDocuments, setDocumentStatusOn, upsertDocumentOn,
   registerSiteSourceOn, crawlAndStructure, diffScan, searchKB,
 } from "./kb.js";
-import { assignTicketOn, advanceTicketOn, completeTicketOn, listTickets, slaScanOn, ticketTimeline } from "./ticket.js";
+import { assignTicketOn, advanceTicketOn, completeTicketOn, listTickets, slaScanOn, ticketTimeline, ServiceHttpError } from "./ticket.js";
+import { publishDocumentOn, registerKbPublicationProjection } from "./kb-publication.js";
 import { pushMessage } from "./channels.js";
 import { appendEventOn, serviceTx, svcQuery } from "./events.js";
 import { llmCall } from "./llm.js";
@@ -56,6 +58,21 @@ import {
   listReminders as secListReminders, memoryPanel as secMemoryPanel,
   remember as secRemember, forget as secForget, chat as secChat,
 } from "./secretary.js";
+
+// 行业组合根加载即登记；单笔、批量与 IM 全部使用同一事务内投影。
+registerKbPublicationProjection();
+
+function serviceRethrow(error: unknown): never {
+  if (error instanceof ServiceHttpError || error instanceof ApprovalError) {
+    const status = error instanceof ServiceHttpError ? error.status : error.code === "NOT_FOUND" ? 404 : error.statusCode;
+    throw new TRPCError({
+      code: status === 404 ? "NOT_FOUND" : status === 409 ? "CONFLICT" : status === 403 ? "FORBIDDEN"
+        : status === 412 ? "PRECONDITION_FAILED" : status >= 500 ? "INTERNAL_SERVER_ERROR" : "BAD_REQUEST",
+      message: error.message, cause: error,
+    });
+  }
+  throw error;
+}
 
 const kbRouter = router({
   listCollections: protectedProcedure.query(async ({ ctx }) => {
@@ -100,7 +117,7 @@ const kbRouter = router({
           after: { title: input.title, version: r.version, chunks: r.chunks, sourceKind: input.sourceKind },
         });
         return r;
-      });
+      }).catch(serviceRethrow);
     }),
 
   setStatus: writeProcedure
@@ -108,13 +125,16 @@ const kbRouter = router({
     .mutation(async ({ ctx, input }) => {
       const scope = scopeOf(ctx.identity);
       return serviceTx(scope.workspaceId, async (client, sc) => {
+        if (input.status === "active") {
+          return publishDocumentOn(client, sc, { documentId: input.documentId, memberNo: ctx.identity.memberNo });
+        }
         await setDocumentStatusOn(client, { workspaceId: scope.workspaceId, documentId: input.documentId, status: input.status });
         await appendEventOn(client, sc, { id: ctx.identity.memberNo, type: "human" }, {
           objectType: "kb_document", objectId: input.documentId, action: "kb.document.status",
           after: { status: input.status },
         });
-        return { ok: true };
-      });
+        return { ok: true, status: input.status };
+      }).catch(serviceRethrow);
     }),
 
   registerSite: writeProcedure
@@ -179,31 +199,12 @@ const kbRouter = router({
   }),
 
   /** 批准生效：文档状态 + 五元事件 + approvals 行 三写同一 COMMIT（围栏动作 'kb.publish'，审批台可见） */
-  approveDocument: writeProcedure
-    .input(z.object({ documentId: z.string() }))
+  approveDocument: actionProcedure("approval.decide")
+    .input(z.object({ documentId: z.string().min(1).max(200) }))
     .mutation(async ({ ctx, input }) => {
       const scope = scopeOf(ctx.identity);
-      return serviceTx(scope.workspaceId, async (client, sc) => {
-        const doc = await client.query(
-          `UPDATE kb_documents SET status='active'
-           WHERE workspace_id=$1 AND id=$2 RETURNING title, version`,
-          [scope.workspaceId, input.documentId],
-        );
-        if (!doc.rows[0]) throw new TRPCError({ code: "NOT_FOUND", message: `文档不存在：${input.documentId}` });
-        const ev = await appendEventOn(client, sc, { id: ctx.identity.memberNo, type: "human" }, {
-          objectType: "kb_document", objectId: input.documentId, action: "kb.publish",
-          after: { title: (doc.rows[0] as Record<string, unknown>).title, version: (doc.rows[0] as Record<string, unknown>).version, status: "active" },
-        });
-        // 联动 approvals 审批台（approvals INSERT 范式：UNIQUE(event_id, channel) 冲突丢弃，L5.3）
-        await client.query(
-          `INSERT INTO approvals (approval_id, tenant_id, workspace_id, event_id, channel, status, snapshot)
-           VALUES ($1,$2,$3,$4,'inapp','pending',$5)
-           ON CONFLICT (event_id, channel) DO NOTHING`,
-          [`apr-${ev.eventId.toLowerCase()}`, sc.tenantId, sc.workspaceId, ev.eventId,
-           JSON.stringify({ after: { documentId: input.documentId, fence_action: "kb.publish" }, high_risk: false })],
-        );
-        return { ok: true, eventId: ev.eventId };
-      });
+      return serviceTx(scope.workspaceId, (client, sc) =>
+        publishDocumentOn(client, sc, { documentId: input.documentId, memberNo: ctx.identity.memberNo })).catch(serviceRethrow);
     }),
 });
 
@@ -221,18 +222,20 @@ const ticketsRouter = router({
     }),
 
   assign: writeProcedure
-    .input(z.object({ ticketId: z.string(), dept: z.string().optional(), assignee: z.string().optional() }))
+    .input(z.object({ ticketId: z.string().min(1).max(200), dept: z.string().trim().min(1).max(80).optional(), assignee: z.string().trim().min(1).max(80).optional() }))
     .mutation(async ({ ctx, input }) => {
       const scope = scopeOf(ctx.identity);
       const t = await serviceTx(scope.workspaceId, async (client, sc) => {
-        const t2 = await assignTicketOn(client, { workspaceId: scope.workspaceId, ...input });
-        await appendEventOn(client, sc, { id: ctx.identity.memberNo, type: "human" }, {
-          objectType: "ticket", objectId: t2.id, action: "service.ticket.assign",
-          after: { dept: t2.dept, assignee: t2.assignee },
-        });
+        const t2 = await assignTicketOn(client, { workspaceId: scope.workspaceId, ...input, actorType: "staff", actorId: ctx.identity.memberNo });
+        if (!t2.deduped) {
+          await appendEventOn(client, sc, { id: ctx.identity.memberNo, type: "human" }, {
+            objectType: "ticket", objectId: t2.id, action: "service.ticket.assign",
+            after: { dept: t2.dept, assignee: t2.assignee },
+          });
+        }
         return t2;
-      });
-      return { ticket: t };
+      }).catch(serviceRethrow);
+      return { ticket: t, deduped: t.deduped };
     }),
 
   advance: writeProcedure

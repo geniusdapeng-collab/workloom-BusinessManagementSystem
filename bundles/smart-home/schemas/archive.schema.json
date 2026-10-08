@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workloom://bundles/smart-home/schemas/archive",
+  "title": "全屋智能门店档案",
+  "type": "object",
+  "required": [
+    "property",
+    "business",
+    "forbidden",
+    "goals",
+    "dataMode"
+  ],
+  "properties": {
+    "property": {
+      "type": "object",
+      "required": [
+        "name",
+        "city",
+        "serviceAreas",
+        "segment"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "city": {
+          "type": "string",
+          "minLength": 1
+        },
+        "serviceAreas": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "segment": {
+          "type": "string",
+          "enum": [
+            "audit_only",
+            "new_build",
+            "finished_home",
+            "retrofit",
+            "villa",
+            "care",
+            "multi_store"
+          ]
+        },
+        "brandModels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "business": {
+      "type": "object",
+      "required": [
+        "minMarginRatio",
+        "maxDiscountRatio"
+      ],
+      "properties": {
+        "minMarginRatio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.9
+        },
+        "maxDiscountRatio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.9
+        },
+        "quoteValidityDays": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 365
+        }
+      }
+    },
+    "goals": {
+      "type": "object",
+      "description": "目标引用与明确统计时间窗；不得自行填写经营历史。"
+    },
+    "forbidden": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "rule"
+        ],
+        "properties": {
+          "rule": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dataMode": {
+      "type": "string",
+      "enum": [
+        "sandbox",
+        "live",
+        "simulated"
+      ]
+    },
+    "brandGuideline": {
+      "type": "object",
+      "description": "实拍授权、宣传禁语、使用人同意和素材范围。"
+    },
+    "servicePolicy": {
+      "type": "object",
+      "description": "服务地域、项目范围、响应时限、培训与质保；以门店批准条款为准。"
+    },
+    "staffing": {
+      "type": "object",
+      "description": "现场工程人员、资质引用、可服务容量与排班约束。"
+    },
+    "networkStandards": {
+      "type": "object",
+      "description": "厂家型号版本证据、网络规划与现场测量项目。"
+    },
+    "approvalMatrix": {
+      "type": "object",
+      "description": "董事长、人类运营、现场专业人员与客户分别拥有的批准和证据责任。"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "checkedAt"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "checkedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  }
+}

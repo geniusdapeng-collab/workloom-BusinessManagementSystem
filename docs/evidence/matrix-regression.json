@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "bms.matrix-regression/v1",
+  "startedAt": "2026-10-08T17:57:02.340Z",
+  "scope": "Real disposable PostgreSQL database with synthetic matrix tables; not platform migration or model execution",
+  "command": [
+    "node",
+    "--test",
+    "scripts/acceptance/matrix.pg.test.mjs"
+  ],
+  "modelCalls": 0,
+  "cases": [
+    {
+      "name": "namespaced industry IDs",
+      "preconditions": "Isolated synthetic PostgreSQL matrix fixture",
+      "steps": [
+        "Seed complete smart-home roster and the stated skill installation variant",
+        "Run the actual matrix CLI with --fail-on-error",
+        "Read matrix JSON and exit status"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "agentsPass": 20,
+        "skillsPass": 35
+      },
+      "pass": true
+    },
+    {
+      "name": "legacy IDs",
+      "preconditions": "Isolated synthetic PostgreSQL matrix fixture",
+      "steps": [
+        "Seed complete smart-home roster and the stated skill installation variant",
+        "Run the actual matrix CLI with --fail-on-error",
+        "Read matrix JSON and exit status"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "agentsPass": 20,
+        "skillsPass": 35
+      },
+      "pass": true
+    },
+    {
+      "name": "opaque registered IDs",
+      "preconditions": "Isolated synthetic PostgreSQL matrix fixture",
+      "steps": [
+        "Seed complete smart-home roster and the stated skill installation variant",
+        "Run the actual matrix CLI with --fail-on-error",
+        "Read matrix JSON and exit status"
+      ],
+      "expected": {
+        "exitCode": 0
+      },
+      "actual": {
+        "exitCode": 0,
+        "agentsPass": 20,
+        "skillsPass": 35
+      },
+      "pass": true
+    },
+    {
+      "name": "missing installation",
+      "preconditions": "Isolated synthetic PostgreSQL matrix fixture",
+      "steps": [
+        "Seed complete smart-home roster and the stated skill installation variant",
+        "Run the actual matrix CLI with --fail-on-error",
+        "Read matrix JSON and exit status"
+      ],
+      "expected": {
+        "exitCode": 1
+      },
+      "actual": {
+        "exitCode": 1,
+        "agentsPass": 19,
+        "skillsPass": 34
+      },
+      "pass": true
+    },
+    {
+      "name": "another workspace installation",
+      "preconditions": "Isolated synthetic PostgreSQL matrix fixture",
+      "steps": [
+        "Seed complete smart-home roster and the stated skill installation variant",
+        "Run the actual matrix CLI with --fail-on-error",
+        "Read matrix JSON and exit status"
+      ],
+      "expected": {
+        "exitCode": 1
+      },
+      "actual": {
+        "exitCode": 1,
+        "agentsPass": 19,
+        "skillsPass": 34
+      },
+      "pass": true
+    },
+    {
+      "name": "installed version mismatch",
+      "preconditions": "Isolated synthetic PostgreSQL matrix fixture",
+      "steps": [
+        "Seed complete smart-home roster and the stated skill installation variant",
+        "Run the actual matrix CLI with --fail-on-error",
+        "Read matrix JSON and exit status"
+      ],
+      "expected": {
+        "exitCode": 1
+      },
+      "actual": {
+        "exitCode": 1,
+        "agentsPass": 20,
+        "skillsPass": 34
+      },
+      "pass": true
+    }
+  ],
+  "databaseRemoved": true,
+  "finishedAt": "2026-10-08T17:57:03.815Z"
+}

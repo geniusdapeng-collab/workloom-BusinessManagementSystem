@@ -34,12 +34,28 @@ const demoPages = ls("docs/demo", (f) => f.endsWith(".html") && !["index.html", 
 const shots = ls("docs/demo/preview-shots", (f) => f.endsWith(".png"));
 const repoName = pkg.name?.split("/").pop() || "workloom";
 const desc = pkg.description || "AI 经营系统";
+const product = J("product.manifest.json");
+const smartHome = product.defaultBundle === "smart-home";
 
 // ---------- 能力分组（按事实探测，出现的才列出） ----------
 const groups = [];
+if (smartHome) {
+  const { OPERATION_CATALOGUE } = await import("../bundles/smart-home/runtime/catalogue.mjs");
+  const { WORKFLOW_CATALOGUE } = await import("../bundles/smart-home/runtime/workflows.mjs");
+  const workforce = J("bundles/smart-home/library/workforce.json");
+  const manifest = J("bundles/smart-home/bundle.json");
+  groups.push({ icon: "🏠", title: "全屋智能门店经营（默认入口）", items: [
+    { name: "响应式经营工作台", how: "`pnpm dev` → http://127.0.0.1:9393", desc: "目标、线索、体验、交付、售后、审批、岗位与业务记录；本机 SQLite 持久保存" },
+    { name: `业务操作契约 ×${OPERATION_CATALOGUE.length}`, how: "`pnpm bm catalog` / `pnpm bm:mcp`", desc: "CLI/MCP/页面共用输入校验、租户范围、围栏、幂等与本地回执" },
+    { name: `宿主模型工作流 ×${WORKFLOW_CATALOGUE.length}`, how: "docs/AI-WORKBENCH.md", desc: "当前工作台模型 claim→submit；调度器不调用模型；外部事实按证据保留待办" },
+    { name: `数字岗位 ×${workforce.roles.length}`, how: "bundles/smart-home/library/workforce.json", desc: "岗位拥有已安装技能，准备任务输出准确对象版本与 SOP 摘要" },
+    { name: `行业技能 SOP ×${manifest.workloom.provides.skills.length}`, how: "bundles/smart-home/skills/", desc: "固定流程执行本地业务对象；通用岗位任务输出分析/草稿/计划，人类与外部动作另行待办" },
+    { name: "克隆后工作台配置", how: "`pnpm setup --client all`", desc: "生成当前项目 Codex/WorkBuddy 配置及千问办公导入 JSON；冲突保留，用户级配置不改" },
+  ] });
+}
 
 groups.push({
-  icon: "🖥", title: "三端应用入口",
+  icon: "🖥", title: smartHome ? "继承平台三端入口（独立运行链）" : "三端应用入口",
   items: [
     existsSync(join(ROOT, "apps/web/package.json")) && { name: "PC 端 · B 端工作台", how: "`pnpm preview:all` → http://localhost:3000", desc: "经营主页/任务中心/规则中心/装配中心，目录描述不代表运行通过" },
     existsSync(join(ROOT, "apps/webb/package.json")) && { name: "移动端 · B 端高保真", how: "`pnpm preview:all` → http://localhost:3001", desc: `${demoPages.length} 页演示资产；运行状态须验收` },
@@ -57,7 +73,7 @@ const digitalWorkforce = [
   existsSync(join(ROOT, "apps/web/src/pages/p8/P8.tsx")) && {
     name: "数字员工中心（`/agents`）",
     how: "`pnpm preview:all` → http://localhost:3000/agents",
-    desc: "人机混编通讯录：员工档案 / 围栏绑定 / 30 天战绩 / 段位 / 派遣 / 夜班 22:00-08:00 自动上线",
+    desc: "继承平台的员工档案、围栏与任务入口；配置和运行状态须在目标工作区核实",
   },
   existsSync(join(ROOT, "apps/web/src/components/loommate/LoomMate.tsx")) && {
     name: "织伴数字人（Live2D 常驻浮层）",
@@ -76,7 +92,7 @@ const digitalWorkforce = [
   },
 ].filter(Boolean);
 if (digitalWorkforce.length) groups.push({
-  icon: "🧑‍💼", title: "数字员工与数字人（本仓自带）", items: digitalWorkforce,
+  icon: "🧑‍💼", title: "继承平台的数字员工与数字人", items: digitalWorkforce,
 });
 
 if (basePkgs.includes("computer-use")) groups.push({
@@ -96,7 +112,7 @@ const engine = [
   ["publish-rpa", "全平台 RPA 发布", "抖音/小红书/B站/YouTube，BrowserDriver 注入接真浏览器"],
   ["workdata", "五元事件 + RLS 隔离", "全链路可追溯、可验链"],
   ["im-channels", "IM 渠道", "企微等出入站，审批卡片直达手机"],
-  ["service-dialog", "C 端 AI 服务前台", "对话/知识库 385 问/工单/SLA"],
+  ["service-dialog", "C 端 AI 服务前台", "对话/已装配行业知识库/工单/SLA；行业适配器限定公开查询范围"],
   ["inspection", "自动巡检", "异常发现→派发→处置闭环"],
   ["review-console", "人审台", "必审事项人拍板，AI 不越权"],
   ["asset-cms", "资产管理", "素材/成片全生命周期"],
@@ -105,12 +121,13 @@ const engine = [
   ["social-listening", "社媒监听", "评论/询盘意图雷达"],
 ].filter(([k]) => basePkgs.includes(k));
 if (engine.length) groups.push({
-  icon: "🤖", title: "AI 自动化引擎（系统内置能力）",
+  icon: "🤖", title: "继承平台引擎（目录发现，须独立验收）",
   items: engine.map(([, n, d]) => ({ name: n, how: "见 docs/capability-map.md L3", desc: d })),
 });
 
 const quality = [
-  has("setup") && { name: "一键安装（bootstrap）", how: "`pnpm setup`", desc: "环境/依赖/PG/迁移种子/可选桌面栈初始化入口；结果以预检和执行回执为准" },
+  has("setup") && { name: "项目配置初始化", how: "`pnpm setup`", desc: smartHome ? "本机工作台项目配置；平台安装另用 setup:foundation" : "初始化入口，结果以预检和执行回执为准" },
+  has("test:business") && { name: "全屋智能业务回归", how: "`pnpm test:business`", desc: "正常/边界/错误/权限/并发/摘要/租约/回执回归；实际结果见本次报告" },
   has("suite") && { name: "主测试套件", how: "`pnpm suite`", desc: "数百条场景用例逐条执行" },
   has("suite:geo") && { name: "GEO 域套件", how: "`pnpm suite:geo`", desc: "GEO 双域专项" },
   has("suite:hotel") && { name: "酒店域套件", how: "`pnpm suite:hotel`", desc: "酒店域专项" },
@@ -142,7 +159,7 @@ for (const group of groups) for (const item of group.items) {
 const data = { schema: "workloom.capabilities/v2", repo: repoName, description: desc, generatedAt: new Date().toISOString(), demoPages, shots, groups };
 
 // ---------- 生成 Markdown（人类版导览） ----------
-const shotBlock = shots.length
+const shotBlock = smartHome ? "\n![本次全屋智能工作台沙箱截图](evidence/workbench-1440.png)\n\n[390px 手机宽度截图](evidence/workbench-390.png)。实测和边界见 BUSINESS-MANAGEMENT-ACCEPTANCE.md。\n" : shots.length
   ? `\n| PC 端 | B 端移动（手机壳） | C 端移动 |\n|---|---|---|\n| ${shots.includes("pc-3000.png") ? "![PC](demo/preview-shots/pc-3000.png)" : "—"} | ${shots.includes("shell-guest.png") ? "![B移动](demo/preview-shots/shell-guest.png)" : "—"} | ${shots.includes("mobile-c-3002.png") ? "![C移动](demo/preview-shots/mobile-c-3002.png)" : "—"} |\n`
   : "";
 
@@ -156,16 +173,14 @@ const md = `# ${repoName} · 能力导览（人类版）
 ## 🚀 5 分钟体验路径
 
 \`\`\`bash
-pnpm install && pnpm preview:all
+${smartHome ? "node scripts/business-management.mjs setup --client all\nnode scripts/business-management.mjs init --demo\nnode scripts/business-management.mjs serve" : "pnpm install && pnpm preview:all"}
 \`\`\`
 
 | 端 | 地址 | 看什么 |
 |---|---|---|
-| 🖥 PC · B 端工作台 | http://localhost:3000 | 经营主页全员就位、晨报、待审批、一句话目标输入 |
-| 📱 B 端移动 | http://localhost:3001 | 演示导航页 → 任选高保真页「手机壳」预览 |
-| 📱 C 端 AI 服务前台 | http://localhost:3002 | 免登对话：查订单/售后/物流/常见问题 |
+${smartHome ? "| 全屋智能工作台 · 桌面/手机 | http://127.0.0.1:9393 | 当前 SQLite 工作区经营状态、人工待办与 AI 任务 |\n| AI 工作台接入 | docs/AI-WORKBENCH.md | Codex/千问办公/WorkBuddy 项目配置与执行协议 |" : "| PC 平台 | http://localhost:3000 | 平台演示入口 |\n| B 端移动 | http://localhost:3001 | 继承演示页面 |\n| C 端移动 | http://localhost:3002 | 行业前台入口 |"}
 
-体验路径使用模拟种子与离线模型；依赖和数据库准备见 mock/README.md，连接真实业务前需另做环境与结果验收。
+${smartHome ? "此路径使用明确标识的合成沙箱数据和当前宿主模型。后台调度不调用模型。下方继承平台目录使用独立 PostgreSQL 运行链，不能把存在的文件解释成全屋智能外部业务已经完成。" : "体验路径使用模拟数据；连接真实业务前需另做环境与结果验收。"}
 ${shotBlock}
 ## 📦 能力总览（${groups.reduce((n, g) => n + g.items.length, 0)} 项）
 
@@ -174,7 +189,7 @@ ${groups.map((g) => `### ${g.icon} ${g.title}\n\n| 能力 | 一句话 | 怎么�
 ## 🧭 下一步
 
 - 想二次开发：读 AGENTS.md → 跑 \`pnpm agent:tour\` → 看 docs/capability-map.md（全量机器清单）
-- 想改 UI：必须遵守 docs/design-system.md（Candy Design System），改完用浏览器能力截图核对
+- 想改 UI：先读当前入口的视觉与交互实现，改完在桌面/手机宽度运行并截图核对
 - 想发布：\`pnpm release:gate\` 全过是硬性门禁，清单见 docs/release-checklist.md
 `;
 
@@ -188,7 +203,7 @@ const readmeBlock = `<!-- CAPABILITIES:BEGIN -->
 
 ${groups.map((g) => `- ${g.icon} **${g.title}**：${g.items.map((i) => i.name.replace(/\*\*/g, "")).slice(0, 6).join(" · ")}${g.items.length > 6 ? ` 等 ${g.items.length} 项` : ""}`).join("\n")}
 
-> 📖 完整能力导览（含截图与体验路径）：[docs/capabilities.auto.md](docs/capabilities.auto.md) ｜ 🤖 AI Agent 入口：[AGENTS.md](AGENTS.md) ｜ 🎯 首启必跑：\`pnpm preview:all\`
+> 📖 完整能力导览：[docs/capabilities.auto.md](docs/capabilities.auto.md) ｜ 🤖 AI Agent 入口：[AGENTS.repo.md](AGENTS.repo.md) ｜ 🎯 首启：${smartHome ? "\`pnpm setup --client all\` → \`pnpm bm init --demo\` → \`pnpm dev\`" : "\`pnpm preview:all\`"}
 <!-- CAPABILITIES:END -->`;
 
 // ---------- 写入 / 校验 ----------

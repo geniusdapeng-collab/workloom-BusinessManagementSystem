@@ -1,0 +1,20 @@
+{
+  "actor": "/root/industry_map",
+  "dataMode": "isolated-synthetic-real-pg-with-transport-fault-injection",
+  "externalCalls": 0,
+  "startedAt": "2026-10-08T19:31:53.606Z",
+  "physicalConnectionReusePreventedByProbe": true,
+  "returnedSuccess": false,
+  "error": {
+    "name": "Error",
+    "message": "synthetic approval write acknowledgement failure",
+    "aggregate": false,
+    "primaryPreserved": true,
+    "rollbackPreserved": false
+  },
+  "releaseDiscardError": false,
+  "releaseCalls": 1,
+  "productionBugReproduced": true,
+  "sourceSha256": "0accd46f9843e9117146ac2f9d4d2d2ddb6fb3dc134586f13ecbc0b5a18d0791",
+  "finishedAt": "2026-10-08T19:31:53.641Z"
+}

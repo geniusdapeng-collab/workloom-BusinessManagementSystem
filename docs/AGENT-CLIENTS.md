@@ -1,5 +1,7 @@
 # 桌面 Agent 接入指南：Codex / DeepSeek Harness
 
+> **BusinessManagementSystem 派生仓说明**：本页保留 Hotel 上游的接入参考与历史口径。当前全屋智能经营入口、宿主内置模型任务循环和 Codex / 千问办公 / WorkBuddy 配置见 [AI-WORKBENCH.md](AI-WORKBENCH.md)。旧 `workloom-agent` 兼容入口按当前 `product.manifest.json` 及实际行业能力清单发现工具；默认 bundle 已为 `smart-home`，缺少旧式行业清单时只加载公共只读能力。本页后续 Hotel 能力表与配置例子不代表新经营入口的当前目录。
+
 > 读者：要把本仓能力接进桌面 Agent 的人（或 Agent 自己）。目标是 **5 分钟能跑通**：
 > 先 `list` 看到能力 → 再 `invoke` 读一条真实状态 → 最后把 stdio MCP 挂进客户端。
 > 本仓 `bundle = hotel`，能力前缀 `hotel`。

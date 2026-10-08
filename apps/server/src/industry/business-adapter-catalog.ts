@@ -7,8 +7,13 @@
  */
 import type { BusinessAdapterRegistration } from "../service/adapters/business.js";
 import { hotelBizAdapter } from "./hotel/service-front-adapter.js";
+import { smartHomeBizAdapter } from "./smart-home/service-front-adapter.js";
 
 export const BUNDLED_BUSINESS_ADAPTERS: readonly BusinessAdapterRegistration[] = Object.freeze([
+  Object.freeze({
+    adapter: smartHomeBizAdapter,
+    bundleIds: Object.freeze(["smart-home"]),
+  }),
   Object.freeze({
     adapter: hotelBizAdapter,
     bundleIds: Object.freeze(["hotel"]),

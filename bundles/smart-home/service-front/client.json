@@ -1,0 +1,84 @@
+{
+  "workspaceKey": "smart-home-demo",
+  "brandName": "全屋智能经营演练门店",
+  "agentName": "智能方案顾问",
+  "logoText": "智",
+  "theme": {
+    "primary": "#126F64",
+    "secondary": "#18537B"
+  },
+  "welcomeText": "您好，欢迎来到{brand}。我是{agent}，可以解释全屋智能方案、登记体验与勘测意向、接收售后问题。具体价格、服务地域与时间以门店人工确认的方案为准。",
+  "quickReplies": [
+    {
+      "label": "体验预约",
+      "serviceKind": "delivery"
+    },
+    {
+      "label": "方案咨询",
+      "sendText": "我想了解全屋智能方案，准备咨询装修阶段和设备兼容。"
+    },
+    {
+      "label": "售后报修",
+      "serviceKind": "repair"
+    },
+    {
+      "label": "常见问题",
+      "sendText": "精装改造需要先看哪些现场条件，跨品牌设备怎样核验功能兼容？"
+    }
+  ],
+  "serviceEntries": [
+    {
+      "kind": "delivery",
+      "title": "体验与勘测意向",
+      "desc": "登记需求、装修阶段与可选时间，门店再确认安排",
+      "icon": "约",
+      "sla": "响应时间由门店确认",
+      "titlePlaceholder": "填写希望体验的场景与可选时间"
+    },
+    {
+      "kind": "repair",
+      "title": "设备与场景报修",
+      "desc": "说明故障现象，安全问题转专业人员",
+      "icon": "修",
+      "sla": "以门店服务协议和人工确认时限为准",
+      "titlePlaceholder": "填写设备、出现时间与故障现象"
+    },
+    {
+      "kind": "complaint",
+      "title": "服务意见",
+      "desc": "反馈报价、施工、培训与服务问题",
+      "icon": "诉",
+      "sla": "负责人核对后确认处理计划",
+      "titlePlaceholder": "填写问题、期望处理方式与可用证据"
+    },
+    {
+      "kind": "other",
+      "title": "方案咨询",
+      "desc": "咨询预算、设备适配与分期实施",
+      "icon": "问",
+      "sla": "方案顾问核对需求后答复",
+      "titlePlaceholder": "填写服务区域、装修阶段与核心需求"
+    }
+  ],
+  "profile": {
+    "identityBinding": false,
+    "membership": false,
+    "orders": false,
+    "labels": {
+      "identity": "会话来源",
+      "membership": "服务范围",
+      "points": "使用资料",
+      "orders": "项目资料",
+      "emptyOrders": "本前台尚未开放私有项目查询"
+    }
+  },
+  "enableTabs": [
+    "chat",
+    "service",
+    "tickets",
+    "messages",
+    "me"
+  ],
+  "demoHistory": [],
+  "supportPhone": ""
+}

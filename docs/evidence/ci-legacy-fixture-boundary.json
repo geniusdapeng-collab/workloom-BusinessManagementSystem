@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "workloom.local-regression/v1",
+  "scope": "CI isolated legacy hotel fixture marker and mandatory transaction regressions",
+  "sourceState": "Authorized dirty candidate; native CNB pipeline has not yet run this commit",
+  "checks": [
+    {
+      "name": "YAML parse",
+      "evidenceLevel": "B",
+      "actual": "pass"
+    },
+    {
+      "name": "all 17 unique existing/new script blocks bash -n",
+      "evidenceLevel": "B",
+      "actual": "17/17 pass"
+    },
+    {
+      "name": "conditional marker SQL on explicit isolated legacy hotel database",
+      "evidenceLevel": "A",
+      "actual": "exit 0, transaction committed"
+    },
+    {
+      "name": "same SQL on native smart-home database fails before UPDATE",
+      "evidenceLevel": "A",
+      "actual": "exit 3, expected workspace/bundle mismatch, transaction aborted"
+    }
+  ],
+  "defaultBusinessBundle": "smart-home",
+  "defaultSeed": "seed-smart-home.ts",
+  "legacyMarkerLocation": "Only .test-gate after explicit db:seed:hotel-compat",
+  "guard": "RUN_DB_TESTS=1 and ws-yunqi explicitly selected; matching hotel workspace and exactly one active hotel install required",
+  "cnbSourceSha256": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+  "markerSqlSha256": "664f3cd1fb9e51f75cebfb0c8c2fc53421dd7e9fdb49e2e67d246e0e01d5936d",
+  "nativePipelineExecution": "pending final source commit and actual CNB run",
+  "syntaxObservedAt": "2026-10-08T20:17:44.163Z",
+  "mandatoryAdditionalRegressions": [
+    "packages/runtime/src/assembly-revocation.test.ts",
+    "packages/runtime/src/transaction-family.test.ts",
+    "apps/server/src/service/service-transactions.test.ts",
+    "apps/server/src/service/ticket-idempotency.pg.test.ts",
+    "apps/server/src/service/production-demo-auth.pg.test.ts",
+    "apps/server/src/service/hotel-contract-fixture.pg.test.ts",
+    "apps/server/src/service/ticket-assignment.pg.test.ts",
+    "apps/server/src/service/kb-publication.pg.test.ts",
+    "packages/base/review-console/approval-transaction.pg.test.ts",
+    "packages/base/review-console/rejection-memory.pg.test.ts",
+    "packages/base/workdata/gateway-transaction.pg.test.ts",
+    "packages/base/workdata/memory-transaction.pg.test.ts"
+  ],
+  "mandatoryRegressionExecution": "Actual local exact required sequence passed: 16 Vitest files 237/237, governance16/16, matrix7/7, seed twice and event chain; actual CNB pending final source commit",
+  "requiredCommandReport": "docs/evidence/required-db-gate-regression.json"
+}

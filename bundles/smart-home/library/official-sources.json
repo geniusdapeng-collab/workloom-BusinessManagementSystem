@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "business-management.sources/v1",
+  "sources": [
+    {
+      "id": "matter",
+      "title": "CSA Matter Smart Home Standard",
+      "url": "https://csa-iot.org/all-solutions/matter/",
+      "checkedAt": "2026-10-08",
+      "verification": "page-body",
+      "supports": "Matter是基于IP的设备连接协议；兼容性需核对具体设备功能与生态。",
+      "limitation": "官网概述不能证明某一SKU完整功能兼容。"
+    },
+    {
+      "id": "aqara-builder",
+      "title": "Aqara Builder Agent 概述",
+      "url": "https://docs.aqara.com/zh/docs/aqara-builder/builder-agent/overview/",
+      "checkedAt": "2026-10-08",
+      "verification": "page-body",
+      "supports": "空间解析、设备推荐、一键场景、条件自动化和方案包构成完整设计流程。",
+      "limitation": "本项目没有配置Aqara Builder或Studio的真实账号连接器。"
+    },
+    {
+      "id": "aqara-matter",
+      "title": "Aqara Studio Matter设备接入",
+      "url": "https://docs.aqara.com/zh/docs/aqara-studio/device-integration/matter/",
+      "checkedAt": "2026-10-08",
+      "verification": "official-indexed-text",
+      "supports": "该文档有网关融合形态和设备协议模式前提。",
+      "limitation": "方案须逐型号核验，不能把所有网关形态视为支持。"
+    },
+    {
+      "id": "aqara-fp400",
+      "title": "Aqara AI空间传感器FP400产品知识",
+      "url": "https://docs.aqara.com/zh/docs/aqara-studio/product-knowledge/sensors/spatial-multi-sensor-fp400/",
+      "checkedAt": "2026-10-09",
+      "verification": "page-body",
+      "supports": "直接扫描设备Matter码接入第三方只提供全域存在与光照；经Aqara Life配置后分享能暴露区域存在，仍受第三方生态能力限制。",
+      "limitation": "不能把原生配置功能与直接接入功能混同；现场安装、固件和生态都须核验。"
+    },
+    {
+      "id": "douyin-create",
+      "title": "抖音开放平台 创建视频",
+      "url": "https://open.douyin.com/platform/resource/docs/openapi/video-management/douyin/create/create-video/",
+      "checkedAt": "2026-10-08",
+      "verification": "page-body",
+      "supports": "视频创建需要申请接口权限、用户授权和用户明确感知；创建后有平台审核。",
+      "limitation": "仓库没有获得任何用户平台授权或启用发布连接器。"
+    },
+    {
+      "id": "xhs-auth",
+      "title": "小红书小程序开放平台认证规范",
+      "url": "https://miniapp.xiaohongshu.com/doc/DC356986",
+      "checkedAt": "2026-10-08",
+      "verification": "official-indexed-text-body-unavailable",
+      "supports": "开放平台需主体认证与合规账号。",
+      "limitation": "正文抓取仅返回动态页面；不能从小程序能力推断普通笔记自动发布接口可用。"
+    }
+  ],
+  "policy": "以来源日期和精确版本为准；易变事实在实际执行前刷新；未访问正文降级证据。"
+}

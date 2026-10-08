@@ -1,14 +1,14 @@
 {
   "schemaVersion": "workloom.acceptance-profile/v2",
-  "repo": "workloom-ai/workloom-hotel",
-  "productName": "WorkLoom 酒店行业版",
+  "repo": "workloom-ai/workloom-BusinessManagementSystem",
+  "productName": "经营管理系统（BusinessManagementSystem）",
   "lane": "industry",
-  "primaryBundle": "hotel",
+  "primaryBundle": "smart-home",
   "workspaceId": null,
   "identity": {
-    "workspaceSlug": "yunqi-hotel",
+    "workspaceSlug": "smart-home-demo",
     "human": "MEM-001",
-    "guest": "demo-direct",
+    "guest": "anonymous-smart-home-service",
     "authTokenEnv": "ACCEPTANCE_AUTH_TOKEN"
   },
   "startup": {
@@ -72,49 +72,49 @@
     "minContrastRatio": 4.5,
     "idleInterruptionWindowS": 20
   },
-  "notes": "本仓代表任务是酒店跨店经营摘要：正常结果（P0 k=5）、输入错误、无身份权限三路径。profile-check/outcome --validate-only 仅校验配置；真实行业结果、体验、长跑和完整276项仍须独立验收。",
+  "notes": "本profile采用继承RDAS v2契约，验证的是smart-home装配后的PostgreSQL/tRPC三端基础层；其threads.dispatch/thread-events不能代表9393原生SQLite宿主任务。默认经营入口声明在nativeWorkbench扩展中。profile-check仅配置校验，真实客户生产、完整276项与长期ADR/HIR不因配置有效而通过。",
   "dataMode": "simulated",
   "environment": {
     "kind": "local-preview",
     "target": {},
     "supportDir": null,
     "allowWrites": false,
-    "notes": "本仓档位必须与 CLI/父执行器一致；切换环境需提供同档位的显式 profile。生产默认只读，写入需受控身份、显式授权、夹具标记与残留披露。"
+    "notes": "local-preview为继承三端基础层；真实经营入口使用nativeWorkbench独立声明。本档位默认只读，显式验收写入需marker与残留披露。"
   },
   "ux": {
     "personas": [
       {
         "id": "owner",
         "jtbd": [
-          "看到酒店跨店经营摘要的事实、缺失项与待决事项"
+          "看到全屋智能门店目标、实测记录、风险与人工待决项"
         ],
         "criticality": "P0"
       },
       {
         "id": "manager",
         "jtbd": [
-          "核对酒店跨店经营摘要的来源与责任岗位"
+          "核对线索、方案、报价、交付与售后前置证据和岗位责任"
         ],
         "criticality": "P0"
       },
       {
         "id": "staff",
         "jtbd": [
-          "完成酒店跨店经营摘要并看到结果回执"
+          "核对岗位任务的输入、产物、失败原因与本地回执"
         ],
         "criticality": "P0"
       },
       {
         "id": "partner",
         "jtbd": [
-          "看到授权边界与越权拒绝原因"
+          "看到当前授权范围与越权拒绝原因"
         ],
         "criticality": "P1"
       },
       {
         "id": "guest",
         "jtbd": [
-          "得到清晰回答与转人工入口"
+          "得到匿名行业问答与服务意向引导，私人项目不公开"
         ],
         "criticality": "P0"
       }
@@ -124,21 +124,21 @@
         "id": "U-01",
         "persona": "owner",
         "stage": "daily",
-        "title": "酒店跨店经营摘要：事实与待决项",
+        "title": "全屋智能：本地事实、缺口与待决事项",
         "mot": true
       },
       {
         "id": "U-02",
         "persona": "manager",
         "stage": "daily",
-        "title": "酒店跨店经营摘要：来源核查与结果回执",
+        "title": "全屋智能：来源、责任岗位与结果回执",
         "mot": true
       },
       {
         "id": "U-03",
         "persona": "owner",
         "stage": "exception",
-        "title": "酒店跨店经营摘要：数据缺失与权限拒绝",
+        "title": "全屋智能：数据缺失与权限拒绝",
         "mot": true
       }
     ],
@@ -174,52 +174,52 @@
     {
       "id": "EXP-01",
       "persona": "owner",
-      "title": "酒店跨店经营摘要：首启事实与待决项",
+      "title": "全屋智能基础层：首启事实与待决项",
       "script": "builtin:first-value"
     },
     {
       "id": "EXP-02",
       "persona": "owner",
-      "title": "酒店跨店经营摘要：授权边界与审批留痕",
+      "title": "全屋智能基础层：审批边界与留痕",
       "script": "builtin:approval"
     },
     {
       "id": "EXP-03",
       "persona": "manager",
-      "title": "酒店跨店经营摘要：结果与来源核对",
+      "title": "全屋智能基础层：结果与来源核对",
       "script": "builtin:traceability"
     },
     {
       "id": "EXP-04",
       "persona": "staff",
-      "title": "酒店跨店经营摘要：派活与结果读回",
+      "title": "全屋智能基础层：派活与线程读回",
       "script": "builtin:dispatch"
     },
     {
       "id": "EXP-05",
       "persona": "partner",
-      "title": "酒店跨店经营摘要：越权拒绝可见",
+      "title": "全屋智能基础层：越权拒绝可见",
       "script": "builtin:partner-scope"
     },
     {
       "id": "EXP-06",
       "persona": "guest",
-      "title": "酒店跨店经营摘要：首响与转人工",
+      "title": "全屋智能服务前台：匿名问答与转人工",
       "script": "builtin:guest-service"
     }
   ],
   "outcome": {
     "roles": [
       {
-        "role": "owner-cockpit",
-        "agentPreset": "owner-cockpit",
-        "al": "AL3",
-        "deliverableUnit": "跨店核查摘要",
-        "minSubstance": "OCC/ADR/RevPAR 的口径与来源、待核实项、待人工审批项；不制造经营数字",
+        "role": "store-ceo",
+        "agentPreset": "store-ceo",
+        "al": "AL1",
+        "deliverableUnit": "全屋智能经营核查摘要",
+        "minSubstance": "线索授权、勘测、SKU版本兼容、报价审批、交付顺序、售后证据的来源与缺失项；不编造经营数字，不把本地记录当外部已核验",
         "kpis": [
           {
-            "name": "已核实来源完整性",
-            "source": "threads.events/ask.answer",
+            "name": "摘要来源与缺失项完整性",
+            "source": "threads.events/ask.answer（继承基础层，仅摘要）",
             "baseline": null,
             "target": null
           }
@@ -236,8 +236,8 @@
     "taskSuites": [
       "acceptance/outcomes/industry.yaml"
     ],
-    "fixtureMarker": "suite.rdas.workloom-hotel",
-    "residualDisclosure": "酒店跨店经营摘要验收会保留带 suite.rdas.workloom-hotel 标记的线程和事件；不会删除审计事件，需单独列入残留清单并排除 ADR/HIR 与经营指标。"
+    "fixtureMarker": "suite.rdas.business-management.smart-home.foundation",
+    "residualDisclosure": "继承基础层摘要验收可能创建带 suite.rdas.business-management.smart-home.foundation 标记的线程与事件；审计事件不删除。验收残留单列并从ADR/HIR与经营指标中排除，不计为native任务或真实业绩。"
   },
   "autonomy": {
     "interventionTaxonomy": "H0-H4",
@@ -264,8 +264,8 @@
     ]
   },
   "live": {
-    "enabled": true,
-    "requireRealModels": false,
+    "enabled": false,
+    "requireRealModels": true,
     "allowDb": false,
     "budgets": {
       "maxLlmCalls": 40,
@@ -278,55 +278,97 @@
       "maxCostCny": 120,
       "maxWallClockMin": 45
     },
-    "models": [
-      {
-        "id": "deepseek-v4.1-flash",
-        "kind": "llm",
-        "model": "deepseek-flash",
-        "adapter": "dsh-harness",
-        "apiKeyEnv": "DEEPSEEK_API_KEY",
-        "baseUrlEnv": "DEEPSEEK_BASE_URL"
-      }
+    "models": [],
+    "tasks": [],
+    "notes": "继承P域执行器只支持旧线程/dsh-harness模型，未声明付费API或替代provider。原生宿主模型实测证据在docs/evidence/host-model-*.json；其成功不代表deployed生产/真实业务或完整P域通过。"
+  },
+  "entryKind": "inherited-foundation-compatibility",
+  "nativeWorkbench": {
+    "schemaVersion": "business-management.native-acceptance/v1",
+    "defaultBusinessEntry": true,
+    "industry": "smart-home",
+    "startup": {
+      "command": "node scripts/business-management.mjs serve",
+      "host": "127.0.0.1",
+      "port": 9393
+    },
+    "execution": {
+      "modelProvider": "host-workbench",
+      "runtimeModelCalls": 0,
+      "additionalModelApiRequired": false,
+      "persistentStore": "node:sqlite",
+      "receiptKind": "local.sqlite.commit",
+      "externalVerified": false
+    },
+    "scope": {
+      "dataMode": "sandbox",
+      "businessData": "synthetic",
+      "tenantId": "demo-store",
+      "workspaceId": "default"
+    },
+    "interfaces": {
+      "catalog": "GET /api/catalog",
+      "state": "GET /api/state",
+      "call": "POST /api/call",
+      "mcp": "scripts/business-management-mcp.mjs",
+      "humanAuthority": "real-tty-and-owner-session"
+    },
+    "workflowKinds": [
+      "growth-acquisition",
+      "project-delivery",
+      "aftercare-loop",
+      "management-loop",
+      "employee-work"
     ],
-    "tasks": [
+    "scenarioEvidence": [
       {
-        "id": "LLM-R1",
-        "kind": "llm",
-        "chain": "dsh-harness",
-        "model": "deepseek-v4.1-flash",
-        "criticality": "P0",
-        "title": "酒店跨店经营摘要：事实与缺口推理",
-        "prompt": "当前酒店业主驾驶舱应如何核对各门店 OCC、ADR、RevPAR 与待审批事项？请用“门店”标注来源与缺失数据，只提供核查摘要，不批准、不改价。\n最后另起一行输出 TASK_COMPLETE。",
-        "expect": [
-          "门店"
-        ],
-        "expectAll": [
-          "TASK_COMPLETE"
-        ]
+        "id": "native-growth-host",
+        "scenario": "normal",
+        "path": "docs/evidence/host-model-proof.json",
+        "expected": "4模型阶段、本地草稿与拟议体验；无外部发布或消息"
       },
       {
-        "id": "PROD-01",
-        "kind": "product",
-        "criticality": "P0",
-        "title": "酒店跨店经营摘要（经产品入口与线程事件读回）",
-        "input": "suite.rdas.workloom-hotel：当前酒店业主驾驶舱应如何核对各门店 OCC、ADR、RevPAR 与待审批事项？请用“门店”标注来源与缺失数据，只提供核查摘要，不批准、不改价。",
-        "presetKey": "owner-cockpit",
-        "workspaceSlug": "yunqi-hotel",
-        "requireModel": true,
-        "fixtureMarker": "suite.rdas.workloom-hotel",
-        "residualDisclosure": "酒店跨店经营摘要验收会保留带 suite.rdas.workloom-hotel 标记的线程和事件；不会删除审计事件，需单独列入残留清单并排除 ADR/HIR 与经营指标。",
-        "state_asserts": [
-          {
-            "event": {
-              "action": "ask.answer",
-              "field": "decision.after.text",
-              "contains": "门店",
-              "minLength": 12
-            }
-          }
-        ]
+        "id": "native-delivery-human-gate",
+        "scenario": "permission",
+        "path": "docs/evidence/host-model-delivery-proof.json",
+        "expected": "方案和报价完成，停在人类审批；accepted-projects=0"
+      },
+      {
+        "id": "native-unqualified",
+        "scenario": "failure",
+        "path": "docs/evidence/host-model-proof-unqualified.json",
+        "expected": "资格缺失时跳过内容与体验；不得把completed算目标达成"
+      },
+      {
+        "id": "native-employee-preparation",
+        "scenario": "normal",
+        "path": "docs/evidence/host-model-employee-proof.json",
+        "expected": "视频岗位准备报告；不渲染、不发布"
+      },
+      {
+        "id": "native-browser-boundary",
+        "scenario": "boundary",
+        "path": "docs/evidence/ui-workbench-proof.json",
+        "expected": "桌面/手机、错误与可选字段、人审和跨域边界以报告实际结果为准"
       }
     ],
-    "notes": "声明酒店跨店经营摘要的模型/产品任务。无受控身份、实际模型或结果回执时保持未验证；配置校验与 HTTP fixture 不构成生产通过。"
+    "fixtureMarker": "suite.bms.smart-home",
+    "residualDisclosure": "原生测试使用仓库外独立临时/测试SQLite目录；只保存脱敏进程与状态证据。不将合成样本导入真实门店，也不计ADR/HIR或真实经营成果。",
+    "externalConnectors": {
+      "publishing": "disabled",
+      "messaging": "disabled",
+      "payments": "disabled",
+      "deviceControl": "disabled"
+    },
+    "production": {
+      "status": "unverified",
+      "realCustomers": false,
+      "realDevices": false,
+      "realPlatforms": false,
+      "qwenWorkClientValidated": false,
+      "workBuddyClientValidated": false,
+      "deployedValidated": false
+    },
+    "notes": "扩展声明不由继承profile-check验证；原生业务真实性由独立CLI/MCP/HTTP/SQLite/真实宿主测试证明。默认端口9393与product.manifest一致，三端基础层端口不是此原生服务。"
   }
 }

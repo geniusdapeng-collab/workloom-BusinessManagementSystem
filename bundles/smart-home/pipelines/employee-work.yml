@@ -1,0 +1,11 @@
+schemaVersion: "business-management.pipeline/v1"
+id: "employee-work"
+name: "数字员工所属技能任务闭环"
+executor: "runtime/workflows.mjs"
+modelProvider: "host-workbench"
+assignment: {"employeeFrom": "employeeId", "skillFrom": "skillId", "ownershipSource": "library/workforce.json", "instructionsSource": "skills/{skillId}/SKILL.md", "objectRefs": "当前工作区且同门店的已存在对象引用"}
+steps: [{"id": "skill-plan", "agent": "$employeeId", "skill": "$skillId", "output": "结构化岗位计划、现有对象版本引用、人类待决与下一岗位任务", "required": ["tenantId", "workspaceId", "goalId", "employeeId", "skillId", "brief", "objectRefs"], "onFailure": "visible-bounded-retry"}]
+gates: ["员工与技能归属校验", "当前租户工作区及门店对象引用", "完整技能正文注入", "租约身份与有效期", "引用版本与结构化计划校验", "岗位报告与事件回执"]
+restart: "同一幂等键读取原回执，过期租约有限恢复；字段错误不写入半份产物"
+completion: "本地分析、草稿和行动计划落库；不改变现场或对外完成状态"
+externalConnectors: "发布、投放、支付、设备控制未启用；后续真实动作由对应权限与证据门处理"

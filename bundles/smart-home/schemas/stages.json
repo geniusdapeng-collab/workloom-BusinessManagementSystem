@@ -1,0 +1,86 @@
+{
+  "$id": "workloom://bundles/smart-home/schemas/stages",
+  "description": "客户、项目、售后与门店阶段；计划、现场事实、客户确认分开。",
+  "stages": [
+    {
+      "id": "new",
+      "label": "新线索",
+      "layer": "customer"
+    },
+    {
+      "id": "qualified",
+      "label": "需求合格",
+      "layer": "customer"
+    },
+    {
+      "id": "experience-proposed",
+      "label": "体验计划",
+      "layer": "customer"
+    },
+    {
+      "id": "surveyed",
+      "label": "勘测有据",
+      "layer": "project"
+    },
+    {
+      "id": "designed",
+      "label": "方案核验",
+      "layer": "project"
+    },
+    {
+      "id": "quoted",
+      "label": "报价待审",
+      "layer": "project"
+    },
+    {
+      "id": "contracted",
+      "label": "合同有据",
+      "layer": "project"
+    },
+    {
+      "id": "procured",
+      "label": "到货齐套",
+      "layer": "project"
+    },
+    {
+      "id": "installed",
+      "label": "安装有据",
+      "layer": "project"
+    },
+    {
+      "id": "commissioned",
+      "label": "调试通过",
+      "layer": "project"
+    },
+    {
+      "id": "accepted",
+      "label": "客户签收",
+      "layer": "project"
+    },
+    {
+      "id": "aftercare-open",
+      "label": "售后处理中",
+      "layer": "aftercare"
+    },
+    {
+      "id": "aftercare-confirmed",
+      "label": "客户确认解决",
+      "layer": "aftercare"
+    },
+    {
+      "id": "daily",
+      "label": "每日经营",
+      "layer": "store"
+    },
+    {
+      "id": "weekly",
+      "label": "周复盘",
+      "layer": "store"
+    },
+    {
+      "id": "monthly",
+      "label": "月对账",
+      "layer": "store"
+    }
+  ]
+}

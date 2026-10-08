@@ -1,0 +1,39 @@
+{
+ "generatedAt": "2026-10-08T17:58:48.851Z",
+ "spec": "docs/REAL-DEVICE-ACCEPTANCE-SPEC.md@rdas/v1",
+ "primaryBundle": "smart-home",
+ "bundles": [
+  "smart-home"
+ ],
+ "compositionSource": "local-fallback（该仓无组合 API，按依赖顺序本地组合；证据等级 B）",
+ "compositionWarnings": [],
+ "workspaceId": "ws-smart-home",
+ "profileWarnings": [],
+ "runtimeConnected": true,
+ "runtimeError": null,
+ "counts": {
+  "agents": 20,
+  "agentsPass": 20,
+  "skills": 35,
+  "skillsPass": 35,
+  "warnings": 0,
+  "fenceRulesMerged": 16,
+  "fenceRulesActiveInWorkspace": 16,
+  "shadowedPresets": 0,
+  "perBundle": {
+   "smart-home": 20
+  }
+ },
+ "capabilityLayer": {
+  "status": "not-run",
+  "reason": "L8 能力层需要真实模型 + 专业场景评分卡；本脚本只覆盖 L0 契约层与 L1 运行层。"
+ },
+ "failures": {
+  "agents": [],
+  "skills": []
+ },
+ "warnings": {
+  "agents": [],
+  "skills": []
+ }
+}

@@ -4,7 +4,7 @@
  * PG 集成：hotel profile 六槽全装配 + 五项校验全绿（F2.10）/ 校验留痕（P7E3）/
  *          激活幂等（bundle.activate 事件）/ 草稿校验失败拒绝激活（不静默 L9.2）
  */
-import { cpSync, mkdtempSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+import { cpSync, mkdtempSync, readFileSync, writeFileSync, existsSync, rmSync } from "node:fs";
 import { createHash, generateKeyPairSync, sign as signValue } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -193,15 +193,47 @@ describe("草稿骨架与校验（P7E5/§2.3，文件级）", () => {
   });
 
   it("开发通道公开通过校验且明确开放的候选包，生产通道只公开稳定包", () => {
-    const registry = listSelfServiceBundles();
-    expect(registry.version).toMatch(/^[a-f0-9]{16}$/);
-    expect(registry.entries.map((entry) => entry.slug)).toEqual(["ai-pm", "hotel"]);
-    expect(registry.entries.every((entry) => entry.provisioningMode === "guided-assembly")).toBe(true);
-    expect(registry.rejected).toContainEqual(expect.objectContaining({ slug: "platform", reason: "未开放自助开通" }));
+    const root = mkdtempSync(join(tmpdir(), "wl-self-service-policy-"));
+    const source = new URL("../../../bundles/", import.meta.url).pathname;
     const previousNodeEnv = process.env.NODE_ENV;
     try {
+      for (const slug of ["ai-pm", "hotel"]) {
+        cpSync(join(source, slug), join(root, slug), { recursive: true });
+      }
+      scaffoldDraft({
+        slug: "platform", displayName: "平台内部包", version: "0.1.0",
+        changelog: "自助开通策略夹具", fenceRef: "platform-baseline/v1", ownerMemberNo: "MEM-001",
+      }, root);
+      const privatePath = join(root, "platform", "bundle.json");
+      const privateManifest = parseBundleManifest(JSON.parse(readFileSync(privatePath, "utf8")));
+      privateManifest.workloom.status = "candidate";
+      const paths = Object.values(privateManifest.workloom.provides)
+        .flatMap(value => typeof value === "string" ? [value] : value ?? []);
+      const assets = Object.fromEntries(paths.map(asset => [asset, createHash("sha256")
+        .update(readFileSync(join(root, "platform", asset))).digest("hex")]));
+      privateManifest.integrity = {
+        algorithm: "sha256", assets,
+        digest: createHash("sha256").update(canonicalBundleArtifactPayload(privateManifest, assets)).digest("hex"),
+      };
+      writeFileSync(privatePath, `${JSON.stringify(privateManifest, null, 2)}\n`);
+      // 可见性由夹具显式声明，不依赖当前产品是否开放酒店自助开通。
+      const path = join(root, "hotel", "bundle.json");
+      const manifest = parseBundleManifest(JSON.parse(readFileSync(path, "utf8")));
+      manifest.workloom.example = true;
+      manifest.workloom.status = "candidate";
+      delete manifest.integrity?.signature;
+      manifest.integrity!.digest = createHash("sha256")
+        .update(canonicalBundleArtifactPayload(manifest))
+        .digest("hex");
+      writeFileSync(path, `${JSON.stringify(manifest, null, 2)}\n`);
+      process.env.NODE_ENV = "test";
+      const registry = listSelfServiceBundles(root);
+      expect(registry.version).toMatch(/^[a-f0-9]{16}$/);
+      expect(registry.entries.map((entry) => entry.slug)).toEqual(["ai-pm", "hotel"]);
+      expect(registry.entries.every((entry) => entry.provisioningMode === "guided-assembly")).toBe(true);
+      expect(registry.rejected).toContainEqual(expect.objectContaining({ slug: "platform", reason: "未开放自助开通" }));
       process.env.NODE_ENV = "production";
-      const productionRegistry = listSelfServiceBundles();
+      const productionRegistry = listSelfServiceBundles(root);
       expect(productionRegistry.entries).toEqual([]);
       expect(productionRegistry.rejected).toContainEqual(expect.objectContaining({
         slug: "hotel",
@@ -210,6 +242,7 @@ describe("草稿骨架与校验（P7E5/§2.3，文件级）", () => {
     } finally {
       if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
       else process.env.NODE_ENV = previousNodeEnv;
+      rmSync(root, { recursive: true, force: true });
     }
   });
 });
@@ -227,8 +260,38 @@ describe.runIf(RUN_DB)("行业装配 PG 集成（F2.10 铁律）", async () => {
   const owner = new pg.default.Pool({ connectionString: process.env.DATABASE_URL });
   const fixtureSuffix = `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
   const scope = { tenantId: "tenant-demo", workspaceId: `ws-bundle-${fixtureSuffix}` };
+  let fixtureRoot = "";
 
   beforeAll(async () => {
+    // 正向库契约使用明确的七槽实物夹具；当前酒店包还带有未纳入基座的旧扩展页面。
+    // 只在临时副本中保留原六页 42 个状态用例、七个岗位并显式声明模型策略。
+    fixtureRoot = mkdtempSync(join(tmpdir(), "wl-bundle-pg-positive-"));
+    cpSync(new URL("../../../bundles/hotel", import.meta.url).pathname,
+      join(fixtureRoot, "hotel"), { recursive: true });
+    const manifestPath = join(fixtureRoot, "hotel", "bundle.json");
+    const manifest = parseBundleManifest(JSON.parse(readFileSync(manifestPath, "utf8")));
+    const presetKeys = ["pricing-agent", "review-agent", "reconcile-agent", "inspection-agent",
+      "content-agent", "competitor-agent", "desktop-agent"];
+    manifest.workloom.provides.presets = presetKeys.map(key => `presets/${key}.yml`);
+    manifest.workloom.provides.modelPolicy = "model-policy.yml";
+    manifest.workloom.status = "candidate";
+    const casesPath = join(fixtureRoot, "hotel", "ui", "cases.json");
+    const uiCases = JSON.parse(readFileSync(casesPath, "utf8"));
+    uiCases.cases = uiCases.cases.slice(0, 42);
+    uiCases.pages = [...new Set<string>(uiCases.cases.map((entry: { page: string }) => entry.page))];
+    expect(uiCases.pages).toEqual(["p1", "p2", "p3", "p5", "p6", "p9"]);
+    expect(uiCases.cases).toHaveLength(42);
+    writeFileSync(casesPath, `${JSON.stringify(uiCases, null, 2)}\n`);
+    const assets = Object.fromEntries(Object.values(manifest.workloom.provides)
+      .flatMap(value => typeof value === "string" ? [value] : value ?? [])
+      .map(asset => [asset, createHash("sha256")
+        .update(readFileSync(join(fixtureRoot, "hotel", asset))).digest("hex")]));
+    manifest.integrity = {
+      algorithm: "sha256", assets,
+      digest: createHash("sha256").update(canonicalBundleArtifactPayload(manifest, assets)).digest("hex"),
+    };
+    writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+    expect(loadVerifiedBundleManifest("hotel", fixtureRoot).workloom.provides.presets).toHaveLength(7);
     // 每个测试进程复制一份最小 hotel 装配实物，避免并行的 onboarding/Bundle 用例
     // 共同翻转 ws-yunqi.industry，造成状态断言与草稿激活互相污染。
     const workspace = await owner.query(
@@ -269,6 +332,7 @@ describe.runIf(RUN_DB)("行业装配 PG 集成（F2.10 铁律）", async () => {
     await owner.query(`DELETE FROM profiles WHERE workspace_id=$1`, [scope.workspaceId]).catch(() => undefined);
     await owner.query(`DELETE FROM workspaces WHERE id=$1`, [scope.workspaceId]).catch(() => undefined);
     await Promise.all([app.end(), gw.end(), owner.end()]);
+    if (fixtureRoot) rmSync(fixtureRoot, { recursive: true, force: true });
   });
   /** app 池断言查询辅助：事务内设 RLS 上下文（与生产口径一致；池直查在 RLS 下恒 0 行） */
   const qApp = async <T extends Record<string, any> = Record<string, any>>(sql: string, params: unknown[] = []) => {
@@ -290,7 +354,7 @@ describe.runIf(RUN_DB)("行业装配 PG 集成（F2.10 铁律）", async () => {
 
 
   it("hotel profile：七槽 7/7 已装配 + 起飞前检查单六项全绿（F2.10 + v3.0 第⑦槽）", async () => {
-    const p = await computeAssembly(app, scope, "hotel");
+    const p = await computeAssembly(app, scope, "hotel", fixtureRoot);
     expect(p.status).toBe("active");
     expect(p.filledCount).toBe(7);
     expect(p.checks.map((c) => c.ok)).toEqual([true, true, true, true, true, true]);
@@ -298,15 +362,16 @@ describe.runIf(RUN_DB)("行业装配 PG 集成（F2.10 铁律）", async () => {
     // 班组卡：7 preset 全注册且围栏绑定合法（P7E2）
     expect(p.agents.length).toBe(7);
     expect(p.agents.every((a) => a.fenceOk)).toBe(true);
-    // 槽摘要口径：档案 7 字段组 · forbidden 硬约束 2 条；UI 6 页 · 42 条；第⑦槽路由策略合法
-    expect(p.slots[0]!.summary).toContain("字段组");
-    expect(p.slots[5]!.summary).toBe("6 页 · 状态用例 42 条同步");
+    // 槽摘要口径：当前档案 21 组字段 · forbidden 2 条；UI 6 页 42 条；合并默认后 19 个场景。
+    expect(p.slots[0]!.summary).toBe("客户档案 21 组字段 · 硬约束 2 条");
+    expect(p.slots[5]!.summary).toBe("6 个页面 · 42 条界面状态用例");
     expect(p.slots[6]!.id).toBe("model-policy");
-    expect(p.slots[6]!.summary).toContain("model-policy.yml");
+    expect(p.slots[6]!.filled).toBe(true);
+    expect(p.slots[6]!.summary).toBe("已配置 19 个使用场景");
   });
 
   it("校验留痕：recheck 写 bundle.check_run 事件（P7E3 留痕可查）", async () => {
-    const r = await recheckBundle(app, gw, scope, "hotel", "MEM-001");
+    const r = await recheckBundle(app, gw, scope, "hotel", "MEM-001", fixtureRoot);
     expect(r.eventId).toMatch(/^E-\d+$/);
     const ev = await qApp(
       `SELECT payload->'decision'->>'action' AS action FROM biz_events WHERE event_id=$1`, [r.eventId]);
@@ -314,7 +379,7 @@ describe.runIf(RUN_DB)("行业装配 PG 集成（F2.10 铁律）", async () => {
   });
 
   it("激活幂等：hotel 已激活仍可重激活并留痕 bundle.activate", async () => {
-    const r = await activateBundle(app, gw, scope, "hotel", "MEM-001");
+    const r = await activateBundle(app, gw, scope, "hotel", "MEM-001", fixtureRoot);
     expect(r.eventId).toMatch(/^E-\d+$/);
     const ind = await qApp(`SELECT industry FROM workspaces WHERE id=$1`, [scope.workspaceId]);
     expect(ind.rows[0]!.industry).toBe("hotel");
@@ -324,11 +389,21 @@ describe.runIf(RUN_DB)("行业装配 PG 集成（F2.10 铁律）", async () => {
     const root = mkdtempSync(join(tmpdir(), "wl-bundles-h15-"));
     // 五要素填充 = 复制 hotel 实物资产作为第三行业草稿内容（演示口径：资产由行业方提供，非底座代码）
     // #25 修复：用 import.meta.url 定位仓库根（原 process.cwd() 相对路径仅在包目录下跑测试才成立）
-    const hotelDir = new URL("../../../bundles/hotel", import.meta.url).pathname;
+    const hotelDir = join(fixtureRoot, "hotel");
     cpSync(hotelDir, join(root, "copycat"), { recursive: true });
     const bjPath = join(root, "copycat", "bundle.json");
     const bj = JSON.parse(readFileSync(bjPath, "utf-8"));
     bj.name = "@workloom/copycat"; bj.workloom.industry = "copycat"; bj.workloom.status = "draft";
+    // 第三行业同时拥有自己的能力/权限/路由命名空间，禁止借用酒店导航权限。
+    bj.workloom.ui.permissions = bj.workloom.ui.permissions
+      .map((permission: string) => permission.replace(/^hotel\./, "copycat."));
+    for (const slot of bj.workloom.ui.navigation.slots) {
+      slot.capabilityId = slot.capabilityId.replace(/^hotel\./, "copycat.");
+      slot.permissions = slot.permissions.map((permission: string) => permission.replace(/^hotel\./, "copycat."));
+      slot.route = slot.route.replace(/^\/hotel\//, "/copycat/");
+    }
+    bj.workloom.ui.serviceFront = { enabled: false, identityPolicy: "disabled", tabs: [], services: [] };
+    bj.workloom.ui.inspection = { enabled: false };
     delete bj.integrity;
     writeFileSync(bjPath, `${JSON.stringify(bj, null, 2)}\n`, "utf-8");
 
@@ -349,11 +424,21 @@ describe.runIf(RUN_DB)("行业装配 PG 集成（F2.10 铁律）", async () => {
       expect(p1.status).toBe("active");
       expect(p1.checks.every((c) => c.ok)).toBe(true);
     } finally {
-      await activateBundle(app, gw, scope, "hotel", "MEM-001"); // 还原演示工作区
+      await activateBundle(app, gw, scope, "hotel", "MEM-001", fixtureRoot); // 还原演示工作区
+      rmSync(root, { recursive: true, force: true });
     }
     const back = await qApp(`SELECT industry FROM workspaces WHERE id=$1`, [scope.workspaceId]);
     expect(back.rows[0]!.industry).toBe("hotel");
   }, 20000);
+
+  it("未注册的行业页面不因旧包资产存在而放行：当前酒店清单拒绝激活", async () => {
+    const p = await computeAssembly(app, scope, "hotel");
+    expect(p.canActivate).toBe(false);
+    expect(p.checks.find(check => check.key === "ui"))
+      .toMatchObject({ ok: false, detail: expect.stringContaining("未注册页面") });
+    await expect(activateBundle(app, gw, scope, "hotel", "MEM-001"))
+      .rejects.toMatchObject({ code: "ASSEMBLY_CHECK_FAILED" });
+  });
 
   it("草稿 Bundle：六槽待填充 + 校验五项全红（第⑦槽骨架自带不阻断）+ 拒绝激活（F2.10 不静默 L9.2）", async () => {
     const root = mkdtempSync(join(tmpdir(), "wl-bundles-"));

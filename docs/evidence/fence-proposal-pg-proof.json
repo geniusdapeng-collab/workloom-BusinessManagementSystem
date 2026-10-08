@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "bms.fence-proposal-pg-proof/v1",
+  "testedAt": "2026-10-08T17:43:03.440732+00:00",
+  "sourceHashes": {
+    "apps/server/src/trpc/router.ts": "40b9908f40d29fb431b814ce268e5cbe9a5b08912b363cfec57c2a744f888f89",
+    "apps/server/src/trpc/fence-proposal.pg.test.ts": "2c66282328a68e58e6f518b1f5f6a58e3d5b0f049e074498aece2c4673b368ab"
+  },
+  "runtime": "actual local PostgreSQL 17 on isolated loopback instance; synthetic tenant/workspace, append-only events retained in disposable audit database",
+  "databaseScope": "workloom (sandbox instance, not a production database)",
+  "realCustomerData": false,
+  "totals": {
+    "cases": 13,
+    "passed": 13,
+    "failed": 0
+  },
+  "cases": [
+    {
+      "name": "确认只落库完整、绑定已回放内容且携带版本的提案与审批",
+      "pass": true,
+      "durationMs": 71.58229099999994,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "同一规则并发提案分配不同递增版本，规范化大小写",
+      "pass": true,
+      "durationMs": 10.64754199999993,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "回放后替换名称或条件被拒，报告保持 pending 且无提案副作用",
+      "pass": true,
+      "durationMs": 8.367457999999942,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "报告不得用于另一规则，且不能读取另一个工作区的报告",
+      "pass": true,
+      "durationMs": 3.6839579999998477,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "重复确认失败关闭，不重复创建规则、事件或审批",
+      "pass": true,
+      "durationMs": 8.334957999999915,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "当前生效规则不得降级；显式 when 放行位也不能绕过 level 守卫",
+      "pass": true,
+      "durationMs": 4.078999999999951,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "已回放的 when 修改须显式确认，放行位随提案保存供激活复核",
+      "pass": true,
+      "durationMs": 5.176416999999901,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "审批入库失败回滚 dry-run 确认、规则与事件，允许重新确认",
+      "pass": true,
+      "durationMs": 11.47787500000004,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "报告绑定与回滚同时失败保留两个错误、丢弃连接，未绑定报告不能确认",
+      "pass": true,
+      "durationMs": 7.185083000000077,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "提案与回滚同时失败保留两个错误、丢弃连接且整笔写入未提交",
+      "pass": true,
+      "durationMs": 10.164958999999953,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "只读成员不能通过 API 直接提出或确认规则",
+      "pass": true,
+      "durationMs": 3.3002500000000055,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "旧报告缺少候选内容时拒绝确认，要求重新回放",
+      "pass": true,
+      "durationMs": 1.3315000000000055,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    },
+    {
+      "name": "空对象范围、空动作与异常规则标识在输入边界拒绝",
+      "pass": true,
+      "durationMs": 1.7318749999999454,
+      "precondition": "Dedicated synthetic tenant, example workspace, owner/readonly members; RUN_DB_TESTS=1 with separate admin/app/gateway roles",
+      "steps": "Execute this named case in apps/server/src/trpc/fence-proposal.pg.test.ts through the real appRouter caller against PostgreSQL",
+      "expected": "The case source assertions pass; failed binding/proposal rolls back, scoped authorization and monotonicity remain enforced",
+      "actual": "passed"
+    }
+  ]
+}

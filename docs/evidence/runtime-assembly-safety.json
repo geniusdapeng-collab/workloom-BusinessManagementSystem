@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "workloom.local-regression/v1",
+  "evidenceLevel": "A",
+  "scope": "Runtime preset assembly skill revocation and transaction safety",
+  "dataScope": "Four actual PostgreSQL cases use a disposable database with all repository migrations; seven fault injection cases use explicit PG client boundaries",
+  "sourceState": "Dirty source candidate after authorized repair; this report is not a clean-HEAD MCD capture",
+  "productionCalls": false,
+  "summary": {
+    "tests": 11,
+    "pass": 11,
+    "fail": 0,
+    "skip": 0,
+    "actualDisposablePostgresCases": 4,
+    "injectedFaultCases": 7
+  },
+  "observedAt": "2026-10-08T18:50:41.496000+00:00",
+  "preconditions": [
+    "Bundled Node 24 runtime",
+    "Explicit BMS_PG_TEST_URL points to isolated loopback PostgreSQL sandbox",
+    "Fresh disposable test database is removed in finally"
+  ],
+  "steps": [
+    "Run packages/runtime/src/assembly-revocation.test.ts through repository Vitest",
+    "Exercise revoked installed skill exclusion, current binding control, cross-workspace scope, and rollback atomicity against actual PostgreSQL",
+    "Inject BEGIN, SQL, COMMIT, and ROLLBACK failures and inspect release/discard and preserved errors"
+  ],
+  "expected": "All eleven assertions pass with zero skip; failed transactions never return success; revoked skills do not contribute bindings",
+  "actual": "11/11 pass; zero fail, zero skip",
+  "checks": [
+    {
+      "name": "Runtime assembly transaction completion returns a complete preset only after successful COMMIT",
+      "status": "passed",
+      "durationMs": 1.3417499999999905,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime assembly transaction completion COMMIT failure rejects and attempts ROLLBACK before release",
+      "status": "passed",
+      "durationMs": 0.35829200000000583,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime assembly transaction completion query failure rolls back and never attempts COMMIT",
+      "status": "passed",
+      "durationMs": 0.2537089999999864,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime assembly transaction completion query and rollback failures retain both causes and discard the failed connection",
+      "status": "passed",
+      "durationMs": 0.22450000000000614,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime assembly transaction completion COMMIT and rollback failures retain both causes without a second COMMIT",
+      "status": "passed",
+      "durationMs": 0.1666659999999922,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime assembly transaction completion missing essentials still reject and end through ROLLBACK",
+      "status": "passed",
+      "durationMs": 0.16416699999999196,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime assembly transaction completion pool connection failure propagates before any query",
+      "status": "passed",
+      "durationMs": 0.08445899999998119,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime revocation on disposable PostgreSQL non-revoked installed skill snapshots remain in the actual app-role assembly",
+      "status": "passed",
+      "durationMs": 7.176124999999956,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime revocation on disposable PostgreSQL owner revocation removes only the revoked snapshot while retaining preset and live control bindings",
+      "status": "passed",
+      "durationMs": 16.898666999999932,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime revocation on disposable PostgreSQL one tenant workspace never imports another workspace's installed or revoked bindings",
+      "status": "passed",
+      "durationMs": 10.24433399999998,
+      "failureMessages": []
+    },
+    {
+      "name": "Runtime revocation on disposable PostgreSQL injected COMMIT failure on a real app connection rejects after rollback",
+      "status": "passed",
+      "durationMs": 4.095957999999996,
+      "failureMessages": []
+    }
+  ],
+  "sourceHashes": {
+    "packages/runtime/src/assembly.ts": "9d414d68e8d9663280df31e3fd607714b478d40179f1b8660e7d6390a3d18a40",
+    "packages/runtime/src/assembly-revocation.test.ts": "bcacf075b45d9097eec7f4bbd152250d70df9f8b21b91bee22bf5bd54d5ca652"
+  },
+  "rawReportSha256": "a5dad8daf186332ce185f5ee789121bfb8125dca9b94cfe1964d46b5dc8e62d2"
+}

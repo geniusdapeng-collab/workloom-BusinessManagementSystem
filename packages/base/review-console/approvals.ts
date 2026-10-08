@@ -21,7 +21,7 @@ import {
   type MemberRole,
 } from "@workloom/shared";
 import { gatewayAppend, gatewayAppendOnClient } from "../workdata/gateway.js";
-import { upsertMemory, upsertMemoryInTx, MockEmbedder, type Embedder } from "../workdata/memory.js";
+import { upsertMemory, upsertMemoryInTx, scopedMemoryId, MockEmbedder, type Embedder } from "../workdata/memory.js";
 import { assertEditKindValid, assertReasonEnumAllowed, type EditKind } from "../evolve/feedback-enums.js";
 
 /* ================= 类型 ================= */
@@ -32,7 +32,7 @@ export interface ApprovalRow {
   channel: string;
   status: ApprovalStatus;
   gesture: { type: Gesture; weight: number; reason_enum?: string; reason_text?: string; edited_after?: unknown; edit_kind?: string } | null;
-  snapshot: { before?: unknown; after?: unknown; expires_at?: string; high_risk?: boolean };
+  snapshot: { before?: unknown; after?: unknown; expires_at?: string; high_risk?: boolean; projection?: { kind: string } };
   decided_by: string | null;
   decided_at: string | null;
   created_at: string;
@@ -66,14 +66,16 @@ export function isHighRiskApproval(row: Pick<ApprovalRow, "tier" | "snapshot">):
 
 export class ApprovalError extends Error {
   constructor(
-    public readonly code: "FORBIDDEN_ROLE" | "EMPTY_REASON" | "REASON_TOO_LONG" | "EDIT_REQUIRES_AFTER" | "EXPIRED" | "NOT_FOUND" | "INVALID_GESTURE",
+    public readonly code: "FORBIDDEN_ROLE" | "EMPTY_REASON" | "REASON_TOO_LONG" | "EDIT_REQUIRES_AFTER" | "EXPIRED" | "NOT_FOUND" | "INVALID_GESTURE" | "PROJECTION_UNAVAILABLE" | "INVALID_PROJECTION" | "STALE_PROJECTION",
     message: string,
   ) {
     super(message);
     this.name = "ApprovalError";
   }
   get statusCode(): number {
-    return this.code === "FORBIDDEN_ROLE" ? 403 : 400;
+    return this.code === "FORBIDDEN_ROLE" ? 403
+      : this.code === "PROJECTION_UNAVAILABLE" ? 412
+        : this.code === "STALE_PROJECTION" ? 409 : 400;
   }
 }
 
@@ -86,6 +88,72 @@ export interface GestureInput {
   editedAfter?: unknown;
   /** M1.3 归因分流（D24 修订 3）：纠错→缺陷池 / 口味→偏好池；仅 edit 手势有意义 */
   editKind?: EditKind;
+}
+
+/**
+ * 行业组合根注册事务内投影；基座不解释业务对象、版本或状态。
+ * snapshot.projection 是必须完成的投影声明，缺少注册器时拒绝整笔审批。
+ * actions 只用于兼容没有 projection 声明的历史事件，不允许声明绕过动作绑定。
+ */
+export interface ApprovalTransactionProjectionInput {
+  scope: { tenantId: string; workspaceId: string };
+  actor: { memberNo: string; role: MemberRole };
+  approval: ApprovalRow;
+  event: BusinessEvent;
+  gesture: GestureInput;
+  status: ApprovalStatus;
+}
+
+type ApprovalTransactionProjection = (client: pg.PoolClient, input: ApprovalTransactionProjectionInput) => Promise<void>;
+const transactionProjections = new Map<string, { actions: Set<string>; apply: ApprovalTransactionProjection }>();
+const projectionKindByAction = new Map<string, string>();
+
+export function registerApprovalTransactionProjection(
+  kind: string,
+  actions: readonly string[],
+  apply: ApprovalTransactionProjection,
+): () => void {
+  if (!/^[a-z][a-z0-9.-]{1,80}$/.test(kind) || actions.length === 0 || actions.some((action) => !action.trim())) {
+    throw new ApprovalError("INVALID_PROJECTION", "审批投影注册必须提供有效 kind 与动作列表");
+  }
+  for (const action of actions) {
+    const existing = projectionKindByAction.get(action);
+    if (existing && existing !== kind) throw new ApprovalError("INVALID_PROJECTION", `动作 ${action} 已绑定其他审批投影`);
+  }
+  const previous = transactionProjections.get(kind);
+  for (const action of previous?.actions ?? []) projectionKindByAction.delete(action);
+  const registration = { actions: new Set(actions), apply };
+  transactionProjections.set(kind, registration);
+  for (const action of actions) projectionKindByAction.set(action, kind);
+  return () => {
+    if (transactionProjections.get(kind) !== registration) return;
+    transactionProjections.delete(kind);
+    for (const action of registration.actions) projectionKindByAction.delete(action);
+  };
+}
+
+async function applyTransactionProjection(
+  client: pg.PoolClient,
+  input: ApprovalTransactionProjectionInput,
+): Promise<void> {
+  const declared: unknown = input.approval.snapshot?.projection;
+  let kind = projectionKindByAction.get(input.event.decision.action);
+  if (declared !== undefined) {
+    if (!declared || typeof declared !== "object" || Array.isArray(declared)
+      || typeof (declared as { kind?: unknown }).kind !== "string") {
+      throw new ApprovalError("INVALID_PROJECTION", "审批快照的投影声明无效");
+    }
+    const declaredKind = (declared as { kind: string }).kind;
+    if (kind && kind !== declaredKind) throw new ApprovalError("INVALID_PROJECTION", "审批投影声明与被审动作不一致");
+    kind = declaredKind;
+  }
+  if (!kind) return;
+  const projection = transactionProjections.get(kind);
+  if (!projection) throw new ApprovalError("PROJECTION_UNAVAILABLE", `审批所需投影 ${kind} 未注册，已拒绝裁决`);
+  if (!projection.actions.has(input.event.decision.action)) {
+    throw new ApprovalError("INVALID_PROJECTION", "审批投影未绑定被审动作，已拒绝裁决");
+  }
+  await projection.apply(client, input);
 }
 
 export function validateGesture(g: GestureInput): void {
@@ -127,20 +195,73 @@ async function scoped<T>(
   fn: (c: pg.PoolClient) => Promise<T>,
 ): Promise<T> {
   const client = await pool.connect();
+  let transactionStarted = false;
+  let commitAttempted = false;
+  let discardError: Error | undefined;
   try {
     // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
     await client.query("BEGIN");
+    transactionStarted = true;
     await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
     await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
     const result = await fn(client);
+    commitAttempted = true;
     await client.query("COMMIT");
     return result;
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
+  } catch (primaryError) {
+    // BEGIN/COMMIT 的传输失败无法证明连接状态，不能把该连接交回池内复用。
+    if (!transactionStarted || commitAttempted) {
+      discardError = primaryError instanceof Error ? primaryError : new Error("审批事务状态不确定", { cause: primaryError });
+    }
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      const failure = new AggregateError([primaryError, rollbackError], "审批事务失败且回滚失败", { cause: primaryError });
+      discardError = failure;
+      throw failure;
+    }
+    throw primaryError;
   } finally {
-    client.release();
+    client.release(discardError);
   }
+}
+
+/** 先锁同一业务事件，再按统一顺序锁通道行，避免各通道先锁自身造成环形等待。 */
+async function lockApprovalEvent(
+  client: pg.PoolClient,
+  scope: { tenantId: string; workspaceId: string },
+  approvalId: string,
+): Promise<{ row: ApprovalRow; rows: ApprovalRow[] }> {
+  const lookup = await client.query<{ event_id: string }>(
+    `SELECT event_id FROM approvals WHERE approval_id=$1 AND workspace_id=$2 AND tenant_id=$3`,
+    [approvalId, scope.workspaceId, scope.tenantId],
+  );
+  const eventId = lookup.rows[0]?.event_id;
+  if (!eventId) throw new ApprovalError("NOT_FOUND", `审批 ${approvalId} 不存在`);
+  await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1, 0))", [
+    JSON.stringify(["review-console.approval", scope.tenantId, scope.workspaceId, eventId]),
+  ]);
+  const locked = await client.query<ApprovalRow>(
+    `SELECT * FROM approvals WHERE event_id=$1 AND workspace_id=$2 AND tenant_id=$3 ORDER BY approval_id FOR UPDATE`,
+    [eventId, scope.workspaceId, scope.tenantId],
+  );
+  const row = locked.rows.find((candidate) => candidate.approval_id === approvalId);
+  if (!row) throw new ApprovalError("NOT_FOUND", `审批 ${approvalId} 不存在`);
+  return { row, rows: locked.rows };
+}
+
+/** 历史通道残留 pending 跟随已落库的裁决；修复队列投影但不再制造手势事件。 */
+async function mirrorTerminalApproval(
+  client: pg.PoolClient,
+  scope: { tenantId: string; workspaceId: string },
+  source: ApprovalRow,
+): Promise<void> {
+  await client.query(
+    `UPDATE approvals SET status=$4, gesture=$5, decided_by=$6, decided_at=$7
+       WHERE event_id=$1 AND workspace_id=$2 AND tenant_id=$3 AND status='pending'`,
+    [source.event_id, scope.workspaceId, scope.tenantId, source.status,
+      source.gesture === null ? null : JSON.stringify(source.gesture), source.decided_by, source.decided_at],
+  );
 }
 
 export async function listQueue(
@@ -195,36 +316,19 @@ export async function decide(
   // scoped 已包裹显式事务（BEGIN→set_config→COMMIT/ROLLBACK），本函数内不再自行开关事务；
   // 过期分支需要「标 expired 落库 + 抛 EXPIRED」——先提交事务再抛，避免 catch 回滚掉过期标记
   const txResult = await scoped(app, scope, async (c) => {
-    const cur = await c.query<ApprovalRow>(
-      `SELECT * FROM approvals WHERE approval_id=$1 AND workspace_id=$2 FOR UPDATE`,
-      [approvalId, scope.workspaceId],
-    );
-    const row = cur.rows[0];
-    if (!row) throw new ApprovalError("NOT_FOUND", `审批 ${approvalId} 不存在`);
-
-    // L5.3：非 pending 一律视为重复回调，只处理首次
-    if (row.status !== "pending") {
-      return { kind: "deduped" as const, row };
-    }
-
-    // #43 修复：同事件跨通道幂等——UNIQUE(event_id,channel) 允许 inapp/dingtalk 各一行，
-    // 此前两通道可各批一次（同一动作双批双留痕）。锁同事件全部审批行（FOR UPDATE
-    // 阻塞并发他通道 decide 至本事务提交），任一他行已终态即按重复回调处理
-    const siblings = await c.query<{ approval_id: string; status: ApprovalStatus }>(
-      `SELECT approval_id, status FROM approvals WHERE event_id=$1 AND workspace_id=$2 AND approval_id<>$3 FOR UPDATE`,
-      [row.event_id, scope.workspaceId, approvalId],
-    );
-    const decidedElsewhere = siblings.rows.find((x) => x.status !== "pending");
-    if (decidedElsewhere) {
-      return { kind: "deduped" as const, row: { ...row, status: decidedElsewhere.status } };
+    const { row, rows } = await lockApprovalEvent(c, scope, approvalId);
+    const terminal = row.status !== "pending" ? row : rows.find((candidate) => candidate.status !== "pending");
+    if (terminal) {
+      await mirrorTerminalApproval(c, scope, terminal);
+      return { kind: "deduped" as const, row: { ...row, status: terminal.status } };
     }
 
     // F5.7/E5.3：快照过期检测（高危项不存在超时自动放行，L5.4）
     const expiresAt = row.snapshot?.expires_at ? new Date(row.snapshot.expires_at) : null;
     if (expiresAt && expiresAt.getTime() < Date.now()) {
       await c.query(
-        `UPDATE approvals SET status='expired' WHERE approval_id=$1`,
-        [approvalId],
+        `UPDATE approvals SET status='expired' WHERE event_id=$1 AND workspace_id=$2 AND tenant_id=$3 AND status='pending'`,
+        [row.event_id, scope.workspaceId, scope.tenantId],
       );
       return { kind: "expired" as const, row, expiresAt };
     }
@@ -234,9 +338,9 @@ export async function decide(
     await c.query(
       `UPDATE approvals
        SET status=$2, gesture=$3, decided_by=$4, decided_at=now()
-       WHERE approval_id=$1 AND status='pending'`,
+       WHERE event_id=$1 AND status='pending' AND workspace_id=$5 AND tenant_id=$6`,
       [
-        approvalId,
+        row.event_id,
         status,
         JSON.stringify({
           type: gesture.type,
@@ -247,6 +351,8 @@ export async function decide(
           edit_kind: gesture.editKind,
         }),
         actor.memberNo,
+        scope.workspaceId,
+        scope.tenantId,
       ],
     );
 
@@ -257,13 +363,20 @@ export async function decide(
      *     runQuest 续跑（#34 恢复闭环携带 approvalRef 直接执行），否则任务永远停在关卡上（MC-101）。
      * 查询仍在本事务内（FOR UPDATE 已锁定 approval 行），不引入新的竞态窗口。
      */
-    const owner = await c.query<{ session_id: string | null; step_id: string | null }>(
-      `SELECT session_id, payload->'decision'->>'step_id' AS step_id
+    const owner = await c.query<{ session_id: string | null; step_id: string | null; payload: BusinessEvent }>(
+      `SELECT session_id, payload->'decision'->>'step_id' AS step_id, payload
          FROM biz_events WHERE event_id=$1 AND workspace_id=$2`,
       [row.event_id, scope.workspaceId],
     );
     const ownerThread = owner.rows[0]?.session_id ?? null;
     const ownerStep = owner.rows[0]?.step_id ?? null;
+    const reviewedEvent = owner.rows[0]?.payload;
+    if (!reviewedEvent && row.snapshot?.projection !== undefined) {
+      throw new ApprovalError("INVALID_PROJECTION", "投影审批缺少本工作区被审事件");
+    }
+    if (reviewedEvent) {
+      await applyTransactionProjection(c, { scope, actor, approval: row, event: reviewedEvent, gesture, status });
+    }
 
     // D16（#1/A）：状态变更、手势事件、校准记忆全部在同一事务同一 COMMIT——
     // 不再存在「状态已改、事件/记忆未落」的崩溃孤儿窗口
@@ -297,8 +410,9 @@ export async function decide(
 
     // F1.7 校准闭环：驳回原因枚举 → 偏好模式记忆（机制位；权重衰减在数据大脑侧）
     if (gesture.type === "reject" && gesture.reasonEnum) {
+      const memoryId = scopedMemoryId(scope, "mem-reject", gesture.reasonEnum);
       await upsertMemoryInTx(c, scope, {
-        memoryId: `mem-reject-${gesture.reasonEnum}`,
+        memoryId,
         scope: "workspace",
         kind: "preference",
         content: `驳回偏好模式：原因枚举「${gesture.reasonEnum}」被采纳为校准信号（最新来源 ${gres.eventId}）`,
@@ -309,7 +423,7 @@ export async function decide(
       // 缺列时 workspace_id 为 NULL，WITH CHECK 不通过（RLS 42501）
       await c.query(
         `INSERT INTO memory_usage (memory_id, event_id, workspace_id) VALUES ($1,$2,$3) ON CONFLICT DO NOTHING`,
-        [`mem-reject-${gesture.reasonEnum}`, gres.eventId, scope.workspaceId],
+        [memoryId, gres.eventId, scope.workspaceId],
       );
     }
 
@@ -433,19 +547,32 @@ export async function expireSweep(
     );
     return r.rows;
   });
-  const expired: string[] = [];
-  const keptHighRisk: string[] = [];
-  for (const row of pend) {
-    const exp = row.snapshot?.expires_at ? new Date(row.snapshot.expires_at) : null;
-    if (!exp || exp.getTime() >= Date.now()) continue;
-    if (isHighRiskApproval(row)) {
-      keptHighRisk.push(row.approval_id); // L5.4：高危项超时标提醒但不放行不expired跳过
-      continue;
-    }
+  const expired = new Set<string>();
+  const keptHighRisk = new Set<string>();
+  for (const candidate of pend) {
     // 铁律 1：状态变更必经网关写事件（#10 修复；此前 expireSweep 只改表不写事件，违反 F1.2）
     // D16（#1/A）：expired 状态与过期事件同一事务提交——不再存在状态已变、事件未落的孤儿窗口
-    await scoped(app, scope, async (c) => {
-      await c.query(`UPDATE approvals SET status='expired' WHERE approval_id=$1`, [row.approval_id]);
+    const outcome = await scoped(app, scope, async (c) => {
+      const { row, rows } = await lockApprovalEvent(c, scope, candidate.approval_id);
+      const terminal = rows.find((entry) => entry.status !== "pending");
+      if (terminal) {
+        await mirrorTerminalApproval(c, scope, terminal);
+        return { kind: "skip" as const };
+      }
+      const expiresAt = row.snapshot?.expires_at ? new Date(row.snapshot.expires_at) : null;
+      if (!expiresAt || !Number.isFinite(expiresAt.getTime()) || expiresAt.getTime() >= Date.now()) {
+        return { kind: "skip" as const };
+      }
+      if (rows.some(isHighRiskApproval)) {
+        return { kind: "high-risk" as const, ids: rows.map(entry => entry.approval_id) };
+      }
+      const changed = await c.query<{ approval_id: string }>(
+        `UPDATE approvals SET status='expired'
+          WHERE event_id=$1 AND workspace_id=$2 AND tenant_id=$3 AND status='pending' RETURNING approval_id`,
+        [row.event_id, scope.workspaceId, scope.tenantId],
+      );
+      const ids = changed.rows.map(entry => entry.approval_id);
+      if (ids.length === 0) return { kind: "skip" as const };
       // MC-104：过期事件同样归属被审事件所在线程（threads.events 按 session_id 过滤，
       // 缺 session_id 时系统侧的超时处置在任务时间线上不可见）
       const own = await c.query<{ session_id: string | null }>(
@@ -462,13 +589,15 @@ export async function expireSweep(
         object: { type: "approval", id: row.approval_id },
         decision: {
           action: "approval.expired",
-          after: { approval_id: row.approval_id, event_id: row.event_id, expires_at: row.snapshot?.expires_at },
+          after: { approval_id: row.approval_id, approval_ids: ids, event_id: row.event_id, expires_at: row.snapshot?.expires_at },
           basis: ["超时未审批，系统标记 expired（F5.7/E5.3；高危项不自动放行 L5.4）"],
         },
         rule_impact: [],
       });
+      return { kind: "expired" as const, ids };
     });
-    expired.push(row.approval_id);
+    if (outcome.kind === "expired") outcome.ids.forEach(id => expired.add(id));
+    if (outcome.kind === "high-risk") outcome.ids.forEach(id => keptHighRisk.add(id));
   }
-  return { expired, keptHighRisk };
+  return { expired: [...expired], keptHighRisk: [...keptHighRisk] };
 }

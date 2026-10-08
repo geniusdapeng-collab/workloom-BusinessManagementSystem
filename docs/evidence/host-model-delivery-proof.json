@@ -1,0 +1,851 @@
+{
+  "schemaVersion": "bms.host-model-proof/v1",
+  "executionRef": "host-proof-f4b4241e428a4544",
+  "host": "codex",
+  "model": "host-default-unspecified",
+  "modelWasExplicitlyOverridden": false,
+  "additionalModelApiConfigured": false,
+  "startedAt": "2026-10-08T16:37:23.265286+00:00",
+  "finishedAt": "2026-10-08T16:39:21.155273+00:00",
+  "processExitCode": 0,
+  "dataMode": "sandbox",
+  "businessData": "synthetic",
+  "scope": {
+    "tenantId": "demo-store",
+    "workspaceId": "default"
+  },
+  "externalActions": 0,
+  "runtimeModelCalls": 0,
+  "hostLogEvidence": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a11c60-6b70-7ae0-96e1-a5f2098d5ce7"
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 478412,
+        "cached_input_tokens": 421376,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2547,
+        "reasoning_output_tokens": 42
+      }
+    }
+  ],
+  "mcpCalls": [
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_catalog",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_status",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_catalog",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_status",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_catalog",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_catalog",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_status",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_status",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_entity_get",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_entity_get",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_approval_list",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_ledger_verify",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_entity_get",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_entity_get",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_ledger_verify",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_approval_list",
+      "status": "completed"
+    }
+  ],
+  "records": {
+    "workflow": {
+      "operation": "workflow.get",
+      "data": {
+        "createdAt": "2026-10-08T16:37:23.239Z",
+        "dataMode": "sandbox",
+        "externallyExecuted": false,
+        "goalId": "synthetic-delivery-goal",
+        "id": "synthetic-delivery-flow",
+        "kind": "project-delivery",
+        "localOnly": true,
+        "maxAttempts": 3,
+        "phaseIndex": 1,
+        "refs": {
+          "approvalId": "approval-quote-37b4eb4ab2336d35bc348f8f50ebef8a",
+          "leadId": "synthetic-lead",
+          "quoteId": "synthetic-delivery-flow:quote",
+          "solutionId": "synthetic-delivery-flow:solution",
+          "surveyId": "synthetic-survey"
+        },
+        "status": "waiting-approval",
+        "storeId": "synthetic-store",
+        "taskIds": [
+          "synthetic-delivery-flow:solution",
+          "synthetic-delivery-flow:quote"
+        ],
+        "tenantId": "demo-store",
+        "type": "workflow",
+        "updatedAt": "2026-10-08T16:38:39.114Z",
+        "version": 6,
+        "waitingFor": "human-quote-approval",
+        "workspaceId": "default",
+        "tasks": [
+          {
+            "artifact": {
+              "bom": [
+                {
+                  "quantity": 1,
+                  "roomId": "living-room",
+                  "skuId": "SYN-GW-01"
+                },
+                {
+                  "circuitId": "lighting-circuit",
+                  "quantity": 1,
+                  "roomId": "living-room",
+                  "skuId": "SYN-LIGHT-01"
+                }
+              ],
+              "compatibilityIds": [
+                "synthetic-pair"
+              ],
+              "exclusions": [
+                "所有SKU、勘测、成本与价目均为合成测试数据，SKU不可购买，外部未交付，未安装。",
+                "兼容仅限synthetic-pair：两SKU版本1、固件synthetic-1、同房间合成测试，不断言商业设备兼容。",
+                "不包括真实采购、设备控制、现场施工、客户验收或厂商性能承诺。"
+              ],
+              "name": "合成沙箱客厅灯光体验方案（外部未交付）",
+              "scenes": [
+                {
+                  "behavior": "拟议通过合成网关与灯具表达客厅灯光开启体验，仅作为本地方案场景描述；未执行、未安装，不承诺亮度、延迟、调光或厂商性能。",
+                  "id": "synthetic-light-experience",
+                  "name": "合成客厅灯光体验",
+                  "roomId": "living-room",
+                  "skuIds": [
+                    "SYN-GW-01",
+                    "SYN-LIGHT-01"
+                  ],
+                  "trigger": "合成沙箱中拟议的手动灯光体验触发；本次不触发设备"
+                }
+              ]
+            },
+            "artifactDigest": "a0115e2ffdda3bddee6cddd7b54b925872889e291a4837462f539e4ac69a740c",
+            "attempts": 1,
+            "completedAt": "2026-10-08T16:38:17.351Z",
+            "createdAt": "2026-10-08T16:37:23.239Z",
+            "dataMode": "sandbox",
+            "employee": "solution-designer",
+            "executionEvidence": "host-submitted-structured-artifact",
+            "executionProvider": "host-workbench-model",
+            "failureHistory": [],
+            "goalId": "synthetic-delivery-goal",
+            "hostModelExternallyVerified": false,
+            "id": "synthetic-delivery-flow:solution",
+            "instructions": "Use only surveyed room IDs and catalogued SKU IDs. Every distinct SKU pair needs an exact current compatibility record. Missing manufacturer evidence must stop the task, never be filled by a model guess.",
+            "leaseExpiresAt": null,
+            "leasedBy": "business-management-mcp-agent",
+            "maxAttempts": 3,
+            "modelInvocationPerformedByRuntime": false,
+            "modelTrace": {
+              "host": "codex",
+              "invocationRef": "host-proof-f4b4241e428a4544",
+              "model": "host-default-unspecified"
+            },
+            "outputSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "bom": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "circuitId": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                        "type": "string"
+                      },
+                      "quantity": {
+                        "maximum": 1000,
+                        "minimum": 1,
+                        "type": "integer"
+                      },
+                      "roomId": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                        "type": "string"
+                      },
+                      "skuId": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "skuId",
+                      "roomId",
+                      "quantity"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 200,
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "compatibilityIds": {
+                  "items": {
+                    "maxLength": 100,
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                    "type": "string"
+                  },
+                  "maxItems": 500,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "exclusions": {
+                  "items": {
+                    "maxLength": 500,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 50,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "name": {
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "scenes": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "behavior": {
+                        "maxLength": 1500,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "id": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                        "type": "string"
+                      },
+                      "name": {
+                        "maxLength": 200,
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "roomId": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                        "type": "string"
+                      },
+                      "skuIds": {
+                        "items": {
+                          "maxLength": 100,
+                          "minLength": 1,
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                          "type": "string"
+                        },
+                        "maxItems": 30,
+                        "minItems": 1,
+                        "type": "array"
+                      },
+                      "trigger": {
+                        "maxLength": 1000,
+                        "minLength": 1,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "roomId",
+                      "name",
+                      "trigger",
+                      "behavior",
+                      "skuIds"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 100,
+                  "minItems": 1,
+                  "type": "array"
+                }
+              },
+              "required": [
+                "name",
+                "bom",
+                "scenes",
+                "compatibilityIds",
+                "exclusions"
+              ],
+              "type": "object"
+            },
+            "phase": "solution",
+            "phaseIndex": 0,
+            "result": {
+              "compatibilityCheckedLocally": true,
+              "physicalFeasibilityVerified": false,
+              "solutionId": "synthetic-delivery-flow:solution"
+            },
+            "skill": "solution-design",
+            "status": "completed",
+            "tenantId": "demo-store",
+            "title": "生成可核验的方案与BOM",
+            "type": "task",
+            "updatedAt": "2026-10-08T16:38:17.351Z",
+            "version": 3,
+            "workflowId": "synthetic-delivery-flow",
+            "workspaceId": "default"
+          },
+          {
+            "artifact": {
+              "approvalExpiresAt": "2026-10-09T16:38:24.253Z",
+              "approvalReason": "请求人类审查合成沙箱报价的BOM、整数分计算及测试假设边界；外部未交付，不代表真实客户报价或经营目标完成。仅创建pending审批证据，本次Codex不批准、不伪造owner。",
+              "discountCents": 0,
+              "laborCostCents": 4000,
+              "laborPriceCents": 8000,
+              "terms": "明确合成sandbox报价测试：设备成本与价目来自当前合成目录，人工成本4000分、人工价目8000分、折扣0分为用户提供的测试假设，仅用于合成沙箱，不是商业实际报价。合成SKU不可购买、未安装，外部未交付；报价未发送、未批准、未付款，兼容仅限synthetic-pair同房间合成测试。等待真实人审，本次不批准或开展采购、现场及设备动作。",
+              "validUntil": "2026-10-11T16:38:24.253Z"
+            },
+            "artifactDigest": "7028eaf6a7e3cb3180804aed01434b22502c78b5820d0f978b6adddb2cc8f67e",
+            "attempts": 1,
+            "completedAt": "2026-10-08T16:38:39.114Z",
+            "createdAt": "2026-10-08T16:38:17.352Z",
+            "dataMode": "sandbox",
+            "employee": "quote-controller",
+            "executionEvidence": "host-submitted-structured-artifact",
+            "executionProvider": "host-workbench-model",
+            "failureHistory": [],
+            "goalId": "synthetic-delivery-goal",
+            "hostModelExternallyVerified": false,
+            "id": "synthetic-delivery-flow:quote",
+            "instructions": "Return integer cents. Runtime calculates price/cost/gross margin and requests human approval. Do not represent a draft as sent, approved or paid.",
+            "leaseExpiresAt": null,
+            "leasedBy": "business-management-mcp-agent",
+            "maxAttempts": 3,
+            "modelInvocationPerformedByRuntime": false,
+            "modelTrace": {
+              "host": "codex",
+              "invocationRef": "host-proof-f4b4241e428a4544",
+              "model": "host-default-unspecified"
+            },
+            "outputSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "approvalExpiresAt": {
+                  "format": "date-time",
+                  "maxLength": 40,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "approvalReason": {
+                  "maxLength": 1500,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "discountCents": {
+                  "maximum": 1000000000,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "laborCostCents": {
+                  "maximum": 1000000000,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "laborPriceCents": {
+                  "maximum": 1000000000,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "terms": {
+                  "maxLength": 2500,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "validUntil": {
+                  "format": "date-time",
+                  "maxLength": 40,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "laborCostCents",
+                "laborPriceCents",
+                "discountCents",
+                "validUntil",
+                "terms",
+                "approvalExpiresAt",
+                "approvalReason"
+              ],
+              "type": "object"
+            },
+            "phase": "quote",
+            "phaseIndex": 1,
+            "result": {
+              "approvalId": "approval-quote-37b4eb4ab2336d35bc348f8f50ebef8a",
+              "pendingHumanApproval": true,
+              "quoteId": "synthetic-delivery-flow:quote",
+              "totalCents": 32000
+            },
+            "skill": "quote-margin-control",
+            "status": "completed",
+            "tenantId": "demo-store",
+            "title": "形成毛利可计算的报价草案",
+            "type": "task",
+            "updatedAt": "2026-10-08T16:38:39.114Z",
+            "version": 3,
+            "workflowId": "synthetic-delivery-flow",
+            "workspaceId": "default"
+          }
+        ]
+      }
+    },
+    "goal": {
+      "operation": "goal.report",
+      "data": {
+        "goal": {
+          "authority": "local-planning-only",
+          "constraints": [
+            "只用合成数据与人工测试回执",
+            "不控制真实设备"
+          ],
+          "createdAt": "2026-10-08T16:37:23.232Z",
+          "dataMode": "sandbox",
+          "deadline": "2026-10-22T16:37:23.215Z",
+          "externalActionsEnabled": false,
+          "id": "synthetic-delivery-goal",
+          "metric": "accepted-projects",
+          "status": "active",
+          "storeId": "synthetic-store",
+          "target": 1,
+          "tenantId": "demo-store",
+          "title": "合成交付测试：记录一个本地验收项目",
+          "type": "goal",
+          "updatedAt": "2026-10-08T16:37:23.232Z",
+          "version": 1,
+          "workspaceId": "default"
+        },
+        "metrics": {
+          "qualified-leads": 0,
+          "experience-plans": 0,
+          "accepted-projects": 0,
+          "resolved-aftercare": 0,
+          "management-reports": 0
+        },
+        "current": 0,
+        "target": 1,
+        "achievedLocally": false,
+        "externallyVerified": false,
+        "dataMode": "sandbox",
+        "authority": "local-records-only",
+        "workflows": [
+          {
+            "id": "synthetic-delivery-flow",
+            "kind": "project-delivery",
+            "status": "waiting-approval",
+            "waitingFor": "human-quote-approval"
+          }
+        ],
+        "pendingApprovals": [
+          {
+            "id": "approval-quote-37b4eb4ab2336d35bc348f8f50ebef8a",
+            "targetType": "quote",
+            "targetId": "synthetic-delivery-flow:quote"
+          }
+        ],
+        "externalConnectors": {
+          "publishing": "disabled",
+          "messaging": "disabled",
+          "payments": "disabled",
+          "deviceControl": "disabled"
+        },
+        "evidence": {
+          "events": 14,
+          "ledgerHead": "3cbb03582a9311cd0d429454f35e3f1c3c0dddd8d43b4258ba5229a8c8533d1d"
+        }
+      }
+    },
+    "ledger": {
+      "operation": "ledger.verify",
+      "data": {
+        "ok": true,
+        "checkedEvents": 14,
+        "checkedEntities": 16,
+        "checkedReceipts": 14,
+        "headHash": "3cbb03582a9311cd0d429454f35e3f1c3c0dddd8d43b4258ba5229a8c8533d1d",
+        "issues": []
+      }
+    },
+    "status": {
+      "operation": "status",
+      "data": {
+        "runtimeVersion": "1.0.0",
+        "industry": "smart-home",
+        "tenantId": "demo-store",
+        "workspaceId": "default",
+        "dataMode": "sandbox",
+        "database": "local-sqlite",
+        "modelProvider": "host-workbench",
+        "runtimeModelCalls": 0,
+        "connectors": {
+          "publishing": "disabled",
+          "messaging": "disabled",
+          "payments": "disabled",
+          "deviceControl": "disabled"
+        },
+        "counts": {
+          "store": 1,
+          "sku": 2,
+          "compatibility": 1,
+          "lead": 1,
+          "experience": 0,
+          "survey": 1,
+          "solution": 1,
+          "quote": 1,
+          "approval": 1,
+          "project": 0,
+          "procurement": 0,
+          "commissioning": 0,
+          "acceptance": 0,
+          "aftercare": 0,
+          "content": 0,
+          "goal": 2,
+          "workflow": 2,
+          "task": 3,
+          "report": 0
+        },
+        "ledger": {
+          "ok": true,
+          "checkedEvents": 14,
+          "checkedEntities": 16,
+          "checkedReceipts": 14,
+          "headHash": "3cbb03582a9311cd0d429454f35e3f1c3c0dddd8d43b4258ba5229a8c8533d1d",
+          "issues": []
+        },
+        "systemTime": "2026-10-08T16:39:21.049Z"
+      }
+    },
+    "solution": {
+      "operation": "entity.get",
+      "data": {
+        "bom": [
+          {
+            "quantity": 1,
+            "roomId": "living-room",
+            "skuId": "SYN-GW-01"
+          },
+          {
+            "circuitId": "lighting-circuit",
+            "quantity": 1,
+            "roomId": "living-room",
+            "skuId": "SYN-LIGHT-01"
+          }
+        ],
+        "cataloguePriceCents": 24000,
+        "compatibilityChecks": [
+          {
+            "compatibilityId": "synthetic-pair",
+            "conditions": "Synthetic same-room test only; no commercial device compatibility is asserted.",
+            "externallyVerified": false,
+            "leftSkuId": "SYN-GW-01",
+            "rightSkuId": "SYN-LIGHT-01"
+          }
+        ],
+        "compatibilityIds": [
+          "synthetic-pair"
+        ],
+        "containsHighRiskHardware": false,
+        "costCents": 13000,
+        "createdAt": "2026-10-08T16:38:17.350Z",
+        "dataMode": "sandbox",
+        "electricalLoadChecks": {},
+        "exclusions": [
+          "所有SKU、勘测、成本与价目均为合成测试数据，SKU不可购买，外部未交付，未安装。",
+          "兼容仅限synthetic-pair：两SKU版本1、固件synthetic-1、同房间合成测试，不断言商业设备兼容。",
+          "不包括真实采购、设备控制、现场施工、客户验收或厂商性能承诺。"
+        ],
+        "id": "synthetic-delivery-flow:solution",
+        "leadId": "synthetic-lead",
+        "name": "合成沙箱客厅灯光体验方案（外部未交付）",
+        "physicalFeasibilityVerified": false,
+        "safetyRequirement": "onsite-installation-and-customer-evidence",
+        "scenes": [
+          {
+            "behavior": "拟议通过合成网关与灯具表达客厅灯光开启体验，仅作为本地方案场景描述；未执行、未安装，不承诺亮度、延迟、调光或厂商性能。",
+            "id": "synthetic-light-experience",
+            "name": "合成客厅灯光体验",
+            "roomId": "living-room",
+            "skuIds": [
+              "SYN-GW-01",
+              "SYN-LIGHT-01"
+            ],
+            "trigger": "合成沙箱中拟议的手动灯光体验触发；本次不触发设备"
+          }
+        ],
+        "skuSnapshots": {
+          "SYN-GW-01": {
+            "category": "gateway",
+            "costCents": 10000,
+            "firmwareVersion": "synthetic-1",
+            "priceCents": 18000,
+            "version": 1
+          },
+          "SYN-LIGHT-01": {
+            "category": "lighting",
+            "costCents": 3000,
+            "firmwareVersion": "synthetic-1",
+            "priceCents": 6000,
+            "version": 1
+          }
+        },
+        "status": "validated-local",
+        "storeId": "synthetic-store",
+        "surveyId": "synthetic-survey",
+        "tenantId": "demo-store",
+        "type": "solution",
+        "updatedAt": "2026-10-08T16:38:17.350Z",
+        "version": 1,
+        "workspaceId": "default"
+      }
+    },
+    "quote": {
+      "operation": "entity.get",
+      "data": {
+        "approvalId": "approval-quote-37b4eb4ab2336d35bc348f8f50ebef8a",
+        "commitmentDigest": "a5ac597d657045768de681bb74f9f7fa1799c8f005e977e5dbe2afbf75d2f639",
+        "costCents": 17000,
+        "createdAt": "2026-10-08T16:38:39.113Z",
+        "currency": "CNY",
+        "dataMode": "sandbox",
+        "discountCents": 0,
+        "discountRatio": 0,
+        "externalQuoteDelivered": false,
+        "financialCommitmentMade": false,
+        "grossMarginRatio": 0.46875,
+        "grossProfitCents": 15000,
+        "id": "synthetic-delivery-flow:quote",
+        "laborCostCents": 4000,
+        "laborPriceCents": 8000,
+        "leadId": "synthetic-lead",
+        "policyViolations": [],
+        "solutionDigest": "64da2839787a66c47c8b9ccb7037c14263570415460aadb6cdb0096467323bcd",
+        "solutionId": "synthetic-delivery-flow:solution",
+        "status": "awaiting-approval",
+        "storeId": "synthetic-store",
+        "subtotalCents": 32000,
+        "tenantId": "demo-store",
+        "terms": "明确合成sandbox报价测试：设备成本与价目来自当前合成目录，人工成本4000分、人工价目8000分、折扣0分为用户提供的测试假设，仅用于合成沙箱，不是商业实际报价。合成SKU不可购买、未安装，外部未交付；报价未发送、未批准、未付款，兼容仅限synthetic-pair同房间合成测试。等待真实人审，本次不批准或开展采购、现场及设备动作。",
+        "totalCents": 32000,
+        "type": "quote",
+        "updatedAt": "2026-10-08T16:38:39.114Z",
+        "validUntil": "2026-10-11T16:38:24.253Z",
+        "version": 2,
+        "workspaceId": "default"
+      }
+    },
+    "approval": {
+      "operation": "entity.get",
+      "data": {
+        "contentDigest": "a5ac597d657045768de681bb74f9f7fa1799c8f005e977e5dbe2afbf75d2f639",
+        "createdAt": "2026-10-08T16:38:39.113Z",
+        "dataMode": "sandbox",
+        "expiresAt": "2026-10-09T16:38:24.253Z",
+        "externallyExecuted": false,
+        "id": "approval-quote-37b4eb4ab2336d35bc348f8f50ebef8a",
+        "reason": "请求人类审查合成沙箱报价的BOM、整数分计算及测试假设边界；外部未交付，不代表真实客户报价或经营目标完成。仅创建pending审批证据，本次Codex不批准、不伪造owner。",
+        "requestedAt": "2026-10-08T16:38:39.113Z",
+        "status": "pending",
+        "summary": {
+          "grossMarginRatio": 0.46875,
+          "policyViolations": [],
+          "totalCents": 32000
+        },
+        "targetId": "synthetic-delivery-flow:quote",
+        "targetType": "quote",
+        "tenantId": "demo-store",
+        "type": "approval",
+        "updatedAt": "2026-10-08T16:38:39.113Z",
+        "version": 1,
+        "workspaceId": "default"
+      }
+    }
+  },
+  "interpretation": "Real Codex host-model execution on synthetic sandbox data. Model traces in business entities alone are self-reported; this separate process/tool record supplies host execution evidence. Local SQLite receipts do not prove external publication, messaging or commercial outcomes.",
+  "requestedModelPhasesCompleted": true,
+  "humanApprovalBypassed": false,
+  "fixtureAssumptions": {
+    "laborCostCents": 4000,
+    "laborPriceCents": 8000,
+    "discountCents": 0,
+    "unitsPerSku": 1,
+    "businessData": "synthetic"
+  },
+  "observedOutcome": "Solution and quote model phases completed; workflow stopped at human approval"
+}

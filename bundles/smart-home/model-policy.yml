@@ -1,0 +1,6 @@
+version: "smart-home-host-model/v1"
+provider: "host-workbench"
+required_model_key: false
+description: "模型由正在调用的Codex、千问办公或WorkBuddy工作台负责；本地运行时不另外调用模型供应商。"
+scenes: {"qualification": {"tier": "L2", "fallback": "passthrough-disclose", "purpose": "需求资格与资料缺项", "quality_gate": "structured-output"}, "content-draft": {"tier": "L2", "fallback": "passthrough-disclose", "purpose": "有来源内容草稿", "quality_gate": "facts-privacy"}, "solution": {"tier": "L3", "noDowngrade": true, "fallback": "passthrough-disclose", "purpose": "空间设备与场景方案", "quality_gate": "bom-compatibility"}, "quote": {"tier": "L3", "noDowngrade": true, "fallback": "passthrough-disclose", "purpose": "报价说明与条款", "quality_gate": "integer-cents-margin"}, "owner-report": {"tier": "L2", "fallback": "passthrough-disclose", "purpose": "经营结果与待决事项", "quality_gate": "receipt-only"}}
+failure: {"retry_limit": 3, "invalid_output": "reject-visible", "timeout": "lease-expiry", "model_unavailable": "keep-ready-not-completed"}

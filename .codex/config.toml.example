@@ -1,0 +1,13 @@
+# 在项目根执行 node scripts/business-management.mjs setup --client codex。
+# setup 会检测当前 Node 和克隆位置并生成 .codex/config.toml；此模板没有密钥。
+[mcp_servers.business_management]
+command = "/absolute/path/to/node"
+args = ["/absolute/path/to/BusinessManagementSystem/scripts/business-management-mcp.mjs"]
+cwd = "/absolute/path/to/BusinessManagementSystem"
+startup_timeout_sec = 30
+tool_timeout_sec = 60
+
+[mcp_servers.business_management.env]
+BMS_DATA_MODE = "sandbox"
+BMS_TENANT_ID = "demo-store"
+BMS_WORKSPACE_ID = "default"

@@ -1,0 +1,5902 @@
+{
+  "schemaVersion": "business-management.operations/v1",
+  "source": "runtime/catalogue.mjs",
+  "operations": [
+    {
+      "name": "status",
+      "operation": "status",
+      "title": "运行状态",
+      "description": "运行状态",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "catalog",
+      "operation": "catalog",
+      "title": "操作与工作流目录",
+      "description": "操作与工作流目录",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "entity.list",
+      "operation": "entity.list",
+      "title": "当前工作区业务对象",
+      "description": "当前工作区业务对象",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "entity.get",
+      "operation": "entity.get",
+      "title": "业务对象详情",
+      "description": "业务对象详情",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "type",
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "type",
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "state.snapshot",
+      "operation": "state.snapshot",
+      "title": "门店经营快照",
+      "description": "门店经营快照",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "ledger.verify",
+      "operation": "ledger.verify",
+      "title": "验证当前租户事件链",
+      "description": "验证当前租户事件链",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "ledger.list",
+      "operation": "ledger.list",
+      "title": "读取当前租户经营事件",
+      "description": "读取当前租户经营事件",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          },
+          "after": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          },
+          "after": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "approval.list",
+      "operation": "approval.list",
+      "title": "人工审批待办",
+      "description": "人工审批待办",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "approved",
+              "rejected",
+              "expired"
+            ]
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "approved",
+              "rejected",
+              "expired"
+            ]
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "task.list",
+      "operation": "task.list",
+      "title": "宿主模型任务列表",
+      "description": "宿主模型任务列表",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "workflowId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "leased",
+              "completed",
+              "failed",
+              "cancelled"
+            ]
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "workflowId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ready",
+              "leased",
+              "completed",
+              "failed",
+              "cancelled"
+            ]
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 500
+          }
+        },
+        "required": [],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "workflow.get",
+      "operation": "workflow.get",
+      "title": "工作流执行进度",
+      "description": "工作流执行进度",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "workflowId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "workflowId"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "workflowId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "workflowId"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "goal.report",
+      "operation": "goal.report",
+      "title": "董事长目标证据汇报",
+      "description": "董事长目标证据汇报",
+      "readOnly": true,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent",
+        "viewer"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "goalId"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "goalId"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": []
+    },
+    {
+      "name": "store.upsert",
+      "operation": "store.upsert",
+      "title": "配置全屋智能门店",
+      "description": "配置全屋智能门店",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "city": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "serviceAreas": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "minMarginRatio": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.9
+          },
+          "maxDiscountRatio": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.9
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000000
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "city",
+          "serviceAreas",
+          "minMarginRatio",
+          "maxDiscountRatio",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "city": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "serviceAreas": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "minMarginRatio": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.9
+          },
+          "maxDiscountRatio": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 0.9
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000000
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "city",
+          "serviceAreas",
+          "minMarginRatio",
+          "maxDiscountRatio",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH1",
+        "R-SH14"
+      ]
+    },
+    {
+      "name": "sku.upsert",
+      "operation": "sku.upsert",
+      "title": "登记设备SKU及版本证据",
+      "description": "登记设备SKU及版本证据",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "manufacturer": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "gateway",
+              "lighting",
+              "switch",
+              "sensor",
+              "curtain",
+              "climate",
+              "audio",
+              "door-lock",
+              "camera",
+              "electrical",
+              "fire-safety"
+            ]
+          },
+          "protocol": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "firmwareVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "costCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "priceCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "installationRequirements": {
+            "type": "object",
+            "properties": {
+              "powerType": {
+                "type": "string",
+                "enum": [
+                  "mains",
+                  "low-voltage",
+                  "battery",
+                  "passive"
+                ]
+              },
+              "requiresNeutralWire": {
+                "type": "boolean"
+              },
+              "ratedWatts": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100000
+              },
+              "voltageMin": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000
+              },
+              "voltageMax": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000
+              },
+              "requiresInternet": {
+                "type": "boolean"
+              },
+              "requiresWiredBackhaul": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "powerType",
+              "requiresNeutralWire",
+              "ratedWatts",
+              "voltageMin",
+              "voltageMax",
+              "requiresInternet",
+              "requiresWiredBackhaul"
+            ],
+            "additionalProperties": false
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000000
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "manufacturer",
+          "model",
+          "category",
+          "protocol",
+          "firmwareVersion",
+          "costCents",
+          "priceCents",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "manufacturer": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "gateway",
+              "lighting",
+              "switch",
+              "sensor",
+              "curtain",
+              "climate",
+              "audio",
+              "door-lock",
+              "camera",
+              "electrical",
+              "fire-safety"
+            ]
+          },
+          "protocol": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "firmwareVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "costCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "priceCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "installationRequirements": {
+            "type": "object",
+            "properties": {
+              "powerType": {
+                "type": "string",
+                "enum": [
+                  "mains",
+                  "low-voltage",
+                  "battery",
+                  "passive"
+                ]
+              },
+              "requiresNeutralWire": {
+                "type": "boolean"
+              },
+              "ratedWatts": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100000
+              },
+              "voltageMin": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000
+              },
+              "voltageMax": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000
+              },
+              "requiresInternet": {
+                "type": "boolean"
+              },
+              "requiresWiredBackhaul": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "powerType",
+              "requiresNeutralWire",
+              "ratedWatts",
+              "voltageMin",
+              "voltageMax",
+              "requiresInternet",
+              "requiresWiredBackhaul"
+            ],
+            "additionalProperties": false
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "expectedVersion": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000000
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "manufacturer",
+          "model",
+          "category",
+          "protocol",
+          "firmwareVersion",
+          "costCents",
+          "priceCents",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH6"
+      ]
+    },
+    {
+      "name": "compatibility.record",
+      "operation": "compatibility.record",
+      "title": "登记精确SKU版本的兼容依据",
+      "description": "登记精确SKU版本的兼容依据",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leftSkuId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "rightSkuId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "compatible",
+              "incompatible"
+            ]
+          },
+          "conditions": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "expiresAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "leftSkuId",
+          "rightSkuId",
+          "result",
+          "conditions",
+          "evidence",
+          "expiresAt",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leftSkuId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "rightSkuId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "compatible",
+              "incompatible"
+            ]
+          },
+          "conditions": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "expiresAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "leftSkuId",
+          "rightSkuId",
+          "result",
+          "conditions",
+          "evidence",
+          "expiresAt",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH6"
+      ]
+    },
+    {
+      "name": "lead.create",
+      "operation": "lead.create",
+      "title": "登记线索与渠道归因",
+      "description": "登记线索与渠道归因",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "storeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "alias": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "contactRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "douyin",
+              "xiaohongshu",
+              "wechat-video",
+              "wechat-private",
+              "baidu",
+              "geo",
+              "walk-in",
+              "referral",
+              "designer",
+              "property",
+              "decoration-partner"
+            ]
+          },
+          "campaignRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "intent": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "budgetCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "renovationStage": {
+            "type": "string",
+            "enum": [
+              "new-build",
+              "design",
+              "rough-in",
+              "decorating",
+              "finished",
+              "occupied",
+              "retrofit"
+            ]
+          },
+          "consent": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "granted",
+                  "denied"
+                ]
+              },
+              "purposes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "consultation",
+                    "appointment",
+                    "marketing",
+                    "aftercare"
+                  ]
+                },
+                "minItems": 0,
+                "maxItems": 4
+              },
+              "evidence": {
+                "type": "object",
+                "properties": {
+                  "uri": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000,
+                    "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "source": {
+                    "type": "string",
+                    "enum": [
+                      "synthetic",
+                      "manufacturer",
+                      "site",
+                      "customer",
+                      "invoice",
+                      "technician"
+                    ]
+                  },
+                  "observedAt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40,
+                    "format": "date-time"
+                  },
+                  "summary": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1200
+                  }
+                },
+                "required": [
+                  "uri",
+                  "sha256",
+                  "source",
+                  "observedAt",
+                  "summary"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "status",
+              "purposes"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "storeId",
+          "alias",
+          "contactRef",
+          "channel",
+          "intent",
+          "consent",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "storeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "alias": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "contactRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "douyin",
+              "xiaohongshu",
+              "wechat-video",
+              "wechat-private",
+              "baidu",
+              "geo",
+              "walk-in",
+              "referral",
+              "designer",
+              "property",
+              "decoration-partner"
+            ]
+          },
+          "campaignRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "intent": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "budgetCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "renovationStage": {
+            "type": "string",
+            "enum": [
+              "new-build",
+              "design",
+              "rough-in",
+              "decorating",
+              "finished",
+              "occupied",
+              "retrofit"
+            ]
+          },
+          "consent": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "unknown",
+                  "granted",
+                  "denied"
+                ]
+              },
+              "purposes": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "consultation",
+                    "appointment",
+                    "marketing",
+                    "aftercare"
+                  ]
+                },
+                "minItems": 0,
+                "maxItems": 4
+              },
+              "evidence": {
+                "type": "object",
+                "properties": {
+                  "uri": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1000,
+                    "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "source": {
+                    "type": "string",
+                    "enum": [
+                      "synthetic",
+                      "manufacturer",
+                      "site",
+                      "customer",
+                      "invoice",
+                      "technician"
+                    ]
+                  },
+                  "observedAt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40,
+                    "format": "date-time"
+                  },
+                  "summary": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1200
+                  }
+                },
+                "required": [
+                  "uri",
+                  "sha256",
+                  "source",
+                  "observedAt",
+                  "summary"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "status",
+              "purposes"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "storeId",
+          "alias",
+          "contactRef",
+          "channel",
+          "intent",
+          "consent",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH1",
+        "R-SH2"
+      ]
+    },
+    {
+      "name": "lead.authorize",
+      "operation": "lead.authorize",
+      "title": "登记客户用途授权或撤回",
+      "description": "登记客户用途授权或撤回",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "leadId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "granted",
+              "denied"
+            ]
+          },
+          "purposes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "consultation",
+                "appointment",
+                "marketing",
+                "aftercare"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 4
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "leadId",
+          "status",
+          "purposes",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "leadId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "granted",
+              "denied"
+            ]
+          },
+          "purposes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "consultation",
+                "appointment",
+                "marketing",
+                "aftercare"
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 4
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "leadId",
+          "status",
+          "purposes",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH2"
+      ]
+    },
+    {
+      "name": "experience.schedule",
+      "operation": "experience.schedule",
+      "title": "安排本地体验计划",
+      "description": "安排本地体验计划",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leadId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "startsAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "durationMinutes": {
+            "type": "integer",
+            "minimum": 15,
+            "maximum": 240
+          },
+          "scenes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "minItems": 1,
+            "maxItems": 20
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "proposed",
+              "customer-confirmed"
+            ]
+          },
+          "confirmationEvidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "leadId",
+          "startsAt",
+          "durationMinutes",
+          "scenes",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leadId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "startsAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "durationMinutes": {
+            "type": "integer",
+            "minimum": 15,
+            "maximum": 240
+          },
+          "scenes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 300
+            },
+            "minItems": 1,
+            "maxItems": 20
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "proposed",
+              "customer-confirmed"
+            ]
+          },
+          "confirmationEvidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "leadId",
+          "startsAt",
+          "durationMinutes",
+          "scenes",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH2",
+        "R-SH4"
+      ]
+    },
+    {
+      "name": "survey.record",
+      "operation": "survey.record",
+      "title": "登记有证据的现场勘测",
+      "description": "登记有证据的现场勘测",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner",
+        "operator"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leadId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "renovationStage": {
+            "type": "string",
+            "enum": [
+              "new-build",
+              "design",
+              "rough-in",
+              "decorating",
+              "finished",
+              "occupied",
+              "retrofit"
+            ]
+          },
+          "rooms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "areaSqm": {
+                  "type": "number",
+                  "minimum": 1,
+                  "maximum": 2000
+                },
+                "circuits": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 100,
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                      },
+                      "neutralWire": {
+                        "type": "boolean"
+                      },
+                      "voltage": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 1000
+                      },
+                      "maxLoadWatts": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 100000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "neutralWire",
+                      "voltage",
+                      "maxLoadWatts"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 0,
+                  "maxItems": 50
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "areaSqm",
+                "circuits"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "network": {
+            "type": "object",
+            "properties": {
+              "internetAvailable": {
+                "type": "boolean"
+              },
+              "wiredBackhaul": {
+                "type": "boolean"
+              },
+              "coverageNotes": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "vlanRequirement": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "internetAvailable",
+              "wiredBackhaul",
+              "coverageNotes",
+              "vlanRequirement"
+            ],
+            "additionalProperties": false
+          },
+          "hazards": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "minItems": 0,
+            "maxItems": 50
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "leadId",
+          "renovationStage",
+          "rooms",
+          "network",
+          "hazards",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leadId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "renovationStage": {
+            "type": "string",
+            "enum": [
+              "new-build",
+              "design",
+              "rough-in",
+              "decorating",
+              "finished",
+              "occupied",
+              "retrofit"
+            ]
+          },
+          "rooms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 120
+                },
+                "areaSqm": {
+                  "type": "number",
+                  "minimum": 1,
+                  "maximum": 2000
+                },
+                "circuits": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 100,
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                      },
+                      "neutralWire": {
+                        "type": "boolean"
+                      },
+                      "voltage": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 1000
+                      },
+                      "maxLoadWatts": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 100000
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "neutralWire",
+                      "voltage",
+                      "maxLoadWatts"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 0,
+                  "maxItems": 50
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "areaSqm",
+                "circuits"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "network": {
+            "type": "object",
+            "properties": {
+              "internetAvailable": {
+                "type": "boolean"
+              },
+              "wiredBackhaul": {
+                "type": "boolean"
+              },
+              "coverageNotes": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2000
+              },
+              "vlanRequirement": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "internetAvailable",
+              "wiredBackhaul",
+              "coverageNotes",
+              "vlanRequirement"
+            ],
+            "additionalProperties": false
+          },
+          "hazards": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "minItems": 0,
+            "maxItems": 50
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "leadId",
+          "renovationStage",
+          "rooms",
+          "network",
+          "hazards",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH8"
+      ]
+    },
+    {
+      "name": "solution.build",
+      "operation": "solution.build",
+      "title": "校验方案、场景与BOM",
+      "description": "校验方案、场景与BOM",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "surveyId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "bom": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "skuId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "roomId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1000
+                },
+                "circuitId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                }
+              },
+              "required": [
+                "skuId",
+                "roomId",
+                "quantity"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 200
+          },
+          "scenes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "roomId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "trigger": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "behavior": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1500
+                },
+                "skuIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "minItems": 1,
+                  "maxItems": 30
+                }
+              },
+              "required": [
+                "id",
+                "roomId",
+                "name",
+                "trigger",
+                "behavior",
+                "skuIds"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "compatibilityIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+            },
+            "minItems": 0,
+            "maxItems": 500
+          },
+          "exclusions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "minItems": 0,
+            "maxItems": 50
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "surveyId",
+          "name",
+          "bom",
+          "scenes",
+          "compatibilityIds",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "surveyId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "bom": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "skuId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "roomId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1000
+                },
+                "circuitId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                }
+              },
+              "required": [
+                "skuId",
+                "roomId",
+                "quantity"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 200
+          },
+          "scenes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "roomId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "trigger": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "behavior": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1500
+                },
+                "skuIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "minItems": 1,
+                  "maxItems": 30
+                }
+              },
+              "required": [
+                "id",
+                "roomId",
+                "name",
+                "trigger",
+                "behavior",
+                "skuIds"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "compatibilityIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+            },
+            "minItems": 0,
+            "maxItems": 500
+          },
+          "exclusions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            },
+            "minItems": 0,
+            "maxItems": 50
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "surveyId",
+          "name",
+          "bom",
+          "scenes",
+          "compatibilityIds",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH6",
+        "R-SH8"
+      ]
+    },
+    {
+      "name": "quote.create",
+      "operation": "quote.create",
+      "title": "计算报价、成本、毛利与折扣",
+      "description": "计算报价、成本、毛利与折扣",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "solutionId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "laborCostCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "laborPriceCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "discountCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "validUntil": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "terms": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2500
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "solutionId",
+          "laborCostCents",
+          "laborPriceCents",
+          "discountCents",
+          "validUntil",
+          "terms",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "solutionId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "laborCostCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "laborPriceCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "discountCents": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000000000
+          },
+          "validUntil": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "terms": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2500
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "solutionId",
+          "laborCostCents",
+          "laborPriceCents",
+          "discountCents",
+          "validUntil",
+          "terms",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH10"
+      ]
+    },
+    {
+      "name": "quote.request_approval",
+      "operation": "quote.request_approval",
+      "title": "请求人类批准报价承诺",
+      "description": "请求人类批准报价承诺",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "quoteId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "expiresAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "quoteId",
+          "expiresAt",
+          "reason",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "quoteId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "expiresAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "quoteId",
+          "expiresAt",
+          "reason",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH7",
+        "R-SH10"
+      ]
+    },
+    {
+      "name": "approval.decide",
+      "operation": "approval.decide",
+      "title": "人类审批决断",
+      "description": "人类审批决断",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "approvalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "approved",
+              "rejected"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "contentDigest": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "approvalId",
+          "decision",
+          "reason",
+          "contentDigest",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "approvalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "approved",
+              "rejected"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "contentDigest": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "approvalId",
+          "decision",
+          "reason",
+          "contentDigest",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH3",
+        "R-SH7",
+        "R-SH10"
+      ]
+    },
+    {
+      "name": "project.create",
+      "operation": "project.create",
+      "title": "批准报价后建立交付项目",
+      "description": "批准报价后建立交付项目",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner",
+        "operator"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "quoteId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "contractEvidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "dueAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "quoteId",
+          "contractEvidence",
+          "dueAt",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "quoteId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "contractEvidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "dueAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "quoteId",
+          "contractEvidence",
+          "dueAt",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH7",
+        "R-SH8"
+      ]
+    },
+    {
+      "name": "procurement.record",
+      "operation": "procurement.record",
+      "title": "记录采购到货证据",
+      "description": "记录采购到货证据",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner",
+        "operator"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "skuId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1000
+                },
+                "serialRefs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "minItems": 0,
+                  "maxItems": 1000
+                }
+              },
+              "required": [
+                "skuId",
+                "quantity",
+                "serialRefs"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 200
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "projectId",
+          "items",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "skuId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "quantity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 1000
+                },
+                "serialRefs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "minItems": 0,
+                  "maxItems": 1000
+                }
+              },
+              "required": [
+                "skuId",
+                "quantity",
+                "serialRefs"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 200
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "projectId",
+          "items",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH11"
+      ]
+    },
+    {
+      "name": "project.milestone",
+      "operation": "project.milestone",
+      "title": "登记安装现场里程碑证据",
+      "description": "登记安装现场里程碑证据",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner",
+        "operator"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "milestone": {
+            "type": "string",
+            "enum": [
+              "installation"
+            ]
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "professionalRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "safetyChecklist": {
+            "type": "object",
+            "properties": {
+              "powerIsolated": {
+                "type": "boolean"
+              },
+              "manufacturerInstructionsFollowed": {
+                "type": "boolean"
+              },
+              "networkConfigured": {
+                "type": "boolean"
+              },
+              "customerPrivacyProtected": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "powerIsolated",
+              "manufacturerInstructionsFollowed",
+              "networkConfigured",
+              "customerPrivacyProtected"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "projectId",
+          "milestone",
+          "evidence",
+          "professionalRef",
+          "safetyChecklist",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "milestone": {
+            "type": "string",
+            "enum": [
+              "installation"
+            ]
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "professionalRef": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "safetyChecklist": {
+            "type": "object",
+            "properties": {
+              "powerIsolated": {
+                "type": "boolean"
+              },
+              "manufacturerInstructionsFollowed": {
+                "type": "boolean"
+              },
+              "networkConfigured": {
+                "type": "boolean"
+              },
+              "customerPrivacyProtected": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "powerIsolated",
+              "manufacturerInstructionsFollowed",
+              "networkConfigured",
+              "customerPrivacyProtected"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "projectId",
+          "milestone",
+          "evidence",
+          "professionalRef",
+          "safetyChecklist",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH8",
+        "R-SH9",
+        "R-SH11"
+      ]
+    },
+    {
+      "name": "commissioning.record",
+      "operation": "commissioning.record",
+      "title": "记录场景调试测试",
+      "description": "记录场景调试测试",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner",
+        "operator"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sceneId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "passed": {
+                  "type": "boolean"
+                },
+                "observation": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1500
+                }
+              },
+              "required": [
+                "sceneId",
+                "passed",
+                "observation"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "projectId",
+          "results",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sceneId": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                },
+                "passed": {
+                  "type": "boolean"
+                },
+                "observation": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1500
+                }
+              },
+              "required": [
+                "sceneId",
+                "passed",
+                "observation"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 100
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "projectId",
+          "results",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH8",
+        "R-SH11"
+      ]
+    },
+    {
+      "name": "acceptance.record",
+      "operation": "acceptance.record",
+      "title": "记录客户验收与未闭问题",
+      "description": "记录客户验收与未闭问题",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner",
+        "operator"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "customerAccepted": {
+            "type": "boolean"
+          },
+          "trainingDelivered": {
+            "type": "boolean"
+          },
+          "credentialsTransferred": {
+            "type": "boolean"
+          },
+          "outstandingIssues": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "projectId",
+          "customerAccepted",
+          "trainingDelivered",
+          "credentialsTransferred",
+          "outstandingIssues",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "customerAccepted": {
+            "type": "boolean"
+          },
+          "trainingDelivered": {
+            "type": "boolean"
+          },
+          "credentialsTransferred": {
+            "type": "boolean"
+          },
+          "outstandingIssues": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "projectId",
+          "customerAccepted",
+          "trainingDelivered",
+          "credentialsTransferred",
+          "outstandingIssues",
+          "evidence",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH8",
+        "R-SH12"
+      ]
+    },
+    {
+      "name": "aftercare.open",
+      "operation": "aftercare.open",
+      "title": "建立售后工单与SLA",
+      "description": "建立售后工单与SLA",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "offline",
+              "scene-failure",
+              "network",
+              "device-failure",
+              "training",
+              "safety",
+              "privacy"
+            ]
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "high",
+              "normal",
+              "low"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2500
+          },
+          "dueAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "projectId",
+          "category",
+          "severity",
+          "description",
+          "dueAt",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "offline",
+              "scene-failure",
+              "network",
+              "device-failure",
+              "training",
+              "safety",
+              "privacy"
+            ]
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "high",
+              "normal",
+              "low"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2500
+          },
+          "dueAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "projectId",
+          "category",
+          "severity",
+          "description",
+          "dueAt",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH13"
+      ]
+    },
+    {
+      "name": "aftercare.resolve",
+      "operation": "aftercare.resolve",
+      "title": "记录售后现场服务与回访凭据",
+      "description": "记录售后现场服务与回访凭据",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner",
+        "operator"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "ticketId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "resolution": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2500
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "customerConfirmed": {
+            "type": "boolean"
+          },
+          "followupAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "ticketId",
+          "resolution",
+          "evidence",
+          "customerConfirmed",
+          "followupAt",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ticketId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "resolution": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2500
+          },
+          "evidence": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000,
+                "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+              },
+              "sha256": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64,
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "source": {
+                "type": "string",
+                "enum": [
+                  "synthetic",
+                  "manufacturer",
+                  "site",
+                  "customer",
+                  "invoice",
+                  "technician"
+                ]
+              },
+              "observedAt": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "format": "date-time"
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1200
+              }
+            },
+            "required": [
+              "uri",
+              "sha256",
+              "source",
+              "observedAt",
+              "summary"
+            ],
+            "additionalProperties": false
+          },
+          "customerConfirmed": {
+            "type": "boolean"
+          },
+          "followupAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "ticketId",
+          "resolution",
+          "evidence",
+          "customerConfirmed",
+          "followupAt",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH12",
+        "R-SH13"
+      ]
+    },
+    {
+      "name": "content.create",
+      "operation": "content.create",
+      "title": "创建事实有依据的内容草稿",
+      "description": "创建事实有依据的内容草稿",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "storeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "douyin",
+              "xiaohongshu",
+              "wechat-video",
+              "wechat-private",
+              "baidu",
+              "geo"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "evidence": {
+                  "type": "object",
+                  "properties": {
+                    "uri": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000,
+                      "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "source": {
+                      "type": "string",
+                      "enum": [
+                        "synthetic",
+                        "manufacturer",
+                        "site",
+                        "customer",
+                        "invoice",
+                        "technician"
+                      ]
+                    },
+                    "observedAt": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 40,
+                      "format": "date-time"
+                    },
+                    "summary": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1200
+                    }
+                  },
+                  "required": [
+                    "uri",
+                    "sha256",
+                    "source",
+                    "observedAt",
+                    "summary"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text",
+                "evidence"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "skuIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "piiFree": {
+            "type": "boolean"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "storeId",
+          "channel",
+          "title",
+          "body",
+          "claims",
+          "skuIds",
+          "piiFree",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "storeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "channel": {
+            "type": "string",
+            "enum": [
+              "douyin",
+              "xiaohongshu",
+              "wechat-video",
+              "wechat-private",
+              "baidu",
+              "geo"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "body": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "claims": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "evidence": {
+                  "type": "object",
+                  "properties": {
+                    "uri": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1000,
+                      "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$"
+                    },
+                    "sha256": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "source": {
+                      "type": "string",
+                      "enum": [
+                        "synthetic",
+                        "manufacturer",
+                        "site",
+                        "customer",
+                        "invoice",
+                        "technician"
+                      ]
+                    },
+                    "observedAt": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 40,
+                      "format": "date-time"
+                    },
+                    "summary": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1200
+                    }
+                  },
+                  "required": [
+                    "uri",
+                    "sha256",
+                    "source",
+                    "observedAt",
+                    "summary"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "text",
+                "evidence"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "skuIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "piiFree": {
+            "type": "boolean"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "storeId",
+          "channel",
+          "title",
+          "body",
+          "claims",
+          "skuIds",
+          "piiFree",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH1",
+        "R-SH5"
+      ]
+    },
+    {
+      "name": "content.request_publication",
+      "operation": "content.request_publication",
+      "title": "请求外发审批（连接器尚未启用）",
+      "description": "请求外发审批（连接器尚未启用）",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "contentId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "expiresAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "contentId",
+          "expiresAt",
+          "reason",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "contentId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "expiresAt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "contentId",
+          "expiresAt",
+          "reason",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH3",
+        "R-SH15"
+      ]
+    },
+    {
+      "name": "content.publish",
+      "operation": "content.publish",
+      "title": "外部发布连接器未启用",
+      "description": "外部发布连接器未启用",
+      "readOnly": false,
+      "risk": "block",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "contentId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "approvalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "contentId",
+          "approvalId",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "contentId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "approvalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "contentId",
+          "approvalId",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH3",
+        "R-SH15"
+      ]
+    },
+    {
+      "name": "goal.create",
+      "operation": "goal.create",
+      "title": "董事长设定可计量经营目标",
+      "description": "董事长设定可计量经营目标",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "storeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "metric": {
+            "type": "string",
+            "enum": [
+              "qualified-leads",
+              "experience-plans",
+              "accepted-projects",
+              "resolved-aftercare",
+              "management-reports"
+            ]
+          },
+          "target": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          },
+          "deadline": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "constraints": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "storeId",
+          "title",
+          "metric",
+          "target",
+          "deadline",
+          "constraints",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "storeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "metric": {
+            "type": "string",
+            "enum": [
+              "qualified-leads",
+              "experience-plans",
+              "accepted-projects",
+              "resolved-aftercare",
+              "management-reports"
+            ]
+          },
+          "target": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          },
+          "deadline": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "format": "date-time"
+          },
+          "constraints": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "storeId",
+          "title",
+          "metric",
+          "target",
+          "deadline",
+          "constraints",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH1"
+      ]
+    },
+    {
+      "name": "goal.instruct",
+      "operation": "goal.instruct",
+      "title": "董事长调整目标或暂停执行",
+      "description": "董事长调整目标或暂停执行",
+      "readOnly": false,
+      "risk": "review",
+      "roles": [
+        "owner"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "instruction": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2500
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "continue",
+              "pause",
+              "resume"
+            ]
+          },
+          "target": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "goalId",
+          "instruction",
+          "action",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "instruction": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2500
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "continue",
+              "pause",
+              "resume"
+            ]
+          },
+          "target": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "goalId",
+          "instruction",
+          "action",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH14"
+      ]
+    },
+    {
+      "name": "workflow.start",
+      "operation": "workflow.start",
+      "title": "启动宿主模型业务工作流",
+      "description": "启动宿主模型业务工作流",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "growth-acquisition",
+              "project-delivery",
+              "aftercare-loop",
+              "management-loop",
+              "employee-work"
+            ]
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leadId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "surveyId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "ticketId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "employeeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "skillId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "brief": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 5000
+          },
+          "objectRefs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "store",
+                    "sku",
+                    "compatibility",
+                    "lead",
+                    "experience",
+                    "survey",
+                    "solution",
+                    "quote",
+                    "project",
+                    "procurement",
+                    "commissioning",
+                    "acceptance",
+                    "aftercare",
+                    "content",
+                    "goal",
+                    "report"
+                  ]
+                },
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                }
+              },
+              "required": [
+                "type",
+                "id"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 30,
+            "uniqueItems": true
+          },
+          "maxAttempts": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "goalId",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "growth-acquisition",
+              "project-delivery",
+              "aftercare-loop",
+              "management-loop",
+              "employee-work"
+            ]
+          },
+          "goalId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leadId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "surveyId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "ticketId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "employeeId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "skillId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "brief": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 5000
+          },
+          "objectRefs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "store",
+                    "sku",
+                    "compatibility",
+                    "lead",
+                    "experience",
+                    "survey",
+                    "solution",
+                    "quote",
+                    "project",
+                    "procurement",
+                    "commissioning",
+                    "acceptance",
+                    "aftercare",
+                    "content",
+                    "goal",
+                    "report"
+                  ]
+                },
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                }
+              },
+              "required": [
+                "type",
+                "id"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "maxItems": 30,
+            "uniqueItems": true
+          },
+          "maxAttempts": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "goalId",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH1"
+      ]
+    },
+    {
+      "name": "workflow.tick",
+      "operation": "workflow.tick",
+      "title": "调度、恢复过期租约并推进依赖",
+      "description": "Only deterministic local transitions; never calls an external model or connector.",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "workflowId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "workflowId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH1"
+      ]
+    },
+    {
+      "name": "task.claim",
+      "operation": "task.claim",
+      "title": "宿主工作台领取模型任务",
+      "description": "宿主工作台领取模型任务",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "workflowId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leaseSeconds": {
+            "type": "integer",
+            "minimum": 30,
+            "maximum": 3600
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "workflowId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leaseSeconds": {
+            "type": "integer",
+            "minimum": 30,
+            "maximum": 3600
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH1"
+      ]
+    },
+    {
+      "name": "task.submit",
+      "operation": "task.submit",
+      "title": "提交结构化模型产物并执行本地校验",
+      "description": "提交结构化模型产物并执行本地校验",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leaseToken": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "artifact": {
+            "type": "object"
+          },
+          "modelTrace": {
+            "type": "object",
+            "properties": {
+              "host": {
+                "type": "string",
+                "enum": [
+                  "codex",
+                  "qwen-workbench",
+                  "workbuddy",
+                  "other",
+                  "test"
+                ]
+              },
+              "model": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 150
+              },
+              "invocationRef": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+              }
+            },
+            "required": [
+              "host",
+              "model",
+              "invocationRef"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "taskId",
+          "leaseToken",
+          "artifact",
+          "modelTrace",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leaseToken": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "artifact": {
+            "type": "object"
+          },
+          "modelTrace": {
+            "type": "object",
+            "properties": {
+              "host": {
+                "type": "string",
+                "enum": [
+                  "codex",
+                  "qwen-workbench",
+                  "workbuddy",
+                  "other",
+                  "test"
+                ]
+              },
+              "model": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 150
+              },
+              "invocationRef": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+              }
+            },
+            "required": [
+              "host",
+              "model",
+              "invocationRef"
+            ],
+            "additionalProperties": false
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "taskId",
+          "leaseToken",
+          "artifact",
+          "modelTrace",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH1"
+      ]
+    },
+    {
+      "name": "task.fail",
+      "operation": "task.fail",
+      "title": "记录模型任务失败与有限重试",
+      "description": "记录模型任务失败与有限重试",
+      "readOnly": false,
+      "risk": "auto",
+      "roles": [
+        "owner",
+        "operator",
+        "agent"
+      ],
+      "schema": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leaseToken": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "error": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "retryable": {
+            "type": "boolean"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "taskId",
+          "leaseToken",
+          "error",
+          "retryable",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "taskId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          },
+          "leaseToken": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "error": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1500
+          },
+          "retryable": {
+            "type": "boolean"
+          },
+          "idempotencyKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+          }
+        },
+        "required": [
+          "taskId",
+          "leaseToken",
+          "error",
+          "retryable",
+          "idempotencyKey"
+        ],
+        "additionalProperties": false
+      },
+      "fenceIds": [
+        "R-SH1"
+      ]
+    }
+  ]
+}

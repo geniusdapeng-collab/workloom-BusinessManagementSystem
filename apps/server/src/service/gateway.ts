@@ -1,6 +1,6 @@
 /**
  * service · C 端公开网关（Hono 子应用，挂 /c，独立于员工 tRPC）
- *  - POST /c/session（S2）：h5 匿名设备直登仅 SERVICE_C_DEMO_AUTH==='true' 放行；正式 H5 必须验证
+ *  - POST /c/session（S2）：h5 匿名设备直登仅非生产档且演示开关开启时放行；正式 H5 必须验证
  *    受信身份网关的短期 entry_token，并从签名声明解析 workspaceKey/appId/subject；
  *    wechat-mini/alipay 走 code→openid 交换 seam（无凭据 503「渠道未配置」）；
  *    IP+channel 限流 60 次/分（限流 Map 5 分钟 TTL 清扫）
@@ -21,7 +21,7 @@ import type { Context, Next } from "hono";
 import { getOwnerPool } from "@workloom/db";
 import {
   CHANNELS, cSecret, exchangeCodeForOpenid, getCUser, h5EntrySecret, issueCToken, listNotifications, pushMessage,
-  resolveCUser, verifyCToken, verifyH5EntryToken, type Channel, type CTokenPayload,
+  resolveCUser, resolveDemoAuth, verifyCToken, verifyH5EntryToken, type Channel, type CTokenPayload,
 } from "./channels.js";
 import { handleMessage } from "./dialog.js";
 import {
@@ -53,10 +53,13 @@ function projectedDepartment(adapter: ServiceFrontBusinessAdapter | null, kind: 
   return department ? businessDisplayText(department, "ticket.department") : undefined;
 }
 
-/** S2：h5/openid 演示直登开关（开发缺省 true；P1-11：生产环境缺省 false，必须显式配置渠道凭据或显式开启） */
-export const DEMO_AUTH = (process.env.SERVICE_C_DEMO_AUTH ?? (process.env.NODE_ENV === "production" ? "false" : "true")) === "true";
+/** S2：开发缺省允许演示直登；生产环境始终使用正式渠道凭据，历史 true 配置不能重新开启演示认证。 */
+export const DEMO_AUTH = resolveDemoAuth();
+if (process.env.NODE_ENV === "production" && process.env.SERVICE_C_DEMO_AUTH === "true") {
+  console.warn("[service-c] 已忽略生产环境的 SERVICE_C_DEMO_AUTH=true：正式入口必须配置并验证渠道凭据");
+}
 if (DEMO_AUTH) {
-  console.warn("[service-c] SERVICE_C_DEMO_AUTH 已开启：h5/openid 演示直登可用（生产环境必须置 false 并配置渠道 code 交换凭据）");
+  console.warn("[service-c] SERVICE_C_DEMO_AUTH 已开启：h5/openid 演示直登仅供开发验证，用户身份持续标为演示");
 }
 
 /** C 端工作区解析仅在建立会话时走 owner 池，并逐个校验配置目标确实存在。 */

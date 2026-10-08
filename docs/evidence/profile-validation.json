@@ -1,0 +1,120 @@
+{
+  "schema": "workloom.profile-validation/v1",
+  "startedAt": "2026-10-08T17:29:35.450Z",
+  "mode": "contract-validation",
+  "configurationStatus": "valid",
+  "status": "unverified",
+  "businessVerified": false,
+  "errors": [],
+  "warnings": [
+    "live.enabled=false：未声明模型生产实测，本次仅能验证配置结构",
+    "结构校验不连接服务、数据库或模型；行业结果、生产环境和完整 276 项仍须实际执行并绑定证据。"
+  ],
+  "assets": [
+    {
+      "path": "acceptance/profile.json",
+      "sha256": "372de1876b9532e35bf0dbd65c7ac03995eea9ee8af6f4f1569e4dc16ae7be60"
+    },
+    {
+      "path": "product.manifest.json",
+      "sha256": "54af6a767b35020a55de2b47b3d63ee369307ceaff2f7f886828d3082e59dcf5"
+    },
+    {
+      "path": "bundles/smart-home/presets/acceptance-auditor.yml",
+      "sha256": "806eeaaa0ef7bba3bc007f9379110c2c5bb406b015c72443e466c9f9972690d7"
+    },
+    {
+      "path": "bundles/smart-home/presets/aftercare-specialist.yml",
+      "sha256": "e25bda8bb3c85ffb58ab9ce153ecd434103814c4a939946881890603ddb036bb"
+    },
+    {
+      "path": "bundles/smart-home/presets/commissioning-engineer.yml",
+      "sha256": "96ee0b4fcf16b6c15c791226976f6a7629a1a073dff25f5e0e494c0dea1d89c3"
+    },
+    {
+      "path": "bundles/smart-home/presets/compatibility-engineer.yml",
+      "sha256": "a012f817085aa16c19a1a6d5c1e4d0394e9dc67cf3584568e65637aabd5ad14d"
+    },
+    {
+      "path": "bundles/smart-home/presets/content-strategist.yml",
+      "sha256": "08f16760fe02219e41035a4009c26ce66919a3828b6d8be52cd2561e2c15f11a"
+    },
+    {
+      "path": "bundles/smart-home/presets/finance-controller.yml",
+      "sha256": "b186c416bd60968f17bc58a13288238ffb9943ebc5ced9108928cc438fae3584"
+    },
+    {
+      "path": "bundles/smart-home/presets/growth-director.yml",
+      "sha256": "d5193569a2773f53cc8d075d4a183c5762497c38b686394e71928bdb7c5a509a"
+    },
+    {
+      "path": "bundles/smart-home/presets/installation-supervisor.yml",
+      "sha256": "601650ce34a020f48b305396b001467d2f6237598ed0e40808f73164082bc017"
+    },
+    {
+      "path": "bundles/smart-home/presets/knowledge-steward.yml",
+      "sha256": "c87776165ab3fcde4b31c7da83f5d6c014336dec9f30420963beb4fdd6d98a9c"
+    },
+    {
+      "path": "bundles/smart-home/presets/lead-concierge.yml",
+      "sha256": "ba74d29bd29d66d70427502fc34711361a9f50c3c4d862c94bda32e2791f0857"
+    },
+    {
+      "path": "bundles/smart-home/presets/market-researcher.yml",
+      "sha256": "f2e35bfeb2b152b81dd0e96d2630448fe5a5c3c9bbec5d4cf7663f071777f335"
+    },
+    {
+      "path": "bundles/smart-home/presets/procurement-controller.yml",
+      "sha256": "7f3b931d302ee43c261f0540ce788d9714b87481eafca856eb2f1e964f59cd22"
+    },
+    {
+      "path": "bundles/smart-home/presets/project-manager.yml",
+      "sha256": "5d1b029e5edf7f2097fb29af39393f76303539373fc14bc7c79cab6a2f645888"
+    },
+    {
+      "path": "bundles/smart-home/presets/quote-controller.yml",
+      "sha256": "0ffab6ec6ec615ac2a6a554c2dd7f4f77050e5b91382db91df04dcc290525b5d"
+    },
+    {
+      "path": "bundles/smart-home/presets/sales-consultant.yml",
+      "sha256": "473f6708e5646c7d51abd07be6399c18d8dec06751ad5debb9fee5642a2d642b"
+    },
+    {
+      "path": "bundles/smart-home/presets/social-publisher.yml",
+      "sha256": "6a7b2df29f055431ebfdcf51b268ae08f0395a2a35ac00d194b9dd9ddd3c76ae"
+    },
+    {
+      "path": "bundles/smart-home/presets/solution-designer.yml",
+      "sha256": "3bb839605bfd8ccca4d276dfe5ceab26f082faf899d8e220b9c356a2cd179633"
+    },
+    {
+      "path": "bundles/smart-home/presets/store-ceo.yml",
+      "sha256": "d6e24ecae58930266452916c5ab8819161afb7b7edf8bf9b6e28acee3f31553d"
+    },
+    {
+      "path": "bundles/smart-home/presets/survey-engineer.yml",
+      "sha256": "bac99b935eaa159524929feeefc5d46dbf261ab67a3f1fe50e568433676fe7dc"
+    },
+    {
+      "path": "bundles/smart-home/presets/video-producer.yml",
+      "sha256": "4fe9c59eab05179ed7c831a07f296b676b9008d1b12d252409e4b4117d846ae4"
+    },
+    {
+      "path": "acceptance/outcomes/industry.yaml",
+      "sha256": "63377781a39fefaab402068e55650a1b0d21585b984c1d9b4decb571edd921a8"
+    }
+  ],
+  "suiteCount": 1,
+  "taskCount": 3,
+  "networkCalls": 0,
+  "modelCalls": 0,
+  "databaseConnections": 0,
+  "profilePath": "acceptance/profile.json",
+  "revision": {
+    "commit": "5a04120a225dc3734415c8cc23e9c5f9474170c0",
+    "dirty": true
+  },
+  "environmentKind": "local-preview",
+  "effectiveAllowWrites": false,
+  "finishedAt": "2026-10-08T17:29:35.572Z"
+}

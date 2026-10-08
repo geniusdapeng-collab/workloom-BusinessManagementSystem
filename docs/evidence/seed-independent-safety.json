@@ -1,0 +1,251 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 17,
+  "numPassedTests": 17,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1791480801099,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety unrelated preexisting tenant cannot receive the sandbox",
+          "status": "passed",
+          "title": "unrelated preexisting tenant cannot receive the sandbox",
+          "duration": 58.19733300000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety static skill collision rolls the complete seed transaction back",
+          "status": "passed",
+          "title": "static skill collision rolls the complete seed transaction back",
+          "duration": 55.80499999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety first seed, repeat and concurrent repeat have exact assets and no business events",
+          "status": "passed",
+          "title": "first seed, repeat and concurrent repeat have exact assets and no business events",
+          "duration": 209.22841599999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety production mode is rejected before writes",
+          "status": "passed",
+          "title": "production mode is rejected before writes",
+          "duration": 0.38970900000003894,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety real workspace is preserved",
+          "status": "passed",
+          "title": "real workspace is preserved",
+          "duration": 20.485167000000047,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety different active bundle and manifest digest require governed reassembly",
+          "status": "passed",
+          "title": "different active bundle and manifest digest require governed reassembly",
+          "duration": 37.40283299999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety globally revoked skill cannot be reinstalled by the example seeder",
+          "status": "passed",
+          "title": "globally revoked skill cannot be reinstalled by the example seeder",
+          "duration": 18.285582999999974,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety tampered members.role is detected and preserved",
+          "status": "passed",
+          "title": "tampered members.role is detected and preserved",
+          "duration": 30.864584000000036,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety tampered agents.name is detected and preserved",
+          "status": "passed",
+          "title": "tampered agents.name is detected and preserved",
+          "duration": 32.880540999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety tampered fence_rules.name is detected and preserved",
+          "status": "passed",
+          "title": "tampered fence_rules.name is detected and preserved",
+          "duration": 38.272375000000125,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety tampered skills.body is detected and preserved",
+          "status": "passed",
+          "title": "tampered skills.body is detected and preserved",
+          "duration": 38.662417000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety tampered skill_installs.installed_by is detected and preserved",
+          "status": "passed",
+          "title": "tampered skill_installs.installed_by is detected and preserved",
+          "duration": 36.87408299999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety tampered profiles.pii_vault is detected and preserved",
+          "status": "passed",
+          "title": "tampered profiles.pii_vault is detected and preserved",
+          "duration": 41.844499999999925,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety tampered kb_collections.name is detected and preserved",
+          "status": "passed",
+          "title": "tampered kb_collections.name is detected and preserved",
+          "duration": 39.299749999999904,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety tampered kb_documents.hash is detected and preserved",
+          "status": "passed",
+          "title": "tampered kb_documents.hash is detected and preserved",
+          "duration": 42.36187499999983,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety tampered kb_chunks.content is detected and preserved",
+          "status": "passed",
+          "title": "tampered kb_chunks.content is detected and preserved",
+          "duration": 36.71591699999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "smart-home seed real PostgreSQL safety"
+          ],
+          "fullName": "smart-home seed real PostgreSQL safety missing connection and unavailable database fail explicitly",
+          "status": "passed",
+          "title": "missing connection and unavailable database fail explicitly",
+          "duration": 16.060500000000047,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1791480801666,
+      "endTime": 1791480802420.0605,
+      "status": "passed",
+      "message": "",
+      "name": "scripts/seed-smart-home.pg.test.ts"
+    }
+  ],
+  "executionEvidence": {
+    "command": "node node_modules/vitest/vitest.mjs run scripts/seed-smart-home.pg.test.ts --reporter=json --outputFile=<report>",
+    "environment": "BMS_PG_TEST_URL is loopback owner channel; bundled Node on PATH",
+    "database": "Fresh named disposable database, automatically removed in afterAll",
+    "scope": "Current product 20 roles, 35 skills, 16 fences, 1 install, 32 FAQ chunks; no business events or models",
+    "sourceCoverage": "docs/evidence/business-engine-read-coverage.json"
+  }
+}

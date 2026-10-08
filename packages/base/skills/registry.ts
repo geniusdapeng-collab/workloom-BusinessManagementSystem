@@ -18,6 +18,27 @@ import { isSkillRevoked } from "./publish.js";
 
 interface Scope { tenantId: string; workspaceId: string }
 
+/** 仅在事务提交完成后返回；回滚失败保留双错并丢弃连接。 */
+async function inTx<T>(app: pg.Pool, scope: Scope, fn: (client: pg.PoolClient) => Promise<T>): Promise<T> {
+  const client = await app.connect();
+  let releaseError: Error | undefined;
+  try {
+    await client.query("BEGIN");
+    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+    const result = await fn(client);
+    await client.query("COMMIT");
+    return result;
+  } catch (error) {
+    try { await client.query("ROLLBACK"); }
+    catch (rollbackError) {
+      releaseError = rollbackError instanceof Error ? rollbackError : new Error(String(rollbackError));
+      throw new AggregateError([error, rollbackError], "技能事务失败且回滚失败，需要复核连接与数据库状态", { cause: error });
+    }
+    throw error;
+  } finally { client.release(releaseError); }
+}
+
 export type SkillLevel = "official" | "team" | "industry";
 
 export interface SkillRow {
@@ -115,23 +136,13 @@ export async function listSkills(app: pg.Pool, scope: Scope, opts: { level?: Ski
 }
 
 export async function listInstalls(app: pg.Pool, scope: Scope): Promise<Array<{ skill_id: string; installed_by: string; installed_at: Date }>> {
-  const client = await app.connect();
-  try {
-    // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+  return inTx(app, scope, async (client) => {
     const r = await client.query<{ skill_id: string; installed_by: string; installed_at: Date }>(
       `SELECT skill_id, installed_by, installed_at FROM skill_installs WHERE workspace_id=$1 ORDER BY installed_at`,
       [scope.workspaceId],
     );
     return r.rows;
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
-  }
+  });
 }
 
 /** L8.2 签名白名单（首版演示口径；第三方入库前代码审计进流程，不落代码） */
@@ -155,32 +166,18 @@ export function detectFenceConflicts(
 }
 
 async function activeRuleIds(app: pg.Pool, scope: Scope): Promise<Set<string>> {
-  const client = await app.connect();
-  try {
-    // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+  return inTx(app, scope, async (client) => {
     const r = await client.query<{ rule_id: string }>(
       `SELECT DISTINCT rule_id FROM fence_rules WHERE (workspace_id=$1 OR workspace_id='*') AND status='active'`,
       [scope.workspaceId],
     );
     return new Set(r.rows.map((x) => x.rule_id));
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
-  }
+  });
 }
 
 /** F8.3 前置：团队技能须已有 dry-run 预览留痕（生效前 dry-run） */
 async function hasDryRunTrace(app: pg.Pool, scope: Scope, skillId: string): Promise<boolean> {
-  const client = await app.connect();
-  try {
-    // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+  return inTx(app, scope, async (client) => {
     const r = await client.query<{ c: string }>(
       `SELECT count(*) AS c FROM biz_events
        WHERE workspace_id=$1 AND payload->'decision'->>'action'='skill.dry_run'
@@ -188,13 +185,7 @@ async function hasDryRunTrace(app: pg.Pool, scope: Scope, skillId: string): Prom
       [scope.workspaceId, skillId],
     );
     return Number(r.rows[0]?.c ?? 0) > 0;
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
-  }
+  });
 }
 
 /** 安装（F8.2）：全部前置校验过 → 写 skill_installs（幂等）+ skill.installed 事件（含绑定清单） */
@@ -248,17 +239,13 @@ export async function installSkill(
     const active = await activeRuleIds(app, scope);
     const { missing } = detectFenceConflicts(bindings, active);
     if (missing.length > 0) {
-      const evId = await emit(gateway, scope, input.by, {
-        action: "skill.install.conflict",
-        after: { skillId: skill.id, name: skill.name, missingBindings: missing },
-        basis: ["技能与现有围栏冲突：冲突项进审批，不静默放行（E8.1）"],
-      });
-      const client = await app.connect();
-      try {
-        // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
-        await client.query("BEGIN");
-        await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-        await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+      await inTx(app, scope, async (client) => {
+        // 冲突事件与审批行同一提交，失败时不得声称已进入审批队列。
+        const evId = await emitInTx(client, scope, input.by, {
+          action: "skill.install.conflict",
+          after: { skillId: skill.id, name: skill.name, missingBindings: missing },
+          basis: ["技能与现有围栏冲突：冲突项进审批，不静默放行（E8.1）"],
+        });
         await client.query(
           `INSERT INTO approvals (approval_id, tenant_id, workspace_id, event_id, channel, status, snapshot)
            VALUES ($1,$2,$3,$4,'inapp','pending',$5)`,
@@ -273,13 +260,7 @@ export async function installSkill(
             JSON.stringify({ kind: "skill_fence_conflict", skillId: skill.id, missingBindings: missing, high_risk: true }),
           ],
         );
-      } catch (err) {
-        await client.query("ROLLBACK").catch(() => undefined);
-        throw err;
-      } finally {
-        await client.query("COMMIT").catch(() => undefined);
-        client.release();
-      }
+      });
       throw new SkillError("FENCE_CONFLICT", `技能「${skill.name}」绑定围栏 ${missing.join("/")} 未生效，冲突项已进审批（E8.1），安装挂起`);
     }
   }
@@ -287,12 +268,7 @@ export async function installSkill(
   // 落安装（幂等 L1.4 同源：重复安装不报错）
   // #17 修复：安装时快照 fence_bindings，运行时读快照而非实时值，防止技能作者更新绑定绕过冲突检测
   // D16（#1/A）：安装行与 skill.installed 事件同一事务同一 COMMIT
-  const client = await app.connect();
-  let deduped = false;
-  try {
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]); // D16：append_event_insert 双 GUC 校验要求
+  return inTx(app, scope, async (client) => {
     // D15-⑤：安装时记录版本快照（installed_version），供 listSkillUpdates 版本通道对比
     const r = await client.query(
       `INSERT INTO skill_installs (skill_id, workspace_id, installed_by, fence_bindings_snapshot, installed_version)
@@ -300,7 +276,7 @@ export async function installSkill(
        ON CONFLICT (skill_id, workspace_id) DO NOTHING`,
       [skill.id, scope.workspaceId, input.by, JSON.stringify(bindings), skill.version],
     );
-    deduped = r.rowCount === 0;
+    const deduped = r.rowCount === 0;
     if (!deduped) {
       await emitInTx(client, scope, input.by, {
         action: "skill.installed",
@@ -308,14 +284,8 @@ export async function installSkill(
         basis: ["安装即绑定围栏（F8.2）；技能动作照常过围栏瀑布（L8.3，运行时由 tools/pre-execute 瀑布强制）"],
       });
     }
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
-  }
-  return { installed: true, deduped, bindings };
+    return { installed: true, deduped, bindings };
+  });
 }
 
 /** 卸载（L8.3）：删 install 行（绑定并集即收缩）+ skill.uninstalled 事件（记录撤销清单） */
@@ -327,30 +297,23 @@ export async function uninstallSkill(
 ): Promise<{ uninstalled: boolean; revokedBindings: string[] }> {
   const skill = await getSkill(app, input.skillId);
   if (!skill) throw new SkillError("NOT_FOUND", `技能 ${input.skillId} 不存在`);
-  const client = await app.connect();
-  let removed = 0;
   // #40 修复：撤销清单读安装时快照（与 #17 口径一致）——此前读 skills.fence_bindings
   // 实时值，若技能作者安装后改过绑定，卸载留痕的撤销清单与实际安装清单不符。
   // 快照一致性（双路径同构）：seed 直写与运行时 installSkill 两条安装路径都落
   // fence_bindings_snapshot=安装时刻 skills.fence_bindings、installed_version=skills.version，
   // 因此此处 snapshot 必有值；`?? skill.fence_bindings` 仅为历史行（快照列上线前安装）兜底，
   // 兜底值与 seed 快照同源（同读 skills 表），口径不分裂。
-  let revokedBindings: string[] = [];
-  try {
-    // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]); // D16：append_event_insert 双 GUC 校验要求
+  return inTx(app, scope, async (client) => {
     const snap = await client.query<{ fence_bindings_snapshot: string[] }>(
       `SELECT fence_bindings_snapshot FROM skill_installs WHERE skill_id=$1 AND workspace_id=$2`,
       [skill.id, scope.workspaceId],
     );
-    revokedBindings = snap.rows[0]?.fence_bindings_snapshot ?? skill.fence_bindings ?? [];
+    const revokedBindings = snap.rows[0]?.fence_bindings_snapshot ?? skill.fence_bindings ?? [];
     const r = await client.query(
       `DELETE FROM skill_installs WHERE skill_id=$1 AND workspace_id=$2`,
       [skill.id, scope.workspaceId],
     );
-    removed = r.rowCount ?? 0;
+    const removed = r.rowCount ?? 0;
     // D16（#1/A）：删除行与 skill.uninstalled 事件同一事务（removed=0 时事件也不写，一并滚回）
     if (removed > 0) {
       await emitInTx(client, scope, input.by, {
@@ -359,15 +322,9 @@ export async function uninstallSkill(
         basis: ["卸载即撤销围栏绑定（F8.2/L8.3：绑定并集随 install 行删除即时收缩，US8.5 不留后门）"],
       });
     }
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
-  }
-  if (removed === 0) throw new SkillError("NOT_INSTALLED", `技能「${skill.name}」未安装到本工作区`);
-  return { uninstalled: true, revokedBindings };
+    if (removed === 0) throw new SkillError("NOT_INSTALLED", `技能「${skill.name}」未安装到本工作区`);
+    return { uninstalled: true, revokedBindings };
+  });
 }
 
 /**
@@ -380,11 +337,7 @@ export async function resolveAgentFenceBindings(
   scope: Scope,
   agentId: string,
 ): Promise<string[]> {
-  const client = await app.connect();
-  try {
-    // 事务级 RLS 上下文必须在显式事务内设置：autocommit 下 set_config(...,true) 语句结束即失效
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+  return inTx(app, scope, async (client) => {
     const ag = await client.query<{ fence_bindings: string[] }>(
       `SELECT fence_bindings FROM agents WHERE id=$1 AND workspace_id=$2`,
       [agentId, scope.workspaceId],
@@ -402,13 +355,7 @@ export async function resolveAgentFenceBindings(
     const union = new Set<string>(base);
     for (const row of sk.rows) for (const b of row.fence_bindings_snapshot ?? []) union.add(b);
     return [...union].sort();
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    await client.query("COMMIT").catch(() => undefined);
-    client.release();
-  }
+  });
 }
 
 /** L8.4 行业资产验证闸门（纯函数）：未 verified / 未脱敏的资产在任何入口不可批量复用 */

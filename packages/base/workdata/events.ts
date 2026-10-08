@@ -101,6 +101,42 @@ export interface AppendResult {
   piiHits: number;
 }
 
+/** 单连接事件事务；失败保留主因，状态不确定或回滚失败时丢弃连接。 */
+export async function withScopedEventTransaction<T>(
+  pool: pg.Pool,
+  scope: { tenantId: string; workspaceId: string },
+  fn: (client: pg.PoolClient) => Promise<T>,
+): Promise<T> {
+  const client = await pool.connect();
+  let transactionStarted = false;
+  let commitAttempted = false;
+  let discardError: Error | undefined;
+  try {
+    await client.query("BEGIN");
+    transactionStarted = true;
+    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+    const result = await fn(client);
+    commitAttempted = true;
+    await client.query("COMMIT");
+    return result;
+  } catch (primaryError) {
+    if (!transactionStarted || commitAttempted) {
+      discardError = primaryError instanceof Error ? primaryError : new Error("事件事务状态不确定", { cause: primaryError });
+    }
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      const failure = new AggregateError([primaryError, rollbackError], "事件事务失败且回滚失败", { cause: primaryError });
+      discardError = failure;
+      throw failure;
+    }
+    throw primaryError;
+  } finally {
+    client.release(discardError);
+  }
+}
+
 /**
  * 事务内追加一条五元事件（D16 核心原语）
  * 调用方必须已持有事务（BEGIN + set_config 双 GUC）——本函数不再自行开关事务，
@@ -181,20 +217,7 @@ export async function appendEvent(
   scope: { tenantId: string; workspaceId: string },
   input: AppendInput,
 ): Promise<AppendResult> {
-  const client = await gateway.connect();
-  try {
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-    const r = await appendEventInTx(client, scope, input);
-    await client.query("COMMIT");
-    return r;
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    client.release();
-  }
+  return withScopedEventTransaction(gateway, scope, (client) => appendEventInTx(client, scope, input));
 }
 
 /**
@@ -209,54 +232,72 @@ export async function appendEventIdempotent(
   event: BusinessEvent,
   sessionId?: string | null,
 ): Promise<AppendResult> {
-  if (!isReplayEventId(event.event_id)) {
+  // 语义与结构校验先于连接；无效回放不能产生任何事务内副作用。
+  assertReplayNamespace(event.event_id);
+  const checked = safeParseReplayAwareEvent(event);
+  if (!checked.success) throw new Error(`事件未过附录 E 校验：${checked.error.issues[0]?.message ?? "unknown"}`);
+  assertReplayEventScope(scope, checked.data);
+  return withScopedEventTransaction(gateway, scope, (client) => appendEventIdempotentInTx(client, scope, checked.data, sessionId));
+}
+
+/** 回放正文保持原样参与幂等比较；禁止其声明与调用作用域不同的归属。 */
+export function assertReplayEventScope(
+  scope: { tenantId: string; workspaceId: string },
+  event: Pick<BusinessEvent, "context">,
+): void {
+  if (event.context.tenant_id !== scope.tenantId || event.context.workspace_id !== scope.workspaceId) {
+    throw new Error("回放事件 context 与调用作用域不一致，拒绝写入");
+  }
+}
+
+function assertReplayNamespace(eventId: string): void {
+  if (!isReplayEventId(eventId)) {
     throw new Error(
-      `回放通道 event_id 必须使用独立前缀空间（${REPLAY_EVENT_ID_PREFIXES.join("/")} 开头），拒绝：${event.event_id}（P0-3）`,
+      `回放通道 event_id 必须使用独立前缀空间（${REPLAY_EVENT_ID_PREFIXES.join("/")} 开头），拒绝：${eventId}（P0-3）`,
     );
   }
+}
+
+/** 幂等事件事务原语；调用方持有双 GUC 事务，授权消费可与事件写共用一次 COMMIT。 */
+export async function appendEventIdempotentInTx(
+  client: pg.PoolClient,
+  scope: { tenantId: string; workspaceId: string },
+  event: BusinessEvent,
+  sessionId?: string | null,
+): Promise<AppendResult> {
+  assertReplayNamespace(event.event_id);
   const masked = maskDeep(event);
   const ev = masked.value;
   const checked = safeParseReplayAwareEvent(ev);
   if (!checked.success) {
     throw new Error(`事件未过附录 E 校验：${checked.error.issues[0]?.message ?? "unknown"}`);
   }
-  const client = await gateway.connect();
-  try {
-    await client.query("BEGIN");
-    await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
-    await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
-    await client.query("SELECT pg_advisory_xact_lock(hashtext($1))", [chainLockKey(scope)]);
-    const tail = await client.query<{ seq: string; hash: string }>(
-      `SELECT seq, hash FROM biz_events WHERE tenant_id = $1 AND workspace_id = $2 ORDER BY seq DESC LIMIT 1`,
-      [scope.tenantId, scope.workspaceId],
+  assertReplayEventScope(scope, checked.data);
+  await client.query("SELECT pg_advisory_xact_lock(hashtext($1))", [chainLockKey(scope)]);
+  const tail = await client.query<{ seq: string; hash: string }>(
+    `SELECT seq, hash FROM biz_events WHERE tenant_id = $1 AND workspace_id = $2 ORDER BY seq DESC LIMIT 1`,
+    [scope.tenantId, scope.workspaceId],
+  );
+  const prevHash = tail.rows[0]?.hash ?? GENESIS_HASH;
+  const payload = checked.data;
+  const hash = eventHash(prevHash, payload);
+  const res = await client.query<{ seq: string | null; inserted: boolean }>(
+    `SELECT * FROM append_event_insert($1,$2,$3,$4,$5,$6,$7,$8)`,
+    [payload.event_id, scope.tenantId, scope.workspaceId, sessionId ?? null,
+      JSON.stringify(payload), prevHash, hash, payload.context.time],
+  );
+  const deduped = !(res.rows[0]?.inserted ?? false);
+  let outSeq = BigInt(res.rows[0]?.seq ?? 0);
+  let outHash = hash;
+  if (deduped) {
+    // #4 修复：去重时返回 DB 中已存在事件的真实 hash/seq，避免调用方拿到错误 hash 断链
+    // M2 修复：回查移到 COMMIT 之前（事务内可见性确定，不受并发提交影响）
+    const existing = await client.query<{ seq: string; hash: string }>(
+      `SELECT seq, hash FROM biz_events WHERE tenant_id = $1 AND event_id = $2`,
+      [scope.tenantId, payload.event_id],
     );
-    const prevHash = tail.rows[0]?.hash ?? GENESIS_HASH;
-    const payload = checked.data;
-    const hash = eventHash(prevHash, payload);
-    const res = await client.query<{ seq: string | null; inserted: boolean }>(
-      `SELECT * FROM append_event_insert($1,$2,$3,$4,$5,$6,$7,$8)`,
-      [payload.event_id, scope.tenantId, scope.workspaceId, sessionId ?? null,
-        JSON.stringify(payload), prevHash, hash, payload.context.time],
-    );
-    const deduped = !(res.rows[0]?.inserted ?? false);
-    let outSeq = BigInt(res.rows[0]?.seq ?? 0);
-    let outHash = hash;
-    if (deduped) {
-      // #4 修复：去重时返回 DB 中已存在事件的真实 hash/seq，避免调用方拿到错误 hash 断链
-      // M2 修复：回查移到 COMMIT 之前（事务内可见性确定，不受并发提交影响）
-      const existing = await client.query<{ seq: string; hash: string }>(
-        `SELECT seq, hash FROM biz_events WHERE tenant_id = $1 AND event_id = $2`,
-        [scope.tenantId, payload.event_id],
-      );
-      outSeq = BigInt(existing.rows[0]?.seq ?? 0);
-      outHash = existing.rows[0]?.hash ?? hash;
-    }
-    await client.query("COMMIT");
-    return { eventId: payload.event_id, seq: outSeq, hash: outHash, deduped, piiHits: masked.hits };
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
-  } finally {
-    client.release();
+    outSeq = BigInt(existing.rows[0]?.seq ?? 0);
+    outHash = existing.rows[0]?.hash ?? hash;
   }
+  return { eventId: payload.event_id, seq: outSeq, hash: outHash, deduped, piiHits: masked.hits };
 }

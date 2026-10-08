@@ -1,0 +1,88 @@
+{
+  "version": "1.0",
+  "scope": "service-triage-only",
+  "categories": [
+    {
+      "key": "offline",
+      "name": "设备离线"
+    },
+    {
+      "key": "scene",
+      "name": "场景异常"
+    },
+    {
+      "key": "network",
+      "name": "网络故障"
+    },
+    {
+      "key": "safety",
+      "name": "安全风险"
+    },
+    {
+      "key": "privacy",
+      "name": "隐私问题"
+    },
+    {
+      "key": "training",
+      "name": "使用培训"
+    }
+  ],
+  "items": [
+    {
+      "name": "网关或设备离线",
+      "category": "offline",
+      "symptoms": "设备不可见、状态不更新",
+      "urgency": "normal",
+      "dept": "售后服务专员",
+      "tip": "记录型号、发生时间与范围，不发送密码或配对码"
+    },
+    {
+      "name": "场景不触发",
+      "category": "scene",
+      "symptoms": "条件满足但动作未执行",
+      "urgency": "normal",
+      "dept": "售后服务专员",
+      "tip": "记录触发条件与受影响设备，保留手动操作"
+    },
+    {
+      "name": "场景误触发",
+      "category": "scene",
+      "symptoms": "无预期条件却执行动作",
+      "urgency": "high",
+      "dept": "售后服务专员",
+      "tip": "暂停受影响场景并联系专业人员，危险设备不可远程盲操作"
+    },
+    {
+      "name": "网络覆盖不稳定",
+      "category": "network",
+      "symptoms": "多设备反复离线、延迟明显",
+      "urgency": "normal",
+      "dept": "售后服务专员",
+      "tip": "记录地点和时间，安排现场网络检查"
+    },
+    {
+      "name": "电气与门锁风险",
+      "category": "safety",
+      "symptoms": "异常发热、异味、门锁安全异常",
+      "urgency": "critical",
+      "dept": "售后服务专员",
+      "tip": "停止使用相关设备并转合格现场人员；现实紧急危险联系当地紧急救援"
+    },
+    {
+      "name": "账号或摄像隐私异常",
+      "category": "privacy",
+      "symptoms": "未授权查看、账号控制权疑问",
+      "urgency": "high",
+      "dept": "售后服务专员",
+      "tip": "不要提交密码和家庭影像，转授权负责人核对"
+    },
+    {
+      "name": "家人操作与恢复培训",
+      "category": "training",
+      "symptoms": "使用困难、手动恢复不清楚",
+      "urgency": "normal",
+      "dept": "售后服务专员",
+      "tip": "登记培训需求和可选时间，门店确认服务计划"
+    }
+  ]
+}

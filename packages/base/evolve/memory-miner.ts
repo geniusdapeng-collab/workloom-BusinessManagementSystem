@@ -3,9 +3,9 @@
  *
  * 夜班窗口运行的提炼节拍（与 captain 回测节拍同构：advisory 锁防双写）：
  *  ① 驳回强化：近 30 天 approval.gesture 驳回按 reason_enum 聚类，≥MINER_PATTERN_THRESHOLD 次
- *     → 强化 mem-reject-<enum> 偏好记忆（content 附统计口径，confidence 随次数递增封顶 0.9）；
+ *     → 强化本租户工作区的驳回偏好记忆（content 附统计口径，confidence 随次数递增封顶 0.9）；
  *  ② 改稿模式：edit 手势按被审动作聚类，≥MINER_PATTERN_THRESHOLD 次
- *     → 产出 mem-pat-edit-<action> pattern 记忆（纠错/口味按 editKind 分列，M1.3 归因分流）；
+ *     → 产出本租户工作区的改稿 pattern 记忆（纠错/口味按 editKind 分列，M1.3 归因分流）；
  *  ③ 每次提炼写 memory.calibrate 五元事件（who=system evolve-miner，links 溯源样本事件）——
  *     机制位自 B6 起在 workdata/memory.ts 注释中预留，本节拍是第一个真实发出方。
  *
@@ -19,7 +19,7 @@ import {
   MINER_PATTERN_THRESHOLD,
 } from "@workloom/shared";
 import { gatewayAppendOnClient } from "../workdata/gateway.js";
-import { MockEmbedder, upsertMemoryInTx, type Embedder } from "../workdata/memory.js";
+import { MockEmbedder, scopedMemoryId, upsertMemoryInTx, type Embedder } from "../workdata/memory.js";
 
 interface Scope {
   tenantId: string;
@@ -85,13 +85,18 @@ export async function runMemoryMinerBeat(
   const windowDays = opts.windowDays ?? 30;
 
   const client = await app.connect();
+  let transactionStarted = false;
+  let commitAttempted = false;
+  let discardError: Error | undefined;
   try {
     await client.query("BEGIN");
+    transactionStarted = true;
     await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
     await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
 
     const lock = await client.query<{ ok: boolean }>(`SELECT pg_try_advisory_xact_lock($1) AS ok`, [MINER_LOCK_KEY]);
     if (!lock.rows[0]?.ok) {
+      commitAttempted = true;
       await client.query("COMMIT");
       return { samples: 0, reinforced: 0, editPatterns: 0, calibrateEventIds: [], skipped: "提炼节拍已在进行中（advisory 锁未获得，M1 防双写）" };
     }
@@ -116,6 +121,7 @@ export async function runMemoryMinerBeat(
 
     const samples = gestures.rows.length;
     if (samples < EVOLUTION_MIN_SIGNAL_SAMPLES) {
+      commitAttempted = true;
       await client.query("COMMIT");
       return {
         samples, reinforced: 0, editPatterns: 0, calibrateEventIds: [],
@@ -127,7 +133,7 @@ export async function runMemoryMinerBeat(
     let reinforced = 0;
     let editPatterns = 0;
 
-    /* ① 驳回强化：reason_enum 聚类 ≥阈值 → 强化 mem-reject-<enum> */
+    /* ① 驳回强化：reason_enum 聚类 ≥阈值 → 强化本工作区对应偏好 */
     const rejects = new Map<string, string[]>();
     for (const g of gestures.rows) {
       if (g.gesture !== "reject" || !g.reason_enum) continue;
@@ -137,7 +143,7 @@ export async function runMemoryMinerBeat(
     }
     for (const [reasonEnum, eventIds] of rejects) {
       if (eventIds.length < MINER_PATTERN_THRESHOLD) continue;
-      const memoryId = `mem-reject-${reasonEnum}`;
+      const memoryId = scopedMemoryId(scope, "mem-reject", reasonEnum);
       const confidence = Math.min(0.5 + 0.1 * eventIds.length, 0.9);
       await upsertMemoryInTx(client, scope, {
         memoryId,
@@ -156,7 +162,7 @@ export async function runMemoryMinerBeat(
       reinforced++;
     }
 
-    /* ② 改稿模式：edit 手势按被审动作聚类 ≥阈值 → mem-pat-edit-<action> */
+    /* ② 改稿模式：edit 手势按被审动作聚类 ≥阈值 → 本工作区改稿模式 */
     const edits = new Map<string, { eventIds: string[]; correction: number; preference: number }>();
     for (const g of gestures.rows) {
       if (g.gesture !== "edit" || !g.reviewed_action) continue;
@@ -168,7 +174,7 @@ export async function runMemoryMinerBeat(
     }
     for (const [action, agg] of edits) {
       if (agg.eventIds.length < MINER_PATTERN_THRESHOLD) continue;
-      const memoryId = `mem-pat-edit-${action}`;
+      const memoryId = scopedMemoryId(scope, "mem-pat-edit", action);
       const confidence = Math.min(0.4 + 0.08 * agg.eventIds.length, 0.85);
       await upsertMemoryInTx(client, scope, {
         memoryId,
@@ -187,12 +193,22 @@ export async function runMemoryMinerBeat(
       editPatterns++;
     }
 
+    commitAttempted = true;
     await client.query("COMMIT");
     return { samples, reinforced, editPatterns, calibrateEventIds };
-  } catch (err) {
-    await client.query("ROLLBACK").catch(() => undefined);
-    throw err;
+  } catch (primaryError) {
+    if (!transactionStarted || commitAttempted) {
+      discardError = primaryError instanceof Error ? primaryError : new Error("记忆提炼事务状态不确定", { cause: primaryError });
+    }
+    try {
+      await client.query("ROLLBACK");
+    } catch (rollbackError) {
+      const failure = new AggregateError([primaryError, rollbackError], "记忆提炼失败且回滚失败", { cause: primaryError });
+      discardError = failure;
+      throw failure;
+    }
+    throw primaryError;
   } finally {
-    client.release();
+    client.release(discardError);
   }
 }

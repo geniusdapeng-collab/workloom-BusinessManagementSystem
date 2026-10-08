@@ -1,0 +1,619 @@
+{
+  "schemaVersion": "bms.site-proof/v1",
+  "startedAt": "2026-10-08T17:46:39.202Z",
+  "browser": "Chromium",
+  "expectedTotal": 48,
+  "command": [
+    "node",
+    "scripts/check-business-site.mjs",
+    "--out",
+    "docs/evidence",
+    "--browser-executable",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  ],
+  "javascriptRequired": false,
+  "status": "pass",
+  "sourceFiles": [
+    {
+      "path": "apps/site/index.html",
+      "sha256": "248cf074154ca7016898c46efc86b6d271a3ef2babfe6cdc9c9770b7ff597e64"
+    },
+    {
+      "path": "apps/site/en.html",
+      "sha256": "90d425f7db65f4b83fd6cbe2b52352c0ef2735b3f7b00dd9ae8a3c92131d34b1"
+    }
+  ],
+  "cases": [
+    {
+      "id": "zh-1440-identity",
+      "preconditions": "静态页面可访问，JavaScript禁用",
+      "steps": "读取标题、lang与唯一H1",
+      "expected": "新产品身份且唯一H1",
+      "actual": {
+        "title": "经营管理系统 · 全屋智能门店 · BusinessManagementSystem",
+        "language": "zh-CN",
+        "h1": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-overflow",
+      "preconditions": "视口1440px",
+      "steps": "测量页面与body宽度",
+      "expected": "页面无水平滚动",
+      "actual": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-no-js",
+      "preconditions": "JavaScript禁用",
+      "steps": "检查所有section的CSS可见状态",
+      "expected": "内容全部可见",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-source-cta",
+      "preconditions": "源码CTA可见",
+      "steps": "读取主CTA href",
+      "expected": "公开CNB新仓，无假安装包地址",
+      "actual": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-anchors",
+      "preconditions": "静态页包含导航与跳转",
+      "steps": "核对所有锚点目标",
+      "expected": "锚点没有悬空",
+      "actual": [
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#top",
+          "targetExists": true
+        },
+        {
+          "href": "#journeys",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        },
+        {
+          "href": "#docs",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-start-link",
+      "preconditions": "开始导航可点击",
+      "steps": "点击开始使用锚点",
+      "expected": "URL转到#start",
+      "actual": "http://127.0.0.1:53303/index.html#start",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-faq",
+      "preconditions": "FAQ默认折叠",
+      "steps": "点击第一条summary",
+      "expected": "浏览器原生展开",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-documentation",
+      "preconditions": "文档卡片可见",
+      "steps": "解析仓库文档路径并检查本地交付文件",
+      "expected": "所有文档卡指向已创建文件",
+      "actual": [
+        "docs/SMART-HOME-BUSINESS-MATRIX.md",
+        "docs/AI-WORKBENCH.md",
+        "docs/evidence/README.md"
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-boundaries",
+      "preconditions": "页面内容读取",
+      "steps": "核对连接器和synthetic/外部边界措辞",
+      "expected": "明确disabled、本地提交、合成数据",
+      "actual": {
+        "disabled": true,
+        "synthetic": true,
+        "external": true
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-assets",
+      "preconditions": "图像已进入视口",
+      "steps": "核对已加载图片和alt",
+      "expected": "图片可读且描述为概念图",
+      "actual": [
+        {
+          "src": "assets/scene-squad.jpg",
+          "alt": "视觉概念图：深空背景中的数字员工编队",
+          "loaded": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-language",
+      "preconditions": "语言链接常驻，手机未隐藏",
+      "steps": "点击语言切换",
+      "expected": "打开另一语言页面",
+      "actual": "en",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-browser-events",
+      "preconditions": "整个导航与资源加载过程",
+      "steps": "收集pageerror/requestfailed/HTTP>=400",
+      "expected": "无脚本错误或资源错误",
+      "actual": {
+        "issues": [],
+        "failed": []
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-identity",
+      "preconditions": "静态页面可访问，JavaScript禁用",
+      "steps": "读取标题、lang与唯一H1",
+      "expected": "新产品身份且唯一H1",
+      "actual": {
+        "title": "经营管理系统 · 全屋智能门店 · BusinessManagementSystem",
+        "language": "zh-CN",
+        "h1": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-overflow",
+      "preconditions": "视口390px",
+      "steps": "测量页面与body宽度",
+      "expected": "页面无水平滚动",
+      "actual": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-no-js",
+      "preconditions": "JavaScript禁用",
+      "steps": "检查所有section的CSS可见状态",
+      "expected": "内容全部可见",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "id": "zh-390-source-cta",
+      "preconditions": "源码CTA可见",
+      "steps": "读取主CTA href",
+      "expected": "公开CNB新仓，无假安装包地址",
+      "actual": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+      "pass": true
+    },
+    {
+      "id": "zh-390-anchors",
+      "preconditions": "静态页包含导航与跳转",
+      "steps": "核对所有锚点目标",
+      "expected": "锚点没有悬空",
+      "actual": [
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#top",
+          "targetExists": true
+        },
+        {
+          "href": "#journeys",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        },
+        {
+          "href": "#docs",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-390-start-link",
+      "preconditions": "开始导航可点击",
+      "steps": "点击开始使用锚点",
+      "expected": "URL转到#start",
+      "actual": "http://127.0.0.1:53303/index.html#start",
+      "pass": true
+    },
+    {
+      "id": "zh-390-faq",
+      "preconditions": "FAQ默认折叠",
+      "steps": "点击第一条summary",
+      "expected": "浏览器原生展开",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "zh-390-documentation",
+      "preconditions": "文档卡片可见",
+      "steps": "解析仓库文档路径并检查本地交付文件",
+      "expected": "所有文档卡指向已创建文件",
+      "actual": [
+        "docs/SMART-HOME-BUSINESS-MATRIX.md",
+        "docs/AI-WORKBENCH.md",
+        "docs/evidence/README.md"
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-390-boundaries",
+      "preconditions": "页面内容读取",
+      "steps": "核对连接器和synthetic/外部边界措辞",
+      "expected": "明确disabled、本地提交、合成数据",
+      "actual": {
+        "disabled": true,
+        "synthetic": true,
+        "external": true
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-assets",
+      "preconditions": "图像已进入视口",
+      "steps": "核对已加载图片和alt",
+      "expected": "图片可读且描述为概念图",
+      "actual": [
+        {
+          "src": "assets/scene-squad.jpg",
+          "alt": "视觉概念图：深空背景中的数字员工编队",
+          "loaded": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-390-language",
+      "preconditions": "语言链接常驻，手机未隐藏",
+      "steps": "点击语言切换",
+      "expected": "打开另一语言页面",
+      "actual": "en",
+      "pass": true
+    },
+    {
+      "id": "zh-390-browser-events",
+      "preconditions": "整个导航与资源加载过程",
+      "steps": "收集pageerror/requestfailed/HTTP>=400",
+      "expected": "无脚本错误或资源错误",
+      "actual": {
+        "issues": [],
+        "failed": []
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-identity",
+      "preconditions": "静态页面可访问，JavaScript禁用",
+      "steps": "读取标题、lang与唯一H1",
+      "expected": "新产品身份且唯一H1",
+      "actual": {
+        "title": "BusinessManagementSystem · Smart Home Store Operations",
+        "language": "en",
+        "h1": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-overflow",
+      "preconditions": "视口1440px",
+      "steps": "测量页面与body宽度",
+      "expected": "页面无水平滚动",
+      "actual": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-no-js",
+      "preconditions": "JavaScript禁用",
+      "steps": "检查所有section的CSS可见状态",
+      "expected": "内容全部可见",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "id": "en-1440-source-cta",
+      "preconditions": "源码CTA可见",
+      "steps": "读取主CTA href",
+      "expected": "公开CNB新仓，无假安装包地址",
+      "actual": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+      "pass": true
+    },
+    {
+      "id": "en-1440-anchors",
+      "preconditions": "静态页包含导航与跳转",
+      "steps": "核对所有锚点目标",
+      "expected": "锚点没有悬空",
+      "actual": [
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#top",
+          "targetExists": true
+        },
+        {
+          "href": "#journeys",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        },
+        {
+          "href": "#docs",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "en-1440-start-link",
+      "preconditions": "开始导航可点击",
+      "steps": "点击开始使用锚点",
+      "expected": "URL转到#start",
+      "actual": "http://127.0.0.1:53303/en.html#start",
+      "pass": true
+    },
+    {
+      "id": "en-1440-faq",
+      "preconditions": "FAQ默认折叠",
+      "steps": "点击第一条summary",
+      "expected": "浏览器原生展开",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "en-1440-documentation",
+      "preconditions": "文档卡片可见",
+      "steps": "解析仓库文档路径并检查本地交付文件",
+      "expected": "所有文档卡指向已创建文件",
+      "actual": [
+        "docs/SMART-HOME-BUSINESS-MATRIX.md",
+        "docs/AI-WORKBENCH.md",
+        "docs/evidence/README.md"
+      ],
+      "pass": true
+    },
+    {
+      "id": "en-1440-boundaries",
+      "preconditions": "页面内容读取",
+      "steps": "核对连接器和synthetic/外部边界措辞",
+      "expected": "明确disabled、本地提交、合成数据",
+      "actual": {
+        "disabled": true,
+        "synthetic": true,
+        "external": true
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-assets",
+      "preconditions": "图像已进入视口",
+      "steps": "核对已加载图片和alt",
+      "expected": "图片可读且描述为概念图",
+      "actual": [
+        {
+          "src": "assets/scene-squad.jpg",
+          "alt": "Concept artwork of a digital employee formation in deep space",
+          "loaded": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "en-1440-language",
+      "preconditions": "语言链接常驻，手机未隐藏",
+      "steps": "点击语言切换",
+      "expected": "打开另一语言页面",
+      "actual": "zh-CN",
+      "pass": true
+    },
+    {
+      "id": "en-1440-browser-events",
+      "preconditions": "整个导航与资源加载过程",
+      "steps": "收集pageerror/requestfailed/HTTP>=400",
+      "expected": "无脚本错误或资源错误",
+      "actual": {
+        "issues": [],
+        "failed": []
+      },
+      "pass": true
+    },
+    {
+      "id": "en-390-identity",
+      "preconditions": "静态页面可访问，JavaScript禁用",
+      "steps": "读取标题、lang与唯一H1",
+      "expected": "新产品身份且唯一H1",
+      "actual": {
+        "title": "BusinessManagementSystem · Smart Home Store Operations",
+        "language": "en",
+        "h1": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "en-390-overflow",
+      "preconditions": "视口390px",
+      "steps": "测量页面与body宽度",
+      "expected": "页面无水平滚动",
+      "actual": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "pass": true
+    },
+    {
+      "id": "en-390-no-js",
+      "preconditions": "JavaScript禁用",
+      "steps": "检查所有section的CSS可见状态",
+      "expected": "内容全部可见",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "id": "en-390-source-cta",
+      "preconditions": "源码CTA可见",
+      "steps": "读取主CTA href",
+      "expected": "公开CNB新仓，无假安装包地址",
+      "actual": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+      "pass": true
+    },
+    {
+      "id": "en-390-anchors",
+      "preconditions": "静态页包含导航与跳转",
+      "steps": "核对所有锚点目标",
+      "expected": "锚点没有悬空",
+      "actual": [
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#top",
+          "targetExists": true
+        },
+        {
+          "href": "#journeys",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        },
+        {
+          "href": "#docs",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "en-390-start-link",
+      "preconditions": "开始导航可点击",
+      "steps": "点击开始使用锚点",
+      "expected": "URL转到#start",
+      "actual": "http://127.0.0.1:53303/en.html#start",
+      "pass": true
+    },
+    {
+      "id": "en-390-faq",
+      "preconditions": "FAQ默认折叠",
+      "steps": "点击第一条summary",
+      "expected": "浏览器原生展开",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "en-390-documentation",
+      "preconditions": "文档卡片可见",
+      "steps": "解析仓库文档路径并检查本地交付文件",
+      "expected": "所有文档卡指向已创建文件",
+      "actual": [
+        "docs/SMART-HOME-BUSINESS-MATRIX.md",
+        "docs/AI-WORKBENCH.md",
+        "docs/evidence/README.md"
+      ],
+      "pass": true
+    },
+    {
+      "id": "en-390-boundaries",
+      "preconditions": "页面内容读取",
+      "steps": "核对连接器和synthetic/外部边界措辞",
+      "expected": "明确disabled、本地提交、合成数据",
+      "actual": {
+        "disabled": true,
+        "synthetic": true,
+        "external": true
+      },
+      "pass": true
+    },
+    {
+      "id": "en-390-assets",
+      "preconditions": "图像已进入视口",
+      "steps": "核对已加载图片和alt",
+      "expected": "图片可读且描述为概念图",
+      "actual": [
+        {
+          "src": "assets/scene-squad.jpg",
+          "alt": "Concept artwork of a digital employee formation in deep space",
+          "loaded": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "en-390-language",
+      "preconditions": "语言链接常驻，手机未隐藏",
+      "steps": "点击语言切换",
+      "expected": "打开另一语言页面",
+      "actual": "zh-CN",
+      "pass": true
+    },
+    {
+      "id": "en-390-browser-events",
+      "preconditions": "整个导航与资源加载过程",
+      "steps": "收集pageerror/requestfailed/HTTP>=400",
+      "expected": "无脚本错误或资源错误",
+      "actual": {
+        "issues": [],
+        "failed": []
+      },
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "externalBusinessVerified": false,
+  "websiteDeployed": false,
+  "browserVersion": "154.0.8037.99",
+  "finishedAt": "2026-10-08T17:46:45.565Z",
+  "passed": 48,
+  "total": 48
+}

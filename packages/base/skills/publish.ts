@@ -225,22 +225,28 @@ export async function completePublish(
 
 /* ================= ④ 全局吊销（kill switch） ================= */
 
-/** 全局吊销：全租户生效，install 与装配双点排除（事件留痕；幂等） */
+/** 全局吊销：仅平台运维显式提供 owner 池；禁止通过普通业务请求调用。 */
 export async function revokeSkill(
-  app: pg.Pool, gateway: pg.Pool, scope: Scope,
+  owner: pg.Pool, gateway: pg.Pool, scope: Scope,
   input: { skillId: string; reason: string; by: string },
 ): Promise<{ deduped: boolean }> {
   if (!input.reason || input.reason.trim() === "") {
     throw new PublishError("EMPTY_REASON", "吊销必须填写原因");
   }
   // D16（#1/A）：吊销行与吊销事件同一事务同一 COMMIT
-  const client = await app.connect();
+  const client = await owner.connect();
   try {
     await client.query("BEGIN");
+    const role = await client.query<{ role: string; permitted: boolean }>(
+      "SELECT current_user AS role, has_function_privilege(current_user, 'public.skill_revoke(text,text,text)', 'EXECUTE') AS permitted",
+    );
+    if (!role.rows[0]?.permitted || ["workloom_app", "workloom_gateway"].includes(role.rows[0].role)) {
+      throw new PublishError("OWNER_CHANNEL_REQUIRED", "全局技能吊销仅允许平台运维 owner 通道");
+    }
     await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
     await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
     const r = await client.query<{ skill_revoke: boolean }>(
-      `SELECT public.skill_revoke($1, $2, $3)`, // D31：吊销收口 owner 通道（0013⑧ REVOKE app 写权后改 SECURITY DEFINER 函数）
+      `SELECT public.skill_revoke($1, $2, $3)`,
       [input.skillId, input.reason, input.by]);
     if (r.rows[0]?.skill_revoke !== true) {
       await client.query("COMMIT");

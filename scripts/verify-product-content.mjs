@@ -100,7 +100,7 @@ if (product) {
   const siteRoot = path.resolve(root, product.release?.website ?? "");
   for (const file of ["index.html", "en.html"]) {
     const siteFile = path.join(siteRoot, file);
-    if (fs.existsSync(siteFile) && !fs.readFileSync(siteFile, "utf8").includes(`github.com/${product.repository}`)) {
+    if (fs.existsSync(siteFile) && !fs.readFileSync(siteFile, "utf8").includes(`cnb.cool/${product.repository}`)) {
       errors.push(`${path.relative(root, siteFile)} 下载/仓库地址与产品清单不一致`);
     }
   }

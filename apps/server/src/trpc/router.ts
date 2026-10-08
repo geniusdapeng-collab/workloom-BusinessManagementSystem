@@ -77,10 +77,12 @@ import {
 } from "@workloom/base/night-shift";
 import {
   activateRuleVersion,
-  confirmDryRun,
+  checkCandidateAgainstBaseline,
+  confirmDryRunOnTx,
   createDryRun,
   fenceActivationFromProposal,
-  fenceRuleRowId,
+  loadActiveRulesInTx,
+  nextRuleRowIdentity,
 } from "@workloom/base/fence-engine";
 import { MAX_CONCURRENT_THREADS, PLAN_TIERS } from "@workloom/shared";
 import {
@@ -1451,7 +1453,10 @@ const approvalsRouter = router({
       } catch (err) {
         if (err instanceof ApprovalError) {
           throw new TRPCError({
-            code: err.code === "FORBIDDEN_ROLE" ? "FORBIDDEN" : "BAD_REQUEST",
+            code: err.code === "FORBIDDEN_ROLE" ? "FORBIDDEN"
+              : err.code === "NOT_FOUND" ? "NOT_FOUND"
+                : err.statusCode === 409 ? "CONFLICT"
+                  : err.statusCode === 412 ? "PRECONDITION_FAILED" : "BAD_REQUEST",
             message: err.message,
           });
         }
@@ -1477,7 +1482,8 @@ const approvalsRouter = router({
         return res;
       } catch (err) {
         if (err instanceof ApprovalError) {
-          throw new TRPCError({ code: "FORBIDDEN", message: err.message });
+          throw new TRPCError({ code: err.statusCode === 403 ? "FORBIDDEN"
+            : err.statusCode === 409 ? "CONFLICT" : err.statusCode === 412 ? "PRECONDITION_FAILED" : "BAD_REQUEST", message: err.message });
         }
         throw err;
       }
@@ -2114,6 +2120,15 @@ const nightShiftRouter = router({
     }),
 });
 
+const FenceCandidateInputSchema = z.object({
+  ruleId: z.string().regex(/^R(?:-[A-Z0-9]+)?[0-9]+$/i).transform((value) => value.toUpperCase()),
+  name: z.string().min(1).max(100),
+  level: z.enum(["auto", "review", "block"]),
+  objectTypes: z.array(z.string().min(1).max(100)).min(1).max(100),
+  actions: z.array(z.string().min(1).max(100)).min(1).max(100),
+  when: z.string().max(4000),
+});
+
 /** fence router（F8 起 P5 数据源：规则版本化投影 + 30 天触发聚合 + dry-run 生命周期 F2.4/F2.5） */
 const fenceRouter = router({
   /** 规则列表（P5E2：级别 pill + 来源 + 30 天触发数；基线 🔒 集团强制 F2.3） */
@@ -2175,17 +2190,11 @@ const fenceRouter = router({
 
   /** NL 新增群规 dry-run（P5E3/P5E4：候选规则回放最近 10 条 F2.5；未确认不生效 L2.4） */
   dryRun: actionProcedure("guardrail.manage")
-    .input(z.object({
-      ruleId: z.string().regex(/^R\d+$/),
-      name: z.string().min(1).max(100),
-      level: z.enum(["auto", "review", "block"]),
-      objectTypes: z.array(z.string()).min(1),
-      actions: z.array(z.string()).min(1),
-      when: z.string().min(1),
-    }))
+    .input(FenceCandidateInputSchema)
     .mutation(async ({ ctx, input }) => {
       const scope = scopeOf(ctx.identity);
-      return createDryRun(getAppPool(), scope, {
+      const app = getAppPool();
+      const result = await createDryRun(app, scope, {
         ruleId: input.ruleId,
         ruleVersion: "v-next",
         rules: [{
@@ -2195,35 +2204,84 @@ const fenceRouter = router({
         defaultLevel: "review",
         createdBy: ctx.identity.memberNo,
       });
+      // Bind the human-visible report to the exact reviewed candidate. A failed
+      // binding leaves an unusable pending report; confirmation fails closed.
+      const client = await app.connect();
+      let releaseError: Error | undefined;
+      try {
+        await client.query("BEGIN");
+        await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
+        await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
+        const bound = await client.query(
+          `UPDATE fence_dry_runs SET report=jsonb_set(report, '{candidate}', $3::jsonb)
+            WHERE id=$1 AND workspace_id=$2 AND status='pending'`,
+          [result.dryRunId, scope.workspaceId, JSON.stringify(input)],
+        );
+        if (bound.rowCount !== 1) throw new TRPCError({ code: "CONFLICT", message: "回放报告状态已改变，请重新回放。" });
+        await client.query("COMMIT");
+        return result;
+      } catch (err) {
+        try {
+          await client.query("ROLLBACK");
+        } catch (rollbackError) {
+          releaseError = rollbackError instanceof Error ? rollbackError : new Error(String(rollbackError));
+          throw new AggregateError([err, rollbackError], "回放报告绑定失败，且事务回滚失败。", { cause: err });
+        }
+        throw err;
+      } finally {
+        client.release(releaseError);
+      }
     }),
 
   /** 确认 dry-run（人看过报告才激活 L2.4）→ 规则进 pending_approval + 变更审批（F2.4，走 P4 决断流） */
   confirmDryRun: actionProcedure("guardrail.manage")
     .input(z.object({
-      dryRunId: z.string(),
-      rule: z.object({
-        ruleId: z.string(), name: z.string(), level: z.enum(["auto", "review", "block"]),
-        objectTypes: z.array(z.string()), actions: z.array(z.string()), when: z.string(),
-      }),
+      dryRunId: z.string().min(1).max(200),
+      rule: FenceCandidateInputSchema,
+      allowWhenChange: z.boolean().default(false),
     }))
     .mutation(async ({ ctx, input }) => {
       const scope = scopeOf(ctx.identity);
-      await confirmDryRun(getAppPool(), scope, input.dryRunId);
       // 规则草稿进 pending_approval（激活须审批事件 ID，activateRuleVersion 在 P4 手势后调用——E1 已接线，见下方 decide/batchApprove）
       // D16（#1/A）：规则草稿行、提案事件、审批行三者同一事务同一 COMMIT
       const app = getAppPool();
       const client = await app.connect();
       let ev: { eventId: string };
+      let releaseError: Error | undefined;
       try {
         await client.query("BEGIN");
         await client.query("SELECT set_config('app.workspace_id', $1, true)", [scope.workspaceId]);
         await client.query("SELECT set_config('app.tenant_id', $1, true)", [scope.tenantId]);
-        const rowId = fenceRuleRowId(input.rule.ruleId, scope.workspaceId);
+        // Serialise proposals for the same scoped rule before version allocation.
+        await client.query("SELECT pg_advisory_xact_lock(hashtextextended($1, 0))", [`fence-proposal:${scope.workspaceId}:${input.rule.ruleId}`]);
+        const replay = await client.query<{ rule_id: string; report: { candidate?: unknown }; status: string }>(
+          `SELECT rule_id, report, status FROM fence_dry_runs WHERE id=$1 AND workspace_id=$2 FOR UPDATE`,
+          [input.dryRunId, scope.workspaceId],
+        );
+        const reviewed = replay.rows[0];
+        if (!reviewed || reviewed.status !== "pending") {
+          throw new TRPCError({ code: "CONFLICT", message: "回放报告不存在或已确认，请重新回放。" });
+        }
+        const candidate = FenceCandidateInputSchema.safeParse(reviewed.report.candidate);
+        if (reviewed.rule_id.toUpperCase() !== input.rule.ruleId || !candidate.success
+          || stableStringify(candidate.data) !== stableStringify(input.rule)) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "拟提交规则与已回放内容不一致，请重新回放后确认。" });
+        }
+        const current = await loadActiveRulesInTx(client, scope);
+        const verdict = checkCandidateAgainstBaseline(current.map((rule) => ({ ...rule, rule_id: rule.rule_id.toUpperCase() })), {
+          rule_id: input.rule.ruleId, version: "v-next", name: input.rule.name,
+          level: input.rule.level, is_baseline: false, objectTypes: input.rule.objectTypes,
+          actions: input.rule.actions, when: input.rule.when,
+        }, { allowWhenChange: input.allowWhenChange });
+        if (!verdict.ok) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: `基线规则只可加严，本次变更被拒：${verdict.violations.map((item) => item.reason).join("；")}` });
+        }
+        const identity = await nextRuleRowIdentity(client, scope, input.rule.ruleId);
+        await confirmDryRunOnTx(client, scope, input.dryRunId);
         await client.query(
           `INSERT INTO fence_rules (id, rule_id, version, workspace_id, name, level, match_spec, action, is_baseline, status, created_by)
-           VALUES ($1,$2,'v-next',$3,$4,$5,$6,$7,false,'pending_approval',$8)
-           ON CONFLICT (id) DO NOTHING`,
-          [rowId, input.rule.ruleId, scope.workspaceId, input.rule.name, input.rule.level,
+           VALUES ($1,$2,$3,$4,$5,$6,$7,$8,false,'pending_approval',$9)`,
+          [identity.rowId, input.rule.ruleId, identity.version, scope.workspaceId, input.rule.name, input.rule.level,
            JSON.stringify({ object_types: input.rule.objectTypes, actions: input.rule.actions, when: input.rule.when }),
            JSON.stringify({ result: input.rule.level }), ctx.identity.memberNo],
         );
@@ -2233,7 +2291,11 @@ const fenceRouter = router({
           who: { type: "human", id: ctx.identity.memberNo },
           context: { tenant_id: scope.tenantId, workspace_id: scope.workspaceId, time: new Date().toISOString(), channel: "inapp" },
           object: { type: "staff", id: input.rule.ruleId },
-          decision: { action: "fence.rule.propose", after: { ...input.rule, dryRunId: input.dryRunId } },
+          decision: { action: "fence.rule.propose", after: {
+            ...input.rule, dryRunId: input.dryRunId, ruleRowId: identity.rowId,
+            version: identity.version, inheritedBaseline: identity.inheritedBaseline,
+            allowWhenChange: input.allowWhenChange,
+          } },
           rule_impact: [],
         });
         // E1 联调接线（PF.5/F2.4）：围栏变更提案进 P4 决断队列——高危（不可批量采纳，须逐条手势，F5.4/G6）
@@ -2243,14 +2305,19 @@ const fenceRouter = router({
            VALUES ($1,$2,$3,$4,'inapp','pending',$5)
            ON CONFLICT (event_id, channel) DO NOTHING`,
           [`apr-${ev.eventId.toLowerCase()}`, scope.tenantId, scope.workspaceId, ev.eventId,
-           JSON.stringify({ after: input.rule, high_risk: true })],
+           JSON.stringify({ after: { ...input.rule, ruleRowId: identity.rowId, version: identity.version, allowWhenChange: input.allowWhenChange }, high_risk: true })],
         );
         await client.query("COMMIT");
       } catch (err) {
-        await client.query("ROLLBACK").catch(() => undefined);
+        try {
+          await client.query("ROLLBACK");
+        } catch (rollbackError) {
+          releaseError = rollbackError instanceof Error ? rollbackError : new Error(String(rollbackError));
+          throw new AggregateError([err, rollbackError], "围栏提案失败，且事务回滚失败。", { cause: err });
+        }
         throw err;
       } finally {
-        client.release();
+        client.release(releaseError);
       }
       return { proposed: true, eventId: ev!.eventId };
     }),
@@ -2561,7 +2628,9 @@ function imRethrow(err: unknown): never {
     });
   }
   if (err instanceof ApprovalError) {
-    throw new TRPCError({ code: "BAD_REQUEST", message: err.message });
+    throw new TRPCError({ code: err.statusCode === 403 ? "FORBIDDEN"
+      : err.statusCode === 409 ? "CONFLICT" : err.statusCode === 412 ? "PRECONDITION_FAILED"
+        : err.code === "NOT_FOUND" ? "NOT_FOUND" : "BAD_REQUEST", message: err.message });
   }
   throw err;
 }

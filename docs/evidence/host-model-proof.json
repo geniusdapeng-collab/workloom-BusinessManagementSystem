@@ -1,0 +1,875 @@
+{
+  "schemaVersion": "bms.host-model-proof/v1",
+  "executionRef": "host-proof-23cb76258aac4c78",
+  "host": "codex",
+  "model": "host-default-unspecified",
+  "modelWasExplicitlyOverridden": false,
+  "additionalModelApiConfigured": false,
+  "startedAt": "2026-10-08T16:30:45.552493+00:00",
+  "finishedAt": "2026-10-08T16:32:54.313149+00:00",
+  "processExitCode": 0,
+  "dataMode": "sandbox",
+  "businessData": "synthetic",
+  "scope": {
+    "tenantId": "demo-store",
+    "workspaceId": "default"
+  },
+  "externalActions": 0,
+  "runtimeModelCalls": 0,
+  "hostLogEvidence": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a11c5a-59db-7871-8896-e05fbcac544d"
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 700557,
+        "cached_input_tokens": 647552,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2827,
+        "reasoning_output_tokens": 26
+      }
+    }
+  ],
+  "mcpCalls": [
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_status",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_catalog",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_status",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_catalog",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_claim",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_task_submit",
+      "status": "completed"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.started",
+      "server": "business_management",
+      "tool": "bms_ledger_verify",
+      "status": "in_progress"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_workflow_get",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_goal_report",
+      "status": "completed"
+    },
+    {
+      "event": "item.completed",
+      "server": "business_management",
+      "tool": "bms_ledger_verify",
+      "status": "completed"
+    }
+  ],
+  "records": {
+    "workflow": {
+      "operation": "workflow.get",
+      "data": {
+        "completedAt": "2026-10-08T16:32:24.744Z",
+        "completionBasis": "local-validated-artifacts-and-required-human-records",
+        "createdAt": "2026-10-08T16:30:45.528Z",
+        "dataMode": "sandbox",
+        "externalDeliveryVerified": false,
+        "externallyExecuted": false,
+        "goalId": "synthetic-growth-goal",
+        "id": "synthetic-growth-flow",
+        "kind": "growth-acquisition",
+        "localOnly": true,
+        "maxAttempts": 3,
+        "phaseIndex": 3,
+        "refs": {
+          "contentId": "synthetic-growth-flow:content",
+          "experienceId": "synthetic-growth-flow:experience",
+          "leadId": "synthetic-lead",
+          "reportId": "synthetic-growth-flow:report"
+        },
+        "status": "completed",
+        "storeId": "synthetic-store",
+        "taskIds": [
+          "synthetic-growth-flow:qualification",
+          "synthetic-growth-flow:content-draft",
+          "synthetic-growth-flow:experience-plan",
+          "synthetic-growth-flow:owner-report"
+        ],
+        "tenantId": "demo-store",
+        "type": "workflow",
+        "updatedAt": "2026-10-08T16:32:24.744Z",
+        "version": 9,
+        "waitingFor": null,
+        "workspaceId": "default",
+        "tasks": [
+          {
+            "artifact": {
+              "budgetCents": 200000,
+              "fit": true,
+              "missingInformation": [],
+              "needs": [
+                "已完成装修的客厅灯光场景咨询"
+              ],
+              "reason": "依据lead结构化budgetCents=200000、renovationStage=finished，以及客厅灯光咨询需求和已登记的consultation、appointment用途授权，适合进入本地咨询草稿与拟议体验计划。数据及授权证据均为合成沙箱记录，非真实客户授权；不据此承诺安装、兼容性或成交。",
+              "renovationStage": "finished"
+            },
+            "artifactDigest": "81afbb45689327f8ee3557efca96fb29b5acf114a6533efdcc1281177247ddab",
+            "attempts": 1,
+            "completedAt": "2026-10-08T16:31:28.185Z",
+            "createdAt": "2026-10-08T16:30:45.528Z",
+            "dataMode": "sandbox",
+            "employee": "lead-concierge",
+            "executionEvidence": "host-submitted-structured-artifact",
+            "executionProvider": "host-workbench-model",
+            "failureHistory": [],
+            "goalId": "synthetic-growth-goal",
+            "hostModelExternallyVerified": false,
+            "id": "synthetic-growth-flow:qualification",
+            "instructions": "Use the recorded lead intent and consent. State missing information. Never invent a customer budget or customer statements. fit=false is an admissible result; report the uncertainty.",
+            "leaseExpiresAt": null,
+            "leasedBy": "business-management-mcp-agent",
+            "maxAttempts": 3,
+            "modelInvocationPerformedByRuntime": false,
+            "modelTrace": {
+              "host": "codex",
+              "invocationRef": "host-proof-23cb76258aac4c78",
+              "model": "host-default-unspecified"
+            },
+            "outputSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "budgetCents": {
+                  "maximum": 1000000000,
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                "fit": {
+                  "type": "boolean"
+                },
+                "missingInformation": {
+                  "items": {
+                    "maxLength": 500,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 30,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "needs": {
+                  "items": {
+                    "maxLength": 1000,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 30,
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "reason": {
+                  "maxLength": 2000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "renovationStage": {
+                  "enum": [
+                    "new-build",
+                    "design",
+                    "rough-in",
+                    "decorating",
+                    "finished",
+                    "occupied",
+                    "retrofit"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "fit",
+                "budgetCents",
+                "renovationStage",
+                "needs",
+                "reason",
+                "missingInformation"
+              ],
+              "type": "object"
+            },
+            "phase": "qualification",
+            "phaseIndex": 0,
+            "result": {
+              "lead": {
+                "alias": "合成客户A",
+                "attribution": {
+                  "campaignRef": null,
+                  "channel": "walk-in",
+                  "model": "first-recorded-touch"
+                },
+                "budgetCents": 200000,
+                "channel": "walk-in",
+                "consent": {
+                  "evidence": {
+                    "externallyVerified": false,
+                    "observedAt": "2026-10-08T16:29:45.512Z",
+                    "recordedBy": "synthetic-seeder",
+                    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "source": "synthetic",
+                    "summary": "Synthetic test evidence: consent. This is not a manufacturer certificate or a real customer record.",
+                    "uri": "evidence://synthetic/consent",
+                    "verification": "synthetic-unverified"
+                  },
+                  "purposes": [
+                    "consultation",
+                    "appointment",
+                    "aftercare"
+                  ],
+                  "status": "granted"
+                },
+                "contactRef": "synthetic-contact-A",
+                "createdAt": "2026-10-08T16:30:45.524Z",
+                "dataMode": "sandbox",
+                "id": "synthetic-lead",
+                "intent": "合成客户：已知预算200000分，完成装修，计划客厅灯光场景。仅用于测试。",
+                "qualification": {
+                  "assessmentSource": "host-model-artifact",
+                  "budgetCents": 200000,
+                  "customerAssertionsVerified": false,
+                  "fit": true,
+                  "missingInformation": [],
+                  "needs": [
+                    "已完成装修的客厅灯光场景咨询"
+                  ],
+                  "reason": "依据lead结构化budgetCents=200000、renovationStage=finished，以及客厅灯光咨询需求和已登记的consultation、appointment用途授权，适合进入本地咨询草稿与拟议体验计划。数据及授权证据均为合成沙箱记录，非真实客户授权；不据此承诺安装、兼容性或成交。",
+                  "renovationStage": "finished"
+                },
+                "renovationStage": "finished",
+                "status": "qualified",
+                "storeId": "synthetic-store",
+                "tenantId": "demo-store",
+                "type": "lead",
+                "updatedAt": "2026-10-08T16:31:28.183Z",
+                "version": 2,
+                "workspaceId": "default"
+              },
+              "qualifiedLocally": true
+            },
+            "skill": "lead-qualification",
+            "status": "completed",
+            "tenantId": "demo-store",
+            "title": "核验咨询需求与购买条件",
+            "type": "task",
+            "updatedAt": "2026-10-08T16:31:28.185Z",
+            "version": 3,
+            "workflowId": "synthetic-growth-flow",
+            "workspaceId": "default"
+          },
+          {
+            "artifact": {
+              "body": "【合成沙箱内容草稿，仅供本地演练，未发布】\n想规划客厅灯光场景，可以先列出三个讨论方向：日常活动、观影和夜间起身。哪些位置需要照明？希望手动切换还是讨论其他触发方式？现有装修下允许哪些改动？\n拟议体验可围绕场景偏好、操作习惯和预算取舍展开，先形成需求清单，再由具备资格的人员核查现场条件与具体设备证据。\n本文是咨询话题草稿，不包含真实客户案例、具体SKU性能或兼容性结论，也不承诺价格、施工结果或节能收益。体验时间另行确认；本地计划不代表已发送邀请或客户已预约。",
+              "channel": "xiaohongshu",
+              "claims": [],
+              "piiFree": true,
+              "skuIds": [],
+              "title": "装修完成后，客厅灯光场景怎么开始规划？"
+            },
+            "artifactDigest": "7e1ee3f87734578ab556a7fbf38c988897de1a150cd7cda222a6433435cd4c99",
+            "attempts": 1,
+            "completedAt": "2026-10-08T16:31:47.849Z",
+            "createdAt": "2026-10-08T16:31:28.186Z",
+            "dataMode": "sandbox",
+            "employee": "content-strategist",
+            "executionEvidence": "host-submitted-structured-artifact",
+            "executionProvider": "host-workbench-model",
+            "failureHistory": [],
+            "goalId": "synthetic-growth-goal",
+            "hostModelExternallyVerified": false,
+            "id": "synthetic-growth-flow:content-draft",
+            "instructions": "Create a local draft only. Any product claim must cite a supplied evidence record. No customer identity, fake case, revenue promise or absolute device compatibility. Publication remains disabled.",
+            "leaseExpiresAt": null,
+            "leasedBy": "business-management-mcp-agent",
+            "maxAttempts": 3,
+            "modelInvocationPerformedByRuntime": false,
+            "modelTrace": {
+              "host": "codex",
+              "invocationRef": "host-proof-23cb76258aac4c78",
+              "model": "host-default-unspecified"
+            },
+            "outputSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "body": {
+                  "maxLength": 12000,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "channel": {
+                  "enum": [
+                    "douyin",
+                    "xiaohongshu",
+                    "wechat-video",
+                    "wechat-private",
+                    "baidu",
+                    "geo"
+                  ],
+                  "type": "string"
+                },
+                "claims": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "evidence": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "observedAt": {
+                            "format": "date-time",
+                            "maxLength": 40,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "sha256": {
+                            "maxLength": 64,
+                            "minLength": 1,
+                            "pattern": "^[a-f0-9]{64}$",
+                            "type": "string"
+                          },
+                          "source": {
+                            "enum": [
+                              "synthetic",
+                              "manufacturer",
+                              "site",
+                              "customer",
+                              "invoice",
+                              "technician"
+                            ],
+                            "type": "string"
+                          },
+                          "summary": {
+                            "maxLength": 1200,
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "uri": {
+                            "maxLength": 1000,
+                            "minLength": 1,
+                            "pattern": "^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "uri",
+                          "sha256",
+                          "source",
+                          "observedAt",
+                          "summary"
+                        ],
+                        "type": "object"
+                      },
+                      "text": {
+                        "maxLength": 1000,
+                        "minLength": 1,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "text",
+                      "evidence"
+                    ],
+                    "type": "object"
+                  },
+                  "maxItems": 100,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "piiFree": {
+                  "type": "boolean"
+                },
+                "skuIds": {
+                  "items": {
+                    "maxLength": 100,
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$",
+                    "type": "string"
+                  },
+                  "maxItems": 100,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "title": {
+                  "maxLength": 200,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "channel",
+                "title",
+                "body",
+                "claims",
+                "skuIds",
+                "piiFree"
+              ],
+              "type": "object"
+            },
+            "phase": "content-draft",
+            "phaseIndex": 1,
+            "result": {
+              "contentId": "synthetic-growth-flow:content",
+              "publicationExecuted": false
+            },
+            "skill": "content-planning",
+            "status": "completed",
+            "tenantId": "demo-store",
+            "title": "生成门店社媒内容草稿",
+            "type": "task",
+            "updatedAt": "2026-10-08T16:31:47.849Z",
+            "version": 3,
+            "workflowId": "synthetic-growth-flow",
+            "workspaceId": "default"
+          },
+          {
+            "artifact": {
+              "durationMinutes": 45,
+              "scenes": [
+                "15分钟：讨论客厅日常活动的照明偏好与操作习惯，仅作合成咨询演练",
+                "15分钟：讨论客厅观影场景的照明需求，不承诺任何具体设备能力",
+                "15分钟：讨论夜间起身照明偏好及200000分预算内的需求优先级；具体方案另经现场核查，时间待确认"
+              ],
+              "startsAt": "2026-10-10T06:00:00Z"
+            },
+            "artifactDigest": "a8973aa02b6e92d65cce04340b171957ca25d4a8141c19cf2e686f85dadd3f88",
+            "attempts": 1,
+            "completedAt": "2026-10-08T16:32:02.896Z",
+            "createdAt": "2026-10-08T16:31:47.849Z",
+            "dataMode": "sandbox",
+            "employee": "sales-consultant",
+            "executionEvidence": "host-submitted-structured-artifact",
+            "executionProvider": "host-workbench-model",
+            "failureHistory": [],
+            "goalId": "synthetic-growth-goal",
+            "hostModelExternallyVerified": false,
+            "id": "synthetic-growth-flow:experience-plan",
+            "instructions": "Only create a proposed appointment plan using the customer appointment consent. Do not claim the customer has received or confirmed an invitation; external messaging is disabled.",
+            "leaseExpiresAt": null,
+            "leasedBy": "business-management-mcp-agent",
+            "maxAttempts": 3,
+            "modelInvocationPerformedByRuntime": false,
+            "modelTrace": {
+              "host": "codex",
+              "invocationRef": "host-proof-23cb76258aac4c78",
+              "model": "host-default-unspecified"
+            },
+            "outputSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "durationMinutes": {
+                  "maximum": 240,
+                  "minimum": 15,
+                  "type": "integer"
+                },
+                "scenes": {
+                  "items": {
+                    "maxLength": 300,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 20,
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "startsAt": {
+                  "format": "date-time",
+                  "maxLength": 40,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "startsAt",
+                "durationMinutes",
+                "scenes"
+              ],
+              "type": "object"
+            },
+            "phase": "experience-plan",
+            "phaseIndex": 2,
+            "result": {
+              "experienceId": "synthetic-growth-flow:experience",
+              "externalInvitationSent": false
+            },
+            "skill": "experience-appointment",
+            "status": "completed",
+            "tenantId": "demo-store",
+            "title": "安排授权范围内的体验计划",
+            "type": "task",
+            "updatedAt": "2026-10-08T16:32:02.896Z",
+            "version": 3,
+            "workflowId": "synthetic-growth-flow",
+            "workspaceId": "default"
+          },
+          {
+            "artifact": {
+              "nextActions": [
+                "保留本地草稿与拟议体验计划，核验最终workflow.get、goal.report与ledger.verify回执。",
+                "后续如开展真实经营，应在独立live范围取得真实用途授权与客户时间确认；当前不执行消息、审批或外发。",
+                "具体安装方案另由具备资格的人员提供现场勘测与设备证据，不把后续勘测作为本次四阶段交付阻塞。"
+              ],
+              "risks": [
+                "所有客户、授权与SKU记录均为合成沙箱数据，不能转换成真实业绩或真实客户授权证据。",
+                "体验为proposed；没有客户确认、外部预约回执或现场实施证据。",
+                "合成SKU及兼容记录不证明商业设备性能或现场兼容性。"
+              ],
+              "summary": "本次由真实Codex宿主会话模型分析合成业务数据并生成结构化产物，执行标识host-proof-23cb76258aac4c78；模型具体名称未知。依据实测goal.report，sandbox本地qualified-leads=1、experience-plans=1、accepted-projects=0、resolved-aftercare=0、management-reports=0（本报告提交前）。体验计划目标current=1、target=1、achievedLocally=true、externallyVerified=false。已完成资格判断与不含SKU性能声明的内容草稿，并建立2026-10-10T06:00:00Z开始、45分钟的proposed体验计划；其时间晚于status.systemTime。pendingApprovals为空。内容未发布、邀请未发送、客户未确认预约，发布/消息/付款/设备控制连接器均disabled；不代表真实获客、成交、收入或现场业绩。运行时不调用模型API，modelTrace为宿主提交声明，不作为独立外部模型验证。"
+            },
+            "artifactDigest": "e8ad3a346633043b59e0718cf2b4ce1cd62a214a9c38333d0b5709fc6ff478f2",
+            "attempts": 1,
+            "completedAt": "2026-10-08T16:32:24.744Z",
+            "createdAt": "2026-10-08T16:32:02.896Z",
+            "dataMode": "sandbox",
+            "employee": "store-ceo",
+            "executionEvidence": "host-submitted-structured-artifact",
+            "executionProvider": "host-workbench-model",
+            "failureHistory": [],
+            "goalId": "synthetic-growth-goal",
+            "hostModelExternallyVerified": false,
+            "id": "synthetic-growth-flow:owner-report",
+            "instructions": "Explain local completed records, pending approvals and disabled external actions. Metrics come from the runtime and must not be invented.",
+            "leaseExpiresAt": null,
+            "leasedBy": "business-management-mcp-agent",
+            "maxAttempts": 3,
+            "modelInvocationPerformedByRuntime": false,
+            "modelTrace": {
+              "host": "codex",
+              "invocationRef": "host-proof-23cb76258aac4c78",
+              "model": "host-default-unspecified"
+            },
+            "outputSchema": {
+              "additionalProperties": false,
+              "properties": {
+                "nextActions": {
+                  "items": {
+                    "maxLength": 1000,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 30,
+                  "minItems": 1,
+                  "type": "array"
+                },
+                "risks": {
+                  "items": {
+                    "maxLength": 1000,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "maxItems": 30,
+                  "minItems": 0,
+                  "type": "array"
+                },
+                "summary": {
+                  "maxLength": 4000,
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "summary",
+                "risks",
+                "nextActions"
+              ],
+              "type": "object"
+            },
+            "phase": "owner-report",
+            "phaseIndex": 3,
+            "result": {
+              "delivery": "local-decision-package",
+              "externalNotificationSent": false,
+              "reportId": "synthetic-growth-flow:report"
+            },
+            "skill": "owner-briefing",
+            "status": "completed",
+            "tenantId": "demo-store",
+            "title": "向董事长交付获客证据汇报",
+            "type": "task",
+            "updatedAt": "2026-10-08T16:32:24.744Z",
+            "version": 3,
+            "workflowId": "synthetic-growth-flow",
+            "workspaceId": "default"
+          }
+        ]
+      }
+    },
+    "goal": {
+      "operation": "goal.report",
+      "data": {
+        "goal": {
+          "authority": "local-planning-only",
+          "constraints": [
+            "只用合成数据",
+            "禁止外发"
+          ],
+          "createdAt": "2026-10-08T16:30:45.526Z",
+          "dataMode": "sandbox",
+          "deadline": "2026-10-22T16:30:45.512Z",
+          "externalActionsEnabled": false,
+          "id": "synthetic-growth-goal",
+          "metric": "experience-plans",
+          "status": "active",
+          "storeId": "synthetic-store",
+          "target": 1,
+          "tenantId": "demo-store",
+          "title": "合成获客测试：生成一个本地体验计划",
+          "type": "goal",
+          "updatedAt": "2026-10-08T16:30:45.526Z",
+          "version": 1,
+          "workspaceId": "default"
+        },
+        "metrics": {
+          "qualified-leads": 1,
+          "experience-plans": 1,
+          "accepted-projects": 0,
+          "resolved-aftercare": 0,
+          "management-reports": 0
+        },
+        "current": 1,
+        "target": 1,
+        "achievedLocally": true,
+        "externallyVerified": false,
+        "dataMode": "sandbox",
+        "authority": "local-records-only",
+        "workflows": [
+          {
+            "id": "synthetic-growth-flow",
+            "kind": "growth-acquisition",
+            "status": "completed",
+            "waitingFor": null
+          }
+        ],
+        "pendingApprovals": [],
+        "externalConnectors": {
+          "publishing": "disabled",
+          "messaging": "disabled",
+          "payments": "disabled",
+          "deviceControl": "disabled"
+        },
+        "evidence": {
+          "events": 18,
+          "ledgerHead": "956113ca3e9df648da530710f02be282aa3c82efb48d79c4bc4b1afbdac22364"
+        }
+      }
+    },
+    "ledger": {
+      "operation": "ledger.verify",
+      "data": {
+        "ok": true,
+        "checkedEvents": 18,
+        "checkedEntities": 18,
+        "checkedReceipts": 18,
+        "headHash": "956113ca3e9df648da530710f02be282aa3c82efb48d79c4bc4b1afbdac22364",
+        "issues": []
+      }
+    },
+    "status": {
+      "operation": "status",
+      "data": {
+        "runtimeVersion": "1.0.0",
+        "industry": "smart-home",
+        "tenantId": "demo-store",
+        "workspaceId": "default",
+        "dataMode": "sandbox",
+        "database": "local-sqlite",
+        "modelProvider": "host-workbench",
+        "runtimeModelCalls": 0,
+        "connectors": {
+          "publishing": "disabled",
+          "messaging": "disabled",
+          "payments": "disabled",
+          "deviceControl": "disabled"
+        },
+        "counts": {
+          "store": 1,
+          "sku": 2,
+          "compatibility": 1,
+          "lead": 1,
+          "experience": 1,
+          "survey": 1,
+          "solution": 0,
+          "quote": 0,
+          "approval": 0,
+          "project": 0,
+          "procurement": 0,
+          "commissioning": 0,
+          "acceptance": 0,
+          "aftercare": 0,
+          "content": 1,
+          "goal": 2,
+          "workflow": 2,
+          "task": 5,
+          "report": 1
+        },
+        "ledger": {
+          "ok": true,
+          "checkedEvents": 18,
+          "checkedEntities": 18,
+          "checkedReceipts": 18,
+          "headHash": "956113ca3e9df648da530710f02be282aa3c82efb48d79c4bc4b1afbdac22364",
+          "issues": []
+        },
+        "systemTime": "2026-10-08T16:32:54.309Z"
+      }
+    }
+  },
+  "interpretation": "Real Codex host-model execution on synthetic sandbox data. Model traces in business entities alone are self-reported; this separate process/tool record supplies host execution evidence. Local SQLite receipts do not prove external publication, messaging or commercial outcomes.",
+  "fullPhaseSetCompleted": true,
+  "observedOutcome": "All four phases completed with a recorded proposed experience plan"
+}
