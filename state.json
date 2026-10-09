@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 127,
+  "revision": 129,
   "tasks": {
     "2": {
       "number": 2,
@@ -2774,7 +2774,7 @@
         "dependsOn": [],
         "releases": []
       },
-      "updatedAt": 1791531625366,
+      "updatedAt": 1791532253671,
       "admission": {
         "number": 6,
         "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
@@ -9507,6 +9507,43 @@
       },
       "previous": "390338825057ff8aefbb84cbb390b89becba27f7fc6bafc4af5a18a1a4b2b329",
       "digest": "3437af0d5fa6ba278f88a5f9381d216e33a78a57abea6722984c6f1ee323f446"
+    },
+    {
+      "sequence": 128,
+      "at": "2026-10-09T07:50:53.671Z",
+      "kind": "task",
+      "data": {
+        "number": 6,
+        "patch": {
+          "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+          "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+          "branch": "docs/readme-customer-architecture",
+          "intent": {
+            "taskId": "T-2026-1009-0002",
+            "ready": true,
+            "dependsOn": [],
+            "releases": []
+          },
+          "originalBody": "## 为什么改\nREADME 是客户对产品的第一眼。原版更像工程说明：行业属性有，但客户最关心的「这套系统替我解决什么、我怎么开始、我的人还要做什么」不够集中；也缺少产品、技术、Agent 的架构图。\n本轮把 README 重写为客户视角：从门店一天的真实损耗讲起，给出价值对照、业务链路、数字员工协作、技术分层与交付链路六张图，并保持所有可运行命令与边界声明不变。\n\n## 改了什么\n- 新增「为谁而做」「用了它，门店的一天有什么不同」两节，按客户语言组织价值与责任边界。\n- 新增 6 张 mermaid 图：产品架构、线索到交付链路、数字员工协作、Agent 任务闭环时序、技术架构、交付链路。\n- 扩充八个工作区说明、五分钟启动命令、AI 任务指令模板、真实门店 live 模式、安全与合规边界、仓库地图、资料与验证入口。\n- 清除全部历史行业字样与相关表述，只保留当前行业语义；自动生成的 CAPABILITIES 区块原样保留（由 generate-capabilities 校验）。\n- 未改动任何代码、资产、工作流或数据；变更文件仅 README.md。\n\n## 怎么验证\n- `node scripts/generate-capabilities.mjs --check`：README 自动区块与代码同步。\n- `pnpm product:verify`：产品身份、三端入口、Bundle 资产与岗位技能一致。\n- 6 张 mermaid 图经 mermaid 12.1 实际解析通过；README 内 14 个相对链接全部指向真实文件；禁用词扫描（酒店相关字样）0 命中。\n\n<!-- workloom-delivery\n{\n  \"task_id\": \"T-2026-1009-0002\",\n  \"ready\": true,\n  \"depends_on\": [],\n  \"releases\": []\n}\n-->",
+          "files": [
+            "README.md"
+          ],
+          "status": "parked",
+          "ciSince": 1791531625366
+        }
+      },
+      "previous": "3437af0d5fa6ba278f88a5f9381d216e33a78a57abea6722984c6f1ee323f446",
+      "digest": "7c2dde06c5cb1a8812ad5673083c405e5f5685bee73b6b8dd5fc92fe2c7771b2"
+    },
+    {
+      "sequence": 129,
+      "at": "2026-10-09T07:50:54.628Z",
+      "kind": "transaction",
+      "data": {
+        "id": "0c8fcd20-0027-46e1-bec1-6d8d85b30e77"
+      },
+      "previous": "7c2dde06c5cb1a8812ad5673083c405e5f5685bee73b6b8dd5fc92fe2c7771b2",
+      "digest": "d10617414e6a11d43babfa882998700804260dde0ce8853ce4e6ea4e63b97ffa"
     }
   ]
 }
