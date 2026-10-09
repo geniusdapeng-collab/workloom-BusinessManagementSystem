@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 120,
+  "revision": 123,
   "tasks": {
     "2": {
       "number": 2,
@@ -2764,17 +2764,17 @@
     },
     "6": {
       "number": 6,
-      "status": "developing",
+      "status": "waiting_ci",
       "firstSeen": 1791531031898,
       "attempts": {},
       "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
       "intent": {
         "taskId": "T-2026-1009-0002",
-        "ready": false,
+        "ready": true,
         "dependsOn": [],
         "releases": []
       },
-      "updatedAt": 1791531320975,
+      "updatedAt": 1791531624881,
       "admission": {
         "number": 6,
         "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
@@ -2783,6 +2783,124 @@
         "scopes": [],
         "owner": "admission/pr-6",
         "generation": {}
+      },
+      "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+      "branch": "docs/readme-customer-architecture",
+      "developerReview": {
+        "schemaVersion": 1,
+        "provider": "codex",
+        "repo": "workloom-ai/workloom-BusinessManagementSystem",
+        "number": 6,
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "policyHash": "9c5f910bcec85c994dbcaae5eed5a0b5f7ed4c8f9057c5f25879892ca55e8bed",
+        "reviewedFiles": [
+          "README.md"
+        ],
+        "filesHash": "be3ae3b6479236a18da3e876a0de9dfe9ae2428896d83c3e804db008861b12d0",
+        "dependsOn": [],
+        "ciPolicyChanges": [],
+        "ciPolicyChangesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "tests": [
+          {
+            "command": "/Users/mac/Library/Application Support/WorkLoom 织元/node/bin/node /Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/check-readme-customer-doc.mjs",
+            "exitCode": 0,
+            "finishedAt": "2026-10-09T07:29:07.582Z",
+            "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"readme-customer-doc-check\",\"summary\":{\"pass\":\"true\"},\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-readme-customer-doc-check.log\",\"sha256\":\"ad875dbd2a1bae0924d172e278b69b85ddb93c3ed8020d2e4c89ba235581f512\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+          },
+          {
+            "command": "/Users/mac/Library/Application Support/WorkLoom 织元/node/bin/node scripts/generate-capabilities.mjs --check",
+            "exitCode": 0,
+            "finishedAt": "2026-10-09T07:29:07.636Z",
+            "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"capabilities-sync-check\",\"summary\":null,\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-capabilities-sync-check.log\",\"sha256\":\"05db7fe9c52f1e911f2a739e9e82d4c169ee952035d174de2f2d2ae5ff9c0803\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+          },
+          {
+            "command": "/Users/mac/.local/wt-bin/pnpm product:verify",
+            "exitCode": 0,
+            "finishedAt": "2026-10-09T07:29:07.835Z",
+            "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"product-content-verify\",\"summary\":null,\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-product-content-verify.log\",\"sha256\":\"106fc1a93c89b4fd525623afc0f024395e1452571f90e358ad79897e62358121\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+          },
+          {
+            "command": "/Users/mac/Library/Application Support/WorkLoom 织元/node/bin/node /var/folders/dj/mkh6fwbd4mb6ycp933xfty4h0000gn/T/tmp.38lztgptYb/check-mermaid.mjs",
+            "exitCode": 0,
+            "finishedAt": "2026-10-09T07:29:08.578Z",
+            "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"mermaid-parse\",\"summary\":{\"diagrams\":6,\"failed\":false},\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-mermaid-parse.log\",\"sha256\":\"875aa6762d87bb888fe483151632f132ac2cc7989afb9c3dee593a37416bd503\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+          },
+          {
+            "command": "/Users/mac/.local/wt-bin/pnpm test:business",
+            "exitCode": 0,
+            "finishedAt": "2026-10-09T07:29:17.839Z",
+            "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"business-regression\",\"summary\":{\"tests\":171,\"pass\":170,\"fail\":0,\"skipped\":1},\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-business-regression.log\",\"sha256\":\"31e92719e2fed08fb53861ffe7b325bf1159f8c664a3c25f3a1aa6d7be316cc2\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+          }
+        ],
+        "reviewedAt": "2026-10-09T07:35:06.339Z",
+        "summary": "交付对象：workloom-ai/workloom-BusinessManagementSystem 的 README（客户视角重写与架构图补充）。精确 source bab6e7b2996261065ece1bfa89100f727e9c11f9 / main 983ac667849e427d33bf03b9c35986699abf70a6 / policy 9c5f910bcec85c994dbcaae5eed5a0b5f7ed4c8f9057c5f25879892ca55e8bed，变更文件 1 个（README.md），CI 实现变更 0 个。\n\n审查方式：本会话完整精读改动后的 README 全文（313 行），并逐条核对文中事实与代码口径——岗位 27、技能 SOP 49、操作契约 51、业务工作流 5、业务对象 27 类、工作台八个工作区名称取自 bundles/smart-home/ui/workbench/index.html、演练数据 261 条对象 / 53 个工作流实例 / 49 个可领取岗位任务、Node.js 引擎要求 >=24（package.json engines）、客户端配置四类来自 business-management-setup.mjs；同时复核了引用的 14 个相对链接均指向仓库真实文件。\n\n图示：6 张 mermaid 图（产品架构、线索到交付链路、数字员工协作、Agent 任务闭环时序、技术架构、交付链路），用 mermaid 12.1.0 实际解析全部通过；文字与图示均不含历史行业字样，仓库自带的能力速览自动区块保持原样并由生成器校验。\n\n真实本地执行（均晚于本次提交、退出码 0）：README 客户文档自检（禁用词 0 命中、链接全通过、code fence 配对、能力区块唯一）；generate-capabilities --check（README 自动区块与代码同步）；pnpm product:verify（产品身份/三端/Bundle/岗位技能一致）；mermaid 解析 6/6；pnpm test:business 171 项 170 通过 / 1 条件跳过 / 0 失败。\n\n边界：本次只改文档，不改代码、资产、工作流或数据；文中所有经营数据均为合成的虚构演练门店，不含真实客户信息；连接器仍为 disabled，externalVerified=false 语义未变。README 未声称任何未验证的生产结果。",
+        "passed": true,
+        "id": "5854bac56661ec7ed007a58f26a2003cd44457ea5853c9046d67d02e388b0a9a"
+      },
+      "reviewSnapshot": {
+        "repo": "workloom-ai/workloom-BusinessManagementSystem",
+        "number": 6,
+        "pull": {
+          "number": 6,
+          "state": "open",
+          "title": "docs(smart-home): README 客户视角重写与产品/技术/Agent 架构图 [T-2026-1009-0002]",
+          "body": "## 为什么改\nREADME 是客户对产品的第一眼。原版更像工程说明：行业属性有，但客户最关心的「这套系统替我解决什么、我怎么开始、我的人还要做什么」不够集中；也缺少产品、技术、Agent 的架构图。\n本轮把 README 重写为客户视角：从门店一天的真实损耗讲起，给出价值对照、业务链路、数字员工协作、技术分层与交付链路六张图，并保持所有可运行命令与边界声明不变。\n\n## 改了什么\n- 新增「为谁而做」「用了它，门店的一天有什么不同」两节，按客户语言组织价值与责任边界。\n- 新增 6 张 mermaid 图：产品架构、线索到交付链路、数字员工协作、Agent 任务闭环时序、技术架构、交付链路。\n- 扩充八个工作区说明、五分钟启动命令、AI 任务指令模板、真实门店 live 模式、安全与合规边界、仓库地图、资料与验证入口。\n- 清除全部历史行业字样与相关表述，只保留当前行业语义；自动生成的 CAPABILITIES 区块原样保留（由 generate-capabilities 校验）。\n- 未改动任何代码、资产、工作流或数据；变更文件仅 README.md。\n\n## 怎么验证\n- `node scripts/generate-capabilities.mjs --check`：README 自动区块与代码同步。\n- `pnpm product:verify`：产品身份、三端入口、Bundle 资产与岗位技能一致。\n- 6 张 mermaid 图经 mermaid 12.1 实际解析通过；README 内 14 个相对链接全部指向真实文件；禁用词扫描（酒店相关字样）0 命中。\n\n<!-- workloom-delivery\n{\n  \"task_id\": \"T-2026-1009-0002\",\n  \"ready\": true,\n  \"depends_on\": [],\n  \"releases\": []\n}\n-->",
+          "author": {
+            "username": "cnb.dYiF05kxAGA",
+            "nickname": "Genius",
+            "email": "XYpmztfpCvez6l8z5BBAvJ+cnb.dYiF05kxAGA@noreply.cnb.cool",
+            "is_npc": false
+          },
+          "reviewers": [],
+          "labels": [],
+          "base": {
+            "ref": "refs/heads/main",
+            "sha": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "repo": {
+              "id": "2108222160764293120",
+              "name": "workloom-BusinessManagementSystem",
+              "path": "workloom-ai/workloom-BusinessManagementSystem",
+              "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+            }
+          },
+          "head": {
+            "ref": "refs/heads/docs/readme-customer-architecture",
+            "sha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+            "repo": {
+              "id": "2108222160764293120",
+              "name": "workloom-BusinessManagementSystem",
+              "path": "workloom-ai/workloom-BusinessManagementSystem",
+              "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+            }
+          },
+          "blocked_on": "unblocked",
+          "merged_by": {
+            "is_npc": false
+          },
+          "mergeable_state": "mergeable",
+          "is_wip": false,
+          "is_merged": false,
+          "is_force_merged": false,
+          "statuses": {}
+        },
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "files": [
+          "README.md"
+        ],
+        "intent": {
+          "taskId": "T-2026-1009-0002",
+          "ready": true,
+          "dependsOn": [],
+          "releases": []
+        },
+        "headTime": 1791530925000,
+        "mergeBase": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "checkErrors": [],
+        "checkSha": null,
+        "hasFailedChecks": false,
+        "ciPolicyChanges": []
       }
     }
   },
@@ -9159,6 +9277,167 @@
       },
       "previous": "ff8e2a6a65435fc974866386e6e322ff38145538485321c98c2066b0ad6ea89d",
       "digest": "ce6fdf4208cdd664f906ad84e576317abf416cd35afbf3fd0ef8e554b3bc6d9d"
+    },
+    {
+      "sequence": 121,
+      "at": "2026-10-09T07:40:24.875Z",
+      "kind": "developer_review",
+      "data": {
+        "number": 6,
+        "id": "5854bac56661ec7ed007a58f26a2003cd44457ea5853c9046d67d02e388b0a9a",
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6"
+      },
+      "previous": "ce6fdf4208cdd664f906ad84e576317abf416cd35afbf3fd0ef8e554b3bc6d9d",
+      "digest": "6fe84499216c1aae7cc16b59ebc92f40edb3357e1d66ef6eedeff65a211dc08f"
+    },
+    {
+      "sequence": 122,
+      "at": "2026-10-09T07:40:24.881Z",
+      "kind": "task",
+      "data": {
+        "number": 6,
+        "patch": {
+          "status": "waiting_ci",
+          "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+          "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+          "branch": "docs/readme-customer-architecture",
+          "intent": {
+            "taskId": "T-2026-1009-0002",
+            "ready": true,
+            "dependsOn": [],
+            "releases": []
+          },
+          "developerReview": {
+            "schemaVersion": 1,
+            "provider": "codex",
+            "repo": "workloom-ai/workloom-BusinessManagementSystem",
+            "number": 6,
+            "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+            "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "policyHash": "9c5f910bcec85c994dbcaae5eed5a0b5f7ed4c8f9057c5f25879892ca55e8bed",
+            "reviewedFiles": [
+              "README.md"
+            ],
+            "filesHash": "be3ae3b6479236a18da3e876a0de9dfe9ae2428896d83c3e804db008861b12d0",
+            "dependsOn": [],
+            "ciPolicyChanges": [],
+            "ciPolicyChangesHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "tests": [
+              {
+                "command": "/Users/mac/Library/Application Support/WorkLoom 织元/node/bin/node /Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/check-readme-customer-doc.mjs",
+                "exitCode": 0,
+                "finishedAt": "2026-10-09T07:29:07.582Z",
+                "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"readme-customer-doc-check\",\"summary\":{\"pass\":\"true\"},\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-readme-customer-doc-check.log\",\"sha256\":\"ad875dbd2a1bae0924d172e278b69b85ddb93c3ed8020d2e4c89ba235581f512\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+              },
+              {
+                "command": "/Users/mac/Library/Application Support/WorkLoom 织元/node/bin/node scripts/generate-capabilities.mjs --check",
+                "exitCode": 0,
+                "finishedAt": "2026-10-09T07:29:07.636Z",
+                "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"capabilities-sync-check\",\"summary\":null,\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-capabilities-sync-check.log\",\"sha256\":\"05db7fe9c52f1e911f2a739e9e82d4c169ee952035d174de2f2d2ae5ff9c0803\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+              },
+              {
+                "command": "/Users/mac/.local/wt-bin/pnpm product:verify",
+                "exitCode": 0,
+                "finishedAt": "2026-10-09T07:29:07.835Z",
+                "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"product-content-verify\",\"summary\":null,\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-product-content-verify.log\",\"sha256\":\"106fc1a93c89b4fd525623afc0f024395e1452571f90e358ad79897e62358121\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+              },
+              {
+                "command": "/Users/mac/Library/Application Support/WorkLoom 织元/node/bin/node /var/folders/dj/mkh6fwbd4mb6ycp933xfty4h0000gn/T/tmp.38lztgptYb/check-mermaid.mjs",
+                "exitCode": 0,
+                "finishedAt": "2026-10-09T07:29:08.578Z",
+                "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"mermaid-parse\",\"summary\":{\"diagrams\":6,\"failed\":false},\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-mermaid-parse.log\",\"sha256\":\"875aa6762d87bb888fe483151632f132ac2cc7989afb9c3dee593a37416bd503\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+              },
+              {
+                "command": "/Users/mac/.local/wt-bin/pnpm test:business",
+                "exitCode": 0,
+                "finishedAt": "2026-10-09T07:29:17.839Z",
+                "result": "{\"proof\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-verification-bab6e7b2996261065ece1bfa89100f727e9c11f9.json\",\"sha256\":\"954ba519efc78d611bbd7f6dd807ac696291ca15fcfb305c983c004accf85462\",\"case\":\"business-regression\",\"summary\":{\"tests\":171,\"pass\":170,\"fail\":0,\"skipped\":1},\"log\":{\"path\":\"/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-readme-acceptance/readme-postcommit-bab6e7b2996261065ece1bfa89100f727e9c11f9-business-regression.log\",\"sha256\":\"31e92719e2fed08fb53861ffe7b325bf1159f8c664a3c25f3a1aa6d7be316cc2\"},\"boundary\":\"文档类改动的本地真实执行；mermaid 解析使用 mermaid 12.1.0 + jsdom；不含付费模型或外部连接器。\"}"
+              }
+            ],
+            "reviewedAt": "2026-10-09T07:35:06.339Z",
+            "summary": "交付对象：workloom-ai/workloom-BusinessManagementSystem 的 README（客户视角重写与架构图补充）。精确 source bab6e7b2996261065ece1bfa89100f727e9c11f9 / main 983ac667849e427d33bf03b9c35986699abf70a6 / policy 9c5f910bcec85c994dbcaae5eed5a0b5f7ed4c8f9057c5f25879892ca55e8bed，变更文件 1 个（README.md），CI 实现变更 0 个。\n\n审查方式：本会话完整精读改动后的 README 全文（313 行），并逐条核对文中事实与代码口径——岗位 27、技能 SOP 49、操作契约 51、业务工作流 5、业务对象 27 类、工作台八个工作区名称取自 bundles/smart-home/ui/workbench/index.html、演练数据 261 条对象 / 53 个工作流实例 / 49 个可领取岗位任务、Node.js 引擎要求 >=24（package.json engines）、客户端配置四类来自 business-management-setup.mjs；同时复核了引用的 14 个相对链接均指向仓库真实文件。\n\n图示：6 张 mermaid 图（产品架构、线索到交付链路、数字员工协作、Agent 任务闭环时序、技术架构、交付链路），用 mermaid 12.1.0 实际解析全部通过；文字与图示均不含历史行业字样，仓库自带的能力速览自动区块保持原样并由生成器校验。\n\n真实本地执行（均晚于本次提交、退出码 0）：README 客户文档自检（禁用词 0 命中、链接全通过、code fence 配对、能力区块唯一）；generate-capabilities --check（README 自动区块与代码同步）；pnpm product:verify（产品身份/三端/Bundle/岗位技能一致）；mermaid 解析 6/6；pnpm test:business 171 项 170 通过 / 1 条件跳过 / 0 失败。\n\n边界：本次只改文档，不改代码、资产、工作流或数据；文中所有经营数据均为合成的虚构演练门店，不含真实客户信息；连接器仍为 disabled，externalVerified=false 语义未变。README 未声称任何未验证的生产结果。",
+            "passed": true,
+            "id": "5854bac56661ec7ed007a58f26a2003cd44457ea5853c9046d67d02e388b0a9a"
+          },
+          "reviewSnapshot": {
+            "repo": "workloom-ai/workloom-BusinessManagementSystem",
+            "number": 6,
+            "pull": {
+              "number": 6,
+              "state": "open",
+              "title": "docs(smart-home): README 客户视角重写与产品/技术/Agent 架构图 [T-2026-1009-0002]",
+              "body": "## 为什么改\nREADME 是客户对产品的第一眼。原版更像工程说明：行业属性有，但客户最关心的「这套系统替我解决什么、我怎么开始、我的人还要做什么」不够集中；也缺少产品、技术、Agent 的架构图。\n本轮把 README 重写为客户视角：从门店一天的真实损耗讲起，给出价值对照、业务链路、数字员工协作、技术分层与交付链路六张图，并保持所有可运行命令与边界声明不变。\n\n## 改了什么\n- 新增「为谁而做」「用了它，门店的一天有什么不同」两节，按客户语言组织价值与责任边界。\n- 新增 6 张 mermaid 图：产品架构、线索到交付链路、数字员工协作、Agent 任务闭环时序、技术架构、交付链路。\n- 扩充八个工作区说明、五分钟启动命令、AI 任务指令模板、真实门店 live 模式、安全与合规边界、仓库地图、资料与验证入口。\n- 清除全部历史行业字样与相关表述，只保留当前行业语义；自动生成的 CAPABILITIES 区块原样保留（由 generate-capabilities 校验）。\n- 未改动任何代码、资产、工作流或数据；变更文件仅 README.md。\n\n## 怎么验证\n- `node scripts/generate-capabilities.mjs --check`：README 自动区块与代码同步。\n- `pnpm product:verify`：产品身份、三端入口、Bundle 资产与岗位技能一致。\n- 6 张 mermaid 图经 mermaid 12.1 实际解析通过；README 内 14 个相对链接全部指向真实文件；禁用词扫描（酒店相关字样）0 命中。\n\n<!-- workloom-delivery\n{\n  \"task_id\": \"T-2026-1009-0002\",\n  \"ready\": true,\n  \"depends_on\": [],\n  \"releases\": []\n}\n-->",
+              "author": {
+                "username": "cnb.dYiF05kxAGA",
+                "nickname": "Genius",
+                "email": "XYpmztfpCvez6l8z5BBAvJ+cnb.dYiF05kxAGA@noreply.cnb.cool",
+                "is_npc": false
+              },
+              "reviewers": [],
+              "labels": [],
+              "base": {
+                "ref": "refs/heads/main",
+                "sha": "983ac667849e427d33bf03b9c35986699abf70a6",
+                "repo": {
+                  "id": "2108222160764293120",
+                  "name": "workloom-BusinessManagementSystem",
+                  "path": "workloom-ai/workloom-BusinessManagementSystem",
+                  "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+                }
+              },
+              "head": {
+                "ref": "refs/heads/docs/readme-customer-architecture",
+                "sha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+                "repo": {
+                  "id": "2108222160764293120",
+                  "name": "workloom-BusinessManagementSystem",
+                  "path": "workloom-ai/workloom-BusinessManagementSystem",
+                  "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+                }
+              },
+              "blocked_on": "unblocked",
+              "merged_by": {
+                "is_npc": false
+              },
+              "mergeable_state": "mergeable",
+              "is_wip": false,
+              "is_merged": false,
+              "is_force_merged": false,
+              "statuses": {}
+            },
+            "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+            "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "files": [
+              "README.md"
+            ],
+            "intent": {
+              "taskId": "T-2026-1009-0002",
+              "ready": true,
+              "dependsOn": [],
+              "releases": []
+            },
+            "headTime": 1791530925000,
+            "mergeBase": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "checkErrors": [],
+            "checkSha": null,
+            "hasFailedChecks": false,
+            "ciPolicyChanges": []
+          }
+        }
+      },
+      "previous": "6fe84499216c1aae7cc16b59ebc92f40edb3357e1d66ef6eedeff65a211dc08f",
+      "digest": "703121f148a74e00b8b1b08edbfcb3a64c1d1bc33c635e841c2de2b502262fcd"
+    },
+    {
+      "sequence": 123,
+      "at": "2026-10-09T07:40:23.464Z",
+      "kind": "transaction",
+      "data": {
+        "id": "42929e06-1c3e-4e96-b435-9efbbcc7571f"
+      },
+      "previous": "703121f148a74e00b8b1b08edbfcb3a64c1d1bc33c635e841c2de2b502262fcd",
+      "digest": "673b20f931a253854e71ef9291184ab04e3c9b3c725e5e0c4764348639a51b3a"
     }
   ]
 }
