@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 90,
+  "revision": 92,
   "tasks": {
     "2": {
       "number": 2,
@@ -2302,8 +2302,8 @@
         "scripts/seed-smart-home.ts"
       ],
       "ciSince": 1791525316830,
-      "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls/4 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
-      "blockedUntil": 1791528036561,
+      "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls/5 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
+      "blockedUntil": 1791528923577,
       "candidate": {
         "number": 5,
         "branch": "delivery/candidate/pr-4-400f94ebb7dd7c1952f9f4d2020cd94c",
@@ -7529,6 +7529,31 @@
       },
       "previous": "9a184784d092e32924f379c3e8ea4ab757f8fbf44f847748ea680dbab44ef4fb",
       "digest": "779774f599929051b51043b52147bd12a2feb1369248746a714380355fdcacf1"
+    },
+    {
+      "sequence": 91,
+      "at": "2026-10-09T06:45:23.577Z",
+      "kind": "task",
+      "data": {
+        "number": 4,
+        "patch": {
+          "status": "parked",
+          "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls/5 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
+          "blockedUntil": 1791528923577
+        }
+      },
+      "previous": "779774f599929051b51043b52147bd12a2feb1369248746a714380355fdcacf1",
+      "digest": "1a127d7c368da5ea9c3fa6ebace3294ff620e8a037bcb857be44574b34b7ee46"
+    },
+    {
+      "sequence": 92,
+      "at": "2026-10-09T06:45:28.688Z",
+      "kind": "transaction",
+      "data": {
+        "id": "bde21465-830b-435b-b04d-9f8962aff005"
+      },
+      "previous": "1a127d7c368da5ea9c3fa6ebace3294ff620e8a037bcb857be44574b34b7ee46",
+      "digest": "c2b8c77e7a2d3adef72acf2372037c33c52210366d18869383ad28ebb37fd445"
     }
   ]
 }
