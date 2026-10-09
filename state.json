@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 161,
+  "revision": 163,
   "tasks": {
     "2": {
       "number": 2,
@@ -2917,7 +2917,7 @@
         "marker": "delivery-origin:6:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6",
         "at": 1791532253671
       },
-      "mergePhase": "merge_requested",
+      "mergePhase": "merge_verified",
       "mergeSnapshot": {
         "repo": "workloom-ai/workloom-BusinessManagementSystem",
         "number": 7,
@@ -2988,7 +2988,15 @@
         "scopes": [],
         "generation": {}
       },
-      "mergeRequestedAt": 1791533900031
+      "mergeRequestedAt": 1791533900031,
+      "merge": {
+        "sha": "384734834b416a1e01236edfff7916de9058102b",
+        "sourceSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "checkSha": "ec34577335ba36c6fdc71eb6e7fb06f0c31833c7",
+        "mergedBy": "cnb.dYiF05kxAGA",
+        "verifiedAt": "2026-10-09T08:18:27.273Z"
+      }
     },
     "7": {
       "number": 7,
@@ -10243,6 +10251,37 @@
       },
       "previous": "f923f3d97bf25e3900b356bdccfd5fa7ff73f61c9c9e843b121be692609e0794",
       "digest": "fd88c189a1f90b60f0976320a19c2174638cecd184c929583e482bd835f9c0a7"
+    },
+    {
+      "sequence": 162,
+      "at": "2026-10-09T08:18:20.031Z",
+      "kind": "task",
+      "data": {
+        "number": 6,
+        "patch": {
+          "mergePhase": "merge_verified",
+          "merge": {
+            "sha": "384734834b416a1e01236edfff7916de9058102b",
+            "sourceSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+            "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "checkSha": "ec34577335ba36c6fdc71eb6e7fb06f0c31833c7",
+            "mergedBy": "cnb.dYiF05kxAGA",
+            "verifiedAt": "2026-10-09T08:18:27.273Z"
+          }
+        }
+      },
+      "previous": "fd88c189a1f90b60f0976320a19c2174638cecd184c929583e482bd835f9c0a7",
+      "digest": "dbfc97b7600a2208c0fe7078869aa863c2aa0b81d5f60b63f9f41afa5f21944c"
+    },
+    {
+      "sequence": 163,
+      "at": "2026-10-09T08:18:27.273Z",
+      "kind": "transaction",
+      "data": {
+        "id": "027522e9-a1a1-4fbf-bd79-6f7a3ea833f7"
+      },
+      "previous": "dbfc97b7600a2208c0fe7078869aa863c2aa0b81d5f60b63f9f41afa5f21944c",
+      "digest": "ce789b6215e3b7fa7b0f5278f32cb1e1bb66a8bda391c80aec29b29f7ffca59d"
     }
   ]
 }
