@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 77,
+  "revision": 79,
   "tasks": {
     "2": {
       "number": 2,
@@ -2302,8 +2302,8 @@
         "scripts/seed-smart-home.ts"
       ],
       "ciSince": 1791525316830,
-      "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
-      "blockedUntil": 1791526225922,
+      "error": "候选 #5 的实际 CI 失败；在当前 Codex 会话修复原分支并重新审查实测",
+      "blockedUntil": 1791527418776,
       "candidate": {
         "number": 5,
         "branch": "delivery/candidate/pr-4-400f94ebb7dd7c1952f9f4d2020cd94c",
@@ -2311,7 +2311,15 @@
         "mainSha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
         "marker": "delivery-origin:4:861f6247e005671d0dfcd358fb3901faa82151b6:be5535ceaa1237377dedb2a1941b0be78c478ec6",
         "at": 1791526518537
-      }
+      },
+      "repairRequired": {
+        "provider": "codex",
+        "headSha": "861f6247e005671d0dfcd358fb3901faa82151b6",
+        "mainSha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+        "reason": "候选 #5 的实际 CI 失败；在当前 Codex 会话修复原分支并重新审查实测",
+        "at": 1791526818776
+      },
+      "recoveryIntent": null
     }
   },
   "leases": {
@@ -7117,6 +7125,39 @@
       },
       "previous": "bfcec69036f98694e508c626d3017288975cb40342d63d0621c327c7f261a942",
       "digest": "07afae38cb6c36b146ba97f353b8b1ae7b655b128b05f2a87bd2bdf16c791c7c"
+    },
+    {
+      "sequence": 78,
+      "at": "2026-10-09T06:20:18.776Z",
+      "kind": "task",
+      "data": {
+        "number": 4,
+        "patch": {
+          "status": "parked",
+          "error": "候选 #5 的实际 CI 失败；在当前 Codex 会话修复原分支并重新审查实测",
+          "repairRequired": {
+            "provider": "codex",
+            "headSha": "861f6247e005671d0dfcd358fb3901faa82151b6",
+            "mainSha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+            "reason": "候选 #5 的实际 CI 失败；在当前 Codex 会话修复原分支并重新审查实测",
+            "at": 1791526818776
+          },
+          "recoveryIntent": null,
+          "blockedUntil": 1791527418776
+        }
+      },
+      "previous": "07afae38cb6c36b146ba97f353b8b1ae7b655b128b05f2a87bd2bdf16c791c7c",
+      "digest": "a13d771ddc6d16bd1781f22b275d8c22877a6737afde32058af7835aa601d0cb"
+    },
+    {
+      "sequence": 79,
+      "at": "2026-10-09T06:20:22.894Z",
+      "kind": "transaction",
+      "data": {
+        "id": "e4b3ab56-4403-4a70-93b4-752de2625b02"
+      },
+      "previous": "a13d771ddc6d16bd1781f22b275d8c22877a6737afde32058af7835aa601d0cb",
+      "digest": "092335d54d1310b01bdd98b31564ff47f82c156d196c54951a8bf73037e6e234"
     }
   ]
 }
