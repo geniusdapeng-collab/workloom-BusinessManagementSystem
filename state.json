@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 115,
+  "revision": 118,
   "tasks": {
     "2": {
       "number": 2,
@@ -2774,7 +2774,16 @@
         "dependsOn": [],
         "releases": []
       },
-      "updatedAt": 1791531031898
+      "updatedAt": 1791531157894,
+      "admission": {
+        "number": 6,
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "filesHash": "be3ae3b6479236a18da3e876a0de9dfe9ae2428896d83c3e804db008861b12d0",
+        "scopes": [],
+        "owner": "admission/pr-6",
+        "generation": {}
+      }
     }
   },
   "leases": {
@@ -9073,6 +9082,53 @@
       },
       "previous": "294a0b315ab736a4f54cf7971a990edc823230809dc094469115f980377b1138",
       "digest": "f868d813c9aee613c22d509116fc6f5b646f53456d383e1724c89f3c506bee7a"
+    },
+    {
+      "sequence": 116,
+      "at": "2026-10-09T07:32:37.894Z",
+      "kind": "source_admitted",
+      "data": {
+        "number": 6,
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "filesHash": "be3ae3b6479236a18da3e876a0de9dfe9ae2428896d83c3e804db008861b12d0",
+        "scopes": [],
+        "owner": "admission/pr-6",
+        "generation": {}
+      },
+      "previous": "f868d813c9aee613c22d509116fc6f5b646f53456d383e1724c89f3c506bee7a",
+      "digest": "a886541c3d5da540b9806100d1517f3fc30a4e54348af7e3270e17f25d8f6fb7"
+    },
+    {
+      "sequence": 117,
+      "at": "2026-10-09T07:32:37.894Z",
+      "kind": "task",
+      "data": {
+        "number": 6,
+        "patch": {
+          "admission": {
+            "number": 6,
+            "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+            "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "filesHash": "be3ae3b6479236a18da3e876a0de9dfe9ae2428896d83c3e804db008861b12d0",
+            "scopes": [],
+            "owner": "admission/pr-6",
+            "generation": {}
+          }
+        }
+      },
+      "previous": "a886541c3d5da540b9806100d1517f3fc30a4e54348af7e3270e17f25d8f6fb7",
+      "digest": "df0e2e7a345592afa0b0d9d835c9c4ae4142df9d0335be33ee6334df80c7f3da"
+    },
+    {
+      "sequence": 118,
+      "at": "2026-10-09T07:32:37.584Z",
+      "kind": "transaction",
+      "data": {
+        "id": "source-admit:6:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6"
+      },
+      "previous": "df0e2e7a345592afa0b0d9d835c9c4ae4142df9d0335be33ee6334df80c7f3da",
+      "digest": "d66e156531555aa03b933a3d24cb409dac767728a3507223fbbd95d96d3a4f3e"
     }
   ]
 }
