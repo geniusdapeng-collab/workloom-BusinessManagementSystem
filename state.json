@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 100,
+  "revision": 103,
   "tasks": {
     "2": {
       "number": 2,
@@ -1460,7 +1460,7 @@
     },
     "4": {
       "number": 4,
-      "status": "parked",
+      "status": "merging",
       "firstSeen": 1791523135602,
       "attempts": {},
       "admission": {
@@ -2319,7 +2319,402 @@
         "reason": "候选 #5 的实际 CI 失败；在当前 Codex 会话修复原分支并重新审查实测",
         "at": 1791526818776
       },
-      "recoveryIntent": null
+      "recoveryIntent": null,
+      "mergePhase": "prepared",
+      "mergeSnapshot": {
+        "repo": "workloom-ai/workloom-BusinessManagementSystem",
+        "number": 5,
+        "pull": {
+          "number": 5,
+          "state": "open",
+          "title": "chore(ci): deliver #4 feat(smart-home): 深化成都门店 AI 经营与渐进交付 [T-2026-1009-0001]",
+          "body": "Immutable delivery candidate for #4. Exact source 861f6247e005671d0dfcd358fb3901faa82151b6; tested main be5535ceaa1237377dedb2a1941b0be78c478ec6.\n\n<!-- delivery-origin:4:861f6247e005671d0dfcd358fb3901faa82151b6:be5535ceaa1237377dedb2a1941b0be78c478ec6 -->\n\n<!-- workloom-delivery\n{\"ready\":true,\"depends_on\":[],\"releases\":[]}\n-->",
+          "author": {
+            "username": "OCI",
+            "nickname": "Cloud Native Build",
+            "is_npc": true
+          },
+          "reviewers": [],
+          "labels": [],
+          "base": {
+            "ref": "refs/heads/main",
+            "sha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+            "repo": {
+              "id": "2108222160764293120",
+              "name": "workloom-BusinessManagementSystem",
+              "path": "workloom-ai/workloom-BusinessManagementSystem",
+              "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+            }
+          },
+          "head": {
+            "ref": "refs/heads/delivery/candidate/pr-4-400f94ebb7dd7c1952f9f4d2020cd94c",
+            "sha": "861f6247e005671d0dfcd358fb3901faa82151b6",
+            "repo": {
+              "id": "2108222160764293120",
+              "name": "workloom-BusinessManagementSystem",
+              "path": "workloom-ai/workloom-BusinessManagementSystem",
+              "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+            }
+          },
+          "blocked_on": "unblocked",
+          "merged_by": {
+            "is_npc": false
+          },
+          "mergeable_state": "mergeable",
+          "is_wip": false,
+          "is_merged": false,
+          "is_force_merged": false,
+          "statuses": {}
+        },
+        "headSha": "861f6247e005671d0dfcd358fb3901faa82151b6",
+        "mainSha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+        "files": [
+          ".agents/skills/business-management/SKILL.md",
+          "AGENTS.repo.md",
+          "README.md",
+          "apps/site/en.html",
+          "apps/site/index.html",
+          "apps/webc/public/industry/service-front.config.json",
+          "bundles/smart-home/assets.test.mts",
+          "bundles/smart-home/bundle.json",
+          "bundles/smart-home/floor-scene.json",
+          "bundles/smart-home/library/industry-context.json",
+          "bundles/smart-home/library/native-operations.json",
+          "bundles/smart-home/library/native-workflows.json",
+          "bundles/smart-home/library/official-sources.json",
+          "bundles/smart-home/library/skill-catalogue.json",
+          "bundles/smart-home/library/workforce.json",
+          "bundles/smart-home/presets/appointment-coordinator.yml",
+          "bundles/smart-home/presets/business-operations-assistant.yml",
+          "bundles/smart-home/presets/lead-enrichment-specialist.yml",
+          "bundles/smart-home/presets/prospecting-specialist.yml",
+          "bundles/smart-home/presets/sales-assistant.yml",
+          "bundles/smart-home/presets/sales-coach.yml",
+          "bundles/smart-home/presets/store-manager-assistant.yml",
+          "bundles/smart-home/runtime/README.md",
+          "bundles/smart-home/runtime/assets.mjs",
+          "bundles/smart-home/runtime/catalogue.mjs",
+          "bundles/smart-home/runtime/depth-catalogue.mjs",
+          "bundles/smart-home/runtime/depth-domain.mjs",
+          "bundles/smart-home/runtime/domain.mjs",
+          "bundles/smart-home/runtime/index.mjs",
+          "bundles/smart-home/runtime/scenario.mjs",
+          "bundles/smart-home/runtime/schema.mjs",
+          "bundles/smart-home/runtime/storage.mjs",
+          "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+          "bundles/smart-home/runtime/tests/depth.test.mjs",
+          "bundles/smart-home/runtime/tests/employee-work.test.mjs",
+          "bundles/smart-home/runtime/tests/scenario-worker.mjs",
+          "bundles/smart-home/runtime/workflows.mjs",
+          "bundles/smart-home/schemas/objects.json",
+          "bundles/smart-home/segment-defaults.yml",
+          "bundles/smart-home/service-front/client.json",
+          "bundles/smart-home/skills/appointment-coordination/SKILL.md",
+          "bundles/smart-home/skills/appointment-recovery/SKILL.md",
+          "bundles/smart-home/skills/business-data-reconciliation/SKILL.md",
+          "bundles/smart-home/skills/customer-handoff-check/SKILL.md",
+          "bundles/smart-home/skills/lead-profile-enrichment/SKILL.md",
+          "bundles/smart-home/skills/operations-daily-control/SKILL.md",
+          "bundles/smart-home/skills/prospect-targeting/SKILL.md",
+          "bundles/smart-home/skills/sales-coaching/SKILL.md",
+          "bundles/smart-home/skills/sales-meeting-prep/SKILL.md",
+          "bundles/smart-home/skills/sales-objection-brief/SKILL.md",
+          "bundles/smart-home/skills/sales-quality-review/SKILL.md",
+          "bundles/smart-home/skills/source-lead-intake/SKILL.md",
+          "bundles/smart-home/skills/store-resource-brief/SKILL.md",
+          "bundles/smart-home/skills/store-shift-coordination/SKILL.md",
+          "bundles/smart-home/ui/workbench/app.js",
+          "bundles/smart-home/ui/workbench/index.html",
+          "bundles/smart-home/ui/workbench/style.css",
+          "docs/01-门店店长使用指南.md",
+          "docs/02-新客户首次接入完整流程.md",
+          "docs/03-功能清单-用户版.md",
+          "docs/04-行业落地向导-用户版.md",
+          "docs/AGENT-CLIENTS.md",
+          "docs/AI-WORKBENCH.md",
+          "docs/CEO-RISK-DISCLOSURE.md",
+          "docs/DEMO-TWIN.md",
+          "docs/SMART-HOME-BUSINESS-MATRIX.md",
+          "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+          "docs/SMART-HOME-STORE-PLAYBOOK.md",
+          "docs/TWIN-COVERAGE.md",
+          "docs/capabilities.auto.json",
+          "docs/capabilities.auto.md",
+          "docs/capability-map.md",
+          "docs/demo-script.md",
+          "docs/evidence/smart-home-depth/ci-media-gate-review.json",
+          "docs/evidence/smart-home-depth/engine-current-seal-basis.json",
+          "docs/evidence/smart-home-depth/engine-native-read-coverage.json",
+          "docs/evidence/smart-home-depth/engine-read-coverage.json",
+          "docs/evidence/smart-home-depth/engine-root-integration-review.json",
+          "docs/evidence/smart-home-depth/engine-runtime-case-matrix.json",
+          "docs/evidence/smart-home-depth/engine-runtime-tests.json",
+          "docs/evidence/smart-home-depth/engine-scenario-proof.json",
+          "docs/evidence/smart-home-depth/gate-recovery-2026-10-09.md",
+          "docs/evidence/smart-home-depth/host-compatible-binding.json",
+          "docs/evidence/smart-home-depth/host-manifest-original-reconstructed.json",
+          "docs/evidence/smart-home-depth/host-model-proof.json",
+          "docs/evidence/smart-home-depth/host-model-semantic-review.json",
+          "docs/evidence/smart-home-depth/industry-assets-test-before-final-manifest.json",
+          "docs/evidence/smart-home-depth/industry-assets-test-before-final-ui-freeze.json",
+          "docs/evidence/smart-home-depth/industry-assets-test.json",
+          "docs/evidence/smart-home-depth/industry-ci-integration-review-before-final-manifest.json",
+          "docs/evidence/smart-home-depth/industry-ci-integration-review.json",
+          "docs/evidence/smart-home-depth/industry-ci-source-rationales.json",
+          "docs/evidence/smart-home-depth/industry-final-check-before-final-manifest.json",
+          "docs/evidence/smart-home-depth/industry-final-check-ui-drift.json",
+          "docs/evidence/smart-home-depth/industry-final-check.json",
+          "docs/evidence/smart-home-depth/industry-machine-check.json",
+          "docs/evidence/smart-home-depth/industry-peer-review.json",
+          "docs/evidence/smart-home-depth/industry-peer-review/design-coverage-after.json",
+          "docs/evidence/smart-home-depth/industry-peer-review/design-coverage-before.json",
+          "docs/evidence/smart-home-depth/industry-peer-review/probe-design-coverage.mjs",
+          "docs/evidence/smart-home-depth/industry-peer-review/probe-replay-revision.mjs",
+          "docs/evidence/smart-home-depth/industry-peer-review/scenario-replay-revision-after.json",
+          "docs/evidence/smart-home-depth/industry-peer-review/scenario-replay-revision-before.json",
+          "docs/evidence/smart-home-depth/industry-read-coverage.json",
+          "docs/evidence/smart-home-depth/industry-ui-manifest-check.json",
+          "docs/evidence/smart-home-depth/industry-ui-manifest-probe.mts.txt",
+          "docs/evidence/smart-home-depth/legacy-ui/ui-workbench-proof.json",
+          "docs/evidence/smart-home-depth/legacy-ui/ui/desktop-overview.png",
+          "docs/evidence/smart-home-depth/legacy-ui/ui/mobile-overview.png",
+          "docs/evidence/smart-home-depth/legacy-ui/ui/mobile-records.png",
+          "docs/evidence/smart-home-depth/legacy-ui/ui/mobile-team.png",
+          "docs/evidence/smart-home-depth/legacy-ui/ui/narrow-mobile-records.png",
+          "docs/evidence/smart-home-depth/public-cli-replay-before-null-artifact-check-fix.json",
+          "docs/evidence/smart-home-depth/public-cli-replay.json",
+          "docs/evidence/smart-home-depth/public-content-proof-before-joint-coverage-available.json",
+          "docs/evidence/smart-home-depth/public-content-proof.json",
+          "docs/evidence/smart-home-depth/public-content-review.md",
+          "docs/evidence/smart-home-depth/public-review-final-check.json",
+          "docs/evidence/smart-home-depth/site-appearance-proof.json",
+          "docs/evidence/smart-home-depth/site-proof-before-case-insensitive-story-check-fix.json",
+          "docs/evidence/smart-home-depth/site-proof-before-unicode-link-check-fix.json",
+          "docs/evidence/smart-home-depth/site-proof.json",
+          "docs/evidence/smart-home-depth/site-visual-review.json",
+          "docs/evidence/smart-home-depth/site/en-1440-full.png",
+          "docs/evidence/smart-home-depth/site/en-1440-viewport.png",
+          "docs/evidence/smart-home-depth/site/en-320-full.png",
+          "docs/evidence/smart-home-depth/site/en-320-viewport.png",
+          "docs/evidence/smart-home-depth/site/en-390-full.png",
+          "docs/evidence/smart-home-depth/site/en-390-viewport.png",
+          "docs/evidence/smart-home-depth/site/zh-1440-full.png",
+          "docs/evidence/smart-home-depth/site/zh-1440-viewport.png",
+          "docs/evidence/smart-home-depth/site/zh-320-full.png",
+          "docs/evidence/smart-home-depth/site/zh-320-viewport.png",
+          "docs/evidence/smart-home-depth/site/zh-390-full.png",
+          "docs/evidence/smart-home-depth/site/zh-390-viewport.png",
+          "docs/evidence/smart-home-depth/source-read-coverage.json",
+          "docs/evidence/smart-home-depth/ui/DEPTH-UI-06-failure.png",
+          "docs/evidence/smart-home-depth/ui/depth-browser-proof.json",
+          "docs/evidence/smart-home-depth/ui/desktop-delivery-viewport.png",
+          "docs/evidence/smart-home-depth/ui/desktop-delivery.png",
+          "docs/evidence/smart-home-depth/ui/desktop-growth-viewport.png",
+          "docs/evidence/smart-home-depth/ui/desktop-growth.png",
+          "docs/evidence/smart-home-depth/ui/desktop-overview-viewport.png",
+          "docs/evidence/smart-home-depth/ui/desktop-overview.png",
+          "docs/evidence/smart-home-depth/ui/desktop-store-viewport.png",
+          "docs/evidence/smart-home-depth/ui/desktop-store.png",
+          "docs/evidence/smart-home-depth/ui/mobile-delivery-viewport.png",
+          "docs/evidence/smart-home-depth/ui/mobile-delivery.png",
+          "docs/evidence/smart-home-depth/ui/mobile-growth-viewport.png",
+          "docs/evidence/smart-home-depth/ui/mobile-growth.png",
+          "docs/evidence/smart-home-depth/ui/mobile-store-viewport.png",
+          "docs/evidence/smart-home-depth/ui/mobile-store.png",
+          "docs/evidence/smart-home-depth/workbench-read-coverage.json",
+          "docs/hotel-exam-playbook.md",
+          "docs/sales/一页纸-低星单体酒店.md",
+          "docs/sales/一页纸-无人酒店.md",
+          "docs/sales/一页纸-民宿.md",
+          "package.json",
+          "packages/base/bundles/assembly-safety.test.ts",
+          "scripts/acceptance/matrix.pg.test.mjs",
+          "scripts/business-management.mjs",
+          "scripts/business-management.test.mjs",
+          "scripts/check-business-site.mjs",
+          "scripts/check-business-workbench.mjs",
+          "scripts/check-smart-home-depth.mjs",
+          "scripts/generate-capabilities.mjs",
+          "scripts/seed-smart-home.pg.test.ts",
+          "scripts/seed-smart-home.ts"
+        ],
+        "intent": {
+          "taskId": "T-2026-1009-0001",
+          "ready": true,
+          "dependsOn": [],
+          "releases": []
+        },
+        "headTime": 1791525068000,
+        "mergeBase": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+        "checkErrors": [],
+        "checkSha": "e3ba2bebc9696fda6ce2af8e83361c14b77329f5",
+        "hasFailedChecks": false,
+        "ciPolicyChanges": [
+          {
+            "id": "CI-001",
+            "file": "scripts/generate-capabilities.mjs",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "scripts/generate-capabilities.mjs",
+              "absent": false
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "scripts/generate-capabilities.mjs",
+              "absent": false
+            },
+            "digest": "37733669832873deae27de50bdfb237f26446502462a97e658ed3d62fdb8f9aa"
+          },
+          {
+            "id": "CI-002",
+            "file": "scripts/business-management.test.mjs",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "scripts/business-management.test.mjs",
+              "absent": false
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "scripts/business-management.test.mjs",
+              "absent": false
+            },
+            "digest": "3bb1ef160e9479c0c3d4239f28c6134fd654ca163fa6c9fbe8946c376144aa9c"
+          },
+          {
+            "id": "CI-003",
+            "file": "scripts/seed-smart-home.ts",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "scripts/seed-smart-home.ts",
+              "absent": false
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "scripts/seed-smart-home.ts",
+              "absent": false
+            },
+            "digest": "5b5720574f29d57e043366055a15f5595dca6ac9a255764456f9c279864b2b7e"
+          },
+          {
+            "id": "CI-004",
+            "file": "scripts/check-business-site.mjs",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "scripts/check-business-site.mjs",
+              "absent": false
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "scripts/check-business-site.mjs",
+              "absent": false
+            },
+            "digest": "6ff879e97e9a8ceca879f6aef296e7dc98e196e87985e411143cdb883dfb4b4a"
+          },
+          {
+            "id": "CI-005",
+            "file": "scripts/check-smart-home-depth.mjs",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "scripts/check-smart-home-depth.mjs",
+              "absent": true
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "scripts/check-smart-home-depth.mjs",
+              "absent": false
+            },
+            "digest": "8614eec81521705e4293a9745107a7da9510cdee1eb1b87ac0e6cdfc2868b0a8"
+          },
+          {
+            "id": "CI-006",
+            "file": "scripts/check-business-workbench.mjs",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "scripts/check-business-workbench.mjs",
+              "absent": false
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "scripts/check-business-workbench.mjs",
+              "absent": false
+            },
+            "digest": "87e0b40a4b3b460bf40ecf5622270fdc917640b17800bb2ec16537d581cbb170"
+          },
+          {
+            "id": "CI-007",
+            "file": "scripts/seed-smart-home.pg.test.ts",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "scripts/seed-smart-home.pg.test.ts",
+              "absent": false
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "scripts/seed-smart-home.pg.test.ts",
+              "absent": false
+            },
+            "digest": "9bde7f9f337ca607b2fdaa6885c53320d5e87d28c719044a5c796498d1bb6c79"
+          },
+          {
+            "id": "CI-008",
+            "file": "scripts/business-management.mjs",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "scripts/business-management.mjs",
+              "absent": false
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "scripts/business-management.mjs",
+              "absent": false
+            },
+            "digest": "b0c33468b5aad72939077ff09e885d54ec70ea17d16ecc42d6e7cda02b8445f1"
+          },
+          {
+            "id": "CI-009",
+            "file": "scripts/acceptance/matrix.pg.test.mjs",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "scripts/acceptance/matrix.pg.test.mjs",
+              "absent": false
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "scripts/acceptance/matrix.pg.test.mjs",
+              "absent": false
+            },
+            "digest": "b2552fd071b6e1b3477a5ee512e0f4306e0bdd152aea2afcc14baede3a1c68d0"
+          },
+          {
+            "id": "CI-010",
+            "file": "package.json",
+            "before": {
+              "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+              "path": "package.json",
+              "absent": false
+            },
+            "after": {
+              "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+              "path": "package.json",
+              "absent": false
+            },
+            "digest": "b26744a6e25275d105178d3b3a29047429d899785decdd1a2ae7727ab32773e2"
+          }
+        ],
+        "originNumber": 4,
+        "pendingDependencies": []
+      },
+      "integrationLease": {
+        "owner": "integration/pr-4",
+        "scopes": [
+          "dependencies",
+          "protocol"
+        ],
+        "generation": {
+          "dependencies": 9,
+          "protocol": 9
+        }
+      }
     },
     "5": {
       "number": 5,
@@ -2346,10 +2741,10 @@
   },
   "leases": {
     "dependencies": {
-      "owner": null,
-      "generation": 8,
-      "acquiredAt": 1791527019175,
-      "expiresAt": 1791527019175
+      "owner": "integration/pr-4",
+      "generation": 9,
+      "acquiredAt": 1791529917784,
+      "expiresAt": 1791530817784
     },
     "migrations": {
       "owner": null,
@@ -2358,10 +2753,10 @@
       "expiresAt": 1791494778938
     },
     "protocol": {
-      "owner": null,
-      "generation": 8,
-      "acquiredAt": 1791527019175,
-      "expiresAt": 1791527019175
+      "owner": "integration/pr-4",
+      "generation": 9,
+      "acquiredAt": 1791529917784,
+      "expiresAt": 1791530817784
     }
   },
   "releases": {},
@@ -8017,6 +8412,442 @@
       },
       "previous": "0624dd3387d3059959553fbe6aa8763c3e4898e3fd0d903dd0ca2c18a18d8a0d",
       "digest": "7c34ccd5d462a869f8deb3a81c48cea57e73f706d90ec332e4988abfe35c3881"
+    },
+    {
+      "sequence": 101,
+      "at": "2026-10-09T07:11:57.784Z",
+      "kind": "lease_acquire",
+      "data": {
+        "scopes": [
+          "dependencies",
+          "protocol"
+        ],
+        "owner": "integration/pr-4",
+        "generation": {
+          "dependencies": 9,
+          "protocol": 9
+        }
+      },
+      "previous": "7c34ccd5d462a869f8deb3a81c48cea57e73f706d90ec332e4988abfe35c3881",
+      "digest": "e9778273e8a037eee1cd12cbd94f2ae0699848237ce91af6002b39c6f5989425"
+    },
+    {
+      "sequence": 102,
+      "at": "2026-10-09T07:11:57.784Z",
+      "kind": "task",
+      "data": {
+        "number": 4,
+        "patch": {
+          "status": "merging",
+          "mergePhase": "prepared",
+          "mergeSnapshot": {
+            "repo": "workloom-ai/workloom-BusinessManagementSystem",
+            "number": 5,
+            "pull": {
+              "number": 5,
+              "state": "open",
+              "title": "chore(ci): deliver #4 feat(smart-home): 深化成都门店 AI 经营与渐进交付 [T-2026-1009-0001]",
+              "body": "Immutable delivery candidate for #4. Exact source 861f6247e005671d0dfcd358fb3901faa82151b6; tested main be5535ceaa1237377dedb2a1941b0be78c478ec6.\n\n<!-- delivery-origin:4:861f6247e005671d0dfcd358fb3901faa82151b6:be5535ceaa1237377dedb2a1941b0be78c478ec6 -->\n\n<!-- workloom-delivery\n{\"ready\":true,\"depends_on\":[],\"releases\":[]}\n-->",
+              "author": {
+                "username": "OCI",
+                "nickname": "Cloud Native Build",
+                "is_npc": true
+              },
+              "reviewers": [],
+              "labels": [],
+              "base": {
+                "ref": "refs/heads/main",
+                "sha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                "repo": {
+                  "id": "2108222160764293120",
+                  "name": "workloom-BusinessManagementSystem",
+                  "path": "workloom-ai/workloom-BusinessManagementSystem",
+                  "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+                }
+              },
+              "head": {
+                "ref": "refs/heads/delivery/candidate/pr-4-400f94ebb7dd7c1952f9f4d2020cd94c",
+                "sha": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                "repo": {
+                  "id": "2108222160764293120",
+                  "name": "workloom-BusinessManagementSystem",
+                  "path": "workloom-ai/workloom-BusinessManagementSystem",
+                  "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+                }
+              },
+              "blocked_on": "unblocked",
+              "merged_by": {
+                "is_npc": false
+              },
+              "mergeable_state": "mergeable",
+              "is_wip": false,
+              "is_merged": false,
+              "is_force_merged": false,
+              "statuses": {}
+            },
+            "headSha": "861f6247e005671d0dfcd358fb3901faa82151b6",
+            "mainSha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+            "files": [
+              ".agents/skills/business-management/SKILL.md",
+              "AGENTS.repo.md",
+              "README.md",
+              "apps/site/en.html",
+              "apps/site/index.html",
+              "apps/webc/public/industry/service-front.config.json",
+              "bundles/smart-home/assets.test.mts",
+              "bundles/smart-home/bundle.json",
+              "bundles/smart-home/floor-scene.json",
+              "bundles/smart-home/library/industry-context.json",
+              "bundles/smart-home/library/native-operations.json",
+              "bundles/smart-home/library/native-workflows.json",
+              "bundles/smart-home/library/official-sources.json",
+              "bundles/smart-home/library/skill-catalogue.json",
+              "bundles/smart-home/library/workforce.json",
+              "bundles/smart-home/presets/appointment-coordinator.yml",
+              "bundles/smart-home/presets/business-operations-assistant.yml",
+              "bundles/smart-home/presets/lead-enrichment-specialist.yml",
+              "bundles/smart-home/presets/prospecting-specialist.yml",
+              "bundles/smart-home/presets/sales-assistant.yml",
+              "bundles/smart-home/presets/sales-coach.yml",
+              "bundles/smart-home/presets/store-manager-assistant.yml",
+              "bundles/smart-home/runtime/README.md",
+              "bundles/smart-home/runtime/assets.mjs",
+              "bundles/smart-home/runtime/catalogue.mjs",
+              "bundles/smart-home/runtime/depth-catalogue.mjs",
+              "bundles/smart-home/runtime/depth-domain.mjs",
+              "bundles/smart-home/runtime/domain.mjs",
+              "bundles/smart-home/runtime/index.mjs",
+              "bundles/smart-home/runtime/scenario.mjs",
+              "bundles/smart-home/runtime/schema.mjs",
+              "bundles/smart-home/runtime/storage.mjs",
+              "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+              "bundles/smart-home/runtime/tests/depth.test.mjs",
+              "bundles/smart-home/runtime/tests/employee-work.test.mjs",
+              "bundles/smart-home/runtime/tests/scenario-worker.mjs",
+              "bundles/smart-home/runtime/workflows.mjs",
+              "bundles/smart-home/schemas/objects.json",
+              "bundles/smart-home/segment-defaults.yml",
+              "bundles/smart-home/service-front/client.json",
+              "bundles/smart-home/skills/appointment-coordination/SKILL.md",
+              "bundles/smart-home/skills/appointment-recovery/SKILL.md",
+              "bundles/smart-home/skills/business-data-reconciliation/SKILL.md",
+              "bundles/smart-home/skills/customer-handoff-check/SKILL.md",
+              "bundles/smart-home/skills/lead-profile-enrichment/SKILL.md",
+              "bundles/smart-home/skills/operations-daily-control/SKILL.md",
+              "bundles/smart-home/skills/prospect-targeting/SKILL.md",
+              "bundles/smart-home/skills/sales-coaching/SKILL.md",
+              "bundles/smart-home/skills/sales-meeting-prep/SKILL.md",
+              "bundles/smart-home/skills/sales-objection-brief/SKILL.md",
+              "bundles/smart-home/skills/sales-quality-review/SKILL.md",
+              "bundles/smart-home/skills/source-lead-intake/SKILL.md",
+              "bundles/smart-home/skills/store-resource-brief/SKILL.md",
+              "bundles/smart-home/skills/store-shift-coordination/SKILL.md",
+              "bundles/smart-home/ui/workbench/app.js",
+              "bundles/smart-home/ui/workbench/index.html",
+              "bundles/smart-home/ui/workbench/style.css",
+              "docs/01-门店店长使用指南.md",
+              "docs/02-新客户首次接入完整流程.md",
+              "docs/03-功能清单-用户版.md",
+              "docs/04-行业落地向导-用户版.md",
+              "docs/AGENT-CLIENTS.md",
+              "docs/AI-WORKBENCH.md",
+              "docs/CEO-RISK-DISCLOSURE.md",
+              "docs/DEMO-TWIN.md",
+              "docs/SMART-HOME-BUSINESS-MATRIX.md",
+              "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+              "docs/SMART-HOME-STORE-PLAYBOOK.md",
+              "docs/TWIN-COVERAGE.md",
+              "docs/capabilities.auto.json",
+              "docs/capabilities.auto.md",
+              "docs/capability-map.md",
+              "docs/demo-script.md",
+              "docs/evidence/smart-home-depth/ci-media-gate-review.json",
+              "docs/evidence/smart-home-depth/engine-current-seal-basis.json",
+              "docs/evidence/smart-home-depth/engine-native-read-coverage.json",
+              "docs/evidence/smart-home-depth/engine-read-coverage.json",
+              "docs/evidence/smart-home-depth/engine-root-integration-review.json",
+              "docs/evidence/smart-home-depth/engine-runtime-case-matrix.json",
+              "docs/evidence/smart-home-depth/engine-runtime-tests.json",
+              "docs/evidence/smart-home-depth/engine-scenario-proof.json",
+              "docs/evidence/smart-home-depth/gate-recovery-2026-10-09.md",
+              "docs/evidence/smart-home-depth/host-compatible-binding.json",
+              "docs/evidence/smart-home-depth/host-manifest-original-reconstructed.json",
+              "docs/evidence/smart-home-depth/host-model-proof.json",
+              "docs/evidence/smart-home-depth/host-model-semantic-review.json",
+              "docs/evidence/smart-home-depth/industry-assets-test-before-final-manifest.json",
+              "docs/evidence/smart-home-depth/industry-assets-test-before-final-ui-freeze.json",
+              "docs/evidence/smart-home-depth/industry-assets-test.json",
+              "docs/evidence/smart-home-depth/industry-ci-integration-review-before-final-manifest.json",
+              "docs/evidence/smart-home-depth/industry-ci-integration-review.json",
+              "docs/evidence/smart-home-depth/industry-ci-source-rationales.json",
+              "docs/evidence/smart-home-depth/industry-final-check-before-final-manifest.json",
+              "docs/evidence/smart-home-depth/industry-final-check-ui-drift.json",
+              "docs/evidence/smart-home-depth/industry-final-check.json",
+              "docs/evidence/smart-home-depth/industry-machine-check.json",
+              "docs/evidence/smart-home-depth/industry-peer-review.json",
+              "docs/evidence/smart-home-depth/industry-peer-review/design-coverage-after.json",
+              "docs/evidence/smart-home-depth/industry-peer-review/design-coverage-before.json",
+              "docs/evidence/smart-home-depth/industry-peer-review/probe-design-coverage.mjs",
+              "docs/evidence/smart-home-depth/industry-peer-review/probe-replay-revision.mjs",
+              "docs/evidence/smart-home-depth/industry-peer-review/scenario-replay-revision-after.json",
+              "docs/evidence/smart-home-depth/industry-peer-review/scenario-replay-revision-before.json",
+              "docs/evidence/smart-home-depth/industry-read-coverage.json",
+              "docs/evidence/smart-home-depth/industry-ui-manifest-check.json",
+              "docs/evidence/smart-home-depth/industry-ui-manifest-probe.mts.txt",
+              "docs/evidence/smart-home-depth/legacy-ui/ui-workbench-proof.json",
+              "docs/evidence/smart-home-depth/legacy-ui/ui/desktop-overview.png",
+              "docs/evidence/smart-home-depth/legacy-ui/ui/mobile-overview.png",
+              "docs/evidence/smart-home-depth/legacy-ui/ui/mobile-records.png",
+              "docs/evidence/smart-home-depth/legacy-ui/ui/mobile-team.png",
+              "docs/evidence/smart-home-depth/legacy-ui/ui/narrow-mobile-records.png",
+              "docs/evidence/smart-home-depth/public-cli-replay-before-null-artifact-check-fix.json",
+              "docs/evidence/smart-home-depth/public-cli-replay.json",
+              "docs/evidence/smart-home-depth/public-content-proof-before-joint-coverage-available.json",
+              "docs/evidence/smart-home-depth/public-content-proof.json",
+              "docs/evidence/smart-home-depth/public-content-review.md",
+              "docs/evidence/smart-home-depth/public-review-final-check.json",
+              "docs/evidence/smart-home-depth/site-appearance-proof.json",
+              "docs/evidence/smart-home-depth/site-proof-before-case-insensitive-story-check-fix.json",
+              "docs/evidence/smart-home-depth/site-proof-before-unicode-link-check-fix.json",
+              "docs/evidence/smart-home-depth/site-proof.json",
+              "docs/evidence/smart-home-depth/site-visual-review.json",
+              "docs/evidence/smart-home-depth/site/en-1440-full.png",
+              "docs/evidence/smart-home-depth/site/en-1440-viewport.png",
+              "docs/evidence/smart-home-depth/site/en-320-full.png",
+              "docs/evidence/smart-home-depth/site/en-320-viewport.png",
+              "docs/evidence/smart-home-depth/site/en-390-full.png",
+              "docs/evidence/smart-home-depth/site/en-390-viewport.png",
+              "docs/evidence/smart-home-depth/site/zh-1440-full.png",
+              "docs/evidence/smart-home-depth/site/zh-1440-viewport.png",
+              "docs/evidence/smart-home-depth/site/zh-320-full.png",
+              "docs/evidence/smart-home-depth/site/zh-320-viewport.png",
+              "docs/evidence/smart-home-depth/site/zh-390-full.png",
+              "docs/evidence/smart-home-depth/site/zh-390-viewport.png",
+              "docs/evidence/smart-home-depth/source-read-coverage.json",
+              "docs/evidence/smart-home-depth/ui/DEPTH-UI-06-failure.png",
+              "docs/evidence/smart-home-depth/ui/depth-browser-proof.json",
+              "docs/evidence/smart-home-depth/ui/desktop-delivery-viewport.png",
+              "docs/evidence/smart-home-depth/ui/desktop-delivery.png",
+              "docs/evidence/smart-home-depth/ui/desktop-growth-viewport.png",
+              "docs/evidence/smart-home-depth/ui/desktop-growth.png",
+              "docs/evidence/smart-home-depth/ui/desktop-overview-viewport.png",
+              "docs/evidence/smart-home-depth/ui/desktop-overview.png",
+              "docs/evidence/smart-home-depth/ui/desktop-store-viewport.png",
+              "docs/evidence/smart-home-depth/ui/desktop-store.png",
+              "docs/evidence/smart-home-depth/ui/mobile-delivery-viewport.png",
+              "docs/evidence/smart-home-depth/ui/mobile-delivery.png",
+              "docs/evidence/smart-home-depth/ui/mobile-growth-viewport.png",
+              "docs/evidence/smart-home-depth/ui/mobile-growth.png",
+              "docs/evidence/smart-home-depth/ui/mobile-store-viewport.png",
+              "docs/evidence/smart-home-depth/ui/mobile-store.png",
+              "docs/evidence/smart-home-depth/workbench-read-coverage.json",
+              "docs/hotel-exam-playbook.md",
+              "docs/sales/一页纸-低星单体酒店.md",
+              "docs/sales/一页纸-无人酒店.md",
+              "docs/sales/一页纸-民宿.md",
+              "package.json",
+              "packages/base/bundles/assembly-safety.test.ts",
+              "scripts/acceptance/matrix.pg.test.mjs",
+              "scripts/business-management.mjs",
+              "scripts/business-management.test.mjs",
+              "scripts/check-business-site.mjs",
+              "scripts/check-business-workbench.mjs",
+              "scripts/check-smart-home-depth.mjs",
+              "scripts/generate-capabilities.mjs",
+              "scripts/seed-smart-home.pg.test.ts",
+              "scripts/seed-smart-home.ts"
+            ],
+            "intent": {
+              "taskId": "T-2026-1009-0001",
+              "ready": true,
+              "dependsOn": [],
+              "releases": []
+            },
+            "headTime": 1791525068000,
+            "mergeBase": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+            "checkErrors": [],
+            "checkSha": "e3ba2bebc9696fda6ce2af8e83361c14b77329f5",
+            "hasFailedChecks": false,
+            "ciPolicyChanges": [
+              {
+                "id": "CI-001",
+                "file": "scripts/generate-capabilities.mjs",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "scripts/generate-capabilities.mjs",
+                  "absent": false
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "scripts/generate-capabilities.mjs",
+                  "absent": false
+                },
+                "digest": "37733669832873deae27de50bdfb237f26446502462a97e658ed3d62fdb8f9aa"
+              },
+              {
+                "id": "CI-002",
+                "file": "scripts/business-management.test.mjs",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "scripts/business-management.test.mjs",
+                  "absent": false
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "scripts/business-management.test.mjs",
+                  "absent": false
+                },
+                "digest": "3bb1ef160e9479c0c3d4239f28c6134fd654ca163fa6c9fbe8946c376144aa9c"
+              },
+              {
+                "id": "CI-003",
+                "file": "scripts/seed-smart-home.ts",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "scripts/seed-smart-home.ts",
+                  "absent": false
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "scripts/seed-smart-home.ts",
+                  "absent": false
+                },
+                "digest": "5b5720574f29d57e043366055a15f5595dca6ac9a255764456f9c279864b2b7e"
+              },
+              {
+                "id": "CI-004",
+                "file": "scripts/check-business-site.mjs",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "scripts/check-business-site.mjs",
+                  "absent": false
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "scripts/check-business-site.mjs",
+                  "absent": false
+                },
+                "digest": "6ff879e97e9a8ceca879f6aef296e7dc98e196e87985e411143cdb883dfb4b4a"
+              },
+              {
+                "id": "CI-005",
+                "file": "scripts/check-smart-home-depth.mjs",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "scripts/check-smart-home-depth.mjs",
+                  "absent": true
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "scripts/check-smart-home-depth.mjs",
+                  "absent": false
+                },
+                "digest": "8614eec81521705e4293a9745107a7da9510cdee1eb1b87ac0e6cdfc2868b0a8"
+              },
+              {
+                "id": "CI-006",
+                "file": "scripts/check-business-workbench.mjs",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "scripts/check-business-workbench.mjs",
+                  "absent": false
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "scripts/check-business-workbench.mjs",
+                  "absent": false
+                },
+                "digest": "87e0b40a4b3b460bf40ecf5622270fdc917640b17800bb2ec16537d581cbb170"
+              },
+              {
+                "id": "CI-007",
+                "file": "scripts/seed-smart-home.pg.test.ts",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "scripts/seed-smart-home.pg.test.ts",
+                  "absent": false
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "scripts/seed-smart-home.pg.test.ts",
+                  "absent": false
+                },
+                "digest": "9bde7f9f337ca607b2fdaa6885c53320d5e87d28c719044a5c796498d1bb6c79"
+              },
+              {
+                "id": "CI-008",
+                "file": "scripts/business-management.mjs",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "scripts/business-management.mjs",
+                  "absent": false
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "scripts/business-management.mjs",
+                  "absent": false
+                },
+                "digest": "b0c33468b5aad72939077ff09e885d54ec70ea17d16ecc42d6e7cda02b8445f1"
+              },
+              {
+                "id": "CI-009",
+                "file": "scripts/acceptance/matrix.pg.test.mjs",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "scripts/acceptance/matrix.pg.test.mjs",
+                  "absent": false
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "scripts/acceptance/matrix.pg.test.mjs",
+                  "absent": false
+                },
+                "digest": "b2552fd071b6e1b3477a5ee512e0f4306e0bdd152aea2afcc14baede3a1c68d0"
+              },
+              {
+                "id": "CI-010",
+                "file": "package.json",
+                "before": {
+                  "ref": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+                  "path": "package.json",
+                  "absent": false
+                },
+                "after": {
+                  "ref": "861f6247e005671d0dfcd358fb3901faa82151b6",
+                  "path": "package.json",
+                  "absent": false
+                },
+                "digest": "b26744a6e25275d105178d3b3a29047429d899785decdd1a2ae7727ab32773e2"
+              }
+            ],
+            "originNumber": 4,
+            "pendingDependencies": []
+          },
+          "integrationLease": {
+            "owner": "integration/pr-4",
+            "scopes": [
+              "dependencies",
+              "protocol"
+            ],
+            "generation": {
+              "dependencies": 9,
+              "protocol": 9
+            }
+          }
+        }
+      },
+      "previous": "e9778273e8a037eee1cd12cbd94f2ae0699848237ce91af6002b39c6f5989425",
+      "digest": "18fc03fc90318821a02893dd7f7dfb0624456fbd284b0db685d32585eee8f3ee"
+    },
+    {
+      "sequence": 103,
+      "at": "2026-10-09T07:12:01.855Z",
+      "kind": "transaction",
+      "data": {
+        "id": "346568cf-a377-44a3-8065-76fd35fdbef5"
+      },
+      "previous": "18fc03fc90318821a02893dd7f7dfb0624456fbd284b0db685d32585eee8f3ee",
+      "digest": "54a3ab828b187689296a827b0a6a64b4f189862bc68355f81e416ec3ad48db4a"
     }
   ]
 }
