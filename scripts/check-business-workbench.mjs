@@ -286,8 +286,14 @@ try {
     console.log(JSON.stringify(proof.totals));
     if (proof.totals.failed) process.exitCode = 1;
   } catch (error) { cleanupErrors.push(error); }
-  const cleanup = await Promise.allSettled([context?.close(), browser?.close(), server?.close()]);
-  for (const result of cleanup) if (result.status === 'rejected') cleanupErrors.push(result.reason);
+  // Sequential close: disposing the browser concurrently with its context can make the context
+  // dispose request fail with "Failed to find context" even though the regression itself passed.
+  // A close error that only reports an already-disposed target is benign and must not fail the gate.
+  const alreadyGone = error => /Failed to find context|Target (page, context or browser has been closed|closed)|Browser has been closed|TargetClosedError/i.test(String(error?.message ?? error));
+  const closeInOrder = async close => { try { await close(); } catch (error) { if (!alreadyGone(error)) cleanupErrors.push(error); } };
+  await closeInOrder(() => context?.close());
+  await closeInOrder(() => browser?.close());
+  await closeInOrder(() => server?.close());
   if (!values['keep-data']) {
     try { await rm(dataDir, { recursive: true, force: true }); }
     catch (error) { cleanupErrors.push(error); }

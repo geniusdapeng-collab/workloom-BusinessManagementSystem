@@ -162,7 +162,10 @@ finally {
   for (const file of ['bundles/smart-home/ui/workbench/app.js', 'bundles/smart-home/ui/workbench/index.html', 'bundles/smart-home/ui/workbench/style.css', 'bundles/smart-home/runtime/scenario.mjs', 'bundles/smart-home/library/industry-context.json', relative(root, fileURLToPath(import.meta.url))]) {
     try { hashes[file] = createHash('sha256').update(await readFile(join(root, file))).digest('hex'); } catch (error) { cleanupErrors.push({ file, error: error.message }); }
   }
-  for (const close of [() => context?.close(), () => browser?.close(), () => session?.close(), () => rm(dataDir, { recursive: true, force: true })]) { try { await close(); } catch (error) { cleanupErrors.push({ error: error.message }); } }
+  // An already-disposed browser/context is not a regression: only report cleanup errors that
+  // still describe a live infrastructure failure.
+  const alreadyGone = error => /Failed to find context|Target (page, context or browser has been closed|closed)|Browser has been closed|TargetClosedError/i.test(String(error?.message ?? error));
+  for (const close of [() => context?.close(), () => browser?.close(), () => session?.close(), () => rm(dataDir, { recursive: true, force: true })]) { try { await close(); } catch (error) { if (!alreadyGone(error)) cleanupErrors.push({ error: error.message }); } }
   const proof = { schemaVersion: 'bms.smart-home-depth-browser-proof/v1', testedAt: new Date().toISOString(), browserVersion: browser?.version(), channel: values.channel ?? 'chromium', environment: 'local-preview', dataMode: 'sandbox', syntheticScenario: 'shuguang-chengdu-v1', realHumanApprovalClaimed: false, realCustomerData: false, physicalExecution: false, sourceHashes: hashes, screenshots, cases, events, cleanupErrors, ...(startupError ? { infrastructureFailure: startupError.message } : {}), totals: { cases: cases.length, passed: cases.filter(item => item.pass).length, failed: cases.filter(item => !item.pass).length } };
   await writeFile(join(proofDir, 'depth-browser-proof.json'), JSON.stringify(proof, null, 2) + '\n'); console.log(JSON.stringify(proof.totals));
   if (startupError || proof.totals.failed || cleanupErrors.length) process.exitCode = 1;
