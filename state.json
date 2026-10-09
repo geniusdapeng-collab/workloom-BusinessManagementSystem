@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 125,
+  "revision": 127,
   "tasks": {
     "2": {
       "number": 2,
@@ -2764,7 +2764,7 @@
     },
     "6": {
       "number": 6,
-      "status": "waiting_ci",
+      "status": "parked",
       "firstSeen": 1791531031898,
       "attempts": {},
       "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
@@ -2906,7 +2906,9 @@
       "files": [
         "README.md"
       ],
-      "ciSince": 1791531625366
+      "ciSince": 1791531625366,
+      "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls?state=all&base_ref=main&page_size=100&page=1 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
+      "blockedUntil": 1791532225366
     }
   },
   "leases": {
@@ -9480,6 +9482,31 @@
       },
       "previous": "5ac2ba353f6a0641f13e7107f9c587ddf289f587fbaed9433f53478d11a97f0d",
       "digest": "47609cc61cfb179248e41a953d409fe0126133bde6c39ddd406d2d28aa6da49b"
+    },
+    {
+      "sequence": 126,
+      "at": "2026-10-09T07:40:25.366Z",
+      "kind": "task",
+      "data": {
+        "number": 6,
+        "patch": {
+          "status": "parked",
+          "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls?state=all&base_ref=main&page_size=100&page=1 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
+          "blockedUntil": 1791532225366
+        }
+      },
+      "previous": "47609cc61cfb179248e41a953d409fe0126133bde6c39ddd406d2d28aa6da49b",
+      "digest": "390338825057ff8aefbb84cbb390b89becba27f7fc6bafc4af5a18a1a4b2b329"
+    },
+    {
+      "sequence": 127,
+      "at": "2026-10-09T07:40:32.211Z",
+      "kind": "transaction",
+      "data": {
+        "id": "20a58bea-fb9f-41a6-9a73-88bfabe96c83"
+      },
+      "previous": "390338825057ff8aefbb84cbb390b89becba27f7fc6bafc4af5a18a1a4b2b329",
+      "digest": "3437af0d5fa6ba278f88a5f9381d216e33a78a57abea6722984c6f1ee323f446"
     }
   ]
 }
