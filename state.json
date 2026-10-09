@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 131,
+  "revision": 134,
   "tasks": {
     "2": {
       "number": 2,
@@ -2917,6 +2917,22 @@
         "marker": "delivery-origin:6:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6",
         "at": 1791532253671
       }
+    },
+    "7": {
+      "number": 7,
+      "status": "developing",
+      "firstSeen": 1791532265892,
+      "attempts": {},
+      "admission": {
+        "number": 7,
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "filesHash": "be3ae3b6479236a18da3e876a0de9dfe9ae2428896d83c3e804db008861b12d0",
+        "scopes": [],
+        "owner": "admission/pr-7",
+        "generation": {}
+      },
+      "updatedAt": 1791532265892
     }
   },
   "leases": {
@@ -9582,6 +9598,53 @@
       },
       "previous": "a8351f2a768bce1aa552bf0a251ea1d893184df87d4b5943e567e87aac41fac2",
       "digest": "5b8a40296794d89365106aa7be50dfb0d75789b5c3d20fc486be4416341c271c"
+    },
+    {
+      "sequence": 132,
+      "at": "2026-10-09T07:51:05.892Z",
+      "kind": "source_admitted",
+      "data": {
+        "number": 7,
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "filesHash": "be3ae3b6479236a18da3e876a0de9dfe9ae2428896d83c3e804db008861b12d0",
+        "scopes": [],
+        "owner": "admission/pr-7",
+        "generation": {}
+      },
+      "previous": "5b8a40296794d89365106aa7be50dfb0d75789b5c3d20fc486be4416341c271c",
+      "digest": "05334428e8a4b1ee1defe5bbca6ff0b678ca656af325a1d599a2c914683351b6"
+    },
+    {
+      "sequence": 133,
+      "at": "2026-10-09T07:51:05.892Z",
+      "kind": "task",
+      "data": {
+        "number": 7,
+        "patch": {
+          "admission": {
+            "number": 7,
+            "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+            "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "filesHash": "be3ae3b6479236a18da3e876a0de9dfe9ae2428896d83c3e804db008861b12d0",
+            "scopes": [],
+            "owner": "admission/pr-7",
+            "generation": {}
+          }
+        }
+      },
+      "previous": "05334428e8a4b1ee1defe5bbca6ff0b678ca656af325a1d599a2c914683351b6",
+      "digest": "316d21d478f4808d707dfd1b72181d99765bd1cfa9b79170b06d29b250b702fe"
+    },
+    {
+      "sequence": 134,
+      "at": "2026-10-09T07:51:05.528Z",
+      "kind": "transaction",
+      "data": {
+        "id": "source-admit:7:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6"
+      },
+      "previous": "316d21d478f4808d707dfd1b72181d99765bd1cfa9b79170b06d29b250b702fe",
+      "digest": "7397f2dc83bcc70be1d311e344cb8a6753cc02ef18f1757952b443b8d5443f28"
     }
   ]
 }
