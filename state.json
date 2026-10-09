@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 27,
+  "revision": 29,
   "tasks": {
     "2": {
       "number": 2,
@@ -1461,10 +1461,10 @@
   },
   "leases": {
     "dependencies": {
-      "owner": null,
-      "generation": 3,
-      "acquiredAt": 1791494778938,
-      "expiresAt": 1791494778938
+      "owner": "codex/T-2026-1009-0001",
+      "generation": 4,
+      "acquiredAt": 1791521065983,
+      "expiresAt": 1791521965983
     },
     "migrations": {
       "owner": null,
@@ -1473,10 +1473,10 @@
       "expiresAt": 1791494778938
     },
     "protocol": {
-      "owner": null,
-      "generation": 3,
-      "acquiredAt": 1791494778938,
-      "expiresAt": 1791494778938
+      "owner": "codex/T-2026-1009-0001",
+      "generation": 4,
+      "acquiredAt": 1791521065983,
+      "expiresAt": 1791521965983
     }
   },
   "releases": {},
@@ -4127,6 +4127,34 @@
       },
       "previous": "5ddb9a97841329a32680403c2eda4cd2761547fafe09beb68c0650f5c1abb1a9",
       "digest": "4cf2f6676ae0f003f7f9964b1362a3d1d41364c09d9e2d01e07c739d967a55a0"
+    },
+    {
+      "sequence": 28,
+      "at": "2026-10-09T04:44:25.983Z",
+      "kind": "lease_acquire",
+      "data": {
+        "scopes": [
+          "dependencies",
+          "protocol"
+        ],
+        "owner": "codex/T-2026-1009-0001",
+        "generation": {
+          "dependencies": 4,
+          "protocol": 4
+        }
+      },
+      "previous": "4cf2f6676ae0f003f7f9964b1362a3d1d41364c09d9e2d01e07c739d967a55a0",
+      "digest": "41135c41c41e027c59fd8f3d1677253193aecbfd26841a444d72f8803b0e112d"
+    },
+    {
+      "sequence": 29,
+      "at": "2026-10-09T04:44:25.104Z",
+      "kind": "transaction",
+      "data": {
+        "id": "c1fda760-a96a-4627-adf9-37787889d159"
+      },
+      "previous": "41135c41c41e027c59fd8f3d1677253193aecbfd26841a444d72f8803b0e112d",
+      "digest": "1fe52fa532966e5373ca7c87cc64c9e752d6971ed5a44d3c9ca57cc3f81ea7fd"
     }
   ]
 }
