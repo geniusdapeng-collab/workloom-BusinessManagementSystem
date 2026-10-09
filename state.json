@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 71,
+  "revision": 73,
   "tasks": {
     "2": {
       "number": 2,
@@ -2303,7 +2303,15 @@
       ],
       "ciSince": 1791525316830,
       "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
-      "blockedUntil": 1791526225922
+      "blockedUntil": 1791526225922,
+      "candidate": {
+        "number": 5,
+        "branch": "delivery/candidate/pr-4-400f94ebb7dd7c1952f9f4d2020cd94c",
+        "headSha": "861f6247e005671d0dfcd358fb3901faa82151b6",
+        "mainSha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+        "marker": "delivery-origin:4:861f6247e005671d0dfcd358fb3901faa82151b6:be5535ceaa1237377dedb2a1941b0be78c478ec6",
+        "at": 1791526518537
+      }
     }
   },
   "leases": {
@@ -6845,6 +6853,36 @@
       },
       "previous": "fa624b0778c237da68d6da5ee6ea6e7cf48fe0ffe21c52732c9c5fbdb9572438",
       "digest": "bb58eb1ac8fb6867e69eda58b478c21b9c7a65099a1e473d238f6df626d1c040"
+    },
+    {
+      "sequence": 72,
+      "at": "2026-10-09T06:15:18.537Z",
+      "kind": "task",
+      "data": {
+        "number": 4,
+        "patch": {
+          "candidate": {
+            "number": 5,
+            "branch": "delivery/candidate/pr-4-400f94ebb7dd7c1952f9f4d2020cd94c",
+            "headSha": "861f6247e005671d0dfcd358fb3901faa82151b6",
+            "mainSha": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+            "marker": "delivery-origin:4:861f6247e005671d0dfcd358fb3901faa82151b6:be5535ceaa1237377dedb2a1941b0be78c478ec6",
+            "at": 1791526518537
+          }
+        }
+      },
+      "previous": "bb58eb1ac8fb6867e69eda58b478c21b9c7a65099a1e473d238f6df626d1c040",
+      "digest": "edec4e8870c7b5e9ffa424535c20a3787f625a538338de4613b9e461bf52220e"
+    },
+    {
+      "sequence": 73,
+      "at": "2026-10-09T06:15:21.776Z",
+      "kind": "transaction",
+      "data": {
+        "id": "1381e16e-734f-44d9-b460-ec083479321d"
+      },
+      "previous": "edec4e8870c7b5e9ffa424535c20a3787f625a538338de4613b9e461bf52220e",
+      "digest": "1acff6571295b52a0a606f144b038d4e8dd41d7fb83376243f4c459ea77709f0"
     }
   ]
 }
