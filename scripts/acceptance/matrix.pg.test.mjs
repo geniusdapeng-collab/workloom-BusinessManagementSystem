@@ -54,6 +54,10 @@ test('acceptance matrix resolves actual installed skill IDs and preserves reject
       return { ...doc, version: frontmatter.version, fences: frontmatter.fence_bindings };
     }));
     const firstSkill = skillDocs[0].key;
+    // Expected counts come from the same composition the fixture seeds, so roster growth
+    // cannot silently turn a passing matrix run into a red gate.
+    const expectedAgents = composition.presets.size;
+    const expectedSkills = skillDocs.length;
     async function seed(prefix = 'skill-smart-home-', mode = 'normal') {
       await fixture.query('BEGIN');
       try {
@@ -120,15 +124,15 @@ test('acceptance matrix resolves actual installed skill IDs and preserves reject
         assert.equal(result.summary.runtimeConnected, true);
         assert.equal(result.exitCode, scenario.expected);
         if (scenario.expected === 0) {
-          assert.equal(result.summary.counts.agentsPass, 20);
-          assert.equal(result.summary.counts.skillsPass, 35);
+          assert.equal(result.summary.counts.agentsPass, expectedAgents);
+          assert.equal(result.summary.counts.skillsPass, expectedSkills);
         } else if (scenario.mode === 'wrong-version') {
-          assert.equal(result.summary.counts.agentsPass, 20);
-          assert.equal(result.summary.counts.skillsPass, 34);
+          assert.equal(result.summary.counts.agentsPass, expectedAgents);
+          assert.equal(result.summary.counts.skillsPass, expectedSkills - 1);
           assert.ok(result.summary.failures.skills.some((row) => row.failures.includes('SA5_install')));
         } else {
           assert.ok(result.summary.failures.agents.some((row) => row.failures.includes('B7_skill_installed')));
-          assert.equal(result.summary.counts.skillsPass, 34);
+          assert.equal(result.summary.counts.skillsPass, expectedSkills - 1);
         }
         report.cases.push({ name: scenario.name, preconditions: 'Isolated synthetic PostgreSQL matrix fixture',
           steps: ['Seed complete smart-home roster and the stated skill installation variant',

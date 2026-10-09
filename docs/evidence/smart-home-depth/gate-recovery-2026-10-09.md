@@ -27,15 +27,21 @@
 - 同类修复：`scripts/check-smart-home-depth.mjs` 的顺序关闭同样对“目标已不存在”的错误做
   良性豁免，其它清理错误保持失败语义。
 
-## 2. test-gate（非阻断）：岗位数量断言过时
+## 2. 过时的岗位/技能数量断言（test-gate 非阻断 + db-gate 必需）
 
-- 失败阶段：`pipeline-5(test-gate)` → “主测试套件（非阻断）”；
-  `packages/base` 的 `bundles/assembly-safety.test.ts` 断言
+- 第一处（test-gate，非阻断）：`packages/base/bundles/assembly-safety.test.ts` 断言
   `readVerifiedBundleJsonAsset("smart-home", "library/workforce.json").roles` 长度为 20，
   实际为 27（本任务补齐 7 个岗位）。
-- 修复：断言改为与 `bundles/smart-home/library/workforce.json` 的实际声明逐项相等
-  （`expect(asset.roles).toEqual(declared.roles)`）。验证目标不变——校验“清单校验后读到的是
-  完整声明资产”，但不再依赖会随岗位扩充而失效的硬编码数字。
+- 第二处（db-gate，必需）：构建 `cnb-5u8-1k4fj6sl1` 的 db-gate 第 2 阶段
+  “迁移 + 种子（幂等复跑）+ 哈希链”中，`scripts/acceptance/matrix.pg.test.mjs` 硬编码
+  `agentsPass=20 / skillsPass=35`（wrong-version 场景 34），实际为 27 / 49，导致 6 个矩阵场景
+  全部判红（`0 !== 6`）。
+- 修复方式一致：断言改为从被测组合本身派生。
+  - `assembly-safety.test.ts`：与 `bundles/smart-home/library/workforce.json` 的实际声明逐项相等。
+  - `matrix.pg.test.mjs`：`expectedAgents = composition.presets.size`、
+    `expectedSkills = composition.skillDocs.length`，错误版本/缺失场景用 `expectedSkills - 1`。
+  两者的验证目标不变（矩阵必须把真实在编岗位与技能全部判过），但不再依赖会随行业包扩充而失效的
+  硬编码数字。
 
 ## 3. db-gate：环境侧瞬时失败
 
@@ -44,6 +50,8 @@
   失败（`Internal Error: Error when performing the request ...`）。同一命令在 static-gate 的
   node 镜像中成功，属于 runner 侧网络抖动，非源码缺陷。按“重新触发原生 CI 取得真实读数”处理，
   不修改 `.cnb.yml`。
+- 重新触发后（构建 `cnb-5u8-1k4fj6sl1`）该阶段已通过（corepack 25.6s），随后暴露的是上面的
+  matrix 数量断言问题，与网络无关。
 
 ## 4. 本地复核（修复后，源码树未提交时执行）
 
@@ -51,5 +59,10 @@
 - `pnpm -C packages/base exec vitest run bundles/assembly-safety.test.ts`：15 通过 / 3 条件跳过。
 - `node scripts/check-business-workbench.mjs --channel chrome`：22/22 通过，清理阶段不再抛错。
 - `node scripts/check-smart-home-depth.mjs --channel chrome`：11/11 通过。
+- db-gate 同链路（一次性 loopback PostgreSQL 沙箱）：
+  `scripts/business-management-postgres.test.mjs` 16/16；
+  `scripts/acceptance/matrix.pg.test.mjs` 7/7；
+  16 个 PG vitest 文件 224 通过 / 13 条件跳过 / 0 失败；
+  新库上 `pnpm db:migrate` + `pnpm db:seed` ×2 + `pnpm db:verify-chain` 退出 0。
 
 本地复核使用真实 Chrome 与合成沙箱数据，不代表生产环境或客户现场验收。
