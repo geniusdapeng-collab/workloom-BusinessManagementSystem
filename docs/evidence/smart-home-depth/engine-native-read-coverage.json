@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "business-management.native-reading-additions/v1",
+  "taskId": "T-2026-1009-0001",
+  "actor": "/root/business_engine",
+  "recordedAt": "2026-10-09T05:02:23.630251+00:00",
+  "totals": {
+    "files": 4,
+    "completeReadingA": 4
+  },
+  "files": [
+    {
+      "path": "scripts/tools/task.mjs",
+      "sha256": "0ac98111cbc94d30dd9a71a1fe64ab07818795dc3b8a8812d708aa8b4a7995c0",
+      "bytes": 6883,
+      "lines": 128,
+      "evidenceGrade": "A",
+      "method": "Complete current-task source reading by /root/business_engine, including the entire 446-line lease/freshness checker; not historical reuse."
+    },
+    {
+      "path": "scripts/delivery/install-cnb.yml",
+      "sha256": "24dac42c3574559c2ecfa1934fe798f44e58f1cda8a4d8bb269f2bac1f0ddb86",
+      "bytes": 485,
+      "lines": 12,
+      "evidenceGrade": "A",
+      "method": "Complete current-task source reading by /root/business_engine, including the entire 446-line lease/freshness checker; not historical reuse."
+    },
+    {
+      "path": "scripts/ci/verify-lock-conflict.mjs",
+      "sha256": "52c2eb29d2e16bd2c50444cc9d38c6603ff6dc14a9e711d3f0eb93dc6572832c",
+      "bytes": 24311,
+      "lines": 446,
+      "evidenceGrade": "A",
+      "method": "Complete current-task source reading by /root/business_engine, including the entire 446-line lease/freshness checker; not historical reuse."
+    },
+    {
+      "path": "scripts/delivery/runtime/package.json",
+      "sha256": "8e9141e82fcdb22a079851778c88925c770e274b296d21efc6e65e757fa304d8",
+      "bytes": 205,
+      "lines": 7,
+      "evidenceGrade": "A",
+      "method": "Complete current-task source reading by /root/business_engine, including the entire 446-line lease/freshness checker; not historical reuse."
+    }
+  ],
+  "scope": "Only the four named unchanged native delivery/task inputs. Other installed native code uses separately declared exact-SHA historical reading or complete machine inventory."
+}

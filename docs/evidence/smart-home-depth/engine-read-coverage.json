@@ -1,0 +1,720 @@
+{
+  "schemaVersion": "business-management.read-coverage/v1",
+  "taskId": "T-2026-1009-0001",
+  "actor": "/root/business_engine",
+  "recordedAt": "2026-10-09T04:51:56.447440+00:00",
+  "scope": "Industry runtime implementation, all installed skill procedures and its seven metadata/background/schema inputs, plus three generated runtime registries.",
+  "excludes": [
+    "Other repository subsystems and client interfaces are reviewed in the root/peer coverage reports.",
+    "Earlier task evidence is immutable historical evidence and is not used as current-task proof."
+  ],
+  "totals": {
+    "files": 77,
+    "completeReadingA": 74,
+    "machineParsingB": 3,
+    "samplingC": 0,
+    "unreadD": 0
+  },
+  "machineOnly": [
+    "bundles/smart-home/library/skill-catalogue.json",
+    "bundles/smart-home/library/native-operations.json",
+    "bundles/smart-home/library/native-workflows.json"
+  ],
+  "sampling": [],
+  "unread": [],
+  "files": [
+    {
+      "path": "bundles/smart-home/bundle.json",
+      "sha256": "3d1abdc1022a03fe97a247f1ed7c3bee7290c70e6c41baf2cc340f15af606ee3",
+      "bytes": 24058,
+      "lines": 455,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/library/industry-context.json",
+      "sha256": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+      "bytes": 34564,
+      "lines": 823,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/library/native-operations.json",
+      "sha256": "855ac80da12cc8864289561d11f4ee705ba0e136cb42484773b9f82127956b23",
+      "bytes": 253564,
+      "lines": 9350,
+      "evidenceGrade": "B",
+      "reading": "Complete JSON parsing and scoped field/reference checks; not a complete human code reading.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/library/native-workflows.json",
+      "sha256": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618",
+      "bytes": 67899,
+      "lines": 1998,
+      "evidenceGrade": "B",
+      "reading": "Complete JSON parsing and scoped field/reference checks; not a complete human code reading.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/library/official-sources.json",
+      "sha256": "682d4fcdab537e5ef15af97ca137a86b46dc14bdbe01638f8c421c171bd094b9",
+      "bytes": 6867,
+      "lines": 123,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/library/skill-catalogue.json",
+      "sha256": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86",
+      "bytes": 80505,
+      "lines": 1799,
+      "evidenceGrade": "B",
+      "reading": "Complete JSON parsing and scoped field/reference checks; not a complete human code reading.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/library/workforce.json",
+      "sha256": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c",
+      "bytes": 9301,
+      "lines": 270,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/runtime/README.md",
+      "sha256": "d2b8b01edc19b096042f6a9e1ab9c228ed90b6c46d3a7db8e3fa548d56df4b57",
+      "bytes": 16146,
+      "lines": 118,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/assets.mjs",
+      "sha256": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+      "bytes": 3671,
+      "lines": 47,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/catalogue.mjs",
+      "sha256": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+      "bytes": 13476,
+      "lines": 78,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/depth-catalogue.mjs",
+      "sha256": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+      "bytes": 7617,
+      "lines": 47,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/depth-domain.mjs",
+      "sha256": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+      "bytes": 23000,
+      "lines": 199,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/domain.mjs",
+      "sha256": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+      "bytes": 37954,
+      "lines": 383,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/errors.mjs",
+      "sha256": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+      "bytes": 4603,
+      "lines": 71,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/index.mjs",
+      "sha256": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+      "bytes": 12718,
+      "lines": 125,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/scenario.mjs",
+      "sha256": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+      "bytes": 40042,
+      "lines": 243,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/schema.mjs",
+      "sha256": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+      "bytes": 1125,
+      "lines": 16,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/storage.mjs",
+      "sha256": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+      "bytes": 15338,
+      "lines": 197,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+      "sha256": "6b695b6b8fee56ce2dd29d53539b974b72557e7075bac2c8b3daaafc89b8c5b1",
+      "bytes": 50044,
+      "lines": 570,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/tests/concurrency-worker.mjs",
+      "sha256": "63547913d57204157a4654f31b09de8a659084108db5e67ccec8aa69af0930de",
+      "bytes": 1071,
+      "lines": 11,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/tests/depth.test.mjs",
+      "sha256": "6401c4113cead692514962440815371c62ce5d64276a722f1fd3c90559dc9bd0",
+      "bytes": 44086,
+      "lines": 428,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/tests/employee-work.test.mjs",
+      "sha256": "6536f13eadf2bceb60a61ce119986edebbf69be3299c5bea1e530da221a24cc6",
+      "bytes": 17583,
+      "lines": 210,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/tests/scenario-worker.mjs",
+      "sha256": "37ee51c4412c97ee1d8fe3e299320226cc69f6b25814e9c36aea3712b38b1757",
+      "bytes": 526,
+      "lines": 6,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/workflows.mjs",
+      "sha256": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+      "bytes": 41054,
+      "lines": 365,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/runtime/workforce.mjs",
+      "sha256": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c",
+      "bytes": 4792,
+      "lines": 69,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "business_engine"
+    },
+    {
+      "path": "bundles/smart-home/schemas/archive.schema.json",
+      "sha256": "b9fcce7b21c495bdb538118f93d886f6b548c9dc76447949ef73840afbae787e",
+      "bytes": 3492,
+      "lines": 154,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/schemas/objects.json",
+      "sha256": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+      "bytes": 2013,
+      "lines": 113,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/schemas/stages.json",
+      "sha256": "ae72090c1fd3a588195be6830c57c081320a949eb1535d9ec78abd7057a60d22",
+      "bytes": 1698,
+      "lines": 86,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/acceptance-handover/SKILL.md",
+      "sha256": "8809e9b6a542296b9cc74a5940dcf7df1d19a083275857650a3f5ac8094c0901",
+      "bytes": 4164,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/aftercare-resolution/SKILL.md",
+      "sha256": "5cf579dd1f3a5bba5c8d496fa3bcd7334846be66081e61ca04dc4eacd37faa46",
+      "bytes": 4156,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/aftercare-triage/SKILL.md",
+      "sha256": "4b9160fddf208abc53823bcf192948aef3a8d7518605dd4f452cd0fc6fe2d56b",
+      "bytes": 4245,
+      "lines": 60,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/appointment-coordination/SKILL.md",
+      "sha256": "aca0e42d2b0f9a499a8a88cc02786c6e966422ae0df4079695e0a6ecd4096e0a",
+      "bytes": 5336,
+      "lines": 67,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/appointment-recovery/SKILL.md",
+      "sha256": "e5b6f9c888b569b120a48be4788f7ac0fb7415b44c6fe3032c4cc51351bbecdc",
+      "bytes": 5024,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/bom-check/SKILL.md",
+      "sha256": "4827f979bf4eb90aa5e047dae69d37a57687cb4d396a9c439078ccab1c8bd1f2",
+      "bytes": 4077,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/business-data-reconciliation/SKILL.md",
+      "sha256": "3106fdad2406b9a6d6e64efe4e13b75ead5286fa67c4fdf076c919aa0f170fa7",
+      "bytes": 5329,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/campaign-review/SKILL.md",
+      "sha256": "9dd755ad816f7e62d86608b84edb5f8d395112c1edcee6e8f1d4c1396ac0bd95",
+      "bytes": 4118,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/compatibility-verification/SKILL.md",
+      "sha256": "ff1d3f6dc2bd47fc5b0b0d1d964c3eff62592fedd1ef1a265e4aa46a5be4ff9b",
+      "bytes": 4273,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/consultative-sales/SKILL.md",
+      "sha256": "af876e44746d3338c4cefac6e5e43967b616ed03c3518e78fc6c896e166eb4b8",
+      "bytes": 4285,
+      "lines": 60,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/content-planning/SKILL.md",
+      "sha256": "677cd6ef0450579942bccaaf6a8c022d111d99647dc29b4b3f95728008fb490c",
+      "bytes": 4336,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/contract-handoff/SKILL.md",
+      "sha256": "f816945d497a887305d550016b5f07d5a502fa68d109700e30a0c56332fbee46",
+      "bytes": 4081,
+      "lines": 60,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/customer-consent/SKILL.md",
+      "sha256": "778058d18a2d39a2d223754452ac4133dffc83cbe38bf1c9b1a6872d61df7b1c",
+      "bytes": 4182,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/customer-followup/SKILL.md",
+      "sha256": "96f03520721aec5a4ee5520eec3f154708943f8345877b613f92ec4046793dfa",
+      "bytes": 4081,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/customer-handoff-check/SKILL.md",
+      "sha256": "0e3e4628c0c0d15fb83b267041df25f0077e30e57b8b12d307aa6a5c8c3132c2",
+      "bytes": 6510,
+      "lines": 71,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/data-import-qa/SKILL.md",
+      "sha256": "05246cfa08a91e14e05aa16016de53199bdb316ccc520505a150c02174234193",
+      "bytes": 4199,
+      "lines": 60,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/experience-appointment/SKILL.md",
+      "sha256": "d091e805b18da7d3165b1b384d78c4c6e3712a88652f505c953429e2ef00b590",
+      "bytes": 4226,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/finance-reconcile/SKILL.md",
+      "sha256": "88163ec8005486ed4d462fd798073593f2d2f6b3bec8739cc7cce550ddd3ceb5",
+      "bytes": 4135,
+      "lines": 60,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/goal-decomposition/SKILL.md",
+      "sha256": "2576fb45a991dbb7318d344a4fadc00b8c76ac3fd4c2e5bf82c593e036725998",
+      "bytes": 4355,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/incident-learning/SKILL.md",
+      "sha256": "04850381d261d711b520d6d8ccd7b2e2259ea40e39a78c8a823fde7902e1eaf8",
+      "bytes": 4111,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/installation-quality/SKILL.md",
+      "sha256": "daad5dea9e4bc1fcbddb2ccf9af3acaeb8977f72a4ba99c7acdbb5fe735b2ee2",
+      "bytes": 4250,
+      "lines": 60,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/knowledge-maintenance/SKILL.md",
+      "sha256": "268fcce808598da09911e824acabcc26bd800d6feb2ad96d2a7ff238c4c0215e",
+      "bytes": 4173,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/lead-profile-enrichment/SKILL.md",
+      "sha256": "8a72b05533246bd3a2a59eabf5ac965e0cbdcbe4eb53f7c274beb254e6cd643f",
+      "bytes": 6553,
+      "lines": 70,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/lead-qualification/SKILL.md",
+      "sha256": "53a76c2c8fc3c73bf037cb810dec8b01a285783c37d5143fc66b0425cad1398a",
+      "bytes": 4276,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/local-search-presence/SKILL.md",
+      "sha256": "0ac7acf54f3ea5cb9e6224a2938264fee371a69cced998ecb10b1c0a7b7d8b7d",
+      "bytes": 4304,
+      "lines": 60,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/market-intelligence/SKILL.md",
+      "sha256": "40a779e0913a6a939c881074b267879fe24c375e6337d3e4493b9023146a81db",
+      "bytes": 4235,
+      "lines": 60,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/network-planning/SKILL.md",
+      "sha256": "391f73c66e5ecec062de70c96df1d5541dac7907e61ec523606ba1129c3f6608",
+      "bytes": 4148,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/operations-daily-control/SKILL.md",
+      "sha256": "4e473177a09cff809d97b59890a15c1b7d827a8ba570acf2d68fbc091f2655ee",
+      "bytes": 5232,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/owner-briefing/SKILL.md",
+      "sha256": "78fb0d64838aa6bd3691c8917018723e477b252cc0924bde7a1a42511916d037",
+      "bytes": 4137,
+      "lines": 60,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/partner-channel/SKILL.md",
+      "sha256": "b4fe34e360bbd5b23b23524ff5eaf1a65c1dd0c89bb51ae8e5eb4fd0880b9a72",
+      "bytes": 4114,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/procurement-inventory/SKILL.md",
+      "sha256": "232fb5acf91801a03d1e110ed060f0765ed6dc498d749633c994a0e0c9dbdead",
+      "bytes": 4100,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/project-scheduling/SKILL.md",
+      "sha256": "112180a94478592f22465dfc89d847583d8d32188bfdad88a71fc6fac2cd5436",
+      "bytes": 4181,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/prospect-targeting/SKILL.md",
+      "sha256": "780536122ab20c31623032883f85d5e9d85cb0bdac859cb01ef7c8e9bb9d1ccc",
+      "bytes": 5537,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/quote-margin-control/SKILL.md",
+      "sha256": "e4bfb932278eec8ef53be9f0de4ff02c10c8cf3cea9ed66433623837e43e2331",
+      "bytes": 4261,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/referral-retention/SKILL.md",
+      "sha256": "e85da7ea5467762626193c1871a15bf897b1c529c556a72fae0651f1583f4a68",
+      "bytes": 4126,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/sales-coaching/SKILL.md",
+      "sha256": "22d3bec6d6a47745260f64259a2333e3d52a8ead75a2efdb9804079013b55c79",
+      "bytes": 5209,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/sales-meeting-prep/SKILL.md",
+      "sha256": "4471f58bd42f5054756519a92a90547ddbbb2c38187fc54c802d6309aa158652",
+      "bytes": 5305,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/sales-objection-brief/SKILL.md",
+      "sha256": "48c87dc9e55220913af4aa43d2d51eec1423c223e4eb5c4c42a745c769f71227",
+      "bytes": 5253,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/sales-quality-review/SKILL.md",
+      "sha256": "ec0b42407603601029bed4ed4d73b36023e539374635fe265c6236289f147ca0",
+      "bytes": 5207,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/scene-commissioning/SKILL.md",
+      "sha256": "680f9cac9de8b48f18a4eb8b5b9b2a2319bfa6c425ff7cf1eef89b000cb597c4",
+      "bytes": 4252,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/short-video-production/SKILL.md",
+      "sha256": "92abd4fddbf251e9a3dd9b1d92627be919475c67c834e8e8f683d496188075d7",
+      "bytes": 4284,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/site-survey/SKILL.md",
+      "sha256": "3df0b98f5102fc71571def53978cc354068f74fdd6acfb9081ec9190a7b2bd59",
+      "bytes": 4228,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/social-publishing/SKILL.md",
+      "sha256": "4aa4cb36f709791627129c8e2afa5fcfba5cc39fe3b3f5ccd518b09d25268443",
+      "bytes": 4293,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/solution-design/SKILL.md",
+      "sha256": "1b030c895500484fe90282f0c11e2bec98fd2e6a114de51f516876957e739611",
+      "bytes": 4336,
+      "lines": 61,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/source-lead-intake/SKILL.md",
+      "sha256": "7ba5e1a1716525255cb74998f4b9670a29481034ea257bfb3df90973a8c07182",
+      "bytes": 5360,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/store-demo-health/SKILL.md",
+      "sha256": "fa63797036ff20e329c8ff6af195521723255cecf4592b8817175f9e26741b34",
+      "bytes": 4030,
+      "lines": 59,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/store-diagnosis/SKILL.md",
+      "sha256": "6a547d6ea37196ea12133fe1ca7d74155f9811436598f71788ee6752d3bc3c79",
+      "bytes": 4379,
+      "lines": 62,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/store-resource-brief/SKILL.md",
+      "sha256": "1f0076c0995833f3fdf9450a70ef64353e78930e4e8e8b94482c3f3f1aafec29",
+      "bytes": 5295,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    },
+    {
+      "path": "bundles/smart-home/skills/store-shift-coordination/SKILL.md",
+      "sha256": "48cbda36cd1153b7fe8776f87b3f5e990d9d8b0eda831bfc49beec54af677297",
+      "bytes": 5214,
+      "lines": 66,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows, including final changes.",
+      "ownership": "direct-runtime-dependency"
+    }
+  ]
+}

@@ -11,7 +11,7 @@ import {
 } from './business-management-common.mjs';
 import { setupWorkbench } from './business-management-setup.mjs';
 
-const HELP = `经营管理系统 · 全屋智能门店\n\n用法：node scripts/business-management.mjs <command> [操作] [options]\n\n命令：\n  init [--demo]                 初始化本机数据；--demo 仅允许 sandbox 合成样本\n  doctor                       检查 Node、SQLite、入口与数据范围\n  setup [--client all]          生成 Codex/WorkBuddy 项目配置及千问办公导入 JSON\n  catalog                      操作契约目录（不触发模型）\n  describe <operation>         单项输入 schema、角色与风险\n  call <operation>             agent 权限调用业务操作\n  workflow start|get|tick       工作流操作别名\n  tick [--interval 秒]          确定性调度；--max-ticks 指定最大次数\n  human-call <operation>       真实终端确认后录入店主决定或现场事实\n  approve [approvalId]         人类确认 approval.decide（输入必须带内容摘要）\n  serve [--port 9393]           本机响应式工作台；真实终端可确认店主会话\n  mcp                          agent 权限 stdio MCP\n\n输入：--input-file <JSON文件或 -> 或 --input '<JSON>'（二者互斥）\n范围：--data-dir <目录> --tenant <ID> --workspace <ID> --mode sandbox|live\n端口：--port 优先，其次 BMS_PORT，最后 product.manifest.json 的 workbench.port。\n模型：当前 Codex/千问办公/WorkBuddy 自带模型 claim → 生成 → submit；不需要额外模型 key。\n`;
+const HELP = `经营管理系统 · 全屋智能门店\n\n用法：node scripts/business-management.mjs <command> [操作] [options]\n\n命令：\n  init [--demo]                 初始化本机数据；--demo 仅允许 sandbox 合成样本\n  doctor                       检查 Node、SQLite、入口与数据范围\n  setup [--client all]          生成 Codex/WorkBuddy 项目配置及千问办公导入 JSON\n  catalog                      操作契约目录（不触发模型）\n  describe <operation>         单项输入 schema、角色与风险\n  call <operation>             agent 权限调用业务操作\n  workflow start|get|tick       工作流操作别名\n  scenario list|import         查看或导入成都门店演练背景（仅 sandbox）\n  tick [--interval 秒]          确定性调度；--max-ticks 指定最大次数\n  human-call <operation>       真实终端确认后录入店主决定或现场事实\n  approve [approvalId]         人类确认 approval.decide（输入必须带内容摘要）\n  serve [--port 9393]           本机响应式工作台；真实终端可确认店主会话\n  mcp                          agent 权限 stdio MCP\n\n输入：--input-file <JSON文件或 -> 或 --input '<JSON>'（二者互斥）\n范围：--data-dir <目录> --tenant <ID> --workspace <ID> --mode sandbox|live\n端口：--port 优先，其次 BMS_PORT，最后 product.manifest.json 的 workbench.port。\n模型：当前 Codex/千问办公/WorkBuddy 自带模型 claim → 生成 → submit；不需要额外模型 key。\n`;
 
 async function fileExists(file) { try { await access(file); return true; } catch (error) { if (error.code === 'ENOENT') return false; throw error; } }
 
@@ -78,7 +78,7 @@ export async function runCli(argv, { input = process.stdin, output = process.std
     for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, () => { void session.close().then(() => process.exit(0), error => { errors.write(`${JSON.stringify({ error: errorObject(error) })}\n`); process.exit(1); }); });
     return;
   } else {
-    const known = new Set(['init', 'call', 'workflow', 'tick', 'human-call', 'approve']);
+    const known = new Set(['init', 'call', 'workflow', 'scenario', 'tick', 'human-call', 'approve']);
     if (!known.has(command)) throw new TransportError('USAGE', `未知命令 ${command}`);
     if (command === 'init' || command === 'tick') { if (args.length) throw new TransportError('USAGE', `${command} 不接受位置参数`); }
     else if (command === 'approve') { if (args.length > 1) throw new TransportError('USAGE', 'approve 最多接受一个 approvalId'); }
@@ -91,8 +91,8 @@ export async function runCli(argv, { input = process.stdin, output = process.std
       if (command === 'init') {
         let seeded;
         if (options['--demo']) {
-          const { seedSyntheticDemo } = await import('../bundles/smart-home/runtime/index.mjs');
-          seeded = seedSyntheticDemo(engine);
+          const { seedSyntheticScenario } = await import('../bundles/smart-home/runtime/index.mjs');
+          seeded = seedSyntheticScenario(engine);
         }
         result = { ...engine.call('status', {}, agent), ...(seeded ? { seeded } : {}), config };
       } else if (command === 'tick') {
@@ -105,7 +105,8 @@ export async function runCli(argv, { input = process.stdin, output = process.std
         }
         return;
       } else {
-        const operation = command === 'approve' ? 'approval.decide' : command === 'workflow' ? `workflow.${args[0]}` : args[0];
+        if (command === 'scenario' && !['list', 'import'].includes(args[0])) throw new TransportError('USAGE', 'scenario 只接受 list 或 import');
+        const operation = command === 'approve' ? 'approval.decide' : ['workflow', 'scenario'].includes(command) ? `${command}.${args[0]}` : args[0];
         describeOperation(operation);
         if (command === 'approve' && args[0]) {
           if (value.approvalId && value.approvalId !== args[0]) throw new TransportError('INVALID_INPUT', '位置 approvalId 与输入不一致');
@@ -114,6 +115,8 @@ export async function runCli(argv, { input = process.stdin, output = process.std
         if (['approve', 'human-call'].includes(command)) {
           await confirmHumanOperation(operation, value, { input, output });
           result = engine.call(operation, value, actorFor(config, 'cli', 'owner', true));
+        } else if (command === 'scenario' && args[0] === 'import') {
+          result = engine.call(operation, { datasetId: 'shuguang-chengdu-v1', idempotencyKey: 'cli-shuguang-chengdu-v1-import', ...value }, actorFor(config, 'cli', 'operator', false));
         } else result = engine.call(operation, value, agent);
       }
     } finally { engine.close(); }

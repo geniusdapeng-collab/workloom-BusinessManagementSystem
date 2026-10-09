@@ -1,13 +1,13 @@
 {
   "workspaceKey": "smart-home-demo",
-  "brandName": "全屋智能经营演练门店",
+  "brandName": "蜀光智家 · 成都高新体验店（模拟）",
   "agentName": "智能方案顾问",
   "logoText": "智",
   "theme": {
     "primary": "#126F64",
     "secondary": "#18537B"
   },
-  "welcomeText": "您好，欢迎来到{brand}。我是{agent}，可以解释全屋智能方案、登记体验与勘测意向、接收售后问题。具体价格、服务地域与时间以门店人工确认的方案为准。",
+  "welcomeText": "您好，欢迎来到{brand}。我是{agent}，可以解释全屋智能需求、整理体验与勘测意向、接收售后问题。门店、联系资料和经营历史均为模拟；正式价格、服务范围、预约、施工和签约需有来源的人工确认。",
   "quickReplies": [
     {
       "label": "体验预约",
@@ -102,6 +102,6 @@
     "bundleVersion": "1.0.0",
     "contractVersion": "2.0.0",
     "uiVersion": "0.1.19",
-    "manifestDigest": "c3f535ab88712096205c3335fa1e8bf06da9854b28cb7c22b54134e5dcfa5a37"
+    "manifestDigest": "e08a4bcc0a3660d8838e084a087774f2e04309a5b032d516658448e3da0dc4eb"
   }
 }

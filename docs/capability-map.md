@@ -1,142 +1,81 @@
-# WorkLoom IM 能力地图（Capability Map）
+# BusinessManagementSystem 能力地图｜全屋智能 AI 经营入口
 
-> 本文是**给 AI Coding Agent 看的系统全量能力清单**。每一条都标注了「是什么 / 怎么调用 / 怎么验证」。
-> 可执行版：`bash scripts/agent-tour.sh [--full]`——按本清单逐项自检并打印 PASS/FAIL。
-> 原则：**系统已有的能力，优先调用，不要重造；跑起来验证过，才算数。**
-> 维护纪律：其他 Agent 会持续迭代本仓；改完能力面（脚本/包/技能/演示页）必须同步更新本文。最近全量审计：2026-08-26。
+给门店实施人员与AI代理使用。默认产品语义在`bundles/smart-home`，默认执行链是Node + SQLite + 当前宿主模型。目录可发现、实际可调用、结果已验证分别取证；计数由[自动能力导览](capabilities.auto.md)和运行时catalog生成。
 
----
+本文的默认入口描述依据完整读取CLI/HTTP与native网关、领域、工作流、存储和岗位加载器（A）；继承平台目录仅列为兼容导航，递归实现与当前目标环境运行状态未由本文验证（B/D）。本次详细阅读清单与公开内容验证落在`docs/evidence/smart-home-depth/`，旧验收证据保持对应旧基线。
 
-## L0 环境层 · 电脑/浏览器自动操作（computer-use，本仓自带，生产可用）
+## L0 门店业务与背景
 
-本仓 `packages/base/computer-use/` 自带三层感知桌面操作能力（65 个动作，**克隆即可用，
-也可一键装到生产专用工作站**）。CodeBuddy 沙箱技能路径 `/root/.codebuddy/skills/computer-use/` 与仓内 toolkit 同栈同源、命令可互换。
-**这是最容易被第三方 Agent 忽略、也最关键的一项**——详见 [`agent-computer-guide.md`](agent-computer-guide.md)。
+| 工作 | 入口与资料 | 看什么结果 |
+| --- | --- | --- |
+| 成都模拟门店 | `node scripts/business-management.mjs init --demo`；[实战手册](SMART-HOME-STORE-PLAYBOOK.md) | 蜀光智家背景、各阶段客户与工程；全部synthetic，任务需宿主实际执行 |
+| 行业知识 | `industry.context`；`library/industry-context.json` | 官方品牌参考、门店/产品/体验/渠道背景；不是真实销售目录或品牌授权 |
+| 来源到客户 | `lead.create`、`lead.enrich`、`customer.upsert`；[客户流程](02-新客户首次接入完整流程.md) | 残缺线索可接续；AI保存补充草案，人类确认后应用事实；未知字段、版本、来源和用途授权明确 |
+| 体验与销售 | `experience.schedule`、销售助理/陪练/邀约岗位 | 拟议体验、话术、练习与准备包；客户确认和外部消息分别判断 |
+| 点位与方案 | `survey.record`、`pointPlan.record`、`design.record`、`solution.build` | 房间、尺寸、坐标、场景/BOM与精确版本证据；不替代现场测量 |
+| 价格与合同 | `quote.create/request_approval`、`contract.create/request_approval/record_signing` | 价格复算、内容摘要、待审与人类签约证据；草案不形成外部承诺 |
+| 施工与验收 | `construction.record`、`project.create/milestone`、采购/调试/验收操作 | 顺序依赖与人类现场记录；软件图形和本地提交不证明现场完成 |
+| 售后与经营 | `aftercare-loop`、`management-loop`、经营助理与店长助理 | 分级、回访、指标、交接、岗位任务与未决事项 |
 
-| 能力 | 调用 | 验证 |
-|---|---|---|
-| 桌面预检（一键拉起 Xvfb/浏览器/VNC） | `pnpm computer:preflight`（仓内 toolkit/preflight_check.sh，安装路径可用 COMPUTER_USE_INSTALL_DIR 覆盖） | 退出码 0 |
-| L1 浏览器 DOM 操作（零 token，32 动作） | `pnpm computer '{"action":"browser_goto"/"browser_snapshot"/"browser_click"/"browser_fill", ...}'` | 返回 JSON 含 url/snapshot |
-| L2 全 GUI 无障碍树（零 token） | `pnpm computer '{"action":"accessibility_tree","app_name":"chromium"}'` | 返回语义树 |
-| L3 截图/键鼠（高 token，兜底） | `pnpm computer '{"action":"screenshot"/"left_click"/"type"/"key", ...}'` | base64 图像 |
-| 人类旁观窗口（noVNC） | 预检后打开 6080 端口预览 | 用户可实时观看 |
-| 屏幕录制 | `start_recording` → 操作 → `stop_recording` | `/workspace/computer-use-recordings/` |
-| 生产工作站一键安装（增强） | `sudo bash packages/base/computer-use/toolkit/install.sh`（部署指南 [`computer-use-production.md`](computer-use-production.md)） | `pnpm computer:smoke` 12 项全绿 |
-| HTTP 远程驱动服务（增强，大脑/手分离） | `COMPUTER_USE_TOKEN=<令牌> pnpm computer:serve` → POST :9763/action | /health 探活 + 401 鉴权 |
-| MCP server（增强，Agent 原生发现） | `pnpm computer:mcp`（stdio JSON-RPC，4 tools） | initialize/tools/list 握手 |
-| publish-rpa 驱动注入 | `asPublishRpaDriver(new ToolkitDriver())`（packages/base/computer-use/driver.ts） | BrowserDriver 同形接口 |
-| 端到端冒烟（12 项，需图形环境） | `pnpm computer:smoke` | PASS=12 FAIL=0 |
-| 单测（CI 安全，8 例） | `pnpm vitest run packages/base/computer-use` | 全绿 |
+精确字段、枚举、必填与权限，以`describe <operation>`和[业务实现矩阵](SMART-HOME-BUSINESS-MATRIX.md)为准，不用本文短表替代schema。
 
-## L1 运行层 · 把系统跑起来
+## L1 本机工作台、CLI与MCP
 
-| 能力 | 调用 | 验证 |
-|---|---|---|
-| **一键安装（克隆后第一条命令）** | `pnpm setup`（scripts/bootstrap.sh：环境检查→.env→依赖→PG→迁移种子→可选桌面栈，幂等） | 汇总 PASS/FAIL=0 阻断 |
-| **三端全貌一键预览（首启强制）** | `pnpm preview:all`（scripts/preview-all.sh）→ PC:3000 / B移动:3001（高保真+手机壳）/ C移动:3002（H5 服务前台），强制 Mock 模式 | 三端均可访问，验收见 `PREVIEW_CHECKLIST.md` |
-| 环境一屏自检 | `pnpm doctor`（scripts/doctor.sh） | 退出码 0 无 ❌ 阻断项 |
-| 数据库（PG17+pgvector） | `docker start workloom-im-pg`（初始建库见 `docker-compose.yml`） | health=healthy |
-| 数据库迁移 | `pnpm db:migrate` | 迁移版本号推进无报错 |
-| 开发双端 | `pnpm dev` → server:8787（tRPC `/trpc/*`）+ web:5173（启动提示 scripts/dev-note.js） | `curl -o /dev/null -w %{http_code} localhost:5173` = 200（8787 无 /healthz 属正常） |
-| 一键启动（替代入口） | `bash scripts/start.sh`（macOS/Linux；自动补 .env） | 双端就绪 |
-| 停止 | `bash scripts/stop.sh` | 端口释放 |
-| 数据重置（回干净演示集） | `bash scripts/reset.sh` | 演示数据集复位 |
-| 无 docker 环境重建 | `bash scripts/devbox.sh`（用户态，无需 root/docker） | 环境可用 |
-| 酒店获客演示种子 | `pnpm db:seed` | 种子回报事件/员工/对象/知识库 385 问计数 |
-| 全链路演示脚本 | `pnpm demo` | 输出各链路演示结果 |
-| 数字孪生模拟 | `pnpm demo:twin`（simulate-twin.ts） | 见 docs/DEMO-TWIN.md |
-| 孪生快照 / 恢复 | `pnpm demo:twin:snapshot`（snapshot-twin.sh）/ `pnpm demo:twin:restore`（restore-twin.sh） | 快照生成/回滚 |
-| 孪生实时精灵 | `pnpm demo:twin:live`（twin-genie.ts） | 实时事件流输出 |
-| Mock 数据统一口径 | `mock/README.md` | 三端共享同一数据源 |
+```bash
+node scripts/business-management.mjs doctor
+node scripts/business-management.mjs setup --client all
+node scripts/business-management.mjs init --demo
+node scripts/business-management.mjs serve
+```
 
-## L2 验证层 · 质量与发布纪律（硬性）
+| 入口 | 作用 | 验证条件 |
+| --- | --- | --- |
+| `http://127.0.0.1:9393` | 桌面/手机浏览器读取同一SQLite工作区 | API真实返回、桌面/手机可操作、空/错/加载状态明确 |
+| `catalog` / `describe <operation>` | 操作、工作流、岗位、技能、风险与输入schema | 输出来自当前运行时，不用固定数字替代 |
+| `call <operation> --input-file <path>` | agent读写入口 | schema、范围、幂等、角色与业务规则通过 |
+| `task.claim/submit/fail` | 当前宿主模型领取、生成、提交或记录失败 | 有实际宿主执行日志、有效租约和结构化产物 |
+| `workflow.tick` | 依赖推进、到期和租约恢复 | modelCalls=0；模型推理仍需宿主会话 |
+| `goal.report` / `ledger.verify` | 本地实测指标与事件/投影/回执校验 | 无编数、无账本异常；不解释为外部结果 |
+| `approve` / `human-call` | 店主人类决断与现场证据入口 | 真实TTY确认或浏览器终端授予owner会话，核对具体摘要 |
+| `mcp` / 项目配置 | Codex、千问办公、WorkBuddy可发现的stdio服务 | 客户端协议配置和真机验收分别记录，MCP固定agent |
+| `scenario.list/import` | 查询或导入封印的模拟历史 | import仅sandbox且operator/owner，保留dataset/version/digest与未真实人审标识 |
 
-| 能力 | 调用 | 验证 |
-|---|---|---|
-| 主测试套件（445 条） | `pnpm suite` | 全绿，exit 0 |
-| **发布门禁（未全过禁止发布）** | `pnpm release:gate` | 全项通过，exit 1=禁止发布 |
-| 五元事件验链 | `pnpm db:verify-chain` | 链完整无断点 |
-| C 端服务台 HTTP 冒烟 | `node scripts/e2e-service-c.mjs`（node 直连，不经 vitest） | 全项通过 |
-| dsh headless 回归门禁 | `bash scripts/dsh-gate.sh`（kill -9 重放验收） | 退出码 0 |
-| 服务台评估（金标集） | `node scripts/eval/service-c-eval.mjs`（golden-set.json，报告入 scripts/eval/report/） | 命中率达标 |
-| 类型检查 / 单元测试 | `pnpm typecheck` / `pnpm test` | 全绿 |
-| 能力巡游（本地图可执行版） | `bash scripts/agent-tour.sh [--full]` | PASS 全绿 |
+Node最低版本由源码检查，模型使用宿主当前会话，不读Hotel旧模型API配置。命令不自动加载`.env`。数据范围、配置冲突、敏感联系引用、租约缓存与本机信任边界见[接入文档](AI-WORKBENCH.md)。
 
-> 注意：跑测试前**先停掉 8787/5173 残留服务**——残留服务不仅致 E2E 打错库，dev 侧夜班/扩编等后台节拍产生的提案与事件还会污染套件断言（实测 R-26 误报）。若库已被运行态数据污染：`bash scripts/reset.sh` 或重建库 → `pnpm db:migrate && pnpm db:seed` 后重跑。
+## L2 验证与交付
 
-## L3 底座包层 · packages/
+| 检查 | 命令 | 应保存的证据 |
+| --- | --- | --- |
+| 独立业务与传输 | `pnpm test:business` | 正常、边界、错误、角色、版本、幂等、并发、租约与回执实际结果 |
+| 行业资产 | `pnpm exec tsx --test bundles/smart-home/assets.test.mts` | 实际加载器、摘要、岗位技能归属与pipeline一致 |
+| 类型与单元测试 | `pnpm typecheck` / `pnpm test` | 当前提交的非零失败及时修复 |
+| 产品/投影/治理 | `pnpm product:verify` / `pnpm projections:check` / `pnpm bundle:governance` | 入口身份、默认行业资产、投影与治理绑定 |
+| 能力导览 | `pnpm capabilities:check` | 自动文档与代码无漂移 |
+| 浏览器工作台 | `node scripts/check-business-workbench.mjs` | 桌面/手机/窄屏状态与操作、源SHA和实际截图 |
+| 双语介绍页 | `node scripts/check-business-site.mjs` | 导航、语言、FAQ、无JS、布局、资源与产品边界 |
+| 真实宿主任务 | 当前AI工作台执行claim/submit | 真实宿主过程与业务回执分别保存；合成业务不变成真实业绩 |
 
-系统**自身**内置的自动化机制，改代码时优先复用，不要绕过：
+当前客户端、物理设备、客户、渠道、资金和生产环境必须分别声明验证口径。旧提交的通过记录不能证明后续新增功能已经测过。
 
-### packages/base/（业务底座）
+## L3 继承平台与公共包导航
 
-| 包 | 能力 | 关键点 |
-|---|---|---|
-| `fence-engine` | 围栏 DSL 执行引擎（事前裁决） | 支持列表字面量/`in`/`contains`/`contains_any`；缺失路径比较语境宽容 |
-| `captain` | L2 编排（ASK/QUEST 规划与派发） | QUEST 内容域五步拆解模板 |
-| `night-shift` | 夜班自动运行（离线任务推进） | ensureReady 幂等 |
-| `model-router` | 模型路由（离线确定性模型/mock 可跑） | `TOOL_UNVERIFIED_RATE=0` 关闭扰动 |
-| `workdata` | 五元事件 + RLS 工作区隔离 + 记忆/检索 | 事件号源走 `biz_events_max_event_no()` SECURITY DEFINER 函数 |
-| `im-channels` | IM 渠道（企微等出入站） | 通道驱动可 mock；插件安装见 scripts/install-im-channels.sh |
-| `service-channels` / `service-dialog` / `service-kb` / `service-ticket` | C 端客服四件：渠道/对话/知识库/工单 | C 端网关 `/c/*`；知识库 385 问预置 |
-| `inspection` / `review-console` | 巡检 / 人审台 | 审批必审项由围栏驱动 |
-| `bundles` | Bundle 装配器（preset/围栏/技能/触发器装载） | 装配在 RLS 属地工作区内执行 |
-| `skills` | 技能安装/卸载/灰度/冲突检测 | 签名源与资产复用校验 |
-| `tenancy` | 租户/工作区/成员 + 演示 token | signDemoToken/verifyToken |
-| `wizard` | 落地向导（接真实数据） | docs/02 配套 |
-| `testing` | 测试工具基座 | 套件共用 |
+以下是继承资产导航（B），不是默认门店已启用或生产可用证明。默认SQLite与继承PostgreSQL当前没有双向同步；native的任务、审批和local.sqlite.commit不能替代平台的线程、tRPC授权与事件。
 
-### packages/ 其他
+| 目录/资产 | 可以继续研究什么 | 独立前提 |
+| --- | --- | --- |
+| `packages/base/fence-engine`、`workdata`、`tenancy` | 公共围栏、事件与RLS范围 | 目标平台配置、数据库和实际回归 |
+| `captain`、`night-shift`、`model-router` | 平台编排、节拍与模型路由 | 配置与后台环境；不能归因成native持续推理 |
+| `service-*`、`im-channels` | C服务前台、工单、知识与渠道 | 身份、行业adapter、实际授权和外部回执 |
+| `computer-use` | 浏览器/桌面驱动与工作站 | 环境、安装、权限和真机实测，不能克隆即保证可用 |
+| `bundles`、`skills`、`wizard` | 平台装配、技能与落地机制 | 当前清单、信任摘要与对应工作区 |
+| `apps/web`、`apps/webb`、`apps/webc` | PC/B移动/C移动行业扩展 | PostgreSQL平台运行链与各端验收 |
+| `apps/desktop`、发行工作流 | 签名安装器与平台分发 | 受保护发布、签名与独立部署验证 |
+| `bundles/hotel`、`docs/demo`、`DEMO-TWIN.md` | Hotel历史演示与兼容回归 | 明确历史/模拟标识，不进入默认门店叙事 |
 
-| 包 | 能力 |
-|---|---|
-| `db` | 全部 SQL 迁移（0001~0017+，sha256 漂移拒跑） |
-| `runtime` | 意图路由（规则+LLM 分类器）、QUEST 执行、L3 工具注册 |
-| `shared` | 跨端共享类型/工具 |
+平台源码开发使用`pnpm install --frozen-lockfile`、`pnpm setup:foundation`、`pnpm dev:foundation`。`pnpm db:seed`默认全屋智能沙箱资产，酒店兼容种子需显式`pnpm db:seed:hotel-compat`。平台数据重置或生产部署应遵循具体资产规程，不把历史演示快捷命令当作门店首启指令。
 
-## L4 行业 Bundle 层 · bundles/
+## 给后续AI代理的执行纪律
 
-| Bundle | 内容 | 入口 |
-|---|---|---|
-| `hotel/` | 酒店垂直包：围栏、技能、员工、对象、管线 |
+先读取当前产品清单、业务目录、已安装岗位技能和真实对象，再选择任务。直接追到实现和当前schema，未知字段保留未知，不绕过授权、兼容、财务、工程顺序或外部禁用。模型产物只有提交并读回后才算本地完成；人类确认、真实现场和平台执行各需自己的证据。
 
-## L5 技能资产层 · skills/official/
-
-系统自带的可复用技能（Agent 可按各 SKILL.md 加载执行）：
-
-`release-gate`（发布门禁 SOP）· `industry-entry`（行业接入向导）· `product-feedback`（产品反馈闭环）
-
-## L6 演示/发布/运维资产层
-
-| 资产 | 位置/调用 | 用途 |
-|---|---|---|
-| 高保真演示页（6 页，糖果色） | `docs/demo/`，经 `pnpm preview:all` :3001 + 手机壳 `shell.html` 预览 | 三端演示 |
-| 三端验收清单 | `PREVIEW_CHECKLIST.md` | preview:all 验收口径 |
-| 官网静态站 | `apps/site/`（index.html / en.html / shots） | 对外产品故事 |
-| Mac 桌面包 | `apps/desktop/HyperReality.app`；打包 `bash scripts/pack-macos.sh` | 桌面发行（RPA 真机发布载体） |
-| 发布脚本 | `bash scripts/release.sh` | 版本发布流程 |
-| IM 通道插件安装 | `bash scripts/install-im-channels.sh` | dsh-im 通道接入 |
-| TTL 生命周期清扫 | `pnpm exec tsx --env-file=.env scripts/cleanup-ttl.ts` | 过期数据清理 |
-| 销售 PPT 生成 | `python3 scripts/build-sales-pptx.py` | 销售物料 |
-| 孪生演示文档 | `docs/DEMO-TWIN.md` / `docs/TWIN-COVERAGE.md` | 数字孪生口径 |
-| 变更记录 | `CHANGELOG.md` | 版本口径 |
-| 视觉规范 | `docs/design-system.md`（Candy Design System v1.0） | UI 改动必须遵守 |
-| 发布清单 | `docs/release-checklist.md` | 发布前对照 |
-| 用户文档（4 篇） | `docs/01~04-*.md` | 业务口径参考 |
-
----
-
-## 第三方 Agent 最容易漏掉的能力（举一反三清单，全量审计版）
-
-1. **computer-use 浏览器操作**——不跑 preflight 直接 `browser_connect` 必失败，系统跑起来也从没被真正打开看过。
-2. **`pnpm preview:all`**——三端全貌唯一入口，只起 dev 只能看到 PC 一端。
-3. **`pnpm doctor`**——环境问题排查入口，比盲目重装快得多。
-4. **`pnpm release:gate`** + **`bash scripts/dsh-gate.sh`**——发布门禁与 dsh 回归门禁都是硬性纪律。
-5. **`pnpm db:verify-chain`**——改事件/号源相关代码后必跑。
-6. **`node scripts/e2e-service-c.mjs` / `scripts/eval/`**——C 端服务台的冒烟与金标评估，改 service-* 包后必跑。
-8. **`scripts/reset.sh`**——演示数据被污染后的一键复位，别手工清库。
-9. **skills/official/**——仓库自带技能，别在外面临时发明流程。
-10. **apps/site 官网 + docs/demo 演示页**——向人展示系统时直接用，不用现做 PPT。
-11. **`bash scripts/devbox.sh`**——无 docker/root 环境的替代重建路径。
-12. **`scripts/cleanup-ttl.ts`**——TTL 数据清扫，验证生命周期逻辑时使用。
-13. **demo:twin 数字孪生系列**——本仓特有，向客户展示时直接用。
+完整日常使用见[实战手册](SMART-HOME-STORE-PLAYBOOK.md)，开发协议见仓库AGENTS与受控WorkLoom上下文。

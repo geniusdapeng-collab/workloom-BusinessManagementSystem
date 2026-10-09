@@ -12,6 +12,7 @@ export class BusinessStorage {
     this.now = now;
     this.changes = null;
     this.fences = null;
+    this.importContext = null;
     try {
       const folder = resolve(dataDir);
       assert(!existsSync(folder) || !lstatSync(folder).isSymbolicLink(), 'UNSAFE_DATA_PATH', 'dataDir must not be a symbolic link');
@@ -84,7 +85,11 @@ export class BusinessStorage {
     const previous = this.get(type, id, false);
     if (create) assert(!previous, 'ALREADY_EXISTS', `${type} ${id} already exists`, 409);
     if (expectedVersion !== undefined) assert(previous?.version === expectedVersion, 'VERSION_CONFLICT', 'Entity changed since it was read', 409, { type, id, expectedVersion, actualVersion: previous?.version ?? 0 });
-    const next = { ...clone(fields), id, type, tenantId: this.tenantId, workspaceId: this.workspaceId, dataMode: this.dataMode, version: (previous?.version ?? 0) + 1, createdAt: previous?.createdAt ?? this.now(), updatedAt: this.now() };
+    // Replacing a dossier, store or SKU must retain its original synthetic
+    // corpus identity. Later local work is recorded separately in the event
+    // chain and must not turn imported fixtures into real customer records.
+    const provenance = this.importContext ? { ...clone(this.importContext), recordStatusAtImport: fields.status ?? null } : previous?.dataOrigin === 'synthetic-history-import' ? clone(previous.provenance) : null;
+    const next = { ...clone(fields), ...(provenance ? { dataOrigin: 'synthetic-history-import', synthetic: true, provenance, actualCustomerRecord: false, actualFieldWorkVerified: false, actualCashMovement: false } : {}), id, type, tenantId: this.tenantId, workspaceId: this.workspaceId, dataMode: this.dataMode, version: (previous?.version ?? 0) + 1, createdAt: previous?.createdAt ?? this.now(), updatedAt: this.now() };
     this.db.prepare('INSERT INTO entities VALUES (?,?,?,?,?,?) ON CONFLICT(tenant,workspace,type,id) DO UPDATE SET version=excluded.version,doc=excluded.doc').run(this.tenantId, this.workspaceId, type, id, next.version, canonical(next));
     const key = `${type}:${id}`;
     if (!this.changes.has(key)) this.changes.set(key, { type, id, before: previous ? { version: previous.version, digest: digest(previous) } : null });
@@ -97,7 +102,7 @@ export class BusinessStorage {
     for (const id of ids) this.fences.set(id, result);
   }
 
-  transaction(operation, input, actor, handler, risk = 'auto', fenceIds = []) {
+  transaction(operation, input, actor, handler, risk = 'auto', fenceIds = [], replayGuard) {
     try {
       this.db.exec('BEGIN IMMEDIATE');
       const verification = this.verify();
@@ -107,6 +112,7 @@ export class BusinessStorage {
       const existing = this.db.prepare('SELECT request_hash,result FROM idempotency WHERE tenant=? AND workspace=? AND key=?').get(this.tenantId, this.workspaceId, idempotencyKey);
       if (existing) {
         assert(existing.request_hash === requestHash, 'IDEMPOTENCY_CONFLICT', 'This idempotencyKey was already used for a different request or actor', 409);
+        if (replayGuard) replayGuard();
         this.db.exec('COMMIT');
         return { ...JSON.parse(existing.result), replayed: true };
       }
@@ -121,10 +127,10 @@ export class BusinessStorage {
       const prevHash = previous?.hash ?? '0'.repeat(64);
       const changes = [...this.changes.values()];
       const object = changes.length ? { type: changes[0].type, id: changes[0].id } : { type: 'runtime', id: this.workspaceId };
-      const receipt = { id: `R-${randomUUID()}`, eventId, operation, kind: 'local.sqlite.commit', mode: this.dataMode, dataMode: this.dataMode, localCommitted: true, externalVerified: false, synced: false, createdAt: this.now(), resultDigest: digest(data), changes: changes.length };
+      const receipt = { id: `R-${randomUUID()}`, eventId, operation, kind: 'local.sqlite.commit', mode: this.dataMode, dataMode: this.dataMode, localCommitted: true, externalVerified: false, synced: false, ...(operation === 'scenario.import' ? { dataOrigin: 'synthetic-history-import', humanReviewPerformed: false, modelInvocationPerformed: false, actualCashMovement: false } : {}), createdAt: this.now(), resultDigest: digest(data), changes: changes.length };
       const event = {
         event_id: eventId,
-        who: { type: actor.humanConfirmed ? 'human' : 'agent', id: actor.id, version: 'smart-home-runtime/1.0.0' },
+        who: { type: operation === 'scenario.import' ? 'synthetic-importer' : actor.humanConfirmed ? 'human' : 'agent', id: actor.id, version: 'smart-home-runtime/1.1.0' },
         context: { tenant_id: this.tenantId, workspace_id: this.workspaceId, time: this.now(), channel: actor.channel, data_mode: this.dataMode, industry: 'smart-home' },
         object,
         decision: { action: operation, before: changes.map(item => ({ type: item.type, id: item.id, ...item.before })), after: changes.map(item => ({ type: item.type, id: item.id, ...item.after })), result_digest: receipt.resultDigest, idempotency_key: idempotencyKey, request_digest: requestHash },

@@ -1,0 +1,2228 @@
+{
+  "schemaVersion": "business-management.runtime-regression/v1",
+  "taskId": "T-2026-1009-0001",
+  "actor": "/root/business_engine",
+  "startedAt": "2026-10-09T04:08:09.736482+00:00",
+  "finishedAt": "2026-10-09T04:08:19.063394+00:00",
+  "command": [
+    "/Users/mac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "--test",
+    "--test-reporter=tap",
+    "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+    "bundles/smart-home/runtime/tests/depth.test.mjs",
+    "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+  ],
+  "exitCode": 0,
+  "passed": true,
+  "counts": {
+    "tests": 145,
+    "suites": 0,
+    "pass": 145,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "sourceBefore": {
+    "bundles/smart-home/runtime/README.md": "d2b8b01edc19b096042f6a9e1ab9c228ed90b6c46d3a7db8e3fa548d56df4b57",
+    "bundles/smart-home/runtime/assets.mjs": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+    "bundles/smart-home/runtime/catalogue.mjs": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+    "bundles/smart-home/runtime/depth-catalogue.mjs": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+    "bundles/smart-home/runtime/depth-domain.mjs": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+    "bundles/smart-home/runtime/domain.mjs": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+    "bundles/smart-home/runtime/errors.mjs": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+    "bundles/smart-home/runtime/index.mjs": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+    "bundles/smart-home/runtime/scenario.mjs": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+    "bundles/smart-home/runtime/schema.mjs": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+    "bundles/smart-home/runtime/storage.mjs": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+    "bundles/smart-home/runtime/tests/business-engine.test.mjs": "6b695b6b8fee56ce2dd29d53539b974b72557e7075bac2c8b3daaafc89b8c5b1",
+    "bundles/smart-home/runtime/tests/concurrency-worker.mjs": "63547913d57204157a4654f31b09de8a659084108db5e67ccec8aa69af0930de",
+    "bundles/smart-home/runtime/tests/depth.test.mjs": "6401c4113cead692514962440815371c62ce5d64276a722f1fd3c90559dc9bd0",
+    "bundles/smart-home/runtime/tests/employee-work.test.mjs": "6536f13eadf2bceb60a61ce119986edebbf69be3299c5bea1e530da221a24cc6",
+    "bundles/smart-home/runtime/tests/scenario-worker.mjs": "37ee51c4412c97ee1d8fe3e299320226cc69f6b25814e9c36aea3712b38b1757",
+    "bundles/smart-home/runtime/workflows.mjs": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+    "bundles/smart-home/runtime/workforce.mjs": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c",
+    "bundles/smart-home/skills/acceptance-handover/SKILL.md": "8809e9b6a542296b9cc74a5940dcf7df1d19a083275857650a3f5ac8094c0901",
+    "bundles/smart-home/skills/aftercare-resolution/SKILL.md": "5cf579dd1f3a5bba5c8d496fa3bcd7334846be66081e61ca04dc4eacd37faa46",
+    "bundles/smart-home/skills/aftercare-triage/SKILL.md": "4b9160fddf208abc53823bcf192948aef3a8d7518605dd4f452cd0fc6fe2d56b",
+    "bundles/smart-home/skills/appointment-coordination/SKILL.md": "aca0e42d2b0f9a499a8a88cc02786c6e966422ae0df4079695e0a6ecd4096e0a",
+    "bundles/smart-home/skills/appointment-recovery/SKILL.md": "e5b6f9c888b569b120a48be4788f7ac0fb7415b44c6fe3032c4cc51351bbecdc",
+    "bundles/smart-home/skills/bom-check/SKILL.md": "4827f979bf4eb90aa5e047dae69d37a57687cb4d396a9c439078ccab1c8bd1f2",
+    "bundles/smart-home/skills/business-data-reconciliation/SKILL.md": "3106fdad2406b9a6d6e64efe4e13b75ead5286fa67c4fdf076c919aa0f170fa7",
+    "bundles/smart-home/skills/campaign-review/SKILL.md": "9dd755ad816f7e62d86608b84edb5f8d395112c1edcee6e8f1d4c1396ac0bd95",
+    "bundles/smart-home/skills/compatibility-verification/SKILL.md": "ff1d3f6dc2bd47fc5b0b0d1d964c3eff62592fedd1ef1a265e4aa46a5be4ff9b",
+    "bundles/smart-home/skills/consultative-sales/SKILL.md": "af876e44746d3338c4cefac6e5e43967b616ed03c3518e78fc6c896e166eb4b8",
+    "bundles/smart-home/skills/content-planning/SKILL.md": "677cd6ef0450579942bccaaf6a8c022d111d99647dc29b4b3f95728008fb490c",
+    "bundles/smart-home/skills/contract-handoff/SKILL.md": "f816945d497a887305d550016b5f07d5a502fa68d109700e30a0c56332fbee46",
+    "bundles/smart-home/skills/customer-consent/SKILL.md": "778058d18a2d39a2d223754452ac4133dffc83cbe38bf1c9b1a6872d61df7b1c",
+    "bundles/smart-home/skills/customer-followup/SKILL.md": "96f03520721aec5a4ee5520eec3f154708943f8345877b613f92ec4046793dfa",
+    "bundles/smart-home/skills/customer-handoff-check/SKILL.md": "0e3e4628c0c0d15fb83b267041df25f0077e30e57b8b12d307aa6a5c8c3132c2",
+    "bundles/smart-home/skills/data-import-qa/SKILL.md": "05246cfa08a91e14e05aa16016de53199bdb316ccc520505a150c02174234193",
+    "bundles/smart-home/skills/experience-appointment/SKILL.md": "d091e805b18da7d3165b1b384d78c4c6e3712a88652f505c953429e2ef00b590",
+    "bundles/smart-home/skills/finance-reconcile/SKILL.md": "88163ec8005486ed4d462fd798073593f2d2f6b3bec8739cc7cce550ddd3ceb5",
+    "bundles/smart-home/skills/goal-decomposition/SKILL.md": "2576fb45a991dbb7318d344a4fadc00b8c76ac3fd4c2e5bf82c593e036725998",
+    "bundles/smart-home/skills/incident-learning/SKILL.md": "04850381d261d711b520d6d8ccd7b2e2259ea40e39a78c8a823fde7902e1eaf8",
+    "bundles/smart-home/skills/installation-quality/SKILL.md": "daad5dea9e4bc1fcbddb2ccf9af3acaeb8977f72a4ba99c7acdbb5fe735b2ee2",
+    "bundles/smart-home/skills/knowledge-maintenance/SKILL.md": "268fcce808598da09911e824acabcc26bd800d6feb2ad96d2a7ff238c4c0215e",
+    "bundles/smart-home/skills/lead-profile-enrichment/SKILL.md": "8a72b05533246bd3a2a59eabf5ac965e0cbdcbe4eb53f7c274beb254e6cd643f",
+    "bundles/smart-home/skills/lead-qualification/SKILL.md": "53a76c2c8fc3c73bf037cb810dec8b01a285783c37d5143fc66b0425cad1398a",
+    "bundles/smart-home/skills/local-search-presence/SKILL.md": "0ac7acf54f3ea5cb9e6224a2938264fee371a69cced998ecb10b1c0a7b7d8b7d",
+    "bundles/smart-home/skills/market-intelligence/SKILL.md": "40a779e0913a6a939c881074b267879fe24c375e6337d3e4493b9023146a81db",
+    "bundles/smart-home/skills/network-planning/SKILL.md": "391f73c66e5ecec062de70c96df1d5541dac7907e61ec523606ba1129c3f6608",
+    "bundles/smart-home/skills/operations-daily-control/SKILL.md": "4e473177a09cff809d97b59890a15c1b7d827a8ba570acf2d68fbc091f2655ee",
+    "bundles/smart-home/skills/owner-briefing/SKILL.md": "78fb0d64838aa6bd3691c8917018723e477b252cc0924bde7a1a42511916d037",
+    "bundles/smart-home/skills/partner-channel/SKILL.md": "b4fe34e360bbd5b23b23524ff5eaf1a65c1dd0c89bb51ae8e5eb4fd0880b9a72",
+    "bundles/smart-home/skills/procurement-inventory/SKILL.md": "232fb5acf91801a03d1e110ed060f0765ed6dc498d749633c994a0e0c9dbdead",
+    "bundles/smart-home/skills/project-scheduling/SKILL.md": "112180a94478592f22465dfc89d847583d8d32188bfdad88a71fc6fac2cd5436",
+    "bundles/smart-home/skills/prospect-targeting/SKILL.md": "780536122ab20c31623032883f85d5e9d85cb0bdac859cb01ef7c8e9bb9d1ccc",
+    "bundles/smart-home/skills/quote-margin-control/SKILL.md": "e4bfb932278eec8ef53be9f0de4ff02c10c8cf3cea9ed66433623837e43e2331",
+    "bundles/smart-home/skills/referral-retention/SKILL.md": "e85da7ea5467762626193c1871a15bf897b1c529c556a72fae0651f1583f4a68",
+    "bundles/smart-home/skills/sales-coaching/SKILL.md": "22d3bec6d6a47745260f64259a2333e3d52a8ead75a2efdb9804079013b55c79",
+    "bundles/smart-home/skills/sales-meeting-prep/SKILL.md": "4471f58bd42f5054756519a92a90547ddbbb2c38187fc54c802d6309aa158652",
+    "bundles/smart-home/skills/sales-objection-brief/SKILL.md": "48c87dc9e55220913af4aa43d2d51eec1423c223e4eb5c4c42a745c769f71227",
+    "bundles/smart-home/skills/sales-quality-review/SKILL.md": "ec0b42407603601029bed4ed4d73b36023e539374635fe265c6236289f147ca0",
+    "bundles/smart-home/skills/scene-commissioning/SKILL.md": "680f9cac9de8b48f18a4eb8b5b9b2a2319bfa6c425ff7cf1eef89b000cb597c4",
+    "bundles/smart-home/skills/short-video-production/SKILL.md": "92abd4fddbf251e9a3dd9b1d92627be919475c67c834e8e8f683d496188075d7",
+    "bundles/smart-home/skills/site-survey/SKILL.md": "3df0b98f5102fc71571def53978cc354068f74fdd6acfb9081ec9190a7b2bd59",
+    "bundles/smart-home/skills/social-publishing/SKILL.md": "4aa4cb36f709791627129c8e2afa5fcfba5cc39fe3b3f5ccd518b09d25268443",
+    "bundles/smart-home/skills/solution-design/SKILL.md": "1b030c895500484fe90282f0c11e2bec98fd2e6a114de51f516876957e739611",
+    "bundles/smart-home/skills/source-lead-intake/SKILL.md": "7ba5e1a1716525255cb74998f4b9670a29481034ea257bfb3df90973a8c07182",
+    "bundles/smart-home/skills/store-demo-health/SKILL.md": "fa63797036ff20e329c8ff6af195521723255cecf4592b8817175f9e26741b34",
+    "bundles/smart-home/skills/store-diagnosis/SKILL.md": "6a547d6ea37196ea12133fe1ca7d74155f9811436598f71788ee6752d3bc3c79",
+    "bundles/smart-home/skills/store-resource-brief/SKILL.md": "1f0076c0995833f3fdf9450a70ef64353e78930e4e8e8b94482c3f3f1aafec29",
+    "bundles/smart-home/skills/store-shift-coordination/SKILL.md": "48cbda36cd1153b7fe8776f87b3f5e990d9d8b0eda831bfc49beec54af677297",
+    "bundles/smart-home/bundle.json": "66d7d5f1c9a1f0901ffa22c18a74e2012ee209d0ac859fd96e255c8c44df750b",
+    "bundles/smart-home/library/workforce.json": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c",
+    "bundles/smart-home/library/industry-context.json": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+    "bundles/smart-home/library/official-sources.json": "682d4fcdab537e5ef15af97ca137a86b46dc14bdbe01638f8c421c171bd094b9",
+    "bundles/smart-home/schemas/objects.json": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+    "bundles/smart-home/schemas/stages.json": "ae72090c1fd3a588195be6830c57c081320a949eb1535d9ec78abd7057a60d22",
+    "bundles/smart-home/schemas/archive.schema.json": "b9fcce7b21c495bdb538118f93d886f6b548c9dc76447949ef73840afbae787e",
+    "bundles/smart-home/library/skill-catalogue.json": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86",
+    "bundles/smart-home/library/native-operations.json": "855ac80da12cc8864289561d11f4ee705ba0e136cb42484773b9f82127956b23",
+    "bundles/smart-home/library/native-workflows.json": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618"
+  },
+  "sourceAfter": {
+    "bundles/smart-home/runtime/README.md": "d2b8b01edc19b096042f6a9e1ab9c228ed90b6c46d3a7db8e3fa548d56df4b57",
+    "bundles/smart-home/runtime/assets.mjs": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+    "bundles/smart-home/runtime/catalogue.mjs": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+    "bundles/smart-home/runtime/depth-catalogue.mjs": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+    "bundles/smart-home/runtime/depth-domain.mjs": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+    "bundles/smart-home/runtime/domain.mjs": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+    "bundles/smart-home/runtime/errors.mjs": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+    "bundles/smart-home/runtime/index.mjs": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+    "bundles/smart-home/runtime/scenario.mjs": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+    "bundles/smart-home/runtime/schema.mjs": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+    "bundles/smart-home/runtime/storage.mjs": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+    "bundles/smart-home/runtime/tests/business-engine.test.mjs": "6b695b6b8fee56ce2dd29d53539b974b72557e7075bac2c8b3daaafc89b8c5b1",
+    "bundles/smart-home/runtime/tests/concurrency-worker.mjs": "63547913d57204157a4654f31b09de8a659084108db5e67ccec8aa69af0930de",
+    "bundles/smart-home/runtime/tests/depth.test.mjs": "6401c4113cead692514962440815371c62ce5d64276a722f1fd3c90559dc9bd0",
+    "bundles/smart-home/runtime/tests/employee-work.test.mjs": "6536f13eadf2bceb60a61ce119986edebbf69be3299c5bea1e530da221a24cc6",
+    "bundles/smart-home/runtime/tests/scenario-worker.mjs": "37ee51c4412c97ee1d8fe3e299320226cc69f6b25814e9c36aea3712b38b1757",
+    "bundles/smart-home/runtime/workflows.mjs": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+    "bundles/smart-home/runtime/workforce.mjs": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c",
+    "bundles/smart-home/skills/acceptance-handover/SKILL.md": "8809e9b6a542296b9cc74a5940dcf7df1d19a083275857650a3f5ac8094c0901",
+    "bundles/smart-home/skills/aftercare-resolution/SKILL.md": "5cf579dd1f3a5bba5c8d496fa3bcd7334846be66081e61ca04dc4eacd37faa46",
+    "bundles/smart-home/skills/aftercare-triage/SKILL.md": "4b9160fddf208abc53823bcf192948aef3a8d7518605dd4f452cd0fc6fe2d56b",
+    "bundles/smart-home/skills/appointment-coordination/SKILL.md": "aca0e42d2b0f9a499a8a88cc02786c6e966422ae0df4079695e0a6ecd4096e0a",
+    "bundles/smart-home/skills/appointment-recovery/SKILL.md": "e5b6f9c888b569b120a48be4788f7ac0fb7415b44c6fe3032c4cc51351bbecdc",
+    "bundles/smart-home/skills/bom-check/SKILL.md": "4827f979bf4eb90aa5e047dae69d37a57687cb4d396a9c439078ccab1c8bd1f2",
+    "bundles/smart-home/skills/business-data-reconciliation/SKILL.md": "3106fdad2406b9a6d6e64efe4e13b75ead5286fa67c4fdf076c919aa0f170fa7",
+    "bundles/smart-home/skills/campaign-review/SKILL.md": "9dd755ad816f7e62d86608b84edb5f8d395112c1edcee6e8f1d4c1396ac0bd95",
+    "bundles/smart-home/skills/compatibility-verification/SKILL.md": "ff1d3f6dc2bd47fc5b0b0d1d964c3eff62592fedd1ef1a265e4aa46a5be4ff9b",
+    "bundles/smart-home/skills/consultative-sales/SKILL.md": "af876e44746d3338c4cefac6e5e43967b616ed03c3518e78fc6c896e166eb4b8",
+    "bundles/smart-home/skills/content-planning/SKILL.md": "677cd6ef0450579942bccaaf6a8c022d111d99647dc29b4b3f95728008fb490c",
+    "bundles/smart-home/skills/contract-handoff/SKILL.md": "f816945d497a887305d550016b5f07d5a502fa68d109700e30a0c56332fbee46",
+    "bundles/smart-home/skills/customer-consent/SKILL.md": "778058d18a2d39a2d223754452ac4133dffc83cbe38bf1c9b1a6872d61df7b1c",
+    "bundles/smart-home/skills/customer-followup/SKILL.md": "96f03520721aec5a4ee5520eec3f154708943f8345877b613f92ec4046793dfa",
+    "bundles/smart-home/skills/customer-handoff-check/SKILL.md": "0e3e4628c0c0d15fb83b267041df25f0077e30e57b8b12d307aa6a5c8c3132c2",
+    "bundles/smart-home/skills/data-import-qa/SKILL.md": "05246cfa08a91e14e05aa16016de53199bdb316ccc520505a150c02174234193",
+    "bundles/smart-home/skills/experience-appointment/SKILL.md": "d091e805b18da7d3165b1b384d78c4c6e3712a88652f505c953429e2ef00b590",
+    "bundles/smart-home/skills/finance-reconcile/SKILL.md": "88163ec8005486ed4d462fd798073593f2d2f6b3bec8739cc7cce550ddd3ceb5",
+    "bundles/smart-home/skills/goal-decomposition/SKILL.md": "2576fb45a991dbb7318d344a4fadc00b8c76ac3fd4c2e5bf82c593e036725998",
+    "bundles/smart-home/skills/incident-learning/SKILL.md": "04850381d261d711b520d6d8ccd7b2e2259ea40e39a78c8a823fde7902e1eaf8",
+    "bundles/smart-home/skills/installation-quality/SKILL.md": "daad5dea9e4bc1fcbddb2ccf9af3acaeb8977f72a4ba99c7acdbb5fe735b2ee2",
+    "bundles/smart-home/skills/knowledge-maintenance/SKILL.md": "268fcce808598da09911e824acabcc26bd800d6feb2ad96d2a7ff238c4c0215e",
+    "bundles/smart-home/skills/lead-profile-enrichment/SKILL.md": "8a72b05533246bd3a2a59eabf5ac965e0cbdcbe4eb53f7c274beb254e6cd643f",
+    "bundles/smart-home/skills/lead-qualification/SKILL.md": "53a76c2c8fc3c73bf037cb810dec8b01a285783c37d5143fc66b0425cad1398a",
+    "bundles/smart-home/skills/local-search-presence/SKILL.md": "0ac7acf54f3ea5cb9e6224a2938264fee371a69cced998ecb10b1c0a7b7d8b7d",
+    "bundles/smart-home/skills/market-intelligence/SKILL.md": "40a779e0913a6a939c881074b267879fe24c375e6337d3e4493b9023146a81db",
+    "bundles/smart-home/skills/network-planning/SKILL.md": "391f73c66e5ecec062de70c96df1d5541dac7907e61ec523606ba1129c3f6608",
+    "bundles/smart-home/skills/operations-daily-control/SKILL.md": "4e473177a09cff809d97b59890a15c1b7d827a8ba570acf2d68fbc091f2655ee",
+    "bundles/smart-home/skills/owner-briefing/SKILL.md": "78fb0d64838aa6bd3691c8917018723e477b252cc0924bde7a1a42511916d037",
+    "bundles/smart-home/skills/partner-channel/SKILL.md": "b4fe34e360bbd5b23b23524ff5eaf1a65c1dd0c89bb51ae8e5eb4fd0880b9a72",
+    "bundles/smart-home/skills/procurement-inventory/SKILL.md": "232fb5acf91801a03d1e110ed060f0765ed6dc498d749633c994a0e0c9dbdead",
+    "bundles/smart-home/skills/project-scheduling/SKILL.md": "112180a94478592f22465dfc89d847583d8d32188bfdad88a71fc6fac2cd5436",
+    "bundles/smart-home/skills/prospect-targeting/SKILL.md": "780536122ab20c31623032883f85d5e9d85cb0bdac859cb01ef7c8e9bb9d1ccc",
+    "bundles/smart-home/skills/quote-margin-control/SKILL.md": "e4bfb932278eec8ef53be9f0de4ff02c10c8cf3cea9ed66433623837e43e2331",
+    "bundles/smart-home/skills/referral-retention/SKILL.md": "e85da7ea5467762626193c1871a15bf897b1c529c556a72fae0651f1583f4a68",
+    "bundles/smart-home/skills/sales-coaching/SKILL.md": "22d3bec6d6a47745260f64259a2333e3d52a8ead75a2efdb9804079013b55c79",
+    "bundles/smart-home/skills/sales-meeting-prep/SKILL.md": "4471f58bd42f5054756519a92a90547ddbbb2c38187fc54c802d6309aa158652",
+    "bundles/smart-home/skills/sales-objection-brief/SKILL.md": "48c87dc9e55220913af4aa43d2d51eec1423c223e4eb5c4c42a745c769f71227",
+    "bundles/smart-home/skills/sales-quality-review/SKILL.md": "ec0b42407603601029bed4ed4d73b36023e539374635fe265c6236289f147ca0",
+    "bundles/smart-home/skills/scene-commissioning/SKILL.md": "680f9cac9de8b48f18a4eb8b5b9b2a2319bfa6c425ff7cf1eef89b000cb597c4",
+    "bundles/smart-home/skills/short-video-production/SKILL.md": "92abd4fddbf251e9a3dd9b1d92627be919475c67c834e8e8f683d496188075d7",
+    "bundles/smart-home/skills/site-survey/SKILL.md": "3df0b98f5102fc71571def53978cc354068f74fdd6acfb9081ec9190a7b2bd59",
+    "bundles/smart-home/skills/social-publishing/SKILL.md": "4aa4cb36f709791627129c8e2afa5fcfba5cc39fe3b3f5ccd518b09d25268443",
+    "bundles/smart-home/skills/solution-design/SKILL.md": "1b030c895500484fe90282f0c11e2bec98fd2e6a114de51f516876957e739611",
+    "bundles/smart-home/skills/source-lead-intake/SKILL.md": "7ba5e1a1716525255cb74998f4b9670a29481034ea257bfb3df90973a8c07182",
+    "bundles/smart-home/skills/store-demo-health/SKILL.md": "fa63797036ff20e329c8ff6af195521723255cecf4592b8817175f9e26741b34",
+    "bundles/smart-home/skills/store-diagnosis/SKILL.md": "6a547d6ea37196ea12133fe1ca7d74155f9811436598f71788ee6752d3bc3c79",
+    "bundles/smart-home/skills/store-resource-brief/SKILL.md": "1f0076c0995833f3fdf9450a70ef64353e78930e4e8e8b94482c3f3f1aafec29",
+    "bundles/smart-home/skills/store-shift-coordination/SKILL.md": "48cbda36cd1153b7fe8776f87b3f5e990d9d8b0eda831bfc49beec54af677297",
+    "bundles/smart-home/bundle.json": "66d7d5f1c9a1f0901ffa22c18a74e2012ee209d0ac859fd96e255c8c44df750b",
+    "bundles/smart-home/library/workforce.json": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c",
+    "bundles/smart-home/library/industry-context.json": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+    "bundles/smart-home/library/official-sources.json": "682d4fcdab537e5ef15af97ca137a86b46dc14bdbe01638f8c421c171bd094b9",
+    "bundles/smart-home/schemas/objects.json": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+    "bundles/smart-home/schemas/stages.json": "ae72090c1fd3a588195be6830c57c081320a949eb1535d9ec78abd7057a60d22",
+    "bundles/smart-home/schemas/archive.schema.json": "b9fcce7b21c495bdb538118f93d886f6b548c9dc76447949ef73840afbae787e",
+    "bundles/smart-home/library/skill-catalogue.json": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86",
+    "bundles/smart-home/library/native-operations.json": "855ac80da12cc8864289561d11f4ee705ba0e136cb42484773b9f82127956b23",
+    "bundles/smart-home/library/native-workflows.json": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618"
+  },
+  "sourceUnchanged": true,
+  "rawEvidence": {
+    "stdout": "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-depth-acceptance/runtime-final-sealed.tap",
+    "stdoutSha256": "bd4de04a0e2c64098839c8fe0db51f07eb267687eab6aae8da54e8c8bccfeb9b",
+    "stderr": "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BMS-depth-acceptance/runtime-final-sealed.stderr.log",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "testCases": [
+    {
+      "number": 1,
+      "name": "catalogue publishes strict schemas and all five executable workflows",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 2,
+      "name": "synthetic demo opt-in records honest local commit receipts and never completes model tasks",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 3,
+      "name": "growth workflow executes qualification, draft, appointment plan and evidence-based owner report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 4,
+      "name": "delivery workflow waits for human approval and field evidence before owner report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 5,
+      "name": "aftercare closes only after human service evidence and customer confirmation",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 6,
+      "name": "management loop checks measured metrics, generates local goals and accepts owner instruction",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 7,
+      "name": "idempotent replay preserves event and receipt; payload/actor collision fails",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 8,
+      "name": "failed artifact validation rolls back all business changes and permits corrected lease submit",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 9,
+      "name": "tenant and workspace isolation applies to entities, workflows, approvals and event chains",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 10,
+      "name": "viewer cannot write and input cannot spoof scope or approval fields",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 11,
+      "name": "MCP agent cannot approve, spoof a human actor or record physical field events",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 12,
+      "name": "quote approval binds content digest, expires and is consumed only once",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 13,
+      "name": "rejected and expired quote approvals fail the waiting workflow safely",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 14,
+      "name": "compatibility cannot be inferred from protocol and stale version evidence is rejected",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 15,
+      "name": "unknown room, duplicate BOM and scene devices outside BOM are blocked",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 16,
+      "name": "quote arithmetic uses integer cents, computes margin and blocks negative profit approvals",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 17,
+      "name": "installation order, BOM procurement bounds, safety and complete scene test matrix are mandatory",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 18,
+      "name": "customer outstanding issues prevent acceptance completion",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 19,
+      "name": "content approval remains pending connector and model cannot create an external publish receipt",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 20,
+      "name": "consent is purpose-specific, requires evidence and revocation blocks task execution",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 21,
+      "name": "failed host tasks retry to a fixed maximum; invalid token and actor are rejected",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 22,
+      "name": "task lease expiration recovers across process restart and old worker cannot submit",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 23,
+      "name": "owner pause blocks lease submission and resume restores the same valid task",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 24,
+      "name": "goal deadline cancels leased tasks rather than silently completing them",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 25,
+      "name": "append-only triggers prevent direct receipt/event updates and deletes",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 26,
+      "name": "projection tampering fails verification and blocks new writes before side effects",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 27,
+      "name": "hash-chain tampering is detected on reopen even after a raw database admin removes a trigger",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 28,
+      "name": "plain contact data, credentials, unknown fields, malformed IDs and excessive input are rejected",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 29,
+      "name": "schema boundary rejects zero targets, invalid ISO dates, empty BOM and overlong lease",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 30,
+      "name": "sandbox/live identities cannot mix and live runtime refuses test actors or synthetic seeding",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 31,
+      "name": "optimistic version conflicts prevent lost updates and immutable domain objects cannot overwrite",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 32,
+      "name": "JSON text with special characters roundtrips through bound SQL without SQL injection",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 33,
+      "name": "concurrent processes share one idempotent transaction without duplicate business objects",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 34,
+      "name": "concurrent claimers obtain at most one valid lease for the same task",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 35,
+      "name": "partial synthetic seed interruption recovers committed objects without overwriting them",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 36,
+      "name": "model cannot invent a customer budget; unqualified lead proceeds directly to owner report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 37,
+      "name": "low-margin or excessive-discount draft may be inspected but human approval cannot bypass hard limits",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 38,
+      "name": "tenant financial policy can only tighten and needs owner confirmation for threshold changes",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 39,
+      "name": "contradictory exact-version compatibility evidence blocks old favorable evidence",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 40,
+      "name": "expired compatibility and changed SKU invalidate an already drafted quote before approval",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 41,
+      "name": "mains-powered BOM validates surveyed neutral wire, voltage and cumulative load",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 42,
+      "name": "model proposed goal with a valid prerequisite starts a real child task; missing prerequisite stays waiting-input",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 43,
+      "name": "duplicate active workflows and mismatched goal metric cannot create phantom task queues",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 44,
+      "name": "maximum workflow ID leaves usable task and approval IDs; excessive workflow ID is rejected",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 45,
+      "name": "idempotency receipt forgery is detected and prevents replay of fabricated results",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 46,
+      "name": "events retain industry fence evidence for every model child operation",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 47,
+      "name": "rich scenario imports all stage documents atomically while all forty-nine skill assignments remain genuinely ready",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 48,
+      "name": "progressive intake accepts only surname without fabricating missing customer facts",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 49,
+      "name": "progressive intake accepts only alias without fabricating missing customer facts",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 50,
+      "name": "progressive intake accepts only phoneRef without fabricating missing customer facts",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 51,
+      "name": "progressive intake accepts only wechatRef without fabricating missing customer facts",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 52,
+      "name": "progressive intake accepts only buildingRef without fabricating missing customer facts",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 53,
+      "name": "progressive intake accepts only buildingName without fabricating missing customer facts",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 54,
+      "name": "empty intake, plain contact details, permission injection and fake synthetic provenance are rejected",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 55,
+      "name": "model enrichment creates a version-bound pending draft and cannot apply customer facts or permissions",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 56,
+      "name": "confirmed enrichment requires a human source, preserves field history and refuses stale lost updates",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 57,
+      "name": "two specialized enrichment skills persist real proposals, exact references and explicit readiness without replacing lead facts",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 58,
+      "name": "the public workflow catalogue exposes both specialized output contracts before a host claims its task",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 59,
+      "name": "specialized proposals reject missing lead assignment, a changed lead and fabricated extra output fields",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 60,
+      "name": "customer dossier revisions preserve previous contents and require consent, source confirmation and stable linkage",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 61,
+      "name": "point diagrams validate geometry, unique points, surveyed rooms/circuits and customer ownership",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 62,
+      "name": "engineering revision chains prevent forks, skipped revision numbers and silent mutation of old documents",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 63,
+      "name": "design and construction reject incomplete scenes, mismatched versions, wrong materials and unsafe scheduling order",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 64,
+      "name": "a point sketch stays a draft until design locates the exact room-by-SKU BOM quantities",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 65,
+      "name": "contracts require matching engineering, exact payment total and independent current quote approval",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 66,
+      "name": "contract approval binds the exact digest, signing remains human-only and projects require signed dossier-backed contracts",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 67,
+      "name": "changed customer data or expired approvals invalidate a pending contract without applying the decision",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 68,
+      "name": "business observations need a human, exact amount/quantity and local-store references while never executing money movement",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 69,
+      "name": "imported historical outcomes stay separate from real post-import local model work",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 70,
+      "name": "unknown renovation stage cannot be invented to qualify a progressively captured lead",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 71,
+      "name": "same scenario request replays its receipt and a fresh key recovers without overwriting an enriched lead",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 72,
+      "name": "whole-record dossier, SKU and store replacements retain synthetic provenance so recovery preserves human revisions",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 73,
+      "name": "actual post-import acceptance and service records count locally while imported historical totals stay fixed",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 74,
+      "name": "progressive fields enforce their upper bounds while retaining Chinese text and explicit unknowns",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 75,
+      "name": "expired contract approval cannot record signing even while its quote remains valid",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 76,
+      "name": "scenario import refuses namespace collisions atomically rather than overwriting old data",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 77,
+      "name": "a mid-import failure rolls back every fixture operation and the same request can safely retry",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 78,
+      "name": "scenario data remains isolated by tenant/workspace and survives restart without duplicate tasks",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 79,
+      "name": "live and agent imports, future/stale anchors and actor import-context spoofing are denied before records appear",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 80,
+      "name": "tampering with a imported engineering projection blocks recovery and every fact read",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 81,
+      "name": "industry context uses its declared sealed JSON source and rejects a changed source before exposing brand claims",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 82,
+      "name": "catalogue titles come from sealed Chinese labels and reject missing, duplicate or wrongly owned skill entries",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 83,
+      "name": "scenario recovery rejects changed runtime implementation inputs even when dataset name and version are unchanged",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 84,
+      "name": "four concurrent importer processes produce one atomic scenario receipt and no duplicate skill tasks",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 85,
+      "name": "installed workforce is the unique ownership source for all twenty-seven employees and forty-nine skills",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 86,
+      "name": "employee-work dispatches store-ceo/store-diagnosis with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 87,
+      "name": "employee-work dispatches store-ceo/goal-decomposition with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 88,
+      "name": "employee-work dispatches store-ceo/owner-briefing with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 89,
+      "name": "employee-work dispatches growth-director/campaign-review with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 90,
+      "name": "employee-work dispatches growth-director/partner-channel with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 91,
+      "name": "employee-work dispatches market-researcher/market-intelligence with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 92,
+      "name": "employee-work dispatches market-researcher/local-search-presence with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 93,
+      "name": "employee-work dispatches content-strategist/content-planning with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 94,
+      "name": "employee-work dispatches video-producer/short-video-production with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 95,
+      "name": "employee-work dispatches social-publisher/social-publishing with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 96,
+      "name": "employee-work dispatches lead-concierge/lead-qualification with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 97,
+      "name": "employee-work dispatches lead-concierge/customer-consent with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 98,
+      "name": "employee-work dispatches sales-consultant/consultative-sales with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 99,
+      "name": "employee-work dispatches sales-consultant/experience-appointment with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 100,
+      "name": "employee-work dispatches sales-consultant/referral-retention with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 101,
+      "name": "employee-work dispatches solution-designer/solution-design with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 102,
+      "name": "employee-work dispatches solution-designer/bom-check with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 103,
+      "name": "employee-work dispatches survey-engineer/site-survey with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 104,
+      "name": "employee-work dispatches survey-engineer/network-planning with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 105,
+      "name": "employee-work dispatches compatibility-engineer/compatibility-verification with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 106,
+      "name": "employee-work dispatches compatibility-engineer/store-demo-health with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 107,
+      "name": "employee-work dispatches quote-controller/quote-margin-control with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 108,
+      "name": "employee-work dispatches quote-controller/contract-handoff with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 109,
+      "name": "employee-work dispatches project-manager/project-scheduling with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 110,
+      "name": "employee-work dispatches procurement-controller/procurement-inventory with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 111,
+      "name": "employee-work dispatches installation-supervisor/installation-quality with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 112,
+      "name": "employee-work dispatches commissioning-engineer/scene-commissioning with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 113,
+      "name": "employee-work dispatches acceptance-auditor/acceptance-handover with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 114,
+      "name": "employee-work dispatches aftercare-specialist/aftercare-triage with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 115,
+      "name": "employee-work dispatches aftercare-specialist/aftercare-resolution with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 116,
+      "name": "employee-work dispatches aftercare-specialist/customer-followup with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 117,
+      "name": "employee-work dispatches finance-controller/finance-reconcile with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 118,
+      "name": "employee-work dispatches knowledge-steward/knowledge-maintenance with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 119,
+      "name": "employee-work dispatches knowledge-steward/incident-learning with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 120,
+      "name": "employee-work dispatches knowledge-steward/data-import-qa with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 121,
+      "name": "employee-work dispatches prospecting-specialist/prospect-targeting with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 122,
+      "name": "employee-work dispatches prospecting-specialist/source-lead-intake with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 123,
+      "name": "employee-work dispatches lead-enrichment-specialist/lead-profile-enrichment with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 124,
+      "name": "employee-work dispatches lead-enrichment-specialist/customer-handoff-check with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 125,
+      "name": "employee-work dispatches appointment-coordinator/appointment-coordination with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 126,
+      "name": "employee-work dispatches appointment-coordinator/appointment-recovery with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 127,
+      "name": "employee-work dispatches sales-assistant/sales-meeting-prep with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 128,
+      "name": "employee-work dispatches sales-assistant/sales-objection-brief with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 129,
+      "name": "employee-work dispatches sales-coach/sales-coaching with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 130,
+      "name": "employee-work dispatches sales-coach/sales-quality-review with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 131,
+      "name": "employee-work dispatches business-operations-assistant/operations-daily-control with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 132,
+      "name": "employee-work dispatches business-operations-assistant/business-data-reconciliation with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 133,
+      "name": "employee-work dispatches store-manager-assistant/store-shift-coordination with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 134,
+      "name": "employee-work dispatches store-manager-assistant/store-resource-brief with its entire procedure and persists only a planning report",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 135,
+      "name": "assignment fails atomically for missing, unknown or conflicting employee/skill inputs",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 136,
+      "name": "unknown, empty, duplicate and cross-store references never create a task queue",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 137,
+      "name": "references cannot reach another tenant through shared SQLite storage",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 138,
+      "name": "changed assigned object versions block claim and submission rather than silently using stale evidence",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 139,
+      "name": "plan evidence must cite assigned objects and exact versions; corrected artifact can use the same lease",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 140,
+      "name": "next action validates accountable skill ownership and same-store references without executing it",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 141,
+      "name": "plan schema and privacy checks reject forged execution fields, secrets, contact details and empty evidence",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 142,
+      "name": "transport actor and lease binding remain strict for generic employee work",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 143,
+      "name": "planning artifacts, model attribution, procedure digest and receipts survive engine restart",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 144,
+      "name": "management decomposition creates actual claimable employee tasks and rejects mismatched ownership atomically",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    },
+    {
+      "number": 145,
+      "name": "tampered installed skill text fails before an engine can expose it as trusted instructions",
+      "actual": "passed",
+      "evidenceGrade": "B",
+      "preconditions": "Isolated synthetic local fixture established by the named test; no real customer, external connector, payment or field work.",
+      "steps": "Run the named complete test implementation and its fixture setup/assertions through the Node test runner.",
+      "expected": "Every domain invariant and expected denial/error asserted by that test must hold.",
+      "sourceFiles": [
+        "bundles/smart-home/runtime/tests/business-engine.test.mjs",
+        "bundles/smart-home/runtime/tests/depth.test.mjs",
+        "bundles/smart-home/runtime/tests/employee-work.test.mjs"
+      ]
+    }
+  ],
+  "boundaries": [
+    "Synthetic unit/regression fixtures only; actual host-model invocation is verified by a separate root-owned process proof.",
+    "Human approval tests exercise sandbox-authenticated actors and do not establish real customer approval.",
+    "No external publication, messages, payments, purchases or real device actions were executed."
+  ]
+}

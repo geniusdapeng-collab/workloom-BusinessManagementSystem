@@ -2,7 +2,7 @@
  "schema": "workloom.capabilities/v2",
  "repo": "business-management-system",
  "description": "经营管理系统（BusinessManagementSystem）· 全屋智能门店获客、方案报价、项目交付与售后 · 宿主AI模型驱动",
- "generatedAt": "2026-10-08T17:13:39.887Z",
+ "generatedAt": "2026-10-09T04:47:28.110Z",
  "demoPages": [
   "service-front-b-mobile.html",
   "service-front-b-pc.html",
@@ -18,10 +18,10 @@
    "title": "全屋智能门店经营（默认入口）",
    "items": [
     {
-     "name": "响应式经营工作台",
+     "name": "响应式 AI 经营工作台",
      "how": "`pnpm dev` → http://127.0.0.1:9393",
-     "desc": "目标、线索、体验、交付、售后、审批、岗位与业务记录；本机 SQLite 持久保存",
-     "id": "cap:a9a5c2026521fc08",
+     "desc": "八个工作区覆盖目标、渐进线索、客户、点位图、设计施工、合同、售后、岗位与门店产品",
+     "id": "cap:4703fc6e27ae1afa",
      "availability": {
       "discoverable": true,
       "callable": "unverified",
@@ -33,10 +33,10 @@
      }
     },
     {
-     "name": "业务操作契约 ×39",
+     "name": "业务操作契约 ×51",
      "how": "`pnpm bm catalog` / `pnpm bm:mcp`",
      "desc": "CLI/MCP/页面共用输入校验、租户范围、围栏、幂等与本地回执",
-     "id": "cap:c8ffbb21e4bf6ba9",
+     "id": "cap:e0d234db28230246",
      "availability": {
       "discoverable": true,
       "callable": "unverified",
@@ -63,10 +63,10 @@
      }
     },
     {
-     "name": "数字岗位 ×20",
+     "name": "数字岗位 ×27",
      "how": "bundles/smart-home/library/workforce.json",
      "desc": "岗位拥有已安装技能，准备任务输出准确对象版本与 SOP 摘要",
-     "id": "cap:a92f18acda546a72",
+     "id": "cap:7a8bb57ea980f629",
      "availability": {
       "discoverable": true,
       "callable": "unverified",
@@ -78,10 +78,10 @@
      }
     },
     {
-     "name": "行业技能 SOP ×35",
+     "name": "行业技能 SOP ×49",
      "how": "bundles/smart-home/skills/",
      "desc": "固定流程执行本地业务对象；通用岗位任务输出分析/草稿/计划，人类与外部动作另行待办",
-     "id": "cap:2d18c66312335fbe",
+     "id": "cap:dcc396cbe872567b",
      "availability": {
       "discoverable": true,
       "callable": "unverified",
@@ -97,6 +97,36 @@
      "how": "`pnpm setup --client all`",
      "desc": "生成当前项目 Codex/WorkBuddy 配置及千问办公导入 JSON；冲突保留，用户级配置不改",
      "id": "cap:9e1a22322fad38d4",
+     "availability": {
+      "discoverable": true,
+      "callable": "unverified",
+      "verified": "unverified",
+      "environment": null,
+      "lastSuccess": null,
+      "evidence": null,
+      "reason": "仅目录与入口元数据；没有对应运行证据"
+     }
+    },
+    {
+     "name": "成都门店经营演练",
+     "how": "`pnpm bm init --demo` / `pnpm bm scenario list`",
+     "desc": "蜀光智家虚构门店的渠道、客户、SKU、交付和经营历史；合成历史不计作新增 AI 成果",
+     "id": "cap:814f0969afd23bb8",
+     "availability": {
+      "discoverable": true,
+      "callable": "unverified",
+      "verified": "unverified",
+      "environment": null,
+      "lastSuccess": null,
+      "evidence": null,
+      "reason": "仅目录与入口元数据；没有对应运行证据"
+     }
+    },
+    {
+     "name": "全屋智能行业背景",
+     "how": "工作台「门店与产品」",
+     "desc": "门店分区、客户体验路线、渠道规则与华为/Aqara 官方参考；公开参考不能充当授权或兼容证明",
+     "id": "cap:7bea93e6cf67382a",
      "availability": {
       "discoverable": true,
       "callable": "unverified",
@@ -161,14 +191,14 @@
    ]
   },
   {
-   "icon": "🏨",
-   "title": "行业 Bundle（垂直能力包）",
+   "icon": "📦",
+   "title": "继承与扩展的工程 Bundle 目录",
    "items": [
     {
      "name": "bundles/ai-pm/",
      "how": "见 bundles/ai-pm/ 目录",
-     "desc": "围栏/技能/员工/对象/管线定义；装配结果需按环境验证",
-     "id": "cap:c2affff1597e158b",
+     "desc": "继承工程兼容资产；不是本产品默认门店行业",
+     "id": "cap:9791bd7bdf80b86a",
      "availability": {
       "discoverable": true,
       "callable": "unverified",
@@ -182,8 +212,8 @@
     {
      "name": "bundles/hotel/",
      "how": "见 bundles/hotel/ 目录",
-     "desc": "围栏/技能/员工/对象/管线定义；装配结果需按环境验证",
-     "id": "cap:2f3bfa6de7ccc126",
+     "desc": "继承工程兼容资产；不是本产品默认门店行业",
+     "id": "cap:893dd4144db06429",
      "availability": {
       "discoverable": true,
       "callable": "unverified",
@@ -197,8 +227,8 @@
     {
      "name": "bundles/smart-home/",
      "how": "见 bundles/smart-home/ 目录",
-     "desc": "围栏/技能/员工/对象/管线定义；装配结果需按环境验证",
-     "id": "cap:fa9d6495fbdffda0",
+     "desc": "本产品默认行业包；全屋智能业务与数据契约",
+     "id": "cap:ef4f15865350e729",
      "availability": {
       "discoverable": true,
       "callable": "unverified",
@@ -585,10 +615,10 @@
    "title": "演示与交付资产",
    "items": [
     {
-     "name": "高保真演示页 ×6",
-     "how": "http://localhost:3001",
-     "desc": "糖果色，含手机壳容器",
-     "id": "cap:f83fe3e064fa848f",
+     "name": "继承演示资产 ×6",
+     "how": "docs/demo/",
+     "desc": "历史工程参考；全屋智能当前入口是本机经营工作台",
+     "id": "cap:9e966cf707555c47",
      "availability": {
       "discoverable": true,
       "callable": "unverified",
@@ -615,25 +645,10 @@
      }
     },
     {
-     "name": "自带技能 ×5",
+     "name": "继承公共技能目录 ×5",
      "how": "skills/official/",
-     "desc": "client-demo-recorder / component-integration / industry-entry / product-feedback 等",
-     "id": "cap:229a1a521b38ed57",
-     "availability": {
-      "discoverable": true,
-      "callable": "unverified",
-      "verified": "unverified",
-      "environment": null,
-      "lastSuccess": null,
-      "evidence": null,
-      "reason": "仅目录与入口元数据；没有对应运行证据"
-     }
-    },
-    {
-     "name": "能力导览 PPT",
-     "how": "docs/capability-tour.pptx",
-     "desc": "路演/汇报直接用",
-     "id": "cap:ba77e72f3fa367ab",
+     "desc": "公共开发与治理技能；默认门店岗位 SOP 以 smart-home 行业包为准",
+     "id": "cap:411c9dbce1a21ebe",
      "availability": {
       "discoverable": true,
       "callable": "unverified",

@@ -1,6 +1,6 @@
 # 当前 AI 工作台驱动全屋智能门店经营
 
-BusinessManagementSystem 的经营运行时独立于聊天窗口：Node.js 24 的内置 SQLite 保存目标、客户线索、勘测、方案、报价、工作流、任务租约、审批和事件回执；浏览器工作台和 CLI/MCP 共用同一业务入口。Codex、千问办公、WorkBuddy 当前会话内置模型负责领取任务、理解上下文、生成结构化产物并提交。此入口不会调用 Hotel 遗留服务的 LLM_PROVIDER/LLM_API_KEY；无需另购模型 API。
+BusinessManagementSystem 的经营运行时独立于聊天窗口：Node.js 24 的内置 SQLite 保存门店目标、残缺线索与完善草案、客户资料、勘测、点位、设计、报价、施工、合同、经营观察、工作流、任务租约、审批和事件回执；浏览器工作台和 CLI/MCP 共用同一业务入口。Codex、千问办公、WorkBuddy 当前会话内置模型负责领取任务、理解上下文、生成结构化产物并提交。此入口不会调用 Hotel 遗留服务的 LLM_PROVIDER/LLM_API_KEY；无需另购模型 API。
 
 后台 `tick` 只执行确定性调度、过期租约恢复与依赖推进；模型工作需要一个运行中的宿主会话。关闭宿主后状态仍保留，重新连接可以继续领取任务。
 
@@ -15,7 +15,15 @@ node scripts/business-management.mjs setup --client all
 node scripts/business-management.mjs serve
 ```
 
-`init --demo` 仅支持 sandbox，生成明确标为 synthetic 的假门店、假 SKU 和两条业务工作流。它不代表真实兼容测试、客户授权或交付业绩。真实经营用独立 live 目录，先配置门店与实际证据。
+`init --demo` 仅支持 sandbox，导入 `shuguang-chengdu-v1` 完整成都演练背景：蜀光智家 · 成都高新体验店、合成SKU/价格、分阶段线索与客户、点位设计、施工合同、工程售后和经营观察。它不表示华为/Aqara品牌授权、真实兼容测试、客户授权、签约或交付业绩。历史来源标为 `synthetic-history-import`，保留dataset/version/digest和未真实人审标识；待执行AI任务不伪造完成产物或modelTrace。旧 `seedSyntheticDemo` 仅为测试回归小样本，不是默认门店背景。真实经营用独立live目录，先配置门店与实际证据。
+
+```bash
+node scripts/business-management.mjs scenario list
+node scripts/business-management.mjs scenario import
+node scripts/business-management.mjs call industry.context
+```
+
+`scenario import` 是专用CLI沙箱operator演练入口，允许非TTY导入合成历史，始终声明没有真实人审/客户联系/资金/设备动作；普通`call`与MCP使用agent，不能导入历史。数据集导入按封印摘要校验、原子提交，相同修订可恢复且不覆盖业务对象；代码、规程或数据集摘要变化后，旧键重放与新键恢复都会拒绝，应保留旧范围并创建新的sandbox。行业背景只读来自 `library/industry-context.json`，含门店、产品参考、体验、渠道、官方引用和模拟披露六部分。
 
 默认浏览器地址为 `http://127.0.0.1:9393`。端口按 `--port`、环境变量 `BMS_PORT`、`product.manifest.json` 的 `workbench.port` 顺序取值。服务只绑定 127.0.0.1，拒绝异域 Origin 和未知 Host。
 
@@ -42,7 +50,7 @@ node scripts/business-management.mjs setup --client codex --mode live --data-dir
 
 示例任务：
 
-> 使用 business-management 技能，读取当前沙箱的目标和工作流，推进 synthetic-growth-flow 所有可由当前内置模型完成的任务。每个 artifact 按 claim 返回的 schema 生成，提交后读实测指标；不要把合成样本说成真实经营业绩。遇到审批或现场证据就交付待办。
+> 使用 business-management 技能，读取当前成都模拟门店的行业背景、目标、残缺线索与AI任务。优先推进线索完善、到店准备、销售陪练和店长经营待办；每个artifact按claim返回的岗位规程与schema生成，提交后读回实际指标。区分模拟历史与本次真实宿主执行，遇到审批或现场证据保留待办。
 
 项目级配置及 stdio 字段以 [Codex 官方 MCP 文档](https://learn.chatgpt.com/docs/extend/mcp) 为准。工作台仍需遵循宿主自身的工具审批与项目信任设置，本脚本不会修改用户级配置、登录状态或账号凭据。
 
@@ -65,48 +73,38 @@ MCP 工具名为 `bms_` 加操作名，将 `.` 替换为 `_`。CLI 保留原操�
 ```bash
 node scripts/business-management.mjs catalog
 node scripts/business-management.mjs describe task.claim
-node scripts/business-management.mjs call task.claim --input '{"workflowId":"synthetic-growth-flow","idempotencyKey":"growth-claim-001"}'
+node scripts/business-management.mjs call task.list
+node scripts/business-management.mjs call task.claim --input '{"idempotencyKey":"host-claim-001"}'
 ```
 
 领取返回 taskId、leaseToken、expiresAt、outputSchema，以及包含门店、目标、实测指标、关联对象、SKU和兼容记录的 task.context。leaseToken 只用于这一次租约，不要把它写入报告。当前模型根据任务 instructions 生成 artifact，再调用 `task.submit`：
 
 任务实体保存租约哈希，SQLite 的幂等缓存保存完整领取响应及原始明文 leaseToken，以便相同请求、操作者和渠道重放；缓存没有单独加密。对象、任务列表、工作流详情与状态快照会移除租约哈希，经营事件只返回请求/结果摘要，不开放完整幂等缓存。文件、备份和本机账号权限仍能读取缓存，应按敏感业务数据保护。重放旧响应只返回旧期限，不能让过期、已完成或被重新领取的租约恢复有效；真正提交仍校验当前租约和操作者。隔离实测见 [租约存储与读取边界](evidence/lease-storage-boundary.json)。
 
-```json
-{
-  "taskId": "synthetic-growth-flow:qualification",
-  "leaseToken": "<刚领取的租约值>",
-  "artifact": {
-    "fit": true,
-    "budgetCents": 200000,
-    "renovationStage": "finished",
-    "needs": ["合成客户需要客厅灯光场景"],
-    "reason": "这里只引用合成线索已记录的预算和需求",
-    "missingInformation": []
-  },
-  "modelTrace": {
-    "host": "codex",
-    "model": "host-default-unspecified",
-    "invocationRef": "my-host-run-001"
-  },
-  "idempotencyKey": "growth-submit-001"
-}
-```
-
-上述 artifact 只适用于明确写了预算、装修状态的合成测试线索。真实线索缺信息时应填 missingInformation，不能套用演示值。model 使用宿主公开的实际名称；不知道具体型号时用 `host-default-unspecified`，不猜型号。
+提交JSON文件须包含领取返回的 `taskId` 与 `leaseToken`、符合该任务 `outputSchema` 的 `artifact`、本次宿主 `modelTrace` 和新的 `idempotencyKey`。每种阶段的schema不同，先读取再生成；不要把别的客户或旧回归样本产物复制到当前任务。客户预算、装修阶段和需求必须来自记录；缺信息应填缺口，不能猜值。`modelTrace.host`填实际宿主，`model`填宿主公开实际名称；不知道具体型号用`host-default-unspecified`。`invocationRef`关联本次宿主过程日志，不要编执行轨迹。
 
 提交文件后执行：
 
 ```bash
 node scripts/business-management.mjs call task.submit --input-file work/submit.json
-node scripts/business-management.mjs workflow tick --input '{"workflowId":"synthetic-growth-flow","idempotencyKey":"growth-tick-001"}'
-node scripts/business-management.mjs call goal.report --input '{"goalId":"synthetic-growth-goal"}'
+node scripts/business-management.mjs workflow tick --input '{"idempotencyKey":"host-tick-001"}'
+node scripts/business-management.mjs call entity.list --input '{"type":"goal"}'
 node scripts/business-management.mjs call ledger.verify
 ```
 
-继续 claim/submit 到完成或明确门禁。失败用 task.fail 记录 error/retryable；失效租约先 tick 再领取。runtimeModelCalls 始终是 0，因为模型发生在宿主中。modelTrace 与 hostModelExternallyVerified=false 是本地宿主提交声明；另行保存宿主执行日志才能证明实际调用。
+从当前目标列表选定真实存在的goalId，再调用`goal.report`读取当前指标。继续claim/submit到完成或明确门禁。示例幂等键用于一次请求，新的业务请求使用新键；同一请求响应中断才重放原键。失败用 task.fail 记录 error/retryable；失效租约先 tick 再领取。runtimeModelCalls 始终是 0，因为模型发生在宿主中。modelTrace 与 hostModelExternallyVerified=false 是本地宿主提交声明；另行保存宿主执行日志才能证明实际调用。
 
 管理工作流的 plan 产物可提出子目标；带准确 leadId/surveyId/ticketId 时运行时自动启动对应子工作流，无先决对象时记 waiting-input。上下文包含当前活动工作流，避免对同一输入重复排队。资格不足的获客工作流会跳过内容/体验阶段并生成汇报，因此应一起读取 skippedPhases 和目标实测指标，不能把 completed 状态直接解释成四阶段全做或经营目标达成。
+
+## 线索完善、客户资料与工程版本
+
+`lead.create`允许已有称呼/姓氏/联系引用/楼盘信息任一项作为起点，channel可unknown，意向与预算可未知；授权状态仍单独记录。`contactRef`、`phoneRef`、`wechatRef`用于受控存储的不透明引用，不应填明文联系方式。输入校验拒绝可检测的手机号、电子邮箱和敏感字段，无法识别所有可能的微信别名，记录者仍需遵守引用规则。
+
+`lead.enrich`需要leadId、expectedVersion、patch、source和evidence。AI使用`source=model-proposal`时只保存`leadEnrichment`待确认草案，`customerFactsApplied=false`，不修改客户事实或授予授权。确认后的客户事实必须由owner/operator人类确认通道应用，变更包含来源与历史。`customer.upsert`需要consultation许可和人类确认，关联原线索，不允许改挂另一客户或门店。
+
+工程链为客户/勘测 → 点位计划与已验证solution/BOM → design → construction → contract。点位房间尺寸与坐标使用毫米，坐标必须在房间范围，设备与回路引用必须存在。点位草图允许暂缺设备，但design要求每个设备点绑定准确SKU、分房间/SKU点位数量完整匹配BOM，并覆盖已验证方案的每个场景；网络/插座辅助预留点可不绑定SKU。construction数量准确匹配BOM；文档修订连接最新前版，客户、SKU、点位或方案变化会使旧快照失效。
+
+合同草案需要合规报价与一致的设计/施工/客户引用；付款计划总额等于报价。合同审批需已批准且有效报价，合同签约再需要独立合同批准和客户证据。资料齐全的工程项目必须引用已签约合同。本地`business.record`登记经营观察与计划，不执行资金。完整schema与错误见 `describe` 和[业务实现矩阵](SMART-HOME-BUSINESS-MATRIX.md)，门店场景见[实战手册](SMART-HOME-STORE-PLAYBOOK.md)。
 
 ## 店主操作与现场证据
 
@@ -127,7 +125,7 @@ node scripts/business-management.mjs human-call survey.record --input-file work/
 ## 边界与审计
 
 - 所有写操作需要幂等键；修改旧门店/SKU需 expectedVersion。事务将业务对象、幂等回执和事件链一起提交，失败回滚。
-- SQLite 按 tenant/workspace 过滤；沙箱和 live 不允许复用同一范围口径。输入拒绝明文联系方式、账号密钥及提权字段。
+- SQLite按tenant/workspace过滤；sandbox和live不允许复用同一范围口径。live禁止合成历史和合成证据。输入拒绝可检测的明文手机号/邮箱、账号密钥及提权字段；不能据此保证任意文本都完成隐私识别。
 - 现场勘测、合同、采购、安装、调试、客户验收、售后完成由 owner/operator 且 humanConfirmed 才能录入；MCP 无提权通道。
 - 方案校验勘测房间、BOM、精确 SKU 版本的兼容证据；报价计算整数分、毛利和折扣；审批绑定摘要和有效期；施工/调试/验收强制顺序。
 - 本地回执 kind 为 `local.sqlite.commit`，externalVerified=false。公开发布、消息、付款、真实设备控制连接器均 disabled，人类批准也不能开启。
@@ -146,4 +144,4 @@ node scripts/check-business-workbench.mjs
 
 本机已安装 Google Chrome 时可运行 `node scripts/check-business-workbench.mjs --channel chrome`；它使用独立浏览器上下文，不复用个人登录状态。`--browser` 支持 chromium、firefox、webkit；`--channel` 仅用于 chromium。`--source-root /absolute/path/clone` 指定待测克隆，`--output /absolute/path/evidence` 指定证据目录。缺少浏览器或依赖时命令失败退出，不能把零用例解释为通过。
 
-脚本使用随机回环端口和临时独立 SQLite，运行 22 项用例，覆盖正常保存、特殊字符、校验、原始联系方式拒绝、人员会话/撤销、读失败恢复、可选对象与状态显示，验证 1440、390、320 三种宽度。UI-08 的终端授权是明确的合成自动化夹具；UI-21/UI-22 注入的状态仅检验显示，不证明业务状态迁移。JSON 含每项前置条件、步骤、预期、实际、结果及源文件 SHA256，默认写到 `docs/evidence/ui-workbench-proof.json`，截图写到 `docs/evidence/ui/`。结束后关闭浏览器、服务并删除临时数据库，调试时可加 `--keep-data` 保留它。
+脚本使用随机回环端口和临时独立SQLite，具体用例与数量以当前脚本和本次结果为准，覆盖正常保存、特殊字符、校验、敏感联系方式拒绝、人员会话/撤销、读失败恢复与各状态，并验证1440、390、320宽度。终端授权与状态注入是明确的合成自动化夹具，不证明真实人员决定或未操作的业务迁移。JSON包含每项前置、步骤、预期、实际、结果和源SHA。指定新的`--output`目录保存本次证据，避免覆盖旧基线记录；结束关闭服务、浏览器并清理临时库，调试可加`--keep-data`。

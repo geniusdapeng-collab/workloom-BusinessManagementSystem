@@ -45,12 +45,14 @@ if (smartHome) {
   const workforce = J("bundles/smart-home/library/workforce.json");
   const manifest = J("bundles/smart-home/bundle.json");
   groups.push({ icon: "🏠", title: "全屋智能门店经营（默认入口）", items: [
-    { name: "响应式经营工作台", how: "`pnpm dev` → http://127.0.0.1:9393", desc: "目标、线索、体验、交付、售后、审批、岗位与业务记录；本机 SQLite 持久保存" },
+    { name: "响应式 AI 经营工作台", how: "`pnpm dev` → http://127.0.0.1:9393", desc: "八个工作区覆盖目标、渐进线索、客户、点位图、设计施工、合同、售后、岗位与门店产品" },
     { name: `业务操作契约 ×${OPERATION_CATALOGUE.length}`, how: "`pnpm bm catalog` / `pnpm bm:mcp`", desc: "CLI/MCP/页面共用输入校验、租户范围、围栏、幂等与本地回执" },
     { name: `宿主模型工作流 ×${WORKFLOW_CATALOGUE.length}`, how: "docs/AI-WORKBENCH.md", desc: "当前工作台模型 claim→submit；调度器不调用模型；外部事实按证据保留待办" },
     { name: `数字岗位 ×${workforce.roles.length}`, how: "bundles/smart-home/library/workforce.json", desc: "岗位拥有已安装技能，准备任务输出准确对象版本与 SOP 摘要" },
     { name: `行业技能 SOP ×${manifest.workloom.provides.skills.length}`, how: "bundles/smart-home/skills/", desc: "固定流程执行本地业务对象；通用岗位任务输出分析/草稿/计划，人类与外部动作另行待办" },
     { name: "克隆后工作台配置", how: "`pnpm setup --client all`", desc: "生成当前项目 Codex/WorkBuddy 配置及千问办公导入 JSON；冲突保留，用户级配置不改" },
+    { name: "成都门店经营演练", how: "`pnpm bm init --demo` / `pnpm bm scenario list`", desc: "蜀光智家虚构门店的渠道、客户、SKU、交付和经营历史；合成历史不计作新增 AI 成果" },
+    { name: "全屋智能行业背景", how: "工作台「门店与产品」", desc: "门店分区、客户体验路线、渠道规则与华为/Aqara 官方参考；公开参考不能充当授权或兼容证明" },
   ] });
 }
 
@@ -64,8 +66,8 @@ groups.push({
 });
 
 if (bundles.length) groups.push({
-  icon: "🏨", title: "行业 Bundle（垂直能力包）",
-  items: bundles.map((b) => ({ name: `bundles/${b}/`, how: `见 bundles/${b}/ 目录`, desc: "围栏/技能/员工/对象/管线定义；装配结果需按环境验证" })),
+  icon: "📦", title: smartHome ? "继承与扩展的工程 Bundle 目录" : "行业 Bundle（垂直能力包）",
+  items: bundles.map((b) => ({ name: `bundles/${b}/`, how: `见 bundles/${b}/ 目录`, desc: smartHome ? b === "smart-home" ? "本产品默认行业包；全屋智能业务与数据契约" : "继承工程兼容资产；不是本产品默认门店行业" : "围栏/技能/员工/对象/管线定义；装配结果需按环境验证" })),
 });
 
 // 数字员工与数字人（事实探测：页面/组件/资产/语音引擎存在才列出）
@@ -130,7 +132,7 @@ const quality = [
   has("test:business") && { name: "全屋智能业务回归", how: "`pnpm test:business`", desc: "正常/边界/错误/权限/并发/摘要/租约/回执回归；实际结果见本次报告" },
   has("suite") && { name: "主测试套件", how: "`pnpm suite`", desc: "数百条场景用例逐条执行" },
   has("suite:geo") && { name: "GEO 域套件", how: "`pnpm suite:geo`", desc: "GEO 双域专项" },
-  has("suite:hotel") && { name: "酒店域套件", how: "`pnpm suite:hotel`", desc: "酒店域专项" },
+  has("suite:hotel") && { name: smartHome ? "继承酒店兼容性回归" : "酒店域套件", how: "`pnpm suite:hotel`", desc: smartHome ? "保留来源仓回归条件，不表示默认产品提供酒店经营" : "酒店域专项" },
   has("release:gate") && { name: "发布门禁", how: "`pnpm release:gate`", desc: "未全过禁止发布（硬性）" },
   has("db:verify-chain") && { name: "五元事件验链", how: "`pnpm db:verify-chain`", desc: "事件链完整性校验" },
   has("agent:tour") && { name: "Agent 能力巡游", how: "`pnpm agent:tour`", desc: "遍历登记能力的检查入口；覆盖与结果看本轮报告" },
@@ -139,10 +141,10 @@ const quality = [
 groups.push({ icon: "✅", title: "验证与质量（工程纪律）", items: quality });
 
 const assets = [
-  demoPages.length && { name: `高保真演示页 ×${demoPages.length}`, how: "http://localhost:3001", desc: "糖果色，含手机壳容器" },
+  demoPages.length && { name: `继承演示资产 ×${demoPages.length}`, how: "docs/demo/", desc: "历史工程参考；全屋智能当前入口是本机经营工作台" },
   existsSync(join(ROOT, "apps/site")) && { name: "官网静态站", how: "apps/site/index.html", desc: "对外产品故事" },
-  skills.length && { name: `自带技能 ×${skills.length}`, how: "skills/official/", desc: skills.slice(0, 4).join(" / ") + (skills.length > 4 ? " 等" : "") },
-  existsSync(join(ROOT, "docs/capability-tour.pptx")) && { name: "能力导览 PPT", how: "docs/capability-tour.pptx", desc: "路演/汇报直接用" },
+  skills.length && { name: `继承公共技能目录 ×${skills.length}`, how: "skills/official/", desc: "公共开发与治理技能；默认门店岗位 SOP 以 smart-home 行业包为准" },
+  !smartHome && existsSync(join(ROOT, "docs/capability-tour.pptx")) && { name: "能力导览 PPT", how: "docs/capability-tour.pptx", desc: "路演/汇报参考" },
   existsSync(join(ROOT, "mock/README.md")) && { name: "Mock 数据体系", how: "mock/README.md", desc: "种子 + 离线模型 + 演示直登；显式模拟环境" },
 ].filter(Boolean);
 groups.push({ icon: "🎁", title: "演示与交付资产", items: assets });
@@ -159,7 +161,7 @@ for (const group of groups) for (const item of group.items) {
 const data = { schema: "workloom.capabilities/v2", repo: repoName, description: desc, generatedAt: new Date().toISOString(), demoPages, shots, groups };
 
 // ---------- 生成 Markdown（人类版导览） ----------
-const shotBlock = smartHome ? "\n![本次全屋智能工作台沙箱截图](evidence/workbench-1440.png)\n\n[390px 手机宽度截图](evidence/workbench-390.png)。实测和边界见 BUSINESS-MANAGEMENT-ACCEPTANCE.md。\n" : shots.length
+const shotBlock = smartHome ? "\n![成都全屋智能经营工作台沙箱截图](evidence/smart-home-depth/ui/desktop-overview.png)\n\n[390px 手机线索档案截图](evidence/smart-home-depth/ui/mobile-growth.png) · [有尺寸坐标的交付点位图](evidence/smart-home-depth/ui/desktop-delivery.png)。本轮实测、来源与边界见 [全屋智能实战经营深化验收](SMART-HOME-DEPTH-ACCEPTANCE.md)；截图使用明确虚构的成都门店资料。\n" : shots.length
   ? `\n| PC 端 | B 端移动（手机壳） | C 端移动 |\n|---|---|---|\n| ${shots.includes("pc-3000.png") ? "![PC](demo/preview-shots/pc-3000.png)" : "—"} | ${shots.includes("shell-guest.png") ? "![B移动](demo/preview-shots/shell-guest.png)" : "—"} | ${shots.includes("mobile-c-3002.png") ? "![C移动](demo/preview-shots/mobile-c-3002.png)" : "—"} |\n`
   : "";
 
@@ -201,7 +203,9 @@ const readmeBlock = `<!-- CAPABILITIES:BEGIN -->
 
 > 以下为源码目录与入口清单；实际调用及结果状态见能力导览的独立证据字段，未验证项不能作交付承诺。
 
-${groups.map((g) => `- ${g.icon} **${g.title}**：${g.items.map((i) => i.name.replace(/\*\*/g, "")).slice(0, 6).join(" · ")}${g.items.length > 6 ? ` 等 ${g.items.length} 项` : ""}`).join("\n")}
+${(smartHome ? groups.filter(group => group.title === "全屋智能门店经营（默认入口）") : groups).map((g) => `- ${g.icon} **${g.title}**：${g.items.map((i) => i.name.replace(/\*\*/g, "")).join(" · ")}`).join("\n")}
+
+${smartHome ? "继承平台、历史行业与演示资产列在完整能力导览的工程目录中；默认经营入口、门店资料与 AI 岗位使用全屋智能行业包。" : ""}
 
 > 📖 完整能力导览：[docs/capabilities.auto.md](docs/capabilities.auto.md) ｜ 🤖 AI Agent 入口：[AGENTS.repo.md](AGENTS.repo.md) ｜ 🎯 首启：${smartHome ? "\`pnpm setup --client all\` → \`pnpm bm init --demo\` → \`pnpm dev\`" : "\`pnpm preview:all\`"}
 <!-- CAPABILITIES:END -->`;

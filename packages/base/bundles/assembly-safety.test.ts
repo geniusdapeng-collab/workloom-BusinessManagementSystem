@@ -63,7 +63,8 @@ describe("Verified assets and assembly transaction boundaries", () => {
   it("reads declared JSON after manifest and asset verification", () => {
     const root = fixtureRoot();
     const asset = readVerifiedBundleJsonAsset("smart-home", "library/workforce.json", root) as { roles: unknown[] };
-    expect(asset.roles).toHaveLength(20);
+    const declared = JSON.parse(readFileSync(join(sourceRoot, "smart-home", "library", "workforce.json"), "utf8")) as { roles: unknown[] };
+    expect(asset.roles).toEqual(declared.roles);
   });
   it.each([false, true])("rejects an adjacent undeclared JSON file in candidate/draft mode %s", draft => {
     const root = fixtureRoot(draft);

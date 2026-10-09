@@ -51,8 +51,8 @@ function recordFieldDelivery(f, projectId = 'synthetic-project') {
 test('catalogue publishes strict schemas and all five executable workflows', t => {
   const f = fixture(t, { seed: false });
   const catalogue = f.engine.catalog();
-  assert.equal(catalogue.employees.length, 20);
-  assert.equal(catalogue.skills.length, 35);
+  assert.equal(catalogue.employees.length, 27);
+  assert.equal(catalogue.skills.length, 49);
   assert.equal(catalogue.workflows.length, 5);
   for (const op of catalogue.operations) { assert.equal(op.schema.additionalProperties, false); if (!op.readOnly) assert.ok(op.schema.required.includes('idempotencyKey')); }
   for (const workflow of WORKFLOW_CATALOGUE) for (const phase of workflow.phases) assert.equal(phase.outputSchema.additionalProperties, false);

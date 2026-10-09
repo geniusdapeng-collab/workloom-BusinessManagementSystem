@@ -1,0 +1,596 @@
+{
+  "schemaVersion": "business-management.independent-root-integration-review/v1",
+  "taskId": "T-2026-1009-0001",
+  "actor": "/root/business_engine",
+  "recordedAt": "2026-10-09T04:54:09.898032+00:00",
+  "scope": "Independent current-task review of 27 CLI/UI/seed/generator files and selected first-party call-chain dependencies, extended by three projection dependencies.",
+  "totals": {
+    "files": 30,
+    "originalDelegatedFiles": 27,
+    "additionalDirectDependencies": 3,
+    "completeReadingA": 30,
+    "machineOnlyB": 0,
+    "samplingC": 0,
+    "unreadD": 0
+  },
+  "files": [
+    {
+      "path": ".workloom-ui.json",
+      "sha256": "5392320dd031b3cc9bbed352e51cac3e871db2f0d8ae80915458ca5c34f54ea8",
+      "bytes": 929,
+      "lines": 30,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "bundles/smart-home/ui/workbench/app.js",
+      "sha256": "23d1979baaf990beffc149abe9a6b0901df03f9887b941611819e969b6c23ee2",
+      "bytes": 62422,
+      "lines": 301,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "bundles/smart-home/ui/workbench/index.html",
+      "sha256": "8a72cb70c1f193fee547061fd6826ec2b2c634388ebb877f899adc30d095364b",
+      "bytes": 4163,
+      "lines": 43,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "bundles/smart-home/ui/workbench/style.css",
+      "sha256": "0dd8f15e9183b4765c4fcf35da69ec173acdc478c554a992858e87d414d9679d",
+      "bytes": 18923,
+      "lines": 12,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "package.json",
+      "sha256": "0d73ba68efec53fb585061257c6c4523d0b6415c8eded6693c9f2534cf73dc51",
+      "bytes": 6402,
+      "lines": 100,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "packages/base/bundles/assembly.ts",
+      "sha256": "adf16a7948477efd47a956604b5c1a690220951bebcb51b21c7338eb98447e46",
+      "bytes": 64128,
+      "lines": 1385,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "packages/base/bundles/eval-questions.ts",
+      "sha256": "6128ca6ba281648fe3b63dc00f96edbbdddccb9e196af6f96f3bf0d890393cb5",
+      "bytes": 6811,
+      "lines": 167,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "packages/base/bundles/index.ts",
+      "sha256": "5bae6b929e8921ea1e9c4fcabd0bc31ea44b0a5bdbfca78965b6b8a1704e060d",
+      "bytes": 337,
+      "lines": 7,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "packages/base/bundles/segment.ts",
+      "sha256": "2673473b0ce5684724f832fc5e8250b3b386b4f4b22b61662d4c595a72c91e93",
+      "bytes": 4413,
+      "lines": 106,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "packages/industry-contract/src/index.ts",
+      "sha256": "e9c588e7b11be2d6bec9d85767a1bf8a781798a1647a78f421d9cba9d969791b",
+      "bytes": 22270,
+      "lines": 467,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "product.manifest.json",
+      "sha256": "54af6a767b35020a55de2b47b3d63ee369307ceaff2f7f886828d3082e59dcf5",
+      "bytes": 1247,
+      "lines": 39,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/acceptance/lib/playwright.mjs",
+      "sha256": "25429b420a366eba26f7af6afcc7c07ed9041fc4ef7a7eb20cef015376357bbd",
+      "bytes": 1625,
+      "lines": 37,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/business-management-common.mjs",
+      "sha256": "131a64dfa4b60a4260df741f04a951b3ca8dafc18c5d98ecf895ffb64713788c",
+      "bytes": 6751,
+      "lines": 115,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/business-management-http.mjs",
+      "sha256": "608b1640f1d77e78fe4ad4275066bab2f63b93f5823686c5b75a7ae37f65408d",
+      "bytes": 11839,
+      "lines": 195,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/business-management-mcp.mjs",
+      "sha256": "e386d915e8ca32312baa37100b03cfe19a92ab74dbbab55cde78491698e1a8de",
+      "bytes": 7466,
+      "lines": 121,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/business-management-postgres.test.mjs",
+      "sha256": "d018b919dab52e6c92dce62ef3ff2c4ac0170bc726137adf81589b37b56c8b40",
+      "bytes": 4272,
+      "lines": 54,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/business-management-setup.mjs",
+      "sha256": "4493d617a5e96a063dc8b150f2b7f77872bc45a4e1eb31f387f3f8c23ebf851a",
+      "bytes": 6584,
+      "lines": 94,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/business-management.mjs",
+      "sha256": "1c0942dbe907129d3bfebe7868e67d5c11c40e8261e3cc2384906d400a54b664",
+      "bytes": 10116,
+      "lines": 130,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/business-management.test.mjs",
+      "sha256": "46c6bb4a8d3b855ab7d93b0a6212fee125de93868642d5bd7f59b3b64cb96b9c",
+      "bytes": 25392,
+      "lines": 249,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/capability-status.mjs",
+      "sha256": "b307bbb581d018e7bf96150c272512ce625e00e1431a8aa5d42a5d58e4373a94",
+      "bytes": 3324,
+      "lines": 41,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/check-business-site.mjs",
+      "sha256": "e8ddaf7a9c192ec6f32131b1be96c1c9ed2dfead50f930eda63150751287d629",
+      "bytes": 12294,
+      "lines": 136,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/check-business-workbench.mjs",
+      "sha256": "507b2dac5f7c2b49444413c4269b850b43c2fb7d28b91e4e4fe3d5874d87bab3",
+      "bytes": 32002,
+      "lines": 296,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/check-smart-home-depth.mjs",
+      "sha256": "005100b827a347ce9a12aedd5c2f93b9c1e972a6917b1b7534045b2214955374",
+      "bytes": 21768,
+      "lines": 169,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/delivery/evidence.mjs",
+      "sha256": "bb408f4b0257f2dbbf05a8bc072b6feda455fe39d371fa82c01166cf6772891a",
+      "bytes": 28083,
+      "lines": 336,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/delivery/node-test-reporter.mjs",
+      "sha256": "286448a4dee571759fc1703564477d27bf5319bcb05ff66db2186deda60bc78f",
+      "bytes": 1113,
+      "lines": 17,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/generate-capabilities.mjs",
+      "sha256": "bf21a5a8a4c9df853a4500dd8b3db80ac9546ea2e8844314e7cad63c1e495c95",
+      "bytes": 19437,
+      "lines": 254,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/generate-client-projections.mts",
+      "sha256": "d5f179edbe7c1b73924c3139d421d7d36a26f00670a994f98d0360b0e1b57bcd",
+      "bytes": 7435,
+      "lines": 152,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/path-containment.mjs",
+      "sha256": "6716d82c286d29bc15c4797bec2446d38d8bce87bee8cc61c5c0b7f092915cb5",
+      "bytes": 573,
+      "lines": 15,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/seed-smart-home.pg.test.ts",
+      "sha256": "f9901e1829c5852eba10019c461a9a247446875b95ad9f4e7b4aabcc38f152cf",
+      "bytes": 10811,
+      "lines": 149,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    },
+    {
+      "path": "scripts/seed-smart-home.ts",
+      "sha256": "62c533fcecd1d0a3e8691a661d86bf7c5a42a38f328a59798b186eec0d72cb6b",
+      "bytes": 18949,
+      "lines": 150,
+      "evidenceGrade": "A",
+      "reading": "Full current-task source reading across execution windows; current final changes reread in full."
+    }
+  ],
+  "additionalDirectDependencies": [
+    "scripts/generate-client-projections.mts",
+    "scripts/path-containment.mjs",
+    ".workloom-ui.json"
+  ],
+  "machineOnly": [],
+  "sampling": [],
+  "unread": [],
+  "excludes": [
+    "Runtime implementation and its 49 procedures are in the separate 77-file engine-read-coverage.json report.",
+    "This is not a full audit of all shared foundation packages; imports outside the selected bundle loader/projection call chain are not claimed as read.",
+    "Native cloud delivery/admission, exact post-commit CI, merge and anonymous consumer execution are owned by the root and need their separate evidence.",
+    "Real customer consent, manufacturer authorization, payments, publications, external connectors and physical device/field work were not verified."
+  ],
+  "sourceHashes": {
+    ".workloom-ui.json": "5392320dd031b3cc9bbed352e51cac3e871db2f0d8ae80915458ca5c34f54ea8",
+    "bundles/smart-home/ui/workbench/app.js": "23d1979baaf990beffc149abe9a6b0901df03f9887b941611819e969b6c23ee2",
+    "bundles/smart-home/ui/workbench/index.html": "8a72cb70c1f193fee547061fd6826ec2b2c634388ebb877f899adc30d095364b",
+    "bundles/smart-home/ui/workbench/style.css": "0dd8f15e9183b4765c4fcf35da69ec173acdc478c554a992858e87d414d9679d",
+    "package.json": "0d73ba68efec53fb585061257c6c4523d0b6415c8eded6693c9f2534cf73dc51",
+    "packages/base/bundles/assembly.ts": "adf16a7948477efd47a956604b5c1a690220951bebcb51b21c7338eb98447e46",
+    "packages/base/bundles/eval-questions.ts": "6128ca6ba281648fe3b63dc00f96edbbdddccb9e196af6f96f3bf0d890393cb5",
+    "packages/base/bundles/index.ts": "5bae6b929e8921ea1e9c4fcabd0bc31ea44b0a5bdbfca78965b6b8a1704e060d",
+    "packages/base/bundles/segment.ts": "2673473b0ce5684724f832fc5e8250b3b386b4f4b22b61662d4c595a72c91e93",
+    "packages/industry-contract/src/index.ts": "e9c588e7b11be2d6bec9d85767a1bf8a781798a1647a78f421d9cba9d969791b",
+    "product.manifest.json": "54af6a767b35020a55de2b47b3d63ee369307ceaff2f7f886828d3082e59dcf5",
+    "scripts/acceptance/lib/playwright.mjs": "25429b420a366eba26f7af6afcc7c07ed9041fc4ef7a7eb20cef015376357bbd",
+    "scripts/business-management-common.mjs": "131a64dfa4b60a4260df741f04a951b3ca8dafc18c5d98ecf895ffb64713788c",
+    "scripts/business-management-http.mjs": "608b1640f1d77e78fe4ad4275066bab2f63b93f5823686c5b75a7ae37f65408d",
+    "scripts/business-management-mcp.mjs": "e386d915e8ca32312baa37100b03cfe19a92ab74dbbab55cde78491698e1a8de",
+    "scripts/business-management-postgres.test.mjs": "d018b919dab52e6c92dce62ef3ff2c4ac0170bc726137adf81589b37b56c8b40",
+    "scripts/business-management-setup.mjs": "4493d617a5e96a063dc8b150f2b7f77872bc45a4e1eb31f387f3f8c23ebf851a",
+    "scripts/business-management.mjs": "1c0942dbe907129d3bfebe7868e67d5c11c40e8261e3cc2384906d400a54b664",
+    "scripts/business-management.test.mjs": "46c6bb4a8d3b855ab7d93b0a6212fee125de93868642d5bd7f59b3b64cb96b9c",
+    "scripts/capability-status.mjs": "b307bbb581d018e7bf96150c272512ce625e00e1431a8aa5d42a5d58e4373a94",
+    "scripts/check-business-site.mjs": "e8ddaf7a9c192ec6f32131b1be96c1c9ed2dfead50f930eda63150751287d629",
+    "scripts/check-business-workbench.mjs": "507b2dac5f7c2b49444413c4269b850b43c2fb7d28b91e4e4fe3d5874d87bab3",
+    "scripts/check-smart-home-depth.mjs": "005100b827a347ce9a12aedd5c2f93b9c1e972a6917b1b7534045b2214955374",
+    "scripts/delivery/evidence.mjs": "bb408f4b0257f2dbbf05a8bc072b6feda455fe39d371fa82c01166cf6772891a",
+    "scripts/delivery/node-test-reporter.mjs": "286448a4dee571759fc1703564477d27bf5319bcb05ff66db2186deda60bc78f",
+    "scripts/generate-capabilities.mjs": "bf21a5a8a4c9df853a4500dd8b3db80ac9546ea2e8844314e7cad63c1e495c95",
+    "scripts/generate-client-projections.mts": "d5f179edbe7c1b73924c3139d421d7d36a26f00670a994f98d0360b0e1b57bcd",
+    "scripts/path-containment.mjs": "6716d82c286d29bc15c4797bec2446d38d8bce87bee8cc61c5c0b7f092915cb5",
+    "scripts/seed-smart-home.pg.test.ts": "f9901e1829c5852eba10019c461a9a247446875b95ad9f4e7b4aabcc38f152cf",
+    "scripts/seed-smart-home.ts": "62c533fcecd1d0a3e8691a661d86bf7c5a42a38f328a59798b186eec0d72cb6b"
+  },
+  "findings": [
+    {
+      "id": "ROOT-DEPTH-LEAD-COMPLETENESS",
+      "severity": "一般",
+      "status": "fixed-and-regressed",
+      "evidenceGrade": "A",
+      "problem": "The previous workbench helper treated budget zero as complete, omitted service area and counted granted consultation consent as sufficient for appointment.",
+      "trigger": "Create a lead with all identity/building/intent/stage fields, budgetCents=0, no serviceArea and consultation-only granted consent.",
+      "impact": "A card could understate missing information while the native handoff operation still required the missing fields and appointment purpose.",
+      "currentBehavior": "leadMissing uses native completeness; the compatibility fallback implements the same positive-budget, service-area and two-purpose checks.",
+      "source": {
+        "path": "bundles/smart-home/ui/workbench/app.js",
+        "line": 63,
+        "function": "leadMissing"
+      },
+      "verification": [
+        {
+          "path": "outputs/BMS-depth-acceptance/root-ui-independent-boundaries.json",
+          "cases": [
+            "budget-zero",
+            "known-pending-appointment",
+            "ready",
+            "revoked"
+          ],
+          "evidenceGrade": "B"
+        },
+        {
+          "path": "docs/evidence/smart-home-depth/ui/depth-browser-proof.json",
+          "case": "DEPTH-UI-11",
+          "evidenceGrade": "B"
+        }
+      ]
+    },
+    {
+      "id": "ROOT-DEPTH-ROLE-SKILL-FORM",
+      "severity": "一般",
+      "status": "fixed-and-regressed",
+      "evidenceGrade": "A",
+      "problem": "Schema id fields originally rendered employee and skill IDs as plain text inputs, despite the catalogue containing Chinese role names and skill titles.",
+      "trigger": "Launch sales-coach employee-work from the team page, then select appointment-coordinator.",
+      "impact": "A user needed internal IDs and could keep a skill belonging to a previous role.",
+      "currentBehavior": "field builds catalogue-backed Chinese role/skill selects and syncSkillOptions clears incompatible values and filters the selected role skills.",
+      "source": {
+        "path": "bundles/smart-home/ui/workbench/app.js",
+        "line": 155,
+        "functions": [
+          "field",
+          "syncSkillOptions"
+        ]
+      },
+      "verification": [
+        {
+          "path": "outputs/BMS-depth-acceptance/root-ui-independent-boundaries.json",
+          "cases": [
+            "employee-skill-dropdowns",
+            "responsibility-enum-boundary"
+          ],
+          "evidenceGrade": "B"
+        },
+        {
+          "path": "docs/evidence/smart-home-depth/ui/depth-browser-proof.json",
+          "case": "DEPTH-UI-06",
+          "evidenceGrade": "B"
+        }
+      ]
+    },
+    {
+      "id": "ROOT-DEPTH-PG-REGISTRY-COUNTS",
+      "severity": "一般",
+      "status": "fixed-and-regressed",
+      "evidenceGrade": "A",
+      "problem": "The old PostgreSQL seeder regression expected 20 roles/35 skills after the industry bundle added seven roles and fourteen skills.",
+      "trigger": "Run the required PostgreSQL seeder suite with the current sealed bundle.",
+      "impact": "The native database gate would fail on an intentional workforce expansion; counts alone would also miss wrong installed bodies.",
+      "currentBehavior": "The seeder test requires 27 roles/49 skills, SQL-checks every new role and its two skills and compares all fourteen installed SOP bodies byte-for-byte with their declared source.",
+      "source": {
+        "path": "scripts/seed-smart-home.pg.test.ts",
+        "line": 64,
+        "test": "first seed, repeat and concurrent repeat have exact assets and no business events"
+      },
+      "verification": [
+        {
+          "path": "work/depth-pg-seed.log",
+          "executedBy": "/root",
+          "actual": "17 passed (17)",
+          "evidenceGrade": "B"
+        }
+      ]
+    },
+    {
+      "id": "ROOT-DEPTH-DEFAULT-UI-LABELS",
+      "severity": "一般",
+      "status": "fixed-and-regressed",
+      "evidenceGrade": "A",
+      "problem": "The manifest default UI declared only nineteen objects and four workflows while the native runtime/schema already contained twenty-seven objects and five workflows.",
+      "trigger": "Load the default smart-home bundle through loadBundleUiProjection.",
+      "impact": "The base client projection would omit the eight new dossier/engineering/contract/business object labels and the employee-work workflow label.",
+      "currentBehavior": "The industry manifest now has all schema labels and the employee task workflow; the actual base projection returns the exact 27/5 labels.",
+      "sources": [
+        {
+          "path": "bundles/smart-home/bundle.json",
+          "field": "workloom.ui.objects/workflows"
+        },
+        {
+          "path": "packages/base/bundles/assembly.ts",
+          "line": 600,
+          "function": "loadBundleUiProjection"
+        }
+      ],
+      "verification": [
+        {
+          "path": "docs/evidence/smart-home-depth/engine-current-seal-basis.json",
+          "executedBy": "/root/business_engine",
+          "actual": "27 exact object labels / 5 exact workflow labels",
+          "evidenceGrade": "B"
+        }
+      ]
+    }
+  ],
+  "unresolvedFindingsWithinScope": [],
+  "conclusions": [
+    {
+      "evidenceGrade": "A",
+      "statement": "The ordinary CLI scenario importer uses an operator in cli with humanConfirmed=false; init --demo uses seedSyntheticScenario. It does not create owner terminal approval.",
+      "source": "scripts/business-management.mjs",
+      "functions": [
+        "main/init",
+        "scenario alias"
+      ]
+    },
+    {
+      "evidenceGrade": "A",
+      "statement": "The stdio MCP server calls the runtime as an agent. scenario.import is not exposed to that role; catalogue-derived read methods remain separate from human-call methods.",
+      "source": "scripts/business-management-mcp.mjs",
+      "companion": "scripts/business-management.test.mjs"
+    },
+    {
+      "evidenceGrade": "A",
+      "statement": "The PostgreSQL seeder reads declared sealed industry context and creates only its explicit sandbox identity/assets. It rejects production, provenance collisions, altered assets and conflicting installation data in a transaction.",
+      "source": "scripts/seed-smart-home.ts",
+      "function": "seedSmartHomeWorkspace",
+      "boundaries": "The selected bundle-loading call chain was read; unrelated shared gateways/model routes were not audited."
+    },
+    {
+      "evidenceGrade": "A",
+      "statement": "The capability generator gives README the default smart-home product group, keeps broader inherited engineering capabilities in their labelled guide and links current-task screenshots/evidence. capabilityStatus does not turn discovery metadata into verified runtime availability.",
+      "source": "scripts/generate-capabilities.mjs",
+      "companion": "scripts/capability-status.mjs"
+    },
+    {
+      "evidenceGrade": "A",
+      "statement": "The workbench shows model proposals separately from applied customer facts, draws point plans from persisted millimetre geometry, and retains terminal-established human sessions for human operations.",
+      "source": "bundles/smart-home/ui/workbench/app.js",
+      "companions": [
+        "scripts/business-management-http.mjs",
+        "scripts/check-smart-home-depth.mjs"
+      ]
+    },
+    {
+      "evidenceGrade": "B",
+      "statement": "Current metadata validates all 122 declared sealed assets; native registries equal the runtime 51 operations/5 workflows, and the executed base projection equals the current 27 object labels/5 workflow labels.",
+      "evidence": "docs/evidence/smart-home-depth/engine-current-seal-basis.json"
+    }
+  ],
+  "executionEvidence": [
+    {
+      "path": "docs/evidence/smart-home-depth/ui/depth-browser-proof.json",
+      "sha256": "a1ddef7f8939d77dafc4ccb29f0dff4e60e116f0cb2ec5e5c10ce825f0735ba1",
+      "evidenceGrade": "B",
+      "executedBy": "/root",
+      "kind": "real local Chrome browser execution",
+      "testedAt": "2026-10-09T04:49:01.359Z",
+      "actual": {
+        "cases": 11,
+        "passed": 11,
+        "failed": 0
+      },
+      "currentHashesMatch": true
+    },
+    {
+      "path": "docs/evidence/smart-home-depth/legacy-ui/ui-workbench-proof.json",
+      "sha256": "ab1ff6a9d67c52aaeb49ecffa8636d0ad8918c4754919076a79a6c4c7fdad2f0",
+      "evidenceGrade": "B",
+      "executedBy": "/root",
+      "kind": "real local Chrome browser regression",
+      "testedAt": "2026-10-09T04:35:42.779Z",
+      "actual": {
+        "cases": 22,
+        "passed": 22,
+        "failed": 0
+      },
+      "currentHashesMatch": true
+    },
+    {
+      "path": "outputs/BMS-depth-acceptance/root-ui-independent-boundaries.json",
+      "sha256": "ee11cc658d058f949c7a833968cd6002e3aba4fbf2b7237142d0d4723936d646",
+      "evidenceGrade": "B",
+      "executedBy": "/root/business_engine",
+      "kind": "actual extracted pure functions in JSDOM/vm, not a browser",
+      "startedAt": "2026-10-09T04:39:43.859Z",
+      "finishedAt": "2026-10-09T04:39:43.881Z",
+      "actual": {
+        "cases": 8,
+        "passed": 8,
+        "failed": 0
+      },
+      "currentHashMatches": true
+    },
+    {
+      "path": "docs/evidence/smart-home-depth/engine-current-seal-basis.json",
+      "sha256": "7866dd798d078f092a554e19990d95157d99413108ebbe00ada18728b69ad41b",
+      "evidenceGrade": "B",
+      "executedBy": "/root/business_engine",
+      "kind": "read-only current seal/native projection execution",
+      "startedAt": "2026-10-09T04:51:50.267Z",
+      "finishedAt": "2026-10-09T04:51:50.317Z",
+      "actual": {
+        "assets": 122,
+        "operations": 51,
+        "workflows": 5,
+        "objectLabels": 27
+      }
+    },
+    {
+      "path": "work/depth-pg-seed.log",
+      "sha256": "711163fe67d5fc2d166231edd2353910707ef8486b19f058b499033bbd04fd24",
+      "evidenceGrade": "B",
+      "executedBy": "/root",
+      "kind": "real disposable local PostgreSQL tests",
+      "actual": {
+        "passed": 17,
+        "failed": 0
+      },
+      "processExitCode": "0 reported by executing root agent; log independently read",
+      "sourceImplementationRead": true
+    },
+    {
+      "path": "work/depth-pg-governance.log",
+      "sha256": "aa43727a457eea3f0057c001c697663469ca7525529a0ae426c025c36e790ee1",
+      "evidenceGrade": "B",
+      "executedBy": "/root",
+      "kind": "real PostgreSQL governance regression",
+      "actual": {
+        "tests": 16,
+        "passed": 16,
+        "failed": 0,
+        "skipped": 0
+      },
+      "processExitCode": "0 reported by executing root agent; log independently read",
+      "scope": "Execution-log verification only; the wider governance implementation is not part of this source review."
+    }
+  ],
+  "visualInspection": {
+    "evidenceGrade": "C",
+    "sampled": [
+      "desktop-growth",
+      "mobile-store",
+      "mobile-delivery"
+    ],
+    "result": "No layout break or document-level horizontal overflow was seen in these three viewed captures; horizontal table scrolling is deliberate.",
+    "limitation": "These three captures were sampled before the checker photo-only change. The root owns final all-viewport visual inspection; no complete eight-page visual review is claimed here."
+  },
+  "closingReport": {
+    "completed": [
+      "Full source review of all 27 delegated integration files and three necessary projection dependencies",
+      "Four identified integration gaps repaired by their owners and checked against source and actual regression evidence",
+      "Current SHA-bound coverage and proof matching"
+    ],
+    "notCompletedOrCovered": [
+      "Cloud delivery/final whole-product acceptance are outside this delegated scope and continue under the root",
+      "Full shared-foundation security audit and real operations were not requested in this subtask"
+    ],
+    "autonomousAdditionalWork": [
+      "Read three first-party/client projection dependencies and execute the native projection because the final manifest labels did not close with the schema"
+    ],
+    "assumptions": [
+      "Source changes are frozen by the coordinating root before report generation",
+      "Local synthetic fixtures and disposable databases are deliberate acceptance inputs"
+    ],
+    "confidence": "High for the named call chains and checked source/receipt bindings; no confidence claim for excluded systems.",
+    "recommendedReview": [
+      "The progressive lead card and authorization differences",
+      "The selected role/skill form and source-separated proposal result",
+      "The original execution bindings versus the current sealed manifest compatibility report"
+    ]
+  },
+  "selfCheck": {
+    "entireDelegatedScopeCovered": true,
+    "autonomousItemsCompletedWithoutUnnecessaryQuestion": true,
+    "conclusionsVerifiableAndGradesAccurate": true,
+    "readyForLineByLinePeerReview": true
+  }
+}

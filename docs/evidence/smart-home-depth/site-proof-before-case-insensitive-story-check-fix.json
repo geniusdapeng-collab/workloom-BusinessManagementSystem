@@ -1,0 +1,915 @@
+{
+  "schemaVersion": "bms.site-proof/v1",
+  "startedAt": "2026-10-09T03:03:12.625Z",
+  "browser": "Chromium",
+  "expectedTotal": 102,
+  "command": [
+    "node",
+    "scripts/check-business-site.mjs",
+    "--out",
+    "outputs/BusinessManagementSystem/docs/evidence/smart-home-depth",
+    "--browser-executable",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  ],
+  "javascriptRequired": false,
+  "status": "fail",
+  "sourceFiles": [
+    {
+      "path": "apps/site/index.html",
+      "sha256": "1b551313670904506957199a7d57f55511128887173dbea58b9f858d45a3c1fe"
+    },
+    {
+      "path": "apps/site/en.html",
+      "sha256": "146f2ff489301c999702fd441a9504c19c22614cb970f153f45bc6db967abaa2"
+    }
+  ],
+  "cases": [
+    {
+      "id": "zh-1440-identity",
+      "preconditions": "静态页面可访问，JavaScript禁用",
+      "steps": "读取标题、lang与唯一H1",
+      "expected": "新产品身份且唯一H1",
+      "actual": {
+        "title": "AI经营管理系统 · 成都全屋智能门店 · BusinessManagementSystem",
+        "language": "zh-CN",
+        "h1": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-overflow",
+      "preconditions": "视口1440px",
+      "steps": "测量页面与body宽度",
+      "expected": "页面无水平滚动",
+      "actual": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-no-js",
+      "preconditions": "JavaScript禁用",
+      "steps": "检查所有section的CSS可见状态",
+      "expected": "内容全部可见",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-source-cta",
+      "preconditions": "源码CTA可见",
+      "steps": "读取主CTA href",
+      "expected": "公开CNB新仓，无假安装包地址",
+      "actual": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-anchors",
+      "preconditions": "静态页包含导航与跳转",
+      "steps": "核对所有锚点目标",
+      "expected": "锚点没有悬空",
+      "actual": [
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        },
+        {
+          "href": "#products",
+          "targetExists": true
+        },
+        {
+          "href": "#team",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-start-link",
+      "preconditions": "开始导航可点击",
+      "steps": "点击开始使用锚点",
+      "expected": "URL转到#start",
+      "actual": "http://127.0.0.1:52416/index.html#start",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-faq",
+      "preconditions": "FAQ默认折叠",
+      "steps": "点击第一条summary",
+      "expected": "浏览器原生展开",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-documentation",
+      "preconditions": "文档卡片可见",
+      "steps": "解析仓库文档路径并检查本地交付文件",
+      "expected": "所有文档卡指向已创建文件",
+      "actual": [
+        "docs/SMART-HOME-STORE-PLAYBOOK.md",
+        "docs/02-新客户首次接入完整流程.md",
+        "docs/AI-WORKBENCH.md",
+        "docs/SMART-HOME-BUSINESS-MATRIX.md"
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-boundaries",
+      "preconditions": "页面内容读取",
+      "steps": "核对连接器和synthetic/外部边界措辞",
+      "expected": "明确disabled、本地提交、合成数据",
+      "actual": {
+        "disabled": true,
+        "synthetic": true,
+        "external": true
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-diagram",
+      "preconditions": "原生SVG点位示意可见",
+      "steps": "核对role、标题、描述与父容器宽度",
+      "expected": "图形可访问，合成而非现场，宽度不溢出",
+      "actual": {
+        "role": "img",
+        "labelIds": [
+          "plan-title",
+          "plan-desc"
+        ],
+        "title": "全屋智能点位示意图",
+        "description": "合成住宅房间和点位示意，不是现场测量或实际施工图。",
+        "width": 469.484375,
+        "parent": 525.484375
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-assets",
+      "preconditions": "介绍页资源已读取",
+      "steps": "检查图片若存在则已加载，并检查SVG数量",
+      "expected": "无损坏图片且有空间点位示意",
+      "actual": {
+        "images": [],
+        "svgPlans": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-store-story",
+      "preconditions": "页面完整正文",
+      "steps": "核对全屋智能、残缺线索、工程与合成标识，扫描继承酒店词",
+      "expected": "门店经营故事完整，无默认酒店叙事",
+      "actual": {
+        "smartHome": true,
+        "partialLead": true,
+        "construction": true,
+        "synthetic": true,
+        "legacyTokens": []
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-faq-keyboard",
+      "preconditions": "FAQ全部折叠，JavaScript禁用",
+      "steps": "逐条focus，Enter展开，Space收起",
+      "expected": "每条FAQ支持原生键盘操作",
+      "actual": [
+        {
+          "question": "线索只有姓氏或楼盘，能先录入吗？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "华为与绿米是什么关系？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "AI 会不会自己发微信、签合同或控制设备？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "关掉 AI 工作台以后还会自己经营吗？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "真实门店怎样开始？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "这是不是已安装和验收好的桌面产品？",
+          "opened": true,
+          "closed": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-keyboard-focus",
+      "preconditions": "键盘焦点移到跳过导航链接",
+      "steps": "核对焦点、可见位置与outline",
+      "expected": "跳过导航可见且focus可识别",
+      "actual": {
+        "active": true,
+        "top": 14,
+        "outline": "solid"
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-skip-target",
+      "preconditions": "跳过导航链接取得焦点",
+      "steps": "键盘Enter激活",
+      "expected": "跳转到主要内容",
+      "actual": "http://127.0.0.1:52416/index.html#main",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-language",
+      "preconditions": "语言链接常驻，手机未隐藏",
+      "steps": "点击语言切换",
+      "expected": "打开另一语言页面",
+      "actual": "en",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-browser-events",
+      "preconditions": "整个导航与资源加载过程",
+      "steps": "收集pageerror/requestfailed/HTTP>=400",
+      "expected": "无脚本错误或资源错误",
+      "actual": {
+        "issues": [],
+        "failed": []
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-identity",
+      "preconditions": "静态页面可访问，JavaScript禁用",
+      "steps": "读取标题、lang与唯一H1",
+      "expected": "新产品身份且唯一H1",
+      "actual": {
+        "title": "AI经营管理系统 · 成都全屋智能门店 · BusinessManagementSystem",
+        "language": "zh-CN",
+        "h1": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-overflow",
+      "preconditions": "视口390px",
+      "steps": "测量页面与body宽度",
+      "expected": "页面无水平滚动",
+      "actual": {
+        "viewport": 390,
+        "document": 390,
+        "body": 390
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-no-js",
+      "preconditions": "JavaScript禁用",
+      "steps": "检查所有section的CSS可见状态",
+      "expected": "内容全部可见",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "id": "zh-390-source-cta",
+      "preconditions": "源码CTA可见",
+      "steps": "读取主CTA href",
+      "expected": "公开CNB新仓，无假安装包地址",
+      "actual": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+      "pass": true
+    },
+    {
+      "id": "zh-390-anchors",
+      "preconditions": "静态页包含导航与跳转",
+      "steps": "核对所有锚点目标",
+      "expected": "锚点没有悬空",
+      "actual": [
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        },
+        {
+          "href": "#products",
+          "targetExists": true
+        },
+        {
+          "href": "#team",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-390-start-link",
+      "preconditions": "开始导航可点击",
+      "steps": "点击开始使用锚点",
+      "expected": "URL转到#start",
+      "actual": "http://127.0.0.1:52416/index.html#start",
+      "pass": true
+    },
+    {
+      "id": "zh-390-faq",
+      "preconditions": "FAQ默认折叠",
+      "steps": "点击第一条summary",
+      "expected": "浏览器原生展开",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "zh-390-documentation",
+      "preconditions": "文档卡片可见",
+      "steps": "解析仓库文档路径并检查本地交付文件",
+      "expected": "所有文档卡指向已创建文件",
+      "actual": [
+        "docs/SMART-HOME-STORE-PLAYBOOK.md",
+        "docs/02-新客户首次接入完整流程.md",
+        "docs/AI-WORKBENCH.md",
+        "docs/SMART-HOME-BUSINESS-MATRIX.md"
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-390-boundaries",
+      "preconditions": "页面内容读取",
+      "steps": "核对连接器和synthetic/外部边界措辞",
+      "expected": "明确disabled、本地提交、合成数据",
+      "actual": {
+        "disabled": true,
+        "synthetic": true,
+        "external": true
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-diagram",
+      "preconditions": "原生SVG点位示意可见",
+      "steps": "核对role、标题、描述与父容器宽度",
+      "expected": "图形可访问，合成而非现场，宽度不溢出",
+      "actual": {
+        "role": "img",
+        "labelIds": [
+          "plan-title",
+          "plan-desc"
+        ],
+        "title": "全屋智能点位示意图",
+        "description": "合成住宅房间和点位示意，不是现场测量或实际施工图。",
+        "width": 304,
+        "parent": 350
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-assets",
+      "preconditions": "介绍页资源已读取",
+      "steps": "检查图片若存在则已加载，并检查SVG数量",
+      "expected": "无损坏图片且有空间点位示意",
+      "actual": {
+        "images": [],
+        "svgPlans": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-store-story",
+      "preconditions": "页面完整正文",
+      "steps": "核对全屋智能、残缺线索、工程与合成标识，扫描继承酒店词",
+      "expected": "门店经营故事完整，无默认酒店叙事",
+      "actual": {
+        "smartHome": true,
+        "partialLead": true,
+        "construction": true,
+        "synthetic": true,
+        "legacyTokens": []
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-faq-keyboard",
+      "preconditions": "FAQ全部折叠，JavaScript禁用",
+      "steps": "逐条focus，Enter展开，Space收起",
+      "expected": "每条FAQ支持原生键盘操作",
+      "actual": [
+        {
+          "question": "线索只有姓氏或楼盘，能先录入吗？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "华为与绿米是什么关系？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "AI 会不会自己发微信、签合同或控制设备？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "关掉 AI 工作台以后还会自己经营吗？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "真实门店怎样开始？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "这是不是已安装和验收好的桌面产品？",
+          "opened": true,
+          "closed": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-390-keyboard-focus",
+      "preconditions": "键盘焦点移到跳过导航链接",
+      "steps": "核对焦点、可见位置与outline",
+      "expected": "跳过导航可见且focus可识别",
+      "actual": {
+        "active": true,
+        "top": 14,
+        "outline": "solid"
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-390-skip-target",
+      "preconditions": "跳过导航链接取得焦点",
+      "steps": "键盘Enter激活",
+      "expected": "跳转到主要内容",
+      "actual": "http://127.0.0.1:52416/index.html#main",
+      "pass": true
+    },
+    {
+      "id": "zh-390-language",
+      "preconditions": "语言链接常驻，手机未隐藏",
+      "steps": "点击语言切换",
+      "expected": "打开另一语言页面",
+      "actual": "en",
+      "pass": true
+    },
+    {
+      "id": "zh-390-browser-events",
+      "preconditions": "整个导航与资源加载过程",
+      "steps": "收集pageerror/requestfailed/HTTP>=400",
+      "expected": "无脚本错误或资源错误",
+      "actual": {
+        "issues": [],
+        "failed": []
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-320-identity",
+      "preconditions": "静态页面可访问，JavaScript禁用",
+      "steps": "读取标题、lang与唯一H1",
+      "expected": "新产品身份且唯一H1",
+      "actual": {
+        "title": "AI经营管理系统 · 成都全屋智能门店 · BusinessManagementSystem",
+        "language": "zh-CN",
+        "h1": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-320-overflow",
+      "preconditions": "视口320px",
+      "steps": "测量页面与body宽度",
+      "expected": "页面无水平滚动",
+      "actual": {
+        "viewport": 320,
+        "document": 320,
+        "body": 320
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-320-no-js",
+      "preconditions": "JavaScript禁用",
+      "steps": "检查所有section的CSS可见状态",
+      "expected": "内容全部可见",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "id": "zh-320-source-cta",
+      "preconditions": "源码CTA可见",
+      "steps": "读取主CTA href",
+      "expected": "公开CNB新仓，无假安装包地址",
+      "actual": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+      "pass": true
+    },
+    {
+      "id": "zh-320-anchors",
+      "preconditions": "静态页包含导航与跳转",
+      "steps": "核对所有锚点目标",
+      "expected": "锚点没有悬空",
+      "actual": [
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        },
+        {
+          "href": "#products",
+          "targetExists": true
+        },
+        {
+          "href": "#team",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-320-start-link",
+      "preconditions": "开始导航可点击",
+      "steps": "点击开始使用锚点",
+      "expected": "URL转到#start",
+      "actual": "http://127.0.0.1:52416/index.html#start",
+      "pass": true
+    },
+    {
+      "id": "zh-320-faq",
+      "preconditions": "FAQ默认折叠",
+      "steps": "点击第一条summary",
+      "expected": "浏览器原生展开",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "zh-320-documentation",
+      "preconditions": "文档卡片可见",
+      "steps": "解析仓库文档路径并检查本地交付文件",
+      "expected": "所有文档卡指向已创建文件",
+      "actual": [
+        "docs/SMART-HOME-STORE-PLAYBOOK.md",
+        "docs/02-新客户首次接入完整流程.md",
+        "docs/AI-WORKBENCH.md",
+        "docs/SMART-HOME-BUSINESS-MATRIX.md"
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-320-boundaries",
+      "preconditions": "页面内容读取",
+      "steps": "核对连接器和synthetic/外部边界措辞",
+      "expected": "明确disabled、本地提交、合成数据",
+      "actual": {
+        "disabled": true,
+        "synthetic": true,
+        "external": true
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-320-diagram",
+      "preconditions": "原生SVG点位示意可见",
+      "steps": "核对role、标题、描述与父容器宽度",
+      "expected": "图形可访问，合成而非现场，宽度不溢出",
+      "actual": {
+        "role": "img",
+        "labelIds": [
+          "plan-title",
+          "plan-desc"
+        ],
+        "title": "全屋智能点位示意图",
+        "description": "合成住宅房间和点位示意，不是现场测量或实际施工图。",
+        "width": 252,
+        "parent": 290
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-320-assets",
+      "preconditions": "介绍页资源已读取",
+      "steps": "检查图片若存在则已加载，并检查SVG数量",
+      "expected": "无损坏图片且有空间点位示意",
+      "actual": {
+        "images": [],
+        "svgPlans": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-320-store-story",
+      "preconditions": "页面完整正文",
+      "steps": "核对全屋智能、残缺线索、工程与合成标识，扫描继承酒店词",
+      "expected": "门店经营故事完整，无默认酒店叙事",
+      "actual": {
+        "smartHome": true,
+        "partialLead": true,
+        "construction": true,
+        "synthetic": true,
+        "legacyTokens": []
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-320-faq-keyboard",
+      "preconditions": "FAQ全部折叠，JavaScript禁用",
+      "steps": "逐条focus，Enter展开，Space收起",
+      "expected": "每条FAQ支持原生键盘操作",
+      "actual": [
+        {
+          "question": "线索只有姓氏或楼盘，能先录入吗？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "华为与绿米是什么关系？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "AI 会不会自己发微信、签合同或控制设备？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "关掉 AI 工作台以后还会自己经营吗？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "真实门店怎样开始？",
+          "opened": true,
+          "closed": true
+        },
+        {
+          "question": "这是不是已安装和验收好的桌面产品？",
+          "opened": true,
+          "closed": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-320-keyboard-focus",
+      "preconditions": "键盘焦点移到跳过导航链接",
+      "steps": "核对焦点、可见位置与outline",
+      "expected": "跳过导航可见且focus可识别",
+      "actual": {
+        "active": true,
+        "top": 14,
+        "outline": "solid"
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-320-skip-target",
+      "preconditions": "跳过导航链接取得焦点",
+      "steps": "键盘Enter激活",
+      "expected": "跳转到主要内容",
+      "actual": "http://127.0.0.1:52416/index.html#main",
+      "pass": true
+    },
+    {
+      "id": "zh-320-language",
+      "preconditions": "语言链接常驻，手机未隐藏",
+      "steps": "点击语言切换",
+      "expected": "打开另一语言页面",
+      "actual": "en",
+      "pass": true
+    },
+    {
+      "id": "zh-320-browser-events",
+      "preconditions": "整个导航与资源加载过程",
+      "steps": "收集pageerror/requestfailed/HTTP>=400",
+      "expected": "无脚本错误或资源错误",
+      "actual": {
+        "issues": [],
+        "failed": []
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-identity",
+      "preconditions": "静态页面可访问，JavaScript禁用",
+      "steps": "读取标题、lang与唯一H1",
+      "expected": "新产品身份且唯一H1",
+      "actual": {
+        "title": "BusinessManagementSystem · AI Operations for Smart-Home Stores",
+        "language": "en",
+        "h1": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-overflow",
+      "preconditions": "视口1440px",
+      "steps": "测量页面与body宽度",
+      "expected": "页面无水平滚动",
+      "actual": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-no-js",
+      "preconditions": "JavaScript禁用",
+      "steps": "检查所有section的CSS可见状态",
+      "expected": "内容全部可见",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "id": "en-1440-source-cta",
+      "preconditions": "源码CTA可见",
+      "steps": "读取主CTA href",
+      "expected": "公开CNB新仓，无假安装包地址",
+      "actual": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+      "pass": true
+    },
+    {
+      "id": "en-1440-anchors",
+      "preconditions": "静态页包含导航与跳转",
+      "steps": "核对所有锚点目标",
+      "expected": "锚点没有悬空",
+      "actual": [
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        },
+        {
+          "href": "#products",
+          "targetExists": true
+        },
+        {
+          "href": "#team",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "en-1440-start-link",
+      "preconditions": "开始导航可点击",
+      "steps": "点击开始使用锚点",
+      "expected": "URL转到#start",
+      "actual": "http://127.0.0.1:52416/en.html#start",
+      "pass": true
+    },
+    {
+      "id": "en-1440-faq",
+      "preconditions": "FAQ默认折叠",
+      "steps": "点击第一条summary",
+      "expected": "浏览器原生展开",
+      "actual": "",
+      "pass": true
+    },
+    {
+      "id": "en-1440-documentation",
+      "preconditions": "文档卡片可见",
+      "steps": "解析仓库文档路径并检查本地交付文件",
+      "expected": "所有文档卡指向已创建文件",
+      "actual": [
+        "docs/SMART-HOME-STORE-PLAYBOOK.md",
+        "docs/02-新客户首次接入完整流程.md",
+        "docs/AI-WORKBENCH.md",
+        "docs/SMART-HOME-BUSINESS-MATRIX.md"
+      ],
+      "pass": true
+    },
+    {
+      "id": "en-1440-boundaries",
+      "preconditions": "页面内容读取",
+      "steps": "核对连接器和synthetic/外部边界措辞",
+      "expected": "明确disabled、本地提交、合成数据",
+      "actual": {
+        "disabled": true,
+        "synthetic": true,
+        "external": true
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-diagram",
+      "preconditions": "原生SVG点位示意可见",
+      "steps": "核对role、标题、描述与父容器宽度",
+      "expected": "图形可访问，合成而非现场，宽度不溢出",
+      "actual": {
+        "role": "img",
+        "labelIds": [
+          "plan-title",
+          "plan-desc"
+        ],
+        "title": "Smart-home point plan illustration",
+        "description": "Synthetic room layout and device points, not a measured customer home or construction drawing.",
+        "width": 469.484375,
+        "parent": 525.484375
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-assets",
+      "preconditions": "介绍页资源已读取",
+      "steps": "检查图片若存在则已加载，并检查SVG数量",
+      "expected": "无损坏图片且有空间点位示意",
+      "actual": {
+        "images": [],
+        "svgPlans": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "en-1440-store-story",
+      "preconditions": "页面完整正文",
+      "steps": "核对全屋智能、残缺线索、工程与合成标识，扫描继承酒店词",
+      "expected": "门店经营故事完整，无默认酒店叙事",
+      "actual": {
+        "smartHome": false,
+        "partialLead": true,
+        "construction": true,
+        "synthetic": true,
+        "legacyTokens": []
+      },
+      "pass": false
+    }
+  ],
+  "errors": [
+    "en-1440-store-story: {\"smartHome\":false,\"partialLead\":true,\"construction\":true,\"synthetic\":true,\"legacyTokens\":[]}\n\nfalse !== true\n"
+  ],
+  "externalBusinessVerified": false,
+  "websiteDeployed": false,
+  "browserVersion": "154.0.8037.99",
+  "finishedAt": "2026-10-09T03:03:18.944Z",
+  "passed": 62,
+  "total": 63
+}

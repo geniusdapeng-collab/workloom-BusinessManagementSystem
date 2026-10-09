@@ -195,6 +195,76 @@
         "data-import-qa"
       ],
       "responsibility": "维护设备证据、问答、失败案例与字段映射；版本变更先形成新证据再替换引用。"
+    },
+    {
+      "id": "prospecting-specialist",
+      "name": "AI找客专员",
+      "kind": "prospecting",
+      "skills": [
+        "prospect-targeting",
+        "source-lead-intake"
+      ],
+      "responsibility": "把服务区域、装修节点与合法公开需求转成找客方向和来源明确的线索草案；不抓取私人联系方式、不自动私信。"
+    },
+    {
+      "id": "lead-enrichment-specialist",
+      "name": "AI线索完善专员",
+      "kind": "lead-enrichment",
+      "skills": [
+        "lead-profile-enrichment",
+        "customer-handoff-check"
+      ],
+      "responsibility": "按线索当前阶段整理已知信息、补充提议与确认问题；模型提议只形成草案，人类确认后才能成为客户事实。"
+    },
+    {
+      "id": "appointment-coordinator",
+      "name": "AI预约邀约专员",
+      "kind": "appointment",
+      "skills": [
+        "appointment-coordination",
+        "appointment-recovery"
+      ],
+      "responsibility": "协调客户意向、展厅路线、人员与时间窗，整理邀约和改期草稿；客户未确认不记到店，连接器未启用不报已触达。"
+    },
+    {
+      "id": "sales-assistant",
+      "name": "AI销售助手",
+      "kind": "sales-support",
+      "skills": [
+        "sales-meeting-prep",
+        "sales-objection-brief"
+      ],
+      "responsibility": "为顾问准备客户会谈、需求摘要、方案差异与异议答复；把设计、施工、合同中的未知项和承诺交给责任人。"
+    },
+    {
+      "id": "sales-coach",
+      "name": "AI销售培训师",
+      "kind": "sales-coaching",
+      "skills": [
+        "sales-coaching",
+        "sales-quality-review"
+      ],
+      "responsibility": "用已授权脱敏会谈和模拟角色扮演训练销售，复核信息采集、事实依据、交接质量与承诺边界；训练成绩不等于真实成交能力。"
+    },
+    {
+      "id": "business-operations-assistant",
+      "name": "AI经营助理",
+      "kind": "business-operations",
+      "skills": [
+        "operations-daily-control",
+        "business-data-reconciliation"
+      ],
+      "responsibility": "按带来源的经营记录整理每日待办、线索漏斗、项目风险与金额差异；分别报告计划、签约、收款和交付，不自动补账或改经营阈值。"
+    },
+    {
+      "id": "store-manager-assistant",
+      "name": "AI店长助理",
+      "kind": "store-operations",
+      "skills": [
+        "store-shift-coordination",
+        "store-resource-brief"
+      ],
+      "responsibility": "协调接待、展厅准备、勘测与施工资源，形成交班和产能冲突清单；排班建议不代替人员到岗、现场检查或店主授权。"
     }
   ]
 }

@@ -1,0 +1,52 @@
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { createRequire } from 'node:module';
+import { join } from 'node:path';
+import { loadBundleUiProjection } from '../../outputs/BusinessManagementSystem/packages/base/bundles/assembly.ts';
+import { ENTITY_TYPES } from '../../outputs/BusinessManagementSystem/bundles/smart-home/runtime/catalogue.mjs';
+import { WORKFLOW_CATALOGUE } from '../../outputs/BusinessManagementSystem/bundles/smart-home/runtime/workflows.mjs';
+
+const root = '/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BusinessManagementSystem';
+const output = join(root, 'docs/evidence/smart-home-depth/industry-ui-manifest-check.json');
+const require = createRequire(join(root, 'package.json'));
+const YAML = require('yaml');
+const json = (path: string) => JSON.parse(readFileSync(join(root, path), 'utf8'));
+const manifest = json('bundles/smart-home/bundle.json');
+const schema = json('bundles/smart-home/schemas/objects.json');
+const native = json('bundles/smart-home/library/native-workflows.json');
+const expectedWorkflowLabels = new Map([
+  ['growth-acquisition', '获客到体验闭环'],
+  ['project-delivery', '方案到客户验收闭环'],
+  ['aftercare-loop', '售后响应到回访闭环'],
+  ['management-loop', '董事长经营闭环'],
+  ['employee-work', '数字员工岗位任务'],
+]);
+const paths = [
+  'bundles/smart-home/bundle.json', 'bundles/smart-home/schemas/objects.json',
+  'bundles/smart-home/runtime/catalogue.mjs', 'bundles/smart-home/runtime/workflows.mjs',
+  'bundles/smart-home/library/native-workflows.json',
+  ...manifest.workloom.provides.pipelines.map((path: string) => 'bundles/smart-home/' + path),
+  'packages/base/bundles/assembly.ts', 'scripts/generate-client-projections.mts',
+  'apps/webc/public/industry/service-front.config.json',
+];
+const hashes = () => Object.fromEntries(paths.map(path => [path, createHash('sha256').update(readFileSync(join(root, path))).digest('hex')]));
+const before = hashes();
+const checks: Array<Record<string, unknown>> = [];
+const record = (id: string, preconditions: string, steps: string, expected: unknown, actual: unknown) => {
+  assert.deepEqual(actual, expected, id);
+  checks.push({ id, preconditions, steps, expected, actual, passed: true });
+};
+record('UI-OBJECTS-SCHEMA', 'Current sealed manifest and complete object schema', 'Compare the 27 UI labels with every schema label in declared order', schema.objects.map((object: { label: string }) => object.label), manifest.workloom.ui.objects);
+record('UI-OBJECTS-RUNTIME', 'Current executable object catalogue', 'Compare schema types with imported executable ENTITY_TYPES', [...ENTITY_TYPES], schema.objects.map((object: { type: string }) => object.type));
+const workflowIds = WORKFLOW_CATALOGUE.map((workflow: { id: string }) => workflow.id);
+record('UI-WORKFLOWS-RUNTIME', 'Current executable and native workflow catalogues plus the five pipeline assets', 'Compare exact runtime IDs, native IDs, declared pipeline IDs and their explicit UI label map', { ids: [...expectedWorkflowLabels.keys()], nativeIds: workflowIds, pipelineIds: workflowIds, labels: [...expectedWorkflowLabels.values()] }, { ids: workflowIds, nativeIds: native.workflows.map((workflow: { id: string }) => workflow.id), pipelineIds: manifest.workloom.provides.pipelines.map((path: string) => YAML.parse(readFileSync(join(root, 'bundles/smart-home', path), 'utf8')).id), labels: manifest.workloom.ui.workflows });
+const projection = loadBundleUiProjection('smart-home', join(root, 'bundles'));
+record('UI-VERIFIED-UI-PROJECTION', 'Real verified public assembly loader; candidate bundle with valid current integrity', 'Load the public UI projection and inspect labels, source attribution and current seal', { objects: manifest.workloom.ui.objects, workflows: manifest.workloom.ui.workflows, objectSources: schema.objects.map(() => ['smart-home']), workflowSources: workflowIds.map(() => ['smart-home']), digest: manifest.integrity.digest }, { objects: projection.ui.objects, workflows: projection.ui.workflows, objectSources: projection.ui.objectEntries?.map(entry => entry.sourceBundleIds), workflowSources: projection.ui.workflowEntries?.map(entry => entry.sourceBundleIds), digest: projection.integrityDigest });
+const mobile = json('apps/webc/public/industry/service-front.config.json');
+record('UI-C-MOBILE-DIGEST', 'Generated C-mobile projection', 'Check its existing manifest digest pointer after the coordinator regeneration', manifest.integrity.digest, mobile.projection.manifestDigest);
+const after = hashes();
+record('UI-PROBE-SOURCE-STABLE', 'Source hashes captured before actual loader calls', 'Compare all inspected source and generated projection bytes after the probe', before, after);
+const proof = { schemaVersion: 'business-management.industry-ui-manifest-check/v1', task: 'T-2026-1009-0001', testedAt: new Date().toISOString(), reviewer: 'industry_map', evidenceLevel: 'B', actualVerifiedLoaderExecuted: true, counts: { objects: schema.objects.length, workflows: workflowIds.length, checks: checks.length, pass: checks.length, fail: 0 }, passed: true, sourceStable: true, manifestDigest: manifest.integrity.digest, sourceHashesBefore: before, sourceHashesAfter: after, checks, boundaries: ['This actual local probe validates metadata, executable catalogue identity and public UI projection assembly.', 'It does not execute a browser, a paid model, an external brand service, a real customer workflow or CNB Linux CI.', 'The broad assembly.ts implementation is machine-indexed with the pertinent loader/projection call ranges read; no complete source reading of all 1385 lines is claimed.'] };
+writeFileSync(output, JSON.stringify(proof, null, 2) + '\n');
+console.log(JSON.stringify({ passed: true, counts: proof.counts, manifestDigest: proof.manifestDigest, sourceStable: true, output }));

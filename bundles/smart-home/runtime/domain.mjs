@@ -1,20 +1,22 @@
 import { assert, digest, clone } from './errors.mjs';
 import { ENTITY_TYPES, OPERATION_BY_NAME } from './catalogue.mjs';
+import { BusinessDepth, leadCompleteness } from './depth-domain.mjs';
 
 const money = value => { assert(Number.isSafeInteger(value) && value >= 0, 'MONEY_OVERFLOW', 'Money must stay within safe nonnegative integer cents'); return value; };
 const safetyCategories = new Set(['door-lock', 'camera', 'electrical', 'fire-safety']);
 const without = (input, ...keys) => Object.fromEntries(Object.entries(input).filter(([key]) => !['idempotencyKey', ...keys].includes(key)));
 
 export class BusinessDomain {
-  constructor(storage, now) { this.s = storage; this.now = now; }
+  constructor(storage, now) { this.s = storage; this.now = now; this.depth = new BusinessDepth(this); this.syntheticHistory = null; }
   evidence(input, { sources, actor, physical = false } = {}) {
     assert(Date.parse(input.observedAt) <= Date.parse(this.now()) + 60000, 'FUTURE_EVIDENCE', 'Evidence cannot be observed in the future');
     assert(this.s.dataMode === 'sandbox' || input.source !== 'synthetic', 'SYNTHETIC_EVIDENCE_IN_LIVE', 'Live records cannot use synthetic evidence');
     if (sources) assert(sources.includes(input.source) || (this.s.dataMode === 'sandbox' && input.source === 'synthetic'), 'WRONG_EVIDENCE_SOURCE', `Evidence source must be ${sources.join(' or ')}`);
     if (physical) this.human(actor, ['owner', 'operator']);
-    return { ...clone(input), verification: input.source === 'synthetic' ? 'synthetic-unverified' : 'human-supplied-unverified', externallyVerified: false, recordedBy: actor?.id ?? 'unattributed' };
+    return { ...clone(input), verification: input.source === 'synthetic' ? 'synthetic-unverified' : 'human-supplied-unverified', externallyVerified: false, ...(this.syntheticHistory ? { origin: 'synthetic-history-import', humanEvidenceProvided: false } : {}), recordedBy: actor?.id ?? 'unattributed' };
   }
   human(actor, roles = ['owner']) {
+    if (this.syntheticHistory && this.s.dataMode === 'sandbox') return;
     assert(roles.includes(actor?.role) && actor?.humanConfirmed === true && ['cli', 'http', ...(this.s.dataMode === 'sandbox' ? ['test'] : [])].includes(actor?.channel), 'HUMAN_REVIEW_REQUIRED', 'This action requires an authenticated human session and explicit confirmation', 403);
   }
   future(value, code = 'INVALID_DEADLINE') { assert(Date.parse(value) > Date.parse(this.now()), code, 'Deadline must be in the future'); }
@@ -23,11 +25,14 @@ export class BusinessDomain {
   get(type, id) { return this.s.get(type, id); }
   safe(entity) {
     const result = clone(entity);
+    if (result.type === 'lead') result.completeness = leadCompleteness(result);
     delete result.leaseTokenHash;
     if (result.context) delete result.context.leaseTokenHash;
     return result;
   }
   read(operation, input, workflows) {
+    const deeper = this.depth.read(operation, input);
+    if (deeper !== undefined) return deeper;
     if (operation === 'entity.get') { assert(ENTITY_TYPES.includes(input.type), 'UNKNOWN_ENTITY_TYPE', 'Unknown business object type'); return this.safe(this.get(input.type, input.id)); }
     if (operation === 'entity.list') { assert(ENTITY_TYPES.includes(input.type), 'UNKNOWN_ENTITY_TYPE', 'Unknown business object type'); return this.s.list(input.type, input).map(entity => this.safe(entity)); }
     if (operation === 'state.snapshot') return Object.fromEntries(ENTITY_TYPES.map(type => [type, { total: this.s.count(type), items: this.s.list(type, { limit: input.limit ?? 100 }).map(entity => this.safe(entity)) }]));
@@ -42,6 +47,8 @@ export class BusinessDomain {
   execute(operation, input, actor) {
     const descriptor = OPERATION_BY_NAME.get(operation);
     if (descriptor) this.s.recordFences(descriptor.fenceIds, operation.includes('request_') ? 'review' : 'pass');
+    const deeper = this.depth.execute(operation, input, actor);
+    if (deeper !== undefined) return deeper;
     switch (operation) {
       case 'store.upsert': {
         const old = this.s.get('store', input.id, false);
@@ -67,14 +74,17 @@ export class BusinessDomain {
       }
       case 'lead.create': {
         this.get('store', input.storeId);
-        const consent = clone(input.consent);
+        assert(input.alias || input.surname || input.contactRef || input.phoneRef || input.wechatRef || input.buildingRef || input.buildingName, 'LEAD_IDENTIFIER_REQUIRED', 'At least a surname/alias, opaque contact reference or building reference is needed; other facts may remain unknown');
+        assert(!['model-proposal', 'synthetic-history'].includes(input.source) || (input.source === 'synthetic-history' && this.syntheticHistory), 'CUSTOMER_FACT_CONFIRMATION_REQUIRED', 'Model suggestions cannot enter as customer facts, and synthetic history requires the scenario importer', 403);
+        const consent = clone(input.consent ?? { status: 'unknown', purposes: [] });
         if (consent.status === 'granted') {
           assert(consent.evidence, 'CONSENT_EVIDENCE_REQUIRED', 'Granted consent requires evidence');
           if (this.s.dataMode === 'live') this.human(actor, ['owner', 'operator']);
           consent.evidence = this.evidence(consent.evidence, { sources: ['customer'], actor });
           assert(consent.purposes.length > 0, 'CONSENT_PURPOSE_REQUIRED', 'Granted consent needs at least one purpose');
         } else assert(consent.purposes.length === 0, 'CONSENT_PURPOSE_CONFLICT', 'Unknown or denied consent cannot authorize a purpose');
-        return this.create('lead', input, { ...input, consent, status: 'new', attribution: { channel: input.channel, campaignRef: input.campaignRef ?? null, model: 'first-recorded-touch' } });
+        const record = { ...input, channel: input.channel ?? 'unknown', source: input.source ?? 'operator', evidence: input.evidence ? this.evidence(input.evidence, { actor }) : null, consent, status: 'new', enrichmentHistory: [], attribution: { channel: input.channel ?? 'unknown', campaignRef: input.campaignRef ?? null, model: 'first-recorded-touch' } };
+        return this.create('lead', input, { ...record, completeness: leadCompleteness(record) });
       }
       case 'lead.authorize': {
         const lead = this.get('lead', input.leadId);
@@ -121,8 +131,16 @@ export class BusinessDomain {
         const approval = this.get('approval', quote.approvalId);
         assert(this.approvalStatus(approval) === 'approved' && approval.contentDigest === quote.commitmentDigest, 'APPROVAL_INVALID', 'Quote approval is expired, changed or not approved', 403);
         assert(!this.s.all('project').some(project => project.quoteId === quote.id), 'PROJECT_ALREADY_EXISTS', 'This quote already has a project', 409);
+        const dossier = this.s.all('customer').find(customer => customer.leadId === quote.leadId);
+        assert(!dossier || input.contractId, 'SIGNED_CONTRACT_REQUIRED', 'A dossier-backed project requires an approved contract and customer signing evidence', 403);
+        let contract = null;
+        if (input.contractId) {
+          contract = this.get('contract', input.contractId);
+          assert(contract.quoteId === quote.id && contract.status === 'signed-local-record', 'SIGNED_CONTRACT_REQUIRED', 'The project contract must be signed locally and match its quote', 403);
+          this.depth.assertContractCurrent(contract);
+        }
         this.future(input.dueAt);
-        return this.create('project', input, { ...input, solutionId: quote.solutionId, leadId: quote.leadId, storeId: quote.storeId, status: 'contracted', milestone: 'contract', contractEvidence: this.evidence(input.contractEvidence, { sources: ['customer'], actor, physical: true }), quoteDigest: quote.commitmentDigest, localAcceptanceVerified: false, externalAcceptanceVerified: false });
+        return this.create('project', input, { ...input, ...(contract ? { contractDigest: contract.commitmentDigest, constructionId: contract.constructionId, designId: contract.designId, customerId: contract.customerId } : {}), solutionId: quote.solutionId, leadId: quote.leadId, storeId: quote.storeId, status: 'contracted', milestone: 'contract', contractEvidence: this.evidence(input.contractEvidence, { sources: ['customer'], actor, physical: true }), quoteDigest: quote.commitmentDigest, localAcceptanceVerified: false, externalAcceptanceVerified: false });
       }
       case 'procurement.record': return this.recordProcurement(input, actor);
       case 'project.milestone': {
@@ -147,7 +165,7 @@ export class BusinessDomain {
         const evidence = this.evidence(input.evidence, { sources: ['technician', 'customer'], actor, physical: true });
         this.future(input.followupAt);
         assert(input.customerConfirmed, 'CUSTOMER_CONFIRMATION_REQUIRED', 'A resolved ticket needs customer confirmation', 403);
-        return this.s.mutate('aftercare', ticket.id, { status: 'resolved', resolution: input.resolution, evidence, customerConfirmed: true, followupAt: input.followupAt, resolvedAt: this.now(), externallyResolved: false });
+        return this.s.mutate('aftercare', ticket.id, { status: 'resolved', resolution: input.resolution, evidence, customerConfirmed: true, followupAt: input.followupAt, resolvedAt: this.now(), operationalResolutionRecorded: !this.syntheticHistory, externallyResolved: false });
       }
       case 'content.create': {
         this.get('store', input.storeId);
@@ -287,13 +305,15 @@ export class BusinessDomain {
       if (input.decision === 'approved') this.assertSolutionCurrent(this.get('solution', target.solutionId));
       assert(input.decision !== 'approved' || !target.policyViolations.includes('negative-gross-profit'), 'NEGATIVE_MARGIN_BLOCKED', 'A quote with negative gross profit cannot be approved', 403);
       assert(input.decision !== 'approved' || target.policyViolations.length === 0, 'QUOTE_POLICY_BLOCKED', 'Gross margin and discount hard limits cannot be overridden by a human approval', 403, { violations: target.policyViolations });
-      this.s.mutate('quote', target.id, { status: input.decision, financialCommitmentMade: false, humanApprovedAt: input.decision === 'approved' ? this.now() : null });
+      this.s.mutate('quote', target.id, { status: input.decision, financialCommitmentMade: false, humanApprovedAt: input.decision === 'approved' && !this.syntheticHistory ? this.now() : null, approvalBasis: this.syntheticHistory ? 'synthetic-history-import' : 'authenticated-human-session', humanReviewPerformed: !this.syntheticHistory });
+    } else if (approval.targetType === 'contract') {
+      this.depth.decideContract(approval, target, input, actor);
     } else {
       const currentDigest = digest({ title: target.title, body: target.body, channel: target.channel, claims: target.claims, skuIds: target.skuIds });
       assert(currentDigest === approval.contentDigest, 'APPROVAL_TARGET_CHANGED', 'Content changed after review was requested', 409);
       this.s.mutate('content', target.id, { status: input.decision === 'approved' ? 'approved-pending-connector' : 'rejected', externalPublicationStatus: 'disabled', externallyPublished: false });
     }
-    return this.s.mutate('approval', approval.id, { status: input.decision, decision: { result: input.decision, reason: input.reason, decidedAt: this.now(), decidedBy: actor.id, channel: actor.channel, contentDigest: input.contentDigest }, externallyExecuted: false });
+    return this.s.mutate('approval', approval.id, { status: input.decision, decision: { result: input.decision, reason: input.reason, decidedAt: this.now(), decidedBy: actor.id, channel: actor.channel, contentDigest: input.contentDigest, basis: this.syntheticHistory ? 'synthetic-history-import' : 'authenticated-human-session', humanReviewPerformed: !this.syntheticHistory }, externallyExecuted: false });
   }
   recordProcurement(input, actor) {
     const project = this.get('project', input.projectId);
@@ -339,23 +359,25 @@ export class BusinessDomain {
     const evidence = this.evidence(input.evidence, { sources: ['customer'], actor, physical: true });
     const accepted = input.customerAccepted && input.trainingDelivered && input.credentialsTransferred && input.outstandingIssues.length === 0;
     const record = this.create('acceptance', input, { ...input, evidence, acceptedLocally: accepted, externallyVerified: false });
-    this.s.mutate('project', project.id, { milestone: accepted ? 'acceptance' : 'commissioning', status: accepted ? 'accepted-local-record' : 'acceptance-pending', acceptanceId: record.id, localAcceptanceVerified: accepted, externalAcceptanceVerified: false });
+    this.s.mutate('project', project.id, { milestone: accepted ? 'acceptance' : 'commissioning', status: accepted ? 'accepted-local-record' : 'acceptance-pending', acceptanceId: record.id, localAcceptanceVerified: accepted, operationalAcceptanceRecorded: accepted && !this.syntheticHistory, externalAcceptanceVerified: false });
     return record;
   }
   goalReport(goalId) {
     const goal = this.get('goal', goalId);
-    const leads = this.s.all('lead').filter(item => item.storeId === goal.storeId);
-    const projects = this.s.all('project').filter(item => item.storeId === goal.storeId);
+    const operational = item => item.dataOrigin !== 'synthetic-history-import';
+    const leads = this.s.all('lead').filter(item => item.storeId === goal.storeId && (operational(item) || item.operationalAssessmentAt));
+    const projects = this.s.all('project').filter(item => item.storeId === goal.storeId && (operational(item) || item.operationalAcceptanceRecorded));
     const leadIds = new Set(leads.map(item => item.id));
     const metrics = {
       'qualified-leads': leads.filter(item => item.status === 'qualified').length,
-      'experience-plans': this.s.all('experience').filter(item => leadIds.has(item.leadId)).length,
+      'experience-plans': this.s.all('experience').filter(item => operational(item) && (leadIds.has(item.leadId) || this.get('lead', item.leadId).storeId === goal.storeId)).length,
       'accepted-projects': projects.filter(item => item.status === 'accepted-local-record').length,
-      'resolved-aftercare': this.s.all('aftercare').filter(item => item.storeId === goal.storeId && item.status === 'resolved').length,
+      'resolved-aftercare': this.s.all('aftercare').filter(item => item.storeId === goal.storeId && item.status === 'resolved' && (operational(item) || item.operationalResolutionRecorded)).length,
       'management-reports': this.s.all('report').filter(item => item.goalId === goal.id && item.kind === 'management-loop').length,
     };
     const workflows = this.s.all('workflow').filter(item => item.goalId === goal.id).map(item => ({ id: item.id, kind: item.kind, status: item.status, waitingFor: item.waitingFor ?? null }));
     const pendingApprovals = this.s.all('approval').filter(item => this.approvalStatus(item) === 'pending').map(item => ({ id: item.id, targetType: item.targetType, targetId: item.targetId }));
-    return { goal: this.safe(goal), metrics, current: metrics[goal.metric], target: goal.target, achievedLocally: metrics[goal.metric] >= goal.target, externallyVerified: false, dataMode: this.s.dataMode, authority: 'local-records-only', workflows, pendingApprovals, externalConnectors: { publishing: 'disabled', messaging: 'disabled', payments: 'disabled', deviceControl: 'disabled' }, evidence: { events: this.s.verify().checkedEvents, ledgerHead: this.s.verify().headHash } };
+    const historicalSynthetic = { leads: this.s.all('lead').filter(item => item.storeId === goal.storeId && !operational(item)).length, projects: this.s.all('project').filter(item => item.storeId === goal.storeId && !operational(item)).length, acceptedProjects: this.s.all('project').filter(item => item.storeId === goal.storeId && !operational(item) && item.provenance?.recordStatusAtImport === 'accepted-local-record').length, resolvedAftercare: this.s.all('aftercare').filter(item => item.storeId === goal.storeId && !operational(item) && item.provenance?.recordStatusAtImport === 'resolved').length };
+    return { goal: this.safe(goal), metrics, metricBasis: 'operational-local-records-excluding-imported-history', historicalSynthetic, current: metrics[goal.metric], target: goal.target, achievedLocally: metrics[goal.metric] >= goal.target, externallyVerified: false, dataMode: this.s.dataMode, authority: 'local-records-only', workflows, pendingApprovals, externalConnectors: { publishing: 'disabled', messaging: 'disabled', payments: 'disabled', deviceControl: 'disabled' }, evidence: { events: this.s.verify().checkedEvents, ledgerHead: this.s.verify().headHash } };
   }
 }

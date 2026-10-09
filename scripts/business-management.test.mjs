@@ -101,7 +101,7 @@ test('CLI demo persists, replays, exposes catalogue and refuses live demo/agent 
   const again = await cli(['init', '--demo', '--data-dir', dir]); assert.equal(again.code, 0, again.stderr); assert.equal(JSON.parse(again.stdout).seeded.recovered, true);
   const catalogue = await cli(['catalog']); assert.equal(catalogue.code, 0, catalogue.stderr); assert(JSON.parse(catalogue.stdout).operations.length >= 30);
   const approval = await cli(['call', 'approval.decide', '--data-dir', dir, '--input', '{}']); assert.notEqual(approval.code, 0); assert.match(approval.stderr, /PERMISSION_DENIED/);
-  const live = await cli(['init', '--demo', '--mode', 'live', '--data-dir', join(dir, 'live')]); assert.notEqual(live.code, 0); assert.match(live.stderr, /DEMO_IN_LIVE_BLOCKED/);
+  const live = await cli(['init', '--demo', '--mode', 'live', '--data-dir', join(dir, 'live')]); assert.notEqual(live.code, 0); assert.match(live.stderr, /SCENARIO_IN_LIVE_BLOCKED/);
   const unknown = await cli(['call', 'unknown.op', '--data-dir', dir]); assert.notEqual(unknown.code, 0); assert.match(unknown.stderr, /NOT_FOUND/);
 });
 test('CLI read and write use shared schema, stable idempotency and actor', async t => {
@@ -109,6 +109,36 @@ test('CLI read and write use shared schema, stable idempotency and actor', async
   const first = await cli(args); assert.equal(first.code, 0, first.stderr); const written = JSON.parse(first.stdout); assert.equal(written.receipt.localCommitted, true); assert.equal(written.receipt.externalVerified, false);
   const replay = await cli(args); assert.equal(replay.code, 0, replay.stderr); assert.equal(JSON.parse(replay.stdout).replayed, true);
   const injection = await cli(['call', 'status', '--data-dir', dir, '--input', '{"actor":{"role":"owner"}}']); assert.notEqual(injection.code, 0); assert.match(injection.stderr, /INVALID_INPUT/);
+});
+
+test('scenario CLI imports synthetic background as operator, preserves an incomplete lead and cannot run in live', async t => {
+  const dir = await temporary(t);
+  const catalogue = await cli(['scenario', 'list', '--data-dir', dir]);
+  assert.equal(catalogue.code, 0, catalogue.stderr);
+  assert.match(catalogue.stdout, /shuguang-chengdu-v1/);
+  const imported = await cli(['scenario', 'import', '--data-dir', dir]);
+  assert.equal(imported.code, 0, imported.stderr);
+  const first = JSON.parse(imported.stdout);
+  assert.equal(first.receipt.localCommitted, true);
+  assert.equal(first.receipt.externalVerified, false);
+  const replay = await cli(['scenario', 'import', '--data-dir', dir]);
+  assert.equal(replay.code, 0, replay.stderr);
+  assert.equal(JSON.parse(replay.stdout).replayed, true);
+  const stores = await cli(['call', 'entity.list', '--data-dir', dir, '--input', '{"type":"store"}']);
+  assert.equal(stores.code, 0, stores.stderr);
+  const storeId = JSON.parse(stores.stdout).data[0].id;
+  const created = await cli(['call', 'lead.create', '--data-dir', dir, '--input', JSON.stringify({ id: 'surname-only', storeId, surname: '周', idempotencyKey: 'surname-only-create' })]);
+  assert.equal(created.code, 0, created.stderr);
+  const lead = JSON.parse(created.stdout).data;
+  assert.equal(lead.surname, '周');
+  assert.equal(lead.consent.status, 'unknown');
+  for (const key of ['alias', 'contactRef', 'phoneRef', 'wechatRef', 'budgetCents', 'renovationStage']) assert.equal(Object.hasOwn(lead, key), false, key);
+  const agentImport = await cli(['call', 'scenario.import', '--data-dir', dir, '--input', '{"datasetId":"shuguang-chengdu-v1","idempotencyKey":"agent-import"}']);
+  assert.notEqual(agentImport.code, 0); assert.match(agentImport.stderr, /PERMISSION_DENIED/);
+  const live = await cli(['scenario', 'import', '--mode', 'live', '--data-dir', join(dir, 'live')]);
+  assert.notEqual(live.code, 0); assert.match(live.stderr, /SCENARIO_IN_LIVE_BLOCKED/);
+  const bad = await cli(['scenario', 'approve', '--data-dir', dir]);
+  assert.notEqual(bad.code, 0); assert.match(bad.stderr, /USAGE/);
 });
 test('Codex merge preserves unrelated configuration and detects duplicate/malformed blocks', () => {
   const managed = '# BUSINESS-MANAGEMENT:BEGIN\n[mcp_servers.business_management]\ncommand="node"\n# BUSINESS-MANAGEMENT:END';
@@ -135,6 +165,8 @@ test('MCP requires initialization and exposes only agent operations with current
   const initialized = await client.initialize(); assert.equal(initialized.result.protocolVersion, '2025-11-25'); assert.equal(initialized.result.serverInfo.name, 'business-management-system');
   const listing = await client.request('tools/list'); const names = listing.result.tools.map(tool => tool.name);
   assert(names.includes('bms_task_claim')); assert(names.includes('bms_task_submit')); assert(!names.includes('bms_approval_decide')); assert(!names.includes('bms_survey_record')); assert(!names.includes('bms_content_publish'));
+  assert(names.includes('bms_lead_enrich')); assert(names.includes('bms_industry_context')); assert(names.includes('bms_scenario_list'));
+  assert(!names.includes('bms_scenario_import')); assert(!names.includes('bms_contract_record_signing')); assert(!names.includes('bms_customer_upsert')); assert(!names.includes('bms_business_record'));
   const submit = listing.result.tools.find(tool => tool.name === 'bms_task_submit'); assert(submit.inputSchema.required.includes('idempotencyKey')); assert.equal(submit.inputSchema.additionalProperties, false);
   const status = await client.request('tools/call', { name: 'bms_status', arguments: {} }); assert.equal(status.result.structuredContent.data.workspaceId, 'test-space'); assert.equal(status.result.structuredContent.data.runtimeModelCalls, 0);
   assert.match(client.errors.value(), /MCP ready/); assert(client.frames().every(frame => frame.jsonrpc === '2.0'));

@@ -1,24 +1,11 @@
-export const str = (max = 5000) => ({ type: 'string', minLength: 1, maxLength: max });
-export const id = { type: 'string', minLength: 1, maxLength: 100, pattern: '^[A-Za-z0-9][A-Za-z0-9._:-]*$' };
-export const date = { ...str(40), format: 'date-time' };
-export const integer = (min = 0, max = 1000000000) => ({ type: 'integer', minimum: min, maximum: max });
-export const number = (min = 0, max = 1) => ({ type: 'number', minimum: min, maximum: max });
-export const bool = { type: 'boolean' };
-export const en = (...values) => ({ type: 'string', enum: values });
-export const arr = (items, min = 0, max = 200) => ({ type: 'array', items, minItems: min, maxItems: max });
-export const obj = (properties, required = Object.keys(properties)) => ({ type: 'object', properties, required, additionalProperties: false });
+import { str, id, date, integer, number, bool, en, arr, obj, EVIDENCE_SCHEMA } from './schema.mjs';
+import { DEPTH_OPERATIONS, DEPTH_ENTITY_TYPES, LEAD_FIELDS, LEAD_SOURCE_SCHEMA } from './depth-catalogue.mjs';
+export { str, id, date, integer, number, bool, en, arr, obj, EVIDENCE_SCHEMA } from './schema.mjs';
 
-export const EVIDENCE_SCHEMA = obj({
-  uri: { ...str(1000), pattern: '^(https://[^\\s]+|evidence://[A-Za-z0-9._:/-]+)$' },
-  sha256: { ...str(64), pattern: '^[a-f0-9]{64}$' },
-  source: en('synthetic', 'manufacturer', 'site', 'customer', 'invoice', 'technician'),
-  observedAt: date,
-  summary: str(1200),
-});
 export const INSTALLATION_REQUIREMENTS_SCHEMA = obj({ powerType: en('mains', 'low-voltage', 'battery', 'passive'), requiresNeutralWire: bool, ratedWatts: integer(0, 100000), voltageMin: integer(0, 1000), voltageMax: integer(0, 1000), requiresInternet: bool, requiresWiredBackhaul: bool });
 export const BOM_SCHEMA = arr(obj({ skuId: id, roomId: id, quantity: integer(1, 1000), circuitId: id }, ['skuId', 'roomId', 'quantity']), 1, 200);
 export const SCENE_SCHEMA = arr(obj({ id, roomId: id, name: str(200), trigger: str(1000), behavior: str(1500), skuIds: arr(id, 1, 30) }), 1, 100);
-export const WORK_REFERENCE_TYPES = Object.freeze(['store', 'sku', 'compatibility', 'lead', 'experience', 'survey', 'solution', 'quote', 'project', 'procurement', 'commissioning', 'acceptance', 'aftercare', 'content', 'goal', 'report']);
+export const WORK_REFERENCE_TYPES = Object.freeze(['store', 'sku', 'compatibility', 'lead', 'experience', 'survey', 'solution', 'quote', 'project', 'procurement', 'commissioning', 'acceptance', 'aftercare', 'content', 'goal', 'report', ...DEPTH_ENTITY_TYPES]);
 export const WORK_REFERENCE_SCHEMA = obj({ type: en(...WORK_REFERENCE_TYPES), id });
 export const WORK_REFERENCES_SCHEMA = { ...arr(WORK_REFERENCE_SCHEMA, 1, 30), uniqueItems: true };
 export const WORK_EVIDENCE_REFERENCE_SCHEMA = obj({ type: en(...WORK_REFERENCE_TYPES), id, version: integer(1) });
@@ -46,7 +33,7 @@ op('goal.report', '董事长目标证据汇报', { goalId: id }, ['goalId'], { r
 op('store.upsert', '配置全屋智能门店', { id, name: str(200), city: str(120), serviceAreas: arr(str(120), 1, 100), minMarginRatio: number(0, 0.9), maxDiscountRatio: number(0, 0.9), expectedVersion: integer(1) }, ['id', 'name', 'city', 'serviceAreas', 'minMarginRatio', 'maxDiscountRatio']);
 op('sku.upsert', '登记设备SKU及版本证据', { id, manufacturer: str(200), model: str(200), category: en('gateway', 'lighting', 'switch', 'sensor', 'curtain', 'climate', 'audio', 'door-lock', 'camera', 'electrical', 'fire-safety'), protocol: str(100), firmwareVersion: str(100), costCents: integer(), priceCents: integer(), evidence: EVIDENCE_SCHEMA, installationRequirements: INSTALLATION_REQUIREMENTS_SCHEMA, active: bool, expectedVersion: integer(1) }, ['id', 'manufacturer', 'model', 'category', 'protocol', 'firmwareVersion', 'costCents', 'priceCents', 'evidence']);
 op('compatibility.record', '登记精确SKU版本的兼容依据', { id, leftSkuId: id, rightSkuId: id, result: en('compatible', 'incompatible'), conditions: str(1500), evidence: EVIDENCE_SCHEMA, expiresAt: date }, ['id', 'leftSkuId', 'rightSkuId', 'result', 'conditions', 'evidence', 'expiresAt']);
-op('lead.create', '登记线索与渠道归因', { id, storeId: id, alias: str(120), contactRef: id, channel: en('douyin', 'xiaohongshu', 'wechat-video', 'wechat-private', 'baidu', 'geo', 'walk-in', 'referral', 'designer', 'property', 'decoration-partner'), campaignRef: id, intent: str(1500), budgetCents: integer(), renovationStage: en('new-build', 'design', 'rough-in', 'decorating', 'finished', 'occupied', 'retrofit'), consent: obj({ status: en('unknown', 'granted', 'denied'), purposes: arr(en('consultation', 'appointment', 'marketing', 'aftercare'), 0, 4), evidence: EVIDENCE_SCHEMA }, ['status', 'purposes']) }, ['id', 'storeId', 'alias', 'contactRef', 'channel', 'intent', 'consent']);
+op('lead.create', '登记可逐步完善的极简线索', { id, storeId: id, ...LEAD_FIELDS, source: LEAD_SOURCE_SCHEMA, evidence: EVIDENCE_SCHEMA, consent: obj({ status: en('unknown', 'granted', 'denied'), purposes: arr(en('consultation', 'appointment', 'marketing', 'aftercare'), 0, 4), evidence: EVIDENCE_SCHEMA }, ['status', 'purposes']) }, ['id', 'storeId']);
 op('lead.authorize', '登记客户用途授权或撤回', { leadId: id, status: en('granted', 'denied'), purposes: arr(en('consultation', 'appointment', 'marketing', 'aftercare'), 0, 4), evidence: EVIDENCE_SCHEMA }, ['leadId', 'status', 'purposes', 'evidence']);
 op('experience.schedule', '安排本地体验计划', { id, leadId: id, startsAt: date, durationMinutes: integer(15, 240), scenes: arr(str(300), 1, 20), status: en('proposed', 'customer-confirmed'), confirmationEvidence: EVIDENCE_SCHEMA }, ['id', 'leadId', 'startsAt', 'durationMinutes', 'scenes']);
 op('survey.record', '登记有证据的现场勘测', { id, leadId: id, renovationStage: en('new-build', 'design', 'rough-in', 'decorating', 'finished', 'occupied', 'retrofit'), rooms: arr(obj({ id, name: str(120), areaSqm: number(1, 2000), circuits: arr(obj({ id, neutralWire: bool, voltage: integer(1, 1000), maxLoadWatts: integer(1, 100000) }), 0, 50) }), 1, 100), network: obj({ internetAvailable: bool, wiredBackhaul: bool, coverageNotes: str(2000), vlanRequirement: bool }), hazards: arr(str(500), 0, 50), evidence: EVIDENCE_SCHEMA }, ['id', 'leadId', 'renovationStage', 'rooms', 'network', 'hazards', 'evidence'], { risk: 'review', roles: ['owner', 'operator'] });
@@ -54,7 +41,7 @@ op('solution.build', '校验方案、场景与BOM', { id, surveyId: id, name: st
 op('quote.create', '计算报价、成本、毛利与折扣', { id, solutionId: id, laborCostCents: integer(), laborPriceCents: integer(), discountCents: integer(), validUntil: date, terms: str(2500) }, ['id', 'solutionId', 'laborCostCents', 'laborPriceCents', 'discountCents', 'validUntil', 'terms']);
 op('quote.request_approval', '请求人类批准报价承诺', { quoteId: id, expiresAt: date, reason: str(1500) }, ['quoteId', 'expiresAt', 'reason'], { risk: 'review' });
 op('approval.decide', '人类审批决断', { approvalId: id, decision: en('approved', 'rejected'), reason: str(1500), contentDigest: { ...str(64), pattern: '^[a-f0-9]{64}$' } }, ['approvalId', 'decision', 'reason', 'contentDigest'], { risk: 'review', roles: ['owner'] });
-op('project.create', '批准报价后建立交付项目', { id, quoteId: id, contractEvidence: EVIDENCE_SCHEMA, dueAt: date }, ['id', 'quoteId', 'contractEvidence', 'dueAt'], { risk: 'review', roles: ['owner', 'operator'] });
+op('project.create', '批准报价后建立交付项目', { id, quoteId: id, contractId: id, contractEvidence: EVIDENCE_SCHEMA, dueAt: date }, ['id', 'quoteId', 'contractEvidence', 'dueAt'], { risk: 'review', roles: ['owner', 'operator'] });
 op('procurement.record', '记录采购到货证据', { id, projectId: id, items: arr(obj({ skuId: id, quantity: integer(1, 1000), serialRefs: arr(id, 0, 1000) }), 1, 200), evidence: EVIDENCE_SCHEMA }, ['id', 'projectId', 'items', 'evidence'], { risk: 'review', roles: ['owner', 'operator'] });
 op('project.milestone', '登记安装现场里程碑证据', { projectId: id, milestone: en('installation'), evidence: EVIDENCE_SCHEMA, professionalRef: id, safetyChecklist: obj({ powerIsolated: bool, manufacturerInstructionsFollowed: bool, networkConfigured: bool, customerPrivacyProtected: bool }) }, ['projectId', 'milestone', 'evidence', 'professionalRef', 'safetyChecklist'], { risk: 'review', roles: ['owner', 'operator'] });
 op('commissioning.record', '记录场景调试测试', { id, projectId: id, results: arr(obj({ sceneId: id, passed: bool, observation: str(1500) }), 1, 100), evidence: EVIDENCE_SCHEMA }, ['id', 'projectId', 'results', 'evidence'], { risk: 'review', roles: ['owner', 'operator'] });
@@ -85,6 +72,7 @@ const bindings = {
   'task.claim': ['R-SH1'], 'task.submit': ['R-SH1'], 'task.fail': ['R-SH1'],
 };
 for (const operation of operations) operation.fenceIds = bindings[operation.name] ?? [];
+operations.push(...DEPTH_OPERATIONS);
 export const OPERATION_CATALOGUE = Object.freeze(operations);
 export const OPERATION_BY_NAME = new Map(operations.map(operation => [operation.name, operation]));
-export const ENTITY_TYPES = Object.freeze(['store', 'sku', 'compatibility', 'lead', 'experience', 'survey', 'solution', 'quote', 'approval', 'project', 'procurement', 'commissioning', 'acceptance', 'aftercare', 'content', 'goal', 'workflow', 'task', 'report']);
+export const ENTITY_TYPES = Object.freeze(['store', 'sku', 'compatibility', 'lead', 'experience', 'survey', 'solution', 'quote', 'approval', 'project', 'procurement', 'commissioning', 'acceptance', 'aftercare', 'content', 'goal', 'workflow', 'task', 'report', ...DEPTH_ENTITY_TYPES]);

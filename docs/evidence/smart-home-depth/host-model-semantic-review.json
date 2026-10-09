@@ -1,0 +1,899 @@
+{
+  "schemaVersion": "bms.host-model-semantic-review/v1",
+  "taskId": "T-2026-1009-0001",
+  "reviewer": "/root/workbench_audit",
+  "reviewedAt": "2026-10-09T04:42:06.273534+00:00",
+  "executionRef": "host-depth-f83b19249093",
+  "modelExecutionProof": "host-model-proof.json",
+  "originalProofSha256": "4a8b7003d5bcd6d036ef0e8a44975bcb276c7ee4020de240f3010fd51e7398c4",
+  "method": {
+    "reports": "All eight reports were completely read field by field and reviewed for concrete behavior, missing facts, accurate arithmetic, exact source versions, and human decision boundaries.",
+    "sourceSops": "All eight assigned SOPs completely read; source evidence A in the separate reading inventory.",
+    "runtimeEvidence": "Entire original JSON parsed and all 287 SQLite entities parsed; all assigned snapshots and artifact/report rows compared. B evidence, not whole original log prose reading.",
+    "databaseAccess": "Python sqlite3 URI mode=ro&immutable=1; host process already completed; no source, original proof or database mutation."
+  },
+  "status": "pass",
+  "passed": 8,
+  "total": 8,
+  "cases": [
+    {
+      "id": "host-semantic-01",
+      "name": "三条找客路线和残缺线索交接",
+      "preconditions": {
+        "executionRef": "host-depth-f83b19249093",
+        "workflowId": "host-depth-f83b19249093-1",
+        "taskId": "host-depth-f83b19249093-1:skill-plan",
+        "skillId": "prospect-targeting",
+        "dataMode": "sandbox",
+        "objectReferences": [
+          {
+            "digest": "02e5cd454f8a41c15d1dc77a3cf5727b9ee05772aa67fbdcb36d37c5a4387980",
+            "id": "SG-CD-GX-STORE",
+            "type": "store",
+            "version": 1
+          },
+          {
+            "digest": "5805a2341599cf5724e9eb958b31f65c4e9798fb856e17f23dbea5d069b93853",
+            "id": "SG-L01",
+            "type": "lead",
+            "version": 1
+          },
+          {
+            "digest": "626242cbf20dcfa3f106579777be947b6a13686140c7659485dfe19693eec287",
+            "id": "SG-L03",
+            "type": "lead",
+            "version": 1
+          },
+          {
+            "digest": "f242f9e31a4f165d29faa38235a58381afd31fe93f8aa5aa78926945bc4af176",
+            "id": "SG-L04",
+            "type": "lead",
+            "version": 3
+          }
+        ]
+      },
+      "steps": [
+        "完整阅读对应技能SOP及报告objective、全部plan/deliverable、evidenceReferences、risks、ownerDecisions、nextActions与专用字段。",
+        "对照任务brief逐项人工语义审查；通过只读immutable SQLite解析全部分派对象、任务与报告，核对版本、摘要及事实。",
+        "复算本用例涉及金额或分钟；检查合成历史、人类事实、AI本地准备及真实执行边界。"
+      ],
+      "expected": "设计师合作、装修异业、自然到店各有具体路线；L01只知姓、L03只知楼盘、L04预算/装修/用途缺失；包含最小询问、人工去重和未发送邀约。",
+      "actual": "五步报告逐条写清已知/未知，设计师五句稿、三种装修节点问题卡与自然到店问法；同姓/同楼盘不合并，受控引用仅作待人核验候选。未编伙伴身份、渠道热度或转化。",
+      "semanticAcceptance": [
+        {
+          "criterion": "threeConcreteChannels",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "threePartialLeads",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "questionsOrdered",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "noAutomaticIdentityMerge",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "cooperationDraft",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "humanHandoff",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        }
+      ],
+      "mechanicalAssertions": {
+        "allArtifactFieldsPersistedUnchanged": true,
+        "taskArtifactDigestMatches": true,
+        "reportReadbackMatchesSQLite": true,
+        "taskCompletedWithHostTrace": true,
+        "allAssignedVersionsAndDigestsMatchReadOnlyDatabase": true,
+        "evidenceExactlyMatchesAssignmentVersions": true,
+        "reportExplicitlyPlanningOnly": true,
+        "noExternalFinancialPhysicalExecutionClaim": true,
+        "noAutomaticallyQueuedActions": true,
+        "threeRouteSteps": true,
+        "threeUnreadyLeads": true
+      },
+      "score": {
+        "passedCriteria": 6,
+        "totalCriteria": 6,
+        "interpretation": "指定准备包要求的通过项数；不是商业效果、模型能力或真实员工培训成绩"
+      },
+      "pass": true,
+      "evidenceGrade": "B",
+      "humanSemanticReviewComplete": true,
+      "gradeExplanation": "运行实例JSON/SQLite的完整解析和人工产物语义复核。代码精读归属A覆盖率另列；不把JSON解析冒充源码精读。",
+      "limitations": [
+        "没有真实伙伴名录或渠道外部查询，方案可供审核，尚无实际获客效果。"
+      ],
+      "artifactSha256": "14acdf9cd613f73df74fd3e515a65633e6d48b8c601639aab03d8ca9441cacc1",
+      "sopSourcePath": "bundles/smart-home/skills/prospect-targeting/SKILL.md",
+      "sopSourceSha256": "780536122ab20c31623032883f85d5e9d85cb0bdac859cb01ef7c8e9bb9d1ccc"
+    },
+    {
+      "id": "host-semantic-02",
+      "name": "微信引用线索的补全提议",
+      "preconditions": {
+        "executionRef": "host-depth-f83b19249093",
+        "workflowId": "host-depth-f83b19249093-2",
+        "taskId": "host-depth-f83b19249093-2:skill-plan",
+        "skillId": "lead-profile-enrichment",
+        "dataMode": "sandbox",
+        "objectReferences": [
+          {
+            "digest": "02e5cd454f8a41c15d1dc77a3cf5727b9ee05772aa67fbdcb36d37c5a4387980",
+            "id": "SG-CD-GX-STORE",
+            "type": "store",
+            "version": 1
+          },
+          {
+            "digest": "9ba323b4ae87560c3d888f02fe93e6539778d8b93c16519bcb54e28126bc790b",
+            "id": "SG-L02",
+            "type": "lead",
+            "version": 1
+          }
+        ]
+      },
+      "steps": [
+        "完整阅读对应技能SOP及报告objective、全部plan/deliverable、evidenceReferences、risks、ownerDecisions、nextActions与专用字段。",
+        "对照任务brief逐项人工语义审查；通过只读immutable SQLite解析全部分派对象、任务与报告，核对版本、摘要及事实。",
+        "复算本用例涉及金额或分钟；检查合成历史、人类事实、AI本地准备及真实执行边界。"
+      ],
+      "expected": "L02仅有受控微信引用；非空提议来自已有值，未知答案不填；提出称呼、楼盘、用途、预算、装修与主体核实问题，草案保持待人确认。",
+      "actual": "contactRef与wechatRef均提议SYN-WX-CD-002，报告明确这是引用归一候选；七个问题覆盖资格与用途，不解引用、不改lead、不建customer。",
+      "semanticAcceptance": [
+        {
+          "criterion": "existingReferenceOnly",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "nonemptyCandidate",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "sevenRelevantQuestions",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "unknownFieldsStayUnknown",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "pendingHumanProposal",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        }
+      ],
+      "mechanicalAssertions": {
+        "allArtifactFieldsPersistedUnchanged": true,
+        "taskArtifactDigestMatches": true,
+        "reportReadbackMatchesSQLite": true,
+        "taskCompletedWithHostTrace": true,
+        "allAssignedVersionsAndDigestsMatchReadOnlyDatabase": true,
+        "evidenceExactlyMatchesAssignmentVersions": true,
+        "reportExplicitlyPlanningOnly": true,
+        "noExternalFinancialPhysicalExecutionClaim": true,
+        "noAutomaticallyQueuedActions": true,
+        "patchOnlyExistingWechatReference": true,
+        "sevenConfirmationQuestions": true
+      },
+      "score": {
+        "passedCriteria": 5,
+        "totalCriteria": 5,
+        "interpretation": "指定准备包要求的通过项数；不是商业效果、模型能力或真实员工培训成绩"
+      },
+      "pass": true,
+      "evidenceGrade": "B",
+      "humanSemanticReviewComplete": true,
+      "gradeExplanation": "运行实例JSON/SQLite的完整解析和人工产物语义复核。代码精读归属A覆盖率另列；不把JSON解析冒充源码精读。",
+      "limitations": [
+        "引用归一只是有来源的候选，没有新增客户已核实事实。"
+      ],
+      "artifactSha256": "20f2d9409531bc2c7567cf6cce7bfbbe96011b996788660e687246428ef86e2f",
+      "sopSourcePath": "bundles/smart-home/skills/lead-profile-enrichment/SKILL.md",
+      "sopSourceSha256": "8a72b05533246bd3a2a59eabf5ac965e0cbdcbe4eb53f7c274beb254e6cd643f"
+    },
+    {
+      "id": "host-semantic-03",
+      "name": "四号线索移交门检查",
+      "preconditions": {
+        "executionRef": "host-depth-f83b19249093",
+        "workflowId": "host-depth-f83b19249093-3",
+        "taskId": "host-depth-f83b19249093-3:skill-plan",
+        "skillId": "customer-handoff-check",
+        "dataMode": "sandbox",
+        "objectReferences": [
+          {
+            "digest": "02e5cd454f8a41c15d1dc77a3cf5727b9ee05772aa67fbdcb36d37c5a4387980",
+            "id": "SG-CD-GX-STORE",
+            "type": "store",
+            "version": 1
+          },
+          {
+            "digest": "f242f9e31a4f165d29faa38235a58381afd31fe93f8aa5aa78926945bc4af176",
+            "id": "SG-L04",
+            "type": "lead",
+            "version": 3
+          }
+        ]
+      },
+      "steps": [
+        "完整阅读对应技能SOP及报告objective、全部plan/deliverable、evidenceReferences、risks、ownerDecisions、nextActions与专用字段。",
+        "对照任务brief逐项人工语义审查；通过只读immutable SQLite解析全部分派对象、任务与报告，核对版本、摘要及事实。",
+        "复算本用例涉及金额或分钟；检查合成历史、人类事实、AI本地准备及真实执行边界。"
+      ],
+      "expected": "按当前L04 v3 completeness得出handoffReady=false；预算、装修、consultation/appointment未满足；保留既有字段作为提议，销售只准备。",
+      "actual": "报告引用factsKnown=5/7与两个缺失字段、两项缺用途；handoffReady=false，与当前lead一致；五个问题及销售交接摘要不推动建档或预约。",
+      "semanticAcceptance": [
+        {
+          "criterion": "currentCompleteness",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "falseHandoff",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "budgetAndStageMissing",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "purposesMissing",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "existingPatchValues",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "salesDraftOnly",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        }
+      ],
+      "mechanicalAssertions": {
+        "allArtifactFieldsPersistedUnchanged": true,
+        "taskArtifactDigestMatches": true,
+        "reportReadbackMatchesSQLite": true,
+        "taskCompletedWithHostTrace": true,
+        "allAssignedVersionsAndDigestsMatchReadOnlyDatabase": true,
+        "evidenceExactlyMatchesAssignmentVersions": true,
+        "reportExplicitlyPlanningOnly": true,
+        "noExternalFinancialPhysicalExecutionClaim": true,
+        "noAutomaticallyQueuedActions": true,
+        "handoffFalseMatchesCurrentLead": true,
+        "proposalValuesAlreadyExist": true
+      },
+      "score": {
+        "passedCriteria": 6,
+        "totalCriteria": 6,
+        "interpretation": "指定准备包要求的通过项数；不是商业效果、模型能力或真实员工培训成绩"
+      },
+      "pass": true,
+      "evidenceGrade": "B",
+      "humanSemanticReviewComplete": true,
+      "gradeExplanation": "运行实例JSON/SQLite的完整解析和人工产物语义复核。代码精读归属A覆盖率另列；不把JSON解析冒充源码精读。",
+      "limitations": [
+        "这是资格核验准备；客户后续答复与人类应用另需证据。"
+      ],
+      "artifactSha256": "cebd0cf61920532b9c6a8d11d4454d8a570e131674d9c0c76ac24ca34c935114",
+      "sopSourcePath": "bundles/smart-home/skills/customer-handoff-check/SKILL.md",
+      "sopSourceSha256": "0e3e4628c0c0d15fb83b267041df25f0077e30e57b8b12d307aa6a5c8c3132c2"
+    },
+    {
+      "id": "host-semantic-04",
+      "name": "六号家庭60分钟路线与改期",
+      "preconditions": {
+        "executionRef": "host-depth-f83b19249093",
+        "workflowId": "host-depth-f83b19249093-4",
+        "taskId": "host-depth-f83b19249093-4:skill-plan",
+        "skillId": "appointment-coordination",
+        "dataMode": "sandbox",
+        "objectReferences": [
+          {
+            "digest": "02e5cd454f8a41c15d1dc77a3cf5727b9ee05772aa67fbdcb36d37c5a4387980",
+            "id": "SG-CD-GX-STORE",
+            "type": "store",
+            "version": 1
+          },
+          {
+            "digest": "721df897c160a711db396d9e22cb11533a7a8c293d4295e21f15ee85776c5eae",
+            "id": "SG-L06",
+            "type": "lead",
+            "version": 3
+          },
+          {
+            "digest": "0327ac3954065eb8d1deb546e9284de64c807deab2eb6f6ec65f589f81d4842a",
+            "id": "SG-C06",
+            "type": "customer",
+            "version": 1
+          },
+          {
+            "digest": "183fc266132ef31cc0ea1802c27e7f8dec123693e3ab99e441eba04dcc3488e2",
+            "id": "SG-VISIT06",
+            "type": "experience",
+            "version": 1
+          }
+        ]
+      },
+      "steps": [
+        "完整阅读对应技能SOP及报告objective、全部plan/deliverable、evidenceReferences、risks、ownerDecisions、nextActions与专用字段。",
+        "对照任务brief逐项人工语义审查；通过只读immutable SQLite解析全部分派对象、任务与报告，核对版本、摘要及事实。",
+        "复算本用例涉及金额或分钟；检查合成历史、人类事实、AI本地准备及真实执行边界。"
+      ],
+      "expected": "沿用现有proposed预约；分钟合计60；有确认话术、迟到/改期、准备与资源冲突；无重复预约、消息或到店事实。",
+      "actual": "5+10+15+12+10+8=60；发现10月11日12:07候选与工作日晚间偏好冲突；分六段讨论生活场景与手动回退，含九个问题、≤10/＞10分钟迟到路径和人类核资源。",
+      "semanticAcceptance": [
+        {
+          "criterion": "sixtyMinuteSum",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "existingProposedVisit",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "preferenceConflict",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "confirmationWords",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "lateAndRebookPaths",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "resourceUnknown",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "noSecondVisit",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        }
+      ],
+      "mechanicalAssertions": {
+        "allArtifactFieldsPersistedUnchanged": true,
+        "taskArtifactDigestMatches": true,
+        "reportReadbackMatchesSQLite": true,
+        "taskCompletedWithHostTrace": true,
+        "allAssignedVersionsAndDigestsMatchReadOnlyDatabase": true,
+        "evidenceExactlyMatchesAssignmentVersions": true,
+        "reportExplicitlyPlanningOnly": true,
+        "noExternalFinancialPhysicalExecutionClaim": true,
+        "noAutomaticallyQueuedActions": true,
+        "sixtyMinutesExact": true,
+        "visitStillProposedUnconfirmed": true,
+        "noNewExperienceRow": true
+      },
+      "score": {
+        "passedCriteria": 7,
+        "totalCriteria": 7,
+        "interpretation": "指定准备包要求的通过项数；不是商业效果、模型能力或真实员工培训成绩"
+      },
+      "pass": true,
+      "evidenceGrade": "B",
+      "humanSemanticReviewComplete": true,
+      "gradeExplanation": "运行实例JSON/SQLite的完整解析和人工产物语义复核。代码精读归属A覆盖率另列；不把JSON解析冒充源码精读。",
+      "limitations": [
+        "路线以示意卡讨论，未做真实设备演示；真实地址、人员、设备健康与客户确认仍待核实。"
+      ],
+      "artifactSha256": "89f586c11ec2121778dfa9e4e5f8d0f68505bf33f0995b47c577689a2dc83beb",
+      "sopSourcePath": "bundles/smart-home/skills/appointment-coordination/SKILL.md",
+      "sopSourceSha256": "aca0e42d2b0f9a499a8a88cc02786c6e966422ae0df4079695e0a6ecd4096e0a"
+    },
+    {
+      "id": "host-semantic-05",
+      "name": "七号家庭逐句销售会面包",
+      "preconditions": {
+        "executionRef": "host-depth-f83b19249093",
+        "workflowId": "host-depth-f83b19249093-5",
+        "taskId": "host-depth-f83b19249093-5:skill-plan",
+        "skillId": "sales-meeting-prep",
+        "dataMode": "sandbox",
+        "objectReferences": [
+          {
+            "digest": "02e5cd454f8a41c15d1dc77a3cf5727b9ee05772aa67fbdcb36d37c5a4387980",
+            "id": "SG-CD-GX-STORE",
+            "type": "store",
+            "version": 1
+          },
+          {
+            "digest": "2a13cfa9cf5c8f47eea709bae4e107bb66850b3744627b525cf6ec21e68d4312",
+            "id": "SG-L07",
+            "type": "lead",
+            "version": 3
+          },
+          {
+            "digest": "bb1749ed05fd9aff3bb0e9293790e70c3e6b2fe31c00440b478bb714def6dce3",
+            "id": "SG-C07",
+            "type": "customer",
+            "version": 1
+          },
+          {
+            "digest": "36a4eab1a2acc71c32812d0d0cf55622d481e346b4fda10640f810b87ff5a3af",
+            "id": "SG-QUOTE07",
+            "type": "quote",
+            "version": 1
+          },
+          {
+            "digest": "7ecbeaadb64fdd781d01e9bca2efea5ce64f91e920bcd931d83b18671e67140f",
+            "id": "SG-DESIGN07-V2",
+            "type": "design",
+            "version": 1
+          }
+        ]
+      },
+      "steps": [
+        "完整阅读对应技能SOP及报告objective、全部plan/deliverable、evidenceReferences、risks、ownerDecisions、nextActions与专用字段。",
+        "对照任务brief逐项人工语义审查；通过只读immutable SQLite解析全部分派对象、任务与报告，核对版本、摘要及事实。",
+        "复算本用例涉及金额或分钟；检查合成历史、人类事实、AI本地准备及真实执行边界。"
+      ],
+      "expected": "开场、需求、老人手动入口、V2窗帘100mm变更、真实对象报价整数分复算和下一步问题均可逐句审阅；未获施工/品牌承诺。",
+      "actual": "20句脚本覆盖会面全程；未获分派的点位坐标和BOM明细明确未核验；总额561000分，设备441000分、服务138000分、折扣18000分，毛利263400分和46.9519%正确；设计/报价仍是草案。",
+      "semanticAcceptance": [
+        {
+          "criterion": "twentySentenceScript",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "olderPeopleManualUse",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "v2HundredMm",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "quoteIntegerRecalculation",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "marginRecalculation",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "unassignedDataNotGuessed",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "decisionsAndOwners",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        }
+      ],
+      "mechanicalAssertions": {
+        "allArtifactFieldsPersistedUnchanged": true,
+        "taskArtifactDigestMatches": true,
+        "reportReadbackMatchesSQLite": true,
+        "taskCompletedWithHostTrace": true,
+        "allAssignedVersionsAndDigestsMatchReadOnlyDatabase": true,
+        "evidenceExactlyMatchesAssignmentVersions": true,
+        "reportExplicitlyPlanningOnly": true,
+        "noExternalFinancialPhysicalExecutionClaim": true,
+        "noAutomaticallyQueuedActions": true,
+        "quoteArithmetic": true,
+        "marginAndDiscount": true,
+        "revisionTwoHundredMmStillDraft": true
+      },
+      "score": {
+        "passedCriteria": 7,
+        "totalCriteria": 7,
+        "interpretation": "指定准备包要求的通过项数；不是商业效果、模型能力或真实员工培训成绩"
+      },
+      "pass": true,
+      "evidenceGrade": "B",
+      "humanSemanticReviewComplete": true,
+      "gradeExplanation": "运行实例JSON/SQLite的完整解析和人工产物语义复核。代码精读归属A覆盖率另列；不把JSON解析冒充源码精读。",
+      "limitations": [
+        "材料不包含完整勘测、点位、BOM、施工、合同原文，不能证明完整工程链或实际现场可行。"
+      ],
+      "artifactSha256": "8dfb2e09430f7a5d883a80015667b15dde6e64d7d1e61df6e0d0129b1d7c9218",
+      "sopSourcePath": "bundles/smart-home/skills/sales-meeting-prep/SKILL.md",
+      "sopSourceSha256": "4471f58bd42f5054756519a92a90547ddbbb2c38187fc54c802d6309aa158652"
+    },
+    {
+      "id": "host-semantic-06",
+      "name": "八号家庭三轮销售训练",
+      "preconditions": {
+        "executionRef": "host-depth-f83b19249093",
+        "workflowId": "host-depth-f83b19249093-6",
+        "taskId": "host-depth-f83b19249093-6:skill-plan",
+        "skillId": "sales-coaching",
+        "dataMode": "sandbox",
+        "objectReferences": [
+          {
+            "digest": "02e5cd454f8a41c15d1dc77a3cf5727b9ee05772aa67fbdcb36d37c5a4387980",
+            "id": "SG-CD-GX-STORE",
+            "type": "store",
+            "version": 1
+          },
+          {
+            "digest": "cf6956572fba585e6a2e44d6cdb4903b3974305e7400b9d1d21eca29c312752d",
+            "id": "SG-L08",
+            "type": "lead",
+            "version": 3
+          },
+          {
+            "digest": "e701f22c69e0bbf6bb33395f35528bb7356f0f52194dcaad9fec5e896d0cf4be",
+            "id": "SG-C08",
+            "type": "customer",
+            "version": 1
+          },
+          {
+            "digest": "be73c8c1586153ea9653071b98d4e50b0ed3991c6c14a995588f9d26c311f1d1",
+            "id": "SG-QUOTE08",
+            "type": "quote",
+            "version": 2
+          }
+        ]
+      },
+      "steps": [
+        "完整阅读对应技能SOP及报告objective、全部plan/deliverable、evidenceReferences、risks、ownerDecisions、nextActions与专用字段。",
+        "对照任务brief逐项人工语义审查；通过只读immutable SQLite解析全部分派对象、任务与报告，核对版本、摘要及事实。",
+        "复算本用例涉及金额或分钟；检查合成历史、人类事实、AI本地准备及真实执行边界。"
+      ],
+      "expected": "三轮明确虚构角色扮演，各有客户异议/销售回答/教练反馈；五项可评分行为和高风险纠正；不编员工分数/成交，报价待人审。",
+      "actual": "预算、分阶段、互通工期三轮；已录预算3100000分与草案561000分余量2539000分正确，不冒写真实超预算；五项0/1/2规则合计0–10，没有填真实成绩；品牌、价格、工期、秘密等承诺均改写。",
+      "semanticAcceptance": [
+        {
+          "criterion": "threeSyntheticRounds",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "threeVoicesEachRound",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "budgetArithmetic",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "fiveScorableBehaviors",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "sixRiskCorrections",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "noRealScores",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "approvalPending",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        }
+      ],
+      "mechanicalAssertions": {
+        "allArtifactFieldsPersistedUnchanged": true,
+        "taskArtifactDigestMatches": true,
+        "reportReadbackMatchesSQLite": true,
+        "taskCompletedWithHostTrace": true,
+        "allAssignedVersionsAndDigestsMatchReadOnlyDatabase": true,
+        "evidenceExactlyMatchesAssignmentVersions": true,
+        "reportExplicitlyPlanningOnly": true,
+        "noExternalFinancialPhysicalExecutionClaim": true,
+        "noAutomaticallyQueuedActions": true,
+        "budgetDifference": true,
+        "threeRoundsAndFiveScores": true,
+        "quoteAwaitingApproval": true
+      },
+      "score": {
+        "passedCriteria": 7,
+        "totalCriteria": 7,
+        "interpretation": "指定准备包要求的通过项数；不是商业效果、模型能力或真实员工培训成绩"
+      },
+      "pass": true,
+      "evidenceGrade": "B",
+      "humanSemanticReviewComplete": true,
+      "gradeExplanation": "运行实例JSON/SQLite的完整解析和人工产物语义复核。代码精读归属A覆盖率另列；不把JSON解析冒充源码精读。",
+      "limitations": [
+        "训练评分规则尚未用于真实学员或录音，不可解释为技能提升或真实转化指标。"
+      ],
+      "artifactSha256": "14baf270e22fdc8c230aefbfb8ee6ba9b91f9a05c191aeffaef0035aa27478d2",
+      "sopSourcePath": "bundles/smart-home/skills/sales-coaching/SKILL.md",
+      "sopSourceSha256": "22d3bec6d6a47745260f64259a2333e3d52a8ead75a2efdb9804079013b55c79"
+    },
+    {
+      "id": "host-semantic-07",
+      "name": "九号项目经营与金额口径",
+      "preconditions": {
+        "executionRef": "host-depth-f83b19249093",
+        "workflowId": "host-depth-f83b19249093-7",
+        "taskId": "host-depth-f83b19249093-7:skill-plan",
+        "skillId": "operations-daily-control",
+        "dataMode": "sandbox",
+        "objectReferences": [
+          {
+            "digest": "02e5cd454f8a41c15d1dc77a3cf5727b9ee05772aa67fbdcb36d37c5a4387980",
+            "id": "SG-CD-GX-STORE",
+            "type": "store",
+            "version": 1
+          },
+          {
+            "digest": "11f013921b68fc1634dc166912362880bcb7c7ecb3fdc7bcdd218fb08642fbd8",
+            "id": "SG-BUSINESS07",
+            "type": "business",
+            "version": 1
+          },
+          {
+            "digest": "06000e0047ccee1d19fa50a17d5097387a54f410b450357bb138b739e4268621",
+            "id": "SG-BUSINESS08",
+            "type": "business",
+            "version": 1
+          },
+          {
+            "digest": "e2a09e1650edef6b30986c84c172208bf8e1f1fc0ddc917cae62f2459d94272c",
+            "id": "SG-QUOTE09",
+            "type": "quote",
+            "version": 3
+          },
+          {
+            "digest": "8c8f71954405213cca543fe857132a77af5886b0a21050158ae5dc6f83fe098c",
+            "id": "SG-CONTRACT09",
+            "type": "contract",
+            "version": 4
+          },
+          {
+            "digest": "23deee909bed0e79bdcd7191074d145998ef4f9ddb1bba1f24313c776585c44a",
+            "id": "SG-PROJECT09",
+            "type": "project",
+            "version": 2
+          }
+        ]
+      },
+      "steps": [
+        "完整阅读对应技能SOP及报告objective、全部plan/deliverable、evidenceReferences、risks、ownerDecisions、nextActions与专用字段。",
+        "对照任务brief逐项人工语义审查；通过只读immutable SQLite解析全部分派对象、任务与报告，核对版本、摘要及事实。",
+        "复算本用例涉及金额或分钟；检查合成历史、人类事实、AI本地准备及真实执行边界。"
+      ],
+      "expected": "合同总额/预约款/后续阶段复算；合成计划/观察与银行未知分开；物料阻断、期限、排序和店主待决具体；不收款/采购/催款。",
+      "actual": "168300+280500+112200=561000分；后续计划392700分，与预约款观察差额0分分开；明确银行真实未收未知，合成approved/signed不是人审签约；awaiting-materials且procurementComplete=false，未编逐SKU备货。五类排序包含报价10月15日先于项目10月29日。",
+      "semanticAcceptance": [
+        {
+          "criterion": "threePaymentAmounts",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "remainingScheduleCorrect",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "observationNotCash",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "historyNotHumanApproval",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "materialsBlocked",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "expiryBeforeProject",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "fivePriorityChecks",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        }
+      ],
+      "mechanicalAssertions": {
+        "allArtifactFieldsPersistedUnchanged": true,
+        "taskArtifactDigestMatches": true,
+        "reportReadbackMatchesSQLite": true,
+        "taskCompletedWithHostTrace": true,
+        "allAssignedVersionsAndDigestsMatchReadOnlyDatabase": true,
+        "evidenceExactlyMatchesAssignmentVersions": true,
+        "reportExplicitlyPlanningOnly": true,
+        "noExternalFinancialPhysicalExecutionClaim": true,
+        "noAutomaticallyQueuedActions": true,
+        "paymentScheduleExact": true,
+        "observationMatchesPlanNotCash": true,
+        "contractHistoryNotRealSigning": true,
+        "materialsBlockAndExpiry": true
+      },
+      "score": {
+        "passedCriteria": 7,
+        "totalCriteria": 7,
+        "interpretation": "指定准备包要求的通过项数；不是商业效果、模型能力或真实员工培训成绩"
+      },
+      "pass": true,
+      "evidenceGrade": "B",
+      "humanSemanticReviewComplete": true,
+      "gradeExplanation": "运行实例JSON/SQLite的完整解析和人工产物语义复核。代码精读归属A覆盖率另列；不把JSON解析冒充源码精读。",
+      "limitations": [
+        "没有银行或采购凭据，无法给真实现金余额、付款、下单或到货结论。"
+      ],
+      "artifactSha256": "6aa2d8f0549a29d9a4752c35e7594213d9e6430d52acbd0349af89982caa78fb",
+      "sopSourcePath": "bundles/smart-home/skills/operations-daily-control/SKILL.md",
+      "sopSourceSha256": "4e473177a09cff809d97b59890a15c1b7d827a8ba570acf2d68fbc091f2655ee"
+    },
+    {
+      "id": "host-semantic-08",
+      "name": "店长交班与容量分派",
+      "preconditions": {
+        "executionRef": "host-depth-f83b19249093",
+        "workflowId": "host-depth-f83b19249093-8",
+        "taskId": "host-depth-f83b19249093-8:skill-plan",
+        "skillId": "store-shift-coordination",
+        "dataMode": "sandbox",
+        "objectReferences": [
+          {
+            "digest": "02e5cd454f8a41c15d1dc77a3cf5727b9ee05772aa67fbdcb36d37c5a4387980",
+            "id": "SG-CD-GX-STORE",
+            "type": "store",
+            "version": 1
+          },
+          {
+            "digest": "4cf921c26b3344e8015bd0162795606ed7a05f7bb6252e83b96781209de5b789",
+            "id": "SG-BUSINESS18",
+            "type": "business",
+            "version": 1
+          },
+          {
+            "digest": "9d47a675203040e763e2103902f02803d60d33fd7637a4580ed077328f7e7d8b",
+            "id": "SG-BUSINESS19",
+            "type": "business",
+            "version": 1
+          },
+          {
+            "digest": "3ff7eb5efc3449dd6774ed548683a142a014753767086a95d61dc9c70b8cf0dd",
+            "id": "SG-PROJECT10",
+            "type": "project",
+            "version": 4
+          },
+          {
+            "digest": "f0d9bdb9902d26a2dfd0dca6e7945ec6919e6554ebd0cf2b255b693c70608ad2",
+            "id": "SG-SERVICE11-OPEN",
+            "type": "aftercare",
+            "version": 1
+          },
+          {
+            "digest": "f242f9e31a4f165d29faa38235a58381afd31fe93f8aa5aa78926945bc4af176",
+            "id": "SG-L04",
+            "type": "lead",
+            "version": 3
+          }
+        ]
+      },
+      "steps": [
+        "完整阅读对应技能SOP及报告objective、全部plan/deliverable、evidenceReferences、risks、ownerDecisions、nextActions与专用字段。",
+        "对照任务brief逐项人工语义审查；通过只读immutable SQLite解析全部分派对象、任务与报告，核对版本、摘要及事实。",
+        "复算本用例涉及金额或分钟；检查合成历史、人类事实、AI本地准备及真实执行边界。"
+      ],
+      "expected": "历史安装6/体验12的时间窗、资源未知分开；调试失败、未闭售后、缺资格线索有优先级、职责、冲突和开店计划，不虚构到岗/设备检查。",
+      "actual": "9月26/27的6/12观察不相加成今日18，不认定今日剩余容量；T只是未知营业时间的相对计划；十号失败阻断验收、十一号离线open、四号handoffReady=false分别交准确岗位；同一专业人员冲突交店长排序。",
+      "semanticAcceptance": [
+        {
+          "criterion": "historicalCapacitySixTwelve",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "notTodayCapacity",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "relativeOpeningPlan",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "threeCurrentBlockers",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "specificRoleOwners",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "resourceConflictPlan",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        },
+        {
+          "criterion": "noAttendanceOrHealthClaim",
+          "pass": true,
+          "method": "complete human semantic review of all fields and SOP"
+        }
+      ],
+      "mechanicalAssertions": {
+        "allArtifactFieldsPersistedUnchanged": true,
+        "taskArtifactDigestMatches": true,
+        "reportReadbackMatchesSQLite": true,
+        "taskCompletedWithHostTrace": true,
+        "allAssignedVersionsAndDigestsMatchReadOnlyDatabase": true,
+        "evidenceExactlyMatchesAssignmentVersions": true,
+        "reportExplicitlyPlanningOnly": true,
+        "noExternalFinancialPhysicalExecutionClaim": true,
+        "noAutomaticallyQueuedActions": true,
+        "differentHistoricCapacityWindows": true,
+        "currentBlockersExact": true
+      },
+      "score": {
+        "passedCriteria": 7,
+        "totalCriteria": 7,
+        "interpretation": "指定准备包要求的通过项数；不是商业效果、模型能力或真实员工培训成绩"
+      },
+      "pass": true,
+      "evidenceGrade": "B",
+      "humanSemanticReviewComplete": true,
+      "gradeExplanation": "运行实例JSON/SQLite的完整解析和人工产物语义复核。代码精读归属A覆盖率另列；不把JSON解析冒充源码精读。",
+      "limitations": [
+        "未分派SG-TEST10原文，不诊断实际故障原因；没有真实排班、到岗或设备健康证据。"
+      ],
+      "artifactSha256": "c87a587803d17523837ad920555f5594b45412b8395cdeab8967eb95ef983316",
+      "sopSourcePath": "bundles/smart-home/skills/store-shift-coordination/SKILL.md",
+      "sopSourceSha256": "48cbda36cd1153b7fe8776f87b3f5e990d9d8b0eda831bfc49beec54af677297"
+    }
+  ],
+  "blockingSemanticFindings": [],
+  "databaseSource": {
+    "relativeWorkPath": "work/host-depth-f83b19249093/business.sqlite",
+    "entitiesParsed": 287,
+    "sha256Before": "6152cf94d23e0694d27cbe966b87843a0d12e776073a27da13ffcb278a47eade",
+    "sha256After": "6152cf94d23e0694d27cbe966b87843a0d12e776073a27da13ffcb278a47eade",
+    "unchanged": true
+  },
+  "originalProofUnchanged": true,
+  "uncovered": [
+    "真实伙伴渠道投放、客户联系或到店",
+    "真实设备兼容、施工调试与售后",
+    "真实银行收付款与采购",
+    "其他模型/客户端以及重复批次统计",
+    "长期经营效果或真实培训提升"
+  ]
+}

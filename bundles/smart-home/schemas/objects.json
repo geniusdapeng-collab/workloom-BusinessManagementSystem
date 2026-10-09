@@ -76,6 +76,38 @@
     {
       "type": "report",
       "label": "经营报告"
+    },
+    {
+      "type": "leadEnrichment",
+      "label": "待确认线索补充提议"
+    },
+    {
+      "type": "customer",
+      "label": "客户家庭档案"
+    },
+    {
+      "type": "pointPlan",
+      "label": "毫米坐标点位图"
+    },
+    {
+      "type": "design",
+      "label": "版本化设计资料"
+    },
+    {
+      "type": "construction",
+      "label": "施工策划与质量资料"
+    },
+    {
+      "type": "contract",
+      "label": "报价关联合同"
+    },
+    {
+      "type": "business",
+      "label": "经营观察与计划"
+    },
+    {
+      "type": "scenario",
+      "label": "合成场景导入来源"
     }
   ]
 }

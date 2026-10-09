@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "bms.ci-media-gate-review/v1",
+  "taskId": "T-2026-1009-0001",
+  "reviewer": "/root/workbench_audit",
+  "reviewedAt": "2026-10-09T04:58:00.273689+00:00",
+  "status": "pass",
+  "checks": {
+    "cnbBytesIdenticalToLocallyFetchedTrustedMain": true,
+    "existingStaticMediaStageCallsPackageScript": true,
+    "stageAlreadyInstallsChromium": true,
+    "stageAlreadyExportsNodePath": true,
+    "originalMediaDecoderAndCliTestsRetained": true,
+    "legacyAndDepthBrowsersChainedAfterExistingMediaTests": true,
+    "currentLocalBrowserProofsThirtyThreePass": true,
+    "currentBrowserProofSourcesMatch": true
+  },
+  "evidenceGrade": "A/B",
+  "sourceReading": {
+    "completeRead": [
+      ".cnb.yml",
+      "package.json",
+      "scripts/acceptance/lib/playwright.mjs"
+    ],
+    "completeReadIsNotFullPipelineExecution": true
+  },
+  "trustedMainLocalSnapshot": {
+    "ref": "origin/main",
+    "commit": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+    "cnbSha256": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+    "currentCnbSha256": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+    "verifiedAgainstLocalRefNotNewNetworkFetch": true
+  },
+  "packageSource": {
+    "path": "package.json",
+    "sha256": "0d73ba68efec53fb585061257c6c4523d0b6415c8eded6693c9f2534cf73dc51",
+    "testMedia": "node --test --test-concurrency=1 scripts/acceptance/lib/live/media-decoder.test.mjs scripts/acceptance/lib/live/live-cli-browser.test.mjs && node scripts/check-business-workbench.mjs --output /tmp/bms-legacy-ui-regression && node scripts/check-smart-home-depth.mjs --output /tmp/bms-chengdu-ui-regression"
+  },
+  "sourceLocations": {
+    "cnbMediaStage": ".cnb.yml static_gate media stage: installs pinned Playwright and Chromium, exports NODE_PATH and PLAYWRIGHT_BROWSERS_PATH, invokes pnpm test:media",
+    "packageScript": "package.json scripts.test:media preserves two original test modules then && executes both current browser checkers"
+  },
+  "reviewRationales": [
+    "已受信主分支的.cnb.yml保持逐字节一致，继续使用现有必需static-gate媒体阶段；必要浏览器回归通过该阶段已有的package命令进入检查链。",
+    "保留原真实解码和完整CLI测试；&&让任一原测试、22项旧UI回归或11项成都深化失败返回非零并停止后续，未加allowFailure、跳过、exit-zero或替代成功信号。",
+    "现有隔离阶段已安装Chromium并设置浏览器目录与NODE_PATH；新增checker使用已读的统一Playwright解析与既有沙箱服务方式，不新加依赖或网络发布步骤。",
+    "两个浏览器checker使用不同/tmp输出目录，经营数据为各自隔离的synthetic沙箱；33项本地浏览器结果绑定当前UI/runtime/test源，正式云端结果仍由根任务的postcommit原生CI证明。"
+  ],
+  "localProofs": [
+    {
+      "path": "legacy-ui/ui-workbench-proof.json",
+      "sha256": "ab1ff6a9d67c52aaeb49ecffa8636d0ad8918c4754919076a79a6c4c7fdad2f0",
+      "totals": {
+        "cases": 22,
+        "passed": 22,
+        "failed": 0
+      },
+      "sourceDrift": []
+    },
+    {
+      "path": "ui/depth-browser-proof.json",
+      "sha256": "a1ddef7f8939d77dafc4ccb29f0dff4e60e116f0cb2ec5e5c10ce825f0735ba1",
+      "totals": {
+        "cases": 11,
+        "passed": 11,
+        "failed": 0
+      },
+      "sourceDrift": []
+    }
+  ],
+  "limitations": [
+    "未以本文件声称组合test:media已经在CNB云端执行。",
+    "trustedMain是根任务已获取的本地origin/main快照；后续原生CI状态由根任务单独刷新。",
+    "本地33项浏览器结果由根责任代理实际运行，本复核完整解析与当前源绑定，不冒称本代理自己跑了这些浏览器用例。"
+  ]
+}

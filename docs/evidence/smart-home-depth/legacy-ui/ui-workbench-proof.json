@@ -1,0 +1,512 @@
+{
+  "schemaVersion": "bms.ui-workbench-proof/v1",
+  "testSource": "scripts/check-business-workbench.mjs",
+  "testSourceSha256": "507b2dac5f7c2b49444413c4269b850b43c2fb7d28b91e4e4fe3d5874d87bab3",
+  "browser": "chromium",
+  "channel": "chrome",
+  "browserVersion": "154.0.8037.99",
+  "testedAt": "2026-10-09T04:35:42.779Z",
+  "independentRandomPort": "60731",
+  "isolatedSandboxDirectory": "/var/folders/dj/mkh6fwbd4mb6ycp933xfty4h0000gn/T/bms-ui-independent-uBCZmB",
+  "temporaryDataRetentionRequested": false,
+  "realCustomerData": false,
+  "realHumanApprovalClaimed": false,
+  "physicalExecution": false,
+  "headerAssessment": "Same-origin script/style/API and nested goal.report tested; owner POST sends browser Origin and CSRF. Test owner authority is explicitly simulated terminal fixture. UI-21/UI-22 inject rendering fixtures only.",
+  "sourceHashes": {
+    "index.html": "8a72cb70c1f193fee547061fd6826ec2b2c634388ebb877f899adc30d095364b",
+    "style.css": "0dd8f15e9183b4765c4fcf35da69ec173acdc478c554a992858e87d414d9679d",
+    "app.js": "23d1979baaf990beffc149abe9a6b0901df03f9887b941611819e969b6c23ee2"
+  },
+  "cases": [
+    {
+      "id": "UI-01",
+      "precondition": "独立沙箱数据目录，随机端口 HTTP 服务，1440×1000 Chromium",
+      "steps": "打开首页；等待首轮 state/catalog/owner 与嵌套 goal.report 完成",
+      "expected": "所有资源和业务读取成功，初始 KPI 与合成种子一致，无 CSP 或脚本错误",
+      "actual": {
+        "kpis": [
+          "1条",
+          "0场",
+          "0个",
+          "1项"
+        ],
+        "goalProgress": [
+          "0 / 1",
+          "0 / 1"
+        ],
+        "errors": {
+          "pageErrors": [],
+          "consoleErrors": [],
+          "httpErrors": [],
+          "requestFailures": [],
+          "evidenceErrors": []
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-02",
+      "precondition": "桌面布局加载完成",
+      "steps": "逐一点击全部八个导航入口",
+      "expected": "八页可达，active 与 breadcrumb 一致，页面不出现 undefined",
+      "actual": {
+        "visited": [
+          "经营总览",
+          "获客与体验",
+          "方案与交付",
+          "售后与回访",
+          "待我确认",
+          "数字员工",
+          "门店与产品",
+          "业务记录"
+        ],
+        "employeesRendered": 27,
+        "externalPublishButton": "not exposed"
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-03",
+      "precondition": "桌面记录页",
+      "steps": "选择员工任务；查看业务详情和结构化业务依据；关闭弹窗",
+      "expected": "任务可查看，租约或 CSRF 字段不出现在结构化内容",
+      "actual": {
+        "detailShown": true,
+        "sensitiveFieldsDisplayed": false
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-04",
+      "precondition": "桌面首页，匿名浏览器会话",
+      "steps": "打开新建经营目标；填入标题/目标数/期限/约束；保存",
+      "expected": "新增目标成功，保持本地进度 0，特殊 HTML 字符作为文本呈现",
+      "actual": {
+        "response": {
+          "path": "/api/call",
+          "status": 200,
+          "operation": "goal.create"
+        },
+        "goalSaved": "<img src=x onerror=window.UI_XSS=1> 合成目标 & < >",
+        "deadlineSavedInUTC": "2026-11-10T06:30:00.000Z",
+        "scriptExecuted": false
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-05",
+      "precondition": "目标表单可以打开",
+      "steps": "输入非法结构化约束，再输入零目标数",
+      "expected": "结构化错误显示可理解错误；目标数零由 HTML 校验阻止提交",
+      "actual": {
+        "structuredError": "执行约束的结构化资料不是有效格式。",
+        "zeroTargetRangeUnderflow": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-06",
+      "precondition": "匿名浏览器，合成门店存在",
+      "steps": "新增线索；把原始手机号写入联系方式保管编号；保存后改用保管编号重新保存",
+      "expected": "原始手机号被服务器拒绝，表单保留；同表单更改内容后须关闭重开或明确冲突提示",
+      "actual": {
+        "originalPhoneRejected": true,
+        "error": "请使用联系方式保管编号；不要把手机号或邮箱写入业务记录。",
+        "correctedInputSaved": {
+          "path": "/api/call",
+          "status": 200,
+          "operation": "lead.create"
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-07",
+      "precondition": "匿名浏览器，存在合成审批待办",
+      "steps": "查看报价审批内容；点击批准；申请人员会话",
+      "expected": "审批显示报价类型，匿名批准不会提交审批而提示人员会话；仅待终端确认",
+      "actual": {
+        "approvalType": "报价",
+        "sessionStatus": "pending",
+        "approvalStatus": "pending",
+        "userApprovalBypassed": false
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-08",
+      "precondition": "测试程序的明确合成终端夹具，浏览器待确认会话",
+      "steps": "把公开请求号写入模拟终端；浏览器刷新权限；批准合成报价",
+      "expected": "仅 owner/call 提交，CSRF 与同源校验有效，审批转 approved；不代表真实人员批准",
+      "actual": {
+        "response": {
+          "path": "/api/owner/call",
+          "status": 200,
+          "operation": "approval.decide"
+        },
+        "approvalStatus": "approved",
+        "authority": "synthetic test terminal fixture only",
+        "realHumanApprovalClaimed": false
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-09",
+      "precondition": "浏览器已由合成终端夹具授权，agent/owner 共用操作",
+      "steps": "新增普通线索并保存",
+      "expected": "该操作保存至 owner endpoint，事件 actor 为 human，owner 权限由端点建立",
+      "actual": {
+        "response": {
+          "path": "/api/owner/call",
+          "status": 200,
+          "operation": "lead.create"
+        },
+        "recordedActorType": "human",
+        "roleEstablishedByEndpoint": "owner"
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-10",
+      "precondition": "有有效人员测试会话",
+      "steps": "申请人员会话入口；结束会话；再打开现场勘测登记",
+      "expected": "Cookie 会话撤销；现场操作重新要求人员确认，未绕过",
+      "actual": {
+        "sessionStatus": "anonymous",
+        "physicalFormOpenedWithoutAuthorization": false
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-11",
+      "precondition": "模型任务尚未领取，浏览器界面提供推进待办",
+      "steps": "在数字员工页面推进获客流程，然后核验业务记录完整性",
+      "expected": "tick 不完成模型任务；ledger 验证有效",
+      "actual": {
+        "firstTaskStatus": "ready",
+        "ledger": {
+          "ok": true,
+          "checkedEvents": 18,
+          "checkedEntities": 18,
+          "checkedReceipts": 18,
+          "headHash": "4236a2fcf2985aaa14d0226a882e32962f9bd355c12cb167c1e36b0a63a9c457",
+          "issues": []
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-12",
+      "precondition": "读操作初始正常",
+      "steps": "拦截 goal.report 返回错误；刷新；解除拦截再刷新",
+      "expected": "单项报告错误显式显示待读取与错误，恢复后显示真实进度",
+      "actual": {
+        "failureVisible": true,
+        "recoveredProgress": "0 / 1"
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-13",
+      "precondition": "首页缓存有已读取数据",
+      "steps": "拦截 /api/state 成网络错误；点击刷新；解除后再次刷新",
+      "expected": "顶栏错误提示出现，既有数据保留，刷新按钮恢复可点击，恢复后错误消失",
+      "actual": {
+        "errorVisible": true,
+        "cachedKPIsRetained": true,
+        "refreshRecovered": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-14",
+      "precondition": "已有独立沙箱数据，390×844移动宽度",
+      "steps": "逐一点击全部八个导航入口；量测文档宽度；拍摄总览与数字员工页面",
+      "expected": "八页可达，页面无横向溢出，新增目标与人员申请入口可用",
+      "actual": {
+        "navigationCount": 8,
+        "widths": [
+          {
+            "page": "overview",
+            "viewport": 390,
+            "document": 390
+          },
+          {
+            "page": "growth",
+            "viewport": 390,
+            "document": 390
+          },
+          {
+            "page": "delivery",
+            "viewport": 390,
+            "document": 390
+          },
+          {
+            "page": "aftercare",
+            "viewport": 390,
+            "document": 390
+          },
+          {
+            "page": "approvals",
+            "viewport": 390,
+            "document": 390
+          },
+          {
+            "page": "team",
+            "viewport": 390,
+            "document": 390
+          },
+          {
+            "page": "store",
+            "viewport": 390,
+            "document": 390
+          },
+          {
+            "page": "records",
+            "viewport": 390,
+            "document": 390
+          }
+        ],
+        "newGoalAccessible": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-15",
+      "precondition": "320×780窄移动宽度",
+      "steps": "八页导航与所有 page-head 内容布局检查",
+      "expected": "八个导航入口仍可点且文档无横向溢出",
+      "actual": [
+        {
+          "page": "overview",
+          "viewport": 320,
+          "document": 320
+        },
+        {
+          "page": "growth",
+          "viewport": 320,
+          "document": 320
+        },
+        {
+          "page": "delivery",
+          "viewport": 320,
+          "document": 320
+        },
+        {
+          "page": "aftercare",
+          "viewport": 320,
+          "document": 320
+        },
+        {
+          "page": "approvals",
+          "viewport": 320,
+          "document": 320
+        },
+        {
+          "page": "team",
+          "viewport": 320,
+          "document": 320
+        },
+        {
+          "page": "store",
+          "viewport": 320,
+          "document": 320
+        },
+        {
+          "page": "records",
+          "viewport": 320,
+          "document": 320
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "UI-16",
+      "precondition": "完成各功能路径",
+      "steps": "检查全流程浏览器脚本与安全策略错误",
+      "expected": "无 pageerror、无 CSP 阻断，HTTP失败仅限主动注入错误或拒绝非法PII",
+      "actual": {
+        "pageErrors": [],
+        "cspErrors": [],
+        "observedExpectedFailureResponses": [
+          {
+            "path": "/api/call",
+            "status": 400
+          },
+          {
+            "path": "/api/call",
+            "status": 500
+          },
+          {
+            "path": "/api/call",
+            "status": 500
+          },
+          {
+            "path": "/api/call",
+            "status": 500
+          }
+        ],
+        "expectedInjectedNetworkFailures": [
+          {
+            "path": "/api/state",
+            "failure": "net::ERR_FAILED"
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-17",
+      "precondition": "匿名浏览器，新增线索的可选授权依据默认关闭",
+      "steps": "启用可选 consent.evidence；保持所需字段为空",
+      "expected": "启用才要求依据子字段，浏览器校验阻止不完整提交",
+      "actual": {
+        "enabledEvidenceRequiresURI": true,
+        "incompleteEvidenceBlockedByHTMLValidation": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-18",
+      "precondition": "匿名浏览器，线索可选依据可开关",
+      "steps": "开启依据后填部分资料，再关闭依据并保存unknown授权线索",
+      "expected": "关闭后子字段不校验、不序列化，业务保存成功且无半残依据",
+      "actual": {
+        "response": {
+          "path": "/api/call",
+          "status": 200,
+          "operation": "lead.create"
+        },
+        "incompleteOptionalEvidenceStored": false
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-19",
+      "precondition": "匿名浏览器，线索编号表单使用 HTML pattern 校验",
+      "steps": "输入包含空格的编号，再输入包含点、下划线、冒号与连字符的编号",
+      "expected": "空格编号被原生 pattern 阻止；允许字符通过；现代 /v 正则合法",
+      "actual": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9._:\\-]*$",
+        "invalidIdentifierBlocked": true,
+        "allowedIdentifierAccepted": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-20",
+      "precondition": "全部表单与移动页面路径结束",
+      "steps": "汇总浏览器 pageerror 与 console.error",
+      "expected": "没有脚本异常、CSP 阻断或非法正则；资源错误仅为明确故障注入与 PII 拒绝",
+      "actual": {
+        "pageErrors": [],
+        "unexpectedConsoleErrors": [],
+        "expectedResourceErrors": [
+          "Failed to load resource: the server responded with a status of 400 (Bad Request)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+          "Failed to load resource: net::ERR_FAILED"
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-21",
+      "precondition": "独立沙箱正常返回 snapshot；明确注入仅验证显示的五个状态夹具",
+      "steps": "拦截一次 state 为合成状态；在业务记录页分别读取线索、流程、目标与项目",
+      "expected": "五个运行时状态显示准确中文，客户验收明确写本地登记",
+      "actual": {
+        "renderingOnly": true,
+        "statuses": [
+          {
+            "type": "lead",
+            "label": "等待补充客户信息"
+          },
+          {
+            "type": "workflow",
+            "label": "等待店主审批"
+          },
+          {
+            "type": "workflow",
+            "label": "等待人员登记现场依据"
+          },
+          {
+            "type": "goal",
+            "label": "等待关联业务资料"
+          },
+          {
+            "type": "project",
+            "label": "本地已登记客户验收"
+          }
+        ],
+        "localAcceptanceBoundaryDisplayed": true
+      },
+      "pass": true
+    },
+    {
+      "id": "UI-22",
+      "precondition": "明确注入仅验证显示的两个等待流程状态",
+      "steps": "在数字员工页查看审批与现场依据等待标签；恢复服务真实 snapshot",
+      "expected": "两标签中文可读并以橙色显示待办，恢复后显示真实运行状态",
+      "actual": {
+        "renderingOnly": true,
+        "waitingApproval": "orange / 等待店主审批",
+        "waitingEvidence": "orange / 等待人员登记现场依据"
+      },
+      "pass": true
+    }
+  ],
+  "totals": {
+    "cases": 22,
+    "passed": 22,
+    "failed": 0
+  },
+  "browserEvents": {
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 400 (Bad Request)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+      "Failed to load resource: net::ERR_FAILED"
+    ],
+    "httpErrors": [
+      {
+        "path": "/api/call",
+        "status": 400
+      },
+      {
+        "path": "/api/call",
+        "status": 500
+      },
+      {
+        "path": "/api/call",
+        "status": 500
+      },
+      {
+        "path": "/api/call",
+        "status": 500
+      }
+    ],
+    "requestFailures": [
+      {
+        "path": "/api/state",
+        "failure": "net::ERR_FAILED"
+      }
+    ],
+    "evidenceErrors": []
+  },
+  "screenshots": [
+    "ui/desktop-overview.png",
+    "ui/mobile-overview.png",
+    "ui/mobile-records.png",
+    "ui/mobile-team.png",
+    "ui/narrow-mobile-records.png"
+  ]
+}

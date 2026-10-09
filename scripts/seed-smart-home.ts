@@ -5,7 +5,7 @@ import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import pg from "pg";
 import YAML from "yaml";
-import { loadVerifiedBundleManifest, loadVerifiedBundleWorkforcePresets } from "@workloom/base/bundles";
+import { loadVerifiedBundleManifest, loadVerifiedBundleWorkforcePresets, readVerifiedBundleJsonAsset } from "@workloom/base/bundles";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const BUNDLE = "smart-home";
@@ -20,6 +20,12 @@ export async function seedSmartHomeWorkspace(connectionString: string, bundleRoo
   if (!connectionString) throw new Error("DATABASE_URL is required for foundation seeding");
   const manifest = loadVerifiedBundleManifest(BUNDLE, bundleRoot);
   const presets = loadVerifiedBundleWorkforcePresets(BUNDLE, bundleRoot);
+  const background = readVerifiedBundleJsonAsset(BUNDLE, "library/industry-context.json", bundleRoot) as {
+    schemaVersion?: string; storeProfile?: { name?: string; dataMode?: string; synthetic?: boolean; realStoreVerified?: boolean; serviceAreas?: Array<{ label?: string }> };
+  };
+  const profile = background?.storeProfile;
+  if (background?.schemaVersion !== "business-management.industry-context/v1" || !profile?.name?.trim() || profile.dataMode !== "sandbox" || profile.synthetic !== true || profile.realStoreVerified !== false || !Array.isArray(profile.serviceAreas) || profile.serviceAreas.length === 0 || profile.serviceAreas.some(area => typeof area.label !== "string" || !area.label.trim())) throw new Error("Synthetic store background is invalid");
+  const storeName = `${profile.name}（虚构演练）`;
   const bundleDir = join(bundleRoot, BUNDLE);
   const fenceDocument = YAML.parse(readFileSync(join(bundleDir, manifest.workloom.fenceRef), "utf8")) as { version: string; rules: Rule[] };
   if (!fenceDocument.version || !Array.isArray(fenceDocument.rules) || fenceDocument.rules.length === 0) throw new Error("Baseline fence asset is invalid");
@@ -66,8 +72,8 @@ export async function seedSmartHomeWorkspace(connectionString: string, bundleRoo
     if (revoked.rowCount) throw new Error("A seeded skill is globally revoked; refusing to install it");
     await client.query("INSERT INTO tenants(id,name,plan) VALUES($1,$2,'pro') ON CONFLICT(id) DO NOTHING", [TENANT, "全屋智能沙箱租户"]);
     expect("tenants", { id: TENANT }, { id: TENANT, name: "全屋智能沙箱租户", plan: "pro", status: "active" });
-    await client.query("INSERT INTO workspaces(id,tenant_id,name,slug,industry,stage,night_config,bundle_id,is_example) VALUES($1,$2,$3,$4,$5,'store-onboarding',$6,$5,true) ON CONFLICT(id) DO NOTHING", [workspace, TENANT, "全屋智能经营演练门店", SMART_HOME_SEED.slug, BUNDLE, JSON.stringify({ enabled: false, timezone: "Asia/Shanghai", reason: "Host workbench must explicitly schedule model tasks" })]);
-    expect("workspaces", { id: workspace }, { id: workspace, tenant_id: TENANT, name: "全屋智能经营演练门店", slug: SMART_HOME_SEED.slug, industry: BUNDLE, stage: "store-onboarding", night_config: { enabled: false, timezone: "Asia/Shanghai", reason: "Host workbench must explicitly schedule model tasks" }, bundle_id: BUNDLE, is_example: true });
+    await client.query("INSERT INTO workspaces(id,tenant_id,name,slug,industry,stage,night_config,bundle_id,is_example) VALUES($1,$2,$3,$4,$5,'store-onboarding',$6,$5,true) ON CONFLICT(id) DO NOTHING", [workspace, TENANT, storeName, SMART_HOME_SEED.slug, BUNDLE, JSON.stringify({ enabled: false, timezone: "Asia/Shanghai", reason: "Host workbench must explicitly schedule model tasks" })]);
+    expect("workspaces", { id: workspace }, { id: workspace, tenant_id: TENANT, name: storeName, slug: SMART_HOME_SEED.slug, industry: BUNDLE, stage: "store-onboarding", night_config: { enabled: false, timezone: "Asia/Shanghai", reason: "Host workbench must explicitly schedule model tasks" }, bundle_id: BUNDLE, is_example: true });
     const members = [{ no: "MEM-001", name: "董事长", role: "owner" }, { no: "MEM-002", name: "门店运营负责人", role: "manager" }, { no: "MEM-003", name: "现场技术人员", role: "readonly" }];
     for (const member of members) {
       const id = `member-${workspace}-${member.no}`;
@@ -96,7 +102,7 @@ export async function seedSmartHomeWorkspace(connectionString: string, bundleRoo
       expect("skill_installs", { skill_id: id, workspace_id: workspace }, { skill_id: id, workspace_id: workspace, installed_by: `member-${workspace}-MEM-001`, installed_version: skill.version, fence_bindings_snapshot: skill.fenceBindings });
     }
     const forbidden = ["未经用途授权不得触达或导出客户资料", "型号或固件兼容依据缺失不得承诺方案", "报价毛利与折扣不得越过门店硬底线", "现场勘测、安装、调试和验收不得由模型冒称完成", "外部发布、支付和危险设备控制未启用"];
-    const archive = { property: { name: "全屋智能经营演练门店", city: "沙箱城市", serviceAreas: ["沙箱区域"], segment: "new_build" }, business: { minMarginRatio: 0.25, maxDiscountRatio: 0.08, quoteValidityDays: 7 }, forbidden: forbidden.map(rule => ({ rule })), goals: { title: "使用宿主模型完成获客演练", dataMode: "sandbox" }, dataMode: "sandbox" };
+    const archive = { property: { name: storeName, city: "成都（虚构门店背景）", serviceAreas: profile.serviceAreas.map(area => area.label), segment: "new_build", synthetic: true, realStoreVerified: false }, business: { minMarginRatio: 0.25, maxDiscountRatio: 0.08, quoteValidityDays: 7 }, forbidden: forbidden.map(rule => ({ rule })), goals: { title: "使用宿主模型完成获客演练", dataMode: "sandbox" }, dataMode: "sandbox" };
     await client.query("INSERT INTO profiles(workspace_id,tenant_id,industry,archive,forbidden,pii_vault) VALUES($1,$2,$3,$4,$5,NULL) ON CONFLICT(workspace_id) DO NOTHING", [workspace, TENANT, BUNDLE, JSON.stringify(archive), JSON.stringify(forbidden)]);
     expect("profiles", { workspace_id: workspace }, { workspace_id: workspace, tenant_id: TENANT, industry: BUNDLE, archive, forbidden, pii_vault: null });
     const collections: string[] = [];

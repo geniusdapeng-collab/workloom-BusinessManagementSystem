@@ -29,12 +29,12 @@ function fixture(t) {
   return { engine, directory, agent, call, start, claim, artifact, submit, updateStore };
 }
 
-test('installed workforce is the unique ownership source for all twenty employees and thirty-five skills', () => {
+test('installed workforce is the unique ownership source for all twenty-seven employees and forty-nine skills', () => {
   const source = JSON.parse(readFileSync(join(bundlePath, 'library/workforce.json'), 'utf8'));
-  assert.equal(WORKFORCE.length, 20);
-  assert.equal(EMPLOYEES.length, 20);
-  assert.equal(SKILLS.length, 35);
-  assert.equal(new Set(source.roles.flatMap(role => role.skills)).size, 35);
+  assert.equal(WORKFORCE.length, 27);
+  assert.equal(EMPLOYEES.length, 27);
+  assert.equal(SKILLS.length, 49);
+  assert.equal(new Set(source.roles.flatMap(role => role.skills)).size, 49);
   for (const role of source.roles) assert.deepEqual(EMPLOYEE_SKILLS[role.id], role.skills);
 });
 
@@ -42,19 +42,26 @@ for (const role of WORKFORCE) for (const skillId of role.skills) {
   test(`employee-work dispatches ${role.id}/${skillId} with its entire procedure and persists only a planning report`, t => {
     const f = fixture(t);
     const before = f.call('entity.get', { type: 'lead', id: 'synthetic-lead' }).data;
-    const workflow = f.start({ employeeId: role.id, skillId });
+    const specialized = ['lead-profile-enrichment', 'customer-handoff-check'].includes(skillId);
+    const workflow = f.start({ employeeId: role.id, skillId, ...(specialized ? { objectRefs: [{ type: 'lead', id: 'synthetic-lead' }] } : {}) });
     const lease = f.claim(workflow.id);
     const body = readFileSync(join(bundlePath, `skills/${skillId}/SKILL.md`), 'utf8');
     assert.equal(lease.task.employee, role.id);
     assert.equal(lease.task.skill, skillId);
     assert.equal(lease.task.phase, 'skill-plan');
     assert.ok(lease.instructions.endsWith(body));
-    assert.equal(lease.task.context.assignedObjects[0].record.id, 'synthetic-store');
+    assert.equal(lease.task.context.assignedObjects[0].record.id, specialized ? 'synthetic-lead' : 'synthetic-store');
     assert.equal(lease.task.context.planningOnly, true);
-    const result = f.submit(lease);
+    const output = specialized ? { ...f.artifact(), evidenceReferences: [{ type: 'lead', id: 'synthetic-lead', version: before.version }], proposedLeadPatch: { preferredContactWindow: 'Ask the customer to confirm a suitable time; this is a proposal.' }, confirmationQuestions: ['Please confirm the service area and property reference before the customer handoff.'], ...(skillId === 'customer-handoff-check' ? { handoffReady: false } : {}) } : f.artifact();
+    const result = f.submit(lease, output);
     assert.equal(result.workflow.status, 'completed');
     assert.equal(result.workflow.completionBasis, 'local-validated-planning-artifact-only');
     assert.equal(result.applied.externalActions, 0);
+    if (specialized) {
+      const proposal = f.call('entity.get', { type: 'leadEnrichment', id: result.applied.leadEnrichmentId }).data;
+      assert.equal(proposal.customerFactsApplied, false);
+      assert.equal(proposal.status, 'pending-human-confirmation');
+    }
     const report = f.call('entity.get', { type: 'report', id: result.applied.reportId }).data;
     assert.equal(report.skillId, skillId);
     assert.equal(report.employeeId, role.id);

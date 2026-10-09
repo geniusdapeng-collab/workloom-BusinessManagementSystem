@@ -2,12 +2,15 @@ import { resolve } from 'node:path';
 import { BusinessError, assert, clone, validate, rejectSecretsAndPII, digest } from './errors.mjs';
 import { BusinessStorage } from './storage.mjs';
 import { BusinessDomain } from './domain.mjs';
-import { BusinessWorkflows, WORKFLOW_CATALOGUE, EMPLOYEES, SKILLS, EMPLOYEE_WORK_OUTPUT_SCHEMA } from './workflows.mjs';
+import { BusinessWorkflows, WORKFLOW_CATALOGUE, EMPLOYEES, SKILLS, EMPLOYEE_WORK_OUTPUT_SCHEMA, LEAD_ENRICHMENT_OUTPUT_SCHEMA, CUSTOMER_HANDOFF_OUTPUT_SCHEMA } from './workflows.mjs';
 import { EMPLOYEE_SKILLS, WORKFORCE } from './workforce.mjs';
 import { OPERATION_CATALOGUE, OPERATION_BY_NAME, ENTITY_TYPES, id } from './catalogue.mjs';
+import { listSyntheticScenarios, importSyntheticScenario, seedSyntheticScenario, assertInstalledScenarioRevision } from './scenario.mjs';
+import { readSkillTitles } from './assets.mjs';
 
-export { BusinessError, OPERATION_CATALOGUE, WORKFLOW_CATALOGUE, EMPLOYEES, SKILLS, ENTITY_TYPES, WORKFORCE, EMPLOYEE_SKILLS, EMPLOYEE_WORK_OUTPUT_SCHEMA };
-export const RUNTIME_VERSION = '1.0.0';
+export { BusinessError, OPERATION_CATALOGUE, WORKFLOW_CATALOGUE, EMPLOYEES, SKILLS, ENTITY_TYPES, WORKFORCE, EMPLOYEE_SKILLS, EMPLOYEE_WORK_OUTPUT_SCHEMA, LEAD_ENRICHMENT_OUTPUT_SCHEMA, CUSTOMER_HANDOFF_OUTPUT_SCHEMA };
+export { seedSyntheticScenario, listSyntheticScenarios };
+export const RUNTIME_VERSION = '1.1.0';
 
 /**
  * Dependency-free industry adapter. All entry points share this gateway. The
@@ -29,7 +32,7 @@ export function createBusinessEngine({ dataDir, tenantId = 'demo-store', workspa
   const domain = new BusinessDomain(storage, now);
   const workflows = new BusinessWorkflows(storage, domain, now);
   let closed = false;
-  const catalog = () => clone({ schemaVersion: 'business-management.catalog/v1', runtimeVersion: RUNTIME_VERSION, productId: 'workloom-business-management-system', industry: 'smart-home', dataMode, operations: OPERATION_CATALOGUE, workflows: WORKFLOW_CATALOGUE, employees: EMPLOYEES, skills: SKILLS, workforce: WORKFORCE, employeeSkills: EMPLOYEE_SKILLS, entityTypes: ENTITY_TYPES, execution: { modelProvider: 'host-workbench', runtimeModelCalls: false, persistence: 'node:sqlite', approvals: 'human-session-only', receipts: 'local.sqlite.commit', externalVerification: false }, externalConnectors: { publishing: 'disabled', messaging: 'disabled', payments: 'disabled', deviceControl: 'disabled' }, limits: { inputBytes: 1000000, taskLeaseSeconds: { minimum: 30, maximum: 3600 }, taskMaxAttempts: 5, approvalMaxDays: 7 } });
+  const catalog = () => clone({ schemaVersion: 'business-management.catalog/v1', runtimeVersion: RUNTIME_VERSION, productId: 'workloom-business-management-system', industry: 'smart-home', dataMode, operations: OPERATION_CATALOGUE, workflows: WORKFLOW_CATALOGUE, employees: EMPLOYEES, skills: SKILLS, skillTitles: readSkillTitles(), workforce: WORKFORCE, employeeSkills: EMPLOYEE_SKILLS, entityTypes: ENTITY_TYPES, execution: { modelProvider: 'host-workbench', runtimeModelCalls: false, persistence: 'node:sqlite', approvals: 'human-session-only', receipts: 'local.sqlite.commit', externalVerification: false }, externalConnectors: { publishing: 'disabled', messaging: 'disabled', payments: 'disabled', deviceControl: 'disabled' }, limits: { inputBytes: 1000000, taskLeaseSeconds: { minimum: 30, maximum: 3600 }, taskMaxAttempts: 5, approvalMaxDays: 7 } });
   const engine = {
     scope: Object.freeze({ tenantId, workspaceId, dataMode }),
     catalog,
@@ -39,6 +42,7 @@ export function createBusinessEngine({ dataDir, tenantId = 'demo-store', workspa
       const spec = OPERATION_BY_NAME.get(operation);
       assert(spec, 'UNKNOWN_OPERATION', 'Operation is not in the industry catalogue', 404);
       assert(actor && typeof actor === 'object', 'ACTOR_REQUIRED', 'Transport-authenticated actor is required', 401);
+      assert(!actor.syntheticImport && !actor.syntheticHistory && !actor.importContext, 'ACTOR_IMPORT_CONTEXT_SPOOFING', 'Synthetic import context cannot be supplied by a transport actor', 403);
       validate(id, actor.id, '$.actor.id');
       assert(actor.tenantId === tenantId && actor.workspaceId === workspaceId, 'TENANT_SCOPE_MISMATCH', 'Actor tenant/workspace must match this engine', 403);
       assert(['cli', 'mcp', 'http', 'test'].includes(actor.channel), 'INVALID_ACTOR_CHANNEL', 'Unknown actor channel', 403);
@@ -60,6 +64,7 @@ export function createBusinessEngine({ dataDir, tenantId = 'demo-store', workspa
       if (operation === 'approval.decide' || operation === 'goal.instruct') domain.human(actor);
       if (spec.readOnly) {
         if (operation === 'catalog') return { operation, data: catalog() };
+        if (operation === 'scenario.list') return { operation, data: listSyntheticScenarios() };
         if (operation === 'status') return { operation, data: { runtimeVersion: RUNTIME_VERSION, industry: 'smart-home', ...engine.scope, database: 'local-sqlite', modelProvider: 'host-workbench', runtimeModelCalls: 0, connectors: catalog().externalConnectors, counts: Object.fromEntries(ENTITY_TYPES.map(type => [type, storage.count(type)])), ledger: storage.verify(), systemTime: now() } };
         if (!['ledger.verify', 'ledger.list'].includes(operation)) {
           const verification = storage.verify();
@@ -68,10 +73,11 @@ export function createBusinessEngine({ dataDir, tenantId = 'demo-store', workspa
         return { operation, data: domain.read(operation, input, workflows) };
       }
       return storage.transaction(operation, input, actor, () => {
+        if (operation === 'scenario.import') return importSyntheticScenario(domain, workflows, input, actor);
         const flow = workflows.execute(operation, input, actor);
         if (flow !== undefined) return flow;
         return domain.execute(operation, input, actor);
-      }, spec.risk, spec.fenceIds);
+      }, spec.risk, spec.fenceIds, operation === 'scenario.import' ? () => assertInstalledScenarioRevision(storage, input.datasetId) : undefined);
     },
   };
   return engine;
