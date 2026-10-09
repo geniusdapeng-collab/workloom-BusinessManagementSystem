@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 138,
+  "revision": 140,
   "tasks": {
     "2": {
       "number": 2,
@@ -2907,8 +2907,8 @@
         "README.md"
       ],
       "ciSince": 1791531625366,
-      "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls?state=all&base_ref=main&page_size=100&page=1 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
-      "blockedUntil": 1791532225366,
+      "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls/7 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
+      "blockedUntil": 1791533123968,
       "candidate": {
         "number": 7,
         "branch": "delivery/candidate/pr-6-cc631df4d4cd6f98b691fdc8a56f16d4",
@@ -9712,6 +9712,31 @@
       },
       "previous": "1f28c4209aace389f2845e149fdeb3892bddaef60274ba292b0258c851ce78fb",
       "digest": "c3c08ab1afba1d7db5e2153e5b47414cab51f60b3512686dfa0fc547bbcd70e4"
+    },
+    {
+      "sequence": 139,
+      "at": "2026-10-09T07:55:23.968Z",
+      "kind": "task",
+      "data": {
+        "number": 6,
+        "patch": {
+          "status": "parked",
+          "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls/7 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
+          "blockedUntil": 1791533123968
+        }
+      },
+      "previous": "c3c08ab1afba1d7db5e2153e5b47414cab51f60b3512686dfa0fc547bbcd70e4",
+      "digest": "177f637b1597b1beeb0f26511342b39c94c31f058d1be94678b93bcfc3c32f4e"
+    },
+    {
+      "sequence": 140,
+      "at": "2026-10-09T07:55:30.992Z",
+      "kind": "transaction",
+      "data": {
+        "id": "45aca84e-bc9e-4a23-b1ef-8502ab8f1ecd"
+      },
+      "previous": "177f637b1597b1beeb0f26511342b39c94c31f058d1be94678b93bcfc3c32f4e",
+      "digest": "de5ea106f1488424652c3ac96e2cb5f953045d5707553f323c2f38f07ab4fce3"
     }
   ]
 }
