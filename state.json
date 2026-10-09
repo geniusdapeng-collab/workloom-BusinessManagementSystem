@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 144,
+  "revision": 146,
   "tasks": {
     "2": {
       "number": 2,
@@ -2764,7 +2764,7 @@
     },
     "6": {
       "number": 6,
-      "status": "parked",
+      "status": "merging",
       "firstSeen": 1791531031898,
       "attempts": {},
       "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
@@ -2916,6 +2916,77 @@
         "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
         "marker": "delivery-origin:6:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6",
         "at": 1791532253671
+      },
+      "mergePhase": "prepared",
+      "mergeSnapshot": {
+        "repo": "workloom-ai/workloom-BusinessManagementSystem",
+        "number": 7,
+        "pull": {
+          "number": 7,
+          "state": "open",
+          "title": "chore(ci): deliver #6 docs(smart-home): README 客户视角重写与产品/技术/Agent 架构图 [T-2026-1009-0002]",
+          "body": "Immutable delivery candidate for #6. Exact source bab6e7b2996261065ece1bfa89100f727e9c11f9; tested main 983ac667849e427d33bf03b9c35986699abf70a6.\n\n<!-- delivery-origin:6:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6 -->\n\n<!-- workloom-delivery\n{\"ready\":true,\"depends_on\":[],\"releases\":[]}\n-->",
+          "author": {
+            "username": "OCI",
+            "nickname": "Cloud Native Build",
+            "is_npc": true
+          },
+          "reviewers": [],
+          "labels": [],
+          "base": {
+            "ref": "refs/heads/main",
+            "sha": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "repo": {
+              "id": "2108222160764293120",
+              "name": "workloom-BusinessManagementSystem",
+              "path": "workloom-ai/workloom-BusinessManagementSystem",
+              "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+            }
+          },
+          "head": {
+            "ref": "refs/heads/delivery/candidate/pr-6-cc631df4d4cd6f98b691fdc8a56f16d4",
+            "sha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+            "repo": {
+              "id": "2108222160764293120",
+              "name": "workloom-BusinessManagementSystem",
+              "path": "workloom-ai/workloom-BusinessManagementSystem",
+              "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+            }
+          },
+          "blocked_on": "status_check",
+          "merged_by": {
+            "is_npc": false
+          },
+          "mergeable_state": "mergeable",
+          "is_wip": false,
+          "is_merged": false,
+          "is_force_merged": false,
+          "statuses": {}
+        },
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "files": [
+          "README.md"
+        ],
+        "intent": {
+          "taskId": "T-2026-1009-0002",
+          "ready": true,
+          "dependsOn": [],
+          "releases": []
+        },
+        "headTime": 1791530925000,
+        "mergeBase": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "checkErrors": [],
+        "checkSha": "fe620c0bc665e3c3a8d8210670cbeaad8ebcee35",
+        "hasFailedChecks": false,
+        "ciPolicyChanges": [],
+        "originNumber": 6,
+        "pendingDependencies": []
+      },
+      "integrationLease": {
+        "owner": "integration/pr-6",
+        "scopes": [],
+        "generation": {}
       }
     },
     "7": {
@@ -9804,6 +9875,100 @@
       },
       "previous": "f52b8212134f07fd9c3129a14d51ac9ddea668afbafd4175ffe4dbdd60c32939",
       "digest": "a31b8c23539178dd4773a5e2956a093731eff9f763df98cfd55fa185ab550c36"
+    },
+    {
+      "sequence": 145,
+      "at": "2026-10-09T08:06:06.665Z",
+      "kind": "task",
+      "data": {
+        "number": 6,
+        "patch": {
+          "status": "merging",
+          "mergePhase": "prepared",
+          "mergeSnapshot": {
+            "repo": "workloom-ai/workloom-BusinessManagementSystem",
+            "number": 7,
+            "pull": {
+              "number": 7,
+              "state": "open",
+              "title": "chore(ci): deliver #6 docs(smart-home): README 客户视角重写与产品/技术/Agent 架构图 [T-2026-1009-0002]",
+              "body": "Immutable delivery candidate for #6. Exact source bab6e7b2996261065ece1bfa89100f727e9c11f9; tested main 983ac667849e427d33bf03b9c35986699abf70a6.\n\n<!-- delivery-origin:6:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6 -->\n\n<!-- workloom-delivery\n{\"ready\":true,\"depends_on\":[],\"releases\":[]}\n-->",
+              "author": {
+                "username": "OCI",
+                "nickname": "Cloud Native Build",
+                "is_npc": true
+              },
+              "reviewers": [],
+              "labels": [],
+              "base": {
+                "ref": "refs/heads/main",
+                "sha": "983ac667849e427d33bf03b9c35986699abf70a6",
+                "repo": {
+                  "id": "2108222160764293120",
+                  "name": "workloom-BusinessManagementSystem",
+                  "path": "workloom-ai/workloom-BusinessManagementSystem",
+                  "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+                }
+              },
+              "head": {
+                "ref": "refs/heads/delivery/candidate/pr-6-cc631df4d4cd6f98b691fdc8a56f16d4",
+                "sha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+                "repo": {
+                  "id": "2108222160764293120",
+                  "name": "workloom-BusinessManagementSystem",
+                  "path": "workloom-ai/workloom-BusinessManagementSystem",
+                  "web_url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem"
+                }
+              },
+              "blocked_on": "status_check",
+              "merged_by": {
+                "is_npc": false
+              },
+              "mergeable_state": "mergeable",
+              "is_wip": false,
+              "is_merged": false,
+              "is_force_merged": false,
+              "statuses": {}
+            },
+            "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+            "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "files": [
+              "README.md"
+            ],
+            "intent": {
+              "taskId": "T-2026-1009-0002",
+              "ready": true,
+              "dependsOn": [],
+              "releases": []
+            },
+            "headTime": 1791530925000,
+            "mergeBase": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "checkErrors": [],
+            "checkSha": "fe620c0bc665e3c3a8d8210670cbeaad8ebcee35",
+            "hasFailedChecks": false,
+            "ciPolicyChanges": [],
+            "originNumber": 6,
+            "pendingDependencies": []
+          },
+          "integrationLease": {
+            "owner": "integration/pr-6",
+            "scopes": [],
+            "generation": {}
+          }
+        }
+      },
+      "previous": "a31b8c23539178dd4773a5e2956a093731eff9f763df98cfd55fa185ab550c36",
+      "digest": "87041761066f40dabb347a160be610d3c6068322320d3bad7fde45b4ac235e23"
+    },
+    {
+      "sequence": 146,
+      "at": "2026-10-09T08:06:10.457Z",
+      "kind": "transaction",
+      "data": {
+        "id": "d62469a9-8503-4b9c-9ec9-aee1d0301a7b"
+      },
+      "previous": "87041761066f40dabb347a160be610d3c6068322320d3bad7fde45b4ac235e23",
+      "digest": "37601a416a16e7c392b5b495717f5754af921f75cd08471e1e5cd22eea9a86ed"
     }
   ]
 }
