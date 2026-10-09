@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 148,
+  "revision": 151,
   "tasks": {
     "2": {
       "number": 2,
@@ -2764,7 +2764,7 @@
     },
     "6": {
       "number": 6,
-      "status": "merging",
+      "status": "waiting_ci",
       "firstSeen": 1791531031898,
       "attempts": {},
       "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
@@ -2907,7 +2907,7 @@
         "README.md"
       ],
       "ciSince": 1791531625366,
-      "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls/7 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
+      "error": "CNB 409 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls/7/merge :: {\"errcode\":2009014,\"errmsg\":\"the pull can not merge yet\"}\n",
       "blockedUntil": 1791533123968,
       "candidate": {
         "number": 7,
@@ -2917,7 +2917,7 @@
         "marker": "delivery-origin:6:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6",
         "at": 1791532253671
       },
-      "mergePhase": "merge_requested",
+      "mergePhase": null,
       "mergeSnapshot": {
         "repo": "workloom-ai/workloom-BusinessManagementSystem",
         "number": 7,
@@ -9994,6 +9994,45 @@
       },
       "previous": "e3a05e05eb548e92af4d2119b0673fb7ba43e39d2bcefb6c5ab9d5875245ff37",
       "digest": "fcaeedcad326443afc196a7abe45dfcf2980a66560f44ca037bbd7e41a0484f0"
+    },
+    {
+      "sequence": 149,
+      "at": "2026-10-09T08:06:06.665Z",
+      "kind": "merge_rejected",
+      "data": {
+        "number": 6,
+        "candidate": 7,
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "httpStatus": 409,
+        "verifiedUnmerged": true
+      },
+      "previous": "fcaeedcad326443afc196a7abe45dfcf2980a66560f44ca037bbd7e41a0484f0",
+      "digest": "2ad0512f8ec29c3e0eb2ea83a6dcc7fab84eb11547ed5e61488db294afd72460"
+    },
+    {
+      "sequence": 150,
+      "at": "2026-10-09T08:06:06.665Z",
+      "kind": "task",
+      "data": {
+        "number": 6,
+        "patch": {
+          "error": "CNB 409 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls/7/merge :: {\"errcode\":2009014,\"errmsg\":\"the pull can not merge yet\"}\n",
+          "status": "waiting_ci",
+          "mergePhase": null
+        }
+      },
+      "previous": "2ad0512f8ec29c3e0eb2ea83a6dcc7fab84eb11547ed5e61488db294afd72460",
+      "digest": "a58d48fadcf5bb2cb709014d3ccefd1801ef88fdb9d9c190550b622e0fcc3bf6"
+    },
+    {
+      "sequence": 151,
+      "at": "2026-10-09T08:06:12.895Z",
+      "kind": "transaction",
+      "data": {
+        "id": "39e63cfe-8165-4c12-b6c4-2c6ac136b164"
+      },
+      "previous": "a58d48fadcf5bb2cb709014d3ccefd1801ef88fdb9d9c190550b622e0fcc3bf6",
+      "digest": "fabac8c80fb7221296ebb503cc64bfc6516ed03441d57c171aab606e2fbe7b18"
     }
   ]
 }
