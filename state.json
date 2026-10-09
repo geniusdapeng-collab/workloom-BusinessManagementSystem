@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repo": "workloom-ai/workloom-BusinessManagementSystem",
-  "revision": 129,
+  "revision": 131,
   "tasks": {
     "2": {
       "number": 2,
@@ -2908,7 +2908,15 @@
       ],
       "ciSince": 1791531625366,
       "error": "CNB 429 https://api.cnb.cool/workloom-ai/workloom-BusinessManagementSystem/-/pulls?state=all&base_ref=main&page_size=100&page=1 :: {\"errcode\":8,\"errmsg\":\"Too many requests. Please try again later.\"}\n",
-      "blockedUntil": 1791532225366
+      "blockedUntil": 1791532225366,
+      "candidate": {
+        "number": 7,
+        "branch": "delivery/candidate/pr-6-cc631df4d4cd6f98b691fdc8a56f16d4",
+        "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+        "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+        "marker": "delivery-origin:6:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6",
+        "at": 1791532253671
+      }
     }
   },
   "leases": {
@@ -9544,6 +9552,36 @@
       },
       "previous": "7c2dde06c5cb1a8812ad5673083c405e5f5685bee73b6b8dd5fc92fe2c7771b2",
       "digest": "d10617414e6a11d43babfa882998700804260dde0ce8853ce4e6ea4e63b97ffa"
+    },
+    {
+      "sequence": 130,
+      "at": "2026-10-09T07:50:53.671Z",
+      "kind": "task",
+      "data": {
+        "number": 6,
+        "patch": {
+          "candidate": {
+            "number": 7,
+            "branch": "delivery/candidate/pr-6-cc631df4d4cd6f98b691fdc8a56f16d4",
+            "headSha": "bab6e7b2996261065ece1bfa89100f727e9c11f9",
+            "mainSha": "983ac667849e427d33bf03b9c35986699abf70a6",
+            "marker": "delivery-origin:6:bab6e7b2996261065ece1bfa89100f727e9c11f9:983ac667849e427d33bf03b9c35986699abf70a6",
+            "at": 1791532253671
+          }
+        }
+      },
+      "previous": "d10617414e6a11d43babfa882998700804260dde0ce8853ce4e6ea4e63b97ffa",
+      "digest": "a8351f2a768bce1aa552bf0a251ea1d893184df87d4b5943e567e87aac41fac2"
+    },
+    {
+      "sequence": 131,
+      "at": "2026-10-09T07:50:55.798Z",
+      "kind": "transaction",
+      "data": {
+        "id": "e450a274-5418-49ed-9a70-c439303fa4f2"
+      },
+      "previous": "a8351f2a768bce1aa552bf0a251ea1d893184df87d4b5943e567e87aac41fac2",
+      "digest": "5b8a40296794d89365106aa7be50dfb0d75789b5c3d20fc486be4416341c271c"
     }
   ]
 }
