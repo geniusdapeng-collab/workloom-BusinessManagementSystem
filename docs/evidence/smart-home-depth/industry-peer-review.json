@@ -1,0 +1,397 @@
+{
+  "schemaVersion": "business-management.industry-peer-review/v1",
+  "task": "T-2026-1009-0001",
+  "reviewer": "industry_map",
+  "implementationOwner": "business_engine",
+  "builtAt": "2026-10-09T04:37:41.120154+00:00",
+  "evidenceLevels": {
+    "sourceReview": "A",
+    "executableProbeResults": "B",
+    "beforeProbeVersionBinding": "D"
+  },
+  "readCoverage": {
+    "manifest": "docs/evidence/smart-home-depth/industry-read-coverage.json",
+    "scope": "Industry subtask physical bundle and explicitly listed direct dependencies; this is not a whole-repository semantic audit.",
+    "counts": {
+      "total": 154,
+      "full": 113,
+      "machine": 41,
+      "sample": 0,
+      "unread": 0,
+      "retainedByteIdenticalFullReads": 67,
+      "fullReadsThisTask": 46
+    },
+    "scopeCuts": "Machine-only paths and reasons are individually listed in the manifest. Prior complete reads are retained only on exact current SHA identity; no new reread is claimed for those paths."
+  },
+  "scope": "Independent review of progressive lead proposals, document revision chains, contracts, source-preserving scenario recovery, and exact device-point/BOM closure; this report details the two discovered and repaired defects.",
+  "findings": [
+    {
+      "id": "IND-FIND-01",
+      "severity": "严重",
+      "status": "fixed-and-independently-retested",
+      "title": "Original scenario request key bypassed changed installed fixture revision",
+      "evidenceLevels": [
+        "A",
+        "B"
+      ],
+      "consequence": "An upgraded installation could replay an old import receipt while the same data would reject a fresh-key recovery, contradicting the declared installed-version boundary.",
+      "reproduction": [
+        "Seed an isolated baseline sandbox.",
+        "Change implementation bytes in a separate runtime copy so fixtureDigest changes.",
+        "Call the same sandbox with the original key."
+      ],
+      "before": {
+        "originalKey": "replayed old receipt",
+        "newKey": "SCENARIO_VERSION_CONFLICT"
+      },
+      "fix": {
+        "locations": [
+          {
+            "path": "bundles/smart-home/runtime/index.mjs",
+            "line": 80,
+            "function": "createBusinessEngine.call"
+          },
+          {
+            "path": "bundles/smart-home/runtime/storage.mjs",
+            "line": 115,
+            "function": "BusinessStorage.transaction"
+          },
+          {
+            "path": "bundles/smart-home/runtime/scenario.mjs",
+            "line": 65,
+            "function": "assertInstalledScenarioRevision"
+          }
+        ],
+        "behavior": "After ledger and request/actor checks, scenario replay verifies the current installed fixtureDigest before returning cached data. New-key recovery uses the same guard."
+      },
+      "regressionCases": [
+        "IND-PEER-01",
+        "IND-PEER-02",
+        "IND-PEER-03",
+        "IND-PEER-04"
+      ]
+    },
+    {
+      "id": "IND-FIND-02",
+      "severity": "严重",
+      "status": "fixed-and-independently-retested",
+      "title": "Design validation checked BOM membership without exact device counts",
+      "evidenceLevels": [
+        "A",
+        "B"
+      ],
+      "consequence": "A partial or duplicated device layout could carry draft-local-validated status despite not locating the complete solution BOM.",
+      "reproduction": [
+        "Seed isolated customer SG-C06 with a 21-device solution.",
+        "Record a 1-device plan or a 22-device plan in a continuous revision chain.",
+        "Record the next design against that plan."
+      ],
+      "before": {
+        "requiredDevices": 21,
+        "oneDevicePlan": "accepted",
+        "twentyTwoDevicePlan": "accepted"
+      },
+      "fix": {
+        "locations": [
+          {
+            "path": "bundles/smart-home/runtime/depth-domain.mjs",
+            "line": 128,
+            "function": "BusinessDepth.execute design.record"
+          }
+        ],
+        "behavior": "Every non-network/non-outlet point requires an exact SKU. Room/SKU device counts must match every BOM quantity exactly. Unassigned network/outlet preparation points remain permitted."
+      },
+      "regressionCases": [
+        "IND-PEER-05",
+        "IND-PEER-06",
+        "IND-PEER-07",
+        "IND-PEER-08"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "IND-PEER-01",
+      "dimension": "normal/replay",
+      "preconditions": [
+        "An isolated sandbox imported the installed scenario with its default request key.",
+        "Installed runtime and SOP bytes are unchanged."
+      ],
+      "steps": [
+        "Call seedSyntheticScenario again with the same actor, anchor and default request key."
+      ],
+      "expected": {
+        "replayed": true,
+        "recovered": true,
+        "overwrittenObjects": 0
+      },
+      "actual": {
+        "replayed": true,
+        "recovered": true,
+        "overwrittenObjects": 0
+      },
+      "passed": true
+    },
+    {
+      "id": "IND-PEER-02",
+      "dimension": "normal/recovery",
+      "preconditions": [
+        "The same isolated sandbox contains the original imported scenario.",
+        "Installed runtime and SOP bytes are unchanged."
+      ],
+      "steps": [
+        "Call seedSyntheticScenario with unchanged-new-key-probe as a fresh request key."
+      ],
+      "expected": {
+        "replayed": false,
+        "recovered": true,
+        "overwrittenObjects": 0
+      },
+      "actual": {
+        "replayed": false,
+        "recovered": true,
+        "overwrittenObjects": 0
+      },
+      "passed": true
+    },
+    {
+      "id": "IND-PEER-03",
+      "dimension": "error/regression/original-key",
+      "preconditions": [
+        "An isolated baseline runtime imported the scenario and was closed.",
+        "A second isolated copy differs only by an appended implementation comment in errors.mjs; its computed fixtureDigest differs."
+      ],
+      "steps": [
+        "Open the same sandbox with the changed copy.",
+        "Call seedSyntheticScenario using the original actor, anchor and default request key."
+      ],
+      "expected": {
+        "code": "SCENARIO_VERSION_CONFLICT"
+      },
+      "actual": {
+        "code": "SCENARIO_VERSION_CONFLICT"
+      },
+      "passed": true
+    },
+    {
+      "id": "IND-PEER-04",
+      "dimension": "error/regression/new-key",
+      "preconditions": [
+        "The changed runtime copy opened the original isolated sandbox.",
+        "Its installed fixtureDigest differs from the imported marker."
+      ],
+      "steps": [
+        "Call seedSyntheticScenario with different-key-probe as a new request key."
+      ],
+      "expected": {
+        "code": "SCENARIO_VERSION_CONFLICT"
+      },
+      "actual": {
+        "code": "SCENARIO_VERSION_CONFLICT"
+      },
+      "passed": true
+    },
+    {
+      "id": "IND-PEER-05",
+      "dimension": "boundary/missing-device-count",
+      "preconditions": [
+        "The isolated seeded customer SG-C06 has a solution BOM totaling 21 exact room/SKU device points.",
+        "A legitimate agent actor calls only local pointPlan.record/design.record."
+      ],
+      "steps": [
+        "Create the next point-plan revision containing one original device point.",
+        "Attempt a matching next design revision against that plan."
+      ],
+      "expected": {
+        "accepted": false,
+        "code": "DESIGN_POINT_BOM_MISMATCH"
+      },
+      "actual": {
+        "accepted": false,
+        "code": "DESIGN_POINT_BOM_MISMATCH"
+      },
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 1,
+      "passed": true
+    },
+    {
+      "id": "IND-PEER-06",
+      "dimension": "boundary/duplicate-device-count",
+      "preconditions": [
+        "The same isolated customer has 21 required BOM devices.",
+        "The point-plan revision chain uses the latest recorded predecessor."
+      ],
+      "steps": [
+        "Create the next point-plan revision with all original points and one extra uniquely identified device point.",
+        "Attempt a matching next design revision against that plan."
+      ],
+      "expected": {
+        "accepted": false,
+        "code": "DESIGN_POINT_BOM_MISMATCH"
+      },
+      "actual": {
+        "accepted": false,
+        "code": "DESIGN_POINT_BOM_MISMATCH"
+      },
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 22,
+      "passed": true
+    },
+    {
+      "id": "IND-PEER-07",
+      "dimension": "error/unassigned-device",
+      "preconditions": [
+        "The same isolated solution has 21 required device points.",
+        "One original device point keeps its device kind, room and coordinates but loses skuId."
+      ],
+      "steps": [
+        "Record the next point-plan revision.",
+        "Attempt a next design revision against the unassigned device point."
+      ],
+      "expected": {
+        "accepted": false,
+        "code": "DESIGN_POINT_SKU_REQUIRED"
+      },
+      "actual": {
+        "accepted": false,
+        "code": "DESIGN_POINT_SKU_REQUIRED"
+      },
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 20,
+      "passed": true
+    },
+    {
+      "id": "IND-PEER-08",
+      "dimension": "normal/auxiliary-point-boundary",
+      "preconditions": [
+        "The same isolated solution has 21 required device points.",
+        "The original complete plan also includes a network preparation helper without skuId."
+      ],
+      "steps": [
+        "Record the next point-plan revision with all original points.",
+        "Record a matching next design revision with complete scene notes."
+      ],
+      "expected": {
+        "accepted": true,
+        "designStatus": "draft-local-validated"
+      },
+      "actual": {
+        "accepted": true,
+        "designStatus": "draft-local-validated"
+      },
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 21,
+      "passed": true
+    }
+  ],
+  "counts": {
+    "tests": 8,
+    "pass": 8,
+    "fail": 0,
+    "skipped": 0,
+    "repairedSevereFindings": 2,
+    "remainingKnownFindingsInThisReview": 0
+  },
+  "probeExecution": {
+    "replayCheckedAt": "2026-10-09T04:00:03.685Z",
+    "designCheckedAt": "2026-10-09T04:00:04.079Z",
+    "bothCompleted": true,
+    "bothPassed": true,
+    "processExitCodesObservedAtExecution": {
+      "replay": 0,
+      "design": 0
+    },
+    "currentRuntimeSourceMatchesBothRuns": true,
+    "sourceMutated": false,
+    "isolatedManifestRefresh": true,
+    "temporarySandboxRemoved": true
+  },
+  "runtimeSourceHashes": {
+    "bundles/smart-home/runtime/assets.mjs": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+    "bundles/smart-home/runtime/catalogue.mjs": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+    "bundles/smart-home/runtime/depth-catalogue.mjs": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+    "bundles/smart-home/runtime/depth-domain.mjs": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+    "bundles/smart-home/runtime/domain.mjs": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+    "bundles/smart-home/runtime/errors.mjs": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+    "bundles/smart-home/runtime/index.mjs": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+    "bundles/smart-home/runtime/scenario.mjs": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+    "bundles/smart-home/runtime/schema.mjs": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+    "bundles/smart-home/runtime/storage.mjs": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+    "bundles/smart-home/runtime/workflows.mjs": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+    "bundles/smart-home/runtime/workforce.mjs": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c"
+  },
+  "archives": [
+    {
+      "path": "docs/evidence/smart-home-depth/industry-peer-review/scenario-replay-revision-before.json",
+      "sha256": "34d3e8fd0bff9ae597c579f44bf5125272be5273787ff91905295a89bf6d9d1f",
+      "bytes": 11814
+    },
+    {
+      "path": "docs/evidence/smart-home-depth/industry-peer-review/scenario-replay-revision-after.json",
+      "sha256": "eb8315e97adbaf0971092e4bdd13d6520bca99b481b690bca6ccddd4b02366de",
+      "bytes": 18831
+    },
+    {
+      "path": "docs/evidence/smart-home-depth/industry-peer-review/design-coverage-before.json",
+      "sha256": "8282d53ef8ec80a22adc337358295bdc609038d32cbb2e7405007b5713572f71",
+      "bytes": 570
+    },
+    {
+      "path": "docs/evidence/smart-home-depth/industry-peer-review/design-coverage-after.json",
+      "sha256": "0422aad8a10004431ea2b52e987e86c92110961d0b8da3ced27b6a3a040493c3",
+      "bytes": 2463
+    },
+    {
+      "path": "docs/evidence/smart-home-depth/industry-peer-review/probe-replay-revision.mjs",
+      "sha256": "0833eaa4ed1b77038157c1c7b856a2597994fbd02075ddb46722ea071a89e7e6",
+      "bytes": 4250
+    },
+    {
+      "path": "docs/evidence/smart-home-depth/industry-peer-review/probe-design-coverage.mjs",
+      "sha256": "1d33eb724fad7350ef0d757bc8cfd6a0d2b1e58f9d56726f163e174529434ba3",
+      "bytes": 4933
+    }
+  ],
+  "assetVerification": {
+    "report": "docs/evidence/smart-home-depth/industry-assets-test.json",
+    "result": "9/9 pass, 0 fail, 0 skip, exit 0; source stable before/after and matches final source",
+    "rerunRequiredByThisReport": false
+  },
+  "limitations": [
+    "Pre-fix probes are preserved unchanged but did not record runtime source SHA or checkedAt. They are discovery observations; no exact pre-fix commit/source binding is claimed.",
+    "Archived probe scripts are exact execution sources and retain their original projectless working-directory assumptions. The after reports bind all 12 installed runtime module SHA values.",
+    "Probes use copied bundle fixtures, an isolated SQLite sandbox, and explicitly synthetic evidence. No real customer, manufacturer, device, contract signature, payment, publisher or external account was exercised.",
+    "The independent source review and eight probes do not replace the owning engine, transport, UI or host-model acceptance suites. Those are reported separately."
+  ],
+  "closeout": {
+    "completed": [
+      "Independent current source review",
+      "Two serious defects reproduced and sent to implementation owner",
+      "Owner fixes independently verified with eight executable cases",
+      "Raw before/after artifacts and exact probe sources archived",
+      "Current runtime SHA match and current asset report verified"
+    ],
+    "notCovered": [
+      "External facts and production operation",
+      "Long-term performance or broad repository semantic audit"
+    ],
+    "autonomousAdditions": [
+      "Independent same-key upgrade regression and exact per-room/SKU design closure were required by the task recovery and design promises."
+    ],
+    "assumptions": [
+      "The task uses sandbox-only fictional store and synthetic customer/project evidence."
+    ],
+    "confidence": "high for the two repaired deterministic invariants and the current SHA-bound probe results; production effects remain unverified",
+    "recommendedReview": [
+      "Scenario replayGuard ordering",
+      "design.record exact room/SKU quantities and auxiliary point exception",
+      "Synthetic provenance and history/operational metric distinction"
+    ]
+  },
+  "selfCheck": {
+    "wholeAssignedReviewScopeCovered": true,
+    "noRoutineDecisionPassedToUser": true,
+    "evidenceLevelsAccurateAndVerifiable": true,
+    "sourceAndResultsCanBeReviewedLineByLine": true
+  }
+}

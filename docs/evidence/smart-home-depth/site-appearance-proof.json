@@ -1,0 +1,5055 @@
+{
+  "schemaVersion": "bms.site-appearance/v1",
+  "generatedAt": "2026-10-09T04:16:55.113Z",
+  "sourceFiles": [
+    {
+      "path": "apps/site/index.html",
+      "sha256": "d1d2bd6c8f9970638ecc16d50a4dbfbfd7658148d0d87c68f3c285509fe9aa90"
+    },
+    {
+      "path": "apps/site/en.html",
+      "sha256": "5898b0de51a1454a0bb3809f26e65ee066875cd6a7ceb67bff1cff60aa094b85"
+    }
+  ],
+  "method": "B browser-computed text colors and interaction styles; human screenshot visual review recorded separately, not code-reading coverage",
+  "standard": {
+    "title": "W3C WCAG 2.2 Understanding 1.4.3 Contrast Minimum",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+    "checkedAt": "2026-10-09",
+    "regularText": 4.5,
+    "largeText": 3
+  },
+  "cases": [
+    {
+      "id": "index.html-text-contrast",
+      "preconditions": "Final page at1440px, native CSS, JavaScript disabled",
+      "steps": "Enumerate visible direct text nodes, composite ancestor solid background colors and compute luminance",
+      "expected": "Every enumerated HTML text pair reaches4.5 regular or3 large",
+      "actual": {
+        "checked": 151,
+        "lowestRatio": 4.914491644212964,
+        "failures": [],
+        "pairs": [
+          {
+            "selector": "a.skip-link",
+            "text": "跳到主要内容",
+            "foreground": "rgb(255, 255, 255)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 400,
+            "ratio": 14.494808848218963,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.brand-mark",
+            "text": "W",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 23,
+            "fontWeight": 800,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "AI 经营管理系统",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "WORKLOOM · SMART HOME",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "客户旅程",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "产品体验",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "数字员工",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "开始使用",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a.lang",
+            "text": "EN",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "AI BUSINESS · 全屋智能门店",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h1",
+            "text": "让全屋智能门店会经营，也能交付。",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 61,
+            "fontWeight": 750,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "会经营，也能交付。",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 61,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.hero-lede",
+            "text": "设计师带来线索，顾问准备体验，方案走进客户的家。让当前 AI 工作台围绕经营目标接续这些工作，从第一句咨询到每一处点位，再到店长明天的安排。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "#btn-download",
+            "text": "查看源码 · 开始演练",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a.btn.btn-secondary",
+            "text": "走一遍客户旅程",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.hero-meta",
+            "text": "Node + SQLite · 当前宿主模型 · 明确 synthetic 沙箱",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2.store-title",
+            "text": "蜀光智家",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.store-sub",
+            "text": "成都高新体验店 · 虚构门店背景",
+            "foreground": "rgb(183, 205, 203)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 8.702644544344832,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.badge",
+            "text": "合成演练",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 700,
+            "ratio": 9.346863767531659,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.plan-caption",
+            "text": "示意点位 · 毫米图形口径由记录决定 · 非客户现场",
+            "foreground": "rgb(199, 215, 210)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 9.717890616889523,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "从设计师转介开始",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              27.232999999999997,
+              54.87,
+              62.494,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 8.148323338332883,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "“王先生，某楼盘，想了解智能灯光。”",
+            "foreground": "rgb(227, 234, 230)",
+            "effectiveBackground": [
+              27.232999999999997,
+              54.87,
+              62.494,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 10.336336253264712,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.case-tail",
+            "text": "先接住称呼、来源与已知需求；姓名、联系方式和预算逐步核对。",
+            "foreground": "rgb(183, 205, 203)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 8.702644544344832,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "线索",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "来源与未知字段都留下",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "空间",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "场景、点位与设备关联",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "工程",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "方案、施工与合同接续",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "经营",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "目标、岗位与待决有依据",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "ONE CUSTOMER JOURNEY",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "把一位客户的事，一直接续下去。",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "不用一开始填满所有资料。记录已知、保留未知，随着每一次确认形成新的版本；让后面的顾问、设计与工程知道依据从哪里来。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.section-aside",
+            "text": "每一步都有前置、产物和待办。草稿、拟议预约和现场完成，各有自己的口径。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "01 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "来源线索",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "设计师、装修伙伴、物业、转介绍、到店与线上内容。只有称呼、联系引用或楼盘，也能先接住。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "已知与未知",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "02 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "逐步完善",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "线索完善员准备澄清问题。AI提出草案，人类确认后形成客户资料；用途授权单独记录。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "客户资料与来源",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "03 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "体验与销售",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "预约协调、销售助理和陪练准备接待：回家、观影、起夜、离家，先讲生活需求再谈产品。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "计划与客户确认",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "04 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "点位与设计",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "勘测房间、回路和网络，连接空间点位、设备BOM与场景设计。缺安装或兼容依据就留下缺口。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "版本与现场条件",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "05 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "施工与合同",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "价格复算、范围核对与人类审批，施工计划连接采购、安装、调试和客户验收。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "承诺与工程证据",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "06 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "售后与经营",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "售后分级、客户确认与回访，店长按实际账本看目标差距、资源安排和下一班待办。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "记录与下一步",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.journey-footer",
+            "text": "客户原始电话、微信账号与家庭地址留在受控存储；经营对象使用不透明引用。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow.light",
+            "text": "PRODUCTS INTO EXPERIENCE",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 9.346863767531659,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "卖的是产品，交付的是生活场景。",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "中控、照明、窗帘与传感进入同一套空间方案。官方品牌资料帮助理解业务形态，门店自己的产品、定价与工程仍需要对应证据。",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.product-icon",
+            "text": "⌂",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 28,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "中控与网关",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "入口、主机、空间与生态。准备体验时讲清型号、版本、连接条件与功能边界。",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.product-icon",
+            "text": "◐",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 28,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "照明与开关",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "从回路、零线和负载开始，组织灯光场景、物理控制与安装计划。",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.product-icon",
+            "text": "▥",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 28,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "窗帘与环境",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "结合窗型、供电、房间和装修阶段，核对场景触发与使用习惯。",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.product-icon",
+            "text": "◎",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 28,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "传感与自动化",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "把人的动作与空间条件连到设备行为；未知组合保持待核验。",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.reference-note",
+            "text": "蜀光智家是合成门店，并非华为或 Aqara 授权店。参考 华为全屋智能方案 与 Aqara 官方产品资料 的官方资料；合成 SKU、价格和兼容记录不代表真实厂家",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "华为全屋智能方案",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Aqara 官方产品资料",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "PEOPLE + DIGITAL EMPLOYEES",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "沿完整流程，给每件事一个负责人。",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "岗位规程进入实际可领取的任务。当前宿主模型读取现有对象与版本，生成结构化准备成果；有权限的人承担客户确认、价格承诺与现场责任。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "01",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "挖掘与线索完善",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "渠道合作、来源接续、澄清问题与客户交接，信息不足先补信息。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "02",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "到店预约与销售助理",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "安排体验准备、接待简报与异议回应，计划和客户确认分开。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "03",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "AI 销售陪练",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "用合成客户练习追问与表达，复盘改进点，不把练习算成交。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "04",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "方案与工程团队",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "勘测、点位、BOM、报价、施工、采购、调试与验收逐步接续。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "05",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "门店经营助理",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "核对当前记录差异、渠道与经营观察，分清模拟历史与本次执行。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "06",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "店长助理与数字总经理",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "班次交接、资源准备、目标拆解和证据汇报，让明日安排有依据。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.team-foot",
+            "text": "实际岗位与技能以源码目录和当前 catalog 为准；准备包不代表已联系客户、已发布、已付款或已施工。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "THE STORE RUNS ON RECORDS",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 5.5630141521894565,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "店长先看事实，再定明天方向。",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 12.448909054806943,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "从目标到岗位任务，再回到记录和待决。每个建议都应能找到具体客户、项目与证据。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 4.914491644212964,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "看缺口",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 12.448909054806943,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "谁还缺预算或装修阶段？哪场体验未确认？哪份方案缺兼容或现场条件？",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 4.914491644212964,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "定任务",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 12.448909054806943,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "让当前 AI 模型执行岗位规程，准备话术、设计、施工和交接包，提交后读回结果。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 4.914491644212964,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "核承诺",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 12.448909054806943,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "店主按当前摘要审核价格与合同；现场与客户确认用真实证据登记。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 4.914491644212964,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "SOURCE → SANDBOX → HOST AI",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "把一家成都模拟门店，真正跑起来。",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "直接启动本机工作台，导入完整合成经营背景，再让当前 AI 会话实际领取并提交任务。记录保留在本机，关闭宿主以后可继续。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.run-label",
+            "text": "REPOSITORY ROOT · NODE ≥ 24",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "code",
+            "text": "git clone https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem.git\ncd ",
+            "foreground": "rgb(226, 236, 228)",
+            "effectiveBackground": [
+              16,
+              42,
+              50,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 12.400859874874103,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.run-note",
+            "text": "浏览器打开 http://127.0.0.1:9393。init --demo 仅导入 sandbox 背景；AI任务需要当前宿主执行。完整数据、配置与权限步骤",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "接入文档",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "PLAYBOOK",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "门店实战手册",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "设计师线索、方案工程与店长复盘三条路线。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "新客户接入流程",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "从称呼与已知信息，到客户、点位与交付。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "WORKBENCH",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "AI 工作台接入",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "Codex、千问办公与WorkBuddy的项目配置。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "CONTRACTS",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "业务实现矩阵",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "对象、岗位、操作、异常与证据等级。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "CLEAR EVIDENCE",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "已完成有证据，待确认有责任。",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "模拟背景有标识",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "门店、客户、SKU、价格与工程历史均为 synthetic。导入不伪造真实人审、客户签字或模型执行。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "本地成果有回执",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "SQLite记录提交与实际外部结果分别取证。externalVerified=false 保留未独立核验事实，图纸不替代现场。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "真实动作有责任",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "发布、客户消息、资金与设备控制连接器为 disabled。人类审批不会自动开启缺失能力。",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "BEFORE YOU START",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "先看几个常见问题。",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "线索只有姓氏或楼盘，能先录入吗？",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "华为与绿米是什么关系？",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "AI 会不会自己发微信、签合同或控制设备？",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "关掉 AI 工作台以后还会自己经营吗？",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "真实门店怎样开始？",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "这是不是已安装和验收好的桌面产品？",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "从一条线索开始，看到整家门店。",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 22,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "先把模拟业务走通，再逐项接入自己的真实证据与责任。",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a.btn",
+            "text": "读取门店实战手册",
+            "foreground": "rgb(43, 53, 44)",
+            "effectiveBackground": [
+              241,
+              201,
+              151,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 8.21540050097302,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "BusinessManagementSystem · WorkLoom · 全屋智能 AI 经营系统",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Apache-2.0",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "公开源码",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "店长指南",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "index.html-.btn-primary-states",
+      "preconditions": "Native link/summary visible",
+      "steps": "Measure default, hover and pressed CSS; release may follow the public CTA, then reload the local page",
+      "expected": "Hover style differs from default; pressed selector styling is recorded; keyboard behavior verified in102case main suite",
+      "actual": {
+        "normal": {
+          "color": "rgb(255, 254, 250)",
+          "background": "rgb(16, 45, 53)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "hovered": {
+          "color": "rgb(255, 254, 250)",
+          "background": "rgb(36, 77, 86)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "pressed": {
+          "color": "rgb(255, 254, 250)",
+          "background": "rgb(36, 77, 86)",
+          "transform": "none",
+          "cursor": "pointer"
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "index.html-nav.top a-states",
+      "preconditions": "Native link/summary visible",
+      "steps": "Measure default, hover and pressed CSS; release may follow the public CTA, then reload the local page",
+      "expected": "Hover style differs from default; pressed selector styling is recorded; keyboard behavior verified in102case main suite",
+      "actual": {
+        "normal": {
+          "color": "rgb(20, 42, 49)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "hovered": {
+          "color": "rgb(46, 102, 84)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "pressed": {
+          "color": "rgb(46, 102, 84)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "matrix(1, 0, 0, 1, 0, 1)",
+          "cursor": "pointer"
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "index.html-.faq summary-states",
+      "preconditions": "Native link/summary visible",
+      "steps": "Measure default, hover and pressed CSS; release may follow the public CTA, then reload the local page",
+      "expected": "Hover style differs from default; pressed selector styling is recorded; keyboard behavior verified in102case main suite",
+      "actual": {
+        "normal": {
+          "color": "rgb(20, 42, 49)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "hovered": {
+          "color": "rgb(46, 102, 84)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "pressed": {
+          "color": "rgb(28, 71, 57)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "en.html-text-contrast",
+      "preconditions": "Final page at1440px, native CSS, JavaScript disabled",
+      "steps": "Enumerate visible direct text nodes, composite ancestor solid background colors and compute luminance",
+      "expected": "Every enumerated HTML text pair reaches4.5 regular or3 large",
+      "actual": {
+        "checked": 151,
+        "lowestRatio": 4.914491644212964,
+        "failures": [],
+        "pairs": [
+          {
+            "selector": "a.skip-link",
+            "text": "Skip to main content",
+            "foreground": "rgb(255, 255, 255)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 400,
+            "ratio": 14.494808848218963,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.brand-mark",
+            "text": "W",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 23,
+            "fontWeight": 800,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "AI Business System",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "WORKLOOM · SMART HOME",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Journey",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Experience",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Employees",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Start",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a.lang",
+            "text": "中文",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "AI BUSINESS · SMART-HOME STORES",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h1",
+            "text": "Run the store.Deliver the home.",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 61,
+            "fontWeight": 750,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "Deliver the home.",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 61,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.hero-lede",
+            "text": "A designer brings a lead. A consultant prepares a visit. A design becomes a home",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "#btn-download",
+            "text": "Explore source · Try the store",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a.btn.btn-secondary",
+            "text": "Follow a customer",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.hero-meta",
+            "text": "Node + SQLite · Current host model · Explicit synthetic sandbox",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2.store-title",
+            "text": "Shuguang Smart Home",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.store-sub",
+            "text": "Chengdu Gaoxin experience store · Fictional",
+            "foreground": "rgb(183, 205, 203)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 8.702644544344832,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.badge",
+            "text": "Synthetic",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 700,
+            "ratio": 9.346863767531659,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.plan-caption",
+            "text": "Illustrative points · Recorded layout only · No site verification",
+            "foreground": "rgb(199, 215, 210)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 9.717890616889523,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Start with a designer referral",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              27.232999999999997,
+              54.87,
+              62.494,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 8.148323338332883,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "“Mr. Wang, a residential project, interested in smart lighting.”",
+            "foreground": "rgb(227, 234, 230)",
+            "effectiveBackground": [
+              27.232999999999997,
+              54.87,
+              62.494,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 10.336336253264712,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.case-tail",
+            "text": "Keep the source and known needs. Confirm identity, contact references, and budge",
+            "foreground": "rgb(183, 205, 203)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 8.702644544344832,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Leads",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "Keep sources and unknowns",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Space",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "Link scenes, points, and devices",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Delivery",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "Connect design and contracts",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Operations",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "Goals, owners, and decisions",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "ONE CUSTOMER JOURNEY",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "Keep one customer’swork moving together.",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "You do not need a complete profile at first contact. Keep what is known, retain ",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.section-aside",
+            "text": "Each step has prerequisites, an output, and a next action. A draft, a proposed v",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "01 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Capture the source",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Designer, renovation partner, property, referral, walk-in, or content. A name, c",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "Known and unknown",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "02 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Enrich the profile",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Prepare confirmation questions. AI records a proposal; a human confirms customer",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "Dossier and sources",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "03 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Prepare the visit",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Appointment, sales assistant, and coaching roles prepare arrival, cinema, night,",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "Plan and confirmation",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "04 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Plan the space",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Survey rooms, circuits, and networks. Link device points, BOM, and scene design.",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "Versions and conditions",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "05 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Prepare delivery",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Calculate prices, review scope, and request human approval. Construction connect",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "Commitments and evidence",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.step-no",
+            "text": "06 / CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Support and operate",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Triage aftercare, confirm service, and plan follow-up. Read the actual ledger fo",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.stage-tag",
+            "text": "Records and next steps",
+            "foreground": "rgb(36, 77, 65)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 7.905574609434702,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.journey-footer",
+            "text": "Raw phone numbers, WeChat accounts, and home addresses stay in controlled storag",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow.light",
+            "text": "PRODUCTS INTO EXPERIENCE",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 9.346863767531659,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "Sell products. Deliver everyday scenes.",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "Controllers, lighting, curtains, and sensors belong in one spatial plan. Officia",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.product-icon",
+            "text": "⌂",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 28,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Control and gateways",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Explain the controller, hub, ecosystem, model, version, connection conditions, a",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.product-icon",
+            "text": "◐",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 28,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Lighting and switches",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Start with circuits, neutral wires, and load limits. Connect lighting scenes, ma",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.product-icon",
+            "text": "▥",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 28,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Curtains and climate",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Match windows, power, rooms, and renovation stage with triggers and everyday rou",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.product-icon",
+            "text": "◎",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 28,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Sensors and automation",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 17,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Connect actions and spatial conditions to device behavior. Unknown combinations ",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.reference-note",
+            "text": "Shuguang is a synthetic store, without Huawei or Aqara dealership claims. Refer ",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Huawei whole-home solutions",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Aqara product documentation",
+            "foreground": "rgb(241, 201, 151)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.346863767531659,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "PEOPLE + DIGITAL EMPLOYEES",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "Give each step an accountable owner.",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "Installed procedures enter claimable tasks. The current host model reads assigne",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "01",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Prospecting and lead enrichment",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Prepare source handoffs, questions, and profile checks. Missing information beco",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "02",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Appointments and sales assistance",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Prepare visits, customer briefs, and objection responses. Plans and customer con",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "03",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "AI sales coaching",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Practice with synthetic customers and record improvements. A training exercise d",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "04",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Design and delivery team",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Connect surveys, points, BOM, prices, construction, procurement, testing, and ac",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "05",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Business operations assistant",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Review record gaps and operating observations. Distinguish imported history from",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span.team-letter",
+            "text": "06",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Manager assistant and digital GM",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 16,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Prepare shifts, resources, goals, and evidence reports for tomorrow’s decisions.",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.team-foot",
+            "text": "Installed roles and skills come from source and the current catalog. A preparati",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "THE STORE RUNS ON RECORDS",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 5.5630141521894565,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "See the facts. Decide what comes next.",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 12.448909054806943,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "Connect goals to employee tasks and return to records and decisions. Each recomm",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 4.914491644212964,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Find the gap",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 12.448909054806943,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Who still lacks a budget or renovation stage? Which visit is unconfirmed? Which ",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 4.914491644212964,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Assign the work",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 12.448909054806943,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Let the current AI model follow installed procedures, prepare sales, design, con",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 4.914491644212964,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Review commitments",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 12.448909054806943,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Review current price and contract digests. Record field results and customer con",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              230,
+              236,
+              229,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 4.914491644212964,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "SOURCE → SANDBOX → HOST AI",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "Run a fictional Chengdu store, step by step.",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p.lede",
+            "text": "Start the local workbench, import a rich synthetic business scenario, and let yo",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.run-label",
+            "text": "REPOSITORY ROOT · NODE ≥ 24",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 700,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "code",
+            "text": "git clone https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem.git\ncd ",
+            "foreground": "rgb(226, 236, 228)",
+            "effectiveBackground": [
+              16,
+              42,
+              50,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 12.400859874874103,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.run-note",
+            "text": "Open http://127.0.0.1:9393. init --demo imports sandbox background; model tasks ",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "workbench guide",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 700,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "PLAYBOOK",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Store playbook",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "Partner leads, design handoff, and manager review.",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "CUSTOMER",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Customer journey",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "From incomplete information to points and delivery.",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "WORKBENCH",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "AI workbench setup",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "Project configuration for Codex, QwenWork, and WorkBuddy.",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "small",
+            "text": "CONTRACTS",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 10,
+            "fontWeight": 400,
+            "ratio": 6.617138217283345,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "b",
+            "text": "Implementation matrix",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 15,
+            "fontWeight": 700,
+            "ratio": 14.80782712688707,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "Objects, roles, operations, errors, and evidence levels.",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              255,
+              254,
+              250,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 5.845728518350488,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "CLEAR EVIDENCE",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "Know what is done, and what needs a person.",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Explicit synthetic background",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "The store, customers, SKUs, prices, and project history are synthetic. Import do",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Local results with receipts",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "SQLite commits and outside results use separate evidence. externalVerified=false",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Accountability for real actions",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 18,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Publishing, customer messaging, payments, and device control connectors are disa",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 13,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "p.eyebrow",
+            "text": "BEFORE YOU START",
+            "foreground": "rgb(46, 102, 84)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 750,
+            "ratio": 6.018190346062154,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h2",
+            "text": "A few practical questions.",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 39,
+            "fontWeight": 700,
+            "ratio": 13.467502012943534,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "Can a lead start with only a name or building?",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "How do Huawei and Aqara relate to this store?",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "Will AI message customers, sign, or control devices?",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "Does the store keep reasoning after the AI host closes?",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "How can a real store start?",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "summary",
+            "text": "Is this a signed and fully accepted desktop product?",
+            "foreground": "rgb(20, 42, 49)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 650,
+            "ratio": 13.467502012943534,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "h3",
+            "text": "Start with a lead. See the whole store.",
+            "foreground": "rgb(255, 254, 250)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 22,
+            "fontWeight": 700,
+            "ratio": 14.363078589183512,
+            "minimum": 3,
+            "pass": true
+          },
+          {
+            "selector": "p",
+            "text": "Rehearse the business, then connect your actual evidence and responsibilities.",
+            "foreground": "rgb(194, 209, 206)",
+            "effectiveBackground": [
+              16,
+              45,
+              53,
+              1
+            ],
+            "fontSize": 12,
+            "fontWeight": 400,
+            "ratio": 9.183702954073865,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a.btn",
+            "text": "Read the store playbook",
+            "foreground": "rgb(43, 53, 44)",
+            "effectiveBackground": [
+              241,
+              201,
+              151,
+              1
+            ],
+            "fontSize": 14,
+            "fontWeight": 700,
+            "ratio": 8.21540050097302,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "span",
+            "text": "BusinessManagementSystem · WorkLoom · Smart-home AI operations",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Apache-2.0",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Public source",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          },
+          {
+            "selector": "a",
+            "text": "Manager guide",
+            "foreground": "rgb(82, 104, 109)",
+            "effectiveBackground": [
+              245,
+              243,
+              237,
+              1
+            ],
+            "fontSize": 11,
+            "fontWeight": 400,
+            "ratio": 5.316604516881394,
+            "minimum": 4.5,
+            "pass": true
+          }
+        ]
+      },
+      "pass": true
+    },
+    {
+      "id": "en.html-.btn-primary-states",
+      "preconditions": "Native link/summary visible",
+      "steps": "Measure default, hover and pressed CSS; release may follow the public CTA, then reload the local page",
+      "expected": "Hover style differs from default; pressed selector styling is recorded; keyboard behavior verified in102case main suite",
+      "actual": {
+        "normal": {
+          "color": "rgb(255, 254, 250)",
+          "background": "rgb(16, 45, 53)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "hovered": {
+          "color": "rgb(255, 254, 250)",
+          "background": "rgb(36, 77, 86)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "pressed": {
+          "color": "rgb(255, 254, 250)",
+          "background": "rgb(36, 77, 86)",
+          "transform": "none",
+          "cursor": "pointer"
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "en.html-nav.top a-states",
+      "preconditions": "Native link/summary visible",
+      "steps": "Measure default, hover and pressed CSS; release may follow the public CTA, then reload the local page",
+      "expected": "Hover style differs from default; pressed selector styling is recorded; keyboard behavior verified in102case main suite",
+      "actual": {
+        "normal": {
+          "color": "rgb(20, 42, 49)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "hovered": {
+          "color": "rgb(46, 102, 84)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "pressed": {
+          "color": "rgb(46, 102, 84)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "matrix(1, 0, 0, 1, 0, 1)",
+          "cursor": "pointer"
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "en.html-.faq summary-states",
+      "preconditions": "Native link/summary visible",
+      "steps": "Measure default, hover and pressed CSS; release may follow the public CTA, then reload the local page",
+      "expected": "Hover style differs from default; pressed selector styling is recorded; keyboard behavior verified in102case main suite",
+      "actual": {
+        "normal": {
+          "color": "rgb(20, 42, 49)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "hovered": {
+          "color": "rgb(46, 102, 84)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        },
+        "pressed": {
+          "color": "rgb(28, 71, 57)",
+          "background": "rgba(0, 0, 0, 0)",
+          "transform": "none",
+          "cursor": "pointer"
+        }
+      },
+      "pass": true
+    }
+  ],
+  "fullAccessibilityCertification": false,
+  "uncovered": [
+    "screen-reader walkthrough",
+    "SVG background geometry and diagram contrast",
+    "other browsers and custom font/zoom settings"
+  ],
+  "browserVersion": "154.0.8037.99",
+  "status": "pass",
+  "finishedAt": "2026-10-09T04:17:02.647Z"
+}

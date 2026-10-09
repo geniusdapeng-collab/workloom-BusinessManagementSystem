@@ -17,7 +17,7 @@ Codex、千问办公、WorkBuddy 当前会话模型执行 `claim → artifact �
 
 `employee-work` 对全部岗位技能输出本地准备包；准备包保持 `planningOnly=true` 和 `executionState=not-executed`。视频渲染、外部发布、客户触达、支付、设备控制、现场作业需要另行实现连接器/权限/真实回执。不得通过人工批准或命令行参数绕过当前禁用状态。
 
-普通 CLI/MCP 固定 agent 权限。店主审批和现场记录仅允许真实交互终端确认或由终端授权的短期浏览器会话。租约、CSRF、客户证据、账号凭据不得写入公开报告。合成输入清楚标注；客户原始数据不提交到云端或 Git。
+普通 CLI `call` 与 MCP 固定 agent 权限。`scenario import` 和 `init --demo` 仅允许 sandbox 的合成历史导入，使用 operator 且不携带人员确认；该路径不能审批或证明现场行为。店主审批和现场记录仅允许真实交互终端确认或由终端授权的短期浏览器会话。租约、CSRF、客户证据、账号凭据不得写入公开报告。合成输入清楚标注；客户原始数据不提交到云端或 Git。
 
 ## 修改与验证
 

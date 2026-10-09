@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "business-management.industry-ci-integration-review/v1",
+  "task": "T-2026-1009-0001",
+  "reviewer": "industry_map",
+  "checkedAt": "2026-10-09T04:51:47.162687+00:00",
+  "baselineHead": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+  "evidenceLevels": {
+    "sourceReading": "A",
+    "byteAndJSONChecks": "B",
+    "actualCNBExecution": "D"
+  },
+  "coverage": {
+    "currentFiles": 7,
+    "fullReads": 7,
+    "machineOnly": 0,
+    "sample": 0,
+    "unread": 0,
+    "files": [
+      {
+        "path": "package.json",
+        "evidenceLevel": "A",
+        "reading": "complete current file reading",
+        "sha256": "0d73ba68efec53fb585061257c6c4523d0b6415c8eded6693c9f2534cf73dc51",
+        "lines": 100
+      },
+      {
+        "path": ".cnb.yml",
+        "evidenceLevel": "A",
+        "reading": "complete current file reading",
+        "sha256": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+        "lines": 298
+      },
+      {
+        "path": "apps/web/package.json",
+        "evidenceLevel": "A",
+        "reading": "complete current file reading",
+        "sha256": "17273b001dea29afe53c13a4f3cdd17685cea4081bde2521ab5157ec45a1081b",
+        "lines": 45
+      },
+      {
+        "path": "scripts/check-business-workbench.mjs",
+        "evidenceLevel": "A",
+        "reading": "complete current file reading",
+        "sha256": "507b2dac5f7c2b49444413c4269b850b43c2fb7d28b91e4e4fe3d5874d87bab3",
+        "lines": 296
+      },
+      {
+        "path": "scripts/check-smart-home-depth.mjs",
+        "evidenceLevel": "A",
+        "reading": "complete current file reading",
+        "sha256": "005100b827a347ce9a12aedd5c2f93b9c1e972a6917b1b7534045b2214955374",
+        "lines": 169
+      },
+      {
+        "path": "scripts/acceptance/lib/live/media-decoder.test.mjs",
+        "evidenceLevel": "A",
+        "reading": "complete current file reading",
+        "sha256": "7421046613c26b44860188e35a8309bbaf43c344ea8716b6c33dd9d11391c287",
+        "lines": 77
+      },
+      {
+        "path": "scripts/acceptance/lib/live/live-cli-browser.test.mjs",
+        "evidenceLevel": "A",
+        "reading": "complete current file reading",
+        "sha256": "764b4f475b1f262120869f3e928c1324bf0b6bbfbebe89541b8d48c613c077c9",
+        "lines": 20
+      }
+    ],
+    "baselineReferenceReading": {
+      "package.json": "complete baseline file read",
+      ".cnb.yml": "complete current file read retained for the exactly byte-identical baseline"
+    },
+    "scope": "Independent CI integration supplement; deduplicate these paths by current source SHA with the industry and root inventories."
+  },
+  "counts": {
+    "checks": 8,
+    "pass": 8,
+    "fail": 0
+  },
+  "passed": true,
+  "checks": [
+    {
+      "id": "CNB-BYTE-IDENTITY",
+      "passed": true,
+      "detail": {
+        "baseline": "be5535ceaa1237377dedb2a1941b0be78c478ec6",
+        "baselineSHA": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+        "currentSHA": "8bee2f38d10eab85d89f876e0478803998b37f22afb3c1aac08c0ced012ca98b",
+        "lines": 298
+      }
+    },
+    {
+      "id": "PACKAGE-ONLY-MEDIA-CHANGE",
+      "passed": true,
+      "detail": {
+        "changedJSONPaths": [
+          "scripts.test:media"
+        ],
+        "baselineSHA": "fc4b0854bd39e69b4aaf6598651d9ca5a54f62113b53e0abe2f5ad81e102e615",
+        "currentSHA": "0d73ba68efec53fb585061257c6c4523d0b6415c8eded6693c9f2534cf73dc51"
+      }
+    },
+    {
+      "id": "ORIGINAL-MEDIA-PREFIX-AND-FAILURE-PROPAGATION",
+      "passed": true,
+      "detail": {
+        "originalPreservedCommand": "node --test --test-concurrency=1 scripts/acceptance/lib/live/media-decoder.test.mjs scripts/acceptance/lib/live/live-cli-browser.test.mjs",
+        "newCommand": "node --test --test-concurrency=1 scripts/acceptance/lib/live/media-decoder.test.mjs scripts/acceptance/lib/live/live-cli-browser.test.mjs && node scripts/check-business-workbench.mjs --output /tmp/bms-legacy-ui-regression && node scripts/check-smart-home-depth.mjs --output /tmp/bms-chengdu-ui-regression",
+        "appendedCommands": [
+          "node scripts/check-business-workbench.mjs --output /tmp/bms-legacy-ui-regression",
+          "node scripts/check-smart-home-depth.mjs --output /tmp/bms-chengdu-ui-regression"
+        ],
+        "operators": [
+          "&&",
+          "&&"
+        ]
+      }
+    },
+    {
+      "id": "ORIGINAL-MEDIA-TEST-BYTES",
+      "passed": true,
+      "detail": {
+        "paths": [
+          "scripts/acceptance/lib/live/media-decoder.test.mjs",
+          "scripts/acceptance/lib/live/live-cli-browser.test.mjs"
+        ],
+        "originalDecoderAndCLIBrowserFilesPreserved": true
+      }
+    },
+    {
+      "id": "PINNED-BROWSER-INSTRUMENTATION-PATH",
+      "passed": true,
+      "detail": {
+        "workspaceBrowserPackage": "1.63.0",
+        "browserPackageSource": "apps/web/package.json",
+        "ciExistingMediaStage": "媒体真实解码与完整 CLI 回归（隔离夹具）",
+        "stageUnchangedByExactByteIdentity": true
+      }
+    },
+    {
+      "id": "BROWSER-CASE-COUNT",
+      "passed": true,
+      "detail": {
+        "caseCounts": {
+          "scripts/check-business-workbench.mjs": 22,
+          "scripts/check-smart-home-depth.mjs": 11
+        }
+      }
+    },
+    {
+      "id": "BROWSER-ISOLATED-DATA-AND-LOCAL-OUTPUT",
+      "passed": true,
+      "detail": {
+        "sourceReview": "Complete current files read; temp sandbox cleanup and startup/case failures reviewed",
+        "artifactsOutsideRepository": [
+          "/tmp/bms-legacy-ui-regression",
+          "/tmp/bms-chengdu-ui-regression"
+        ]
+      }
+    },
+    {
+      "id": "INDUSTRY-ASSETS-NO-DRIFT",
+      "passed": true,
+      "detail": {
+        "assetTests": {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "assetRunStartedAt": "2026-10-09T04:48:19.875366+00:00",
+        "drift": [],
+        "assetTestsRerunByThisReview": false
+      }
+    }
+  ],
+  "conclusions": [
+    {
+      "evidenceLevel": "A/B",
+      "claim": "The CNB file, pipeline/stage identities, original install/instrumentation/governance/database methods and original media test command are preserved. Package scripts.test:media appends 22 and 11 browser cases through failure-propagating && commands."
+    },
+    {
+      "evidenceLevel": "A/B",
+      "claim": "Both browser scripts use the existing pinned apps/web Playwright package, default headless Chromium, ephemeral synthetic SQLite directories and cleanup. No dependency change is introduced by this package edit."
+    },
+    {
+      "evidenceLevel": "D",
+      "claim": "Source-level integration does not prove the new command passed in the actual CNB Linux job. The formal snapshot and resulting CI run must establish that separately."
+    }
+  ],
+  "closeout": {
+    "completed": [
+      "Current and baseline package complete reads",
+      "Exact CI byte identity verified",
+      "Original command/tests preserved and appended script dependencies traced",
+      "Current bundle asset run remains source-bound without rerun"
+    ],
+    "notCovered": [
+      "Formal committed snapshot identity and actual CNB execution; deferred to the next authorized integration step"
+    ],
+    "autonomousAdditions": [
+      "Read both appended browser scripts, their pinned package and original media test files to check the invocation chain."
+    ],
+    "assumptions": [
+      "The frozen lockfile and CI instrumentation are provided by the byte-identical baseline CI methods."
+    ],
+    "confidence": "high for the exact source/command identity; actual CNB job remains unverified",
+    "recommendedReview": [
+      "Formal snapshot package diff",
+      "Existing media stage output and exit code"
+    ]
+  },
+  "selfCheck": {
+    "wholeAssignedCurrentReviewScopeCovered": true,
+    "noRoutineDecisionPassedToUser": true,
+    "evidenceLevelsAccurateAndVerifiable": true,
+    "sourceAndChecksCanBeReviewedLineByLine": true
+  }
+}

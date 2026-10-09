@@ -35,7 +35,7 @@ const out = join(evidenceRoot, 'site');
 const browserExecutable = option('--browser-executable');
 const chromium = loadChromium(root);
 mkdirSync(out, { recursive: true });
-const report = { schemaVersion: 'bms.site-proof/v1', startedAt: new Date().toISOString(), browser: 'Chromium', expectedTotal: 48, command: ['node', 'scripts/check-business-site.mjs', ...args], javascriptRequired: false, status: 'running', sourceFiles: [], cases: [], errors: [], externalBusinessVerified: false, websiteDeployed: false };
+const report = { schemaVersion: 'bms.site-proof/v1', startedAt: new Date().toISOString(), browser: 'Chromium', expectedTotal: 102, command: ['node', 'scripts/check-business-site.mjs', ...args], javascriptRequired: false, status: 'running', sourceFiles: [], cases: [], errors: [], externalBusinessVerified: false, websiteDeployed: false };
 for (const name of ['index.html','en.html']) report.sourceFiles.push({ path: `apps/site/${name}`, sha256: createHash('sha256').update(readFileSync(join(site,name))).digest('hex') });
 function check(id, preconditions, steps, expected, actual, pass) {
   report.cases.push({ id, preconditions, steps, expected, actual, pass });
@@ -59,8 +59,8 @@ let browser;
 try {
   browser = await chromium.launch({ headless: true, ...(browserExecutable ? { executablePath: resolve(browserExecutable) } : {}) });
   report.browserVersion = browser.version();
-  for (const lang of ['zh','en']) for (const width of [1440,390]) {
-    const context = await browser.newContext({viewport:{width,height:width===390?844:1000},javaScriptEnabled:false,reducedMotion:'reduce'});
+  for (const lang of ['zh','en']) for (const width of [1440,390,320]) {
+    const context = await browser.newContext({viewport:{width,height:width<700?844:1000},javaScriptEnabled:false,reducedMotion:'reduce'});
     const page = await context.newPage();
     const issues = []; const failed = [];
     page.on('pageerror',error=>issues.push(error.message));
@@ -84,16 +84,35 @@ try {
     await faq.locator('summary').click();
     check(`${prefix}-faq`, 'FAQ默认折叠', '点击第一条summary', '浏览器原生展开',await faq.getAttribute('open'),await faq.getAttribute('open')!==null);
     const docHrefs = await page.locator('.doc-grid a').evaluateAll(links=>links.map(a=>a.href));
-    const docFiles = docHrefs.map(href=>href.split('/-/blob/main/')[1]);
+    const docFiles = docHrefs.map(href=>{ const file=href.split('/-/blob/main/')[1]; return file ? decodeURIComponent(file) : null; });
     const docsOk = docFiles.every(file=>file && statSync(join(root,file)).isFile());
     check(`${prefix}-documentation`, '文档卡片可见', '解析仓库文档路径并检查本地交付文件', '所有文档卡指向已创建文件',docFiles,docsOk);
     await page.locator('#boundaries').scrollIntoViewIfNeeded();
     const text = await page.locator('body').innerText();
     check(`${prefix}-boundaries`, '页面内容读取', '核对连接器和synthetic/外部边界措辞', '明确disabled、本地提交、合成数据', {disabled:text.includes('disabled'),synthetic:text.includes('synthetic')||text.includes('Synthetic'),external:text.includes('externalVerified=false')}, text.includes('disabled') && text.includes('externalVerified=false') && (text.includes('synthetic')||text.includes('Synthetic')));
-    await page.locator('img').scrollIntoViewIfNeeded();
-    await page.waitForLoadState('networkidle');
+    await page.locator('svg.plan').scrollIntoViewIfNeeded();
+    const diagram = await page.locator('svg.plan').evaluate(svg=>({role:svg.getAttribute('role'),labelIds:svg.getAttribute('aria-labelledby')?.split(' '),title:svg.querySelector('title')?.textContent,description:svg.querySelector('desc')?.textContent,width:svg.getBoundingClientRect().width,parent:svg.parentElement.getBoundingClientRect().width}));
+    check(`${prefix}-diagram`, '原生SVG点位示意可见', '核对role、标题、描述与父容器宽度', '图形可访问，合成而非现场，宽度不溢出',diagram,diagram.role==='img' && diagram.title?.length>0 && diagram.description?.length>0 && diagram.width<=diagram.parent);
     const images = await page.locator('img').evaluateAll(images=>images.map(image=>({src:image.getAttribute('src'),alt:image.alt,loaded:image.complete&&image.naturalWidth>0})));
-    check(`${prefix}-assets`, '图像已进入视口', '核对已加载图片和alt', '图片可读且描述为概念图',images,images.every(image=>image.loaded&&image.alt&&(image.alt.includes('概念图')||image.alt.includes('Concept'))));
+    check(`${prefix}-assets`, '介绍页资源已读取', '检查图片若存在则已加载，并检查SVG数量', '无损坏图片且有空间点位示意', {images,svgPlans:await page.locator('svg.plan').count()}, images.every(image=>image.loaded&&image.alt) && await page.locator('svg.plan').count()===1);
+    const story = {smartHome:text.toLowerCase().includes(lang==='zh'?'全屋智能':'smart-home'),partialLead:text.includes(lang==='zh'?'未知':'unknown'),construction:text.includes(lang==='zh'?'施工':'construction'),synthetic:text.toLowerCase().includes('synthetic'),legacyTokens:['PMS','OTA','RevPAR','入住率','早餐','云栖'].filter(token=>text.includes(token))};
+    check(`${prefix}-store-story`, '页面完整正文', '核对全屋智能、残缺线索、工程与合成标识，扫描继承酒店词', '门店经营故事完整，无默认酒店叙事', story,story.smartHome&&story.partialLead&&story.construction&&story.synthetic&&story.legacyTokens.length===0);
+    const keyboardDetails=[];
+    for (const item of await page.locator('.faq details').all()) {
+      const summary=item.locator('summary');
+      if(await item.getAttribute('open')!==null) await summary.click();
+      await summary.focus(); await page.keyboard.press('Enter');
+      const opened=await item.getAttribute('open')!==null;
+      await page.keyboard.press('Space');
+      keyboardDetails.push({question:await summary.innerText(),opened,closed:await item.getAttribute('open')===null});
+    }
+    check(`${prefix}-faq-keyboard`, 'FAQ全部折叠，JavaScript禁用', '逐条focus，Enter展开，Space收起', '每条FAQ支持原生键盘操作',keyboardDetails,keyboardDetails.length===6&&keyboardDetails.every(item=>item.opened&&item.closed));
+    const skip=page.locator('.skip-link'); await skip.focus();
+    const focus=await skip.evaluate(element=>({active:document.activeElement===element,top:element.getBoundingClientRect().top,outline:getComputedStyle(element).outlineStyle}));
+    check(`${prefix}-keyboard-focus`, '键盘焦点移到跳过导航链接', '核对焦点、可见位置与outline', '跳过导航可见且focus可识别',focus,focus.active&&focus.top>=0&&focus.outline!=='none');
+    await page.keyboard.press('Enter');
+    check(`${prefix}-skip-target`, '跳过导航链接取得焦点', '键盘Enter激活', '跳转到主要内容',page.url(),page.url().endsWith('#main'));
+
     await page.evaluate(()=>window.scrollTo(0,0));
     await page.screenshot({path:join(out,`${prefix}-viewport.png`)});
     await page.screenshot({path:join(out,`${prefix}-full.png`),fullPage:true});
@@ -103,6 +122,7 @@ try {
     check(`${prefix}-browser-events`, '整个导航与资源加载过程', '收集pageerror/requestfailed/HTTP>=400', '无脚本错误或资源错误',{issues,failed},issues.length===0&&failed.length===0);
     await context.close();
   }
+  assert.equal(report.cases.length, report.expectedTotal, 'Missing site cases');
   report.status='pass';
 } catch(error) { report.status='fail'; report.errors.push(error.message); process.exitCode=1; }
 finally {

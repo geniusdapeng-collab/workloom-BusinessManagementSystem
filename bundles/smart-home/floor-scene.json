@@ -1,6 +1,6 @@
 {
   "id": "smart-home-showroom",
-  "name": "全屋智能门店 · 经营演练展厅",
+  "name": "蜀光智家·成都高新体验店 · 模拟数字岗位空间",
   "theme": {
     "floorA": "#DCE9E5",
     "floorB": "#EDF4F1",
@@ -9,128 +9,170 @@
     "night": false
   },
   "grid": {
-    "w": 10,
-    "h": 8
+    "w": 12,
+    "h": 10
   },
   "stations": [
     {
       "id": "station-store-ceo",
-      "x": 1.1,
+      "x": 1,
       "y": 1.2,
       "kind": "desk"
     },
     {
       "id": "station-growth-director",
-      "x": 2.9000000000000004,
+      "x": 3,
       "y": 1.2,
       "kind": "desk"
     },
     {
       "id": "station-market-researcher",
-      "x": 4.7,
+      "x": 5,
       "y": 1.2,
       "kind": "desk"
     },
     {
       "id": "station-content-strategist",
-      "x": 6.5,
+      "x": 7,
       "y": 1.2,
       "kind": "desk"
     },
     {
       "id": "station-video-producer",
-      "x": 8.3,
+      "x": 9,
       "y": 1.2,
       "kind": "desk"
     },
     {
       "id": "station-social-publisher",
-      "x": 1.1,
-      "y": 2.75,
+      "x": 11,
+      "y": 1.2,
       "kind": "desk"
     },
     {
       "id": "station-lead-concierge",
-      "x": 2.9000000000000004,
-      "y": 2.75,
+      "x": 1,
+      "y": 2.7,
       "kind": "desk"
     },
     {
       "id": "station-sales-consultant",
-      "x": 4.7,
-      "y": 2.75,
+      "x": 3,
+      "y": 2.7,
       "kind": "desk"
     },
     {
       "id": "station-solution-designer",
-      "x": 6.5,
-      "y": 2.75,
+      "x": 5,
+      "y": 2.7,
       "kind": "desk"
     },
     {
       "id": "station-survey-engineer",
-      "x": 8.3,
-      "y": 2.75,
+      "x": 7,
+      "y": 2.7,
       "kind": "desk"
     },
     {
       "id": "station-compatibility-engineer",
-      "x": 1.1,
-      "y": 4.3,
+      "x": 9,
+      "y": 2.7,
       "kind": "desk"
     },
     {
       "id": "station-quote-controller",
-      "x": 2.9000000000000004,
-      "y": 4.3,
+      "x": 11,
+      "y": 2.7,
       "kind": "desk"
     },
     {
       "id": "station-project-manager",
-      "x": 4.7,
-      "y": 4.3,
+      "x": 1,
+      "y": 4.2,
       "kind": "desk"
     },
     {
       "id": "station-procurement-controller",
-      "x": 6.5,
-      "y": 4.3,
+      "x": 3,
+      "y": 4.2,
       "kind": "desk"
     },
     {
       "id": "station-installation-supervisor",
-      "x": 8.3,
-      "y": 4.3,
+      "x": 5,
+      "y": 4.2,
       "kind": "desk"
     },
     {
       "id": "station-commissioning-engineer",
-      "x": 1.1,
-      "y": 5.8500000000000005,
-      "kind": "monitor"
+      "x": 7,
+      "y": 4.2,
+      "kind": "desk"
     },
     {
       "id": "station-acceptance-auditor",
-      "x": 2.9000000000000004,
-      "y": 5.8500000000000005,
-      "kind": "monitor"
+      "x": 9,
+      "y": 4.2,
+      "kind": "desk"
     },
     {
       "id": "station-aftercare-specialist",
-      "x": 4.7,
-      "y": 5.8500000000000005,
-      "kind": "monitor"
+      "x": 11,
+      "y": 4.2,
+      "kind": "desk"
     },
     {
       "id": "station-finance-controller",
-      "x": 6.5,
-      "y": 5.8500000000000005,
-      "kind": "monitor"
+      "x": 1,
+      "y": 5.7,
+      "kind": "desk"
     },
     {
       "id": "station-knowledge-steward",
-      "x": 8.3,
-      "y": 5.8500000000000005,
+      "x": 3,
+      "y": 5.7,
+      "kind": "desk"
+    },
+    {
+      "id": "station-prospecting-specialist",
+      "x": 5,
+      "y": 5.7,
+      "kind": "monitor"
+    },
+    {
+      "id": "station-lead-enrichment-specialist",
+      "x": 7,
+      "y": 5.7,
+      "kind": "monitor"
+    },
+    {
+      "id": "station-appointment-coordinator",
+      "x": 9,
+      "y": 5.7,
+      "kind": "monitor"
+    },
+    {
+      "id": "station-sales-assistant",
+      "x": 11,
+      "y": 5.7,
+      "kind": "monitor"
+    },
+    {
+      "id": "station-sales-coach",
+      "x": 1,
+      "y": 7.2,
+      "kind": "monitor"
+    },
+    {
+      "id": "station-business-operations-assistant",
+      "x": 3,
+      "y": 7.2,
+      "kind": "monitor"
+    },
+    {
+      "id": "station-store-manager-assistant",
+      "x": 5,
+      "y": 7.2,
       "kind": "monitor"
     }
   ],
@@ -138,31 +180,31 @@
     {
       "kind": "board",
       "x": 0.7,
-      "y": 0.7,
-      "label": "获客与交付证据"
+      "y": 0.6,
+      "label": "模拟线索与项目资料链"
     },
     {
       "kind": "sofa",
-      "x": 8.7,
-      "y": 6.8,
-      "label": "客户体验区"
+      "x": 10,
+      "y": 8.8,
+      "label": "体验路线讨论区"
     },
     {
       "kind": "plant",
       "x": 0.6,
-      "y": 7.2
+      "y": 9.2
     }
   ],
   "ceoDesk": {
-    "x": 1.1,
+    "x": 1,
     "y": 1.2
   },
   "lounge": {
-    "x": 8.7,
-    "y": 6.8
+    "x": 10,
+    "y": 8.8
   },
   "entrance": {
-    "x": 9.3,
-    "y": 7.3
+    "x": 11,
+    "y": 9.2
   }
 }

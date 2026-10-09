@@ -1,0 +1,22 @@
+{
+  "probe": "design point-device coverage versus complete solution BOM",
+  "sourceMutated": false,
+  "isolatedManifestRefresh": true,
+  "observations": [
+    {
+      "label": "all-but-one-devices-omitted",
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 1,
+      "accepted": true,
+      "designStatus": "draft-local-validated"
+    },
+    {
+      "label": "one-device-duplicated",
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 22,
+      "accepted": true,
+      "designStatus": "draft-local-validated"
+    }
+  ],
+  "completed": true
+}

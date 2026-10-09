@@ -63,7 +63,24 @@ describe.skipIf(!enabled)("smart-home seed real PostgreSQL safety", () => {
 
   test("first seed, repeat and concurrent repeat have exact assets and no business events", async () => {
     const first = await seedSmartHomeWorkspace(url);
-    expect(first).toMatchObject({ agents: 20, skills: 35, fences: 16, installs: 1, chunks: 32, businessEventsCreated: 0, modelCalls: 0 });
+    expect(first).toMatchObject({ agents: 27, skills: 49, fences: 16, installs: 1, chunks: 32, businessEventsCreated: 0, modelCalls: 0 });
+    const workspace = (await client.query("SELECT name FROM workspaces WHERE id=$1", [SMART_HOME_SEED.workspaceId])).rows[0];
+    expect(workspace.name).toBe("蜀光智家 · 成都高新体验店（虚构演练）");
+    const archive = (await client.query("SELECT archive FROM profiles WHERE workspace_id=$1", [SMART_HOME_SEED.workspaceId])).rows[0].archive;
+    expect(archive.property).toMatchObject({ name: workspace.name, city: "成都（虚构门店背景）", synthetic: true, realStoreVerified: false });
+    expect(archive.property.serviceAreas).toEqual(["成都高新区", "成都天府新区", "成都其他城区"]);
+    const newRoles = ["prospecting-specialist", "lead-enrichment-specialist", "appointment-coordinator", "sales-assistant", "sales-coach", "business-operations-assistant", "store-manager-assistant"];
+    const installedRoles = (await client.query("SELECT preset_key,name,skills FROM agents WHERE workspace_id=$1 AND preset_key=ANY($2::text[]) ORDER BY preset_key", [SMART_HOME_SEED.workspaceId, newRoles])).rows;
+    expect(installedRoles.map(row => row.preset_key)).toEqual([...newRoles].sort());
+    const newSkills = installedRoles.flatMap(row => { expect(row.name).toMatch(/[^\x00-\x7f]/); expect(row.skills).toHaveLength(2); return row.skills; });
+    expect(new Set(newSkills).size).toBe(14);
+    const installedSkills = (await client.query("SELECT s.name,s.body FROM skills s JOIN skill_installs i ON i.skill_id=s.id WHERE i.workspace_id=$1 AND s.name=ANY($2::text[]) ORDER BY s.name", [SMART_HOME_SEED.workspaceId, newSkills])).rows;
+    expect(installedSkills.map(row => row.name)).toEqual([...newSkills].sort());
+    for (const skill of installedSkills) {
+      const source = manifest.workloom.provides.skills.find((path: string) => path === `skills/${skill.name}/SKILL.md`);
+      expect(source).toBeTruthy();
+      expect(skill.body).toBe(readFileSync(join(root, "bundles/smart-home", source), "utf8"));
+    }
     expect(await seedSmartHomeWorkspace(url)).toEqual(first);
     const repeats = await Promise.all([seedSmartHomeWorkspace(url), seedSmartHomeWorkspace(url)]);
     expect(repeats).toEqual([first, first]);

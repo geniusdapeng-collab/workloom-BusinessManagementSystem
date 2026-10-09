@@ -13,7 +13,7 @@ import { evalCondition } from '../../packages/base/fence-engine/expr.ts';
 import { parseModelPolicy } from '../../packages/base/model-router/policy.ts';
 import { loadFeedbackEnumsFromBundle } from '../../packages/base/evolve/feedback-enums.ts';
 import { loadCatalog, invokeCapability } from '../../scripts/agent-capabilities.mjs';
-import { OPERATION_CATALOGUE } from './runtime/catalogue.mjs';
+import { OPERATION_CATALOGUE, ENTITY_TYPES } from './runtime/catalogue.mjs';
 import { WORKFLOW_CATALOGUE } from './runtime/workflows.mjs';
 
 const bundle = resolve(import.meta.dirname);
@@ -44,8 +44,8 @@ test('every preset has distinct responsibility, existing skills, fences and nati
   const baseline = loadFencePack(text('fences/smart-home-baseline.yml'));
   const rules = new Set(baseline.rules.map(rule => rule.rule_id));
   const operations = new Set(OPERATION_CATALOGUE.map(operation => operation.name));
-  assert.equal(presets.length, 20);
-  assert.equal(manifest.workloom.provides.skills.length, 35);
+  assert.equal(presets.length, 27);
+  assert.equal(manifest.workloom.provides.skills.length, 49);
   const physical = readdirSync(resolve(bundle, 'presets')).filter(path => /\.ya?ml$/u.test(path)).map(path => `presets/${path}`);
   assert.deepEqual(physical.sort(), [...manifest.workloom.provides.presets].sort());
   for (const preset of presets) {
@@ -77,8 +77,8 @@ test('every preset has distinct responsibility, existing skills, fences and nati
     const owner = presets.find(preset => preset.preset_key === skill.owner);
     assert.ok(owner?.skills.includes(skill.key), `${skill.owner}: ${skill.key}`);
   }
-  assert.equal(new Set(skills.map(skill => skill.key)).size, 35);
-  assert.equal(new Set(presets.flatMap(preset => preset.skills)).size, 35);
+  assert.equal(new Set(skills.map(skill => skill.key)).size, 49);
+  assert.equal(new Set(presets.flatMap(preset => preset.skills)).size, 49);
 });
 
 test('all segments resolve concrete references and pipeline steps are assigned', () => {
@@ -119,8 +119,8 @@ test('all segments resolve concrete references and pipeline steps are assigned',
 
 test('floor, objects, stages and archive have complete unique industry identities', () => {
   const floor = json('floor-scene.json');
-  assert.equal(floor.stations.length, 20);
-  assert.equal(new Set(floor.stations.map(station => station.id)).size, 20);
+  assert.equal(floor.stations.length, 27);
+  assert.equal(new Set(floor.stations.map(station => station.id)).size, 27);
   for (const station of floor.stations) {
     assert.ok(station.x >= 0 && station.x <= floor.grid.w);
     assert.ok(station.y >= 0 && station.y <= floor.grid.h);
@@ -128,6 +128,7 @@ test('floor, objects, stages and archive have complete unique industry identitie
   const objects = json('schemas/objects.json').objects;
   const stages = json('schemas/stages.json').stages;
   assert.equal(new Set(objects.map(object => object.type)).size, objects.length);
+  assert.deepEqual(objects.map(object => object.type).sort(), [...ENTITY_TYPES].sort());
   assert.equal(new Set(stages.map(stage => stage.id)).size, stages.length);
   assert.deepEqual(json('schemas/archive.schema.json').required.sort(), ['property','business','forbidden','goals','dataMode'].sort());
 });
@@ -176,4 +177,73 @@ test('legacy read capability and native schemas stay separate and synchronized',
     assert.notEqual(result.dataMode, 'real');
     await assert.rejects(() => invokeCapability(catalog, entry.id, { unexpected: true }), error => error.code === 'INVALID_INPUT');
   }
+});
+
+
+test('fictional Chengdu store, official product references and scene routes preserve source and execution boundaries', () => {
+  const context = json('library/industry-context.json');
+  assert.equal(context.schemaVersion, 'business-management.industry-context/v1');
+  assert.equal(context.storeProfile.brand, '蜀光智家');
+  assert.equal(context.storeProfile.dataMode, 'sandbox');
+  assert.equal(context.storeProfile.synthetic, true);
+  assert.equal(context.storeProfile.realStoreVerified, false);
+  assert.deepEqual(context.storeProfile.manufacturerAuthorization, { huawei: 'unverified', aqara: 'unverified' });
+  assert.equal(context.productReference.notSaleCatalogue, true);
+  assert.equal(context.productReference.kind, 'official-reference-only');
+  const sources = new Map(json('library/official-sources.json').sources.map(source => [source.id, source]));
+  const referenceIds = new Set(context.officialReferences.items.map(source => source.id));
+  for (const source of context.officialReferences.items) {
+    assert.equal(source.verification, 'page-body');
+    assert.deepEqual(source, sources.get(source.id));
+    const url = new URL(source.url);
+    assert.equal(url.protocol, 'https:');
+    assert.ok(['consumer.huawei.com', 'www.aqara.cn', 'docs.aqara.com'].includes(url.hostname));
+    assert.ok(source.supports.length > 10 && source.limitation.length > 10);
+  }
+  for (const item of context.productReference.items) {
+    assert.equal(item.quoteEligible, false);
+    assert.equal(item.compatibilityEvidence, false);
+    assert.ok(!item.id.startsWith('SYN-SG-'));
+    assert.ok(item.sourceIds.length > 0 && item.limitations.length > 0);
+    for (const id of item.sourceIds) assert.ok(referenceIds.has(id), id);
+  }
+  const zones = new Map(context.storeProfile.experienceZones.map(zone => [zone.id, zone]));
+  const scenes = new Map(context.experienceGuide.scenes.map(scene => [scene.id, scene]));
+  assert.equal(scenes.size, context.experienceGuide.scenes.length);
+  for (const scene of scenes.values()) {
+    assert.ok(zones.has(scene.zoneId), scene.zoneId);
+    assert.ok(zones.get(scene.zoneId).sceneIds.includes(scene.id));
+    assert.ok(scene.requiredEvidence.length > 0 && scene.fallback.length > 0 && scene.boundary.length > 0);
+    for (const id of scene.sourceIds) assert.ok(referenceIds.has(id), id);
+  }
+  for (const route of context.experienceGuide.routes) {
+    assert.ok(route.qualificationQuestions.length > 0 && route.excludedActions.length > 0);
+    for (const id of route.sceneIds) assert.ok(scenes.has(id), id);
+  }
+  for (const channel of context.channelGuide.channels) {
+    assert.equal(channel.connectorStatus, 'disabled');
+    assert.equal(channel.accountVerified, false);
+    assert.ok(channel.sourcePolicy.length > 0 && channel.consentPolicy.length > 0);
+    assert.ok(json('library/workforce.json').roles.some(role => role.id === channel.handoffRole));
+  }
+  assert.equal(context.syntheticDisclosure.actualBrandAuthorization, false);
+  assert.equal(context.syntheticDisclosure.externalActionsExecuted, 0);
+  assert.equal(context.syntheticDisclosure.skuPrefix, 'SYN-SG-');
+  assert.ok(context.storeProfile.journey.some(stage => stage.objects.includes('pointPlan')));
+  assert.ok(context.storeProfile.journey.some(stage => stage.objects.includes('contract')));
+});
+
+test('new operating responsibilities are reachable without adding writes to the audit-only segment', () => {
+  const newRoles = ['prospecting-specialist', 'lead-enrichment-specialist', 'appointment-coordinator', 'sales-assistant', 'sales-coach', 'business-operations-assistant', 'store-manager-assistant'];
+  const segments = YAML.parse(text('segment-defaults.yml')).segments;
+  for (const [key, segment] of Object.entries(segments)) {
+    for (const role of newRoles) assert.equal(segment.presets.includes(role), key !== 'audit_only', `${key}: ${role}`);
+  }
+  for (const skill of ['lead-profile-enrichment', 'customer-handoff-check']) {
+    const sop = text(`skills/${skill}/SKILL.md`);
+    assert.ok(sop.includes('proposedLeadPatch') && sop.includes('confirmationQuestions'));
+    assert.ok(sop.includes('model-proposal') && sop.includes('synthetic-history'));
+    assert.ok(sop.includes('expectedVersion'));
+  }
+  assert.ok(text('skills/customer-handoff-check/SKILL.md').includes('handoffReady'));
 });

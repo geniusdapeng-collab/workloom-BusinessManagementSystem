@@ -1,0 +1,1400 @@
+{
+  "schemaVersion": "bms.host-compatible-source-binding/v1",
+  "taskId": "T-2026-1009-0001",
+  "reviewer": "/root/workbench_audit",
+  "reviewedAt": "2026-10-09T04:49:50.726869+00:00",
+  "executionRef": "host-depth-f83b19249093",
+  "evidenceGrade": "B",
+  "status": "pass",
+  "checks": {
+    "reconstructedOriginalWholeFileExactlyMatchesHostRunSha256": true,
+    "all71HostBusinessSopAndTransportSourcesByteIdentical": true,
+    "manifestDiffOnlyKnownUiLabelsUiAppDigestAndAggregateSeal": true,
+    "allNonUiManifestAssetsRemainByteIdentical": true,
+    "sameUiAssetMembership": true,
+    "everyFinalUiAssetMatchesFinalManifest": true,
+    "finalUiMetadataMatchesRuntimeObjectAndWorkflowCounts": true,
+    "originalHostProofNotModified": true
+  },
+  "originalModelExecutionProof": "host-model-proof.json",
+  "originalModelExecutionProofSha256": "4a8b7003d5bcd6d036ef0e8a44975bcb276c7ee4020de240f3010fd51e7398c4",
+  "originalManifest": {
+    "sha256": "66d7d5f1c9a1f0901ffa22c18a74e2012ee209d0ac859fd96e255c8c44df750b",
+    "reconstruction": "host-manifest-original-reconstructed.json",
+    "method": "Recovered the exact pretty-printed original by restoring the old UI app digest and prior UI label arrays, then applying the fully read canonicalBundleArtifactPayload and parseBundleManifest seal. Whole byte SHA exactly equals the immutable host-run manifest SHA; accepted only after this equality."
+  },
+  "finalManifest": {
+    "path": "bundles/smart-home/bundle.json",
+    "sha256": "3d1abdc1022a03fe97a247f1ed7c3bee7290c70e6c41baf2cc340f15af606ee3",
+    "sealDigest": "e08a4bcc0a3660d8838e084a087774f2e04309a5b032d516658448e3da0dc4eb"
+  },
+  "manifestChanges": [
+    {
+      "path": "integrity.assets.ui/workbench/app.js",
+      "before": "8bc0cbf73b0bf43736957a1ab3faa7e35530ebfa508e0e49a53edda8a548ae42",
+      "after": "23d1979baaf990beffc149abe9a6b0901df03f9887b941611819e969b6c23ee2"
+    },
+    {
+      "path": "integrity.digest",
+      "before": "c451a7fe59c91b6d1db202e6dadc3cada360f7ab0dc142b0e29edac84d169fb5",
+      "after": "e08a4bcc0a3660d8838e084a087774f2e04309a5b032d516658448e3da0dc4eb"
+    },
+    {
+      "path": "workloom.ui.objects",
+      "before": [
+        "门店",
+        "设备型号",
+        "兼容证据",
+        "客户线索",
+        "体验预约",
+        "现场勘测",
+        "空间方案",
+        "项目报价",
+        "审批",
+        "交付项目",
+        "采购到货",
+        "场景测试",
+        "客户验收",
+        "售后工单",
+        "内容素材",
+        "经营目标",
+        "业务工作流",
+        "模型任务",
+        "经营报告"
+      ],
+      "after": [
+        "门店",
+        "设备型号",
+        "兼容证据",
+        "客户线索",
+        "体验预约",
+        "现场勘测",
+        "空间方案",
+        "项目报价",
+        "审批",
+        "交付项目",
+        "采购到货",
+        "场景测试",
+        "客户验收",
+        "售后工单",
+        "内容素材",
+        "经营目标",
+        "业务工作流",
+        "模型任务",
+        "经营报告",
+        "待确认线索补充提议",
+        "客户家庭档案",
+        "毫米坐标点位图",
+        "版本化设计资料",
+        "施工策划与质量资料",
+        "报价关联合同",
+        "经营观察与计划",
+        "合成场景导入来源"
+      ]
+    },
+    {
+      "path": "workloom.ui.workflows",
+      "before": [
+        "获客到体验闭环",
+        "方案到客户验收闭环",
+        "售后响应到回访闭环",
+        "董事长经营闭环"
+      ],
+      "after": [
+        "获客到体验闭环",
+        "方案到客户验收闭环",
+        "售后响应到回访闭环",
+        "董事长经营闭环",
+        "数字员工岗位任务"
+      ]
+    }
+  ],
+  "hostSourceChecks": [
+    {
+      "path": "bundles/smart-home/runtime/assets.mjs",
+      "hostRunSha256": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+      "currentSha256": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/catalogue.mjs",
+      "hostRunSha256": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+      "currentSha256": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/depth-catalogue.mjs",
+      "hostRunSha256": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+      "currentSha256": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/depth-domain.mjs",
+      "hostRunSha256": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+      "currentSha256": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/domain.mjs",
+      "hostRunSha256": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+      "currentSha256": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/errors.mjs",
+      "hostRunSha256": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+      "currentSha256": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/index.mjs",
+      "hostRunSha256": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+      "currentSha256": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/scenario.mjs",
+      "hostRunSha256": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+      "currentSha256": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/schema.mjs",
+      "hostRunSha256": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+      "currentSha256": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/storage.mjs",
+      "hostRunSha256": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+      "currentSha256": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/workflows.mjs",
+      "hostRunSha256": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+      "currentSha256": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/runtime/workforce.mjs",
+      "hostRunSha256": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c",
+      "currentSha256": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/acceptance-handover/SKILL.md",
+      "hostRunSha256": "8809e9b6a542296b9cc74a5940dcf7df1d19a083275857650a3f5ac8094c0901",
+      "currentSha256": "8809e9b6a542296b9cc74a5940dcf7df1d19a083275857650a3f5ac8094c0901",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/aftercare-resolution/SKILL.md",
+      "hostRunSha256": "5cf579dd1f3a5bba5c8d496fa3bcd7334846be66081e61ca04dc4eacd37faa46",
+      "currentSha256": "5cf579dd1f3a5bba5c8d496fa3bcd7334846be66081e61ca04dc4eacd37faa46",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/aftercare-triage/SKILL.md",
+      "hostRunSha256": "4b9160fddf208abc53823bcf192948aef3a8d7518605dd4f452cd0fc6fe2d56b",
+      "currentSha256": "4b9160fddf208abc53823bcf192948aef3a8d7518605dd4f452cd0fc6fe2d56b",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/appointment-coordination/SKILL.md",
+      "hostRunSha256": "aca0e42d2b0f9a499a8a88cc02786c6e966422ae0df4079695e0a6ecd4096e0a",
+      "currentSha256": "aca0e42d2b0f9a499a8a88cc02786c6e966422ae0df4079695e0a6ecd4096e0a",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/appointment-recovery/SKILL.md",
+      "hostRunSha256": "e5b6f9c888b569b120a48be4788f7ac0fb7415b44c6fe3032c4cc51351bbecdc",
+      "currentSha256": "e5b6f9c888b569b120a48be4788f7ac0fb7415b44c6fe3032c4cc51351bbecdc",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/bom-check/SKILL.md",
+      "hostRunSha256": "4827f979bf4eb90aa5e047dae69d37a57687cb4d396a9c439078ccab1c8bd1f2",
+      "currentSha256": "4827f979bf4eb90aa5e047dae69d37a57687cb4d396a9c439078ccab1c8bd1f2",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/business-data-reconciliation/SKILL.md",
+      "hostRunSha256": "3106fdad2406b9a6d6e64efe4e13b75ead5286fa67c4fdf076c919aa0f170fa7",
+      "currentSha256": "3106fdad2406b9a6d6e64efe4e13b75ead5286fa67c4fdf076c919aa0f170fa7",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/campaign-review/SKILL.md",
+      "hostRunSha256": "9dd755ad816f7e62d86608b84edb5f8d395112c1edcee6e8f1d4c1396ac0bd95",
+      "currentSha256": "9dd755ad816f7e62d86608b84edb5f8d395112c1edcee6e8f1d4c1396ac0bd95",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/compatibility-verification/SKILL.md",
+      "hostRunSha256": "ff1d3f6dc2bd47fc5b0b0d1d964c3eff62592fedd1ef1a265e4aa46a5be4ff9b",
+      "currentSha256": "ff1d3f6dc2bd47fc5b0b0d1d964c3eff62592fedd1ef1a265e4aa46a5be4ff9b",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/consultative-sales/SKILL.md",
+      "hostRunSha256": "af876e44746d3338c4cefac6e5e43967b616ed03c3518e78fc6c896e166eb4b8",
+      "currentSha256": "af876e44746d3338c4cefac6e5e43967b616ed03c3518e78fc6c896e166eb4b8",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/content-planning/SKILL.md",
+      "hostRunSha256": "677cd6ef0450579942bccaaf6a8c022d111d99647dc29b4b3f95728008fb490c",
+      "currentSha256": "677cd6ef0450579942bccaaf6a8c022d111d99647dc29b4b3f95728008fb490c",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/contract-handoff/SKILL.md",
+      "hostRunSha256": "f816945d497a887305d550016b5f07d5a502fa68d109700e30a0c56332fbee46",
+      "currentSha256": "f816945d497a887305d550016b5f07d5a502fa68d109700e30a0c56332fbee46",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/customer-consent/SKILL.md",
+      "hostRunSha256": "778058d18a2d39a2d223754452ac4133dffc83cbe38bf1c9b1a6872d61df7b1c",
+      "currentSha256": "778058d18a2d39a2d223754452ac4133dffc83cbe38bf1c9b1a6872d61df7b1c",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/customer-followup/SKILL.md",
+      "hostRunSha256": "96f03520721aec5a4ee5520eec3f154708943f8345877b613f92ec4046793dfa",
+      "currentSha256": "96f03520721aec5a4ee5520eec3f154708943f8345877b613f92ec4046793dfa",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/customer-handoff-check/SKILL.md",
+      "hostRunSha256": "0e3e4628c0c0d15fb83b267041df25f0077e30e57b8b12d307aa6a5c8c3132c2",
+      "currentSha256": "0e3e4628c0c0d15fb83b267041df25f0077e30e57b8b12d307aa6a5c8c3132c2",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/data-import-qa/SKILL.md",
+      "hostRunSha256": "05246cfa08a91e14e05aa16016de53199bdb316ccc520505a150c02174234193",
+      "currentSha256": "05246cfa08a91e14e05aa16016de53199bdb316ccc520505a150c02174234193",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/experience-appointment/SKILL.md",
+      "hostRunSha256": "d091e805b18da7d3165b1b384d78c4c6e3712a88652f505c953429e2ef00b590",
+      "currentSha256": "d091e805b18da7d3165b1b384d78c4c6e3712a88652f505c953429e2ef00b590",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/finance-reconcile/SKILL.md",
+      "hostRunSha256": "88163ec8005486ed4d462fd798073593f2d2f6b3bec8739cc7cce550ddd3ceb5",
+      "currentSha256": "88163ec8005486ed4d462fd798073593f2d2f6b3bec8739cc7cce550ddd3ceb5",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/goal-decomposition/SKILL.md",
+      "hostRunSha256": "2576fb45a991dbb7318d344a4fadc00b8c76ac3fd4c2e5bf82c593e036725998",
+      "currentSha256": "2576fb45a991dbb7318d344a4fadc00b8c76ac3fd4c2e5bf82c593e036725998",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/incident-learning/SKILL.md",
+      "hostRunSha256": "04850381d261d711b520d6d8ccd7b2e2259ea40e39a78c8a823fde7902e1eaf8",
+      "currentSha256": "04850381d261d711b520d6d8ccd7b2e2259ea40e39a78c8a823fde7902e1eaf8",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/installation-quality/SKILL.md",
+      "hostRunSha256": "daad5dea9e4bc1fcbddb2ccf9af3acaeb8977f72a4ba99c7acdbb5fe735b2ee2",
+      "currentSha256": "daad5dea9e4bc1fcbddb2ccf9af3acaeb8977f72a4ba99c7acdbb5fe735b2ee2",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/knowledge-maintenance/SKILL.md",
+      "hostRunSha256": "268fcce808598da09911e824acabcc26bd800d6feb2ad96d2a7ff238c4c0215e",
+      "currentSha256": "268fcce808598da09911e824acabcc26bd800d6feb2ad96d2a7ff238c4c0215e",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/lead-profile-enrichment/SKILL.md",
+      "hostRunSha256": "8a72b05533246bd3a2a59eabf5ac965e0cbdcbe4eb53f7c274beb254e6cd643f",
+      "currentSha256": "8a72b05533246bd3a2a59eabf5ac965e0cbdcbe4eb53f7c274beb254e6cd643f",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/lead-qualification/SKILL.md",
+      "hostRunSha256": "53a76c2c8fc3c73bf037cb810dec8b01a285783c37d5143fc66b0425cad1398a",
+      "currentSha256": "53a76c2c8fc3c73bf037cb810dec8b01a285783c37d5143fc66b0425cad1398a",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/local-search-presence/SKILL.md",
+      "hostRunSha256": "0ac7acf54f3ea5cb9e6224a2938264fee371a69cced998ecb10b1c0a7b7d8b7d",
+      "currentSha256": "0ac7acf54f3ea5cb9e6224a2938264fee371a69cced998ecb10b1c0a7b7d8b7d",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/market-intelligence/SKILL.md",
+      "hostRunSha256": "40a779e0913a6a939c881074b267879fe24c375e6337d3e4493b9023146a81db",
+      "currentSha256": "40a779e0913a6a939c881074b267879fe24c375e6337d3e4493b9023146a81db",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/network-planning/SKILL.md",
+      "hostRunSha256": "391f73c66e5ecec062de70c96df1d5541dac7907e61ec523606ba1129c3f6608",
+      "currentSha256": "391f73c66e5ecec062de70c96df1d5541dac7907e61ec523606ba1129c3f6608",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/operations-daily-control/SKILL.md",
+      "hostRunSha256": "4e473177a09cff809d97b59890a15c1b7d827a8ba570acf2d68fbc091f2655ee",
+      "currentSha256": "4e473177a09cff809d97b59890a15c1b7d827a8ba570acf2d68fbc091f2655ee",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/owner-briefing/SKILL.md",
+      "hostRunSha256": "78fb0d64838aa6bd3691c8917018723e477b252cc0924bde7a1a42511916d037",
+      "currentSha256": "78fb0d64838aa6bd3691c8917018723e477b252cc0924bde7a1a42511916d037",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/partner-channel/SKILL.md",
+      "hostRunSha256": "b4fe34e360bbd5b23b23524ff5eaf1a65c1dd0c89bb51ae8e5eb4fd0880b9a72",
+      "currentSha256": "b4fe34e360bbd5b23b23524ff5eaf1a65c1dd0c89bb51ae8e5eb4fd0880b9a72",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/procurement-inventory/SKILL.md",
+      "hostRunSha256": "232fb5acf91801a03d1e110ed060f0765ed6dc498d749633c994a0e0c9dbdead",
+      "currentSha256": "232fb5acf91801a03d1e110ed060f0765ed6dc498d749633c994a0e0c9dbdead",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/project-scheduling/SKILL.md",
+      "hostRunSha256": "112180a94478592f22465dfc89d847583d8d32188bfdad88a71fc6fac2cd5436",
+      "currentSha256": "112180a94478592f22465dfc89d847583d8d32188bfdad88a71fc6fac2cd5436",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/prospect-targeting/SKILL.md",
+      "hostRunSha256": "780536122ab20c31623032883f85d5e9d85cb0bdac859cb01ef7c8e9bb9d1ccc",
+      "currentSha256": "780536122ab20c31623032883f85d5e9d85cb0bdac859cb01ef7c8e9bb9d1ccc",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/quote-margin-control/SKILL.md",
+      "hostRunSha256": "e4bfb932278eec8ef53be9f0de4ff02c10c8cf3cea9ed66433623837e43e2331",
+      "currentSha256": "e4bfb932278eec8ef53be9f0de4ff02c10c8cf3cea9ed66433623837e43e2331",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/referral-retention/SKILL.md",
+      "hostRunSha256": "e85da7ea5467762626193c1871a15bf897b1c529c556a72fae0651f1583f4a68",
+      "currentSha256": "e85da7ea5467762626193c1871a15bf897b1c529c556a72fae0651f1583f4a68",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/sales-coaching/SKILL.md",
+      "hostRunSha256": "22d3bec6d6a47745260f64259a2333e3d52a8ead75a2efdb9804079013b55c79",
+      "currentSha256": "22d3bec6d6a47745260f64259a2333e3d52a8ead75a2efdb9804079013b55c79",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/sales-meeting-prep/SKILL.md",
+      "hostRunSha256": "4471f58bd42f5054756519a92a90547ddbbb2c38187fc54c802d6309aa158652",
+      "currentSha256": "4471f58bd42f5054756519a92a90547ddbbb2c38187fc54c802d6309aa158652",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/sales-objection-brief/SKILL.md",
+      "hostRunSha256": "48c87dc9e55220913af4aa43d2d51eec1423c223e4eb5c4c42a745c769f71227",
+      "currentSha256": "48c87dc9e55220913af4aa43d2d51eec1423c223e4eb5c4c42a745c769f71227",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/sales-quality-review/SKILL.md",
+      "hostRunSha256": "ec0b42407603601029bed4ed4d73b36023e539374635fe265c6236289f147ca0",
+      "currentSha256": "ec0b42407603601029bed4ed4d73b36023e539374635fe265c6236289f147ca0",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/scene-commissioning/SKILL.md",
+      "hostRunSha256": "680f9cac9de8b48f18a4eb8b5b9b2a2319bfa6c425ff7cf1eef89b000cb597c4",
+      "currentSha256": "680f9cac9de8b48f18a4eb8b5b9b2a2319bfa6c425ff7cf1eef89b000cb597c4",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/short-video-production/SKILL.md",
+      "hostRunSha256": "92abd4fddbf251e9a3dd9b1d92627be919475c67c834e8e8f683d496188075d7",
+      "currentSha256": "92abd4fddbf251e9a3dd9b1d92627be919475c67c834e8e8f683d496188075d7",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/site-survey/SKILL.md",
+      "hostRunSha256": "3df0b98f5102fc71571def53978cc354068f74fdd6acfb9081ec9190a7b2bd59",
+      "currentSha256": "3df0b98f5102fc71571def53978cc354068f74fdd6acfb9081ec9190a7b2bd59",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/social-publishing/SKILL.md",
+      "hostRunSha256": "4aa4cb36f709791627129c8e2afa5fcfba5cc39fe3b3f5ccd518b09d25268443",
+      "currentSha256": "4aa4cb36f709791627129c8e2afa5fcfba5cc39fe3b3f5ccd518b09d25268443",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/solution-design/SKILL.md",
+      "hostRunSha256": "1b030c895500484fe90282f0c11e2bec98fd2e6a114de51f516876957e739611",
+      "currentSha256": "1b030c895500484fe90282f0c11e2bec98fd2e6a114de51f516876957e739611",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/source-lead-intake/SKILL.md",
+      "hostRunSha256": "7ba5e1a1716525255cb74998f4b9670a29481034ea257bfb3df90973a8c07182",
+      "currentSha256": "7ba5e1a1716525255cb74998f4b9670a29481034ea257bfb3df90973a8c07182",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/store-demo-health/SKILL.md",
+      "hostRunSha256": "fa63797036ff20e329c8ff6af195521723255cecf4592b8817175f9e26741b34",
+      "currentSha256": "fa63797036ff20e329c8ff6af195521723255cecf4592b8817175f9e26741b34",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/store-diagnosis/SKILL.md",
+      "hostRunSha256": "6a547d6ea37196ea12133fe1ca7d74155f9811436598f71788ee6752d3bc3c79",
+      "currentSha256": "6a547d6ea37196ea12133fe1ca7d74155f9811436598f71788ee6752d3bc3c79",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/store-resource-brief/SKILL.md",
+      "hostRunSha256": "1f0076c0995833f3fdf9450a70ef64353e78930e4e8e8b94482c3f3f1aafec29",
+      "currentSha256": "1f0076c0995833f3fdf9450a70ef64353e78930e4e8e8b94482c3f3f1aafec29",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/skills/store-shift-coordination/SKILL.md",
+      "hostRunSha256": "48cbda36cd1153b7fe8776f87b3f5e990d9d8b0eda831bfc49beec54af677297",
+      "currentSha256": "48cbda36cd1153b7fe8776f87b3f5e990d9d8b0eda831bfc49beec54af677297",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/library/industry-context.json",
+      "hostRunSha256": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+      "currentSha256": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/library/workforce.json",
+      "hostRunSha256": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c",
+      "currentSha256": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c",
+      "unchanged": true
+    },
+    {
+      "path": "bundles/smart-home/library/skill-catalogue.json",
+      "hostRunSha256": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86",
+      "currentSha256": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/business-management-common.mjs",
+      "hostRunSha256": "131a64dfa4b60a4260df741f04a951b3ca8dafc18c5d98ecf895ffb64713788c",
+      "currentSha256": "131a64dfa4b60a4260df741f04a951b3ca8dafc18c5d98ecf895ffb64713788c",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/business-management-http.mjs",
+      "hostRunSha256": "608b1640f1d77e78fe4ad4275066bab2f63b93f5823686c5b75a7ae37f65408d",
+      "currentSha256": "608b1640f1d77e78fe4ad4275066bab2f63b93f5823686c5b75a7ae37f65408d",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/business-management-mcp.mjs",
+      "hostRunSha256": "e386d915e8ca32312baa37100b03cfe19a92ab74dbbab55cde78491698e1a8de",
+      "currentSha256": "e386d915e8ca32312baa37100b03cfe19a92ab74dbbab55cde78491698e1a8de",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/business-management-postgres.test.mjs",
+      "hostRunSha256": "d018b919dab52e6c92dce62ef3ff2c4ac0170bc726137adf81589b37b56c8b40",
+      "currentSha256": "d018b919dab52e6c92dce62ef3ff2c4ac0170bc726137adf81589b37b56c8b40",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/business-management-setup.mjs",
+      "hostRunSha256": "4493d617a5e96a063dc8b150f2b7f77872bc45a4e1eb31f387f3f8c23ebf851a",
+      "currentSha256": "4493d617a5e96a063dc8b150f2b7f77872bc45a4e1eb31f387f3f8c23ebf851a",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/business-management.mjs",
+      "hostRunSha256": "1c0942dbe907129d3bfebe7868e67d5c11c40e8261e3cc2384906d400a54b664",
+      "currentSha256": "1c0942dbe907129d3bfebe7868e67d5c11c40e8261e3cc2384906d400a54b664",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/business-management.test.mjs",
+      "hostRunSha256": "46c6bb4a8d3b855ab7d93b0a6212fee125de93868642d5bd7f59b3b64cb96b9c",
+      "currentSha256": "46c6bb4a8d3b855ab7d93b0a6212fee125de93868642d5bd7f59b3b64cb96b9c",
+      "unchanged": true
+    }
+  ],
+  "nonUiAssetChecks": [
+    {
+      "path": "agent-capabilities.json",
+      "hostRunSha256": "6b9daeeca961b0eb319e5215678775e2717bd53fb24cb24e4190192f802da832",
+      "finalManifestSha256": "6b9daeeca961b0eb319e5215678775e2717bd53fb24cb24e4190192f802da832",
+      "currentFileSha256": "6b9daeeca961b0eb319e5215678775e2717bd53fb24cb24e4190192f802da832",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "capabilities/repo.mjs",
+      "hostRunSha256": "42d1282062ab78e3ab05fd406df77015a3dc84958fbcc903659c7650da64c19d",
+      "finalManifestSha256": "42d1282062ab78e3ab05fd406df77015a3dc84958fbcc903659c7650da64c19d",
+      "currentFileSha256": "42d1282062ab78e3ab05fd406df77015a3dc84958fbcc903659c7650da64c19d",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "eval/questions.json",
+      "hostRunSha256": "65c23077e6585a3cbecdb5101c4ac16898a43efe523bd4c20f2b266db9203e26",
+      "finalManifestSha256": "65c23077e6585a3cbecdb5101c4ac16898a43efe523bd4c20f2b266db9203e26",
+      "currentFileSha256": "65c23077e6585a3cbecdb5101c4ac16898a43efe523bd4c20f2b266db9203e26",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "feedback-enums.yml",
+      "hostRunSha256": "b46834a9459da02d76269d26cf1ff200a3b3cce059bd63b58df131065802b50c",
+      "finalManifestSha256": "b46834a9459da02d76269d26cf1ff200a3b3cce059bd63b58df131065802b50c",
+      "currentFileSha256": "b46834a9459da02d76269d26cf1ff200a3b3cce059bd63b58df131065802b50c",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "fences/patches/audit-only.yml",
+      "hostRunSha256": "f8155306e4f2742dd497b7b03c35ffa86df66a19b094205397acaab20b7509ee",
+      "finalManifestSha256": "f8155306e4f2742dd497b7b03c35ffa86df66a19b094205397acaab20b7509ee",
+      "currentFileSha256": "f8155306e4f2742dd497b7b03c35ffa86df66a19b094205397acaab20b7509ee",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "fences/patches/multi-store.yml",
+      "hostRunSha256": "9252a1c1bf3b7113374e7d04c664747fe1319c4a6657b37c4d77d99b53cda61d",
+      "finalManifestSha256": "9252a1c1bf3b7113374e7d04c664747fe1319c4a6657b37c4d77d99b53cda61d",
+      "currentFileSha256": "9252a1c1bf3b7113374e7d04c664747fe1319c4a6657b37c4d77d99b53cda61d",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "fences/patches/retrofit.yml",
+      "hostRunSha256": "bacd375ac5dc2a37396084c05dfdc1cb5b61e2d314a81394aacfc6c238ce30d2",
+      "finalManifestSha256": "bacd375ac5dc2a37396084c05dfdc1cb5b61e2d314a81394aacfc6c238ce30d2",
+      "currentFileSha256": "bacd375ac5dc2a37396084c05dfdc1cb5b61e2d314a81394aacfc6c238ce30d2",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "fences/smart-home-baseline.yml",
+      "hostRunSha256": "8285bf99b12f44b464bb11f591722f6c7e7b06dcc26e5a00b8b7d1bcc0699881",
+      "finalManifestSha256": "8285bf99b12f44b464bb11f591722f6c7e7b06dcc26e5a00b8b7d1bcc0699881",
+      "currentFileSha256": "8285bf99b12f44b464bb11f591722f6c7e7b06dcc26e5a00b8b7d1bcc0699881",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "floor-scene.json",
+      "hostRunSha256": "12db05816628993c23a76a4a60adb5d0b9f47571a23240bbee2cc90b4cb43075",
+      "finalManifestSha256": "12db05816628993c23a76a4a60adb5d0b9f47571a23240bbee2cc90b4cb43075",
+      "currentFileSha256": "12db05816628993c23a76a4a60adb5d0b9f47571a23240bbee2cc90b4cb43075",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "library/industry-context.json",
+      "hostRunSha256": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+      "finalManifestSha256": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+      "currentFileSha256": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "library/native-operations.json",
+      "hostRunSha256": "855ac80da12cc8864289561d11f4ee705ba0e136cb42484773b9f82127956b23",
+      "finalManifestSha256": "855ac80da12cc8864289561d11f4ee705ba0e136cb42484773b9f82127956b23",
+      "currentFileSha256": "855ac80da12cc8864289561d11f4ee705ba0e136cb42484773b9f82127956b23",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "library/native-workflows.json",
+      "hostRunSha256": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618",
+      "finalManifestSha256": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618",
+      "currentFileSha256": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "library/official-sources.json",
+      "hostRunSha256": "682d4fcdab537e5ef15af97ca137a86b46dc14bdbe01638f8c421c171bd094b9",
+      "finalManifestSha256": "682d4fcdab537e5ef15af97ca137a86b46dc14bdbe01638f8c421c171bd094b9",
+      "currentFileSha256": "682d4fcdab537e5ef15af97ca137a86b46dc14bdbe01638f8c421c171bd094b9",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "library/skill-catalogue.json",
+      "hostRunSha256": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86",
+      "finalManifestSha256": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86",
+      "currentFileSha256": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "library/workforce.json",
+      "hostRunSha256": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c",
+      "finalManifestSha256": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c",
+      "currentFileSha256": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "model-policy.yml",
+      "hostRunSha256": "c9d8f0de9dd81703a743551855849a447a51d02ebe9f376bc220c46bede417b9",
+      "finalManifestSha256": "c9d8f0de9dd81703a743551855849a447a51d02ebe9f376bc220c46bede417b9",
+      "currentFileSha256": "c9d8f0de9dd81703a743551855849a447a51d02ebe9f376bc220c46bede417b9",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "pipelines/aftercare-loop.yml",
+      "hostRunSha256": "14c49b27b2993f3e61643f0c791221e3d3c6861e34a134f9011230fb5167ae6b",
+      "finalManifestSha256": "14c49b27b2993f3e61643f0c791221e3d3c6861e34a134f9011230fb5167ae6b",
+      "currentFileSha256": "14c49b27b2993f3e61643f0c791221e3d3c6861e34a134f9011230fb5167ae6b",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "pipelines/employee-work.yml",
+      "hostRunSha256": "a5d279e06b94d31f66a5f258e4bb30117e0a926b012a243413ab428ea84fdfcb",
+      "finalManifestSha256": "a5d279e06b94d31f66a5f258e4bb30117e0a926b012a243413ab428ea84fdfcb",
+      "currentFileSha256": "a5d279e06b94d31f66a5f258e4bb30117e0a926b012a243413ab428ea84fdfcb",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "pipelines/growth-acquisition.yml",
+      "hostRunSha256": "4fbd667ae634f8ee746bd01a62713371854ff988e6aad36a7ad756f92552daab",
+      "finalManifestSha256": "4fbd667ae634f8ee746bd01a62713371854ff988e6aad36a7ad756f92552daab",
+      "currentFileSha256": "4fbd667ae634f8ee746bd01a62713371854ff988e6aad36a7ad756f92552daab",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "pipelines/management-loop.yml",
+      "hostRunSha256": "97318bf4fe59fc0961fa41b1af2ef45c3e7bf93f88cca836290839dab41158ff",
+      "finalManifestSha256": "97318bf4fe59fc0961fa41b1af2ef45c3e7bf93f88cca836290839dab41158ff",
+      "currentFileSha256": "97318bf4fe59fc0961fa41b1af2ef45c3e7bf93f88cca836290839dab41158ff",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "pipelines/project-delivery.yml",
+      "hostRunSha256": "cf049680ea3e66e8b99650748b54ff7b994e45b8837f365e9eaf6e91707f3fa2",
+      "finalManifestSha256": "cf049680ea3e66e8b99650748b54ff7b994e45b8837f365e9eaf6e91707f3fa2",
+      "currentFileSha256": "cf049680ea3e66e8b99650748b54ff7b994e45b8837f365e9eaf6e91707f3fa2",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/acceptance-auditor.yml",
+      "hostRunSha256": "806eeaaa0ef7bba3bc007f9379110c2c5bb406b015c72443e466c9f9972690d7",
+      "finalManifestSha256": "806eeaaa0ef7bba3bc007f9379110c2c5bb406b015c72443e466c9f9972690d7",
+      "currentFileSha256": "806eeaaa0ef7bba3bc007f9379110c2c5bb406b015c72443e466c9f9972690d7",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/aftercare-specialist.yml",
+      "hostRunSha256": "e25bda8bb3c85ffb58ab9ce153ecd434103814c4a939946881890603ddb036bb",
+      "finalManifestSha256": "e25bda8bb3c85ffb58ab9ce153ecd434103814c4a939946881890603ddb036bb",
+      "currentFileSha256": "e25bda8bb3c85ffb58ab9ce153ecd434103814c4a939946881890603ddb036bb",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/appointment-coordinator.yml",
+      "hostRunSha256": "42a9de3f7340a885ca783ca2b8617912e05e0f9278d04c3d76d116b9c7226e7d",
+      "finalManifestSha256": "42a9de3f7340a885ca783ca2b8617912e05e0f9278d04c3d76d116b9c7226e7d",
+      "currentFileSha256": "42a9de3f7340a885ca783ca2b8617912e05e0f9278d04c3d76d116b9c7226e7d",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/business-operations-assistant.yml",
+      "hostRunSha256": "7b56a5cf9c85227fac2b182d38397bf06f1ae657ca02aa2b177b8b72d33198c6",
+      "finalManifestSha256": "7b56a5cf9c85227fac2b182d38397bf06f1ae657ca02aa2b177b8b72d33198c6",
+      "currentFileSha256": "7b56a5cf9c85227fac2b182d38397bf06f1ae657ca02aa2b177b8b72d33198c6",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/commissioning-engineer.yml",
+      "hostRunSha256": "96ee0b4fcf16b6c15c791226976f6a7629a1a073dff25f5e0e494c0dea1d89c3",
+      "finalManifestSha256": "96ee0b4fcf16b6c15c791226976f6a7629a1a073dff25f5e0e494c0dea1d89c3",
+      "currentFileSha256": "96ee0b4fcf16b6c15c791226976f6a7629a1a073dff25f5e0e494c0dea1d89c3",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/compatibility-engineer.yml",
+      "hostRunSha256": "a012f817085aa16c19a1a6d5c1e4d0394e9dc67cf3584568e65637aabd5ad14d",
+      "finalManifestSha256": "a012f817085aa16c19a1a6d5c1e4d0394e9dc67cf3584568e65637aabd5ad14d",
+      "currentFileSha256": "a012f817085aa16c19a1a6d5c1e4d0394e9dc67cf3584568e65637aabd5ad14d",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/content-strategist.yml",
+      "hostRunSha256": "08f16760fe02219e41035a4009c26ce66919a3828b6d8be52cd2561e2c15f11a",
+      "finalManifestSha256": "08f16760fe02219e41035a4009c26ce66919a3828b6d8be52cd2561e2c15f11a",
+      "currentFileSha256": "08f16760fe02219e41035a4009c26ce66919a3828b6d8be52cd2561e2c15f11a",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/finance-controller.yml",
+      "hostRunSha256": "b186c416bd60968f17bc58a13288238ffb9943ebc5ced9108928cc438fae3584",
+      "finalManifestSha256": "b186c416bd60968f17bc58a13288238ffb9943ebc5ced9108928cc438fae3584",
+      "currentFileSha256": "b186c416bd60968f17bc58a13288238ffb9943ebc5ced9108928cc438fae3584",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/growth-director.yml",
+      "hostRunSha256": "d5193569a2773f53cc8d075d4a183c5762497c38b686394e71928bdb7c5a509a",
+      "finalManifestSha256": "d5193569a2773f53cc8d075d4a183c5762497c38b686394e71928bdb7c5a509a",
+      "currentFileSha256": "d5193569a2773f53cc8d075d4a183c5762497c38b686394e71928bdb7c5a509a",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/installation-supervisor.yml",
+      "hostRunSha256": "601650ce34a020f48b305396b001467d2f6237598ed0e40808f73164082bc017",
+      "finalManifestSha256": "601650ce34a020f48b305396b001467d2f6237598ed0e40808f73164082bc017",
+      "currentFileSha256": "601650ce34a020f48b305396b001467d2f6237598ed0e40808f73164082bc017",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/knowledge-steward.yml",
+      "hostRunSha256": "c87776165ab3fcde4b31c7da83f5d6c014336dec9f30420963beb4fdd6d98a9c",
+      "finalManifestSha256": "c87776165ab3fcde4b31c7da83f5d6c014336dec9f30420963beb4fdd6d98a9c",
+      "currentFileSha256": "c87776165ab3fcde4b31c7da83f5d6c014336dec9f30420963beb4fdd6d98a9c",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/lead-concierge.yml",
+      "hostRunSha256": "ba74d29bd29d66d70427502fc34711361a9f50c3c4d862c94bda32e2791f0857",
+      "finalManifestSha256": "ba74d29bd29d66d70427502fc34711361a9f50c3c4d862c94bda32e2791f0857",
+      "currentFileSha256": "ba74d29bd29d66d70427502fc34711361a9f50c3c4d862c94bda32e2791f0857",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/lead-enrichment-specialist.yml",
+      "hostRunSha256": "f00020f219f534d800b7d3045a8ff82c6e1a983cb1ba1229313114fc6eb3bef2",
+      "finalManifestSha256": "f00020f219f534d800b7d3045a8ff82c6e1a983cb1ba1229313114fc6eb3bef2",
+      "currentFileSha256": "f00020f219f534d800b7d3045a8ff82c6e1a983cb1ba1229313114fc6eb3bef2",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/market-researcher.yml",
+      "hostRunSha256": "f2e35bfeb2b152b81dd0e96d2630448fe5a5c3c9bbec5d4cf7663f071777f335",
+      "finalManifestSha256": "f2e35bfeb2b152b81dd0e96d2630448fe5a5c3c9bbec5d4cf7663f071777f335",
+      "currentFileSha256": "f2e35bfeb2b152b81dd0e96d2630448fe5a5c3c9bbec5d4cf7663f071777f335",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/procurement-controller.yml",
+      "hostRunSha256": "7f3b931d302ee43c261f0540ce788d9714b87481eafca856eb2f1e964f59cd22",
+      "finalManifestSha256": "7f3b931d302ee43c261f0540ce788d9714b87481eafca856eb2f1e964f59cd22",
+      "currentFileSha256": "7f3b931d302ee43c261f0540ce788d9714b87481eafca856eb2f1e964f59cd22",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/project-manager.yml",
+      "hostRunSha256": "5d1b029e5edf7f2097fb29af39393f76303539373fc14bc7c79cab6a2f645888",
+      "finalManifestSha256": "5d1b029e5edf7f2097fb29af39393f76303539373fc14bc7c79cab6a2f645888",
+      "currentFileSha256": "5d1b029e5edf7f2097fb29af39393f76303539373fc14bc7c79cab6a2f645888",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/prospecting-specialist.yml",
+      "hostRunSha256": "8a4a077edc98e3ad470fb4310fb1a03fd1fd9932e4861f540fdde30462c6ee45",
+      "finalManifestSha256": "8a4a077edc98e3ad470fb4310fb1a03fd1fd9932e4861f540fdde30462c6ee45",
+      "currentFileSha256": "8a4a077edc98e3ad470fb4310fb1a03fd1fd9932e4861f540fdde30462c6ee45",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/quote-controller.yml",
+      "hostRunSha256": "0ffab6ec6ec615ac2a6a554c2dd7f4f77050e5b91382db91df04dcc290525b5d",
+      "finalManifestSha256": "0ffab6ec6ec615ac2a6a554c2dd7f4f77050e5b91382db91df04dcc290525b5d",
+      "currentFileSha256": "0ffab6ec6ec615ac2a6a554c2dd7f4f77050e5b91382db91df04dcc290525b5d",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/sales-assistant.yml",
+      "hostRunSha256": "88e7550162099786e2e94210c0149773ee26dd447c876b88992f461ba6ca5ed2",
+      "finalManifestSha256": "88e7550162099786e2e94210c0149773ee26dd447c876b88992f461ba6ca5ed2",
+      "currentFileSha256": "88e7550162099786e2e94210c0149773ee26dd447c876b88992f461ba6ca5ed2",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/sales-coach.yml",
+      "hostRunSha256": "efec5f085957f15bcd7c055e6dbbca4843b98900407687d75e70b690d9f1e847",
+      "finalManifestSha256": "efec5f085957f15bcd7c055e6dbbca4843b98900407687d75e70b690d9f1e847",
+      "currentFileSha256": "efec5f085957f15bcd7c055e6dbbca4843b98900407687d75e70b690d9f1e847",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/sales-consultant.yml",
+      "hostRunSha256": "473f6708e5646c7d51abd07be6399c18d8dec06751ad5debb9fee5642a2d642b",
+      "finalManifestSha256": "473f6708e5646c7d51abd07be6399c18d8dec06751ad5debb9fee5642a2d642b",
+      "currentFileSha256": "473f6708e5646c7d51abd07be6399c18d8dec06751ad5debb9fee5642a2d642b",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/social-publisher.yml",
+      "hostRunSha256": "6a7b2df29f055431ebfdcf51b268ae08f0395a2a35ac00d194b9dd9ddd3c76ae",
+      "finalManifestSha256": "6a7b2df29f055431ebfdcf51b268ae08f0395a2a35ac00d194b9dd9ddd3c76ae",
+      "currentFileSha256": "6a7b2df29f055431ebfdcf51b268ae08f0395a2a35ac00d194b9dd9ddd3c76ae",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/solution-designer.yml",
+      "hostRunSha256": "3bb839605bfd8ccca4d276dfe5ceab26f082faf899d8e220b9c356a2cd179633",
+      "finalManifestSha256": "3bb839605bfd8ccca4d276dfe5ceab26f082faf899d8e220b9c356a2cd179633",
+      "currentFileSha256": "3bb839605bfd8ccca4d276dfe5ceab26f082faf899d8e220b9c356a2cd179633",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/store-ceo.yml",
+      "hostRunSha256": "d6e24ecae58930266452916c5ab8819161afb7b7edf8bf9b6e28acee3f31553d",
+      "finalManifestSha256": "d6e24ecae58930266452916c5ab8819161afb7b7edf8bf9b6e28acee3f31553d",
+      "currentFileSha256": "d6e24ecae58930266452916c5ab8819161afb7b7edf8bf9b6e28acee3f31553d",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/store-manager-assistant.yml",
+      "hostRunSha256": "09d7ebbda473a8f81f02445423354e1f1ec4ff5937c46c9f6d187ef094add4b9",
+      "finalManifestSha256": "09d7ebbda473a8f81f02445423354e1f1ec4ff5937c46c9f6d187ef094add4b9",
+      "currentFileSha256": "09d7ebbda473a8f81f02445423354e1f1ec4ff5937c46c9f6d187ef094add4b9",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/survey-engineer.yml",
+      "hostRunSha256": "bac99b935eaa159524929feeefc5d46dbf261ab67a3f1fe50e568433676fe7dc",
+      "finalManifestSha256": "bac99b935eaa159524929feeefc5d46dbf261ab67a3f1fe50e568433676fe7dc",
+      "currentFileSha256": "bac99b935eaa159524929feeefc5d46dbf261ab67a3f1fe50e568433676fe7dc",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "presets/video-producer.yml",
+      "hostRunSha256": "4fe9c59eab05179ed7c831a07f296b676b9008d1b12d252409e4b4117d846ae4",
+      "finalManifestSha256": "4fe9c59eab05179ed7c831a07f296b676b9008d1b12d252409e4b4117d846ae4",
+      "currentFileSha256": "4fe9c59eab05179ed7c831a07f296b676b9008d1b12d252409e4b4117d846ae4",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/assets.mjs",
+      "hostRunSha256": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+      "finalManifestSha256": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+      "currentFileSha256": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/catalogue.mjs",
+      "hostRunSha256": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+      "finalManifestSha256": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+      "currentFileSha256": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/depth-catalogue.mjs",
+      "hostRunSha256": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+      "finalManifestSha256": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+      "currentFileSha256": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/depth-domain.mjs",
+      "hostRunSha256": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+      "finalManifestSha256": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+      "currentFileSha256": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/domain.mjs",
+      "hostRunSha256": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+      "finalManifestSha256": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+      "currentFileSha256": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/errors.mjs",
+      "hostRunSha256": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+      "finalManifestSha256": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+      "currentFileSha256": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/index.mjs",
+      "hostRunSha256": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+      "finalManifestSha256": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+      "currentFileSha256": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/scenario.mjs",
+      "hostRunSha256": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+      "finalManifestSha256": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+      "currentFileSha256": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/schema.mjs",
+      "hostRunSha256": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+      "finalManifestSha256": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+      "currentFileSha256": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/storage.mjs",
+      "hostRunSha256": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+      "finalManifestSha256": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+      "currentFileSha256": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/workflows.mjs",
+      "hostRunSha256": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+      "finalManifestSha256": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+      "currentFileSha256": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "runtime/workforce.mjs",
+      "hostRunSha256": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c",
+      "finalManifestSha256": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c",
+      "currentFileSha256": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "schemas/archive.schema.json",
+      "hostRunSha256": "b9fcce7b21c495bdb538118f93d886f6b548c9dc76447949ef73840afbae787e",
+      "finalManifestSha256": "b9fcce7b21c495bdb538118f93d886f6b548c9dc76447949ef73840afbae787e",
+      "currentFileSha256": "b9fcce7b21c495bdb538118f93d886f6b548c9dc76447949ef73840afbae787e",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "schemas/objects.json",
+      "hostRunSha256": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+      "finalManifestSha256": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+      "currentFileSha256": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "schemas/stages.json",
+      "hostRunSha256": "ae72090c1fd3a588195be6830c57c081320a949eb1535d9ec78abd7057a60d22",
+      "finalManifestSha256": "ae72090c1fd3a588195be6830c57c081320a949eb1535d9ec78abd7057a60d22",
+      "currentFileSha256": "ae72090c1fd3a588195be6830c57c081320a949eb1535d9ec78abd7057a60d22",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "segment-defaults.yml",
+      "hostRunSha256": "60856d346ecdfea649b7194959809ef9b9cf4ca2026414b1b3523cd5e5f1e2fe",
+      "finalManifestSha256": "60856d346ecdfea649b7194959809ef9b9cf4ca2026414b1b3523cd5e5f1e2fe",
+      "currentFileSha256": "60856d346ecdfea649b7194959809ef9b9cf4ca2026414b1b3523cd5e5f1e2fe",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "service-front/client.json",
+      "hostRunSha256": "33fac9b7f73c821e83a9f7dbb7a1e8b6223d2b7a5aa284883bb0c8046941c7b5",
+      "finalManifestSha256": "33fac9b7f73c821e83a9f7dbb7a1e8b6223d2b7a5aa284883bb0c8046941c7b5",
+      "currentFileSha256": "33fac9b7f73c821e83a9f7dbb7a1e8b6223d2b7a5aa284883bb0c8046941c7b5",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "service-front/delivery-catalog.json",
+      "hostRunSha256": "92a94c29f0874c093cefed3b94d2c8c910b8f11326f41f75fb38a5027d044d76",
+      "finalManifestSha256": "92a94c29f0874c093cefed3b94d2c8c910b8f11326f41f75fb38a5027d044d76",
+      "currentFileSha256": "92a94c29f0874c093cefed3b94d2c8c910b8f11326f41f75fb38a5027d044d76",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "service-front/faq.json",
+      "hostRunSha256": "41d91bd25b1151769bcc73289114c6a6109dd7fc5f72c83e901914f657e2853f",
+      "finalManifestSha256": "41d91bd25b1151769bcc73289114c6a6109dd7fc5f72c83e901914f657e2853f",
+      "currentFileSha256": "41d91bd25b1151769bcc73289114c6a6109dd7fc5f72c83e901914f657e2853f",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "service-front/repair-catalog.json",
+      "hostRunSha256": "fe91d36490b6a97b5fed1cd6172c9707a269df1527c98b0fb94456308c514edc",
+      "finalManifestSha256": "fe91d36490b6a97b5fed1cd6172c9707a269df1527c98b0fb94456308c514edc",
+      "currentFileSha256": "fe91d36490b6a97b5fed1cd6172c9707a269df1527c98b0fb94456308c514edc",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/acceptance-handover/SKILL.md",
+      "hostRunSha256": "8809e9b6a542296b9cc74a5940dcf7df1d19a083275857650a3f5ac8094c0901",
+      "finalManifestSha256": "8809e9b6a542296b9cc74a5940dcf7df1d19a083275857650a3f5ac8094c0901",
+      "currentFileSha256": "8809e9b6a542296b9cc74a5940dcf7df1d19a083275857650a3f5ac8094c0901",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/aftercare-resolution/SKILL.md",
+      "hostRunSha256": "5cf579dd1f3a5bba5c8d496fa3bcd7334846be66081e61ca04dc4eacd37faa46",
+      "finalManifestSha256": "5cf579dd1f3a5bba5c8d496fa3bcd7334846be66081e61ca04dc4eacd37faa46",
+      "currentFileSha256": "5cf579dd1f3a5bba5c8d496fa3bcd7334846be66081e61ca04dc4eacd37faa46",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/aftercare-triage/SKILL.md",
+      "hostRunSha256": "4b9160fddf208abc53823bcf192948aef3a8d7518605dd4f452cd0fc6fe2d56b",
+      "finalManifestSha256": "4b9160fddf208abc53823bcf192948aef3a8d7518605dd4f452cd0fc6fe2d56b",
+      "currentFileSha256": "4b9160fddf208abc53823bcf192948aef3a8d7518605dd4f452cd0fc6fe2d56b",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/appointment-coordination/SKILL.md",
+      "hostRunSha256": "aca0e42d2b0f9a499a8a88cc02786c6e966422ae0df4079695e0a6ecd4096e0a",
+      "finalManifestSha256": "aca0e42d2b0f9a499a8a88cc02786c6e966422ae0df4079695e0a6ecd4096e0a",
+      "currentFileSha256": "aca0e42d2b0f9a499a8a88cc02786c6e966422ae0df4079695e0a6ecd4096e0a",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/appointment-recovery/SKILL.md",
+      "hostRunSha256": "e5b6f9c888b569b120a48be4788f7ac0fb7415b44c6fe3032c4cc51351bbecdc",
+      "finalManifestSha256": "e5b6f9c888b569b120a48be4788f7ac0fb7415b44c6fe3032c4cc51351bbecdc",
+      "currentFileSha256": "e5b6f9c888b569b120a48be4788f7ac0fb7415b44c6fe3032c4cc51351bbecdc",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/bom-check/SKILL.md",
+      "hostRunSha256": "4827f979bf4eb90aa5e047dae69d37a57687cb4d396a9c439078ccab1c8bd1f2",
+      "finalManifestSha256": "4827f979bf4eb90aa5e047dae69d37a57687cb4d396a9c439078ccab1c8bd1f2",
+      "currentFileSha256": "4827f979bf4eb90aa5e047dae69d37a57687cb4d396a9c439078ccab1c8bd1f2",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/business-data-reconciliation/SKILL.md",
+      "hostRunSha256": "3106fdad2406b9a6d6e64efe4e13b75ead5286fa67c4fdf076c919aa0f170fa7",
+      "finalManifestSha256": "3106fdad2406b9a6d6e64efe4e13b75ead5286fa67c4fdf076c919aa0f170fa7",
+      "currentFileSha256": "3106fdad2406b9a6d6e64efe4e13b75ead5286fa67c4fdf076c919aa0f170fa7",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/campaign-review/SKILL.md",
+      "hostRunSha256": "9dd755ad816f7e62d86608b84edb5f8d395112c1edcee6e8f1d4c1396ac0bd95",
+      "finalManifestSha256": "9dd755ad816f7e62d86608b84edb5f8d395112c1edcee6e8f1d4c1396ac0bd95",
+      "currentFileSha256": "9dd755ad816f7e62d86608b84edb5f8d395112c1edcee6e8f1d4c1396ac0bd95",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/compatibility-verification/SKILL.md",
+      "hostRunSha256": "ff1d3f6dc2bd47fc5b0b0d1d964c3eff62592fedd1ef1a265e4aa46a5be4ff9b",
+      "finalManifestSha256": "ff1d3f6dc2bd47fc5b0b0d1d964c3eff62592fedd1ef1a265e4aa46a5be4ff9b",
+      "currentFileSha256": "ff1d3f6dc2bd47fc5b0b0d1d964c3eff62592fedd1ef1a265e4aa46a5be4ff9b",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/consultative-sales/SKILL.md",
+      "hostRunSha256": "af876e44746d3338c4cefac6e5e43967b616ed03c3518e78fc6c896e166eb4b8",
+      "finalManifestSha256": "af876e44746d3338c4cefac6e5e43967b616ed03c3518e78fc6c896e166eb4b8",
+      "currentFileSha256": "af876e44746d3338c4cefac6e5e43967b616ed03c3518e78fc6c896e166eb4b8",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/content-planning/SKILL.md",
+      "hostRunSha256": "677cd6ef0450579942bccaaf6a8c022d111d99647dc29b4b3f95728008fb490c",
+      "finalManifestSha256": "677cd6ef0450579942bccaaf6a8c022d111d99647dc29b4b3f95728008fb490c",
+      "currentFileSha256": "677cd6ef0450579942bccaaf6a8c022d111d99647dc29b4b3f95728008fb490c",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/contract-handoff/SKILL.md",
+      "hostRunSha256": "f816945d497a887305d550016b5f07d5a502fa68d109700e30a0c56332fbee46",
+      "finalManifestSha256": "f816945d497a887305d550016b5f07d5a502fa68d109700e30a0c56332fbee46",
+      "currentFileSha256": "f816945d497a887305d550016b5f07d5a502fa68d109700e30a0c56332fbee46",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/customer-consent/SKILL.md",
+      "hostRunSha256": "778058d18a2d39a2d223754452ac4133dffc83cbe38bf1c9b1a6872d61df7b1c",
+      "finalManifestSha256": "778058d18a2d39a2d223754452ac4133dffc83cbe38bf1c9b1a6872d61df7b1c",
+      "currentFileSha256": "778058d18a2d39a2d223754452ac4133dffc83cbe38bf1c9b1a6872d61df7b1c",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/customer-followup/SKILL.md",
+      "hostRunSha256": "96f03520721aec5a4ee5520eec3f154708943f8345877b613f92ec4046793dfa",
+      "finalManifestSha256": "96f03520721aec5a4ee5520eec3f154708943f8345877b613f92ec4046793dfa",
+      "currentFileSha256": "96f03520721aec5a4ee5520eec3f154708943f8345877b613f92ec4046793dfa",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/customer-handoff-check/SKILL.md",
+      "hostRunSha256": "0e3e4628c0c0d15fb83b267041df25f0077e30e57b8b12d307aa6a5c8c3132c2",
+      "finalManifestSha256": "0e3e4628c0c0d15fb83b267041df25f0077e30e57b8b12d307aa6a5c8c3132c2",
+      "currentFileSha256": "0e3e4628c0c0d15fb83b267041df25f0077e30e57b8b12d307aa6a5c8c3132c2",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/data-import-qa/SKILL.md",
+      "hostRunSha256": "05246cfa08a91e14e05aa16016de53199bdb316ccc520505a150c02174234193",
+      "finalManifestSha256": "05246cfa08a91e14e05aa16016de53199bdb316ccc520505a150c02174234193",
+      "currentFileSha256": "05246cfa08a91e14e05aa16016de53199bdb316ccc520505a150c02174234193",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/experience-appointment/SKILL.md",
+      "hostRunSha256": "d091e805b18da7d3165b1b384d78c4c6e3712a88652f505c953429e2ef00b590",
+      "finalManifestSha256": "d091e805b18da7d3165b1b384d78c4c6e3712a88652f505c953429e2ef00b590",
+      "currentFileSha256": "d091e805b18da7d3165b1b384d78c4c6e3712a88652f505c953429e2ef00b590",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/finance-reconcile/SKILL.md",
+      "hostRunSha256": "88163ec8005486ed4d462fd798073593f2d2f6b3bec8739cc7cce550ddd3ceb5",
+      "finalManifestSha256": "88163ec8005486ed4d462fd798073593f2d2f6b3bec8739cc7cce550ddd3ceb5",
+      "currentFileSha256": "88163ec8005486ed4d462fd798073593f2d2f6b3bec8739cc7cce550ddd3ceb5",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/goal-decomposition/SKILL.md",
+      "hostRunSha256": "2576fb45a991dbb7318d344a4fadc00b8c76ac3fd4c2e5bf82c593e036725998",
+      "finalManifestSha256": "2576fb45a991dbb7318d344a4fadc00b8c76ac3fd4c2e5bf82c593e036725998",
+      "currentFileSha256": "2576fb45a991dbb7318d344a4fadc00b8c76ac3fd4c2e5bf82c593e036725998",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/incident-learning/SKILL.md",
+      "hostRunSha256": "04850381d261d711b520d6d8ccd7b2e2259ea40e39a78c8a823fde7902e1eaf8",
+      "finalManifestSha256": "04850381d261d711b520d6d8ccd7b2e2259ea40e39a78c8a823fde7902e1eaf8",
+      "currentFileSha256": "04850381d261d711b520d6d8ccd7b2e2259ea40e39a78c8a823fde7902e1eaf8",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/installation-quality/SKILL.md",
+      "hostRunSha256": "daad5dea9e4bc1fcbddb2ccf9af3acaeb8977f72a4ba99c7acdbb5fe735b2ee2",
+      "finalManifestSha256": "daad5dea9e4bc1fcbddb2ccf9af3acaeb8977f72a4ba99c7acdbb5fe735b2ee2",
+      "currentFileSha256": "daad5dea9e4bc1fcbddb2ccf9af3acaeb8977f72a4ba99c7acdbb5fe735b2ee2",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/knowledge-maintenance/SKILL.md",
+      "hostRunSha256": "268fcce808598da09911e824acabcc26bd800d6feb2ad96d2a7ff238c4c0215e",
+      "finalManifestSha256": "268fcce808598da09911e824acabcc26bd800d6feb2ad96d2a7ff238c4c0215e",
+      "currentFileSha256": "268fcce808598da09911e824acabcc26bd800d6feb2ad96d2a7ff238c4c0215e",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/lead-profile-enrichment/SKILL.md",
+      "hostRunSha256": "8a72b05533246bd3a2a59eabf5ac965e0cbdcbe4eb53f7c274beb254e6cd643f",
+      "finalManifestSha256": "8a72b05533246bd3a2a59eabf5ac965e0cbdcbe4eb53f7c274beb254e6cd643f",
+      "currentFileSha256": "8a72b05533246bd3a2a59eabf5ac965e0cbdcbe4eb53f7c274beb254e6cd643f",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/lead-qualification/SKILL.md",
+      "hostRunSha256": "53a76c2c8fc3c73bf037cb810dec8b01a285783c37d5143fc66b0425cad1398a",
+      "finalManifestSha256": "53a76c2c8fc3c73bf037cb810dec8b01a285783c37d5143fc66b0425cad1398a",
+      "currentFileSha256": "53a76c2c8fc3c73bf037cb810dec8b01a285783c37d5143fc66b0425cad1398a",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/local-search-presence/SKILL.md",
+      "hostRunSha256": "0ac7acf54f3ea5cb9e6224a2938264fee371a69cced998ecb10b1c0a7b7d8b7d",
+      "finalManifestSha256": "0ac7acf54f3ea5cb9e6224a2938264fee371a69cced998ecb10b1c0a7b7d8b7d",
+      "currentFileSha256": "0ac7acf54f3ea5cb9e6224a2938264fee371a69cced998ecb10b1c0a7b7d8b7d",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/market-intelligence/SKILL.md",
+      "hostRunSha256": "40a779e0913a6a939c881074b267879fe24c375e6337d3e4493b9023146a81db",
+      "finalManifestSha256": "40a779e0913a6a939c881074b267879fe24c375e6337d3e4493b9023146a81db",
+      "currentFileSha256": "40a779e0913a6a939c881074b267879fe24c375e6337d3e4493b9023146a81db",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/network-planning/SKILL.md",
+      "hostRunSha256": "391f73c66e5ecec062de70c96df1d5541dac7907e61ec523606ba1129c3f6608",
+      "finalManifestSha256": "391f73c66e5ecec062de70c96df1d5541dac7907e61ec523606ba1129c3f6608",
+      "currentFileSha256": "391f73c66e5ecec062de70c96df1d5541dac7907e61ec523606ba1129c3f6608",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/operations-daily-control/SKILL.md",
+      "hostRunSha256": "4e473177a09cff809d97b59890a15c1b7d827a8ba570acf2d68fbc091f2655ee",
+      "finalManifestSha256": "4e473177a09cff809d97b59890a15c1b7d827a8ba570acf2d68fbc091f2655ee",
+      "currentFileSha256": "4e473177a09cff809d97b59890a15c1b7d827a8ba570acf2d68fbc091f2655ee",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/owner-briefing/SKILL.md",
+      "hostRunSha256": "78fb0d64838aa6bd3691c8917018723e477b252cc0924bde7a1a42511916d037",
+      "finalManifestSha256": "78fb0d64838aa6bd3691c8917018723e477b252cc0924bde7a1a42511916d037",
+      "currentFileSha256": "78fb0d64838aa6bd3691c8917018723e477b252cc0924bde7a1a42511916d037",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/partner-channel/SKILL.md",
+      "hostRunSha256": "b4fe34e360bbd5b23b23524ff5eaf1a65c1dd0c89bb51ae8e5eb4fd0880b9a72",
+      "finalManifestSha256": "b4fe34e360bbd5b23b23524ff5eaf1a65c1dd0c89bb51ae8e5eb4fd0880b9a72",
+      "currentFileSha256": "b4fe34e360bbd5b23b23524ff5eaf1a65c1dd0c89bb51ae8e5eb4fd0880b9a72",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/procurement-inventory/SKILL.md",
+      "hostRunSha256": "232fb5acf91801a03d1e110ed060f0765ed6dc498d749633c994a0e0c9dbdead",
+      "finalManifestSha256": "232fb5acf91801a03d1e110ed060f0765ed6dc498d749633c994a0e0c9dbdead",
+      "currentFileSha256": "232fb5acf91801a03d1e110ed060f0765ed6dc498d749633c994a0e0c9dbdead",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/project-scheduling/SKILL.md",
+      "hostRunSha256": "112180a94478592f22465dfc89d847583d8d32188bfdad88a71fc6fac2cd5436",
+      "finalManifestSha256": "112180a94478592f22465dfc89d847583d8d32188bfdad88a71fc6fac2cd5436",
+      "currentFileSha256": "112180a94478592f22465dfc89d847583d8d32188bfdad88a71fc6fac2cd5436",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/prospect-targeting/SKILL.md",
+      "hostRunSha256": "780536122ab20c31623032883f85d5e9d85cb0bdac859cb01ef7c8e9bb9d1ccc",
+      "finalManifestSha256": "780536122ab20c31623032883f85d5e9d85cb0bdac859cb01ef7c8e9bb9d1ccc",
+      "currentFileSha256": "780536122ab20c31623032883f85d5e9d85cb0bdac859cb01ef7c8e9bb9d1ccc",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/quote-margin-control/SKILL.md",
+      "hostRunSha256": "e4bfb932278eec8ef53be9f0de4ff02c10c8cf3cea9ed66433623837e43e2331",
+      "finalManifestSha256": "e4bfb932278eec8ef53be9f0de4ff02c10c8cf3cea9ed66433623837e43e2331",
+      "currentFileSha256": "e4bfb932278eec8ef53be9f0de4ff02c10c8cf3cea9ed66433623837e43e2331",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/referral-retention/SKILL.md",
+      "hostRunSha256": "e85da7ea5467762626193c1871a15bf897b1c529c556a72fae0651f1583f4a68",
+      "finalManifestSha256": "e85da7ea5467762626193c1871a15bf897b1c529c556a72fae0651f1583f4a68",
+      "currentFileSha256": "e85da7ea5467762626193c1871a15bf897b1c529c556a72fae0651f1583f4a68",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/sales-coaching/SKILL.md",
+      "hostRunSha256": "22d3bec6d6a47745260f64259a2333e3d52a8ead75a2efdb9804079013b55c79",
+      "finalManifestSha256": "22d3bec6d6a47745260f64259a2333e3d52a8ead75a2efdb9804079013b55c79",
+      "currentFileSha256": "22d3bec6d6a47745260f64259a2333e3d52a8ead75a2efdb9804079013b55c79",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/sales-meeting-prep/SKILL.md",
+      "hostRunSha256": "4471f58bd42f5054756519a92a90547ddbbb2c38187fc54c802d6309aa158652",
+      "finalManifestSha256": "4471f58bd42f5054756519a92a90547ddbbb2c38187fc54c802d6309aa158652",
+      "currentFileSha256": "4471f58bd42f5054756519a92a90547ddbbb2c38187fc54c802d6309aa158652",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/sales-objection-brief/SKILL.md",
+      "hostRunSha256": "48c87dc9e55220913af4aa43d2d51eec1423c223e4eb5c4c42a745c769f71227",
+      "finalManifestSha256": "48c87dc9e55220913af4aa43d2d51eec1423c223e4eb5c4c42a745c769f71227",
+      "currentFileSha256": "48c87dc9e55220913af4aa43d2d51eec1423c223e4eb5c4c42a745c769f71227",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/sales-quality-review/SKILL.md",
+      "hostRunSha256": "ec0b42407603601029bed4ed4d73b36023e539374635fe265c6236289f147ca0",
+      "finalManifestSha256": "ec0b42407603601029bed4ed4d73b36023e539374635fe265c6236289f147ca0",
+      "currentFileSha256": "ec0b42407603601029bed4ed4d73b36023e539374635fe265c6236289f147ca0",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/scene-commissioning/SKILL.md",
+      "hostRunSha256": "680f9cac9de8b48f18a4eb8b5b9b2a2319bfa6c425ff7cf1eef89b000cb597c4",
+      "finalManifestSha256": "680f9cac9de8b48f18a4eb8b5b9b2a2319bfa6c425ff7cf1eef89b000cb597c4",
+      "currentFileSha256": "680f9cac9de8b48f18a4eb8b5b9b2a2319bfa6c425ff7cf1eef89b000cb597c4",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/short-video-production/SKILL.md",
+      "hostRunSha256": "92abd4fddbf251e9a3dd9b1d92627be919475c67c834e8e8f683d496188075d7",
+      "finalManifestSha256": "92abd4fddbf251e9a3dd9b1d92627be919475c67c834e8e8f683d496188075d7",
+      "currentFileSha256": "92abd4fddbf251e9a3dd9b1d92627be919475c67c834e8e8f683d496188075d7",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/site-survey/SKILL.md",
+      "hostRunSha256": "3df0b98f5102fc71571def53978cc354068f74fdd6acfb9081ec9190a7b2bd59",
+      "finalManifestSha256": "3df0b98f5102fc71571def53978cc354068f74fdd6acfb9081ec9190a7b2bd59",
+      "currentFileSha256": "3df0b98f5102fc71571def53978cc354068f74fdd6acfb9081ec9190a7b2bd59",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/social-publishing/SKILL.md",
+      "hostRunSha256": "4aa4cb36f709791627129c8e2afa5fcfba5cc39fe3b3f5ccd518b09d25268443",
+      "finalManifestSha256": "4aa4cb36f709791627129c8e2afa5fcfba5cc39fe3b3f5ccd518b09d25268443",
+      "currentFileSha256": "4aa4cb36f709791627129c8e2afa5fcfba5cc39fe3b3f5ccd518b09d25268443",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/solution-design/SKILL.md",
+      "hostRunSha256": "1b030c895500484fe90282f0c11e2bec98fd2e6a114de51f516876957e739611",
+      "finalManifestSha256": "1b030c895500484fe90282f0c11e2bec98fd2e6a114de51f516876957e739611",
+      "currentFileSha256": "1b030c895500484fe90282f0c11e2bec98fd2e6a114de51f516876957e739611",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/source-lead-intake/SKILL.md",
+      "hostRunSha256": "7ba5e1a1716525255cb74998f4b9670a29481034ea257bfb3df90973a8c07182",
+      "finalManifestSha256": "7ba5e1a1716525255cb74998f4b9670a29481034ea257bfb3df90973a8c07182",
+      "currentFileSha256": "7ba5e1a1716525255cb74998f4b9670a29481034ea257bfb3df90973a8c07182",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/store-demo-health/SKILL.md",
+      "hostRunSha256": "fa63797036ff20e329c8ff6af195521723255cecf4592b8817175f9e26741b34",
+      "finalManifestSha256": "fa63797036ff20e329c8ff6af195521723255cecf4592b8817175f9e26741b34",
+      "currentFileSha256": "fa63797036ff20e329c8ff6af195521723255cecf4592b8817175f9e26741b34",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/store-diagnosis/SKILL.md",
+      "hostRunSha256": "6a547d6ea37196ea12133fe1ca7d74155f9811436598f71788ee6752d3bc3c79",
+      "finalManifestSha256": "6a547d6ea37196ea12133fe1ca7d74155f9811436598f71788ee6752d3bc3c79",
+      "currentFileSha256": "6a547d6ea37196ea12133fe1ca7d74155f9811436598f71788ee6752d3bc3c79",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/store-resource-brief/SKILL.md",
+      "hostRunSha256": "1f0076c0995833f3fdf9450a70ef64353e78930e4e8e8b94482c3f3f1aafec29",
+      "finalManifestSha256": "1f0076c0995833f3fdf9450a70ef64353e78930e4e8e8b94482c3f3f1aafec29",
+      "currentFileSha256": "1f0076c0995833f3fdf9450a70ef64353e78930e4e8e8b94482c3f3f1aafec29",
+      "unchangedFromHostRun": true
+    },
+    {
+      "path": "skills/store-shift-coordination/SKILL.md",
+      "hostRunSha256": "48cbda36cd1153b7fe8776f87b3f5e990d9d8b0eda831bfc49beec54af677297",
+      "finalManifestSha256": "48cbda36cd1153b7fe8776f87b3f5e990d9d8b0eda831bfc49beec54af677297",
+      "currentFileSha256": "48cbda36cd1153b7fe8776f87b3f5e990d9d8b0eda831bfc49beec54af677297",
+      "unchangedFromHostRun": true
+    }
+  ],
+  "finalUiAssetChecks": [
+    {
+      "path": "ui/cases.json",
+      "sha256": "7e9685516781e3ddeb74c5cd2487d009bdc2b14ffc7c05a80d2996fc246dae50",
+      "matchesFinalManifest": true
+    },
+    {
+      "path": "ui/workbench-cases.json",
+      "sha256": "dcbfcb0fd2dc54a3912b0dfed6d80e25f2678f5bb1398266f2db6a73cc4bdb8f",
+      "matchesFinalManifest": true
+    },
+    {
+      "path": "ui/workbench/app.js",
+      "sha256": "23d1979baaf990beffc149abe9a6b0901df03f9887b941611819e969b6c23ee2",
+      "matchesFinalManifest": true
+    },
+    {
+      "path": "ui/workbench/index.html",
+      "sha256": "8a72cb70c1f193fee547061fd6826ec2b2c634388ebb877f899adc30d095364b",
+      "matchesFinalManifest": true
+    },
+    {
+      "path": "ui/workbench/style.css",
+      "sha256": "0dd8f15e9183b4765c4fcf35da69ec173acdc478c554a992858e87d414d9679d",
+      "matchesFinalManifest": true
+    }
+  ],
+  "counts": {
+    "hostSourceFilesExcludingManifest": 71,
+    "nonUiManifestAssets": 117,
+    "uiManifestAssets": 5,
+    "changedManifestFields": 4
+  },
+  "interpretation": "The eight actual host preparation reports remain evidence for the same 71 business/runtime/SOP/context/transport source bytes. The final UI and projected labels have separate current browser/asset evidence. The original whole manifest differs; this binding does not rewrite history or claim the host used the final UI manifest.",
+  "limitations": [
+    "This is byte/manifest compatibility evidence, not a second host replay.",
+    "New PostgreSQL seeding, UI rendering and legacy platform changes require their own current tests.",
+    "No claim of real customer, bank, device, partner outreach or production outcomes."
+  ]
+}

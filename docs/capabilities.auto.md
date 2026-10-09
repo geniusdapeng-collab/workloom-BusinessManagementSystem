@@ -1,7 +1,7 @@
 # business-management-system · 能力导览（人类版）
 
 > 经营管理系统（BusinessManagementSystem）· 全屋智能门店获客、方案报价、项目交付与售后 · 宿主AI模型驱动
-> 本文件由 `node scripts/generate-capabilities.mjs` 从代码事实**自动生成**（2026-10-08），
+> 本文件由 `node scripts/generate-capabilities.mjs` 从代码事实**自动生成**（2026-10-09），
 > 请勿手改——能力变更后重跑生成器即可。Agent 版机器清单见 docs/capability-map.md。
 > 目录可发现、实际能调用、结果已验证是三个不同字段。缺少同提交运行证据时，调用与结果一律显示“未验证”；演示入口不代表客户业务可用。
 
@@ -20,22 +20,24 @@ node scripts/business-management.mjs serve
 
 此路径使用明确标识的合成沙箱数据和当前宿主模型。后台调度不调用模型。下方继承平台目录使用独立 PostgreSQL 运行链，不能把存在的文件解释成全屋智能外部业务已经完成。
 
-![本次全屋智能工作台沙箱截图](evidence/workbench-1440.png)
+![成都全屋智能经营工作台沙箱截图](evidence/smart-home-depth/ui/desktop-overview.png)
 
-[390px 手机宽度截图](evidence/workbench-390.png)。实测和边界见 BUSINESS-MANAGEMENT-ACCEPTANCE.md。
+[390px 手机线索档案截图](evidence/smart-home-depth/ui/mobile-growth.png) · [有尺寸坐标的交付点位图](evidence/smart-home-depth/ui/desktop-delivery.png)。本轮实测、来源与边界见 [全屋智能实战经营深化验收](SMART-HOME-DEPTH-ACCEPTANCE.md)；截图使用明确虚构的成都门店资料。
 
-## 📦 能力总览（40 项）
+## 📦 能力总览（41 项）
 
 ### 🏠 全屋智能门店经营（默认入口）
 
 | 能力 | 一句话 | 怎么体验 | 可发现 | 可调用 | 结果已验证 / 环境 |
 |---|---|---|---|---|---|
-| **响应式经营工作台** | 目标、线索、体验、交付、售后、审批、岗位与业务记录；本机 SQLite 持久保存 | `pnpm dev` → http://127.0.0.1:9393 | 是 | 未验证 | 未验证 |
-| **业务操作契约 ×39** | CLI/MCP/页面共用输入校验、租户范围、围栏、幂等与本地回执 | `pnpm bm catalog` / `pnpm bm:mcp` | 是 | 未验证 | 未验证 |
+| **响应式 AI 经营工作台** | 八个工作区覆盖目标、渐进线索、客户、点位图、设计施工、合同、售后、岗位与门店产品 | `pnpm dev` → http://127.0.0.1:9393 | 是 | 未验证 | 未验证 |
+| **业务操作契约 ×51** | CLI/MCP/页面共用输入校验、租户范围、围栏、幂等与本地回执 | `pnpm bm catalog` / `pnpm bm:mcp` | 是 | 未验证 | 未验证 |
 | **宿主模型工作流 ×5** | 当前工作台模型 claim→submit；调度器不调用模型；外部事实按证据保留待办 | docs/AI-WORKBENCH.md | 是 | 未验证 | 未验证 |
-| **数字岗位 ×20** | 岗位拥有已安装技能，准备任务输出准确对象版本与 SOP 摘要 | bundles/smart-home/library/workforce.json | 是 | 未验证 | 未验证 |
-| **行业技能 SOP ×35** | 固定流程执行本地业务对象；通用岗位任务输出分析/草稿/计划，人类与外部动作另行待办 | bundles/smart-home/skills/ | 是 | 未验证 | 未验证 |
+| **数字岗位 ×27** | 岗位拥有已安装技能，准备任务输出准确对象版本与 SOP 摘要 | bundles/smart-home/library/workforce.json | 是 | 未验证 | 未验证 |
+| **行业技能 SOP ×49** | 固定流程执行本地业务对象；通用岗位任务输出分析/草稿/计划，人类与外部动作另行待办 | bundles/smart-home/skills/ | 是 | 未验证 | 未验证 |
 | **克隆后工作台配置** | 生成当前项目 Codex/WorkBuddy 配置及千问办公导入 JSON；冲突保留，用户级配置不改 | `pnpm setup --client all` | 是 | 未验证 | 未验证 |
+| **成都门店经营演练** | 蜀光智家虚构门店的渠道、客户、SKU、交付和经营历史；合成历史不计作新增 AI 成果 | `pnpm bm init --demo` / `pnpm bm scenario list` | 是 | 未验证 | 未验证 |
+| **全屋智能行业背景** | 门店分区、客户体验路线、渠道规则与华为/Aqara 官方参考；公开参考不能充当授权或兼容证明 | 工作台「门店与产品」 | 是 | 未验证 | 未验证 |
 
 ### 🖥 继承平台三端入口（独立运行链）
 
@@ -45,13 +47,13 @@ node scripts/business-management.mjs serve
 | **移动端 · B 端高保真** | 6 页演示资产；运行状态须验收 | `pnpm preview:all` → http://localhost:3001 | 是 | 未验证 | 未验证 |
 | **移动端 · C 端 AI 服务前台** | 对话/服务/工单/消息入口；目录存在不代表已验证 | `pnpm preview:all` → http://localhost:3002 | 是 | 未验证 | 未验证 |
 
-### 🏨 行业 Bundle（垂直能力包）
+### 📦 继承与扩展的工程 Bundle 目录
 
 | 能力 | 一句话 | 怎么体验 | 可发现 | 可调用 | 结果已验证 / 环境 |
 |---|---|---|---|---|---|
-| **bundles/ai-pm/** | 围栏/技能/员工/对象/管线定义；装配结果需按环境验证 | 见 bundles/ai-pm/ 目录 | 是 | 未验证 | 未验证 |
-| **bundles/hotel/** | 围栏/技能/员工/对象/管线定义；装配结果需按环境验证 | 见 bundles/hotel/ 目录 | 是 | 未验证 | 未验证 |
-| **bundles/smart-home/** | 围栏/技能/员工/对象/管线定义；装配结果需按环境验证 | 见 bundles/smart-home/ 目录 | 是 | 未验证 | 未验证 |
+| **bundles/ai-pm/** | 继承工程兼容资产；不是本产品默认门店行业 | 见 bundles/ai-pm/ 目录 | 是 | 未验证 | 未验证 |
+| **bundles/hotel/** | 继承工程兼容资产；不是本产品默认门店行业 | 见 bundles/hotel/ 目录 | 是 | 未验证 | 未验证 |
+| **bundles/smart-home/** | 本产品默认行业包；全屋智能业务与数据契约 | 见 bundles/smart-home/ 目录 | 是 | 未验证 | 未验证 |
 
 ### 🧑‍💼 继承平台的数字员工与数字人
 
@@ -100,10 +102,9 @@ node scripts/business-management.mjs serve
 
 | 能力 | 一句话 | 怎么体验 | 可发现 | 可调用 | 结果已验证 / 环境 |
 |---|---|---|---|---|---|
-| **高保真演示页 ×6** | 糖果色，含手机壳容器 | http://localhost:3001 | 是 | 未验证 | 未验证 |
+| **继承演示资产 ×6** | 历史工程参考；全屋智能当前入口是本机经营工作台 | docs/demo/ | 是 | 未验证 | 未验证 |
 | **官网静态站** | 对外产品故事 | apps/site/index.html | 是 | 未验证 | 未验证 |
-| **自带技能 ×5** | client-demo-recorder / component-integration / industry-entry / product-feedback 等 | skills/official/ | 是 | 未验证 | 未验证 |
-| **能力导览 PPT** | 路演/汇报直接用 | docs/capability-tour.pptx | 是 | 未验证 | 未验证 |
+| **继承公共技能目录 ×5** | 公共开发与治理技能；默认门店岗位 SOP 以 smart-home 行业包为准 | skills/official/ | 是 | 未验证 | 未验证 |
 | **Mock 数据体系** | 种子 + 离线模型 + 演示直登；显式模拟环境 | mock/README.md | 是 | 未验证 | 未验证 |
 
 ## 🧭 下一步

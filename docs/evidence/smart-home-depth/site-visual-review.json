@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "bms.site-visual-review/v1",
+  "taskId": "T-2026-1009-0001",
+  "reviewer": "/root/workbench_audit",
+  "reviewedAt": "2026-10-09T04:47:14.562432+00:00",
+  "status": "pass",
+  "evidenceGrade": "B",
+  "humanVisualReviewComplete": true,
+  "method": "Actual browser screenshots of both final static site pages at 1440,390,320 pixels; all twelve full-page and viewport images reviewed. Complete HTML source reading is A and appears separately in source coverage. Visual inspection is an observation of the tested pages, not code reading or accessibility certification.",
+  "sourceChecks": [
+    {
+      "path": "apps/site/index.html",
+      "currentSha256": "d1d2bd6c8f9970638ecc16d50a4dbfbfd7658148d0d87c68f3c285509fe9aa90",
+      "recordedSha256": "d1d2bd6c8f9970638ecc16d50a4dbfbfd7658148d0d87c68f3c285509fe9aa90",
+      "matches": true
+    },
+    {
+      "path": "apps/site/en.html",
+      "currentSha256": "5898b0de51a1454a0bb3809f26e65ee066875cd6a7ceb67bff1cff60aa094b85",
+      "recordedSha256": "5898b0de51a1454a0bb3809f26e65ee066875cd6a7ceb67bff1cff60aa094b85",
+      "matches": true
+    }
+  ],
+  "images": [
+    {
+      "path": "site/en-1440-full.png",
+      "sha256": "61ba1db114be8dfec71f83fe2c9cb90c80a59ebc4707815efdb4850b44d2a2a1",
+      "width": 1440,
+      "height": 6112,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/en-1440-viewport.png",
+      "sha256": "0f691f10e9aaf677f2fb9cd1e7143b1cdc669ae18173e8d337b0b482e0d35829",
+      "width": 1440,
+      "height": 1000,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/en-320-full.png",
+      "sha256": "eb2c28fae3db72ce6728cef58eb36eed0ed74dff771923961968042ac48c2ecc",
+      "width": 320,
+      "height": 9999,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/en-320-viewport.png",
+      "sha256": "1d10960930ddddbfaebf8ac9362d6ac318b3e5a8ad55f4ca378a653152c74879",
+      "width": 320,
+      "height": 844,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/en-390-full.png",
+      "sha256": "32a04e53ef7fa1b4e3671739f6abac821bd314174058775232ac8c7138a16907",
+      "width": 390,
+      "height": 8986,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/en-390-viewport.png",
+      "sha256": "1447e9436bc00de8670838daf91b96e1e7bf7f3d8acfcf4c7389a6a3b360165a",
+      "width": 390,
+      "height": 844,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/zh-1440-full.png",
+      "sha256": "acba6460ca9e685cfafd2ff1417f2900fad4d1148f1187b951dfceeb90a74923",
+      "width": 1440,
+      "height": 5680,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/zh-1440-viewport.png",
+      "sha256": "ab9be85b2433625966f6e398dc255c2236aed263b4c8666495dcccb621a0b33d",
+      "width": 1440,
+      "height": 1000,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/zh-320-full.png",
+      "sha256": "dfb7ea4a91f5ea845f19a389b9d17f9ae0c448216f2e2cfacef8d5168788aca0",
+      "width": 320,
+      "height": 8532,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/zh-320-viewport.png",
+      "sha256": "2ff9eee4f68316b9180dd30233880b209d7f258fa965319202723061ff265c5b",
+      "width": 320,
+      "height": 844,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/zh-390-full.png",
+      "sha256": "3b2523bfa11a8be4c2fb9b9e45906c2b53442dde6f65d7ed74e2ffff405c2319",
+      "width": 390,
+      "height": 8074,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    },
+    {
+      "path": "site/zh-390-viewport.png",
+      "sha256": "e03ec18afc23e7957a2daf88f0378b7fe66d39b6905aef71077d07aa119e4e23",
+      "width": 390,
+      "height": 844,
+      "viewed": true,
+      "review": "Actual screenshot pixels visually inspected for clipping, overflow, awkward line breaks, spacing, navigation, native SVG, business journey, role cards, startup/document links, evidence boundaries and FAQ. Long full screenshots also inspected in readable sections where needed."
+    }
+  ],
+  "reviewedImageCount": 12,
+  "observations": [
+    "暖白、深绿、金色门店视觉；中英文 hero、六段客户旅程、四类产品与岗位责任在桌面和移动均可阅读。",
+    "320像素中文主标题、店长面板、证据说明和FAQ标题没有孤字尾行；英文长标题按容器换行。",
+    "长命令在窄屏显示为可换行代码块，源文本未增加换行字符；本地链接与键盘行为另由102项浏览器用例测试。",
+    "现场点位图为可访问的合成SVG示意，网页没有厂商品牌logo、真人照片、真实经营图表或编造指标。",
+    "默认、hover/pressed/focus的链接、details展开状态、移动语言链接和skip导航均有样式或原生浏览器行为；无表单和异步JS控件。"
+  ],
+  "supportingBrowserProof": "site-proof.json",
+  "supportingContrastProof": "site-appearance-proof.json",
+  "fullAccessibilityCertification": false,
+  "uncovered": [
+    "Safari/Firefox/Edge",
+    "真实屏幕阅读器使用者体验",
+    "SVG图形细节对比度认证",
+    "线上部署及真实门店内容",
+    "人工SUS/SEQ研究"
+  ]
+}

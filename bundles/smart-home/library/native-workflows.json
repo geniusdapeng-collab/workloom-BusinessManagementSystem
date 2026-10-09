@@ -29,6 +29,7 @@
               "renovationStage": {
                 "type": "string",
                 "enum": [
+                  "unknown",
                   "new-build",
                   "design",
                   "rough-in",
@@ -74,7 +75,7 @@
             ],
             "additionalProperties": false
           },
-          "instructions": "Use the recorded lead intent and consent. State missing information. Never invent a customer budget or customer statements. fit=false is an admissible result; report the uncertainty."
+          "instructions": "Use the recorded lead intent and consent. State missing information. An unrecorded budget is zero and an unrecorded renovation stage is unknown. Never invent a customer budget or customer statements. fit=false is an admissible result; report the uncertainty."
         },
         {
           "id": "content-draft",
@@ -889,7 +890,15 @@
                               "aftercare",
                               "content",
                               "goal",
-                              "report"
+                              "report",
+                              "leadEnrichment",
+                              "customer",
+                              "pointPlan",
+                              "design",
+                              "construction",
+                              "contract",
+                              "business",
+                              "scenario"
                             ]
                           },
                           "id": {
@@ -1060,15 +1069,9 @@
       "dynamicAssignment": {
         "employeeField": "employeeId",
         "skillField": "skillId",
-        "ownershipSource": "library/workforce.json"
-      },
-      "phases": [
-        {
-          "id": "skill-plan",
-          "title": "读取岗位规程，生成计划与人类待决包",
-          "employee": "$employeeId",
-          "skill": "$skillId",
-          "outputSchema": {
+        "ownershipSource": "library/workforce.json",
+        "outputSchemaBySkill": {
+          "lead-profile-enrichment": {
             "type": "object",
             "properties": {
               "objective": {
@@ -1135,7 +1138,15 @@
                         "aftercare",
                         "content",
                         "goal",
-                        "report"
+                        "report",
+                        "leadEnrichment",
+                        "customer",
+                        "pointPlan",
+                        "design",
+                        "construction",
+                        "contract",
+                        "business",
+                        "scenario"
                       ]
                     },
                     "id": {
@@ -1226,7 +1237,717 @@
                               "aftercare",
                               "content",
                               "goal",
-                              "report"
+                              "report",
+                              "leadEnrichment",
+                              "customer",
+                              "pointPlan",
+                              "design",
+                              "construction",
+                              "contract",
+                              "business",
+                              "scenario"
+                            ]
+                          },
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 100,
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "id"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 30,
+                      "uniqueItems": true
+                    }
+                  },
+                  "required": [
+                    "employeeId",
+                    "skillId",
+                    "brief",
+                    "objectRefs"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 0,
+                "maxItems": 30
+              },
+              "proposedLeadPatch": {
+                "type": "object",
+                "properties": {
+                  "alias": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "surname": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "contactRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "phoneRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "wechatRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "buildingRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "buildingName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "channel": {
+                    "type": "string",
+                    "enum": [
+                      "unknown",
+                      "douyin",
+                      "xiaohongshu",
+                      "wechat-video",
+                      "wechat-private",
+                      "baidu",
+                      "geo",
+                      "walk-in",
+                      "referral",
+                      "designer",
+                      "property",
+                      "decoration-partner"
+                    ]
+                  },
+                  "campaignRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "intent": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1500
+                  },
+                  "budgetCents": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000000
+                  },
+                  "renovationStage": {
+                    "type": "string",
+                    "enum": [
+                      "new-build",
+                      "design",
+                      "rough-in",
+                      "decorating",
+                      "finished",
+                      "occupied",
+                      "retrofit"
+                    ]
+                  },
+                  "serviceArea": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "householdSize": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20
+                  },
+                  "preferredContactWindow": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  },
+                  "needs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 500
+                    },
+                    "minItems": 1,
+                    "maxItems": 30
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              },
+              "confirmationQuestions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "minItems": 1,
+                "maxItems": 20
+              }
+            },
+            "required": [
+              "objective",
+              "plan",
+              "evidenceReferences",
+              "risks",
+              "ownerDecisions",
+              "nextActions",
+              "proposedLeadPatch",
+              "confirmationQuestions"
+            ],
+            "additionalProperties": false
+          },
+          "customer-handoff-check": {
+            "type": "object",
+            "properties": {
+              "objective": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "plan": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "step": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1500
+                    },
+                    "deliverable": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2500
+                    },
+                    "actionType": {
+                      "type": "string",
+                      "enum": [
+                        "analysis",
+                        "draft",
+                        "human-review",
+                        "external-action-required",
+                        "field-evidence-required"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "step",
+                    "deliverable",
+                    "actionType"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1,
+                "maxItems": 50
+              },
+              "evidenceReferences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "store",
+                        "sku",
+                        "compatibility",
+                        "lead",
+                        "experience",
+                        "survey",
+                        "solution",
+                        "quote",
+                        "project",
+                        "procurement",
+                        "commissioning",
+                        "acceptance",
+                        "aftercare",
+                        "content",
+                        "goal",
+                        "report",
+                        "leadEnrichment",
+                        "customer",
+                        "pointPlan",
+                        "design",
+                        "construction",
+                        "contract",
+                        "business",
+                        "scenario"
+                      ]
+                    },
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100,
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                    },
+                    "version": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1000000000
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "id",
+                    "version"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1,
+                "maxItems": 30,
+                "uniqueItems": true
+              },
+              "risks": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1500
+                },
+                "minItems": 0,
+                "maxItems": 30
+              },
+              "ownerDecisions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1500
+                },
+                "minItems": 0,
+                "maxItems": 30
+              },
+              "nextActions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "employeeId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100,
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                    },
+                    "skillId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100,
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                    },
+                    "brief": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 5000
+                    },
+                    "objectRefs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "store",
+                              "sku",
+                              "compatibility",
+                              "lead",
+                              "experience",
+                              "survey",
+                              "solution",
+                              "quote",
+                              "project",
+                              "procurement",
+                              "commissioning",
+                              "acceptance",
+                              "aftercare",
+                              "content",
+                              "goal",
+                              "report",
+                              "leadEnrichment",
+                              "customer",
+                              "pointPlan",
+                              "design",
+                              "construction",
+                              "contract",
+                              "business",
+                              "scenario"
+                            ]
+                          },
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 100,
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                          }
+                        },
+                        "required": [
+                          "type",
+                          "id"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "minItems": 1,
+                      "maxItems": 30,
+                      "uniqueItems": true
+                    }
+                  },
+                  "required": [
+                    "employeeId",
+                    "skillId",
+                    "brief",
+                    "objectRefs"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 0,
+                "maxItems": 30
+              },
+              "proposedLeadPatch": {
+                "type": "object",
+                "properties": {
+                  "alias": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "surname": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "contactRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "phoneRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "wechatRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "buildingRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "buildingName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "channel": {
+                    "type": "string",
+                    "enum": [
+                      "unknown",
+                      "douyin",
+                      "xiaohongshu",
+                      "wechat-video",
+                      "wechat-private",
+                      "baidu",
+                      "geo",
+                      "walk-in",
+                      "referral",
+                      "designer",
+                      "property",
+                      "decoration-partner"
+                    ]
+                  },
+                  "campaignRef": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                  },
+                  "intent": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1500
+                  },
+                  "budgetCents": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000000
+                  },
+                  "renovationStage": {
+                    "type": "string",
+                    "enum": [
+                      "new-build",
+                      "design",
+                      "rough-in",
+                      "decorating",
+                      "finished",
+                      "occupied",
+                      "retrofit"
+                    ]
+                  },
+                  "serviceArea": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "householdSize": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 20
+                  },
+                  "preferredContactWindow": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 300
+                  },
+                  "needs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 500
+                    },
+                    "minItems": 1,
+                    "maxItems": 30
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              },
+              "confirmationQuestions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1000
+                },
+                "minItems": 1,
+                "maxItems": 20
+              },
+              "handoffReady": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "objective",
+              "plan",
+              "evidenceReferences",
+              "risks",
+              "ownerDecisions",
+              "nextActions",
+              "proposedLeadPatch",
+              "confirmationQuestions",
+              "handoffReady"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "phases": [
+        {
+          "id": "skill-plan",
+          "title": "读取岗位规程，生成计划与人类待决包",
+          "employee": "$employeeId",
+          "skill": "$skillId",
+          "outputSchema": {
+            "type": "object",
+            "properties": {
+              "objective": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "plan": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "step": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 1500
+                    },
+                    "deliverable": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2500
+                    },
+                    "actionType": {
+                      "type": "string",
+                      "enum": [
+                        "analysis",
+                        "draft",
+                        "human-review",
+                        "external-action-required",
+                        "field-evidence-required"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "step",
+                    "deliverable",
+                    "actionType"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1,
+                "maxItems": 50
+              },
+              "evidenceReferences": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "store",
+                        "sku",
+                        "compatibility",
+                        "lead",
+                        "experience",
+                        "survey",
+                        "solution",
+                        "quote",
+                        "project",
+                        "procurement",
+                        "commissioning",
+                        "acceptance",
+                        "aftercare",
+                        "content",
+                        "goal",
+                        "report",
+                        "leadEnrichment",
+                        "customer",
+                        "pointPlan",
+                        "design",
+                        "construction",
+                        "contract",
+                        "business",
+                        "scenario"
+                      ]
+                    },
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100,
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                    },
+                    "version": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 1000000000
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "id",
+                    "version"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1,
+                "maxItems": 30,
+                "uniqueItems": true
+              },
+              "risks": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1500
+                },
+                "minItems": 0,
+                "maxItems": 30
+              },
+              "ownerDecisions": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 1500
+                },
+                "minItems": 0,
+                "maxItems": 30
+              },
+              "nextActions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "employeeId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100,
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                    },
+                    "skillId": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100,
+                      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]*$"
+                    },
+                    "brief": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 5000
+                    },
+                    "objectRefs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "store",
+                              "sku",
+                              "compatibility",
+                              "lead",
+                              "experience",
+                              "survey",
+                              "solution",
+                              "quote",
+                              "project",
+                              "procurement",
+                              "commissioning",
+                              "acceptance",
+                              "aftercare",
+                              "content",
+                              "goal",
+                              "report",
+                              "leadEnrichment",
+                              "customer",
+                              "pointPlan",
+                              "design",
+                              "construction",
+                              "contract",
+                              "business",
+                              "scenario"
                             ]
                           },
                           "id": {

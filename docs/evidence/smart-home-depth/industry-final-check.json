@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "business-management.industry-final-evidence-check/v1",
+  "task": "T-2026-1009-0001",
+  "evidenceLevel": "B",
+  "checkedAt": "2026-10-09T04:53:48.185998+00:00",
+  "counts": {
+    "checks": 11,
+    "pass": 11,
+    "fail": 0
+  },
+  "passed": true,
+  "checks": [
+    {
+      "id": "COVERAGE-SHA",
+      "passed": true,
+      "detail": {
+        "files": 161,
+        "drift": [],
+        "counts": {
+          "total": 161,
+          "full": 122,
+          "machine": 39,
+          "sample": 0,
+          "unread": 0,
+          "retainedByteIdenticalFullReads": 67,
+          "fullReadsThisTask": 55
+        }
+      }
+    },
+    {
+      "id": "COVERAGE-PARTITION",
+      "passed": true,
+      "detail": {
+        "total": 161,
+        "full": 122,
+        "machine": 39,
+        "sample": 0,
+        "unread": 0,
+        "retainedByteIdenticalFullReads": 67,
+        "fullReadsThisTask": 55
+      }
+    },
+    {
+      "id": "BUNDLE-MACHINE-CURRENT",
+      "passed": true,
+      "detail": {
+        "files": 130,
+        "drift": []
+      }
+    },
+    {
+      "id": "ASSET-RUN-CURRENT",
+      "passed": true,
+      "detail": {
+        "counts": {
+          "tests": 9,
+          "pass": 9,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "exitCode": 0,
+        "drift": [],
+        "logExists": true
+      }
+    },
+    {
+      "id": "PEER-RUN-CURRENT",
+      "passed": true,
+      "detail": {
+        "counts": {
+          "tests": 8,
+          "pass": 8,
+          "fail": 0,
+          "skipped": 0,
+          "repairedSevereFindings": 2,
+          "remainingKnownFindingsInThisReview": 0
+        },
+        "runtimeModules": 12,
+        "drift": []
+      }
+    },
+    {
+      "id": "PEER-ARCHIVE-SHA",
+      "passed": true,
+      "detail": {
+        "archives": 6,
+        "drift": []
+      }
+    },
+    {
+      "id": "MATRIX-RELATIVE-LINKS",
+      "passed": true,
+      "detail": {
+        "links": 22,
+        "missing": []
+      }
+    },
+    {
+      "id": "MATRIX-REQUIRED-CLOSEOUT",
+      "passed": true,
+      "detail": {
+        "selfCheckItems": 4
+      }
+    },
+    {
+      "id": "MATRIX-CURRENT-COUNTS",
+      "passed": true,
+      "detail": {
+        "matrixSHA": "786e4946f3d02d874396aaccffd1967d99e350f217198fbec07fe6cc6e6ae4d9",
+        "lines": 393
+      }
+    },
+    {
+      "id": "UI-MANIFEST-PROJECTION-CURRENT",
+      "passed": true,
+      "detail": {
+        "counts": {
+          "objects": 27,
+          "workflows": 5,
+          "checks": 6,
+          "pass": 6,
+          "fail": 0
+        },
+        "sourceDrift": [],
+        "manifestDigest": "e08a4bcc0a3660d8838e084a087774f2e04309a5b032d516658448e3da0dc4eb",
+        "sourceArchive": {
+          "path": "docs/evidence/smart-home-depth/industry-ui-manifest-probe.mts.txt",
+          "sha256": "51a8d0f31e66e82ed2d0c143f18ea6ad11ee449cb61f2d193d9c804780643e03",
+          "bindingMethod": "Exact unchanged executed source archived immediately after this run; source hash recorded after execution, not before"
+        }
+      }
+    },
+    {
+      "id": "CI-INTEGRATION-SOURCE-CURRENT",
+      "passed": true,
+      "detail": {
+        "counts": {
+          "checks": 8,
+          "pass": 8,
+          "fail": 0
+        },
+        "files": 7,
+        "sourceDrift": [],
+        "actualCNBExecution": "not verified by this source review"
+      }
+    }
+  ],
+  "boundaries": [
+    "Current-file/hash/JSON/link checks do not claim new semantic reading.",
+    "No business database, old receipt, frozen previous-task evidence, runtime source or bundle seal was changed."
+  ]
+}

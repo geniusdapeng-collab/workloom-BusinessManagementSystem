@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "bms.site-proof/v1",
+  "startedAt": "2026-10-09T03:02:10.174Z",
+  "browser": "Chromium",
+  "expectedTotal": 102,
+  "command": [
+    "node",
+    "scripts/check-business-site.mjs",
+    "--out",
+    "outputs/BusinessManagementSystem/docs/evidence/smart-home-depth",
+    "--browser-executable",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+  ],
+  "javascriptRequired": false,
+  "status": "fail",
+  "sourceFiles": [
+    {
+      "path": "apps/site/index.html",
+      "sha256": "1b551313670904506957199a7d57f55511128887173dbea58b9f858d45a3c1fe"
+    },
+    {
+      "path": "apps/site/en.html",
+      "sha256": "146f2ff489301c999702fd441a9504c19c22614cb970f153f45bc6db967abaa2"
+    }
+  ],
+  "cases": [
+    {
+      "id": "zh-1440-identity",
+      "preconditions": "静态页面可访问，JavaScript禁用",
+      "steps": "读取标题、lang与唯一H1",
+      "expected": "新产品身份且唯一H1",
+      "actual": {
+        "title": "AI经营管理系统 · 成都全屋智能门店 · BusinessManagementSystem",
+        "language": "zh-CN",
+        "h1": 1
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-overflow",
+      "preconditions": "视口1440px",
+      "steps": "测量页面与body宽度",
+      "expected": "页面无水平滚动",
+      "actual": {
+        "viewport": 1440,
+        "document": 1440,
+        "body": 1440
+      },
+      "pass": true
+    },
+    {
+      "id": "zh-1440-no-js",
+      "preconditions": "JavaScript禁用",
+      "steps": "检查所有section的CSS可见状态",
+      "expected": "内容全部可见",
+      "actual": [],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-source-cta",
+      "preconditions": "源码CTA可见",
+      "steps": "读取主CTA href",
+      "expected": "公开CNB新仓，无假安装包地址",
+      "actual": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-anchors",
+      "preconditions": "静态页包含导航与跳转",
+      "steps": "核对所有锚点目标",
+      "expected": "锚点没有悬空",
+      "actual": [
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#main",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        },
+        {
+          "href": "#products",
+          "targetExists": true
+        },
+        {
+          "href": "#team",
+          "targetExists": true
+        },
+        {
+          "href": "#start",
+          "targetExists": true
+        },
+        {
+          "href": "#journey",
+          "targetExists": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "zh-1440-start-link",
+      "preconditions": "开始导航可点击",
+      "steps": "点击开始使用锚点",
+      "expected": "URL转到#start",
+      "actual": "http://127.0.0.1:52269/index.html#start",
+      "pass": true
+    },
+    {
+      "id": "zh-1440-faq",
+      "preconditions": "FAQ默认折叠",
+      "steps": "点击第一条summary",
+      "expected": "浏览器原生展开",
+      "actual": "",
+      "pass": true
+    }
+  ],
+  "errors": [
+    "ENOENT: no such file or directory, stat '/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/outputs/BusinessManagementSystem/docs/02-%E6%96%B0%E5%AE%A2%E6%88%B7%E9%A6%96%E6%AC%A1%E6%8E%A5%E5%85%A5%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B.md'"
+  ],
+  "externalBusinessVerified": false,
+  "websiteDeployed": false,
+  "browserVersion": "154.0.8037.99",
+  "finishedAt": "2026-10-09T03:02:13.165Z",
+  "passed": 7,
+  "total": 7
+}

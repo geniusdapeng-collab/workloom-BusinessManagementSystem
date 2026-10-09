@@ -1,0 +1,55 @@
+{
+  "probe": "design point-device coverage versus complete solution BOM",
+  "checkedAt": "2026-10-09T04:00:04.079Z",
+  "sourceMutated": false,
+  "isolatedManifestRefresh": true,
+  "sourceHashes": {
+    "assets.mjs": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de",
+    "catalogue.mjs": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+    "depth-catalogue.mjs": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07",
+    "depth-domain.mjs": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308",
+    "domain.mjs": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0",
+    "errors.mjs": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0",
+    "index.mjs": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d",
+    "scenario.mjs": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+    "schema.mjs": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e",
+    "storage.mjs": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68",
+    "workflows.mjs": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+    "workforce.mjs": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c"
+  },
+  "observations": [
+    {
+      "label": "all-but-one-devices-omitted",
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 1,
+      "accepted": false,
+      "code": "DESIGN_POINT_BOM_MISMATCH",
+      "message": "A validated design must locate every BOM device exactly once in its surveyed room"
+    },
+    {
+      "label": "one-device-duplicated",
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 22,
+      "accepted": false,
+      "code": "DESIGN_POINT_BOM_MISMATCH",
+      "message": "A validated design must locate every BOM device exactly once in its surveyed room"
+    },
+    {
+      "label": "device-point-without-sku",
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 20,
+      "accepted": false,
+      "code": "DESIGN_POINT_SKU_REQUIRED",
+      "message": "A validated design needs an exact SKU for each device point; network/outlet preparation points may remain unassigned"
+    },
+    {
+      "label": "complete-device-count-with-unassigned-network-helper",
+      "expectedDevicePoints": 21,
+      "submittedDevicePoints": 21,
+      "accepted": true,
+      "designStatus": "draft-local-validated"
+    }
+  ],
+  "completed": true,
+  "passed": true
+}

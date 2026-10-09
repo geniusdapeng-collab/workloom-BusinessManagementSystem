@@ -1,0 +1,582 @@
+{
+  "schemaVersion": "business-management.industry-ui-manifest-check/v1",
+  "task": "T-2026-1009-0001",
+  "testedAt": "2026-10-09T04:51:06.762Z",
+  "reviewer": "industry_map",
+  "evidenceLevel": "B",
+  "actualVerifiedLoaderExecuted": true,
+  "counts": {
+    "objects": 27,
+    "workflows": 5,
+    "checks": 6,
+    "pass": 6,
+    "fail": 0
+  },
+  "passed": true,
+  "sourceStable": true,
+  "manifestDigest": "e08a4bcc0a3660d8838e084a087774f2e04309a5b032d516658448e3da0dc4eb",
+  "sourceHashesBefore": {
+    "bundles/smart-home/bundle.json": "3d1abdc1022a03fe97a247f1ed7c3bee7290c70e6c41baf2cc340f15af606ee3",
+    "bundles/smart-home/schemas/objects.json": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+    "bundles/smart-home/runtime/catalogue.mjs": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+    "bundles/smart-home/runtime/workflows.mjs": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+    "bundles/smart-home/library/native-workflows.json": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618",
+    "bundles/smart-home/pipelines/growth-acquisition.yml": "4fbd667ae634f8ee746bd01a62713371854ff988e6aad36a7ad756f92552daab",
+    "bundles/smart-home/pipelines/project-delivery.yml": "cf049680ea3e66e8b99650748b54ff7b994e45b8837f365e9eaf6e91707f3fa2",
+    "bundles/smart-home/pipelines/aftercare-loop.yml": "14c49b27b2993f3e61643f0c791221e3d3c6861e34a134f9011230fb5167ae6b",
+    "bundles/smart-home/pipelines/management-loop.yml": "97318bf4fe59fc0961fa41b1af2ef45c3e7bf93f88cca836290839dab41158ff",
+    "bundles/smart-home/pipelines/employee-work.yml": "a5d279e06b94d31f66a5f258e4bb30117e0a926b012a243413ab428ea84fdfcb",
+    "packages/base/bundles/assembly.ts": "adf16a7948477efd47a956604b5c1a690220951bebcb51b21c7338eb98447e46",
+    "scripts/generate-client-projections.mts": "d5f179edbe7c1b73924c3139d421d7d36a26f00670a994f98d0360b0e1b57bcd",
+    "apps/webc/public/industry/service-front.config.json": "38a9a1a2a39d4a896a61c85ae8b02abf8437710f6a88ec2a21581eef5ba84fd1"
+  },
+  "sourceHashesAfter": {
+    "bundles/smart-home/bundle.json": "3d1abdc1022a03fe97a247f1ed7c3bee7290c70e6c41baf2cc340f15af606ee3",
+    "bundles/smart-home/schemas/objects.json": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+    "bundles/smart-home/runtime/catalogue.mjs": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+    "bundles/smart-home/runtime/workflows.mjs": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+    "bundles/smart-home/library/native-workflows.json": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618",
+    "bundles/smart-home/pipelines/growth-acquisition.yml": "4fbd667ae634f8ee746bd01a62713371854ff988e6aad36a7ad756f92552daab",
+    "bundles/smart-home/pipelines/project-delivery.yml": "cf049680ea3e66e8b99650748b54ff7b994e45b8837f365e9eaf6e91707f3fa2",
+    "bundles/smart-home/pipelines/aftercare-loop.yml": "14c49b27b2993f3e61643f0c791221e3d3c6861e34a134f9011230fb5167ae6b",
+    "bundles/smart-home/pipelines/management-loop.yml": "97318bf4fe59fc0961fa41b1af2ef45c3e7bf93f88cca836290839dab41158ff",
+    "bundles/smart-home/pipelines/employee-work.yml": "a5d279e06b94d31f66a5f258e4bb30117e0a926b012a243413ab428ea84fdfcb",
+    "packages/base/bundles/assembly.ts": "adf16a7948477efd47a956604b5c1a690220951bebcb51b21c7338eb98447e46",
+    "scripts/generate-client-projections.mts": "d5f179edbe7c1b73924c3139d421d7d36a26f00670a994f98d0360b0e1b57bcd",
+    "apps/webc/public/industry/service-front.config.json": "38a9a1a2a39d4a896a61c85ae8b02abf8437710f6a88ec2a21581eef5ba84fd1"
+  },
+  "checks": [
+    {
+      "id": "UI-OBJECTS-SCHEMA",
+      "preconditions": "Current sealed manifest and complete object schema",
+      "steps": "Compare the 27 UI labels with every schema label in declared order",
+      "expected": [
+        "门店",
+        "设备型号",
+        "兼容证据",
+        "客户线索",
+        "体验预约",
+        "现场勘测",
+        "空间方案",
+        "项目报价",
+        "审批",
+        "交付项目",
+        "采购到货",
+        "场景测试",
+        "客户验收",
+        "售后工单",
+        "内容素材",
+        "经营目标",
+        "业务工作流",
+        "模型任务",
+        "经营报告",
+        "待确认线索补充提议",
+        "客户家庭档案",
+        "毫米坐标点位图",
+        "版本化设计资料",
+        "施工策划与质量资料",
+        "报价关联合同",
+        "经营观察与计划",
+        "合成场景导入来源"
+      ],
+      "actual": [
+        "门店",
+        "设备型号",
+        "兼容证据",
+        "客户线索",
+        "体验预约",
+        "现场勘测",
+        "空间方案",
+        "项目报价",
+        "审批",
+        "交付项目",
+        "采购到货",
+        "场景测试",
+        "客户验收",
+        "售后工单",
+        "内容素材",
+        "经营目标",
+        "业务工作流",
+        "模型任务",
+        "经营报告",
+        "待确认线索补充提议",
+        "客户家庭档案",
+        "毫米坐标点位图",
+        "版本化设计资料",
+        "施工策划与质量资料",
+        "报价关联合同",
+        "经营观察与计划",
+        "合成场景导入来源"
+      ],
+      "passed": true
+    },
+    {
+      "id": "UI-OBJECTS-RUNTIME",
+      "preconditions": "Current executable object catalogue",
+      "steps": "Compare schema types with imported executable ENTITY_TYPES",
+      "expected": [
+        "store",
+        "sku",
+        "compatibility",
+        "lead",
+        "experience",
+        "survey",
+        "solution",
+        "quote",
+        "approval",
+        "project",
+        "procurement",
+        "commissioning",
+        "acceptance",
+        "aftercare",
+        "content",
+        "goal",
+        "workflow",
+        "task",
+        "report",
+        "leadEnrichment",
+        "customer",
+        "pointPlan",
+        "design",
+        "construction",
+        "contract",
+        "business",
+        "scenario"
+      ],
+      "actual": [
+        "store",
+        "sku",
+        "compatibility",
+        "lead",
+        "experience",
+        "survey",
+        "solution",
+        "quote",
+        "approval",
+        "project",
+        "procurement",
+        "commissioning",
+        "acceptance",
+        "aftercare",
+        "content",
+        "goal",
+        "workflow",
+        "task",
+        "report",
+        "leadEnrichment",
+        "customer",
+        "pointPlan",
+        "design",
+        "construction",
+        "contract",
+        "business",
+        "scenario"
+      ],
+      "passed": true
+    },
+    {
+      "id": "UI-WORKFLOWS-RUNTIME",
+      "preconditions": "Current executable and native workflow catalogues plus the five pipeline assets",
+      "steps": "Compare exact runtime IDs, native IDs, declared pipeline IDs and their explicit UI label map",
+      "expected": {
+        "ids": [
+          "growth-acquisition",
+          "project-delivery",
+          "aftercare-loop",
+          "management-loop",
+          "employee-work"
+        ],
+        "nativeIds": [
+          "growth-acquisition",
+          "project-delivery",
+          "aftercare-loop",
+          "management-loop",
+          "employee-work"
+        ],
+        "pipelineIds": [
+          "growth-acquisition",
+          "project-delivery",
+          "aftercare-loop",
+          "management-loop",
+          "employee-work"
+        ],
+        "labels": [
+          "获客到体验闭环",
+          "方案到客户验收闭环",
+          "售后响应到回访闭环",
+          "董事长经营闭环",
+          "数字员工岗位任务"
+        ]
+      },
+      "actual": {
+        "ids": [
+          "growth-acquisition",
+          "project-delivery",
+          "aftercare-loop",
+          "management-loop",
+          "employee-work"
+        ],
+        "nativeIds": [
+          "growth-acquisition",
+          "project-delivery",
+          "aftercare-loop",
+          "management-loop",
+          "employee-work"
+        ],
+        "pipelineIds": [
+          "growth-acquisition",
+          "project-delivery",
+          "aftercare-loop",
+          "management-loop",
+          "employee-work"
+        ],
+        "labels": [
+          "获客到体验闭环",
+          "方案到客户验收闭环",
+          "售后响应到回访闭环",
+          "董事长经营闭环",
+          "数字员工岗位任务"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "id": "UI-VERIFIED-UI-PROJECTION",
+      "preconditions": "Real verified public assembly loader; candidate bundle with valid current integrity",
+      "steps": "Load the public UI projection and inspect labels, source attribution and current seal",
+      "expected": {
+        "objects": [
+          "门店",
+          "设备型号",
+          "兼容证据",
+          "客户线索",
+          "体验预约",
+          "现场勘测",
+          "空间方案",
+          "项目报价",
+          "审批",
+          "交付项目",
+          "采购到货",
+          "场景测试",
+          "客户验收",
+          "售后工单",
+          "内容素材",
+          "经营目标",
+          "业务工作流",
+          "模型任务",
+          "经营报告",
+          "待确认线索补充提议",
+          "客户家庭档案",
+          "毫米坐标点位图",
+          "版本化设计资料",
+          "施工策划与质量资料",
+          "报价关联合同",
+          "经营观察与计划",
+          "合成场景导入来源"
+        ],
+        "workflows": [
+          "获客到体验闭环",
+          "方案到客户验收闭环",
+          "售后响应到回访闭环",
+          "董事长经营闭环",
+          "数字员工岗位任务"
+        ],
+        "objectSources": [
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ]
+        ],
+        "workflowSources": [
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ]
+        ],
+        "digest": "e08a4bcc0a3660d8838e084a087774f2e04309a5b032d516658448e3da0dc4eb"
+      },
+      "actual": {
+        "objects": [
+          "门店",
+          "设备型号",
+          "兼容证据",
+          "客户线索",
+          "体验预约",
+          "现场勘测",
+          "空间方案",
+          "项目报价",
+          "审批",
+          "交付项目",
+          "采购到货",
+          "场景测试",
+          "客户验收",
+          "售后工单",
+          "内容素材",
+          "经营目标",
+          "业务工作流",
+          "模型任务",
+          "经营报告",
+          "待确认线索补充提议",
+          "客户家庭档案",
+          "毫米坐标点位图",
+          "版本化设计资料",
+          "施工策划与质量资料",
+          "报价关联合同",
+          "经营观察与计划",
+          "合成场景导入来源"
+        ],
+        "workflows": [
+          "获客到体验闭环",
+          "方案到客户验收闭环",
+          "售后响应到回访闭环",
+          "董事长经营闭环",
+          "数字员工岗位任务"
+        ],
+        "objectSources": [
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ]
+        ],
+        "workflowSources": [
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ],
+          [
+            "smart-home"
+          ]
+        ],
+        "digest": "e08a4bcc0a3660d8838e084a087774f2e04309a5b032d516658448e3da0dc4eb"
+      },
+      "passed": true
+    },
+    {
+      "id": "UI-C-MOBILE-DIGEST",
+      "preconditions": "Generated C-mobile projection",
+      "steps": "Check its existing manifest digest pointer after the coordinator regeneration",
+      "expected": "e08a4bcc0a3660d8838e084a087774f2e04309a5b032d516658448e3da0dc4eb",
+      "actual": "e08a4bcc0a3660d8838e084a087774f2e04309a5b032d516658448e3da0dc4eb",
+      "passed": true
+    },
+    {
+      "id": "UI-PROBE-SOURCE-STABLE",
+      "preconditions": "Source hashes captured before actual loader calls",
+      "steps": "Compare all inspected source and generated projection bytes after the probe",
+      "expected": {
+        "bundles/smart-home/bundle.json": "3d1abdc1022a03fe97a247f1ed7c3bee7290c70e6c41baf2cc340f15af606ee3",
+        "bundles/smart-home/schemas/objects.json": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+        "bundles/smart-home/runtime/catalogue.mjs": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+        "bundles/smart-home/runtime/workflows.mjs": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+        "bundles/smart-home/library/native-workflows.json": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618",
+        "bundles/smart-home/pipelines/growth-acquisition.yml": "4fbd667ae634f8ee746bd01a62713371854ff988e6aad36a7ad756f92552daab",
+        "bundles/smart-home/pipelines/project-delivery.yml": "cf049680ea3e66e8b99650748b54ff7b994e45b8837f365e9eaf6e91707f3fa2",
+        "bundles/smart-home/pipelines/aftercare-loop.yml": "14c49b27b2993f3e61643f0c791221e3d3c6861e34a134f9011230fb5167ae6b",
+        "bundles/smart-home/pipelines/management-loop.yml": "97318bf4fe59fc0961fa41b1af2ef45c3e7bf93f88cca836290839dab41158ff",
+        "bundles/smart-home/pipelines/employee-work.yml": "a5d279e06b94d31f66a5f258e4bb30117e0a926b012a243413ab428ea84fdfcb",
+        "packages/base/bundles/assembly.ts": "adf16a7948477efd47a956604b5c1a690220951bebcb51b21c7338eb98447e46",
+        "scripts/generate-client-projections.mts": "d5f179edbe7c1b73924c3139d421d7d36a26f00670a994f98d0360b0e1b57bcd",
+        "apps/webc/public/industry/service-front.config.json": "38a9a1a2a39d4a896a61c85ae8b02abf8437710f6a88ec2a21581eef5ba84fd1"
+      },
+      "actual": {
+        "bundles/smart-home/bundle.json": "3d1abdc1022a03fe97a247f1ed7c3bee7290c70e6c41baf2cc340f15af606ee3",
+        "bundles/smart-home/schemas/objects.json": "47364527eceea3f5549c29435a95f3c2f95a54bf6fd4055fe5cb22f62a836827",
+        "bundles/smart-home/runtime/catalogue.mjs": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b",
+        "bundles/smart-home/runtime/workflows.mjs": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c",
+        "bundles/smart-home/library/native-workflows.json": "c216caa339ff2c01647a3b23f42351665a3725b86bc011ae82b8d9af43447618",
+        "bundles/smart-home/pipelines/growth-acquisition.yml": "4fbd667ae634f8ee746bd01a62713371854ff988e6aad36a7ad756f92552daab",
+        "bundles/smart-home/pipelines/project-delivery.yml": "cf049680ea3e66e8b99650748b54ff7b994e45b8837f365e9eaf6e91707f3fa2",
+        "bundles/smart-home/pipelines/aftercare-loop.yml": "14c49b27b2993f3e61643f0c791221e3d3c6861e34a134f9011230fb5167ae6b",
+        "bundles/smart-home/pipelines/management-loop.yml": "97318bf4fe59fc0961fa41b1af2ef45c3e7bf93f88cca836290839dab41158ff",
+        "bundles/smart-home/pipelines/employee-work.yml": "a5d279e06b94d31f66a5f258e4bb30117e0a926b012a243413ab428ea84fdfcb",
+        "packages/base/bundles/assembly.ts": "adf16a7948477efd47a956604b5c1a690220951bebcb51b21c7338eb98447e46",
+        "scripts/generate-client-projections.mts": "d5f179edbe7c1b73924c3139d421d7d36a26f00670a994f98d0360b0e1b57bcd",
+        "apps/webc/public/industry/service-front.config.json": "38a9a1a2a39d4a896a61c85ae8b02abf8437710f6a88ec2a21581eef5ba84fd1"
+      },
+      "passed": true
+    }
+  ],
+  "boundaries": [
+    "This actual local probe validates metadata, executable catalogue identity and public UI projection assembly.",
+    "It does not execute a browser, a paid model, an external brand service, a real customer workflow or CNB Linux CI.",
+    "The broad assembly.ts implementation is machine-indexed with the pertinent loader/projection call ranges read; no complete source reading of all 1385 lines is claimed."
+  ],
+  "probeSourceArchive": {
+    "path": "docs/evidence/smart-home-depth/industry-ui-manifest-probe.mts.txt",
+    "sha256": "51a8d0f31e66e82ed2d0c143f18ea6ad11ee449cb61f2d193d9c804780643e03",
+    "bindingMethod": "Exact unchanged executed source archived immediately after this run; source hash recorded after execution, not before"
+  }
+}

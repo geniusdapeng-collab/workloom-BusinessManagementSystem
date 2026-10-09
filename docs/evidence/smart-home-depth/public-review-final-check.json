@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "bms.workbench-delivery-final-check/v1",
+  "taskId": "T-2026-1009-0001",
+  "reviewer": "/root/workbench_audit",
+  "checkedAt": "2026-10-09T05:12:42.973729+00:00",
+  "status": "pass",
+  "passed": 11,
+  "total": 11,
+  "cases": [
+    {
+      "id": "FINAL-COVERAGE",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "104 unique files,64 complete source reads/40 machine scans,zero sample/unread,current SHA",
+      "actual": {
+        "counts": {
+          "total": 104,
+          "completeReading": 64,
+          "machineOnly": 40,
+          "sampled": 0,
+          "unread": 0
+        },
+        "drift": []
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-PUBLIC",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "10/10 current public-source checks including PGseed/projection/default scripts",
+      "actual": {
+        "cases": 10,
+        "status": "pass",
+        "drift": []
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-CLI",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "Fresh final-manifest52/52 replay with source bytes unchanged",
+      "actual": {
+        "passed": 52,
+        "total": 52,
+        "drift": [],
+        "sourceCount": 19
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-SITE",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "102/102 browser cases match current two HTML pages",
+      "actual": {
+        "passed": 102,
+        "total": 102,
+        "drift": []
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-APPEARANCE",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "8/8 actual CSS/interaction checks,current HTML sources",
+      "actual": {
+        "cases": 8,
+        "status": "pass",
+        "drift": []
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-VISUAL",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "12 final screenshot hashes and source hashes match human review metadata",
+      "actual": {
+        "images": 12,
+        "imageDrift": []
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-SEMANTICS",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "8/8 complete semantic cases;52criteria93assertions;original host proof/database unchanged",
+      "actual": {
+        "passed": 8,
+        "total": 8,
+        "semanticCriteria": 52,
+        "mechanicalAssertions": 93,
+        "originalProofSha256": "4a8b7003d5bcd6d036ef0e8a44975bcb276c7ee4020de240f3010fd51e7398c4",
+        "databaseSha256": "6152cf94d23e0694d27cbe966b87843a0d12e776073a27da13ffcb278a47eade"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-HOST-BINDING",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "Exact old-manifest SHA;71 current host sources117nonUI assets;4UI-only fields;final manifestcurrent",
+      "actual": {
+        "counts": {
+          "hostSourceFilesExcludingManifest": 71,
+          "nonUiManifestAssets": 117,
+          "uiManifestAssets": 5,
+          "changedManifestFields": 4
+        },
+        "checks": {
+          "reconstructedOriginalWholeFileExactlyMatchesHostRunSha256": true,
+          "all71HostBusinessSopAndTransportSourcesByteIdentical": true,
+          "manifestDiffOnlyKnownUiLabelsUiAppDigestAndAggregateSeal": true,
+          "allNonUiManifestAssetsRemainByteIdentical": true,
+          "sameUiAssetMembership": true,
+          "everyFinalUiAssetMatchesFinalManifest": true,
+          "finalUiMetadataMatchesRuntimeObjectAndWorkflowCounts": true,
+          "originalHostProofNotModified": true
+        },
+        "finalManifestSha256": "3d1abdc1022a03fe97a247f1ed7c3bee7290c70e6c41baf2cc340f15af606ee3"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-REPORT",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "Coverage first,all6 closing fields,4yes selfchecks,all local links exist,no TODO",
+      "actual": {
+        "links": 18,
+        "missing": [],
+        "requiredFields": {
+          "## 覆盖率声明": true,
+          "## 收尾报告": true,
+          "已完成：": true,
+          "未完成/未覆盖：": true,
+          "自主追加事项及理由：": true,
+          "采用的假设：": true,
+          "置信度：": true,
+          "建议复核：": true,
+          "## 自检表": true
+        },
+        "selfchecks": 4
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-HOST-COUNTS",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "55 complete MCP invocations,110start/complete events,8 reports/2 pending proposals,zero externalactions",
+      "actual": {
+        "mcpEvents": 110,
+        "eventsByType": {
+          "item.started": 55,
+          "item.completed": 55
+        },
+        "completedMcpCalls": 55,
+        "reports": 8,
+        "proposals": 2,
+        "externalActions": 0
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "FINAL-CI-REVIEW",
+      "preconditions": "Final root-authorized frozen source and existing independent current evidence files",
+      "steps": "Parse the entire named JSON/Markdown and compare exact current source/proof/image bytes",
+      "expected": "8source/metadata checks pass,current.cnb/packageSHA match;no claim of cloud execution",
+      "actual": {
+        "status": "pass",
+        "checks": {
+          "cnbBytesIdenticalToLocallyFetchedTrustedMain": true,
+          "existingStaticMediaStageCallsPackageScript": true,
+          "stageAlreadyInstallsChromium": true,
+          "stageAlreadyExportsNodePath": true,
+          "originalMediaDecoderAndCliTestsRetained": true,
+          "legacyAndDepthBrowsersChainedAfterExistingMediaTests": true,
+          "currentLocalBrowserProofsThirtyThreePass": true,
+          "currentBrowserProofSourcesMatch": true
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    }
+  ],
+  "deliverableHashes": {
+    "public-content-review.md": "cd4fb723a91e9351a32bd4f2a70956d782ee274643749ec606cf0d4c461668f1",
+    "public-content-proof.json": "669bcdc394fe2c1f7f14b32bf14d3095229e24f126fb25017dd107fb196d769e",
+    "workbench-read-coverage.json": "3318d33bf9056f3408773ad71cc39146b91547c4ac1faa9fa90e0705303239fd",
+    "public-cli-replay.json": "e8026d9b02d631e7bd3ae9f2b80444a3be4d8986f365854b8bab99ab826dddf9",
+    "site-proof.json": "5f4598568297110e7bc4630f2b5bbf386364fa8ec17fcfb10993763675d096ea",
+    "site-appearance-proof.json": "4f5cca68562a434398d91e5d18e7784cef2f86cbae2d5a97ef3333425ed968b0",
+    "site-visual-review.json": "2d1047946dd620a78d4014d52550cc9dccf9d9309cd1f9805b4550ea49136f5c",
+    "host-model-proof.json": "4a8b7003d5bcd6d036ef0e8a44975bcb276c7ee4020de240f3010fd51e7398c4",
+    "host-model-semantic-review.json": "4e713cfe4fc8e049926658515917ba5a660335affd62df8ea1d23558e12552b6",
+    "host-compatible-binding.json": "4fd20c41d20f91e74438740b4fe2dd8780c3736901ff2dc76c109886b9fd89ab",
+    "host-manifest-original-reconstructed.json": "66d7d5f1c9a1f0901ffa22c18a74e2012ee209d0ac859fd96e255c8c44df750b",
+    "ci-media-gate-review.json": "594810f9ede43a5e10b8e52eac35bcdfd2b1f66de4a5431512ff14d90ae30c98"
+  },
+  "limitations": "Metadata/source freshness and deliverable completeness check. It does not expand tested business, browser, production or external-action scope."
+}

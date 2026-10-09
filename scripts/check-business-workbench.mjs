@@ -89,12 +89,12 @@ try {
     await page.screenshot({ path: join(evidenceDir, 'desktop-overview.png'), fullPage: true });
     return { kpis: await page.locator('.kpi strong').allInnerTexts(), goalProgress: await page.locator('.goal-number').allInnerTexts(), errors: structuredClone(events), viewport: { width: 1440, height: 1000 } };
   });
-  await record('UI-02', '桌面布局加载完成', '逐一点击全部七个导航入口', '七页可达，active 与 breadcrumb 一致，页面不出现 undefined', async () => {
+  await record('UI-02', '桌面布局加载完成', '逐一点击全部八个导航入口', '八页可达，active 与 breadcrumb 一致，页面不出现 undefined', async () => {
     const titles = [];
-    for (const name of ['overview', 'growth', 'delivery', 'aftercare', 'approvals', 'team', 'records']) { await navigate(name); titles.push(await page.locator('#breadcrumb').innerText()); assert.ok(!(await page.locator('#content').innerText()).includes('undefined')); }
+    for (const name of ['overview', 'growth', 'delivery', 'aftercare', 'approvals', 'team', 'store', 'records']) { await navigate(name); titles.push(await page.locator('#breadcrumb').innerText()); assert.ok(!(await page.locator('#content').innerText()).includes('undefined')); }
     assert.equal(await page.locator('.operation-button[data-operation="content.publish"]').count(), 0);
-    await navigate('team'); assert.equal(await page.locator('.team-card').count(), 20);
-    return { visited: titles, employeesRendered: 20, externalPublishButton: 'not exposed' };
+    await navigate('team'); assert.equal(await page.locator('.team-card').count(), server.engine.catalog().workforce.length);
+    return { visited: titles, employeesRendered: server.engine.catalog().workforce.length, externalPublishButton: 'not exposed' };
   });
   await record('UI-03', '桌面记录页', '选择员工任务；查看业务详情和结构化业务依据；关闭弹窗', '任务可查看，租约或 CSRF 字段不出现在结构化内容', async () => {
     await navigate('records'); await page.locator('#record-type').selectOption('task');
@@ -191,20 +191,20 @@ try {
     await page.unroute('**/api/state'); await page.locator('#refresh').click(); await page.locator('#banner').waitFor({ state: 'hidden' });
     return { errorVisible: true, cachedKPIsRetained: true, refreshRecovered: true };
   });
-  await record('UI-14', '已有独立沙箱数据，390×844移动宽度', '逐一点击全部七个导航入口；量测文档宽度；拍摄总览与数字员工页面', '七页可达，页面无横向溢出，新增目标与人员申请入口可用', async () => {
+  await record('UI-14', '已有独立沙箱数据，390×844移动宽度', '逐一点击全部八个导航入口；量测文档宽度；拍摄总览与数字员工页面', '八页可达，页面无横向溢出，新增目标与人员申请入口可用', async () => {
     await page.setViewportSize({ width: 390, height: 844 }); const widths = [];
-    for (const name of ['overview', 'growth', 'delivery', 'aftercare', 'approvals', 'team', 'records']) {
+    for (const name of ['overview', 'growth', 'delivery', 'aftercare', 'approvals', 'team', 'store', 'records']) {
       await navigate(name); assert.equal(await page.locator(`nav [data-page="${name}"]`).isVisible(), true);
       const metrics = await page.evaluate(() => ({ viewport: innerWidth, document: document.documentElement.scrollWidth })); assert.ok(metrics.document <= metrics.viewport, `${name} horizontal overflow: ${JSON.stringify(metrics)}`); widths.push({ page: name, ...metrics });
     }
     await page.screenshot({ path: join(evidenceDir, 'mobile-records.png'), fullPage: true });
     await navigate('overview'); assert.equal(await page.locator('#content [data-operation="goal.create"]').first().isVisible(), true); await page.screenshot({ path: join(evidenceDir, 'mobile-overview.png'), fullPage: true });
     await navigate('team'); await page.screenshot({ path: join(evidenceDir, 'mobile-team.png'), fullPage: true });
-    return { navigationCount: 7, widths, newGoalAccessible: true };
+    return { navigationCount: 8, widths, newGoalAccessible: true };
   });
-  await record('UI-15', '320×780窄移动宽度', '七页导航与所有 page-head 内容布局检查', '七个导航入口仍可点且文档无横向溢出', async () => {
+  await record('UI-15', '320×780窄移动宽度', '八页导航与所有 page-head 内容布局检查', '八个导航入口仍可点且文档无横向溢出', async () => {
     await page.setViewportSize({ width: 320, height: 780 }); const widths = [];
-    for (const name of ['overview', 'growth', 'delivery', 'aftercare', 'approvals', 'team', 'records']) { await navigate(name); const metrics = await page.evaluate(() => ({ viewport: innerWidth, document: document.documentElement.scrollWidth })); assert.ok(metrics.document <= metrics.viewport, `${name}: ${JSON.stringify(metrics)}`); widths.push({ page: name, ...metrics }); }
+    for (const name of ['overview', 'growth', 'delivery', 'aftercare', 'approvals', 'team', 'store', 'records']) { await navigate(name); const metrics = await page.evaluate(() => ({ viewport: innerWidth, document: document.documentElement.scrollWidth })); assert.ok(metrics.document <= metrics.viewport, `${name}: ${JSON.stringify(metrics)}`); widths.push({ page: name, ...metrics }); }
     await page.screenshot({ path: join(evidenceDir, 'narrow-mobile-records.png'), fullPage: true }); return widths;
   });
   await record('UI-16', '完成各功能路径', '检查全流程浏览器脚本与安全策略错误', '无 pageerror、无 CSP 阻断，HTTP失败仅限主动注入错误或拒绝非法PII', async () => {

@@ -1,0 +1,2664 @@
+{
+  "schemaVersion": "bms.public-cli-replay/v1",
+  "taskId": "T-2026-1009-0001",
+  "actor": "/root/workbench_audit",
+  "executedAt": "2026-10-09T04:54:30.691151+00:00",
+  "nodeVersion": "v24.19.0",
+  "status": "pass",
+  "total": 52,
+  "passed": 52,
+  "failed": 0,
+  "dataDirectory": "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/public-cli-y87kwgfj",
+  "scope": {
+    "tenant": "audit-store",
+    "workspace": "audit-v2",
+    "dataMode": "sandbox"
+  },
+  "sourcesBefore": [
+    {
+      "path": "scripts/business-management.mjs",
+      "sha256": "1c0942dbe907129d3bfebe7868e67d5c11c40e8261e3cc2384906d400a54b664"
+    },
+    {
+      "path": "scripts/business-management-common.mjs",
+      "sha256": "131a64dfa4b60a4260df741f04a951b3ca8dafc18c5d98ecf895ffb64713788c"
+    },
+    {
+      "path": "bundles/smart-home/runtime/assets.mjs",
+      "sha256": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de"
+    },
+    {
+      "path": "bundles/smart-home/runtime/catalogue.mjs",
+      "sha256": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b"
+    },
+    {
+      "path": "bundles/smart-home/runtime/depth-catalogue.mjs",
+      "sha256": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07"
+    },
+    {
+      "path": "bundles/smart-home/runtime/depth-domain.mjs",
+      "sha256": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308"
+    },
+    {
+      "path": "bundles/smart-home/runtime/domain.mjs",
+      "sha256": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0"
+    },
+    {
+      "path": "bundles/smart-home/runtime/errors.mjs",
+      "sha256": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0"
+    },
+    {
+      "path": "bundles/smart-home/runtime/index.mjs",
+      "sha256": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d"
+    },
+    {
+      "path": "bundles/smart-home/runtime/scenario.mjs",
+      "sha256": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01"
+    },
+    {
+      "path": "bundles/smart-home/runtime/schema.mjs",
+      "sha256": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e"
+    },
+    {
+      "path": "bundles/smart-home/runtime/storage.mjs",
+      "sha256": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68"
+    },
+    {
+      "path": "bundles/smart-home/runtime/workflows.mjs",
+      "sha256": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c"
+    },
+    {
+      "path": "bundles/smart-home/runtime/workforce.mjs",
+      "sha256": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c"
+    },
+    {
+      "path": "bundles/smart-home/bundle.json",
+      "sha256": "3d1abdc1022a03fe97a247f1ed7c3bee7290c70e6c41baf2cc340f15af606ee3"
+    },
+    {
+      "path": "bundles/smart-home/library/industry-context.json",
+      "sha256": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55"
+    },
+    {
+      "path": "bundles/smart-home/library/native-operations.json",
+      "sha256": "855ac80da12cc8864289561d11f4ee705ba0e136cb42484773b9f82127956b23"
+    },
+    {
+      "path": "bundles/smart-home/library/workforce.json",
+      "sha256": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c"
+    },
+    {
+      "path": "bundles/smart-home/library/skill-catalogue.json",
+      "sha256": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86"
+    }
+  ],
+  "sourcesAfter": [
+    {
+      "path": "scripts/business-management.mjs",
+      "sha256": "1c0942dbe907129d3bfebe7868e67d5c11c40e8261e3cc2384906d400a54b664"
+    },
+    {
+      "path": "scripts/business-management-common.mjs",
+      "sha256": "131a64dfa4b60a4260df741f04a951b3ca8dafc18c5d98ecf895ffb64713788c"
+    },
+    {
+      "path": "bundles/smart-home/runtime/assets.mjs",
+      "sha256": "84edee75096f86254297f13049ff2c6cf4e420a3f836c8fe343658c21b2ef4de"
+    },
+    {
+      "path": "bundles/smart-home/runtime/catalogue.mjs",
+      "sha256": "8a7157eb04adc3534aa3d8f43449666c3b9cee18ecd38fa31023c6332cf82f2b"
+    },
+    {
+      "path": "bundles/smart-home/runtime/depth-catalogue.mjs",
+      "sha256": "45999dd417fa5783de8551b28930ca329d3db64f8fe5e0cc2b8305d4a89b1f07"
+    },
+    {
+      "path": "bundles/smart-home/runtime/depth-domain.mjs",
+      "sha256": "a67d5d9e6b89e9081981eff78db1be527eb7f524efc2f4d75d410ae915303308"
+    },
+    {
+      "path": "bundles/smart-home/runtime/domain.mjs",
+      "sha256": "e2134939a4ac0ee767316658ecb224f1f51742aee482863d38386ba0dcc7c6b0"
+    },
+    {
+      "path": "bundles/smart-home/runtime/errors.mjs",
+      "sha256": "65f80ea631942d09712026c4e35a653809181f883bc27e840c17da84f6e8ced0"
+    },
+    {
+      "path": "bundles/smart-home/runtime/index.mjs",
+      "sha256": "f737bde93dda26a01890f6839c07535f60b57cfc5f66f199fbe4dc87e1d1b60d"
+    },
+    {
+      "path": "bundles/smart-home/runtime/scenario.mjs",
+      "sha256": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01"
+    },
+    {
+      "path": "bundles/smart-home/runtime/schema.mjs",
+      "sha256": "95cf5ebe54f3795c63acbc29c6aa10b4d239b3ea4b963e51063e0a8041d8aa9e"
+    },
+    {
+      "path": "bundles/smart-home/runtime/storage.mjs",
+      "sha256": "79e6a0a431cce1c0620294b2250827488cefb8a7cb0ff5dc0edcb9cc8a3c8e68"
+    },
+    {
+      "path": "bundles/smart-home/runtime/workflows.mjs",
+      "sha256": "0d0a82df2b28c70135b788111caff604d0f417125693167013064262d3c56e3c"
+    },
+    {
+      "path": "bundles/smart-home/runtime/workforce.mjs",
+      "sha256": "1241b8f55348edf50d6f50171ebfb7780acedfa0d972c4f8d15c78b3f9518f4c"
+    },
+    {
+      "path": "bundles/smart-home/bundle.json",
+      "sha256": "3d1abdc1022a03fe97a247f1ed7c3bee7290c70e6c41baf2cc340f15af606ee3"
+    },
+    {
+      "path": "bundles/smart-home/library/industry-context.json",
+      "sha256": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55"
+    },
+    {
+      "path": "bundles/smart-home/library/native-operations.json",
+      "sha256": "855ac80da12cc8864289561d11f4ee705ba0e136cb42484773b9f82127956b23"
+    },
+    {
+      "path": "bundles/smart-home/library/workforce.json",
+      "sha256": "f99c7e8e575023e6bc23db86a5e92a90b3800874783a0d9b4940b837e413f67c"
+    },
+    {
+      "path": "bundles/smart-home/library/skill-catalogue.json",
+      "sha256": "e24981ee8b1cab08a44afbe025fc21825d293c6d1b5a92b64fbd959c2ae5dd86"
+    }
+  ],
+  "dataset": {
+    "datasetId": "shuguang-chengdu-v1",
+    "version": "1.0.0",
+    "title": "蜀光智家 · 成都高新体验店",
+    "storeId": "SG-CD-GX-STORE",
+    "fixtureDigest": "a7c1e81bb232585e72800997dbe5f54ec66536068d117d94b6873d06894f1ec5",
+    "dataMode": "sandbox",
+    "importMode": "atomic-scope-isolated",
+    "covers": [
+      "极简线索与逐步来源补全",
+      "客户档案",
+      "有尺寸坐标的房间点位",
+      "设计与施工修订",
+      "报价与合同独立审批",
+      "采购安装调试验收合成历史",
+      "售后与运营观察",
+      "每个已安装技能的真实可领取准备任务"
+    ],
+    "disclosure": "全部门店、客户、价格、施工与经营历史均为合成演练；不代表真实客户、华为/Aqara授权、兼容结论、签约、人审、收付款或现场施工。",
+    "humanReviewPerformed": false,
+    "modelTaskCompletionsImported": 0,
+    "actualCashMovement": false
+  },
+  "cases": [
+    {
+      "id": "doctor",
+      "preconditions": "Pinned Node24.19; no BMS environment inherited",
+      "steps": "doctor",
+      "expected": "ready=true; host model requires no extra key; daemonCallsModel=false",
+      "actual": {
+        "schemaVersion": "bms.doctor/v1",
+        "ready": true,
+        "items": [
+          {
+            "id": "node",
+            "ok": true,
+            "version": "24.19.0"
+          },
+          {
+            "id": "sqlite",
+            "ok": true,
+            "version": "3.53.3"
+          },
+          {
+            "id": "engine",
+            "ok": true
+          },
+          {
+            "id": "mcp",
+            "ok": true
+          },
+          {
+            "id": "skill",
+            "ok": true
+          }
+        ],
+        "config": {
+          "dataDir": "/Users/mac/Documents/Codex/2026-10-08/workloom-im-https-cnb-cool-workloom-2/work/public-cli-y87kwgfj",
+          "dataMode": "sandbox",
+          "tenantId": "audit-store",
+          "workspaceId": "audit-v2"
+        },
+        "model": {
+          "provider": "host-workbench",
+          "additionalApiKeyRequired": false,
+          "daemonCallsModel": false
+        },
+        "boundary": {
+          "externalConnectorsEnabled": false,
+          "physicalEvidenceRequiresHuman": true
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "scenario-list",
+      "preconditions": "Empty fresh audit-v2 workspace",
+      "steps": "scenario list",
+      "expected": "One explicitly disclosed sandbox dataset with0 imported model completions",
+      "actual": {
+        "datasetId": "shuguang-chengdu-v1",
+        "version": "1.0.0",
+        "title": "蜀光智家 · 成都高新体验店",
+        "storeId": "SG-CD-GX-STORE",
+        "fixtureDigest": "a7c1e81bb232585e72800997dbe5f54ec66536068d117d94b6873d06894f1ec5",
+        "dataMode": "sandbox",
+        "importMode": "atomic-scope-isolated",
+        "covers": [
+          "极简线索与逐步来源补全",
+          "客户档案",
+          "有尺寸坐标的房间点位",
+          "设计与施工修订",
+          "报价与合同独立审批",
+          "采购安装调试验收合成历史",
+          "售后与运营观察",
+          "每个已安装技能的真实可领取准备任务"
+        ],
+        "disclosure": "全部门店、客户、价格、施工与经营历史均为合成演练；不代表真实客户、华为/Aqara授权、兼容结论、签约、人审、收付款或现场施工。",
+        "humanReviewPerformed": false,
+        "modelTaskCompletionsImported": 0,
+        "actualCashMovement": false
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "fresh-init",
+      "preconditions": "Empty isolated audit-v2",
+      "steps": "init --demo",
+      "expected": "Explicit synthetic history;53ready tasks; no human/model/external/cash activity",
+      "actual": {
+        "counts": {
+          "store": 1,
+          "sku": 6,
+          "compatibility": 15,
+          "lead": 12,
+          "experience": 3,
+          "survey": 7,
+          "solution": 7,
+          "quote": 7,
+          "approval": 9,
+          "project": 3,
+          "procurement": 3,
+          "commissioning": 2,
+          "acceptance": 1,
+          "aftercare": 2,
+          "content": 8,
+          "goal": 4,
+          "workflow": 53,
+          "task": 53,
+          "report": 0,
+          "leadEnrichment": 0,
+          "customer": 7,
+          "pointPlan": 9,
+          "design": 9,
+          "construction": 9,
+          "contract": 7,
+          "business": 23,
+          "scenario": 1
+        },
+        "summary": {
+          "datasetId": "shuguang-chengdu-v1",
+          "version": "1.0.0",
+          "fixtureDigest": "a7c1e81bb232585e72800997dbe5f54ec66536068d117d94b6873d06894f1ec5",
+          "anchorDate": "2026-10-09T04:54:27.179Z",
+          "storeId": "SG-CD-GX-STORE",
+          "dataMode": "sandbox",
+          "dataOrigin": "synthetic-history-import",
+          "imported": true,
+          "recovered": false,
+          "overwrittenObjects": 0,
+          "counts": {
+            "store": 1,
+            "sku": 6,
+            "compatibility": 15,
+            "lead": 12,
+            "experience": 3,
+            "survey": 7,
+            "solution": 7,
+            "quote": 7,
+            "approval": 9,
+            "project": 3,
+            "procurement": 3,
+            "commissioning": 2,
+            "acceptance": 1,
+            "aftercare": 2,
+            "content": 8,
+            "goal": 4,
+            "workflow": 53,
+            "task": 53,
+            "report": 0,
+            "leadEnrichment": 0,
+            "customer": 7,
+            "pointPlan": 9,
+            "design": 9,
+            "construction": 9,
+            "contract": 7,
+            "business": 23,
+            "scenario": 1
+          },
+          "leadIds": [
+            "SG-L01",
+            "SG-L02",
+            "SG-L03",
+            "SG-L04",
+            "SG-L05",
+            "SG-L06",
+            "SG-L07",
+            "SG-L08",
+            "SG-L09",
+            "SG-L10",
+            "SG-L11",
+            "SG-L12"
+          ],
+          "customerIds": [
+            "SG-C06",
+            "SG-C07",
+            "SG-C08",
+            "SG-C09",
+            "SG-C10",
+            "SG-C11",
+            "SG-C12"
+          ],
+          "projectIds": [
+            "SG-PROJECT09",
+            "SG-PROJECT10",
+            "SG-PROJECT11"
+          ],
+          "latestEngineering": {
+            "10": {
+              "leadId": "SG-L10",
+              "customerId": "SG-C10",
+              "surveyId": "SG-SURVEY10",
+              "solutionId": "SG-SOLUTION10",
+              "quoteId": "SG-QUOTE10",
+              "contractId": "SG-CONTRACT10",
+              "pointPlanId": "SG-POINT10-V1",
+              "designId": "SG-DESIGN10-V1",
+              "constructionId": "SG-BUILD10-V1"
+            },
+            "11": {
+              "leadId": "SG-L11",
+              "customerId": "SG-C11",
+              "surveyId": "SG-SURVEY11",
+              "solutionId": "SG-SOLUTION11",
+              "quoteId": "SG-QUOTE11",
+              "contractId": "SG-CONTRACT11",
+              "pointPlanId": "SG-POINT11-V1",
+              "designId": "SG-DESIGN11-V1",
+              "constructionId": "SG-BUILD11-V1"
+            },
+            "12": {
+              "leadId": "SG-L12",
+              "customerId": "SG-C12",
+              "surveyId": "SG-SURVEY12",
+              "solutionId": "SG-SOLUTION12",
+              "quoteId": "SG-QUOTE12",
+              "contractId": "SG-CONTRACT12",
+              "pointPlanId": "SG-POINT12-V2",
+              "designId": "SG-DESIGN12-V2",
+              "constructionId": "SG-BUILD12-V2"
+            },
+            "06": {
+              "leadId": "SG-L06",
+              "customerId": "SG-C06",
+              "surveyId": "SG-SURVEY06",
+              "solutionId": "SG-SOLUTION06",
+              "quoteId": "SG-QUOTE06",
+              "contractId": "SG-CONTRACT06",
+              "pointPlanId": "SG-POINT06-V1",
+              "designId": "SG-DESIGN06-V1",
+              "constructionId": "SG-BUILD06-V1"
+            },
+            "07": {
+              "leadId": "SG-L07",
+              "customerId": "SG-C07",
+              "surveyId": "SG-SURVEY07",
+              "solutionId": "SG-SOLUTION07",
+              "quoteId": "SG-QUOTE07",
+              "contractId": "SG-CONTRACT07",
+              "pointPlanId": "SG-POINT07-V2",
+              "designId": "SG-DESIGN07-V2",
+              "constructionId": "SG-BUILD07-V2"
+            },
+            "08": {
+              "leadId": "SG-L08",
+              "customerId": "SG-C08",
+              "surveyId": "SG-SURVEY08",
+              "solutionId": "SG-SOLUTION08",
+              "quoteId": "SG-QUOTE08",
+              "contractId": "SG-CONTRACT08",
+              "pointPlanId": "SG-POINT08-V1",
+              "designId": "SG-DESIGN08-V1",
+              "constructionId": "SG-BUILD08-V1"
+            },
+            "09": {
+              "leadId": "SG-L09",
+              "customerId": "SG-C09",
+              "surveyId": "SG-SURVEY09",
+              "solutionId": "SG-SOLUTION09",
+              "quoteId": "SG-QUOTE09",
+              "contractId": "SG-CONTRACT09",
+              "pointPlanId": "SG-POINT09-V1",
+              "designId": "SG-DESIGN09-V1",
+              "constructionId": "SG-BUILD09-V1"
+            }
+          },
+          "workflowIds": {
+            "growth": "SG-FLOW-GROWTH",
+            "delivery": "SG-FLOW-DELIVERY",
+            "service": "SG-FLOW-SERVICE",
+            "management": "SG-FLOW-MANAGEMENT"
+          },
+          "readyEmployeeTasks": 49,
+          "completedModelTasks": 0,
+          "humanReviewPerformed": false,
+          "modelInvocationPerformed": false,
+          "actualCashMovement": false,
+          "financialExecutionPerformed": false,
+          "externalActionsPerformed": 0,
+          "disclosure": "全部门店、客户、价格、施工与经营历史均为合成演练；不代表真实客户、华为/Aqara授权、兼容结论、签约、人审、收付款或现场施工。",
+          "seeded": true,
+          "replayed": false,
+          "receipt": {
+            "id": "R-107dcf15-8449-406e-b57c-76872c8b5994",
+            "eventId": "E-1",
+            "operation": "scenario.import",
+            "kind": "local.sqlite.commit",
+            "mode": "sandbox",
+            "dataMode": "sandbox",
+            "localCommitted": true,
+            "externalVerified": false,
+            "synced": false,
+            "dataOrigin": "synthetic-history-import",
+            "humanReviewPerformed": false,
+            "modelInvocationPerformed": false,
+            "actualCashMovement": false,
+            "createdAt": "2026-10-09T04:54:27.331Z",
+            "resultDigest": "1114c6523bf3a2d7739b621aeaecd97e1d14df13cb9165d0416428b147d3a620",
+            "changes": 261,
+            "eventHash": "2da128e2d6a2c0ff27fcec253c24e9427b986989ab94d46cd223ea05e619d3a2"
+          }
+        },
+        "ledger": {
+          "ok": true,
+          "checkedEvents": 1,
+          "checkedEntities": 261,
+          "checkedReceipts": 1,
+          "headHash": "2da128e2d6a2c0ff27fcec253c24e9427b986989ab94d46cd223ea05e619d3a2",
+          "issues": []
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "cli-catalog",
+      "preconditions": "Same final sealed source",
+      "steps": "catalog",
+      "expected": "51operations including all depth APIs and exact lead schema",
+      "actual": {
+        "operations": 51,
+        "leadRequired": [
+          "id",
+          "storeId",
+          "idempotencyKey"
+        ],
+        "modelCalls": false
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "engine-catalog",
+      "preconditions": "Isolated sandbox initialized",
+      "steps": "call catalog",
+      "expected": "27employees49skills27types and sealed Chinese titles",
+      "actual": {
+        "operations": 51,
+        "employees": 27,
+        "skills": 49,
+        "skillTitles": 49,
+        "entityTypes": 27,
+        "execution": {
+          "modelProvider": "host-workbench",
+          "runtimeModelCalls": false,
+          "persistence": "node:sqlite",
+          "approvals": "human-session-only",
+          "receipts": "local.sqlite.commit",
+          "externalVerification": false
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "industry-six-sections",
+      "preconditions": "Isolated sandbox initialized",
+      "steps": "call industry.context",
+      "expected": "Sealed6sections and externalVerification=false",
+      "actual": {
+        "schemaVersion": "business-management.industry-context/v1",
+        "assetDigest": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+        "sourceAsset": "library/industry-context.json",
+        "externalVerification": false,
+        "sections": [
+          "schemaVersion",
+          "storeProfile",
+          "productReference",
+          "experienceGuide",
+          "channelGuide",
+          "officialReferences",
+          "syntheticDisclosure"
+        ]
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "industry-storeProfile",
+      "preconditions": "Six-sections sealed context",
+      "steps": "Read one section",
+      "expected": "Exact section content with same assetDigest",
+      "actual": {
+        "assetDigest": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+        "section": "storeProfile",
+        "dataDigest": "cc0ae2c569bcd345b7ba20e3b28e9d354a84772ccaba3abeacf995e85bd1e94f"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "industry-productReference",
+      "preconditions": "Six-sections sealed context",
+      "steps": "Read one section",
+      "expected": "Exact section content with same assetDigest",
+      "actual": {
+        "assetDigest": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+        "section": "productReference",
+        "dataDigest": "d5ac2da92d0a07c6fac3e9fd3fe8182f3d81cd2bf6581152e5189c9c1f732b72"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "industry-experienceGuide",
+      "preconditions": "Six-sections sealed context",
+      "steps": "Read one section",
+      "expected": "Exact section content with same assetDigest",
+      "actual": {
+        "assetDigest": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+        "section": "experienceGuide",
+        "dataDigest": "8aef8b7c6c336f27d093919d1fc0c54d0a13f270b03454c51de0921a151c6255"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "industry-channelGuide",
+      "preconditions": "Six-sections sealed context",
+      "steps": "Read one section",
+      "expected": "Exact section content with same assetDigest",
+      "actual": {
+        "assetDigest": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+        "section": "channelGuide",
+        "dataDigest": "37232248f87275dcc267a9bf32c179c8b644b9b9d11adf36a325c8f79846d4f9"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "industry-officialReferences",
+      "preconditions": "Six-sections sealed context",
+      "steps": "Read one section",
+      "expected": "Exact section content with same assetDigest",
+      "actual": {
+        "assetDigest": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+        "section": "officialReferences",
+        "dataDigest": "7d81c3140c7c9001d27cbcd2e1716cdbef0f82707c6545379eacebb3823bfa61"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "industry-syntheticDisclosure",
+      "preconditions": "Six-sections sealed context",
+      "steps": "Read one section",
+      "expected": "Exact section content with same assetDigest",
+      "actual": {
+        "assetDigest": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+        "section": "syntheticDisclosure",
+        "dataDigest": "bdc740583aa4f9185b6a1278709f208f153da4359b2974960b401adaac645033"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "partial-lead-01",
+      "preconditions": "Isolated sandbox initialized",
+      "steps": "call entity.get",
+      "expected": "Known identifier retained; budget/stage unknown; consent unknown",
+      "actual": {
+        "actualCashMovement": false,
+        "actualCustomerRecord": false,
+        "actualFieldWorkVerified": false,
+        "attribution": {
+          "campaignRef": null,
+          "channel": "unknown",
+          "model": "first-recorded-touch"
+        },
+        "channel": "unknown",
+        "completeness": {
+          "missingFields": [
+            "contactRef",
+            "buildingRef",
+            "intent",
+            "budgetCents",
+            "renovationStage",
+            "serviceArea"
+          ],
+          "permissionsMissing": [
+            "consultation",
+            "appointment"
+          ],
+          "handoffReady": false,
+          "factsKnown": 1,
+          "factsTotal": 7,
+          "computedFromRecordedFields": true
+        },
+        "consent": {
+          "purposes": [],
+          "status": "unknown"
+        },
+        "createdAt": "2026-10-09T04:54:27.188Z",
+        "dataMode": "sandbox",
+        "dataOrigin": "synthetic-history-import",
+        "enrichmentHistory": [],
+        "evidence": null,
+        "id": "SG-L01",
+        "provenance": {
+          "anchorDate": "2026-10-09T04:54:27.179Z",
+          "datasetId": "shuguang-chengdu-v1",
+          "disclosure": "全部门店、客户、价格、施工与经营历史均为合成演练；不代表真实客户、华为/Aqara授权、兼容结论、签约、人审、收付款或现场施工。",
+          "externalExecutionPerformed": false,
+          "fixtureDigest": "a7c1e81bb232585e72800997dbe5f54ec66536068d117d94b6873d06894f1ec5",
+          "humanReviewPerformed": false,
+          "importBasis": "explicit-sandbox-opt-in",
+          "importedAt": "2026-10-09T04:54:27.183Z",
+          "modelInvocationPerformed": false,
+          "recordStatusAtImport": "new",
+          "sourceOperation": "lead.create",
+          "sourceSequence": 23,
+          "version": "1.0.0"
+        },
+        "source": "synthetic-history",
+        "status": "new",
+        "storeId": "SG-CD-GX-STORE",
+        "surname": "李",
+        "synthetic": true,
+        "tenantId": "audit-store",
+        "type": "lead",
+        "updatedAt": "2026-10-09T04:54:27.188Z",
+        "version": 1,
+        "workspaceId": "audit-v2"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "partial-lead-02",
+      "preconditions": "Isolated sandbox initialized",
+      "steps": "call entity.get",
+      "expected": "Known identifier retained; budget/stage unknown; consent unknown",
+      "actual": {
+        "actualCashMovement": false,
+        "actualCustomerRecord": false,
+        "actualFieldWorkVerified": false,
+        "attribution": {
+          "campaignRef": null,
+          "channel": "unknown",
+          "model": "first-recorded-touch"
+        },
+        "channel": "unknown",
+        "completeness": {
+          "missingFields": [
+            "alias",
+            "buildingRef",
+            "intent",
+            "budgetCents",
+            "renovationStage",
+            "serviceArea"
+          ],
+          "permissionsMissing": [
+            "consultation",
+            "appointment"
+          ],
+          "handoffReady": false,
+          "factsKnown": 1,
+          "factsTotal": 7,
+          "computedFromRecordedFields": true
+        },
+        "consent": {
+          "purposes": [],
+          "status": "unknown"
+        },
+        "createdAt": "2026-10-09T04:54:27.188Z",
+        "dataMode": "sandbox",
+        "dataOrigin": "synthetic-history-import",
+        "enrichmentHistory": [],
+        "evidence": null,
+        "id": "SG-L02",
+        "provenance": {
+          "anchorDate": "2026-10-09T04:54:27.179Z",
+          "datasetId": "shuguang-chengdu-v1",
+          "disclosure": "全部门店、客户、价格、施工与经营历史均为合成演练；不代表真实客户、华为/Aqara授权、兼容结论、签约、人审、收付款或现场施工。",
+          "externalExecutionPerformed": false,
+          "fixtureDigest": "a7c1e81bb232585e72800997dbe5f54ec66536068d117d94b6873d06894f1ec5",
+          "humanReviewPerformed": false,
+          "importBasis": "explicit-sandbox-opt-in",
+          "importedAt": "2026-10-09T04:54:27.183Z",
+          "modelInvocationPerformed": false,
+          "recordStatusAtImport": "new",
+          "sourceOperation": "lead.create",
+          "sourceSequence": 24,
+          "version": "1.0.0"
+        },
+        "source": "synthetic-history",
+        "status": "new",
+        "storeId": "SG-CD-GX-STORE",
+        "synthetic": true,
+        "tenantId": "audit-store",
+        "type": "lead",
+        "updatedAt": "2026-10-09T04:54:27.188Z",
+        "version": 1,
+        "wechatRef": "SYN-WX-CD-002",
+        "workspaceId": "audit-v2"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "partial-lead-03",
+      "preconditions": "Isolated sandbox initialized",
+      "steps": "call entity.get",
+      "expected": "Known identifier retained; budget/stage unknown; consent unknown",
+      "actual": {
+        "actualCashMovement": false,
+        "actualCustomerRecord": false,
+        "actualFieldWorkVerified": false,
+        "attribution": {
+          "campaignRef": null,
+          "channel": "unknown",
+          "model": "first-recorded-touch"
+        },
+        "buildingName": "浮月庭（虚构）",
+        "buildingRef": "SYN-CD-GX-FUYUE",
+        "channel": "unknown",
+        "completeness": {
+          "missingFields": [
+            "alias",
+            "contactRef",
+            "intent",
+            "budgetCents",
+            "renovationStage",
+            "serviceArea"
+          ],
+          "permissionsMissing": [
+            "consultation",
+            "appointment"
+          ],
+          "handoffReady": false,
+          "factsKnown": 1,
+          "factsTotal": 7,
+          "computedFromRecordedFields": true
+        },
+        "consent": {
+          "purposes": [],
+          "status": "unknown"
+        },
+        "createdAt": "2026-10-09T04:54:27.188Z",
+        "dataMode": "sandbox",
+        "dataOrigin": "synthetic-history-import",
+        "enrichmentHistory": [],
+        "evidence": null,
+        "id": "SG-L03",
+        "provenance": {
+          "anchorDate": "2026-10-09T04:54:27.179Z",
+          "datasetId": "shuguang-chengdu-v1",
+          "disclosure": "全部门店、客户、价格、施工与经营历史均为合成演练；不代表真实客户、华为/Aqara授权、兼容结论、签约、人审、收付款或现场施工。",
+          "externalExecutionPerformed": false,
+          "fixtureDigest": "a7c1e81bb232585e72800997dbe5f54ec66536068d117d94b6873d06894f1ec5",
+          "humanReviewPerformed": false,
+          "importBasis": "explicit-sandbox-opt-in",
+          "importedAt": "2026-10-09T04:54:27.183Z",
+          "modelInvocationPerformed": false,
+          "recordStatusAtImport": "new",
+          "sourceOperation": "lead.create",
+          "sourceSequence": 25,
+          "version": "1.0.0"
+        },
+        "source": "synthetic-history",
+        "status": "new",
+        "storeId": "SG-CD-GX-STORE",
+        "synthetic": true,
+        "tenantId": "audit-store",
+        "type": "lead",
+        "updatedAt": "2026-10-09T04:54:27.188Z",
+        "version": 1,
+        "workspaceId": "audit-v2"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "list-customer",
+      "preconditions": "Imported fictionalstore",
+      "steps": "entity.list customer",
+      "expected": "Expected explicit synthetic records with data provenance",
+      "actual": {
+        "count": 7,
+        "ids": [
+          "SG-C06",
+          "SG-C07",
+          "SG-C08",
+          "SG-C09",
+          "SG-C10",
+          "SG-C11",
+          "SG-C12"
+        ],
+        "origins": [
+          "synthetic-history-import"
+        ]
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "list-pointPlan",
+      "preconditions": "Imported fictionalstore",
+      "steps": "entity.list pointPlan",
+      "expected": "Expected explicit synthetic records with data provenance",
+      "actual": {
+        "count": 9,
+        "ids": [
+          "SG-POINT06-V1",
+          "SG-POINT07-V1",
+          "SG-POINT07-V2",
+          "SG-POINT08-V1",
+          "SG-POINT09-V1",
+          "SG-POINT10-V1",
+          "SG-POINT11-V1",
+          "SG-POINT12-V1",
+          "SG-POINT12-V2"
+        ],
+        "origins": [
+          "synthetic-history-import"
+        ]
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "list-design",
+      "preconditions": "Imported fictionalstore",
+      "steps": "entity.list design",
+      "expected": "Expected explicit synthetic records with data provenance",
+      "actual": {
+        "count": 9,
+        "ids": [
+          "SG-DESIGN06-V1",
+          "SG-DESIGN07-V1",
+          "SG-DESIGN07-V2",
+          "SG-DESIGN08-V1",
+          "SG-DESIGN09-V1",
+          "SG-DESIGN10-V1",
+          "SG-DESIGN11-V1",
+          "SG-DESIGN12-V1",
+          "SG-DESIGN12-V2"
+        ],
+        "origins": [
+          "synthetic-history-import"
+        ]
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "list-construction",
+      "preconditions": "Imported fictionalstore",
+      "steps": "entity.list construction",
+      "expected": "Expected explicit synthetic records with data provenance",
+      "actual": {
+        "count": 9,
+        "ids": [
+          "SG-BUILD06-V1",
+          "SG-BUILD07-V1",
+          "SG-BUILD07-V2",
+          "SG-BUILD08-V1",
+          "SG-BUILD09-V1",
+          "SG-BUILD10-V1",
+          "SG-BUILD11-V1",
+          "SG-BUILD12-V1",
+          "SG-BUILD12-V2"
+        ],
+        "origins": [
+          "synthetic-history-import"
+        ]
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "list-contract",
+      "preconditions": "Imported fictionalstore",
+      "steps": "entity.list contract",
+      "expected": "Expected explicit synthetic records with data provenance",
+      "actual": {
+        "count": 7,
+        "ids": [
+          "SG-CONTRACT06",
+          "SG-CONTRACT07",
+          "SG-CONTRACT08",
+          "SG-CONTRACT09",
+          "SG-CONTRACT10",
+          "SG-CONTRACT11",
+          "SG-CONTRACT12"
+        ],
+        "origins": [
+          "synthetic-history-import"
+        ]
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "list-business",
+      "preconditions": "Imported fictionalstore",
+      "steps": "entity.list business",
+      "expected": "Expected explicit synthetic records with data provenance",
+      "actual": {
+        "count": 23,
+        "ids": [
+          "SG-BUSINESS01",
+          "SG-BUSINESS02",
+          "SG-BUSINESS03",
+          "SG-BUSINESS04",
+          "SG-BUSINESS05",
+          "SG-BUSINESS06",
+          "SG-BUSINESS07",
+          "SG-BUSINESS08",
+          "SG-BUSINESS09",
+          "SG-BUSINESS10",
+          "SG-BUSINESS11",
+          "SG-BUSINESS12",
+          "SG-BUSINESS13",
+          "SG-BUSINESS14",
+          "SG-BUSINESS15",
+          "SG-BUSINESS16",
+          "SG-BUSINESS17",
+          "SG-BUSINESS18",
+          "SG-BUSINESS19",
+          "SG-BUSINESS20",
+          "SG-BUSINESS21",
+          "SG-BUSINESS22",
+          "SG-BUSINESS23"
+        ],
+        "origins": [
+          "synthetic-history-import"
+        ]
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "no-imported-model-artifacts",
+      "preconditions": "Fresh initial taskqueue",
+      "steps": "task.list",
+      "expected": "53ready tasks; no artifact/modelTrace/lease hash exposed",
+      "actual": {
+        "count": 53,
+        "statuses": [
+          "ready"
+        ],
+        "artifacts": 0,
+        "modelTraces": 0,
+        "leaseHashes": 0
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "history-excluded-from-current-goals",
+      "preconditions": "Isolated sandbox initialized",
+      "steps": "call goal.report",
+      "expected": "Current accepted-projects=0; historical acceptedProjects=1",
+      "actual": {
+        "metricBasis": "operational-local-records-excluding-imported-history",
+        "metrics": {
+          "qualified-leads": 0,
+          "experience-plans": 0,
+          "accepted-projects": 0,
+          "resolved-aftercare": 0,
+          "management-reports": 0
+        },
+        "historicalSynthetic": {
+          "leads": 12,
+          "projects": 3,
+          "acceptedProjects": 1,
+          "resolvedAftercare": 1
+        },
+        "current": 0,
+        "target": 2,
+        "achievedLocally": false,
+        "externallyVerified": false
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "repeat-init-idempotence",
+      "preconditions": "Same dataset/source/workspace, initialized once",
+      "steps": "Repeat init --demo",
+      "expected": "recovered=true and unchanged counts / ledger head",
+      "actual": {
+        "seeded": {
+          "actualCashMovement": false,
+          "anchorDate": "2026-10-09T04:54:27.179Z",
+          "completedModelTasks": 0,
+          "counts": {
+            "acceptance": 1,
+            "aftercare": 2,
+            "approval": 9,
+            "business": 23,
+            "commissioning": 2,
+            "compatibility": 15,
+            "construction": 9,
+            "content": 8,
+            "contract": 7,
+            "customer": 7,
+            "design": 9,
+            "experience": 3,
+            "goal": 4,
+            "lead": 12,
+            "leadEnrichment": 0,
+            "pointPlan": 9,
+            "procurement": 3,
+            "project": 3,
+            "quote": 7,
+            "report": 0,
+            "scenario": 1,
+            "sku": 6,
+            "solution": 7,
+            "store": 1,
+            "survey": 7,
+            "task": 53,
+            "workflow": 53
+          },
+          "customerIds": [
+            "SG-C06",
+            "SG-C07",
+            "SG-C08",
+            "SG-C09",
+            "SG-C10",
+            "SG-C11",
+            "SG-C12"
+          ],
+          "dataMode": "sandbox",
+          "dataOrigin": "synthetic-history-import",
+          "datasetId": "shuguang-chengdu-v1",
+          "disclosure": "全部门店、客户、价格、施工与经营历史均为合成演练；不代表真实客户、华为/Aqara授权、兼容结论、签约、人审、收付款或现场施工。",
+          "externalActionsPerformed": 0,
+          "financialExecutionPerformed": false,
+          "fixtureDigest": "a7c1e81bb232585e72800997dbe5f54ec66536068d117d94b6873d06894f1ec5",
+          "humanReviewPerformed": false,
+          "imported": true,
+          "latestEngineering": {
+            "10": {
+              "constructionId": "SG-BUILD10-V1",
+              "contractId": "SG-CONTRACT10",
+              "customerId": "SG-C10",
+              "designId": "SG-DESIGN10-V1",
+              "leadId": "SG-L10",
+              "pointPlanId": "SG-POINT10-V1",
+              "quoteId": "SG-QUOTE10",
+              "solutionId": "SG-SOLUTION10",
+              "surveyId": "SG-SURVEY10"
+            },
+            "11": {
+              "constructionId": "SG-BUILD11-V1",
+              "contractId": "SG-CONTRACT11",
+              "customerId": "SG-C11",
+              "designId": "SG-DESIGN11-V1",
+              "leadId": "SG-L11",
+              "pointPlanId": "SG-POINT11-V1",
+              "quoteId": "SG-QUOTE11",
+              "solutionId": "SG-SOLUTION11",
+              "surveyId": "SG-SURVEY11"
+            },
+            "12": {
+              "constructionId": "SG-BUILD12-V2",
+              "contractId": "SG-CONTRACT12",
+              "customerId": "SG-C12",
+              "designId": "SG-DESIGN12-V2",
+              "leadId": "SG-L12",
+              "pointPlanId": "SG-POINT12-V2",
+              "quoteId": "SG-QUOTE12",
+              "solutionId": "SG-SOLUTION12",
+              "surveyId": "SG-SURVEY12"
+            },
+            "06": {
+              "constructionId": "SG-BUILD06-V1",
+              "contractId": "SG-CONTRACT06",
+              "customerId": "SG-C06",
+              "designId": "SG-DESIGN06-V1",
+              "leadId": "SG-L06",
+              "pointPlanId": "SG-POINT06-V1",
+              "quoteId": "SG-QUOTE06",
+              "solutionId": "SG-SOLUTION06",
+              "surveyId": "SG-SURVEY06"
+            },
+            "07": {
+              "constructionId": "SG-BUILD07-V2",
+              "contractId": "SG-CONTRACT07",
+              "customerId": "SG-C07",
+              "designId": "SG-DESIGN07-V2",
+              "leadId": "SG-L07",
+              "pointPlanId": "SG-POINT07-V2",
+              "quoteId": "SG-QUOTE07",
+              "solutionId": "SG-SOLUTION07",
+              "surveyId": "SG-SURVEY07"
+            },
+            "08": {
+              "constructionId": "SG-BUILD08-V1",
+              "contractId": "SG-CONTRACT08",
+              "customerId": "SG-C08",
+              "designId": "SG-DESIGN08-V1",
+              "leadId": "SG-L08",
+              "pointPlanId": "SG-POINT08-V1",
+              "quoteId": "SG-QUOTE08",
+              "solutionId": "SG-SOLUTION08",
+              "surveyId": "SG-SURVEY08"
+            },
+            "09": {
+              "constructionId": "SG-BUILD09-V1",
+              "contractId": "SG-CONTRACT09",
+              "customerId": "SG-C09",
+              "designId": "SG-DESIGN09-V1",
+              "leadId": "SG-L09",
+              "pointPlanId": "SG-POINT09-V1",
+              "quoteId": "SG-QUOTE09",
+              "solutionId": "SG-SOLUTION09",
+              "surveyId": "SG-SURVEY09"
+            }
+          },
+          "leadIds": [
+            "SG-L01",
+            "SG-L02",
+            "SG-L03",
+            "SG-L04",
+            "SG-L05",
+            "SG-L06",
+            "SG-L07",
+            "SG-L08",
+            "SG-L09",
+            "SG-L10",
+            "SG-L11",
+            "SG-L12"
+          ],
+          "modelInvocationPerformed": false,
+          "overwrittenObjects": 0,
+          "projectIds": [
+            "SG-PROJECT09",
+            "SG-PROJECT10",
+            "SG-PROJECT11"
+          ],
+          "readyEmployeeTasks": 49,
+          "recovered": true,
+          "storeId": "SG-CD-GX-STORE",
+          "version": "1.0.0",
+          "workflowIds": {
+            "delivery": "SG-FLOW-DELIVERY",
+            "growth": "SG-FLOW-GROWTH",
+            "management": "SG-FLOW-MANAGEMENT",
+            "service": "SG-FLOW-SERVICE"
+          },
+          "seeded": false,
+          "replayed": true,
+          "receipt": {
+            "actualCashMovement": false,
+            "changes": 261,
+            "createdAt": "2026-10-09T04:54:27.331Z",
+            "dataMode": "sandbox",
+            "dataOrigin": "synthetic-history-import",
+            "eventHash": "2da128e2d6a2c0ff27fcec253c24e9427b986989ab94d46cd223ea05e619d3a2",
+            "eventId": "E-1",
+            "externalVerified": false,
+            "humanReviewPerformed": false,
+            "id": "R-107dcf15-8449-406e-b57c-76872c8b5994",
+            "kind": "local.sqlite.commit",
+            "localCommitted": true,
+            "mode": "sandbox",
+            "modelInvocationPerformed": false,
+            "operation": "scenario.import",
+            "resultDigest": "1114c6523bf3a2d7739b621aeaecd97e1d14df13cb9165d0416428b147d3a620",
+            "synced": false
+          }
+        },
+        "counts": {
+          "store": 1,
+          "sku": 6,
+          "compatibility": 15,
+          "lead": 12,
+          "experience": 3,
+          "survey": 7,
+          "solution": 7,
+          "quote": 7,
+          "approval": 9,
+          "project": 3,
+          "procurement": 3,
+          "commissioning": 2,
+          "acceptance": 1,
+          "aftercare": 2,
+          "content": 8,
+          "goal": 4,
+          "workflow": 53,
+          "task": 53,
+          "report": 0,
+          "leadEnrichment": 0,
+          "customer": 7,
+          "pointPlan": 9,
+          "design": 9,
+          "construction": 9,
+          "contract": 7,
+          "business": 23,
+          "scenario": 1
+        },
+        "ledger": {
+          "ok": true,
+          "checkedEvents": 1,
+          "checkedEntities": 261,
+          "checkedReceipts": 1,
+          "headHash": "2da128e2d6a2c0ff27fcec253c24e9427b986989ab94d46cd223ea05e619d3a2",
+          "issues": []
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "new-key-recovery",
+      "preconditions": "Existing identical dataset",
+      "steps": "scenario import using new key",
+      "expected": "No overwrite or new model artifacts; imported=false/recovered=true",
+      "actual": {
+        "operation": "scenario.import",
+        "data": {
+          "actualCashMovement": false,
+          "anchorDate": "2026-10-09T04:54:27.179Z",
+          "completedModelTasks": 0,
+          "counts": {
+            "acceptance": 1,
+            "aftercare": 2,
+            "approval": 9,
+            "business": 23,
+            "commissioning": 2,
+            "compatibility": 15,
+            "construction": 9,
+            "content": 8,
+            "contract": 7,
+            "customer": 7,
+            "design": 9,
+            "experience": 3,
+            "goal": 4,
+            "lead": 12,
+            "leadEnrichment": 0,
+            "pointPlan": 9,
+            "procurement": 3,
+            "project": 3,
+            "quote": 7,
+            "report": 0,
+            "scenario": 1,
+            "sku": 6,
+            "solution": 7,
+            "store": 1,
+            "survey": 7,
+            "task": 53,
+            "workflow": 53
+          },
+          "customerIds": [
+            "SG-C06",
+            "SG-C07",
+            "SG-C08",
+            "SG-C09",
+            "SG-C10",
+            "SG-C11",
+            "SG-C12"
+          ],
+          "dataMode": "sandbox",
+          "dataOrigin": "synthetic-history-import",
+          "datasetId": "shuguang-chengdu-v1",
+          "disclosure": "全部门店、客户、价格、施工与经营历史均为合成演练；不代表真实客户、华为/Aqara授权、兼容结论、签约、人审、收付款或现场施工。",
+          "externalActionsPerformed": 0,
+          "financialExecutionPerformed": false,
+          "fixtureDigest": "a7c1e81bb232585e72800997dbe5f54ec66536068d117d94b6873d06894f1ec5",
+          "humanReviewPerformed": false,
+          "imported": false,
+          "latestEngineering": {
+            "10": {
+              "constructionId": "SG-BUILD10-V1",
+              "contractId": "SG-CONTRACT10",
+              "customerId": "SG-C10",
+              "designId": "SG-DESIGN10-V1",
+              "leadId": "SG-L10",
+              "pointPlanId": "SG-POINT10-V1",
+              "quoteId": "SG-QUOTE10",
+              "solutionId": "SG-SOLUTION10",
+              "surveyId": "SG-SURVEY10"
+            },
+            "11": {
+              "constructionId": "SG-BUILD11-V1",
+              "contractId": "SG-CONTRACT11",
+              "customerId": "SG-C11",
+              "designId": "SG-DESIGN11-V1",
+              "leadId": "SG-L11",
+              "pointPlanId": "SG-POINT11-V1",
+              "quoteId": "SG-QUOTE11",
+              "solutionId": "SG-SOLUTION11",
+              "surveyId": "SG-SURVEY11"
+            },
+            "12": {
+              "constructionId": "SG-BUILD12-V2",
+              "contractId": "SG-CONTRACT12",
+              "customerId": "SG-C12",
+              "designId": "SG-DESIGN12-V2",
+              "leadId": "SG-L12",
+              "pointPlanId": "SG-POINT12-V2",
+              "quoteId": "SG-QUOTE12",
+              "solutionId": "SG-SOLUTION12",
+              "surveyId": "SG-SURVEY12"
+            },
+            "06": {
+              "constructionId": "SG-BUILD06-V1",
+              "contractId": "SG-CONTRACT06",
+              "customerId": "SG-C06",
+              "designId": "SG-DESIGN06-V1",
+              "leadId": "SG-L06",
+              "pointPlanId": "SG-POINT06-V1",
+              "quoteId": "SG-QUOTE06",
+              "solutionId": "SG-SOLUTION06",
+              "surveyId": "SG-SURVEY06"
+            },
+            "07": {
+              "constructionId": "SG-BUILD07-V2",
+              "contractId": "SG-CONTRACT07",
+              "customerId": "SG-C07",
+              "designId": "SG-DESIGN07-V2",
+              "leadId": "SG-L07",
+              "pointPlanId": "SG-POINT07-V2",
+              "quoteId": "SG-QUOTE07",
+              "solutionId": "SG-SOLUTION07",
+              "surveyId": "SG-SURVEY07"
+            },
+            "08": {
+              "constructionId": "SG-BUILD08-V1",
+              "contractId": "SG-CONTRACT08",
+              "customerId": "SG-C08",
+              "designId": "SG-DESIGN08-V1",
+              "leadId": "SG-L08",
+              "pointPlanId": "SG-POINT08-V1",
+              "quoteId": "SG-QUOTE08",
+              "solutionId": "SG-SOLUTION08",
+              "surveyId": "SG-SURVEY08"
+            },
+            "09": {
+              "constructionId": "SG-BUILD09-V1",
+              "contractId": "SG-CONTRACT09",
+              "customerId": "SG-C09",
+              "designId": "SG-DESIGN09-V1",
+              "leadId": "SG-L09",
+              "pointPlanId": "SG-POINT09-V1",
+              "quoteId": "SG-QUOTE09",
+              "solutionId": "SG-SOLUTION09",
+              "surveyId": "SG-SURVEY09"
+            }
+          },
+          "leadIds": [
+            "SG-L01",
+            "SG-L02",
+            "SG-L03",
+            "SG-L04",
+            "SG-L05",
+            "SG-L06",
+            "SG-L07",
+            "SG-L08",
+            "SG-L09",
+            "SG-L10",
+            "SG-L11",
+            "SG-L12"
+          ],
+          "modelInvocationPerformed": false,
+          "overwrittenObjects": 0,
+          "projectIds": [
+            "SG-PROJECT09",
+            "SG-PROJECT10",
+            "SG-PROJECT11"
+          ],
+          "readyEmployeeTasks": 49,
+          "recovered": true,
+          "storeId": "SG-CD-GX-STORE",
+          "version": "1.0.0",
+          "workflowIds": {
+            "delivery": "SG-FLOW-DELIVERY",
+            "growth": "SG-FLOW-GROWTH",
+            "management": "SG-FLOW-MANAGEMENT",
+            "service": "SG-FLOW-SERVICE"
+          }
+        },
+        "receipt": {
+          "id": "R-47fdf6fc-20b8-45d8-9ba4-f1bdd29ab060",
+          "eventId": "E-2",
+          "operation": "scenario.import",
+          "kind": "local.sqlite.commit",
+          "mode": "sandbox",
+          "dataMode": "sandbox",
+          "localCommitted": true,
+          "externalVerified": false,
+          "synced": false,
+          "dataOrigin": "synthetic-history-import",
+          "humanReviewPerformed": false,
+          "modelInvocationPerformed": false,
+          "actualCashMovement": false,
+          "createdAt": "2026-10-09T04:54:28.834Z",
+          "resultDigest": "dae20945ac762e5996cfdc23f701333ba61fe13f2dba652f479288a28a728de3",
+          "changes": 0,
+          "eventHash": "89730c3de72afd8c722060d1a54be09485be870a3297d963ef1d6dfaad6c0f76"
+        },
+        "replayed": false
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "agent-cannot-import",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call scenario.import",
+      "expected": "PERMISSION_DENIED",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "PERMISSION_DENIED",
+          "message": "Actor role cannot call this operation"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "live-import-denied",
+      "preconditions": "Fresh separate live workspace",
+      "steps": "scenario import",
+      "expected": "SCENARIO_IN_LIVE_BLOCKED",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "SCENARIO_IN_LIVE_BLOCKED",
+          "message": "Synthetic history must never be imported into a live workspace"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "identifier-required",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call lead.create",
+      "expected": "LEAD_IDENTIFIER_REQUIRED",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "LEAD_IDENTIFIER_REQUIRED",
+          "message": "At least a surname/alias, opaque contact reference or building reference is needed; other facts may remain unknown"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "plaintext-phone-denied",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call lead.create",
+      "expected": "PII_REJECTED",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "PII_REJECTED",
+          "message": "$.phoneRef: use an opaque contactRef, not plaintext contact information"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "unknown-field-denied",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call lead.create",
+      "expected": "INVALID_INPUT",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "INVALID_INPUT",
+          "message": "$: unknown field actor"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "oversize-surname-denied",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call lead.create",
+      "expected": "INVALID_INPUT",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "INVALID_INPUT",
+          "message": "$.surname: string length outside bounds"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "unicode-minimum-lead",
+      "preconditions": "Isolated sandbox initialized",
+      "steps": "call lead.create",
+      "expected": "Single known surname accepted; other fields remain unknown",
+      "actual": {
+        "id": "audit-unicode-lead",
+        "storeId": "SG-CD-GX-STORE",
+        "surname": "𠮷",
+        "channel": "unknown",
+        "source": "operator",
+        "evidence": null,
+        "consent": {
+          "status": "unknown",
+          "purposes": []
+        },
+        "status": "new",
+        "enrichmentHistory": [],
+        "attribution": {
+          "channel": "unknown",
+          "campaignRef": null,
+          "model": "first-recorded-touch"
+        },
+        "completeness": {
+          "missingFields": [
+            "contactRef",
+            "buildingRef",
+            "intent",
+            "budgetCents",
+            "renovationStage",
+            "serviceArea"
+          ],
+          "permissionsMissing": [
+            "consultation",
+            "appointment"
+          ],
+          "handoffReady": false,
+          "factsKnown": 1,
+          "factsTotal": 7,
+          "computedFromRecordedFields": true
+        },
+        "type": "lead",
+        "tenantId": "audit-store",
+        "workspaceId": "audit-v2",
+        "dataMode": "sandbox",
+        "version": 1,
+        "createdAt": "2026-10-09T04:54:29.242Z",
+        "updatedAt": "2026-10-09T04:54:29.243Z"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "same-request-replay",
+      "preconditions": "Same CLIactor and exact writeinput",
+      "steps": "Replay same lead.create key",
+      "expected": "replayed=true and same stored version",
+      "actual": {
+        "replayed": true,
+        "version": 1
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "changed-request-same-key",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call lead.create",
+      "expected": "IDEMPOTENCY_CONFLICT",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "IDEMPOTENCY_CONFLICT",
+          "message": "This idempotencyKey was already used for a different request or actor"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "proposal-only",
+      "preconditions": "Isolated sandbox initialized",
+      "steps": "call lead.enrich",
+      "expected": "leadEnrichment pending-human-confirmation, customerFactsApplied=false",
+      "actual": {
+        "leadId": "SG-L01",
+        "storeId": "SG-CD-GX-STORE",
+        "baseVersion": 1,
+        "proposedPatch": {
+          "intent": "合成补充提议：需顾问核对客户最关心的生活场景。"
+        },
+        "source": "model-proposal",
+        "evidence": {
+          "uri": "evidence://synthetic/public-cli-audit",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "source": "synthetic",
+          "observedAt": "2026-10-09T04:54:29.399Z",
+          "summary": "Independent local CLI regression fixture; not real customer statement or business proof.",
+          "verification": "synthetic-unverified",
+          "externallyVerified": false,
+          "recordedBy": "business-management-cli-agent"
+        },
+        "supportingRecord": {
+          "type": "lead",
+          "id": "SG-L01",
+          "version": 1,
+          "digest": "76ce84f2649ef7f639af1a95f9f7473614fcbef7d12f381937c2dfa9ff94c4f7"
+        },
+        "confirmationQuestions": [],
+        "status": "pending-human-confirmation",
+        "customerFactsApplied": false,
+        "consentGranted": false,
+        "proposedBy": "business-management-cli-agent",
+        "externallyVerified": false,
+        "id": "lead-proposal-dda13df1218ed043c7daf5b6e54395613fe3d780",
+        "type": "leadEnrichment",
+        "tenantId": "audit-store",
+        "workspaceId": "audit-v2",
+        "dataMode": "sandbox",
+        "version": 1,
+        "createdAt": "2026-10-09T04:54:29.468Z",
+        "updatedAt": "2026-10-09T04:54:29.468Z"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "proposal-leaves-lead-unchanged",
+      "preconditions": "Isolated sandbox initialized",
+      "steps": "call entity.get",
+      "expected": "Original lead version1 without proposed intent and consent unknown",
+      "actual": {
+        "actualCashMovement": false,
+        "actualCustomerRecord": false,
+        "actualFieldWorkVerified": false,
+        "attribution": {
+          "campaignRef": null,
+          "channel": "unknown",
+          "model": "first-recorded-touch"
+        },
+        "channel": "unknown",
+        "completeness": {
+          "missingFields": [
+            "contactRef",
+            "buildingRef",
+            "intent",
+            "budgetCents",
+            "renovationStage",
+            "serviceArea"
+          ],
+          "permissionsMissing": [
+            "consultation",
+            "appointment"
+          ],
+          "handoffReady": false,
+          "factsKnown": 1,
+          "factsTotal": 7,
+          "computedFromRecordedFields": true
+        },
+        "consent": {
+          "purposes": [],
+          "status": "unknown"
+        },
+        "createdAt": "2026-10-09T04:54:27.188Z",
+        "dataMode": "sandbox",
+        "dataOrigin": "synthetic-history-import",
+        "enrichmentHistory": [],
+        "evidence": null,
+        "id": "SG-L01",
+        "provenance": {
+          "anchorDate": "2026-10-09T04:54:27.179Z",
+          "datasetId": "shuguang-chengdu-v1",
+          "disclosure": "全部门店、客户、价格、施工与经营历史均为合成演练；不代表真实客户、华为/Aqara授权、兼容结论、签约、人审、收付款或现场施工。",
+          "externalExecutionPerformed": false,
+          "fixtureDigest": "a7c1e81bb232585e72800997dbe5f54ec66536068d117d94b6873d06894f1ec5",
+          "humanReviewPerformed": false,
+          "importBasis": "explicit-sandbox-opt-in",
+          "importedAt": "2026-10-09T04:54:27.183Z",
+          "modelInvocationPerformed": false,
+          "recordStatusAtImport": "new",
+          "sourceOperation": "lead.create",
+          "sourceSequence": 23,
+          "version": "1.0.0"
+        },
+        "source": "synthetic-history",
+        "status": "new",
+        "storeId": "SG-CD-GX-STORE",
+        "surname": "李",
+        "synthetic": true,
+        "tenantId": "audit-store",
+        "type": "lead",
+        "updatedAt": "2026-10-09T04:54:27.188Z",
+        "version": 1,
+        "workspaceId": "audit-v2"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "fact-application-requires-human",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call lead.enrich",
+      "expected": "HUMAN_REVIEW_REQUIRED",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "HUMAN_REVIEW_REQUIRED",
+          "message": "This action requires an authenticated human session and explicit confirmation"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "proposal-version-conflict",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call lead.enrich",
+      "expected": "VERSION_CONFLICT",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "VERSION_CONFLICT",
+          "message": "Lead changed since it was read"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "empty-patch-denied",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call lead.enrich",
+      "expected": "EMPTY_LEAD_PATCH",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "EMPTY_LEAD_PATCH",
+          "message": "A lead enrichment must contain at least one field"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "nonTTY-human-call-denied",
+      "preconditions": "subprocess pipes; no real human terminal",
+      "steps": "human-call lead.enrich",
+      "expected": "HUMAN_TERMINAL_REQUIRED",
+      "actual": {
+        "exitCode": 3,
+        "error": {
+          "code": "HUMAN_TERMINAL_REQUIRED",
+          "message": "店主操作必须在真实交互终端确认，不能通过管道或 MCP 代办"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "other-workspace-isolation",
+      "preconditions": "Empty second sandbox workspace, same physicaldatafile",
+      "steps": "entity.get SG-L01",
+      "expected": "NOT_FOUND",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "NOT_FOUND",
+          "message": "lead SG-L01 does not exist in the current workspace"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "external-publication-disabled",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call content.publish",
+      "expected": "CONNECTOR_DISABLED",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "CONNECTOR_DISABLED",
+          "message": "External execution is disabled and cannot be unlocked by a model-provided approval"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "approval-agent-denied",
+      "preconditions": "Fresh imported sandbox; ordinary call fixed agent",
+      "steps": "call approval.decide",
+      "expected": "PERMISSION_DENIED",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "PERMISSION_DENIED",
+          "message": "Actor role cannot call this operation"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "point-draft-missing-device",
+      "preconditions": "Currentcustomer06 and latest point revision1",
+      "steps": "pointPlan.record partial drawing",
+      "expected": "Pointdraft accepted as unapproved local layout",
+      "actual": {
+        "exitCode": 0,
+        "type": "pointPlan",
+        "constructionAuthorized": false
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "design-missing-device-denied",
+      "preconditions": "Draftmap differs from exact validated BOM; design remains previous revision",
+      "steps": "call design.record",
+      "expected": "DESIGN_POINT_BOM_MISMATCH",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "DESIGN_POINT_BOM_MISMATCH",
+          "message": "A validated design must locate every BOM device exactly once in its surveyed room"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "point-draft-extra-device",
+      "preconditions": "Currentcustomer06 and latest point revision2",
+      "steps": "pointPlan.record partial drawing",
+      "expected": "Pointdraft accepted as unapproved local layout",
+      "actual": {
+        "exitCode": 0,
+        "type": "pointPlan",
+        "constructionAuthorized": false
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "design-extra-device-denied",
+      "preconditions": "Draftmap differs from exact validated BOM; design remains previous revision",
+      "steps": "call design.record",
+      "expected": "DESIGN_POINT_BOM_MISMATCH",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "DESIGN_POINT_BOM_MISMATCH",
+          "message": "A validated design must locate every BOM device exactly once in its surveyed room"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "point-draft-unspecified-device",
+      "preconditions": "Currentcustomer06 and latest point revision3",
+      "steps": "pointPlan.record partial drawing",
+      "expected": "Pointdraft accepted as unapproved local layout",
+      "actual": {
+        "exitCode": 0,
+        "type": "pointPlan",
+        "constructionAuthorized": false
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "design-unspecified-device-denied",
+      "preconditions": "Draftmap differs from exact validated BOM; design remains previous revision",
+      "steps": "call design.record",
+      "expected": "DESIGN_POINT_SKU_REQUIRED",
+      "actual": {
+        "exitCode": 1,
+        "error": {
+          "code": "DESIGN_POINT_SKU_REQUIRED",
+          "message": "A validated design needs an exact SKU for each device point; network/outlet preparation points may remain unassigned"
+        }
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "final-ledger-status",
+      "preconditions": "All local success and rejectedoperations completed",
+      "steps": "status + ledger.verify",
+      "expected": "Ledger ok; all4external connectors disabled; runtimeModelCalls0",
+      "actual": {
+        "counts": {
+          "store": 1,
+          "sku": 6,
+          "compatibility": 15,
+          "lead": 13,
+          "experience": 3,
+          "survey": 7,
+          "solution": 7,
+          "quote": 7,
+          "approval": 9,
+          "project": 3,
+          "procurement": 3,
+          "commissioning": 2,
+          "acceptance": 1,
+          "aftercare": 2,
+          "content": 8,
+          "goal": 4,
+          "workflow": 53,
+          "task": 53,
+          "report": 0,
+          "leadEnrichment": 1,
+          "customer": 7,
+          "pointPlan": 12,
+          "design": 9,
+          "construction": 9,
+          "contract": 7,
+          "business": 23,
+          "scenario": 1
+        },
+        "ledger": {
+          "ok": true,
+          "checkedEvents": 7,
+          "checkedEntities": 266,
+          "checkedReceipts": 7,
+          "headHash": "f367c6bacadb27f807e58d7d6d35a006a1c4ff3e43820981271b8a7ea8c6c660",
+          "issues": []
+        },
+        "connectors": {
+          "publishing": "disabled",
+          "messaging": "disabled",
+          "payments": "disabled",
+          "deviceControl": "disabled"
+        },
+        "runtimeModelCalls": 0
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "import-ledger-disclosure",
+      "preconditions": "Read importer event from append-only ledger",
+      "steps": "ledger.list",
+      "expected": "Firstevent synthetic-importer with human/model/cash=false receipt",
+      "actual": {
+        "actor": {
+          "id": "local-synthetic-importer",
+          "type": "synthetic-importer",
+          "version": "smart-home-runtime/1.1.0"
+        },
+        "receipt": {
+          "actualCashMovement": false,
+          "changes": 261,
+          "createdAt": "2026-10-09T04:54:27.331Z",
+          "dataMode": "sandbox",
+          "dataOrigin": "synthetic-history-import",
+          "eventId": "E-1",
+          "externalVerified": false,
+          "humanReviewPerformed": false,
+          "id": "R-107dcf15-8449-406e-b57c-76872c8b5994",
+          "kind": "local.sqlite.commit",
+          "localCommitted": true,
+          "mode": "sandbox",
+          "modelInvocationPerformed": false,
+          "operation": "scenario.import",
+          "resultDigest": "1114c6523bf3a2d7739b621aeaecd97e1d14df13cb9165d0416428b147d3a620",
+          "synced": false
+        },
+        "eventCount": 7
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "source-stable-during-replay",
+      "preconditions": "Fingerprints before firstcommand and after finalcommand",
+      "steps": "Compare all scoped source/asset SHA256 values",
+      "expected": "No source/manifest mutation during actual run",
+      "actual": {
+        "changed": []
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "doctor"
+      ],
+      "inputDigest": null,
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "c30dc14c208d7cb3ebcae3ee00ea54ea295b43b5bcba5e451cbd0dc62f1cbc33"
+    },
+    {
+      "command": [
+        "scenario",
+        "list"
+      ],
+      "inputDigest": null,
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "95d922351a3acdf738a87d6c811074e5cbc619df156bfb2fb58d50d78ce54c29"
+    },
+    {
+      "command": [
+        "init",
+        "--demo"
+      ],
+      "inputDigest": null,
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "3b20d1777ada994159c36429d9e3e6bbf6b293545af70ae1e1da0797ba0b76a9"
+    },
+    {
+      "command": [
+        "catalog"
+      ],
+      "inputDigest": null,
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "380cd90d62316ae5549c9a66e8fff3422b486bc47aaffac61a4317510e5e7448"
+    },
+    {
+      "command": [
+        "call",
+        "catalog"
+      ],
+      "inputDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "4e4e091abcf9b561c36baaa908898db620cb4db35b0106af4d0866163bbd613d"
+    },
+    {
+      "command": [
+        "call",
+        "industry.context"
+      ],
+      "inputDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "7f6dd47c9dc25665d1a91236b73c0644c1ccce6eeb3473601ea53d7f8996b087"
+    },
+    {
+      "command": [
+        "call",
+        "industry.context"
+      ],
+      "inputDigest": "0734e9739fc31159938fc21443598eefa480ca5740beae1aebd812d95ae60582",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "156e3f6cd11d77f2b5906e40f6aaf5747e134e76f47f27a873258e80795552b2"
+    },
+    {
+      "command": [
+        "call",
+        "industry.context"
+      ],
+      "inputDigest": "412bc8b05eae86b7a70d47dddef65881d07d71947dd3679c432080a9428ea862",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "25b0b5b19b0826e5470742d32b4ea4d62f1471d2fbdeec65ae52f1822b990163"
+    },
+    {
+      "command": [
+        "call",
+        "industry.context"
+      ],
+      "inputDigest": "1dd99c853a53be3faeb2d2760151943ee2b68d5da39c1d9ac33caad908ed3e67",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "0421a75bb6604fb6d0bf7554681c1c9711c56b5a819cf4348db4ee981f7b69e3"
+    },
+    {
+      "command": [
+        "call",
+        "industry.context"
+      ],
+      "inputDigest": "21a6e8aecc6299cd5d6935d66c4b6c89f8f6cc8163cdd9bc79ccfc89f58a3a67",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "5d85d222348fa16470e04bd4190c6a7e3fa93bdec82fac078e7660bd7d67eba8"
+    },
+    {
+      "command": [
+        "call",
+        "industry.context"
+      ],
+      "inputDigest": "5cbe46590d553dd0137a9b5cac6001edf30b0815a9b4957ace900de3657f3d14",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "6b3e407de6f6be33a06a125877872eaffcfc2b5596f9f5e851a3ed51f6cc534f"
+    },
+    {
+      "command": [
+        "call",
+        "industry.context"
+      ],
+      "inputDigest": "dcb87820a0357ad4e9a76cc4dffc5fc8846fca025a5a9758b713ac7d7706b3f4",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "93e1b8f24ce2d80d032b6ed639f1a3d315fdce5a5f211fdf69b99e21c62966cc"
+    },
+    {
+      "command": [
+        "call",
+        "entity.get"
+      ],
+      "inputDigest": "d444d34b0d868e88f5415eced8b705fdc1e768d34bdcd09f46b26c7e8134cee6",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "cd74709b3eaeddc8bc26beb9a15d4da26412a1ecc01149efd168fe52d78e5319"
+    },
+    {
+      "command": [
+        "call",
+        "entity.get"
+      ],
+      "inputDigest": "55c2919ee08256830ad763e92c6cb0fffd99fa7ae5b2406dae0a2ab2d3992205",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "e769dbd3faba9946fb10d1ed8dd22a1cacc066bfa10686465d55b2ac1e609c95"
+    },
+    {
+      "command": [
+        "call",
+        "entity.get"
+      ],
+      "inputDigest": "c89f8b5c8af6df7d11a243f79c8f30aa17d2c8f18451e82b45c3947ecd7bc4e4",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "499a79849913e8ba9b7faf288d804e02599bc06b044483f48b6b7d8d504b80f4"
+    },
+    {
+      "command": [
+        "call",
+        "entity.list"
+      ],
+      "inputDigest": "7dac5ee7c808469d9abcedb8ab7b3531a8a559030eaad931e34368153b994edc",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "2cd9f4c62b4535ca04359d86e7853e12f02c106efa9958127a732e84cda6dd60"
+    },
+    {
+      "command": [
+        "call",
+        "entity.list"
+      ],
+      "inputDigest": "bc7a5c23c86f26d892c2bdfd1102b694cc85cfd6edb78f727141c1958cef03f4",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "3d8c596eaca822201e57121cbaedb904bafc034b55862483c65ac21205e28002"
+    },
+    {
+      "command": [
+        "call",
+        "entity.list"
+      ],
+      "inputDigest": "1623682f8bd30a2ab0ed80634e8d7edc43d824f4952b275125705f5b56e04f53",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "37e1b1119208da8187e9f3fec5ff66b108267be18c5dba1fc740eca474678146"
+    },
+    {
+      "command": [
+        "call",
+        "entity.list"
+      ],
+      "inputDigest": "db704c8e265cf28c75ebde90b512cdc50c860f5cfca736ffcab83599d31fd19c",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "689f3558b6a35add6d157c2796f8106adca8a715cd0ffc06cb3c3220a6d35861"
+    },
+    {
+      "command": [
+        "call",
+        "entity.list"
+      ],
+      "inputDigest": "84df7d0611117549ad04cfddd7471a5cddc7da7f900fa4e288ecb2960079f75e",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "4c997d3aff103a405320c2459a60d4e2c21c0e5435521f71ed52e1113fe1bbe7"
+    },
+    {
+      "command": [
+        "call",
+        "entity.list"
+      ],
+      "inputDigest": "b338cd9afa6564505fd53a49565907c6322c688ae1e6a9c008505e5620cdbcbd",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "559306977386c7ca5e11b63ab6b328a7d0eb796085e8893a32b13e28a61af476"
+    },
+    {
+      "command": [
+        "call",
+        "task.list"
+      ],
+      "inputDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "6494d66d5ad92a0bad70258edcf3712e8243dab163183e1242bd7dd772f1b78a"
+    },
+    {
+      "command": [
+        "call",
+        "goal.report"
+      ],
+      "inputDigest": "6502335bfb0a0d03a374801b77ea20c5ef8926ede1cb194b9f48d857eed7009a",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "d6cdccaf10aadc2fed4047e0429c784ff22e2662669d67492aaf8f2160021e70"
+    },
+    {
+      "command": [
+        "init",
+        "--demo"
+      ],
+      "inputDigest": null,
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "8255b3fa737ecf22474a0fc4d2c123ac393bf82c64c34e838858a4135d56b361"
+    },
+    {
+      "command": [
+        "scenario",
+        "import"
+      ],
+      "inputDigest": "77f066eadfe3a06b86872fa9e2fde1d29bbf07cd1755602879768cf1398dc31a",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "58d6a5008ff2b6ac504e6ea2bcb7e873c7800b4d153b00d6bd852886d55f7f0c"
+    },
+    {
+      "command": [
+        "call",
+        "scenario.import"
+      ],
+      "inputDigest": "7efa83df03107e25d5ba431f27a907fb4620c65eccd735a16b8c8b1dd5881523",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "4492d0fd8d1e23ee984ed373e067261d742967742933b6892f26fc94916938c0"
+    },
+    {
+      "command": [
+        "scenario",
+        "import"
+      ],
+      "inputDigest": "b3a439c63eb7c98d4702d7754647c98044771f5cf613977680e2083cebaef564",
+      "workspace": "audit-live",
+      "mode": "live",
+      "exitCode": 1,
+      "responseDigest": "5afb7a73d30352a171047467b5559d19b01d6746e6eb695d01c98d628703eb8b"
+    },
+    {
+      "command": [
+        "call",
+        "lead.create"
+      ],
+      "inputDigest": "858c8cb568f2e770d4152bf659a2a4bbe6e5cf99cfe2c62e707c30a33f113025",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "974cc8a357af80a66e1a59db26dabc9618a66db864e36f3903c181897c9afb16"
+    },
+    {
+      "command": [
+        "call",
+        "lead.create"
+      ],
+      "inputDigest": "20bfd2f1fa22c44b9afaafe81d7b15dc300c3562913814b16c3ee4a46d42a53a",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "38d3d342e47742a19985a418fe20ee1513c032e0cdfec174ba49d84d21b6accc"
+    },
+    {
+      "command": [
+        "call",
+        "lead.create"
+      ],
+      "inputDigest": "c2a47bad2b136dd388dc8e97f68b1358d62f8d3e57309f655993b1cee5a2d67d",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "f049df27dc579e7a063e8db4b2eeb6f1dabef57323049f89162e206fe2ed208b"
+    },
+    {
+      "command": [
+        "call",
+        "lead.create"
+      ],
+      "inputDigest": "767382a1b99541784b375164f00a71d8e8bacb20a3cb2b7cd2e1f2c7d73a756a",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "fdd5c3a248bc448ea3bd25f83ff2244f3757fca58c8fa30007abbaa8623ad018"
+    },
+    {
+      "command": [
+        "call",
+        "lead.create"
+      ],
+      "inputDigest": "df103a6ddd482d6bfff0f35d3472240f910927086017e481aeda82918f27c208",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "0da9786a646390928841fe23d7fe6653f6bef9ccc8957bfea62de83723858763"
+    },
+    {
+      "command": [
+        "call",
+        "lead.create"
+      ],
+      "inputDigest": "df103a6ddd482d6bfff0f35d3472240f910927086017e481aeda82918f27c208",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "61a45e6e513e0ec4ebb484fff91d73e7072fb58d4d005ec47dace8f7bde4ce82"
+    },
+    {
+      "command": [
+        "call",
+        "lead.create"
+      ],
+      "inputDigest": "75e1b7224cbf714aaa374376440da458c28f66fb91948c5699449650b45a16b6",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "300875e3ca79375a5089efc509ae07472337c47e5d20e2647754390cc0b45930"
+    },
+    {
+      "command": [
+        "call",
+        "lead.enrich"
+      ],
+      "inputDigest": "1b3452a55ea68775dc981c379dc948a1cc6926204407081feaddd8523b1d0955",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "f1d3b0824569fbae8c22d60f85dec6b7d43fd1089bf3f47ae34d41aa59b0bcaa"
+    },
+    {
+      "command": [
+        "call",
+        "entity.get"
+      ],
+      "inputDigest": "d444d34b0d868e88f5415eced8b705fdc1e768d34bdcd09f46b26c7e8134cee6",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "cd74709b3eaeddc8bc26beb9a15d4da26412a1ecc01149efd168fe52d78e5319"
+    },
+    {
+      "command": [
+        "call",
+        "lead.enrich"
+      ],
+      "inputDigest": "c43dc41bffb9044acede449449ab222941c3abdd8404e0a2e7a8e4bb56f2098c",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "f790e13a376fe67f00560086b327c4e071888ea15cd834fd2eb968125b0926df"
+    },
+    {
+      "command": [
+        "call",
+        "lead.enrich"
+      ],
+      "inputDigest": "f4b0b63ea9c4ca1780ad687edac7d400cc931431d8216aa4fb2b085f6d24e680",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "2ed21d8253d9fdeacaf35e1aea1d1cb19c5b35b58fde99002a0c4d1b3c1627c6"
+    },
+    {
+      "command": [
+        "call",
+        "lead.enrich"
+      ],
+      "inputDigest": "63bbccc7939a7f069d41dddb73950e0e07e9650ea2c821893f890211926d8497",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "e03860c0abe3a9bd362a03f5a14428486f6808964e860e02090e35db66d867a2"
+    },
+    {
+      "command": [
+        "human-call",
+        "lead.enrich"
+      ],
+      "inputDigest": "31dde410e457714b0d972f39f85d0792e8ff3ce4726225b8586865520adf91c9",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 3,
+      "responseDigest": "f8473fb343ed970f7237141a961de8bf676b3e86053cc7bbfc46a0f70a0185e2"
+    },
+    {
+      "command": [
+        "call",
+        "entity.get"
+      ],
+      "inputDigest": "d444d34b0d868e88f5415eced8b705fdc1e768d34bdcd09f46b26c7e8134cee6",
+      "workspace": "audit-other",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "abf9bb45bd228db567f65834948e1f755820e8fd3d8c82b21585edc488243678"
+    },
+    {
+      "command": [
+        "call",
+        "content.publish"
+      ],
+      "inputDigest": "715184c953afb7935ad6c1b3ca2d09654da8824b3b6283a4b961a574c2e06d24",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "a696f996c988a90382ed5a38a613de3235b99aac79d6875a7bf179ff6cf401eb"
+    },
+    {
+      "command": [
+        "call",
+        "approval.decide"
+      ],
+      "inputDigest": "48dc70b22c09301556cb122f0c938c3510c368c62e2bc2c9f225a2c711b86e3e",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "4492d0fd8d1e23ee984ed373e067261d742967742933b6892f26fc94916938c0"
+    },
+    {
+      "command": [
+        "call",
+        "entity.get"
+      ],
+      "inputDigest": "418d223a94d54166cbd833efde581177e779611146357807800a3f7d4d5526f3",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "8a37de0757dcac2bf5556557e6fffada335a2a4270753f4579891fba0a5085bf"
+    },
+    {
+      "command": [
+        "call",
+        "entity.get"
+      ],
+      "inputDigest": "7487433a75943b8e7889d98bc5e7579ecd913c87a676ca9f94484fa223b8761d",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "1146e61e262c46d8ba4a1393995eb3c2675dd0f26fbbfd3f09004daa8e5d2bc9"
+    },
+    {
+      "command": [
+        "call",
+        "pointPlan.record"
+      ],
+      "inputDigest": "5d29750fe7d6b1ed83c49afddb52157290bdeaf735dc2ea51fff4d189bb9d30e",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "8852be97f9c0834fe4aad7046185b6bac97efbd7b563a5d51139048d4ed28d2f"
+    },
+    {
+      "command": [
+        "call",
+        "design.record"
+      ],
+      "inputDigest": "ddbc2533b2afe0d047c13da96c012f08c5fb0e3648ffca9e4091a9606c831130",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "9dffc9bbb0eca5a9c5127d0cc7e1fb9b833798e4f8d8bb801265cd74b79a23e8"
+    },
+    {
+      "command": [
+        "call",
+        "pointPlan.record"
+      ],
+      "inputDigest": "b63fafd8ed417c00c356a192eb37a659e6c503cd9d15e21b0f90b2ac4889df32",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "654977c1bb5feea620ea721253dd5ef8554aa9c5673d1adc91610d6f64af3bdd"
+    },
+    {
+      "command": [
+        "call",
+        "design.record"
+      ],
+      "inputDigest": "2ed9ca659a913f09f5122e8df5982b3938e7e5b27d59a5bebde714621fe1b9d1",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "9dffc9bbb0eca5a9c5127d0cc7e1fb9b833798e4f8d8bb801265cd74b79a23e8"
+    },
+    {
+      "command": [
+        "call",
+        "pointPlan.record"
+      ],
+      "inputDigest": "74d2fb9fb14d3fe4bbbb00bc90818e7ed34a928b6a67534ea194bd41f9295d08",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "338cd6609331ee37f8cb4aa1804ad84cbf988b722429a36639eb97f14aa0af39"
+    },
+    {
+      "command": [
+        "call",
+        "design.record"
+      ],
+      "inputDigest": "165efcfcd471ee24a413ef8d83cca53ebb6a4ccc4f2cbd2734d1e84ea3b30199",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 1,
+      "responseDigest": "327bb9730a163518e62cfc8fa9b0c92e1dd3c378f502fbc37a91ffbbb635a6a1"
+    },
+    {
+      "command": [
+        "call",
+        "status"
+      ],
+      "inputDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "83dab6aabe7e7f04a0f4c11aca9171e66dd9d8a85640e4b788d93e03a340c024"
+    },
+    {
+      "command": [
+        "call",
+        "ledger.list"
+      ],
+      "inputDigest": "db5d2d6d56df7ad033c022a52c39aa1797e8310a6334d977882a899cd9498d79",
+      "workspace": "audit-v2",
+      "mode": "sandbox",
+      "exitCode": 0,
+      "responseDigest": "7e46e52498d44ad92178edf1b670792572618a23452bbaaf084c2f398b16959b"
+    }
+  ],
+  "boundaries": {
+    "realHostModelInvoked": false,
+    "customerOrFieldFactsVerified": false,
+    "externalActionsPerformed": 0,
+    "actualCashMovement": false,
+    "websiteDeployed": false,
+    "purpose": "CLI replay of publicdocumented local behavior; separate actualhostproof is required"
+  },
+  "rejectedCasesDidNotAutoRepairSource": true
+}

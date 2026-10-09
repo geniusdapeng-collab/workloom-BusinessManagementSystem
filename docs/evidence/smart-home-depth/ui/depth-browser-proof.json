@@ -1,0 +1,326 @@
+{
+  "schemaVersion": "bms.smart-home-depth-browser-proof/v1",
+  "testedAt": "2026-10-09T04:49:01.359Z",
+  "browserVersion": "154.0.8037.99",
+  "channel": "chrome",
+  "environment": "local-preview",
+  "dataMode": "sandbox",
+  "syntheticScenario": "shuguang-chengdu-v1",
+  "realHumanApprovalClaimed": false,
+  "realCustomerData": false,
+  "physicalExecution": false,
+  "sourceHashes": {
+    "bundles/smart-home/ui/workbench/app.js": "23d1979baaf990beffc149abe9a6b0901df03f9887b941611819e969b6c23ee2",
+    "bundles/smart-home/ui/workbench/index.html": "8a72cb70c1f193fee547061fd6826ec2b2c634388ebb877f899adc30d095364b",
+    "bundles/smart-home/ui/workbench/style.css": "0dd8f15e9183b4765c4fcf35da69ec173acdc478c554a992858e87d414d9679d",
+    "bundles/smart-home/runtime/scenario.mjs": "488c8f944592ec79d819c9cc3da444524ac413014267ef4464e90e415529cf01",
+    "bundles/smart-home/library/industry-context.json": "de8212fc5c64034c4141dfc513b76e0b8550bb9664f9000f334abb3f56bf1d55",
+    "scripts/check-smart-home-depth.mjs": "005100b827a347ce9a12aedd5c2f93b9c1e972a6917b1b7534045b2214955374"
+  },
+  "screenshots": [
+    "desktop-overview.png",
+    "desktop-overview-viewport.png",
+    "desktop-growth.png",
+    "desktop-growth-viewport.png",
+    "desktop-delivery.png",
+    "desktop-delivery-viewport.png",
+    "desktop-store.png",
+    "desktop-store-viewport.png",
+    "mobile-growth.png",
+    "mobile-growth-viewport.png",
+    "mobile-delivery.png",
+    "mobile-delivery-viewport.png",
+    "mobile-store.png",
+    "mobile-store-viewport.png"
+  ],
+  "cases": [
+    {
+      "id": "DEPTH-UI-01",
+      "precondition": "Fresh sandbox; imported Chengdu fictional history; all host tasks untouched",
+      "steps": "Open desktop; inspect store identity, all eight routes and task states",
+      "expected": "Eight real pages; exact live workforce count; no seeded model completions or fabricated history metrics",
+      "actual": {
+        "routes": 8,
+        "tasks": 53,
+        "completedSeededTasks": 0,
+        "modelTracesSeeded": 0,
+        "actualCounts": {
+          "store": 1,
+          "sku": 6,
+          "compatibility": 15,
+          "lead": 12,
+          "experience": 3,
+          "survey": 7,
+          "solution": 7,
+          "quote": 7,
+          "approval": 9,
+          "project": 3,
+          "procurement": 3,
+          "commissioning": 2,
+          "acceptance": 1,
+          "aftercare": 2,
+          "content": 8,
+          "goal": 4,
+          "workflow": 53,
+          "task": 53,
+          "report": 0,
+          "leadEnrichment": 0,
+          "customer": 7,
+          "pointPlan": 9,
+          "design": 9,
+          "construction": 9,
+          "contract": 7,
+          "business": 23,
+          "scenario": 1
+        }
+      },
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-02",
+      "precondition": "Anonymous browser and an imported store",
+      "steps": "Use the lead form to save surname only; inspect stored fields and missing information card",
+      "expected": "No generated contact, budget or renovation stage; unknown consent retained; lead visible with missing fields",
+      "actual": {
+        "response": {
+          "status": 200,
+          "operation": "lead.create"
+        },
+        "actualLeadVersion": 1,
+        "absentFields": [
+          "alias",
+          "contactRef",
+          "phoneRef",
+          "wechatRef",
+          "budgetCents",
+          "renovationStage"
+        ],
+        "consent": "unknown"
+      },
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-03",
+      "precondition": "Surname-only lead with unchanged version",
+      "steps": "Open its enrichment button; propose a verified synthetic intent with source model-proposal and evidence",
+      "expected": "Selected lead/version preserved; a proposal appears; original lead facts and consent unchanged",
+      "actual": {
+        "response": {
+          "status": 200,
+          "operation": "lead.enrich"
+        },
+        "originalVersion": 1,
+        "appliedFacts": false,
+        "proposalStatus": "pending-human-confirmation"
+      },
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-04",
+      "precondition": "Imported clients, point revisions, design and construction records",
+      "steps": "Inspect SVG dimensions and exact number of points; switch revision; read customer/project document associations",
+      "expected": "Each diagram follows stored coordinates; revision switch changes the actual drawing; source disclosure visible",
+      "actual": {
+        "selectedRevision": 1,
+        "rooms": 4,
+        "points": 22,
+        "storedCoordinatesMatched": true,
+        "designs": 9,
+        "constructionPlans": 9,
+        "contracts": 7
+      },
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-05",
+      "precondition": "Anonymous agent browser; point plan and contract editing available",
+      "steps": "Open point-plan form; add and remove a point row; try opening signed-contract evidence",
+      "expected": "Structured point inputs and minimum item check; no owner action allowed without terminal session",
+      "actual": {
+        "structuredPointRowsUsable": true,
+        "physicalSigningBypass": false,
+        "realHumanApprovalClaimed": false
+      },
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-06",
+      "precondition": "Actual workforce catalogue with new roles and skill ownership",
+      "steps": "Open employees; launch sales coach skill; inspect exact top-level operation defaults",
+      "expected": "Exact runtime names/responsibilities/skills rendered and the matching employee-work form selected",
+      "actual": {
+        "workforce": 27,
+        "role": "sales-coach",
+        "skill": "sales-coaching",
+        "changedRole": "appointment-coordinator",
+        "staleSkillCleared": true,
+        "modelRunClaimed": false
+      },
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-11",
+      "precondition": "Recorded lead has budget zero, no service area and consultation-only consent",
+      "steps": "Create that lead through native operation, refresh growth, compare UI missing facts and permissions with runtime",
+      "expected": "Budget and service area remain missing; appointment authorization remains missing; consultation is present",
+      "actual": {
+        "missingFields": [
+          "budgetCents",
+          "serviceArea"
+        ],
+        "permissionsMissing": [
+          "appointment"
+        ],
+        "actualCard": "待完善：客户预算（分）、服务区域、预约用途授权"
+      },
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-07",
+      "precondition": "Sealed industry source material and independently fictional SKUs",
+      "steps": "Open store page and inspect product, scene, channel, source and affiliation boundaries",
+      "expected": "Fictional identity and official-reference boundary visible; links exactly match sealed references",
+      "actual": {
+        "officialReferenceLinks": 8,
+        "actualSaleSKUs": 6,
+        "fictionalStoreDisclosed": true,
+        "manufacturerAuthorizationClaimed": false
+      },
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-08",
+      "precondition": "Network reads previously successful; cached Chengdu data retained",
+      "steps": "Inject an industry-context read failure, refresh, recover and refresh again",
+      "expected": "Readable error banner; cached data remains; button is re-enabled; later read recovers",
+      "actual": {
+        "injectedReadFailureVisible": true,
+        "cachedRecordsRetained": true,
+        "recovery": true
+      },
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-09",
+      "precondition": "Rich dataset and all eight pages; 390×844 and 320×780 mobile widths",
+      "steps": "Visit each page at both sizes; measure horizontal overflow; capture growth/delivery/store",
+      "expected": "All eight navigation links usable, no document overflow, diagrams and controls remain within viewport",
+      "actual": [
+        {
+          "route": "overview",
+          "viewport": 390,
+          "content": 390
+        },
+        {
+          "route": "growth",
+          "viewport": 390,
+          "content": 390
+        },
+        {
+          "route": "delivery",
+          "viewport": 390,
+          "content": 390
+        },
+        {
+          "route": "aftercare",
+          "viewport": 390,
+          "content": 390
+        },
+        {
+          "route": "approvals",
+          "viewport": 390,
+          "content": 390
+        },
+        {
+          "route": "team",
+          "viewport": 390,
+          "content": 390
+        },
+        {
+          "route": "store",
+          "viewport": 390,
+          "content": 390
+        },
+        {
+          "route": "records",
+          "viewport": 390,
+          "content": 390
+        },
+        {
+          "route": "overview",
+          "viewport": 320,
+          "content": 320
+        },
+        {
+          "route": "growth",
+          "viewport": 320,
+          "content": 320
+        },
+        {
+          "route": "delivery",
+          "viewport": 320,
+          "content": 320
+        },
+        {
+          "route": "aftercare",
+          "viewport": 320,
+          "content": 320
+        },
+        {
+          "route": "approvals",
+          "viewport": 320,
+          "content": 320
+        },
+        {
+          "route": "team",
+          "viewport": 320,
+          "content": 320
+        },
+        {
+          "route": "store",
+          "viewport": 320,
+          "content": 320
+        },
+        {
+          "route": "records",
+          "viewport": 320,
+          "content": 320
+        }
+      ],
+      "pass": true
+    },
+    {
+      "id": "DEPTH-UI-10",
+      "precondition": "End of real browser paths, failures explicitly injected",
+      "steps": "Inspect browser page errors, CSP errors and current ledger integrity",
+      "expected": "No uncaught script or CSP error; ledger verifies; no host tasks falsely completed",
+      "actual": {
+        "ledger": {
+          "ok": true,
+          "checkedEvents": 4,
+          "checkedEntities": 264,
+          "checkedReceipts": 4,
+          "headHash": "3a08d258bd835d36dfe75a8b97ac8b9e04beb3489c976e747fa050e494486572",
+          "issues": []
+        },
+        "scriptErrors": [],
+        "hostTasksCompletedByBrowser": 0,
+        "physicalActionsExecuted": 0
+      },
+      "pass": true
+    }
+  ],
+  "events": {
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    ],
+    "requestFailures": []
+  },
+  "cleanupErrors": [],
+  "totals": {
+    "cases": 11,
+    "passed": 11,
+    "failed": 0
+  }
+}

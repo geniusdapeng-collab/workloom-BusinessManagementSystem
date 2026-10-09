@@ -1,0 +1,823 @@
+{
+  "schemaVersion": "business-management.industry-context/v1",
+  "storeProfile": {
+    "name": "蜀光智家 · 成都高新体验店",
+    "brand": "蜀光智家",
+    "positioning": "面向成都家庭的全屋智能需求梳理、体验路线、现场资料与工程交接经营样本；当前仅运行明确标识的沙箱资料。",
+    "dataMode": "sandbox",
+    "synthetic": true,
+    "realStoreVerified": false,
+    "manufacturerAuthorization": {
+      "huawei": "unverified",
+      "aqara": "unverified"
+    },
+    "serviceAreas": [
+      {
+        "id": "chengdu-gaoxin",
+        "label": "成都高新区",
+        "coverageNote": "模拟核心服务圈；真实接单需核验地点、人员、路程和施工条件。"
+      },
+      {
+        "id": "chengdu-tianfu",
+        "label": "成都天府新区",
+        "coverageNote": "模拟预约与项目讨论圈；不代表已有分店或现场服务承诺。"
+      },
+      {
+        "id": "chengdu-expansion",
+        "label": "成都其他城区",
+        "coverageNote": "需人类评估排期、范围和成本后决定；不自动承诺跨区交付。"
+      }
+    ],
+    "experienceZones": [
+      {
+        "id": "foyer",
+        "name": "入户与回家体验区",
+        "focus": "回家、离家、手动恢复与隐私提问",
+        "sceneIds": [
+          "scene-arrival",
+          "scene-leave-review"
+        ]
+      },
+      {
+        "id": "light",
+        "name": "照明与窗帘体验区",
+        "focus": "照明行为、调光、遮阳与电气施工条件",
+        "sceneIds": [
+          "scene-evening-light",
+          "scene-curtain"
+        ]
+      },
+      {
+        "id": "living",
+        "name": "客厅中控体验区",
+        "focus": "触屏、语音、家人权限与场景选择",
+        "sceneIds": [
+          "scene-family-control"
+        ]
+      },
+      {
+        "id": "climate",
+        "name": "环境与温控讨论区",
+        "focus": "已有暖通接口、温度需求和设备限额",
+        "sceneIds": [
+          "scene-climate"
+        ]
+      },
+      {
+        "id": "bedroom",
+        "name": "卧室与起夜体验区",
+        "focus": "静止存在、起夜灯光、睡眠与误触发",
+        "sceneIds": [
+          "scene-night-route"
+        ]
+      },
+      {
+        "id": "network",
+        "name": "网络与交付资料区",
+        "focus": "网络条件、点位图、版本、施工与控制权交接",
+        "sceneIds": [
+          "scene-offline-recovery"
+        ]
+      }
+    ],
+    "services": [
+      {
+        "id": "front-install",
+        "name": "水电前全屋需求与工程资料",
+        "deliverable": "需求、勘测、方案、点位、设计、施工和合同版本链。",
+        "limitation": "现场专业设计、施工与签约由有资质和授权的人类承担。"
+      },
+      {
+        "id": "partial-renovation",
+        "name": "精装或入住后的功能补充",
+        "deliverable": "现状、不可拆改范围、兼容疑问和有条件方案。",
+        "limitation": "不保证无施工、全部旧设备兼容或所有品牌互通。"
+      },
+      {
+        "id": "experience-consultation",
+        "name": "到店场景体验与需求澄清",
+        "deliverable": "拟议预约、体验路线、问题清单和客户确认项。",
+        "limitation": "本数据是模拟门店背景，未连接真实展厅、日历和消息账号。"
+      },
+      {
+        "id": "lifecycle-service",
+        "name": "交付资料与售后协调",
+        "deliverable": "验收、控制权交接、问题摘要、现场待办和资料引用。",
+        "limitation": "不自动设备控制、派真实工单、决定事故责任或承诺厂商保修。"
+      }
+    ],
+    "bizRules": [
+      {
+        "id": "facts-first",
+        "label": "事实逐步形成",
+        "rule": "称呼/姓氏、联系引用或楼盘信息至少一项即可先登记，需求可已知或待问；仅匿名需求主题先用于渠道准备，不能建立确定客户线索。未知字段保持未知，模型补全仅作提议。",
+        "humanDecisionRequired": true
+      },
+      {
+        "id": "purpose-bound",
+        "label": "用途分开确认",
+        "rule": "咨询、预约、营销、售后和公开案例分别检查授权；拒绝与撤回优先。",
+        "humanDecisionRequired": true
+      },
+      {
+        "id": "survey-before-promise",
+        "label": "现场先于施工承诺",
+        "rule": "设备、回路、尺寸、网络、兼容与安全缺证据时只给草案和问题。",
+        "humanDecisionRequired": true
+      },
+      {
+        "id": "version-chain",
+        "label": "项目同源版本链",
+        "rule": "客户、勘测、点位、设计、施工和合同引用当前同店版本；变更要保留前版和原因。",
+        "humanDecisionRequired": true
+      },
+      {
+        "id": "money-separated",
+        "label": "金额口径分开",
+        "rule": "合成 SKU、批准报价、签约额、回款与利润分别呈现，缺成本和凭据保持未核实。",
+        "humanDecisionRequired": true
+      },
+      {
+        "id": "no-brand-claim",
+        "label": "厂商参考不冒授权",
+        "rule": "华为和 Aqara 官方资料用于知识参考，不证明门店授权、合成 SKU 适配或售价。",
+        "humanDecisionRequired": true
+      },
+      {
+        "id": "disabled-connectors",
+        "label": "外部动作没有默认连接",
+        "rule": "发布、消息、日历、支付、设备和厂商账号连接器未启用；准备包不等于动作执行。",
+        "humanDecisionRequired": true
+      },
+      {
+        "id": "synthetic-separation",
+        "label": "模拟资料不计真实业绩",
+        "rule": "历史场景和经营记录保持 synthetic-history-import 来源，不产生真实人审、资金、现场或对外回执。",
+        "humanDecisionRequired": true
+      }
+    ],
+    "journey": [
+      {
+        "stage": "渐进线索",
+        "objects": [
+          "lead",
+          "leadEnrichment"
+        ],
+        "output": "最小线索、来源、未知字段和确认问题。",
+        "gate": "至少一项可识别信息；模型提议不得修改客户事实或用途。"
+      },
+      {
+        "stage": "客户档案",
+        "objects": [
+          "lead",
+          "customer"
+        ],
+        "output": "家庭需求、偏好、决策和沟通资料。",
+        "gate": "事实来源经授权人员核验；不能把匿名主题或模型猜测建成确定客户。"
+      },
+      {
+        "stage": "预约体验",
+        "objects": [
+          "experience",
+          "customer"
+        ],
+        "output": "拟议预约、路线、资源和客户确认待办。",
+        "gate": "计划与到店分开；未启用消息或日历不报告已触达。"
+      },
+      {
+        "stage": "现场勘测",
+        "objects": [
+          "survey",
+          "customer"
+        ],
+        "output": "房间、尺寸、回路、网络、设备与风险证据。",
+        "gate": "必须有现场来源，不从线上照片推断可安全施工。"
+      },
+      {
+        "stage": "方案与点位",
+        "objects": [
+          "solution",
+          "pointPlan"
+        ],
+        "output": "设备范围、毫米坐标点位、版本与施工标注。",
+        "gate": "同客户、同店、当前勘测和报价范围；坐标图不控制设备。"
+      },
+      {
+        "stage": "设计与施工策划",
+        "objects": [
+          "design",
+          "construction"
+        ],
+        "output": "设计理由、场景、排除项、工序和质量检查。",
+        "gate": "前置资料、责任和专业核验齐全；计划不等于开工完成。"
+      },
+      {
+        "stage": "报价与合同",
+        "objects": [
+          "quote",
+          "contract",
+          "approval"
+        ],
+        "output": "整数分报价、范围、付款安排、条款和签署引用。",
+        "gate": "人类审批绑定当前内容；签署证据须核验，报价不等于到账。"
+      },
+      {
+        "stage": "实施与验收",
+        "objects": [
+          "project",
+          "construction",
+          "commissioning",
+          "acceptance"
+        ],
+        "output": "实施状态、联调、验收与控制权交接。",
+        "gate": "现场真实证据和有权限的人类记录；模拟历史不算实际交付。"
+      },
+      {
+        "stage": "售后与经营复盘",
+        "objects": [
+          "aftercare",
+          "report",
+          "goal"
+        ],
+        "output": "问题待办、版本、经营差异和下一目标。",
+        "gate": "分清累计与期间、计划与事实、模拟与真实；不自动平账或设备操作。"
+      }
+    ],
+    "contactPolicy": "门店没有真实公开电话、微信、地址或营业承诺；真实联系资料只用受控不透明引用，未接入的账号保持未核实。"
+  },
+  "productReference": {
+    "kind": "official-reference-only",
+    "notSaleCatalogue": true,
+    "items": [
+      {
+        "id": "REF-HW-FRONT-INSTALL",
+        "category": "系统路径",
+        "name": "华为前装全屋智能系统参考",
+        "model": "X2 / SE，具体型号待核验",
+        "system": "华为全屋智能前装",
+        "protocol": [
+          "PLC（对应 X/SE 系统）"
+        ],
+        "sourceIds": [
+          "huawei-solution",
+          "huawei-plc",
+          "huawei-app-version"
+        ],
+        "summary": "用于水电前需求讨论：控制、线路、主机位置和版本要一起确认。",
+        "limitations": [
+          "不是待售 SKU；不附模拟报价。",
+          "电路、主机、回路和现场条件须实测。",
+          "具体型号与固件决定能力，官方系列概述不等于本店已交付。"
+        ],
+        "verification": "official-page-body",
+        "quoteEligible": false,
+        "compatibilityEvidence": false
+      },
+      {
+        "id": "REF-HW-RETROFIT",
+        "category": "系统路径",
+        "name": "华为灵活改造系统参考",
+        "model": "EZ 系统，具体配置待核验",
+        "system": "华为全屋智能改造",
+        "protocol": [],
+        "sourceIds": [
+          "huawei-solution",
+          "huawei-subsystem"
+        ],
+        "summary": "用于已入住或局部改造的需求讨论，先问现有设施、不可拆改范围和实际控制需求。",
+        "limitations": [
+          "不承诺零施工、零干扰或无须现场检查。",
+          "现有回路、通信和设备支持须按配置核验。"
+        ],
+        "verification": "official-page-body",
+        "quoteEligible": false,
+        "compatibilityEvidence": false
+      },
+      {
+        "id": "REF-HW-PANEL-SPACE",
+        "category": "中控与空间",
+        "name": "华为中控与空间点位展示参考",
+        "model": "S2 / MINI / 桌面中控，适用产品按官网说明",
+        "system": "华为全屋智能",
+        "protocol": [],
+        "sourceIds": [
+          "huawei-solution",
+          "huawei-3d-position"
+        ],
+        "summary": "体验问法聚焦谁来控制、在哪个空间控制、能否快速回到手动控制；厂商空间看板只是知识参照。",
+        "limitations": [
+          "本仓没有接入中控或厂商 3D 看板。",
+          "简单坐标图不证明真实点位灯控或设备兼容。"
+        ],
+        "verification": "official-page-body",
+        "quoteEligible": false,
+        "compatibilityEvidence": false
+      },
+      {
+        "id": "REF-HW-LIGHT-CURTAIN",
+        "category": "照明与遮阳",
+        "name": "华为照明、遮阳子系统参考",
+        "model": "具体驱动、开关与电机待核验",
+        "system": "华为全屋智能",
+        "protocol": [],
+        "sourceIds": [
+          "huawei-subsystem",
+          "huawei-service-process"
+        ],
+        "summary": "把照明效果、驱动调光、窗帘方向和手动恢复分别问清，方案设计和施工责任分开。",
+        "limitations": [
+          "智能施工图纸不能代替照明设计。",
+          "电气参数、负载、协议和布线须现场核验。"
+        ],
+        "verification": "official-page-body",
+        "quoteEligible": false,
+        "compatibilityEvidence": false
+      },
+      {
+        "id": "REF-HW-CLIMATE-NETWORK",
+        "category": "环境与网络",
+        "name": "华为环境、网络子系统参考",
+        "model": "具体主机、空调接口与网络设备待核验",
+        "system": "华为全屋智能",
+        "protocol": [],
+        "sourceIds": [
+          "huawei-subsystem",
+          "huawei-app-version"
+        ],
+        "summary": "讨论空调或新风的设备接口、家庭网络覆盖和故障恢复，先列已有型号与版本。",
+        "limitations": [
+          "不同主机与子系统有适配前提；规划能力不视为已交付。",
+          "不保证所有暖通设备可联动，不承诺消除网络盲区。"
+        ],
+        "verification": "official-page-body",
+        "quoteEligible": false,
+        "compatibilityEvidence": false
+      },
+      {
+        "id": "REF-AQ-M3",
+        "category": "中枢与协议",
+        "name": "Aqara 智能中枢 M3",
+        "model": "ZHWG24LM",
+        "system": "Aqara",
+        "protocol": [
+          "Wi-Fi 2.4/5 GHz",
+          "Zigbee",
+          "Thread",
+          "Bluetooth 5.1"
+        ],
+        "sourceIds": [
+          "aqara-m3-spec"
+        ],
+        "summary": "了解中枢接入和供电选项；官网分别给出 5 V / 2 A 与 PoE 48 V / 0.27 A 条件。",
+        "limitations": [
+          "电源、交换机和当地规格须核验。",
+          "协议存在不证明其他品牌设备全部功能可用。",
+          "没有真实设备、厂商账号或自动配对能力。"
+        ],
+        "verification": "official-page-body",
+        "quoteEligible": false,
+        "compatibilityEvidence": false
+      },
+      {
+        "id": "REF-AQ-FP400",
+        "category": "空间传感",
+        "name": "Aqara AI 空间传感器 FP400",
+        "model": "FP400",
+        "system": "Aqara",
+        "protocol": [
+          "Zigbee / Matter，按设备模式"
+        ],
+        "sourceIds": [
+          "aqara-fp400"
+        ],
+        "summary": "讨论静止存在、区域识别与光照条件，区分原生配置和第三方接入能力。",
+        "limitations": [
+          "直接扫描 Matter 码与经 Aqara Life 配置分享的区域能力不同。",
+          "安装位置、高度、角度与环境须实测。",
+          "区域可用性受第三方平台、固件与配置限制。"
+        ],
+        "verification": "official-page-body",
+        "quoteEligible": false,
+        "compatibilityEvidence": false
+      }
+    ]
+  },
+  "experienceGuide": {
+    "kind": "synthetic-design-guide",
+    "scenes": [
+      {
+        "id": "scene-arrival",
+        "name": "回家动线讨论",
+        "zoneId": "foyer",
+        "trigger": "客户描述回家时的携物、开门与照明顺序。",
+        "behavior": "准备玄关至客厅照明和窗帘的场景草图，逐项问哪些动作需要自动、哪些需要手动。",
+        "fallback": "保留物理开关与手动操作；位置或存在未核验时只展示模拟图。",
+        "sourceIds": [
+          "huawei-solution",
+          "huawei-subsystem"
+        ],
+        "requiredEvidence": [
+          "客户确认的动线",
+          "勘测与回路信息",
+          "设备兼容验证",
+          "实际场景测试"
+        ],
+        "boundary": "店内展示是模拟设计讨论，未连接门锁、灯具或住家设备。",
+        "customerQuestion": "家人带物回家时，最先需要哪盏灯和哪种控制方式？"
+      },
+      {
+        "id": "scene-leave-review",
+        "name": "离家与遗漏检查",
+        "zoneId": "foyer",
+        "trigger": "客户确认离家习惯和不允许自动关闭的设备。",
+        "behavior": "列照明、遮阳和环境设备的离家检查项，把不能自动操作的设备标为人工检查。",
+        "fallback": "不确定状态保持未知；物理安全与必要供电由人类检查。",
+        "sourceIds": [
+          "huawei-solution"
+        ],
+        "requiredEvidence": [
+          "客户排除项",
+          "设备安全清单",
+          "实际恢复测试"
+        ],
+        "boundary": "不以模型判断家中无人，不控制电气、安全或生命保障设备。",
+        "customerQuestion": "离家后哪些设备必须保持工作，哪些只能提醒不能自动关闭？"
+      },
+      {
+        "id": "scene-evening-light",
+        "name": "晚间照明层次",
+        "zoneId": "light",
+        "trigger": "客户描述就餐、阅读、会客和休息用途。",
+        "behavior": "分区讨论照明行为与控制入口；把美学照明设计、驱动适配和智能施工分别列责任。",
+        "fallback": "照明效果不满意可回到物理控制；未实测不写照度、色温效果或无频闪保证。",
+        "sourceIds": [
+          "huawei-subsystem",
+          "huawei-service-process"
+        ],
+        "requiredEvidence": [
+          "客户用途",
+          "灯具驱动与负载信息",
+          "照明设计责任",
+          "现场调试记录"
+        ],
+        "boundary": "智能施工资料不能代替照明设计或现场光学测量。",
+        "customerQuestion": "这个空间在阅读、吃饭和休息时，分别需要什么光？"
+      },
+      {
+        "id": "scene-curtain",
+        "name": "遮阳与手动接管",
+        "zoneId": "light",
+        "trigger": "客户提供窗帘类型、使用方向和现有窗户条件。",
+        "behavior": "列遮阳需求、方向、行程、供电与手动接管问题，画出需要勘测的点位。",
+        "fallback": "未确认轨道与电机时保持设计草案；故障时采用现场验证的手动路径。",
+        "sourceIds": [
+          "huawei-subsystem"
+        ],
+        "requiredEvidence": [
+          "窗户轨道尺寸",
+          "电机供电和安全核验",
+          "方向与行程调试"
+        ],
+        "boundary": "不保证既有窗帘可直接适配，不自动启动任何电机。",
+        "customerQuestion": "你希望什么时间开合，停电或故障时由谁怎样接管？"
+      },
+      {
+        "id": "scene-family-control",
+        "name": "家人中控与权限",
+        "zoneId": "living",
+        "trigger": "客户说明家庭成员、常用房间和控制习惯。",
+        "behavior": "讨论触屏、语音与场景入口，核对操作权限、常用场景与控制权交接。",
+        "fallback": "账号、密码、配对码和真实住家权限只在受控渠道交接；本仓不保存秘密。",
+        "sourceIds": [
+          "huawei-solution",
+          "huawei-3d-position"
+        ],
+        "requiredEvidence": [
+          "家庭成员授权",
+          "具体中控型号与版本",
+          "控制权交接记录"
+        ],
+        "boundary": "本地 SVG 点位图不等于厂商 3D 看板，不发出设备控制指令。",
+        "customerQuestion": "哪些家人需要简单入口，哪些控制动作应只由成年人决定？"
+      },
+      {
+        "id": "scene-climate",
+        "name": "温控与环境需求",
+        "zoneId": "climate",
+        "trigger": "客户描述已有空调、新风和体感问题。",
+        "behavior": "列设备型号、接口、运行限制和空间需求，条件足够时才由设计师提出联动草案。",
+        "fallback": "接口或兼容未核验时保留原设备控制；温度和空气状态不猜值。",
+        "sourceIds": [
+          "huawei-subsystem"
+        ],
+        "requiredEvidence": [
+          "暖通型号与接口",
+          "现场供电",
+          "厂商兼容资料",
+          "实际联调"
+        ],
+        "boundary": "不保证所有设备可联动，不宣称本店做过环境测量。",
+        "customerQuestion": "现有设备是什么型号，最困扰你的空间和使用时段是什么？"
+      },
+      {
+        "id": "scene-night-route",
+        "name": "卧室起夜与误触发",
+        "zoneId": "bedroom",
+        "trigger": "客户描述起夜、睡眠、静止阅读和灯光敏感需求。",
+        "behavior": "设计低干扰的动线草案，讨论存在、区域与光照触发，记录误触发与保持灯光的条件。",
+        "fallback": "传感器未实测时只作设计；保留手动入口，不从示意图推断现场人在何处。",
+        "sourceIds": [
+          "aqara-fp400"
+        ],
+        "requiredEvidence": [
+          "房间尺寸",
+          "安装高度与角度",
+          "协议模式与固件",
+          "第三方平台实测",
+          "客户体验确认"
+        ],
+        "boundary": "直接 Matter 接入与原生区域配置有差别；不能保证精准识人、所有区域或零误触发。",
+        "customerQuestion": "起夜时希望哪里亮，家人仍在休息时哪些动作不能触发？"
+      },
+      {
+        "id": "scene-offline-recovery",
+        "name": "断网与交付恢复讨论",
+        "zoneId": "network",
+        "trigger": "客户询问掉网、版本变化、售后和长期使用。",
+        "behavior": "列本地与云端依赖、具体版本、手动入口、交付资料和恢复责任；以真实设备测试结果决定承诺。",
+        "fallback": "无法验证离线状态时明确待测，不承诺断网全部可用；回到已验证手动操作。",
+        "sourceIds": [
+          "huawei-app-version",
+          "huawei-service-process",
+          "aqara-m3-spec"
+        ],
+        "requiredEvidence": [
+          "设备型号固件",
+          "网络勘测",
+          "现场故障演练",
+          "资料与控制权交接"
+        ],
+        "boundary": "本仓没有真实网络或设备接入，沙箱恢复讨论不构成设备可靠性结果。",
+        "customerQuestion": "断网后最必须保留的三个功能是什么，谁负责恢复和留存交付资料？"
+      }
+    ],
+    "routes": [
+      {
+        "id": "route-renovation-before-water",
+        "name": "水电前整屋资料路线",
+        "sceneIds": [
+          "scene-arrival",
+          "scene-evening-light",
+          "scene-curtain",
+          "scene-family-control",
+          "scene-offline-recovery"
+        ],
+        "qualificationQuestions": [
+          "当前装修节点和预计水电时间是什么？",
+          "已有户型或现场资料由谁确认？",
+          "哪些空间、控制习惯和施工范围不能改变？"
+        ],
+        "excludedActions": [
+          "不启动真实设备",
+          "不作现场尺寸猜测",
+          "不承诺未核验报价与工期"
+        ]
+      },
+      {
+        "id": "route-lived-in",
+        "name": "已入住功能补充路线",
+        "sceneIds": [
+          "scene-night-route",
+          "scene-family-control",
+          "scene-curtain",
+          "scene-offline-recovery"
+        ],
+        "qualificationQuestions": [
+          "哪些已有设备和回路希望保留？",
+          "不能拆改的位置是什么？",
+          "谁确认实际型号、版本和现场条件？"
+        ],
+        "excludedActions": [
+          "不宣称所有设备即插即用",
+          "不自动配对账号或写入密码",
+          "不作无施工保证"
+        ]
+      },
+      {
+        "id": "route-family-comfort",
+        "name": "家庭使用与交付边界路线",
+        "sceneIds": [
+          "scene-arrival",
+          "scene-night-route",
+          "scene-climate",
+          "scene-leave-review",
+          "scene-offline-recovery"
+        ],
+        "qualificationQuestions": [
+          "家人最常遇到的三个使用问题是什么？",
+          "哪些动作只允许人工操作？",
+          "如何确认权限、恢复入口和售后资料？"
+        ],
+        "excludedActions": [
+          "不判断家庭成员身份或健康状态",
+          "不操作安全与生命保障设备",
+          "不把模拟体验当实际测量"
+        ]
+      }
+    ]
+  },
+  "channelGuide": {
+    "channels": [
+      {
+        "id": "douyin",
+        "name": "抖音",
+        "purpose": "承接客户主动咨询与有依据的场景知识内容。",
+        "contentTopics": [
+          "成都装修节点与智能施工提问",
+          "卧室起夜与误触发边界",
+          "点位、设计和施工责任区分"
+        ],
+        "sourcePolicy": "保留内容主题、公开链接、时间和客户主动咨询来源；不抓取私人账户资料。",
+        "consentPolicy": "咨询用途与后续营销分别确认；公开评论不自动构成私信或营销许可。",
+        "handoffRole": "prospecting-specialist",
+        "connectorStatus": "disabled",
+        "accountVerified": false
+      },
+      {
+        "id": "xiaohongshu",
+        "name": "小红书",
+        "purpose": "整理装修问题和客户主动提出的户型、使用习惯。",
+        "contentTopics": [
+          "前装与轻改造提问清单",
+          "灯光和窗帘需求拆解",
+          "品牌协议适配的核验步骤"
+        ],
+        "sourcePolicy": "只记录公开需求主题和经客户确认的材料，不批量复制个人主页和联系方式。",
+        "consentPolicy": "评论、收藏或关注不是联系授权；真实跟进由获得许可的人类完成。",
+        "handoffRole": "prospecting-specialist",
+        "connectorStatus": "disabled",
+        "accountVerified": false
+      },
+      {
+        "id": "wechat-consultation",
+        "name": "微信主动咨询",
+        "purpose": "承接客户主动发来的需求，用受控引用渐进补全。",
+        "contentTopics": [
+          "咨询问题回应",
+          "到店体验准备",
+          "客户确认清单"
+        ],
+        "sourcePolicy": "公开仓库只保存 contactRef 和脱敏摘要，不保存真实微信号、手机号、密码或家庭图纸。",
+        "consentPolicy": "服务咨询、预约、营销、案例分享分别记录；撤回后停止相应用途。",
+        "handoffRole": "lead-enrichment-specialist",
+        "connectorStatus": "disabled",
+        "accountVerified": false
+      },
+      {
+        "id": "store-walk-in",
+        "name": "展厅自然到访",
+        "purpose": "由顾问核对客户到访与体验需求。",
+        "contentTopics": [
+          "控制入口体验",
+          "房间动线讨论",
+          "设计施工资料解释"
+        ],
+        "sourcePolicy": "真实到访、体验和确认只能由有来源的人工记录；拟议预约不计实际到店。",
+        "consentPolicy": "建档用途当场确认；不因到访自动加入营销名单。",
+        "handoffRole": "appointment-coordinator",
+        "connectorStatus": "disabled",
+        "accountVerified": false
+      },
+      {
+        "id": "renovation-partner",
+        "name": "装修与设计伙伴转介",
+        "purpose": "与获得许可的伙伴交接装修节点和工程依赖。",
+        "contentTopics": [
+          "技术交底",
+          "点位与回路核对",
+          "变更责任与验收资料"
+        ],
+        "sourcePolicy": "转介须有客户允许共享的用途和材料范围；未知主体保持匿名主题。",
+        "consentPolicy": "伙伴转发不等于客户同意；真实联系和资料使用需本人授权。",
+        "handoffRole": "sales-assistant",
+        "connectorStatus": "disabled",
+        "accountVerified": false
+      },
+      {
+        "id": "customer-referral",
+        "name": "客户口碑转介",
+        "purpose": "整理愿意主动咨询的转介绍需求。",
+        "contentTopics": [
+          "使用问题复盘",
+          "服务边界解释",
+          "主动咨询入口"
+        ],
+        "sourcePolicy": "不直接保存朋友的私人联系方式；邀请本人主动咨询或确认许可。",
+        "consentPolicy": "原客户同意案例不覆盖朋友信息；案例匿名化和新客户用途分别批准。",
+        "handoffRole": "lead-concierge",
+        "connectorStatus": "disabled",
+        "accountVerified": false
+      }
+    ],
+    "attributionRules": [
+      "首触来源与后续触点同时保留，不因后续补全改写初始来源。",
+      "同一客户跨渠道保留触点、去重主体，不重复统计客户、合同和收入。",
+      "匿名公开需求主题不计可联系客户，主动咨询也不自动等于营销许可。",
+      "渠道账号、连接器、外发、平台审核与客户回复分别留证；未核实不得报已执行。",
+      "统计必须注明工作区、门店、时间窗和 synthetic/live 模式；缺分母、成本或来源不编转化率与 ROI。"
+    ]
+  },
+  "officialReferences": {
+    "checkedAt": "2026-10-09",
+    "items": [
+      {
+        "id": "huawei-solution",
+        "title": "华为全屋智能：解决方案",
+        "url": "https://consumer.huawei.com/cn/wholehome/wholehome-solution/",
+        "checkedAt": "2026-10-09",
+        "verification": "page-body",
+        "supports": "官方将前装系统和灵活改造系统分开；触屏、语音和感知控制依赖所选系统与设备组合。",
+        "limitation": "页面中的理论参数和演示效果不是模拟门店的承诺；型号、版本、当地可用性、现场和具体场景须逐项核验。"
+      },
+      {
+        "id": "huawei-plc",
+        "title": "华为全屋智能主机 PLC 连接方式说明",
+        "url": "https://consumer.huawei.com/cn/support/content/zh-cn15898208/",
+        "checkedAt": "2026-10-09",
+        "verification": "page-body",
+        "supports": "对应 X 与 SE 系统的 PLC 通信使用电力线路；了解连接方式有助于前装工程提问。",
+        "limitation": "不能把对应系列的说明泛化到所有华为、Aqara 或合成设备；电气工程仍须专业人员现场确认。"
+      },
+      {
+        "id": "huawei-app-version",
+        "title": "华为全屋智能：查看系统和设备版本",
+        "url": "https://consumer.huawei.com/cn/support/content/zh-cn15927062/",
+        "checkedAt": "2026-10-09",
+        "verification": "page-body",
+        "supports": "设备信息与 PLC 主机详情能帮助记录具体系统版本，能力核验应绑定版本。",
+        "limitation": "本仓没有真实华为账号、设备或 App 连接；这里只说明核验方向，不声称已经读取版本。"
+      },
+      {
+        "id": "huawei-subsystem",
+        "title": "华为全屋智能：子系统",
+        "url": "https://consumer.huawei.com/cn/wholehome/subsystem/",
+        "checkedAt": "2026-10-09",
+        "verification": "page-body",
+        "supports": "官网分别描述照明、遮阳、环境和网络等子系统；能力范围受主机和产品组合影响。",
+        "limitation": "网络等部分能力在对应配置下有适配或规划前提；不能把系列间能力与规划中功能写成全部已支持。"
+      },
+      {
+        "id": "huawei-service-process",
+        "title": "华为全屋智能安装与服务政策",
+        "url": "https://consumer.huawei.com/cn/support/content/zh-cn15865128/",
+        "checkedAt": "2026-10-09",
+        "verification": "page-body",
+        "supports": "前装交付包括图纸深化、技术交底与交底验收、安装、联调、竣工验收及后续调优；智能施工图纸与照明设计须区分。",
+        "limitation": "官方政策适用条件、授权、费用、保修和服务承诺不得转移到虚构门店；本店没有厂商授权证明。"
+      },
+      {
+        "id": "huawei-3d-position",
+        "title": "华为全屋智能：3D 看板点位灯控",
+        "url": "https://consumer.huawei.com/cn/support/content/zh-cn16092207/",
+        "checkedAt": "2026-10-09",
+        "verification": "page-body",
+        "supports": "官方点位灯控依赖全屋看板、空间或家具参照及灯点位配置，对应说明列有适用中控产品。",
+        "limitation": "本仓点位 SVG 是毫米坐标的工程资料呈现；不实现或证明厂商 3D 看板、真实灯控、型号适配和实际设备控制。"
+      },
+      {
+        "id": "aqara-m3-spec",
+        "title": "Aqara 智能中枢 M3 产品参数",
+        "url": "https://www.aqara.cn/Hub-m3_spec",
+        "checkedAt": "2026-10-09",
+        "verification": "page-body",
+        "supports": "M3 型号 ZHWG24LM；官方参数列有 Wi-Fi 2.4/5 GHz、Zigbee、Thread 与 Bluetooth 5.1，并列 USB-C 与 PoE 供电条件。",
+        "limitation": "协议列表不证明任意设备及其全部功能兼容；电源、区域、固件、配对方式和生态需核实，不将官方参数作为合成 SKU 参数。"
+      },
+      {
+        "id": "aqara-fp400",
+        "title": "Aqara AI 空间传感器 FP400 产品知识",
+        "url": "https://docs.aqara.com/zh/docs/aqara-studio/product-knowledge/sensors/spatial-multi-sensor-fp400/",
+        "checkedAt": "2026-10-09",
+        "verification": "page-body",
+        "supports": "原生配置、经 Aqara Life 分享区域存在与直接扫描 Matter 码接入的能力不同；直接扫描模式提供全域存在与光照。",
+        "limitation": "区域功能受配置、固件和第三方平台限制；安装高度、角度、环境和干扰影响现场表现，不能保证所有空间和平台一致。"
+      }
+    ]
+  },
+  "syntheticDisclosure": {
+    "storeIsFictional": true,
+    "customerDataSynthetic": true,
+    "skuPrefix": "SYN-SG-",
+    "actualBrandAuthorization": false,
+    "externalActionsExecuted": 0,
+    "notVerified": [
+      "真实门店与营业信息",
+      "华为或 Aqara 品牌授权",
+      "厂商账号、连接器和设备",
+      "合成 SKU 对真实设备的兼容",
+      "真实客户许可与现场工程证据",
+      "实际发布、消息、日历、签约与资金流水"
+    ],
+    "statement": "蜀光智家·成都高新体验店、人员、客户、产品售价和经营历史都是显式模拟背景。官方参考只描述来源页面支持的知识；新岗位任务只有真实宿主领取并提交后才形成 AI 准备或提议结果。历史导入不是模型执行、人类批准、客户确认、实际到账或现场交付。"
+  }
+}

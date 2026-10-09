@@ -30,12 +30,12 @@
     },
     {
       "id": "aqara-fp400",
-      "title": "Aqara AI空间传感器FP400产品知识",
+      "title": "Aqara AI 空间传感器 FP400 产品知识",
       "url": "https://docs.aqara.com/zh/docs/aqara-studio/product-knowledge/sensors/spatial-multi-sensor-fp400/",
       "checkedAt": "2026-10-09",
       "verification": "page-body",
-      "supports": "直接扫描设备Matter码接入第三方只提供全域存在与光照；经Aqara Life配置后分享能暴露区域存在，仍受第三方生态能力限制。",
-      "limitation": "不能把原生配置功能与直接接入功能混同；现场安装、固件和生态都须核验。"
+      "supports": "原生配置、经 Aqara Life 分享区域存在与直接扫描 Matter 码接入的能力不同；直接扫描模式提供全域存在与光照。",
+      "limitation": "区域功能受配置、固件和第三方平台限制；安装高度、角度、环境和干扰影响现场表现，不能保证所有空间和平台一致。"
     },
     {
       "id": "douyin-create",
@@ -54,6 +54,69 @@
       "verification": "official-indexed-text-body-unavailable",
       "supports": "开放平台需主体认证与合规账号。",
       "limitation": "正文抓取仅返回动态页面；不能从小程序能力推断普通笔记自动发布接口可用。"
+    },
+    {
+      "id": "huawei-solution",
+      "title": "华为全屋智能：解决方案",
+      "url": "https://consumer.huawei.com/cn/wholehome/wholehome-solution/",
+      "checkedAt": "2026-10-09",
+      "verification": "page-body",
+      "supports": "官方将前装系统和灵活改造系统分开；触屏、语音和感知控制依赖所选系统与设备组合。",
+      "limitation": "页面中的理论参数和演示效果不是模拟门店的承诺；型号、版本、当地可用性、现场和具体场景须逐项核验。"
+    },
+    {
+      "id": "huawei-plc",
+      "title": "华为全屋智能主机 PLC 连接方式说明",
+      "url": "https://consumer.huawei.com/cn/support/content/zh-cn15898208/",
+      "checkedAt": "2026-10-09",
+      "verification": "page-body",
+      "supports": "对应 X 与 SE 系统的 PLC 通信使用电力线路；了解连接方式有助于前装工程提问。",
+      "limitation": "不能把对应系列的说明泛化到所有华为、Aqara 或合成设备；电气工程仍须专业人员现场确认。"
+    },
+    {
+      "id": "huawei-app-version",
+      "title": "华为全屋智能：查看系统和设备版本",
+      "url": "https://consumer.huawei.com/cn/support/content/zh-cn15927062/",
+      "checkedAt": "2026-10-09",
+      "verification": "page-body",
+      "supports": "设备信息与 PLC 主机详情能帮助记录具体系统版本，能力核验应绑定版本。",
+      "limitation": "本仓没有真实华为账号、设备或 App 连接；这里只说明核验方向，不声称已经读取版本。"
+    },
+    {
+      "id": "huawei-subsystem",
+      "title": "华为全屋智能：子系统",
+      "url": "https://consumer.huawei.com/cn/wholehome/subsystem/",
+      "checkedAt": "2026-10-09",
+      "verification": "page-body",
+      "supports": "官网分别描述照明、遮阳、环境和网络等子系统；能力范围受主机和产品组合影响。",
+      "limitation": "网络等部分能力在对应配置下有适配或规划前提；不能把系列间能力与规划中功能写成全部已支持。"
+    },
+    {
+      "id": "huawei-service-process",
+      "title": "华为全屋智能安装与服务政策",
+      "url": "https://consumer.huawei.com/cn/support/content/zh-cn15865128/",
+      "checkedAt": "2026-10-09",
+      "verification": "page-body",
+      "supports": "前装交付包括图纸深化、技术交底与交底验收、安装、联调、竣工验收及后续调优；智能施工图纸与照明设计须区分。",
+      "limitation": "官方政策适用条件、授权、费用、保修和服务承诺不得转移到虚构门店；本店没有厂商授权证明。"
+    },
+    {
+      "id": "huawei-3d-position",
+      "title": "华为全屋智能：3D 看板点位灯控",
+      "url": "https://consumer.huawei.com/cn/support/content/zh-cn16092207/",
+      "checkedAt": "2026-10-09",
+      "verification": "page-body",
+      "supports": "官方点位灯控依赖全屋看板、空间或家具参照及灯点位配置，对应说明列有适用中控产品。",
+      "limitation": "本仓点位 SVG 是毫米坐标的工程资料呈现；不实现或证明厂商 3D 看板、真实灯控、型号适配和实际设备控制。"
+    },
+    {
+      "id": "aqara-m3-spec",
+      "title": "Aqara 智能中枢 M3 产品参数",
+      "url": "https://www.aqara.cn/Hub-m3_spec",
+      "checkedAt": "2026-10-09",
+      "verification": "page-body",
+      "supports": "M3 型号 ZHWG24LM；官方参数列有 Wi-Fi 2.4/5 GHz、Zigbee、Thread 与 Bluetooth 5.1，并列 USB-C 与 PoE 供电条件。",
+      "limitation": "协议列表不证明任意设备及其全部功能兼容；电源、区域、固件、配对方式和生态需核实，不将官方参数作为合成 SKU 参数。"
     }
   ],
   "policy": "以来源日期和精确版本为准；易变事实在实际执行前刷新；未访问正文降级证据。"

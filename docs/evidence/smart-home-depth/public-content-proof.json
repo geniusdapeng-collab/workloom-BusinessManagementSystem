@@ -1,0 +1,1891 @@
+{
+  "schemaVersion": "bms.public-content-proof/v1",
+  "taskId": "T-2026-1009-0001",
+  "asOf": "2026-10-09T05:12:42.919254+00:00",
+  "actor": "/root/workbench_audit",
+  "status": "pass",
+  "sourceFiles": [
+    {
+      "path": ".agents/skills/business-management/SKILL.md",
+      "sha256": "dd4443bac3143ded33fc7e8131b0e3caa4947f69665cb13d8f47554d55b8be26"
+    },
+    {
+      "path": "AGENTS.repo.md",
+      "sha256": "a0a90b4d80ff42cdaf2f90b996f389ada0fd940c2eec09e201a9e73b80491c0e"
+    },
+    {
+      "path": "README.md",
+      "sha256": "ed8318e7e8417a172bf4f8c54048eb36c8e0bff0616ddc9affcaa2b223629f12"
+    },
+    {
+      "path": "apps/site/en.html",
+      "sha256": "5898b0de51a1454a0bb3809f26e65ee066875cd6a7ceb67bff1cff60aa094b85"
+    },
+    {
+      "path": "apps/site/index.html",
+      "sha256": "d1d2bd6c8f9970638ecc16d50a4dbfbfd7658148d0d87c68f3c285509fe9aa90"
+    },
+    {
+      "path": "docs/01-门店店长使用指南.md",
+      "sha256": "185ecfa0be62b9d7cf2623adb672b5c5af66d73463998f4caf373117adda6b6e"
+    },
+    {
+      "path": "docs/02-新客户首次接入完整流程.md",
+      "sha256": "485fd16c05fe0e02163a0304251764c06207a99c9f081cb3b46203a1bb2e3829"
+    },
+    {
+      "path": "docs/03-功能清单-用户版.md",
+      "sha256": "148d6800f3be5b0826e5ea28dc51f1c1b68432647669e66eb70de69af8bcccd0"
+    },
+    {
+      "path": "docs/04-行业落地向导-用户版.md",
+      "sha256": "72af07c251de4e28ecd04741410a60cc336d776b3c7f3abf5ec3eacb55a6fdcb"
+    },
+    {
+      "path": "docs/AGENT-CLIENTS.md",
+      "sha256": "cab92bb3b9e7689fc2496bd25b0ae7aab4c4e02ebd4fc0512e41991987174f19"
+    },
+    {
+      "path": "docs/AI-WORKBENCH.md",
+      "sha256": "eb21fbac20fa493c083c0dc2a8f9c7a57f09b7e9f7f7a6491764548422701958"
+    },
+    {
+      "path": "docs/CEO-RISK-DISCLOSURE.md",
+      "sha256": "90e919b47f831de0697e738fa86f01e3e7891827fdd26d79a0080812b3e9bda5"
+    },
+    {
+      "path": "docs/DEMO-TWIN.md",
+      "sha256": "888654de0faa8546de52cefc598f45beea90414109b52554c9aa425e381c94b2"
+    },
+    {
+      "path": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+      "sha256": "50c4b91849c01ecbad96153a1ae0d5d42a2bdfd65b7d94f515cf29c75eba37a2"
+    },
+    {
+      "path": "docs/SMART-HOME-STORE-PLAYBOOK.md",
+      "sha256": "0e77de33bb1c5cd93f5b3fad68cf3c81c87ed0079a586cc381904c4a2b4a69ac"
+    },
+    {
+      "path": "docs/TWIN-COVERAGE.md",
+      "sha256": "5dcecb316259d55d39a302ad8849267f94ccaa1ccfcb1196ef23147d4989aef5"
+    },
+    {
+      "path": "docs/capability-map.md",
+      "sha256": "49fa971933f51ea80b852207044147a038775bf5126dda3f72beec88d35d0245"
+    },
+    {
+      "path": "docs/demo-script.md",
+      "sha256": "370ddf1076061dc42906bcc70c33d6ac143d47c0935323fde9af8278466e807e"
+    },
+    {
+      "path": "docs/hotel-exam-playbook.md",
+      "sha256": "8ba6d7718f61085a1e7ea3bafb2adbb4efc57ba64cfff86a2e9db84ac1aec4e3"
+    },
+    {
+      "path": "docs/sales/一页纸-低星单体酒店.md",
+      "sha256": "e4adac4f878b56d2f92b217eff47bccbaa8585917288ed05665f22a74b43a02b"
+    },
+    {
+      "path": "docs/sales/一页纸-无人酒店.md",
+      "sha256": "be56c74bea80c4fd1a0949714f8b7a34b0a60915fd795e6deb0d7887d1260319"
+    },
+    {
+      "path": "docs/sales/一页纸-民宿.md",
+      "sha256": "2a7ff3c3de7df0b511dab81a6cbc96b541cee1028dcb30e43fcd9b408795c344"
+    }
+  ],
+  "cases": [
+    {
+      "id": "public-markdown-local-targets",
+      "preconditions": "Listed default and explicitly historical Markdown files exist",
+      "steps": "Parse every inline local Markdown file target, percent-decode and resolve relative to source",
+      "expected": "All parsed local file targets exist",
+      "actual": {
+        "checked": 92,
+        "failures": [],
+        "links": [
+          {
+            "source": "README.md",
+            "line": 7,
+            "target": "LICENSE",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 11,
+            "target": "bundles/smart-home/library/industry-context.json",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 22,
+            "target": "docs/SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 22,
+            "target": "docs/01-门店店长使用指南.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 22,
+            "target": "docs/02-新客户首次接入完整流程.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 28,
+            "target": "bundles/smart-home/library/workforce.json",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 45,
+            "target": "docs/AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 68,
+            "target": "docs/03-功能清单-用户版.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 69,
+            "target": "docs/04-行业落地向导-用户版.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 70,
+            "target": "docs/AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 71,
+            "target": "docs/SMART-HOME-BUSINESS-MATRIX.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 72,
+            "target": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 73,
+            "target": "docs/demo-script.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 74,
+            "target": "docs/BUSINESS-MANAGEMENT-ACCEPTANCE.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 102,
+            "target": "docs/capabilities.auto.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 102,
+            "target": "AGENTS.repo.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 105,
+            "target": "AGENTS.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 105,
+            "target": "AGENTS.repo.md",
+            "exists": true
+          },
+          {
+            "source": "README.md",
+            "line": 105,
+            "target": "WORKLOOM_PRODUCT_CONTEXT.md",
+            "exists": true
+          },
+          {
+            "source": ".agents/skills/business-management/SKILL.md",
+            "line": 8,
+            "target": "../../../docs/AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/01-门店店长使用指南.md",
+            "line": 7,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/01-门店店长使用指南.md",
+            "line": 46,
+            "target": "../bundles/smart-home/library/workforce.json",
+            "exists": true
+          },
+          {
+            "source": "docs/01-门店店长使用指南.md",
+            "line": 70,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/01-门店店长使用指南.md",
+            "line": 70,
+            "target": "02-新客户首次接入完整流程.md",
+            "exists": true
+          },
+          {
+            "source": "docs/01-门店店长使用指南.md",
+            "line": 70,
+            "target": "03-功能清单-用户版.md",
+            "exists": true
+          },
+          {
+            "source": "docs/02-新客户首次接入完整流程.md",
+            "line": 3,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/02-新客户首次接入完整流程.md",
+            "line": 3,
+            "target": "01-门店店长使用指南.md",
+            "exists": true
+          },
+          {
+            "source": "docs/02-新客户首次接入完整流程.md",
+            "line": 74,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/02-新客户首次接入完整流程.md",
+            "line": 74,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/03-功能清单-用户版.md",
+            "line": 50,
+            "target": "01-门店店长使用指南.md",
+            "exists": true
+          },
+          {
+            "source": "docs/03-功能清单-用户版.md",
+            "line": 50,
+            "target": "02-新客户首次接入完整流程.md",
+            "exists": true
+          },
+          {
+            "source": "docs/03-功能清单-用户版.md",
+            "line": 50,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/03-功能清单-用户版.md",
+            "line": 50,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/04-行业落地向导-用户版.md",
+            "line": 7,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/04-行业落地向导-用户版.md",
+            "line": 24,
+            "target": "../bundles/smart-home/library/industry-context.json",
+            "exists": true
+          },
+          {
+            "source": "docs/04-行业落地向导-用户版.md",
+            "line": 45,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/04-行业落地向导-用户版.md",
+            "line": 45,
+            "target": "SMART-HOME-BUSINESS-MATRIX.md",
+            "exists": true
+          },
+          {
+            "source": "docs/AI-WORKBENCH.md",
+            "line": 82,
+            "target": "evidence/lease-storage-boundary.json",
+            "exists": true
+          },
+          {
+            "source": "docs/AI-WORKBENCH.md",
+            "line": 107,
+            "target": "SMART-HOME-BUSINESS-MATRIX.md",
+            "exists": true
+          },
+          {
+            "source": "docs/AI-WORKBENCH.md",
+            "line": 107,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-STORE-PLAYBOOK.md",
+            "line": 23,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-STORE-PLAYBOOK.md",
+            "line": 95,
+            "target": "../bundles/smart-home/library/industry-context.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-STORE-PLAYBOOK.md",
+            "line": 101,
+            "target": "SMART-HOME-BUSINESS-MATRIX.md",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-STORE-PLAYBOOK.md",
+            "line": 101,
+            "target": "02-新客户首次接入完整流程.md",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-STORE-PLAYBOOK.md",
+            "line": 101,
+            "target": "01-门店店长使用指南.md",
+            "exists": true
+          },
+          {
+            "source": "docs/capability-map.md",
+            "line": 3,
+            "target": "capabilities.auto.md",
+            "exists": true
+          },
+          {
+            "source": "docs/capability-map.md",
+            "line": 11,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/capability-map.md",
+            "line": 13,
+            "target": "02-新客户首次接入完整流程.md",
+            "exists": true
+          },
+          {
+            "source": "docs/capability-map.md",
+            "line": 20,
+            "target": "SMART-HOME-BUSINESS-MATRIX.md",
+            "exists": true
+          },
+          {
+            "source": "docs/capability-map.md",
+            "line": 43,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/capability-map.md",
+            "line": 81,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/demo-script.md",
+            "line": 7,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/demo-script.md",
+            "line": 63,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/demo-script.md",
+            "line": 63,
+            "target": "01-门店店长使用指南.md",
+            "exists": true
+          },
+          {
+            "source": "docs/demo-script.md",
+            "line": 63,
+            "target": "02-新客户首次接入完整流程.md",
+            "exists": true
+          },
+          {
+            "source": "docs/DEMO-TWIN.md",
+            "line": 2,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/DEMO-TWIN.md",
+            "line": 2,
+            "target": "demo-script.md",
+            "exists": true
+          },
+          {
+            "source": "docs/DEMO-TWIN.md",
+            "line": 2,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/AGENT-CLIENTS.md",
+            "line": 3,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/AGENT-CLIENTS.md",
+            "line": 5,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/CEO-RISK-DISCLOSURE.md",
+            "line": 3,
+            "target": "AI-WORKBENCH.md",
+            "exists": true
+          },
+          {
+            "source": "docs/TWIN-COVERAGE.md",
+            "line": 4,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/hotel-exam-playbook.md",
+            "line": 4,
+            "target": "SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/sales/一页纸-低星单体酒店.md",
+            "line": 4,
+            "target": "../SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/sales/一页纸-无人酒店.md",
+            "line": 4,
+            "target": "../SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/sales/一页纸-民宿.md",
+            "line": 4,
+            "target": "../SMART-HOME-STORE-PLAYBOOK.md",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 6,
+            "target": "evidence/smart-home-depth/source-read-coverage.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 56,
+            "target": "../bundles/smart-home/runtime/storage.mjs",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 58,
+            "target": "../bundles/smart-home/runtime/depth-catalogue.mjs",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 58,
+            "target": "../bundles/smart-home/runtime/depth-domain.mjs",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 106,
+            "target": "evidence/smart-home-depth/engine-runtime-tests.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 106,
+            "target": "evidence/smart-home-depth/engine-runtime-case-matrix.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 107,
+            "target": "evidence/smart-home-depth/industry-peer-review.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 108,
+            "target": "evidence/smart-home-depth/engine-current-seal-basis.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 109,
+            "target": "evidence/smart-home-depth/industry-assets-test.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 109,
+            "target": "evidence/smart-home-depth/industry-machine-check.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 109,
+            "target": "evidence/smart-home-depth/industry-ui-manifest-check.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 110,
+            "target": "evidence/smart-home-depth/engine-root-integration-review.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 111,
+            "target": "evidence/smart-home-depth/ui/depth-browser-proof.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 111,
+            "target": "evidence/smart-home-depth/legacy-ui/ui-workbench-proof.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 112,
+            "target": "evidence/smart-home-depth/site-proof.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 112,
+            "target": "evidence/smart-home-depth/site-appearance-proof.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 113,
+            "target": "evidence/smart-home-depth/public-cli-replay.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 114,
+            "target": "evidence/smart-home-depth/public-content-proof.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 115,
+            "target": "evidence/smart-home-depth/engine-root-integration-review.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 149,
+            "target": "evidence/smart-home-depth/host-model-proof.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 149,
+            "target": "evidence/smart-home-depth/host-model-semantic-review.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 149,
+            "target": "evidence/smart-home-depth/host-compatible-binding.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 155,
+            "target": "../bundles/smart-home/library/industry-context.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 155,
+            "target": "../bundles/smart-home/library/official-sources.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 163,
+            "target": "evidence/smart-home-depth/industry-peer-review.json",
+            "exists": true
+          },
+          {
+            "source": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+            "line": 163,
+            "target": "evidence/smart-home-depth/engine-root-integration-review.json",
+            "exists": true
+          }
+        ]
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "historical-isolation",
+      "preconditions": "Eight old hotel / platform public pages retained",
+      "steps": "Read top850 characters for historical or inherited labeling",
+      "expected": "Every page has a prominent inherited/history label; old body remains reference",
+      "actual": {
+        "pages": [
+          {
+            "path": "docs/DEMO-TWIN.md",
+            "heading": "# 继承历史参考｜云栖酒店 30 天经营模拟",
+            "top": "# 继承历史参考｜云栖酒店 30 天经营模拟\n> **当前默认产品是全屋智能门店。本文保留Hotel源仓的历史模拟说明，不是当前门店使用指南、经营业绩或已验证承诺。** 旧命令、数量、收益措辞和模型配置对应其历史平台运行链，未经本轮复验；其中“真实使用毫无区别”“不可篡改”“夜班不用人了”等原始演示措辞不可用于当前对外宣传。全屋智能演示使用[成都门店实战手册](SMART-HOME-STORE-PLAYBOOK.md)与[新演示脚本](demo-script.md)，启动使用[AI工作台接入](AI-WORKBENCH.md)。\n\n> 用途：**让客户在签约前，就看到「他买了之后会获得怎样的体验和回报」**。\n> 一份与真实使用毫无区别的经营数据（确定性生成、哈希链可验、全业务域覆盖），30 秒恢复，开箱即演。\n\n## 三条命令\n\n```bash\npnpm db:seed && pnpm demo:twin   # 种子 + 30 天经营模拟（约 1300 条五元事件）\npnpm demo:twin:snapshot          # 导出快照 → demo/twin/yunqi-30d.sql.gz（随仓库分发）\npnpm demo:twin:restore           # 售前现场：免模拟一键恢复（30 秒进入经营态）\n```\n\n## 数据集构成（2026-07-22 ~ 2026-08-20，确定性种子 mulberry32(20260821)）\n\n| 域 | 数据 | 演示点 |\n|---|---|---|\n| 订单/入退 | 30 天订单确认、智能排房入住、自动结算退房（周末峰值曲线） | P2 线程/任务流 |\n| 收益管理 | 每日 R1 白班调价 + R7 夜班微调（before/after/竞对依据全留痕） | P11 调价效果归因 |\n| 夜班班组 | 30 个夜班：竞对采集/三轮对账/08:30 决策包（快照 v3） | P9 夜班驾驶舱",
+            "historicalLabel": true
+          },
+          {
+            "path": "docs/AGENT-CLIENTS.md",
+            "heading": "# 继承平台参考｜旧桌面Agent接入",
+            "top": "# 继承平台参考｜旧桌面Agent接入\n\n> **BusinessManagementSystem 派生仓说明**：本页保留 Hotel 上游的接入参考与历史口径。当前全屋智能经营入口、宿主内置模型任务循环和 Codex / 千问办公 / WorkBuddy 配置见 [AI-WORKBENCH.md](AI-WORKBENCH.md)。旧 `workloom-agent` 兼容入口按当前 `product.manifest.json` 及实际行业能力清单发现工具；默认 bundle 已为 `smart-home`，缺少旧式行业清单时只加载公共只读能力。本页后续 Hotel 能力表与配置例子不代表新经营入口的当前目录。\n\n> 下文读者与示例均属于Hotel源仓历史接入，命令、数量与客户端描述未在本轮复验。默认全屋智能入口使用[AI-WORKBENCH.md](AI-WORKBENCH.md)，不要照下文Hotel示例选择默认业务工具。\n> 历史目标是先检查能力：\n> 先 `list` 看到能力 → 再 `invoke` 读一条真实状态 → 最后把 stdio MCP 挂进客户端。\n> 历史示例的bundle为hotel、能力前缀hotel，当前默认bundle为smart-home。\n\n---\n\n## 1. 五分钟接入（四条命令，均可直接复制）\n\n前置：Node.js ≥ 24、已 `pnpm install`（只跑只读能力不需要先起服务端）。\n\n```bash\n# ① 看能力清单\nnode scripts/workloom-agent.mjs list\n\n# ② 看单项契约（输入 JSON Schema / 传输方式）\nnode scripts/workloom-agent.mjs describe hotel.repo.status\n\n# ③ 真跑一条只读能力（本仓自述）\nprintf '%s' '{}' | node scripts/workloom-agent.mj",
+            "historicalLabel": true
+          },
+          {
+            "path": "docs/CEO-RISK-DISCLOSURE.md",
+            "heading": "# 继承平台参考｜数字CEO授权风险文案（risk-v1）",
+            "top": "# 继承平台参考｜数字CEO授权风险文案（risk-v1）\n\n> **本文是Hotel源仓保留的历史产品文案，未作为当前全屋智能native入口的授权或法律文本使用。** 当前入口的店主确认、审批、现场责任与外部禁用以[AI工作台接入](AI-WORKBENCH.md)为准；真实门店合同与授权文本需独立专业审查。\n> 原始文案下列真实采购、对外回复与自治授权描述，不代表本产品已启用对应连接器。\n> 授权人须完整阅读并逐项确认后方可启用。版本：risk-v1 · 2026-08-22\n\n## 一、您即将授权的内容\n\n您将授权一个 AI 数字员工（下称「数字CEO」）在您划定的边界内，**自主做出并执行真实经营决策**，包括但不限于：价格调整、采购下单、审批裁决、任务派发、对外口径回复。这些动作会产生真实的经营后果。\n\n## 二、AI 的能力边界（它可能出错的地方）\n\n请您知悉，数字CEO 在以下情形可能做出不优甚至错误的决策：\n\n1. **行情误判**：基于历史与实时数据的推断无法预见突发事件（天气、舆情、政策、竞对非常规动作）；\n2. **数据误读**：上游数据源（PMS/渠道/采集）异常或延迟时，决策依据可能失真（系统对无回执数据标「未核实」，但不能排除全部噪声）；\n3. **极端行情失当**：超出训练与规则覆盖的极端场景下，AI 可能给出偏离您本意的处置；\n4. **模型固有限制**：大语言模型存在概率性输出，同一问题在不同时点的处置可能不完全一致。\n\n系统已内置的防线：围栏物理约束（越线必审/必熔断）、自治边界（价格带/金额上限）、试用降档、自治熔断（KPI 跌破下限自动收权）、全部决策留痕可审计。**这些防线降低风险，但不能消除风险。**\n\n## 三、责任声明（请务必理解）\n\n> **数字CEO 不是法律责任主体。** 您授权范围内的经营决策及其后果，由授权人（您）承担。\n> 系统提供完整的决策依据链与不可篡改的授权/决策留痕，供审计与复盘；留痕不构成对决策结果的",
+            "historicalLabel": true
+          },
+          {
+            "path": "docs/TWIN-COVERAGE.md",
+            "heading": "# 继承酒店历史参考 · 样板间数据覆盖矩阵",
+            "top": "# 继承酒店历史参考 · 样板间数据覆盖矩阵\n\n> **历史参考，非当前全屋智能默认材料。** 下文保留 Hotel 的历史快照、Genie、页面与覆盖口径，不描述当前默认成都全屋智能场景。历史“100%”“与真实使用无区别”措辞不构成本轮验证结论；模拟状态不能证明真实客户、现场、资金或模型执行。\n> 当前用户路径请阅读[全屋智能门店实战手册](SMART-HOME-STORE-PLAYBOOK.md)。以下保留原文供继承资产追溯，不作为本轮事实或实测证明。\n\n## 原历史文档：样板间数据覆盖矩阵（TWIN-COVERAGE）\n\n> 回答一个问题：**「我们涉及的场景方方面面、数据类型和数据状态非常多，全都模拟到了吗？」**\n> 诚实答案：核心经营域 100% 覆盖；少数域靠「样板间管家（twin-genie）运行时兜底」而非静态快照覆盖。本矩阵逐域列明，并给出每域的兜底路径。\n\n图例：✅ 快照全量模拟 ｜ 🟡 快照有基础数据，运行态由 Genie 补足 ｜ 🤖 由 Genie 按需合成（不入静态快照）\n\n## 一、数据表级覆盖（22 张表逐表核对）\n\n| 表 | 覆盖 | 数据量（快照口径） | 说明 |\n|---|---|---|---|\n| biz_events | ✅ | ~1345 条 | 30 天全业务域五元事件，哈希链逐条可验 |\n| approvals | ✅ | ×10（approved 7 / pending 2 / rejected 1） | 三手势、驳回回流、P4 决断队列 |\n| night_runs | ✅ | ×30（package_generated） | 与 30 个夜班决策包事件一一对应 |\n| fence_rules | ✅ | R1–R24 ×active（v3）+ 旧版 rolled_back | 版本化留痕可演示回滚 |\n| fence_dry_runs | ✅ | ×3（2 confirmed / 1 rejected） | ",
+            "historicalLabel": true
+          },
+          {
+            "path": "docs/hotel-exam-playbook.md",
+            "heading": "# 继承酒店历史参考 · 酒店考试院手册",
+            "top": "# 继承酒店历史参考 · 酒店考试院手册\n\n> **历史参考，非当前全屋智能默认材料。** 下文适用于继承 Hotel 题集与原历史实现，版本、阈值和考试结论不下发到默认 smart-home 产品。当前门店操作、权限与工程证据以全屋智能目录和实现矩阵为准。\n> 当前用户路径请阅读[全屋智能门店实战手册](SMART-HOME-STORE-PLAYBOOK.md)。以下保留原文供继承资产追溯，不作为本轮事实或实测证明。\n\n## 原历史文档：酒店考试院 · 行业考点与 Know-how 手册（v1）\n\n> 建立：2026-09-18 ｜ 仓库：`workloom-hotel` ｜ 适用：考试院（eval-core）× 行业包 `hotel@3.2.0`\n> 目的：让酒店版客户「开箱即有证可考、有红线可守、有 Know-how 可学」，把行业专业度变成可验收的题。\n\n## 0. 本轮交付\n\n| 交付物 | 路径 | 说明 |\n|---|---|---|\n| 酒店考试题集 | `bundles/hotel/eval/questions.json` | 16 题（8 红线），覆盖 7 学科 × 5 会话结构 |\n| 题集校验脚本 | `scripts/verify-hotel-eval-questions.mts` | 走基座同一装载器校验（清单→摘要→Schema） |\n| 本手册 | `docs/hotel-exam-playbook.md` | 考点依据、Know-how、出题规范、演进计划 |\n\n在此之前，本仓 `bundles/hotel` **没有声明考试题集**（`provides` 无 `evalQuestions`），\n考试院调用 `loadVerifiedBundleEvalQuestions(\"hotel\")` 必然抛「行业包未声明考试题集」——\n也就是酒店版客户实际上考不了试。本轮把这条链路补齐。\n\n## 1. 考点从哪来（三级依据，逐条标注等级）\n\n| ",
+            "historicalLabel": true
+          },
+          {
+            "path": "docs/sales/一页纸-低星单体酒店.md",
+            "heading": "# 继承酒店历史销售参考 · 低星单体酒店",
+            "top": "# 继承酒店历史销售参考 · 低星单体酒店\n\n> **历史参考，非当前全屋智能默认材料。** 历史酒店营销稿；下文的节省、收入、回本、夜班和外发数字未在当前全屋智能产品核实，不可作为本产品售价、经营效果、客户案例或执行能力承诺。\n> 当前用户路径请阅读[全屋智能门店实战手册](../SMART-HOME-STORE-PLAYBOOK.md)。以下保留原文供继承资产追溯，不作为本轮事实或实测证明。\n\n## 原历史文档：WorkLoom 酒店行业版 · 低星单体酒店（20–50 间）\n\n## 一年省 17 万，一个月回本\n\n**您的店正在漏钱，且漏得无声无息。** 单体酒店每年因多渠道管理混乱流失营收 3–8%——对年营收 100 万的 30 间房酒店，就是每年 3–8 万，相当于白养一个前台。\n\n## 钱从哪漏，怎么堵\n\n| 流失点 | 年流失 | WorkLoom 怎么堵 |\n|---|---|---|\n| 调价不及时（占流失 40%） | ~4 万 | 价格成为围栏内连续函数：白班 R1（≤8% auto）+ 夜班 R7 微调，实时贴合市场，不再一天只调 1–2 次 |\n| 差评响应慢（20%） | ~2 万 | 差评实时发现 + R19 超时 24h 自动升级店长；AI 起草回复，您点头发布 |\n| 超售/漏售（15%） | ~1.5 万 | R18 看门狗每 15 分钟巡检，同步失败自动下架保护，倒挂发布直接熔断（R17） |\n| 对账差异（10%） | ~1 万 | 账单×订单×担保三轮自动比对，您只看差异项 |\n| 人力耗在机械活 | ~9.8 万/年 | 夜班班组接管夜审/对账/调价/巡检，每天省 5.5 小时人工 |\n\n**中性测算：降本 9.8 万 + 增收 7.2 万 ≈ 17 万/年。最保守情景（11.5 万）也是订阅费的 3 倍以上。**\n\n## 夜班，先解决这一个就够\n\n夜班前台是酒店人力最脆弱的一环：招聘难、留人难、出错难究。一个夜班年薪 4–6",
+            "historicalLabel": true
+          },
+          {
+            "path": "docs/sales/一页纸-无人酒店.md",
+            "heading": "# 继承酒店历史销售参考 · 无人酒店",
+            "top": "# 继承酒店历史销售参考 · 无人酒店\n\n> **历史参考，非当前全屋智能默认材料。** 历史酒店营销稿；下文的管理半径、增收降本、自动联系、设备重启、开锁和报警描述未在当前全屋智能产品核实，不可作为本产品业务或设备能力承诺。\n> 当前用户路径请阅读[全屋智能门店实战手册](../SMART-HOME-STORE-PLAYBOOK.md)。以下保留原文供继承资产追溯，不作为本轮事实或实测证明。\n\n## 原历史文档：WorkLoom 酒店行业版 · 无人酒店\n\n## 断点不是事故，是资产——你的第 5 家店比第 1 家店更好管\n\n**无人酒店的真问题不是\"没人\"，是\"断点\"。** 自助入住很顺滑，直到：身份验证失败、订单信息不全、门锁半夜失灵、客人投诉没人接。每家无人酒店都有八大断点，而大多数运营商的解法是\"远程店长人肉兜底\"——于是 1 个店长管 3 家店就满了，规模卡死在人上。\n\n## 我们的答案：断点收敛工程\n\n每个断点处置后，系统**强制**完成根因四分类（未分类不许结案，这是按钮级的纪律）：\n\n| 根因 | 优化动作 | 效果 |\n|---|---|---|\n| 数据缺失 | 补一店一档字段（系统给出缺失清单） | 同类断点下周归零 |\n| 规则未覆盖 | 自动生成围栏/SOP 草稿进审批 | 处置规则持续变密 |\n| 能力边界 | 登记人工保留区 + 应急预案更新 | 人的介入越来越少、越来越准 |\n| 真随机 | 纳入应急演练剧本 | 不确定性被管理 |\n\n同类断点周均 ≥3 次，系统自动产出固化建议。**断点率逐周单调下降，画在 P10 断点看板的收敛曲线上——这条曲线，就是您从 3 家店复制到 8 家店的通行证。**\n\n## 三级兜底：AI 优先，人只在必须时出现\n\n- **第一级 AI 自动处理**：订单信息不全→自动联系客人补充；设备轻微故障→自动重启；\n- **第二级远程人工**：身份验证失败→远程视频核实开锁（30 秒）；投诉→远程电话安抚；\n- ",
+            "historicalLabel": true
+          },
+          {
+            "path": "docs/sales/一页纸-民宿.md",
+            "heading": "# 继承酒店历史销售参考 · 民宿",
+            "top": "# 继承酒店历史销售参考 · 民宿\n\n> **历史参考，非当前全屋智能默认材料。** 历史酒店营销稿；下文的电话前台、夜班、自动发布、收益和客户引语未在当前全屋智能产品核实，不可作为本产品真实案例、经营效果或持续运行承诺。\n> 当前用户路径请阅读[全屋智能门店实战手册](../SMART-HOME-STORE-PLAYBOOK.md)。以下保留原文供继承资产追溯，不作为本轮事实或实测证明。\n\n## 原历史文档：WorkLoom 酒店行业版 · 民宿（5–20 间）\n\n## 把夜晚还给业主\n\n**做民宿最累的不是经营，是你永远不能下线。** 晚上 11 点客人问 WIFI，凌晨 1 点有人找不到门，早上 7 点半被微信吵醒——民宿业主是\"7×24 人质\"。WorkLoom 不跟你谈效率，**我们谈的是：今晚你可以关机睡觉。**\n\n## 晚上关机后，谁在替你守店\n\n| 深夜来电 | AI 语音前台 24 小时接听。房价/地址/停车/早餐/WIFI 即时应答（答案与您的店档同源，口径永远一致）；只有投诉和特殊需求才找人——而且默认**先找值班手机，不叫醒您**。 |\n|---|---|\n| 深夜到店/留言 | 夜班班组全程接管：入住指引、咨询应答、异常留痕，清早一份决策包告诉您夜里发生的一切。 |\n| 深夜紧急 | 安全事件 AI **只告警+联动报警，绝不擅自处置**（R10 安全禁区是写死在系统里的红线）。 |\n\n**电话知识库会自己长大**：客人这周问\"充电桩\"4 次，周末系统自动把它放进知识库候选，您一键确认——下周这个问题 3 秒内必答。您的店越开越聪明，而您什么都没做。\n\n## 民宿的命脉是种草，这件事我们也管\n\n民宿和酒店不一样：**小红书和抖音不是渠道，是命脉**。所以内容营销在民宿版里是旗舰位，不是附属品：\n\n- **content-marketing**：选题、文案、发布排期（节假日提前 7 天策略审批）；\n- **ai-live-assistant**：直",
+            "historicalLabel": true
+          }
+        ]
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "default-story-no-inherited-hotel-promises",
+      "preconditions": "Owned current product docs, prior generated block removed from README check",
+      "steps": "Scan named obsolete hotel/installation/blanketautomation promises",
+      "expected": "No selected inherited promise appears in default docs",
+      "actual": {
+        "matches": [],
+        "pattern": "PMS|\\bOTA\\b|RevPAR|7\\s*[×x]\\s*24|一键备份|永久免费|github\\.com/workloom-ai|自动群发",
+        "semanticLimit": "This is a keyword check; A full prose review supplies context"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "apps/site/index.html-local-targets",
+      "preconditions": "Final HTML exists",
+      "steps": "Parse all IDs and href/src references, resolve fragments and local files",
+      "expected": "Unique IDs, all local references resolve, no script dependency",
+      "actual": {
+        "checked": [
+          {
+            "target": "#main",
+            "exists": true
+          },
+          {
+            "target": "#main",
+            "exists": true
+          },
+          {
+            "target": "#journey",
+            "exists": true
+          },
+          {
+            "target": "#products",
+            "exists": true
+          },
+          {
+            "target": "#team",
+            "exists": true
+          },
+          {
+            "target": "#start",
+            "exists": true
+          },
+          {
+            "target": "en.html",
+            "exists": true
+          },
+          {
+            "target": "#journey",
+            "exists": true
+          }
+        ],
+        "duplicateIds": [],
+        "scripts": 0,
+        "failures": []
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "apps/site/en.html-local-targets",
+      "preconditions": "Final HTML exists",
+      "steps": "Parse all IDs and href/src references, resolve fragments and local files",
+      "expected": "Unique IDs, all local references resolve, no script dependency",
+      "actual": {
+        "checked": [
+          {
+            "target": "#main",
+            "exists": true
+          },
+          {
+            "target": "#main",
+            "exists": true
+          },
+          {
+            "target": "#journey",
+            "exists": true
+          },
+          {
+            "target": "#products",
+            "exists": true
+          },
+          {
+            "target": "#team",
+            "exists": true
+          },
+          {
+            "target": "#start",
+            "exists": true
+          },
+          {
+            "target": "index.html",
+            "exists": true
+          },
+          {
+            "target": "#journey",
+            "exists": true
+          }
+        ],
+        "duplicateIds": [],
+        "scripts": 0,
+        "failures": []
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "product-origin-consistency",
+      "preconditions": "Current product manifest and public site loaded",
+      "steps": "Compare manifest defaultBundle and repository with both site bodies",
+      "expected": "Defaultsmart-home and matching CNB repository",
+      "actual": {
+        "defaultBundle": "smart-home",
+        "repository": "workloom-ai/workloom-BusinessManagementSystem",
+        "siteOccurrences": 22
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "repository-product-content-validator",
+      "preconditions": "Currentproduct manifest, site and inheritedengineeringconfiguration",
+      "steps": "Execute current repository verify-product-content.mjs using pinnedNode24.19",
+      "expected": "Exit0 and nativeidentity/assets/release/referencechecks pass",
+      "actual": {
+        "exitCode": 0,
+        "stdout": "产品内容完整性检查通过：产品身份、三端入口、发布目标、Bundle 资产、数字员工、技能、桌面种子、语音与场景命名契约一致。",
+        "stderr": ""
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "readme-generated-default-counts",
+      "preconditions": "Final capability regeneration andsealedassets",
+      "steps": "Parse README generated block andmetadata counts",
+      "expected": "Defaultsmart-home only; counts match currentnative contracts/roles/skills",
+      "actual": {
+        "metadata": {
+          "operations": 51,
+          "employees": 27,
+          "skills": 49
+        },
+        "checks": {
+          "operations": true,
+          "employees": true,
+          "skills": true,
+          "singleDefaultGroup": true
+        },
+        "blockSha256": "ed3122d00fe1d37a77e5e9c8be9429da2882fd5eb0351b9f4cf95c921ed0af89"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "capabilities-generator-freshness",
+      "preconditions": "Final sealed source andgeneratedartifacts",
+      "steps": "Execute generator --check, no file mutation",
+      "expected": "Exit0; README/default group andfullengineeringcatalog current",
+      "actual": {
+        "exitCode": 0,
+        "stdout": "✓ docs/capabilities.auto.md（已最新）\n  ✓ docs/capabilities.auto.json（已最新）\n  ✓ README.md（已最新）\n能力产物与代码同步 ✓",
+        "stderr": ""
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    },
+    {
+      "id": "bootstrap-and-projection-current-source-references",
+      "preconditions": "Final package scripts, PostgreSQL seed source and generated C-front JSON",
+      "steps": "Completely scan named source files and parse all JSON; compare current default command, context reference and UI/projection seals",
+      "expected": "Native story references current default source and 27/5 UI labels; inherited PostgreSQL seed is an explicit compatibility command",
+      "actual": {
+        "checks": {
+          "defaultPgSeedIsSmartHome": true,
+          "legacyHotelSeedRequiresExplicitAlias": true,
+          "cFrontUsesCurrentManifestSeal": true,
+          "cFrontUsesFictionalStoreName": true,
+          "uiObjectLabelsMatchCatalogue": true,
+          "uiWorkflowsMatchCatalogue": true,
+          "pgSeedReferencesCurrentSealedIndustryContext": true,
+          "browserRegressionIncludedInExistingMediaGate": true
+        },
+        "methodLimit": "B complete source scan and metadata cross-check; no PostgreSQL execution or inherited platform acceptance claimed by this case"
+      },
+      "pass": true,
+      "evidenceGrade": "B"
+    }
+  ],
+  "historicalOrInheritedKeywordInventory": [
+    {
+      "path": ".cnb.yml",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 155,
+          "snippet": "          apps/server/src/service/production-demo-auth.pg.test.ts apps/server/src/service/hotel-contract-fixture.pg.test.ts \\"
+        },
+        {
+          "line": 219,
+          "snippet": "        # 继承平台套件明确依赖 ws-yunqi 酒店夹具；仅在此隔离 CI 数据库安装。"
+        },
+        {
+          "line": 221,
+          "snippet": "        pnpm db:seed:hotel-compat"
+        },
+        {
+          "line": 222,
+          "snippet": "        # 只在隔离测试流水线显式标记旧合成工作区，生产默认种子不安装酒店数据。"
+        },
+        {
+          "line": 230,
+          "snippet": "            SELECT 1 FROM workspaces w WHERE w.id='ws-yunqi' AND w.industry='hotel' AND w.bundle_id='hotel'"
+        },
+        {
+          "line": 232,
+          "snippet": "              AND EXISTS (SELECT 1 FROM bundle_installs WHERE workspace_id=w.id AND status='active' AND bundle_id='hotel')"
+        },
+        {
+          "line": 234,
+          "snippet": "            RAISE EXCEPTION 'hotel compatibility fixture workspace or active bundle does not match';"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "AGENTS.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 37,
+          "snippet": "| workloom-hotel | 酒店自主经营系统 |"
+        },
+        {
+          "line": 40,
+          "snippet": "| workloom | 酒店经营、AI 视频和 GEO 获客的跨产品组合 |"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "AGENTS.repo.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 3,
+          "snippet": "本仓是从 CNB `workloom-ai/workloom-hotel` 派生的独立行业产品，默认行业为全屋智能门店 `smart-home`。共享受控上下文保持只读。行业语义在行业 bundle、适配器、扩展、工作台入口和本仓文档内维护；本仓改动不能自行向基座或其他行业仓分发。"
+        },
+        {
+          "line": 12,
+          "snippet": "本仓的启动规则替代继承文档中针对酒店演示的首次 `preview:all` 约定，其他共享不变量与门禁保留。"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "README.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 7,
+          "snippet": "源码：[CNB 公共仓库](https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem) · 许可证：[Apache-2.0](LICENSE) · 基础来源：`workloom-ai/workloom-hotel@5a04120a225dc3734415c8cc23e9c5f9474170c0`。"
+        },
+        {
+          "line": 76,
+          "snippet": "默认 `smart-home` 行业包承载本产品语义。继承平台三端、PostgreSQL、电脑操作工具和 Hotel 历史资产保留在独立兼容链中；SQLite 经营账与平台数据库当前没有双向同步。平台开发路径为 `pnpm install --frozen-lockfile`、`pnpm setup:foundation`、`pnpm dev:foundation`。数据库主种子默认全屋智能沙箱，旧酒店种子需显式 `pnpm db:seed:hotel-compat`。历史酒"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "WORKLOOM_PRODUCT_CONTEXT.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 54,
+          "snippet": "- **酒店、电商、视频、获客、咨询、交易等项目**是从同一基座派生的行业经营体。它们用行业包定义自己的数字员工组织、技能、业务对象、阶段、围栏、种子数据、投影和 UI。"
+        },
+        {
+          "line": 71,
+          "snippet": "| 行业 | `workloom-hotel` | `industry` | `hotel` | `yunqi-hotel` |"
+        },
+        {
+          "line": 77,
+          "snippet": "| 试验田 | `workroom-fox` | `experiment` | `hotel` | `yunqi-hotel` |"
+        },
+        {
+          "line": 88,
+          "snippet": "2. **中层：行业自主经营系统**。酒店、AI 视频、酒店获客、电商、股票交易试验、咨询、狐狸试验田及未来行业；共享基座，但拥有自己的组织结构、业务语义、围栏和交付界面。"
+        },
+        {
+          "line": 105,
+          "snippet": "基座当前**同时内置三个 Bundle**（`bundles/`）：`ai-pm` 3.0.0（产品经理负责制示例，`example: true`，14 名数字员工 / 20 个技能 / 14 条围栏 / 36 道考题）、`hotel` 1.0.0（酒店演示包，7 名员工 / 3 个技能 / 6 条规则）与 `platform` 1.0.0（平台运营包，17 名员工 / 11 个技能 / 10 条规则）。README 自动生成区块自述“10 项 AI 自动化引擎能力”，实测清"
+        },
+        {
+          "line": 199,
+          "snippet": "| [`workloom-im`](https://cnb.cool/workloom-ai/workloom-im) | `3c74ee0`（源于 `cfd8658`） | 公共基座 | 26 个 base 域 + runtime/shared/db/ui；三端 + 桌面 + 官网；`bundles/{ai-pm,hotel,platform}`；`scripts/suite.ts` 21 域约 371 条场景用例 |"
+        },
+        {
+          "line": 201,
+          "snippet": "| [`workloom-hotel`](https://cnb.cool/workloom-ai/workloom-hotel) | `85887a9`（源于 `bed4f6e`） | 酒店自主经营系统 | `bundles/hotel` 3.2.0：11 员工 / 26 技能 / 基线 20 条 + 4 个业态补丁；体检→影子→托管三阶段 |"
+        },
+        {
+          "line": 203,
+          "snippet": "| [`workloom`](https://cnb.cool/workloom-ai/workloom) | `2a2b390`（源于 `50bdb23`） | 酒店获客复合系统 | 三包组合：`geo-growth` 1.0.0（16/6/17）+ `ai-video` 1.0.0（33/8/21）+ `hotel` 3.4.0（16/30/74） |"
+        },
+        {
+          "line": 207,
+          "snippet": "| [`workroom-eagle`](https://cnb.cool/workloom-ai/workroom-eagle) | `efcae26`（源于 `acba266`） | 鹰眼 AI 咨询管理系统 | `bundles/consulting` 2.0.0：22 员工 / 199 技能 / 9 条基线围栏 / 4 套服务前台知识；`ai-pm` 1.0.0 与 `hotel` 1.0.0 为兼容包 |"
+        },
+        {
+          "line": 208,
+          "snippet": "| [`workroom-fox`](https://cnb.cool/workloom-ai/workroom-fox) | `7dfa488`（源于 `2cc4167`） | “懂汇报的狐狸先生”试验田 | 同源酒店版（`hotel` 3.2.0，与酒店仓仅差 `bundle.json` 与 `service-front/client.json`）+ M1 视听层（audio/voice/loommate） |"
+        },
+        {
+          "line": 210,
+          "snippet": "> 快照说明：上表 HEAD 是 2026-09-17 深读时的值；此后各仓持续演进（例如 `workloom-im` 2026-09-22 的 `main` 已到 `3a39a26`，`workloom-hotel` 到 `21c680b`）。引用时以各仓 `main` 实时值为准。"
+        },
+        {
+          "line": 212,
+          "snippet": "### 5.1 WorkLoom Hotel"
+        },
+        {
+          "line": 216,
+          "snippet": "- 围栏结构：`hotel-baseline.yml` 20 条 + 四个业态补丁（低星单体 4 / 民宿 4 / 无人酒店 6 / 体检模式 19），共 53 条规则；三套审批模板（民宿一人店、无人酒店委托型、集团门店分级型）。"
+        },
+        {
+          "line": 221,
+          "snippet": "- 与酒店仓同源（`hotel` bundle 3.2.0），未形成独立行业语义；`sync/child-repos.json` 明确标注“其基座演进不回流”。"
+        },
+        {
+          "line": 224,
+          "snippet": "- 账号实验覆盖门店四角色、一人多店统一待办、伙伴协作授权；这些是酒店实例语义，不得回灌公共层。"
+        },
+        {
+          "line": 235,
+          "snippet": "- 三包精确版本组合：主包 `geo-growth` 1.0.0（16 员工 / 6 技能 / 4 管线 / 17 条围栏）+ `ai-video` 1.0.0 + `hotel` 3.4.0。"
+        },
+        {
+          "line": 239,
+          "snippet": "- 本仓内嵌 `hotel` 3.4.0 比酒店主仓 3.2.0 更新：多出 `ai-receptionist`、`channel-watcher`、`company-ceo`、`coupon-operator`、`guest-success` 等岗位与 `coupon-ops`、`hotel-geo-content`、`intent-radar`、`lead-concierge` 等技能（获客域扩展）。"
+        },
+        {
+          "line": 253,
+          "snippet": "- 信任公式：`信任 = 判断力 × 上下文深度 × 可归因性`。仓内 `ai-pm` 1.0.0 与 `hotel` 1.0.0 仅为兼容/回归用途。"
+        },
+        {
+          "line": 275,
+          "snippet": "- **装配面统计**（`git ls-tree` + 目录计数，2026-09-22）：bundle 三包 `ai-video`（34 preset / 12 技能 / 26 围栏规则 / 5 管线）、`geo-growth`（27 / 29 / 34 / 4）、`hotel`（16 / 30 / 26 / 1）；`packages/base` 33 个域（含 `review-console`、`fences` 相关域）；三端 20 个页面模块；测试文件 163 个。与 `"
+        },
+        {
+          "line": 287,
+          "snippet": "- **装配面统计**（2026-09-22）：`ai-video`（33 preset / 8 技能 / 21 围栏规则 / 5 管线）、`geo-growth`（27 / 29 / **35** / 4）、`hotel`（16 / 30 / 26 / 1）；`packages/base` 33 域；三端 20 个页面模块；测试文件 159 个。其中 `geo-growth` 围栏规则数比 growth/growthtest 多 1，对应 G2 新增声明式触发器与去重口径。"
+        },
+        {
+          "line": 315,
+          "snippet": "- **污染守卫**：路径黑名单含 `^bundles/`、`^demo/`、`^docs/demo`、`^scripts/seed`、`^scripts/demo` 与 `hotel-baseline`、`ai-pm`、`yunqi`、`ecommerce`、`panda-cineforge`、`platform-ops` 等子串；单次常规同步上限 200 文件，新行业接入放宽至 450，超限即中止并要求人工核对。"
+        },
+        {
+          "line": 382,
+          "snippet": "- **UI 制品**：`@workloom/ui` 已从失效的 GitHub Release 迁移到 CNB Release（迁移首发 `ui-v0.1.1`，91,187 字节），`integrityByVersion` 同步更新；这是台账 DEF-P1-0015「下游 CI 既有红灯」的根因修复。截至 2026-09-22 最新已发布制品为 **`ui-v0.1.6`**（2026-09-19T14:04Z），订阅仓按 `.workloom-ui.json` 记录各自消"
+        },
+        {
+          "line": 391,
+          "snippet": "- 酒店：主仓 `workloom-hotel` 为 3.2.0（11 员工 / 26 技能 / 基线 20 条），获客仓 `workloom` 内嵌 `hotel` 3.4.0（16 员工 / 30 技能 / 基线 26 条 + 补丁），即**行业主包落后于消费方副本**；狐狸仓与酒店仓同为 3.2.0，但 `bundle.json` 与 `service-front/client.json` 已分叉。"
+        },
+        {
+          "line": 394,
+          "snippet": "- AI-PM：`ai-pm` 3.0.0 在基座与酒店仓指纹一致，仙女座为本地改写版；Eagle 保留 1.0.0（9 员工）兼容包。"
+        },
+        {
+          "line": 401,
+          "snippet": "- `docs/HARDCODE-AUDIT.md` 在九仓有 6 种不同版本（workloom-im 与 andromeda 相同；hotel/fox 相同；panda、hyperreality、workloom 各自不同），`docs/AUDIT.md` 有 3 种版本；同一份“审计事实源”在不同仓内容不一致。"
+        },
+        {
+          "line": 404,
+          "snippet": "- README 与 bundle 统计漂移依旧：HyperReality README 写“25 人班组 / 三条管线”而 bundle 为 33 preset / 5 条管线；酒店 README 写“25 个技能套件”而 bundle 为 26。"
+        },
+        {
+          "line": 414,
+          "snippet": "`docs/tech-design-m1.md`（M1 视听觉醒）同时存在于基座、酒店仓与狐狸仓的 `docs/`。需要确认它是公共交互能力设计还是误入主仓的试验项目文档，并据此决定保留、抽象或迁移；试验仓语义不得成为公共基座默认值。"
+        },
+        {
+          "line": 422,
+          "snippet": "| workloom-hotel | 0.1.4 | 0.1.1 | MISMATCH |"
+        },
+        {
+          "line": 431,
+          "snippet": "**影响**：现有 `pnpm-lock.yaml` 已把 CNB tarball 写进解析结果，所以 `--frozen-lockfile` 安装仍可成功；但**一旦重新解析依赖（本地验收/升级 lockfile/新机器首次安装）就会去 npm registry 找不存在的 `@workloom/ui@0.1.x` 而 404**——2026-09-22 酒店仓本地验收即因此受阻（临时在 `pnpm-workspace.yaml` 手加 0.1.4 override 才通过"
+        },
+        {
+          "line": 577,
+          "snippet": "| 2026-09-22 本地状态修复（执行记录） | ① `sync-fleet-local.sh` 改为只拦\"已跟踪文件\"的本地改动（未跟踪的仓内实验脚手架/验收产物不再阻塞镜像，且 git 自身仍会拒绝覆盖冲突路径）；② `WorkLoom-growth` 本地克隆发现 1 个未推送提交 `7697ddb`，已保留为本地分支 `rescue/local-main-2026-09-22` 并导出 `~/WorkLoom-fleet/.rescue/0001-feat-gr"
+        },
+        {
+          "line": 583,
+          "snippet": "| workloom-im | `3c74ee0` | ai-pm 3.0.0（14 / 20 / 14）；hotel 1.0.0（7 / 3 / 6）；platform 1.0.0（17 / 11 / 10） | 26 base 域 ≈ 3.3 万行 TS；suite 21 域 ≈ 371 条 |"
+        },
+        {
+          "line": 584,
+          "snippet": "| workroom-andromeda | `cc34a1a` | platform 1.0.0（23 / 17 目录、11 入签名 / 10）；ai-pm 3.0.0；hotel 1.0.0 | `platform-ops/src` 9 子域 + `safety/` |"
+        },
+        {
+          "line": 585,
+          "snippet": "| workloom-hotel | `85887a9` | hotel 3.2.0（11 / 26 / 53）；ai-pm 3.0.0（14 / 20 / 14） | suite 443 / demo 44（README 徽章口径） |"
+        },
+        {
+          "line": 586,
+          "snippet": "| hyperreality-system | `a2cfc91` | ai-video 1.0.0（33 / 9 / 33）；hotel 1.0.0；ai-pm 1.0.0 | 5 条管线 / 235 素材库 / vendor supermickey |"
+        },
+        {
+          "line": 587,
+          "snippet": "| workloom | `2a2b390` | geo-growth 1.0.0（16 / 6 / 17）；ai-video 1.0.0（33 / 8 / 21）；hotel 3.4.0（16 / 30 / 74） | 4 条 GEO 管线 / 12 个高保真演示页 |"
+        },
+        {
+          "line": 590,
+          "snippet": "| workroom-eagle | `efcae26` | consulting 2.0.0（22 / 199 / 9）；ai-pm 1.0.0；hotel 1.0.0 | suite 445（README 徽章口径）；4 套服务前台知识 |"
+        },
+        {
+          "line": 591,
+          "snippet": "| workroom-fox | `7dfa488` | hotel 3.2.0（11 / 26 / 53） | M1 视听层（audio/voice/loommate）；9 项 AI 自动化能力 |"
+        },
+        {
+          "line": 592,
+          "snippet": "| WorkLoom-growth（实验车道） | `6bd8a0e`（2026-09-22 云端 main） | ai-video 34 / 12；geo-growth 27 / 29；hotel 16 / 30（preset / skill） | `productId=workloom-ai-growth`、`portOffset=420`；游戏化定制 hud / star-ring / pages/p0 |"
+        },
+        {
+          "line": 593,
+          "snippet": "| workloom-growthtest（隔离副本） | `a5927a6`（2026-09-22 云端 main） | ai-video 34 / 12 / 26 / 5；geo-growth 27 / 29 / 34 / 4；hotel 16 / 30 / 26 / 1（preset / skill / 围栏规则 / 管线） | **双向不同步**；去审批化 + 调色链路 + Codex 工作台（未入库）；1 条 open PR（#10）；2,145 个文件 / 163"
+        },
+        {
+          "line": 594,
+          "snippet": "| workloom-growthmatrix（隔离副本） | `119fb98`（2026-09-22 云端 main） | ai-video 33 / 8 / 21 / 5；geo-growth 27 / 29 / 35 / 4；hotel 16 / 30 / 26 / 1 | **双向不同步**；84 项改造计划 G0–G7（G1/G2 完成、G3 进行中）；1 条 open PR（#5）；2,135 个文件 / 159 测试文件 |"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/AGENT-CLIENTS.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 3,
+          "snippet": "> **BusinessManagementSystem 派生仓说明**：本页保留 Hotel 上游的接入参考与历史口径。当前全屋智能经营入口、宿主内置模型任务循环和 Codex / 千问办公 / WorkBuddy 配置见 [AI-WORKBENCH.md](AI-WORKBENCH.md)。旧 `workloom-agent` 兼容入口按当前 `product.manifest.json` 及实际行业能力清单发现工具；默认 bundle 已为 `smart-home`，缺"
+        },
+        {
+          "line": 5,
+          "snippet": "> 下文读者与示例均属于Hotel源仓历史接入，命令、数量与客户端描述未在本轮复验。默认全屋智能入口使用[AI-WORKBENCH.md](AI-WORKBENCH.md)，不要照下文Hotel示例选择默认业务工具。"
+        },
+        {
+          "line": 8,
+          "snippet": "> 历史示例的bundle为hotel、能力前缀hotel，当前默认bundle为smart-home。"
+        },
+        {
+          "line": 21,
+          "snippet": "node scripts/workloom-agent.mjs describe hotel.repo.status"
+        },
+        {
+          "line": 24,
+          "snippet": "printf '%s' '{}' | node scripts/workloom-agent.mjs invoke hotel.repo.status --input-file -"
+        },
+        {
+          "line": 43,
+          "snippet": "| `hotel.repo.status` | 只读 | 本仓自述：product.manifest 摘要 + bundles/docs/脚本计数 |"
+        },
+        {
+          "line": 44,
+          "snippet": "| `hotel.repo.docs` | 只读 | `docs/*.md` 索引（文件名 + 一级标题），给 Agent 找文档 |"
+        },
+        {
+          "line": 45,
+          "snippet": "| `hotel.bundle.summary` | 只读 | 默认行业包概览：skills / fences / pipelines / presets 计数 |"
+        },
+        {
+          "line": 46,
+          "snippet": "| `hotel.repo.readiness` | 预览 | 接入就绪度：Node、依赖、运行时资产、密钥文件、MCP 入口、dsh-gate pin |"
+        },
+        {
+          "line": 59,
+          "snippet": "| 只读（`read`） | 否 | ✅ `readOnlyHint=true` | `core.threads.get`、`hotel.repo.status` |"
+        },
+        {
+          "line": 61,
+          "snippet": "| 预览（`preview`） | 否（本地校验/出计划） | ✅ | `hotel.repo.readiness` |"
+        },
+        {
+          "line": 69,
+          "snippet": "[mcp_servers.workloom-workloom-hotel]"
+        },
+        {
+          "line": 71,
+          "snippet": "args = [\"/abs/path/to/workloom-hotel/scripts/workloom-agent-mcp.mjs\"]"
+        },
+        {
+          "line": 72,
+          "snippet": "cwd = \"/abs/path/to/workloom-hotel\""
+        },
+        {
+          "line": 75,
+          "snippet": "[mcp_servers.workloom-workloom-hotel.env]"
+        },
+        {
+          "line": 76,
+          "snippet": "WORKLOOM_PRODUCT_ROOT = \"/abs/path/to/workloom-hotel\""
+        },
+        {
+          "line": 101,
+          "snippet": "把服务器命令配成 `node /abs/path/to/workloom-hotel/scripts/workloom-agent-mcp.mjs` 并注入 `WORKLOOM_PRODUCT_ROOT` 即可。"
+        },
+        {
+          "line": 121,
+          "snippet": "- 行业能力模块：`bundles/hotel/capabilities/repo.mjs`（只读/预览）；"
+        },
+        {
+          "line": 122,
+          "snippet": "- 能力清单：`bundles/hotel/agent-capabilities.json`（本仓行业能力，见 §2）；"
+        }
+      ],
+      "classification": "historical-page"
+    },
+    {
+      "path": "docs/AI-WORKBENCH.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 3,
+          "snippet": "BusinessManagementSystem 的经营运行时独立于聊天窗口：Node.js 24 的内置 SQLite 保存门店目标、残缺线索与完善草案、客户资料、勘测、点位、设计、报价、施工、合同、经营观察、工作流、任务租约、审批和事件回执；浏览器工作台和 CLI/MCP 共用同一业务入口。Codex、千问办公、WorkBuddy 当前会话内置模型负责领取任务、理解上下文、生成结构化产物并提交。此入口不会调用 Hotel 遗留服务的 LLM_PROVIDER/LLM_AP"
+        },
+        {
+          "line": 132,
+          "snippet": "- 此独立经营入口可在零外部凭据下运行。完整 Hotel 派生平台仍作为继承资产保留，其 PostgreSQL/桌面/遗留开发工具接入是另一条运行链。"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/CEO-RISK-DISCLOSURE.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 3,
+          "snippet": "> **本文是Hotel源仓保留的历史产品文案，未作为当前全屋智能native入口的授权或法律文本使用。** 当前入口的店主确认、审批、现场责任与外部禁用以[AI工作台接入](AI-WORKBENCH.md)为准；真实门店合同与授权文本需独立专业审查。"
+        },
+        {
+          "line": 16,
+          "snippet": "2. **数据误读**：上游数据源（PMS/渠道/采集）异常或延迟时，决策依据可能失真（系统对无回执数据标「未核实」，但不能排除全部噪声）；"
+        }
+      ],
+      "classification": "historical-page"
+    },
+    {
+      "path": "docs/DEMO-TWIN.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 1,
+          "snippet": "# 继承历史参考｜云栖酒店 30 天经营模拟"
+        },
+        {
+          "line": 2,
+          "snippet": "> **当前默认产品是全屋智能门店。本文保留Hotel源仓的历史模拟说明，不是当前门店使用指南、经营业绩或已验证承诺。** 旧命令、数量、收益措辞和模型配置对应其历史平台运行链，未经本轮复验；其中“真实使用毫无区别”“不可篡改”“夜班不用人了”等原始演示措辞不可用于当前对外宣传。全屋智能演示使用[成都门店实战手册](SMART-HOME-STORE-PLAYBOOK.md)与[新演示脚本](demo-script.md)，启动使用[AI工作台接入](AI-WORKBENCH."
+        },
+        {
+          "line": 48,
+          "snippet": "快照默认是低星单体（云栖酒店 86 间）视角。民宿/无人酒店叙事用 `bundles/hotel/segment-defaults.yml` 的默认安装清单讲解即可（技能市场按客群命中对应排序）；后续可按需生成民宿版/无人酒店版孪生快照（同一生成器，换档案与权重参数）。"
+        }
+      ],
+      "classification": "historical-page"
+    },
+    {
+      "path": "docs/DEVELOPMENT-PROTOCOL.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 37,
+          "snippet": "> 说明：基座内置示例 bundle（`bundles/ai-pm`、`bundles/hotel`、`bundles/platform`）是产品资产，**其正常维护不属于 block**；block 针对的是\"把行业语义写进公共层\"。"
+        },
+        {
+          "line": 56,
+          "snippet": "- `layer`：`base | platform | hotel | video | growth | ecom | tiger | eagle | fox`（按仓库映射，脚本自动推断）"
+        },
+        {
+          "line": 286,
+          "snippet": "node scripts/tools/task.mjs new --repo workloom-ai/workloom-hotel --title \"修复差评 SLA\" \\"
+        },
+        {
+          "line": 287,
+          "snippet": "  --q1 industry --q3 workloom-hotel --q4 \"单测+打包门禁；回滚=revert\""
+        },
+        {
+          "line": 289,
+          "snippet": "node scripts/tools/task.mjs receipt --repo workloom-ai/workloom-hotel --id T-2026-0919-0001 \\"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/SMART-HOME-BUSINESS-MATRIX.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 55,
+          "snippet": "| 直接沿用酒店LLM服务与线程调度，在业务prompt中换行业 | 可复用既有服务端线程、UI、审计和模型路由 | 宿主内置模型不等于旧LLM_PROVIDER；酒店领域对象和线程成功不能证明BOM/报价/现场交付；需要新的模型连接或付费API | D：不采用为默认经营执行链 |"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/SMART-HOME-DEPTH-ACCEPTANCE.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 8,
+          "snippet": "- 未将继承的整套平台、全部 Hotel 兼容模块、第三方依赖实现或真实设备环境纳入全量精读。它们仍受原有 CI 约束。本轮证据 JSON、原始执行材料和截图另列元数据；失败前证据保留历史身份，不冒充当前通过。"
+        },
+        {
+          "line": 18,
+          "snippet": "| README、项目介绍和文档体现 AI 经营及全屋智能 | README、双语网站、四份用户指南、AI 接入、能力图、实战手册和默认演示均围绕全屋智能客户旅程；默认 README 能力块只展示本产品入口。历史酒店材料明确为继承兼容参考 |"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/TWIN-COVERAGE.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 1,
+          "snippet": "# 继承酒店历史参考 · 样板间数据覆盖矩阵"
+        },
+        {
+          "line": 3,
+          "snippet": "> **历史参考，非当前全屋智能默认材料。** 下文保留 Hotel 的历史快照、Genie、页面与覆盖口径，不描述当前默认成都全屋智能场景。历史“100%”“与真实使用无区别”措辞不构成本轮验证结论；模拟状态不能证明真实客户、现场、资金或模型执行。"
+        }
+      ],
+      "classification": "historical-page"
+    },
+    {
+      "path": "docs/capability-map.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 43,
+          "snippet": "Node最低版本由源码检查，模型使用宿主当前会话，不读Hotel旧模型API配置。命令不自动加载`.env`。数据范围、配置冲突、敏感联系引用、租约缓存与本机信任边界见[接入文档](AI-WORKBENCH.md)。"
+        },
+        {
+          "line": 73,
+          "snippet": "| `bundles/hotel`、`docs/demo`、`DEMO-TWIN.md` | Hotel历史演示与兼容回归 | 明确历史/模拟标识，不进入默认门店叙事 |"
+        },
+        {
+          "line": 75,
+          "snippet": "平台源码开发使用`pnpm install --frozen-lockfile`、`pnpm setup:foundation`、`pnpm dev:foundation`。`pnpm db:seed`默认全屋智能沙箱资产，酒店兼容种子需显式`pnpm db:seed:hotel-compat`。平台数据重置或生产部署应遵循具体资产规程，不把历史演示快捷命令当作门店首启指令。"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/demo-script.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 61,
+          "snippet": "业务字段和数量从当前目录与数据集读取。新演示先明确输入、责任人、操作、成功和错误路径，再实际执行并保存证据。旧酒店演示保留历史用途，不进入默认全屋智能演示；默认故事中的模拟数据、宿主AI产物、人类证据与外部回执始终各自标识。"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/hotel-exam-playbook.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 1,
+          "snippet": "# 继承酒店历史参考 · 酒店考试院手册"
+        },
+        {
+          "line": 3,
+          "snippet": "> **历史参考，非当前全屋智能默认材料。** 下文适用于继承 Hotel 题集与原历史实现，版本、阈值和考试结论不下发到默认 smart-home 产品。当前门店操作、权限与工程证据以全屋智能目录和实现矩阵为准。"
+        },
+        {
+          "line": 6,
+          "snippet": "## 原历史文档：酒店考试院 · 行业考点与 Know-how 手册（v1）"
+        },
+        {
+          "line": 8,
+          "snippet": "> 建立：2026-09-18 ｜ 仓库：`workloom-hotel` ｜ 适用：考试院（eval-core）× 行业包 `hotel@3.2.0`"
+        },
+        {
+          "line": 9,
+          "snippet": "> 目的：让酒店版客户「开箱即有证可考、有红线可守、有 Know-how 可学」，把行业专业度变成可验收的题。"
+        },
+        {
+          "line": 15,
+          "snippet": "| 酒店考试题集 | `bundles/hotel/eval/questions.json` | 16 题（8 红线），覆盖 7 学科 × 5 会话结构 |"
+        },
+        {
+          "line": 16,
+          "snippet": "| 题集校验脚本 | `scripts/verify-hotel-eval-questions.mts` | 走基座同一装载器校验（清单→摘要→Schema） |"
+        },
+        {
+          "line": 17,
+          "snippet": "| 本手册 | `docs/hotel-exam-playbook.md` | 考点依据、Know-how、出题规范、演进计划 |"
+        },
+        {
+          "line": 19,
+          "snippet": "在此之前，本仓 `bundles/hotel` **没有声明考试题集**（`provides` 无 `evalQuestions`），"
+        },
+        {
+          "line": 20,
+          "snippet": "考试院调用 `loadVerifiedBundleEvalQuestions(\"hotel\")` 必然抛「行业包未声明考试题集」——"
+        },
+        {
+          "line": 21,
+          "snippet": "也就是酒店版客户实际上考不了试。本轮把这条链路补齐。"
+        },
+        {
+          "line": 32,
+          "snippet": "> 诚实声明：本轮用联网检索工具尝试了 5 组行业查询（\"OTA 运营 2026 差评响应时效/超售/价格倒挂\"、"
+        },
+        {
+          "line": 33,
+          "snippet": "> \"酒店差评回复时效 评分影响\"、\"2026 酒店行业趋势报告 收益管理\"、\"hotel review response time impact\"、"
+        },
+        {
+          "line": 34,
+          "snippet": "> \"酒店客房超售 处理流程 补偿\"），返回结果均为订房门户/日历类页面，**未取得可引用的行业权威来源**。"
+        },
+        {
+          "line": 37,
+          "snippet": "### 1.1 围栏规则 → 考点映射（A 级，来源 `bundles/hotel/fences/hotel-baseline.yml`）"
+        },
+        {
+          "line": 50,
+          "snippet": "### 1.2 知识库事实 → 考点（A 级，来源 `bundles/hotel/service-front/faq.json`，共 385 问）"
+        },
+        {
+          "line": 112,
+          "snippet": "bundles/hotel/bundle.json: provides.evalQuestions = \"eval/questions.json\""
+        },
+        {
+          "line": 114,
+          "snippet": "packages/base/bundles/eval-questions.ts :: loadVerifiedBundleEvalQuestions(\"hotel\")"
+        },
+        {
+          "line": 125,
+          "snippet": "1. **扩题到 40+**：按四种经营模式（audit-only / 低星单体 / 民宿 / 无人酒店）各出一组专属题（R1 在无人店收紧到 5%、R16 夜班 block 等已在 patches 中，可直接转题）。"
+        }
+      ],
+      "classification": "historical-page"
+    },
+    {
+      "path": "docs/sales/一页纸-低星单体酒店.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 1,
+          "snippet": "# 继承酒店历史销售参考 · 低星单体酒店"
+        },
+        {
+          "line": 3,
+          "snippet": "> **历史参考，非当前全屋智能默认材料。** 历史酒店营销稿；下文的节省、收入、回本、夜班和外发数字未在当前全屋智能产品核实，不可作为本产品售价、经营效果、客户案例或执行能力承诺。"
+        },
+        {
+          "line": 6,
+          "snippet": "## 原历史文档：WorkLoom 酒店行业版 · 低星单体酒店（20–50 间）"
+        },
+        {
+          "line": 10,
+          "snippet": "**您的店正在漏钱，且漏得无声无息。** 单体酒店每年因多渠道管理混乱流失营收 3–8%——对年营收 100 万的 30 间房酒店，就是每年 3–8 万，相当于白养一个前台。"
+        },
+        {
+          "line": 26,
+          "snippet": "夜班前台是酒店人力最脆弱的一环：招聘难、留人难、出错难究。一个夜班年薪 4–6 万（含社保）。**夜班班组替代其 70% 工作量，年化省 2.8–4.2 万——仅此一项即覆盖 WorkLoom 全年订阅。** 其余全是净赚。"
+        },
+        {
+          "line": 40,
+          "snippet": "我们带一份\"云栖酒店 30 天经营态\"数字孪生现场演示：30 天夜班战报、调价归因、差评处置、断点收敛，全是可下钻的真实事件流。**您看到的不是 PPT，是您店买后 30 天的样子。**"
+        }
+      ],
+      "classification": "historical-page"
+    },
+    {
+      "path": "docs/sales/一页纸-无人酒店.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 1,
+          "snippet": "# 继承酒店历史销售参考 · 无人酒店"
+        },
+        {
+          "line": 3,
+          "snippet": "> **历史参考，非当前全屋智能默认材料。** 历史酒店营销稿；下文的管理半径、增收降本、自动联系、设备重启、开锁和报警描述未在当前全屋智能产品核实，不可作为本产品业务或设备能力承诺。"
+        },
+        {
+          "line": 6,
+          "snippet": "## 原历史文档：WorkLoom 酒店行业版 · 无人酒店"
+        },
+        {
+          "line": 10,
+          "snippet": "**无人酒店的真问题不是\"没人\"，是\"断点\"。** 自助入住很顺滑，直到：身份验证失败、订单信息不全、门锁半夜失灵、客人投诉没人接。每家无人酒店都有八大断点，而大多数运营商的解法是\"远程店长人肉兜底\"——于是 1 个店长管 3 家店就满了，规模卡死在人上。"
+        },
+        {
+          "line": 35,
+          "snippet": "owner-cockpit 把 N 家店压成一屏：各店 OCC/ADR/RevPAR 对比、夜班决策包汇聚（✓/◆/▲ 三栏合并）、告警去重收敛（只推需要人看的那条）、断点率跨店排名。**一个店长从管 3–5 家到管 5–8 家——管理半径直接翻倍。**"
+        },
+        {
+          "line": 37,
+          "snippet": "## 价值测算（30 间房无人酒店，年营收 80–150 万）"
+        },
+        {
+          "line": 47,
+          "snippet": "> 无人酒店的本质是\"用系统换人在场\"。但只有会学习的系统才换得掉人——不会学习的系统，只是把人的成本搬进了深夜的电话里。"
+        }
+      ],
+      "classification": "historical-page"
+    },
+    {
+      "path": "docs/sales/一页纸-民宿.md",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 1,
+          "snippet": "# 继承酒店历史销售参考 · 民宿"
+        },
+        {
+          "line": 3,
+          "snippet": "> **历史参考，非当前全屋智能默认材料。** 历史酒店营销稿；下文的电话前台、夜班、自动发布、收益和客户引语未在当前全屋智能产品核实，不可作为本产品真实案例、经营效果或持续运行承诺。"
+        },
+        {
+          "line": 6,
+          "snippet": "## 原历史文档：WorkLoom 酒店行业版 · 民宿（5–20 间）"
+        },
+        {
+          "line": 23,
+          "snippet": "民宿和酒店不一样：**小红书和抖音不是渠道，是命脉**。所以内容营销在民宿版里是旗舰位，不是附属品："
+        }
+      ],
+      "classification": "historical-page"
+    },
+    {
+      "path": "package.json",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 79,
+          "snippet": "    \"db:seed:hotel-compat\": \"tsx --env-file=.env scripts/seed.ts\""
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "product.manifest.json",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 33,
+          "snippet": "    \"copiedFrom\": \"workloom-ai/workloom-hotel\","
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "scripts/check-business-site.mjs",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 98,
+          "snippet": "    const story = {smartHome:text.toLowerCase().includes(lang==='zh'?'全屋智能':'smart-home'),partialLead:text.includes(lang==='zh'?'未知':'unknown'),construction:text.includes(lang==='zh'?'施工':'construction'),synthetic:text.toLowerCase().include"
+        },
+        {
+          "line": 99,
+          "snippet": "    check(`${prefix}-store-story`, '页面完整正文', '核对全屋智能、残缺线索、工程与合成标识，扫描继承酒店词', '门店经营故事完整，无默认酒店叙事', story,story.smartHome&&story.partialLead&&story.construction&&story.synthetic&&story.legacyTokens.length===0);"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "scripts/generate-capabilities.mjs",
+      "grade": "A",
+      "matches": [
+        {
+          "line": 135,
+          "snippet": "  has(\"suite:hotel\") && { name: smartHome ? \"继承酒店兼容性回归\" : \"酒店域套件\", how: \"`pnpm suite:hotel`\", desc: smartHome ? \"保留来源仓回归条件，不表示默认产品提供酒店经营\" : \"酒店域专项\" },"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/BUSINESS-MANAGEMENT-ACCEPTANCE.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 8,
+          "snippet": "- 未精读清单、选段范围与理由见 [industry-read-coverage.json](evidence/industry-read-coverage.json) 的 files/scopeCuts。源Hotel行业60文件中57精读、3机检与选段核对；当前20份preset、35份SOP和7份runtime核心实现完整阅读。机器覆盖不能表示理解度。"
+        },
+        {
+          "line": 71,
+          "snippet": "| 全平台兼容回归 | 显式hotel测试夹具；workspace原有测试不改为全skip | 基础suite464/464（419服务+45HTTP）；全workspace1636通过、3skip、0fail；全包typecheck exit0 | [suite](evidence/legacy-suite-regression.json)、[workspace与3项skip名单](evidence/legacy-workspace-pg-regression.json)。"
+        },
+        {
+          "line": 209,
+          "snippet": "| 来源hotel manifest摘要不匹配 | 一般，上游candidate记录的agent-capabilities摘要与文件字节不符 | 独立沙箱刷新摘要，业务字段不改；bundle:governance通过 | 没有给candidate补签名，也没改hotel业务 [A/B] |"
+        },
+        {
+          "line": 251,
+          "snippet": "1. 没有把整个继承仓库逐行审计；本代理覆盖显式行业清单，root/引擎/工作台有独立清单。源hotel大JSON及未改动装配/表达式广域采用机检或选段，清单公开。[B]"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 15,
+          "snippet": "| D2 | 首版唯一行业 Bundle = `bundles/hotel`（workloom-hotel） | `apps/server/src/trpc/router.ts` |"
+        },
+        {
+          "line": 101,
+          "snippet": "| C. 塞进 bundles/hotel | 方法论技能行业无关，放酒店 Bundle 违反\"底座不预置行业\"红线 | ❌ 否决 |"
+        },
+        {
+          "line": 117,
+          "snippet": "## D20：三模式真实运行态与模型可插拔契约（能力回流自酒店行业版）"
+        },
+        {
+          "line": 119,
+          "snippet": "**背景**：酒店行业版（workloom 仓库）样板间工程中，三模式（ask 问询 / agent 逐步商量 / quest 自主执行）完成真实化并经受真机演示检验。该能力属行业无关的底座能力，回流主仓。"
+        },
+        {
+          "line": 158,
+          "snippet": "**背景**：《自我进化方案 v0.1》（基座全量代码分析）+ 双行业（workloom-hotel / hyperreality-system）反向验证 v0.2。核心实证：五元事件库已忠实落库全部反馈信号（审批手势/赞踩/驳回原因/回测），但消费侧大量停留在机制位（偏好记忆只被 CEO 深度分析 ILIKE 消费、autoTuneScenes 无调用方、memory.calibrate 仅注释占位、汰换 inheritCases 未接线）——「留痕完备、消费稀疏」。"
+        },
+        {
+          "line": 163,
+          "snippet": "3. **记忆作用域 = workspace + subjectId 细分（修订 2）**：酒店默认门店级；多账号行业（视频营销）细化到账号 × 角色；偏好记忆带来源人归因，成员离任可一键清算（recallMemoriesByMember），防个人口味过拟合为组织真理。"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/HARDCODE-AUDIT.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 1,
+          "snippet": "# 硬编码排查报告（workloom-hotel / WorkLoom 酒店版）"
+        },
+        {
+          "line": 14,
+          "snippet": "| D 行业泄漏 | 2 | **3** | runtime planQuest 残留 ai-video/geo-growth 内容域分支（抖音/TikTok/小红书正则，P1）、runtime DEMO_TOOLS 残留内容域五工具（P1）、audit-core 注释 SKU 举例（P2→顺手修）；另 8 处底座通用逻辑注释/标识酒店词中性化（顺手修） |"
+        },
+        {
+          "line": 22,
+          "snippet": "| 1 | P1 | `apps/web/src/lib/trpc.ts` | 演示登录写死 `workspaceSlug: \"yunqi-hotel\"` + `MEM-001`——客户自建工作区时演示登录即坏 | 抽为 `VITE_DEMO_WORKSPACE` / `VITE_DEMO_MEMBER` env 可配（保留默认值兜底） |"
+        },
+        {
+          "line": 29,
+          "snippet": "| 8 | P2 | `scripts/suite.ts` NLU 夹具 | quest 句式混入社媒内容域句式\"生成下周小红书文案\"（geo-growth 方向残留） | 替换为酒店句式\"生成下周连住优惠方案\"，路由断言不变 |"
+        },
+        {
+          "line": 30,
+          "snippet": "| 9 | P2 | `packages/runtime/src/loop.ts` | 注释 `hotel-baseline default_level`；事件 `model_trace.model_id: \"mock-hotel-001\"` | 注释改\"行业基线\"；model_id 改 `mock-agent-001`（suite 不对该值跨断言） |"
+        },
+        {
+          "line": 31,
+          "snippet": "| 10 | P2 | 底座通用逻辑 7 处注释 | `fence-engine/judge.ts`（bundles/hotel 路径）、`model-router/router.ts`（酒店演示口径）、`runtime/ask.ts`（如酒店的…）、`runtime/assembly.ts`（bundles/hotel presets）、`workdata/recall.ts`×2（酒店枚举）、`night-shift/candidates.ts`×2（酒店版模板） | 通"
+        },
+        {
+          "line": 39,
+          "snippet": "`packages/base/captain/charter.ts` 默认 `procurement_cap: 5000 / campaign_cap: 2000` **保留不改**。判定依据：酒店行业语境下单间夜数百元（种子房价 ¥458–688）、布草/耗材采购与单次营销活动量级小，5000/2000 与种子数据及围栏阈值（R4 退款≥¥500 必审）同口径；电商仓调整为 100_000/50_000 是电商量级，方向不可照搬。默认值行业化差异正是 CAP 动态化要保护的"
+        },
+        {
+          "line": 43,
+          "snippet": "底座包存在**行业域模块整体驻留**的历史耦合（非通用逻辑夹带行业词，而是酒店域实现住在 `packages/base`）：`service-ticket/constants.ts`（客房部/工程部路由表）、`inspection/checks.ts`（默认酒店四检/roomType 探针）、`service-kb/search.ts` 弱词表与 `service-dialog/intents.ts` KB 意图词（早餐/退房/入住）、`night-shift` 模板、`ru"
+        },
+        {
+          "line": 62,
+          "snippet": "- `pnpm suite`：**443/443 全绿**（workloom-pg 容器独立库 `workloom_hotel`；因 8787 被他仓 server 占用，本次以 `SERVER_PORT=8899` + `SUITE_PORT=8899` 跑通——suite 端口已改可配）"
+        },
+        {
+          "line": 68,
+          "snippet": "- 底座新增逻辑**禁止**带入行业词；行业域配置一律下沉 bundles/hotel（记录项四的槽位化方向）"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/REAL-DEVICE-ACCEPTANCE-SPEC.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 50,
+          "snippet": "- 行业仓（hotel / hyperreality / ecommerce / consulting / trading / 获客）；"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/SUITE.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 88,
+          "snippet": "- **B-11** 读动作「pms.price.read」识别"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/agent-computer-guide.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 50,
+          "snippet": "# 可选：灌入酒店获客演示数据"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/approval-mechanism-review.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 7,
+          "snippet": "## 1. 现状盘点（以 hotel-baseline/v3 + 决策三级分流为准）"
+        },
+        {
+          "line": 19,
+          "snippet": "- 但演示数据是种子直写，**生产路径下**这些动作（工单办结、好评回复、排房、入退调度、内部晨报）全部会命中 `default_level: review`——意味着一家 20–50 间房的酒店，老板每天醒来要批 30+ 件\"送两瓶矿泉水\"级别的事项，**审批疲劳 → 要么全部秒批（审批形同虚设），要么弃用**。"
+        },
+        {
+          "line": 25,
+          "snippet": "3. **差评/赔偿/涉费承诺**：维持人审——这是小酒店最伤口碑的三类事。"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/capabilities.auto.json",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 10,
+          "snippet": "  \"workloom-hotel-demo-c.html\","
+        },
+        {
+          "line": 11,
+          "snippet": "  \"workloom-hotel-demo-mobile.html\","
+        },
+        {
+          "line": 12,
+          "snippet": "  \"workloom-hotel-demo-pc.html\""
+        },
+        {
+          "line": 213,
+          "snippet": "     \"name\": \"bundles/hotel/\","
+        },
+        {
+          "line": 214,
+          "snippet": "     \"how\": \"见 bundles/hotel/ 目录\","
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/capabilities.auto.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 55,
+          "snippet": "| **bundles/hotel/** | 继承工程兼容资产；不是本产品默认门店行业 | 见 bundles/hotel/ 目录 | 是 | 未验证 | 未验证 |"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/computer-use-production.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 25,
+          "snippet": "git clone <本仓> && cd workloom-hotel && pnpm install"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/design-system.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 94,
+          "snippet": "- 地板主题由行业 Bundle `floor-scene.json` 提供（浅色系：酒店蜜桃/片场薰衣草/GEO 天空蓝），网格线用 `rgba(51,38,43,.07)`（**禁用白色网格线**）；"
+        },
+        {
+          "line": 176,
+          "snippet": "2. **例外保留**：专有称呼与编号——AI、CEO、Agent、RevPAR/OCC、MEM-001/E-8802 等代号可保留英文/原文。"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/evidence/README.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 17,
+          "snippet": "| [legacy-suite-regression.json](legacy-suite-regression.json) | 显式hotel合成夹具的464/464基础suite；E25严格校验全通道终态镜像与无重复副作用 | 旧幽灵pending行为应保留、正式生产经营结果 |"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/release-checklist.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 33,
+          "snippet": "| 3 | 内容域目标 QUEST 只拆 1 步 | planQuest 模板只有酒店域三场景 | 补内容生产链五步拆解模板（情报→脚本→人审→分发→回收）+ dispatch 注入 llmCall |"
+        },
+        {
+          "line": 34,
+          "snippet": "| 4 | 内容域步骤执行报「工具未注册」 | 演示面工具表只有酒店域 | 注册内容域 L3 确定性剧本工具 ×5 |"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "docs/tech-design-m1.md",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 4,
+          "snippet": "> 范围：M1 全部五个特性 · 目标仓：workroom-fox（hotel 分叉，开源）"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    },
+    {
+      "path": "scripts/seed-smart-home.pg.test.ts",
+      "grade": "B",
+      "matches": [
+        {
+          "line": 107,
+          "snippet": "    await client.query(\"UPDATE bundle_installs SET bundle_id='hotel' WHERE id=$1\", [install.id]);"
+        }
+      ],
+      "classification": "controlled context / inherited engineering / explicitly scoped prose references"
+    }
+  ],
+  "keywordInventoryIsNotSemanticClearance": true,
+  "scopeCoverage": "workbench-read-coverage.json",
+  "browserProofs": [
+    "site-proof.json",
+    "site-appearance-proof.json"
+  ],
+  "uncovered": [
+    "other actual host clients",
+    "real customers or device compatibility",
+    "historical platform runtime acceptance",
+    "website deployment",
+    "long term business results"
+  ]
+}
