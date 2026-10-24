@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "workloom.repository/v1",
+  "logicalId": "workloom-BusinessManagementSystem",
+  "productId": "business-management-system",
+  "lane": "config-only-discovered",
+  "primaryPlatform": "github",
+  "github": {
+    "repository": "geniusdapeng-collab/workloom-BusinessManagementSystem",
+    "url": "https://github.com/geniusdapeng-collab/workloom-BusinessManagementSystem",
+    "branch": "main"
+  },
+  "cnb": {
+    "repository": "workloom-ai/workloom-BusinessManagementSystem",
+    "url": "https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem",
+    "branch": "main"
+  },
+  "mirrorPolicy": {
+    "platform": "cnb",
+    "mode": "deferred",
+    "automaticProductSync": false,
+    "configBackupBranchPrefix": "workloom/config-backup/"
+  },
+  "baseSync": {
+    "receive": "none",
+    "reflux": "none"
+  },
+  "registry": {
+    "repository": "geniusdapeng-collab/workloom-im",
+    "path": "sync/repository-registry.json"
+  }
+}

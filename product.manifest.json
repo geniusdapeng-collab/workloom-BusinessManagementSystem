@@ -4,7 +4,7 @@
   "role": "industry",
   "displayName": "经营管理系统（BusinessManagementSystem）",
   "packageName": "business-management-system",
-  "repository": "workloom-ai/workloom-BusinessManagementSystem",
+  "repository": "geniusdapeng-collab/workloom-BusinessManagementSystem",
   "defaultBundle": "smart-home",
   "demoWorkspaceSlug": "smart-home-demo",
   "demoMemberNo": "MEM-001",
@@ -18,9 +18,18 @@
     "portOffset": 560
   },
   "clients": {
-    "bPc": { "enabled": true, "entry": "apps/web" },
-    "bMobile": { "enabled": true, "entry": "apps/webb" },
-    "cMobile": { "enabled": true, "entry": "apps/webc" }
+    "bPc": {
+      "enabled": true,
+      "entry": "apps/web"
+    },
+    "bMobile": {
+      "enabled": true,
+      "entry": "apps/webb"
+    },
+    "cMobile": {
+      "enabled": true,
+      "entry": "apps/webc"
+    }
   },
   "workbench": {
     "entry": "scripts/business-management.mjs",
