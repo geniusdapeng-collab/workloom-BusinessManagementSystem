@@ -194,7 +194,7 @@ flowchart TB
 要求：**Node.js 24 或更高版本**；本机工作台不需要先安装平台依赖。
 
 ```bash
-git clone https://cnb.cool/workloom-ai/workloom-BusinessManagementSystem.git
+git clone https://github.com/geniusdapeng-collab/workloom-BusinessManagementSystem.git
 cd workloom-BusinessManagementSystem
 
 node scripts/business-management.mjs doctor        # 自检：环境、数据范围、入口
